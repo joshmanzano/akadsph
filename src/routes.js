@@ -6,6 +6,7 @@ import AccountView from 'src/views/account/AccountView';
 import CustomerListView from 'src/views/customer/CustomerListView';
 import DashboardView from 'src/views/reports/DashboardView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
+import AuthView from 'src/views/test/AuthView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
@@ -23,6 +24,7 @@ const routes = [
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: 'playground', element: <PlaygroundView /> },
+      { path: 'auth', element: <AuthView /> },
       { path: '*', element: <NotFoundView /> }
     ]
   },
