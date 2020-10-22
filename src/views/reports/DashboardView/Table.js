@@ -245,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EnhancedTable() {
+export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -253,6 +253,10 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
+  const tableHeaders = props.tableHeaders;
+  const tableRows = props.tableRows;
+  const sessionType = props.sessionType;
+  const tableType = props.type;
 
 
 
@@ -308,10 +312,8 @@ export default function EnhancedTable() {
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  const renderHeaders =(props)=>{
-    // const tableHeaders = ['Date', 'Time', 'Subjection', 'Tutor']
-    const tableHeaders = props.tableHeaders
-    // console.log(props.tableHeaders);
+  const renderHeaders =()=>{
+  
     const headerLabels = tableHeaders.map((label, index)=>(
       label === "Date" ?
           <TableCell sortDirection="desc">
@@ -334,12 +336,7 @@ export default function EnhancedTable() {
         
     ))
 
-    // working
-    //  return(<TableRow>{tableHeaders.map((label, index)=>(
-    //   <TableCell key={index}>{label}</TableCell>
-    // ))}</TableRow>)
 
-    // console.log(tableHeaders);
     return (<TableRow>{headerLabels}</TableRow>)
 
     // return (<TableRow>{headerlabels}</TableRow>)
@@ -403,77 +400,85 @@ export default function EnhancedTable() {
     
     // console.log(props)
     // console.log(props.tableRows)
-    // if(this.props.tableRows != undefined){
-    //   if(this.props.type == "session"){
-    //     {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-    //       .map((session, index) => {
-    //       return (
-    //           <TableRow
-    //               hover
-    //               key={session.id}
-    //           >
-    //               <TableCell>
-    //               {session.date}
-    //               </TableCell>
-    //               <TableCell>
-    //               {session.time}
-    //               </TableCell>
-    //               <TableCell>
-    //               {session.subject}
-    //               </TableCell>
-    //               <TableCell>
-    //               {session.tutor.name}
-    //               </TableCell>
+    
+    if(tableRows != undefined){
+      if(tableType == "session"){
+          const rowsResult = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((session, index) => {
+          return (
+              <TableRow
+                  hover
+                  key={session.id}
+              >
+                  <TableCell>
+                  {session.date}
+                  </TableCell>
+                  <TableCell>
+                  {session.time}
+                  </TableCell>
+                  <TableCell>
+                  {session.subject}
+                  </TableCell>
+                  <TableCell>
+                  {session.tutor.name}
+                  </TableCell>
   
-    //               {this.props.sessionType == "upcoming/pending" ? 
-    //               <TableCell>
-    //                   <Box mx={1} component='span'>
-    //                   <Button variant='contained' color='primary'>View</Button>
-    //                   </Box>
-    //                   <Box mx={1} component='span'>
-    //                   <Button variant='contained' color='primary'>Chat</Button>
-    //                   </Box>
-    //               </TableCell>
-    //               :
-    //               <TableCell>
-    //                   <Box mx={1} component='span'>
-    //                   <Button variant='contained' color='primary'>Add to Favorites List</Button>
-    //                   </Box>
-    //               </TableCell>
-    //               }
-    //           </TableRow>
-    //       );
-    //       })
-    //     }
-    //   }else if(this.props.type == "transaction"){
-    //     {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-    //       .map((transaction, index) => {
-    //       return (
-    //           <TableRow
-    //               hover
-    //               key={transaction.id}
-    //           >
-    //               <TableCell>
-    //               {transaction.date}
-    //               </TableCell>
-    //               <TableCell>
-    //               {transaction.time}
-    //               </TableCell>
-    //               <TableCell>
-    //               {transaction.tutor.name}
-    //               </TableCell>
-    //               <TableCell>
-    //               {transaction.amount}
-    //               </TableCell>
-    //               <TableCell>
-    //               {transaction.sessionNo}
-    //               </TableCell>
-    //           </TableRow>
-    //       );
-    //       })
-    //     }
-    //   }
+                  {sessionType == "upcoming/pending" ? 
+                  <TableCell>
+                      <Box mx={1} component='span'>
+                      <Button variant='contained' color='primary'>View</Button>
+                      </Box>
+                      <Box mx={1} component='span'>
+                      <Button variant='contained' color='primary'>Chat</Button>
+                      </Box>
+                  </TableCell>
+                  :
+                  <TableCell>
+                      <Box mx={1} component='span'>
+                      <Button variant='contained' color='primary'>Add to Favorites List</Button>
+                      </Box>
+                  </TableCell>
+                  }
+              </TableRow>
+          );
+          })
+
+        return rowsResult
+        
+      }else if(this.props.type == "transaction"){
+        const rowsResult = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((transaction, index) => {
+          return (
+              <TableRow
+                  hover
+                  key={transaction.id}
+              >
+                  <TableCell>
+                  {transaction.date}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.time}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.tutor.name}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.amount}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.sessionNo}
+                  </TableCell>
+              </TableRow>
+          );
+          })
+        
+        return rowsResult;
+      }
       
+    }
+
+    // if(rowsResult != undefined){
+    //   return (<TableRow>{rowsResult}</TableRow>)
     // }
     
       // {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

@@ -69,7 +69,7 @@ const rows = [
   },
 ]
 
-const headers = ["Date", "Time", "Subject", "Tutor"]
+const headers = ["Date", "Time", "Subject", "Tutor", ""]
 
 const sessionType = "upcoming/pending"
 
