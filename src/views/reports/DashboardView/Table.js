@@ -22,6 +22,8 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
+
+
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
@@ -306,6 +308,207 @@ export default function EnhancedTable() {
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
+  const renderHeaders =(props)=>{
+    // const tableHeaders = ['Date', 'Time', 'Subjection', 'Tutor']
+    const tableHeaders = props.tableHeaders
+    // console.log(props.tableHeaders);
+    const headerLabels = tableHeaders.map((label, index)=>(
+      label === "Date" ?
+          <TableCell sortDirection="desc">
+            <Tooltip
+                enterDelay={300}
+                title="Sort"
+            >
+                <TableSortLabel
+                active
+                direction="desc"
+                >
+                Date
+                </TableSortLabel>
+            </Tooltip>
+          </TableCell>
+        :
+          <TableCell>
+            {label}
+          </TableCell>
+        
+    ))
+
+    // working
+    //  return(<TableRow>{tableHeaders.map((label, index)=>(
+    //   <TableCell key={index}>{label}</TableCell>
+    // ))}</TableRow>)
+
+    // console.log(tableHeaders);
+    return (<TableRow>{headerLabels}</TableRow>)
+
+    // return (<TableRow>{headerlabels}</TableRow>)
+    // if(/*props.*/tableHeaders != undefined){
+    //   return( /*props.*/tableHeaders.map((label)=>{
+    //     console.log({label})
+    //     {label == "Date" ?
+    //       <TableCell sortDirection="desc">
+    //         <Tooltip
+    //             enterDelay={300}
+    //             title="Sort"
+    //         >
+    //             <TableSortLabel
+    //             active
+    //             direction="desc"
+    //             >
+    //             Date
+    //             </TableSortLabel>
+    //         </Tooltip>
+    //       </TableCell>
+    //     :
+    //       <TableCell>
+    //         {label}
+    //       </TableCell>
+    //     }
+    //   })
+    //   )
+    // }
+      
+
+    //   return(<TableRow>
+    //     <TableCell sortDirection="desc">
+    //     <Tooltip
+    //         enterDelay={300}
+    //         title="Sort"
+    //     >
+    //         <TableSortLabel
+    //         active
+    //         direction="desc"
+    //         >
+    //         Date
+    //         </TableSortLabel>
+    //     </Tooltip>
+    //     </TableCell>
+    //     <TableCell>
+    //     Time
+    //     </TableCell>
+    //     <TableCell>
+    //     Subject Matter
+    //     </TableCell>
+    //     <TableCell>
+    //     Tutor
+    //     </TableCell>
+    //     <TableCell>
+    //     </TableCell>
+    // </TableRow>)
+  };
+
+  const renderRows = () =>{
+    // console.log("hello")
+    
+    // console.log(props)
+    // console.log(props.tableRows)
+    // if(this.props.tableRows != undefined){
+    //   if(this.props.type == "session"){
+    //     {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    //       .map((session, index) => {
+    //       return (
+    //           <TableRow
+    //               hover
+    //               key={session.id}
+    //           >
+    //               <TableCell>
+    //               {session.date}
+    //               </TableCell>
+    //               <TableCell>
+    //               {session.time}
+    //               </TableCell>
+    //               <TableCell>
+    //               {session.subject}
+    //               </TableCell>
+    //               <TableCell>
+    //               {session.tutor.name}
+    //               </TableCell>
+  
+    //               {this.props.sessionType == "upcoming/pending" ? 
+    //               <TableCell>
+    //                   <Box mx={1} component='span'>
+    //                   <Button variant='contained' color='primary'>View</Button>
+    //                   </Box>
+    //                   <Box mx={1} component='span'>
+    //                   <Button variant='contained' color='primary'>Chat</Button>
+    //                   </Box>
+    //               </TableCell>
+    //               :
+    //               <TableCell>
+    //                   <Box mx={1} component='span'>
+    //                   <Button variant='contained' color='primary'>Add to Favorites List</Button>
+    //                   </Box>
+    //               </TableCell>
+    //               }
+    //           </TableRow>
+    //       );
+    //       })
+    //     }
+    //   }else if(this.props.type == "transaction"){
+    //     {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    //       .map((transaction, index) => {
+    //       return (
+    //           <TableRow
+    //               hover
+    //               key={transaction.id}
+    //           >
+    //               <TableCell>
+    //               {transaction.date}
+    //               </TableCell>
+    //               <TableCell>
+    //               {transaction.time}
+    //               </TableCell>
+    //               <TableCell>
+    //               {transaction.tutor.name}
+    //               </TableCell>
+    //               <TableCell>
+    //               {transaction.amount}
+    //               </TableCell>
+    //               <TableCell>
+    //               {transaction.sessionNo}
+    //               </TableCell>
+    //           </TableRow>
+    //       );
+    //       })
+    //     }
+    //   }
+      
+    // }
+    
+      // {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      //   .map((session, index) => {
+      //   return (
+      //       <TableRow
+      //           hover
+      //           key={session.id}
+      //       >
+      //           <TableCell>
+      //           {session.date}
+      //           </TableCell>
+      //           <TableCell>
+      //           {session.time}
+      //           </TableCell>
+      //           <TableCell>
+      //           {session.subject}
+      //           </TableCell>
+      //           <TableCell>
+      //           {session.tutor.name}
+      //           </TableCell>
+      //           <TableCell>
+      //               <Box mx={1} component='span'>
+      //               <Button variant='contained' color='primary'>View</Button>
+      //               </Box>
+      //               <Box mx={1} component='span'>
+      //               <Button variant='contained' color='primary'>Chat</Button>
+      //               </Box>
+      //           </TableCell>
+      //       </TableRow>
+      //   );
+      //   })
+      // }
+  };
+
   return (
     <div className={classes.root}>
         <TableContainer>
@@ -314,7 +517,9 @@ export default function EnhancedTable() {
             size={dense}
           >
             <TableHead>
-                <TableRow>
+                {renderHeaders()}
+
+                {/* <TableRow>
                     <TableCell sortDirection="desc">
                     <Tooltip
                         enterDelay={300}
@@ -339,10 +544,11 @@ export default function EnhancedTable() {
                     </TableCell>
                     <TableCell>
                     </TableCell>
-                </TableRow>
+                </TableRow> */}
             </TableHead>
             <TableBody>
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              {renderRows()}
+                {/* {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((session, index) => {
                     return (
                         <TableRow
@@ -372,7 +578,7 @@ export default function EnhancedTable() {
                         </TableRow>
                     );
                     })
-                }
+                } */}
             </TableBody>
           </Table>
         </TableContainer>
