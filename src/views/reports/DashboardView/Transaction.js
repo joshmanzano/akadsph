@@ -12,6 +12,82 @@ import {
   Grid,
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
+import Table from './Table'
+
+const rows = [
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    amount: 'P300.00',
+    sessionNo: '1234',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Math',
+    amount: 'P300.00',
+    sessionNo: '1034',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Science',
+    amount: 'P300.00',
+    sessionNo: '1204',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'LoL',
+    amount: 'P300.00',
+    sessionNo: '1231',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    amount: 'P300.00',
+    sessionNo: '1203',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    amount: 'P300.00',
+    sessionNo: '1014',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+]
+
+const headers = ["Date", "Time", "Subject", "Tutor", "Amount", "Session Number"]
+
+const sessionType = "N/A"
+
+const type = "transaction"
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -111,6 +187,7 @@ const Sales = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
+        <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
         {/* <Box
           height={400}
           position="relative"

@@ -12,6 +12,76 @@ import {
   Grid,
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
+import Table from './Table'
+
+const rows = [
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    student: 'Josh Manzano',
+    tutor: {
+      name: 'Francesca Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Math',
+    student: 'Josh Manzano',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Science',
+    student: 'Josh Manzano',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+   
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'LoL',
+    student: 'Josh Manzano',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    student: 'Josh Manzano',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    student: 'Josh Manzano',
+    tutor: {
+      name: 'Adrienne Soliven'
+    },
+    
+  },
+]
+
+const headers = ["Date", "Time", "Subject", "Tutor", "Student", ""]
+
+const sessionType = "history"
+
+const type = "session"
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -111,6 +181,7 @@ const Sales = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
+        <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
         {/* <Box
           height={400}
           position="relative"

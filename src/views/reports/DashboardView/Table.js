@@ -339,71 +339,13 @@ export default function EnhancedTable(props) {
 
     return (<TableRow>{headerLabels}</TableRow>)
 
-    // return (<TableRow>{headerlabels}</TableRow>)
-    // if(/*props.*/tableHeaders != undefined){
-    //   return( /*props.*/tableHeaders.map((label)=>{
-    //     console.log({label})
-    //     {label == "Date" ?
-    //       <TableCell sortDirection="desc">
-    //         <Tooltip
-    //             enterDelay={300}
-    //             title="Sort"
-    //         >
-    //             <TableSortLabel
-    //             active
-    //             direction="desc"
-    //             >
-    //             Date
-    //             </TableSortLabel>
-    //         </Tooltip>
-    //       </TableCell>
-    //     :
-    //       <TableCell>
-    //         {label}
-    //       </TableCell>
-    //     }
-    //   })
-    //   )
-    // }
-      
-
-    //   return(<TableRow>
-    //     <TableCell sortDirection="desc">
-    //     <Tooltip
-    //         enterDelay={300}
-    //         title="Sort"
-    //     >
-    //         <TableSortLabel
-    //         active
-    //         direction="desc"
-    //         >
-    //         Date
-    //         </TableSortLabel>
-    //     </Tooltip>
-    //     </TableCell>
-    //     <TableCell>
-    //     Time
-    //     </TableCell>
-    //     <TableCell>
-    //     Subject Matter
-    //     </TableCell>
-    //     <TableCell>
-    //     Tutor
-    //     </TableCell>
-    //     <TableCell>
-    //     </TableCell>
-    // </TableRow>)
   };
 
   const renderRows = () =>{
-    // console.log("hello")
-    
-    // console.log(props)
-    // console.log(props.tableRows)
     
     if(tableRows != undefined){
       if(tableType == "session"){
-          const rowsResult = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((session, index) => {
           return (
               <TableRow
@@ -422,7 +364,16 @@ export default function EnhancedTable(props) {
                   <TableCell>
                   {session.tutor.name}
                   </TableCell>
-  
+                  
+                  {sessionType == "history" ?  
+                    
+                    <TableCell>
+                        {session.student}
+                    </TableCell> 
+                    : 
+                    console.log()
+                  }
+
                   {sessionType == "upcoming/pending" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
@@ -433,6 +384,7 @@ export default function EnhancedTable(props) {
                       </Box>
                   </TableCell>
                   :
+                 
                   <TableCell>
                       <Box mx={1} component='span'>
                       <Button variant='contained' color='primary'>Add to Favorites List</Button>
@@ -445,8 +397,8 @@ export default function EnhancedTable(props) {
 
         return rowsResult
         
-      }else if(this.props.type == "transaction"){
-        const rowsResult = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      }else if(tableType == "transaction"){
+        const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((transaction, index) => {
           return (
               <TableRow
@@ -458,6 +410,9 @@ export default function EnhancedTable(props) {
                   </TableCell>
                   <TableCell>
                   {transaction.time}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.subject}
                   </TableCell>
                   <TableCell>
                   {transaction.tutor.name}
