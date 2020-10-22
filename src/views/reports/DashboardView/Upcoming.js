@@ -43,30 +43,30 @@ const rows = [
       name: 'Adrienne Soliven'
     },
   },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'LoL',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'LoL',
+  //   tutor: {
+  //     name: 'Adrienne Soliven'
+  //   },
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Filipino',
+  //   tutor: {
+  //     name: 'Adrienne Soliven'
+  //   },
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Filipino',
+  //   tutor: {
+  //     name: 'Adrienne Soliven'
+  //   },
+  // },
 ]
 
 const headers = ["Date", "Time", "Subject", "Tutor", ""]
