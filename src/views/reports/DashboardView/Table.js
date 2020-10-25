@@ -21,6 +21,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import StarIcon from '@material-ui/icons/Star';
+import ForumIcon from '@material-ui/icons/Forum';
+import PageviewIcon from '@material-ui/icons/Pageview';
 
 
 
@@ -377,17 +380,17 @@ export default function EnhancedTable(props) {
                   {sessionType == "upcoming/pending" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary'>View</Button>
+                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary'>Chat</Button>
+                      <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                       </Box>
                   </TableCell>
                   :
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary'>Add to Favorites List</Button>
+                <Button variant='contained' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>
                       </Box>
                   </TableCell>
                   }
