@@ -1,13 +1,10 @@
 {
-  "homepage": "https://joshmanzano.github.io/akadsph",
   "name": "AkadsPH",
   "author": "Rolo Co",
   "licence": "MIT",
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

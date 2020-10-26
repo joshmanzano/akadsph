@@ -21,16 +21,17 @@ const useStyles = makeStyles(() => ({
 }));
 
 const createZoomMeeting = () => {
-  const code = localStorage.getItem('zoom_token')
   var axios = require('axios');
-  var data = JSON.stringify({"data":{}});
+  var data = {
+    'tutee':'Test Tutee',
+    'subject':'TEST',
+  };
   
   var config = {
     method: 'post',
-    url: 'https://zoom.us/oauth/token?grant_type=authorization_code&code='+code+'&redirect_uri=http://localhost:3000/auth',
+    url: 'http://localhost:8000/zoom/',
     headers: { 
       'Content-Type': 'application/json', 
-      'Authorization': 'Basic ZnZVUUNVNEVUajJkTHV6MzNyV3hROnlBWWFnbXNLa1hIU3kxS1hWcDFralNlSEdETUhtTzRYOg=='
     },
     data : data
   };
@@ -59,9 +60,6 @@ const Sales = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Button href='https://zoom.us/oauth/authorize?response_type=code&client_id=fvUQCU4ETj2dLuz33rWxQ&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth' variant='contained' color='primary'>
-            Authenticate
-        </Button>
         <Button onClick={createZoomMeeting} variant='contained' color='primary'>
             Create Zoom Meeting
         </Button>

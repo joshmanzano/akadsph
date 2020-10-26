@@ -16,6 +16,9 @@ import Page from 'src/components/Page';
 import PayMongo from './PayMongo'
 import Brankas from './Brankas'
 import Zoom from './Zoom'
+import Twilio from './Twilio'
+import Email from './Email'
+import RandomFact from './RandomFact'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +35,14 @@ const Dashboard = () => {
   return (
     <Page
       className={classes.root}
-      title="Dashboard"
+      title="Playground"
     >
       <Container maxWidth={false}>
         <Box mb={4}>
-          <Typography variant="h1">
-            Hello world!
+          <Typography variant="h4">
+            Did you know?
           </Typography>
+          <RandomFact/>
         </Box>
         <Grid
           container
@@ -60,7 +64,16 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <Brankas/>
+            <Email/>
+          </Grid>
+          <Grid
+            item
+            lg={3}
+            md={6}
+            xl={3}
+            xs={12}
+          >
+            <Twilio/>
           </Grid>
           <Grid
             item
@@ -70,6 +83,15 @@ const Dashboard = () => {
             xs={12}
           >
             <Zoom/>
+          </Grid>
+          <Grid
+            item
+            lg={3}
+            md={6}
+            xl={3}
+            xs={12}
+          >
+            <Brankas/>
           </Grid>
         </Grid>
       </Container>
