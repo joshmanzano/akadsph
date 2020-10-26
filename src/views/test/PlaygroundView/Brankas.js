@@ -57,7 +57,7 @@ const Sales = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Button onClick={button1} variant='contained' color='primary'>
+        <Button disabled={true} onClick={button1} variant='contained' color='primary'>
           Get Authorization Token
         </Button>
       </CardContent>
