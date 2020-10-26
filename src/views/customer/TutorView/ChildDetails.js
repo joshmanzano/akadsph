@@ -120,12 +120,19 @@ const ChildDetails = ({ className, ...rest }) => {
                       }}
                     >
                       <option aria-label="None" value="" />
+                      <option value={10}>Kinder</option>
+                      <option value={10}>Prep</option>
                       <option value={10}>Grade 1</option>
                       <option value={20}>Grade 2</option>
                       <option value={10}>Grade 3</option>
                       <option value={10}>Grade 4</option>
                       <option value={20}>Grade 5</option>
                       <option value={10}>Grade 6</option>
+                      <option value={10}>Grade 7</option>
+                      <option value={10}>1st Year Highschool</option>
+                      <option value={10}>2nd Year Highschool</option>
+                      <option value={10}>3rd Year Highschool</option>
+                      <option value={10}>4th Year Highschool</option>
                     </Select>
                   </FormControl> 
                 </Grid>
