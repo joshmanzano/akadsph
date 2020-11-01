@@ -13,6 +13,8 @@ import {
   Typography,
   Grid,
   Container,
+  CardHeader,
+  Divider,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
 
@@ -39,14 +41,19 @@ const Bundle = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <Typography variant="h4" align='center'>
+      {/* <Typography variant="h4" align='center'>
             Choose a Bundle
-      </Typography>
+      </Typography> */}
       <Box /*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
+          <CardHeader
+            subheader="Bundles that are for more than 1 hour are consummable for anytime"
+            title="Choose a Bundle"
+          />
+          <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
             <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-              <Grid container spacing={0} style={{justifyContent: 'center'}}>
+              <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
                 <Grid
                   item
                   lg={4}

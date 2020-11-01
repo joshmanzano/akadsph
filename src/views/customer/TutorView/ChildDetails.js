@@ -16,7 +16,10 @@ import {
   Select,
   FormControl,
   InputLabel,
+  CardHeader,
+  Divider,
 } from '@material-ui/core';
+import PublishIcon from '@material-ui/icons/Publish';
 import { Search as SearchIcon } from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,136 +45,222 @@ const ChildDetails = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <Typography variant="h4" align='center'>
+      {/* <Typography variant="h4" align='center'>
             Tutoring Details
-      </Typography>
+      </Typography> */}
       <Box /*mt={3}*/>
         <Card>
+        <CardHeader
+          subheader="Input the relevant information"
+          title="Tutoring Details"
+        />
+        <Divider />
           <CardContent >
             <Box /*maxWidth={1000}*/>
-              <Grid container spacing={2} >
+              <Grid container spacing={8} >
                 <Grid
                   item
-                  lg={6}
-                  md={6}
-                  xl={6}
+                  lg={4}
+                  md={4}
+                  xl={4}
                   xs={12}
                 >
-                  <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel>Child's Name</InputLabel>
-                    <Select
-                      native
-   
-                      label="Child's Name"
-                      inputProps={{
-                        name: 'child-name',
-                        id: 'child-name',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Nate Mercado</option>
-                      <option value={20}>Kate Mercado</option>
-                     
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={12}
-                >
-                  <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel>Length of Session</InputLabel>
-                    <Select
-                      native
-   
-                      label="Length of Session"
-                      inputProps={{
-                        name: 'session-length',
-                        id: 'session-length',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>1 hour</option>
-                      <option value={20}>1 hour 30 minutes</option>
-                      <option value={10}>2 hours</option>
-                     
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={12}
-                >
-                 <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel>Grade Level</InputLabel>
-                    <Select
-                      native
-   
-                      label="Grade Level"
-                      inputProps={{
-                        name: 'grade-level',
-                        id: 'grade-level',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Kinder</option>
-                      <option value={10}>Prep</option>
-                      <option value={10}>Grade 1</option>
-                      <option value={20}>Grade 2</option>
-                      <option value={10}>Grade 3</option>
-                      <option value={10}>Grade 4</option>
-                      <option value={20}>Grade 5</option>
-                      <option value={10}>Grade 6</option>
-                      <option value={10}>Grade 7</option>
-                      <option value={10}>1st Year Highschool</option>
-                      <option value={10}>2nd Year Highschool</option>
-                      <option value={10}>3rd Year Highschool</option>
-                      <option value={10}>4th Year Highschool</option>
-                    </Select>
-                  </FormControl> 
-                </Grid>
-                <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={12}
-                >
-                  <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel>Subject</InputLabel>
-                    <Select
-                      native
-   
-                      label="Subject"
-                      inputProps={{
-                        name: 'subject-matter',
-                        id: 'subject-matter',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Math</option>
-                      <option value={20}>Science</option>
-                      <option value={10}>Filipino</option>
-                      <option value={10}>English</option>
-                      <option value={20}>Chinese</option>
-                    </Select>
-                  </FormControl> 
-                </Grid>
-                <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={12}
-                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">
+                          Who needs tutoring?
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Tutee's Name</InputLabel>
+                        <Select
+                          fullWidth
+                          native
+      
+                          label="Child's Name"
+                          inputProps={{
+                            name: 'child-name',
+                            id: 'child-name',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          <option value={10}>Nate Mercado</option>
+                          <option value={20}>Kate Mercado</option>
+                        
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">
+                        Tutee's Grade Level
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Grade Level</InputLabel>
+                        <Select
+                          native
+      
+                          label="Grade Level"
+                          inputProps={{
+                            name: 'grade-level',
+                            id: 'grade-level',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          <option value={10}>Kinder</option>
+                          <option value={10}>Prep</option>
+                          <option value={10}>Grade 1</option>
+                          <option value={20}>Grade 2</option>
+                          <option value={10}>Grade 3</option>
+                          <option value={10}>Grade 4</option>
+                          <option value={20}>Grade 5</option>
+                          <option value={10}>Grade 6</option>
+                          <option value={10}>Grade 7</option>
+                          <option value={10}>1st Year Highschool</option>
+                          <option value={10}>2nd Year Highschool</option>
+                          <option value={10}>3rd Year Highschool</option>
+                          <option value={10}>4th Year Highschool</option>
+                        </Select>
+                      </FormControl> 
+                    </Grid>
+                  </Grid>
                   
                 </Grid>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  xl={4}
+                  xs={12}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                    <Typography variant="h5">
+                        Let us know the subject, topics, and materials
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Subject</InputLabel>
+                        <Select
+                          native
+      
+                          label="Subject"
+                          inputProps={{
+                            name: 'subject-matter',
+                            id: 'subject-matter',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          <option value={10}>Math</option>
+                          <option value={20}>Science</option>
+                          <option value={10}>Filipino</option>
+                          <option value={10}>English</option>
+                          <option value={20}>Chinese</option>
+                        </Select>
+                      </FormControl> 
+                    </Grid>
+                    <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="Topic/s"
+                        name="topics"
+                        required
+                        variant="outlined"
+                        helperText="(e.g. Algebra, Trigonometry, Vocalubary)"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <Typography variant="h5">
+                        Upload any relevant materials such handouts or slides
+                    </Typography>
+                      <Button className={classes}  
+                        color="primary"
+                        variant="contained"
+                        startIcon={<PublishIcon/>}>
+                        Upload Files
+                      </Button>
+                    </Grid>
+                    
+                    
+                  </Grid>
+                  
+                </Grid>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  xl={4}
+                  xs={12}
+                >
+                 <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                      <Typography variant="h5">
+                          Sessions and Tutor Details
+                      </Typography>
+                    </Grid>
+                  <Grid item xs={12}>
+                      
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Length of Session</InputLabel>
+                        <Select
+                          native
+      
+                          label="Length of Session"
+                          inputProps={{
+                            name: 'session-length',
+                            id: 'session-length',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          <option value={10}>1 hour</option>
+                          <option value={20}>1 hour 30 minutes</option>
+                          <option value={10}>2 hours</option>
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Tutor Options</InputLabel>
+                        <Select
+                          native
+      
+                          label="Tutor Options"
+                          inputProps={{
+                            name: 'tutor-options',
+                            id: 'tutor-options',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          <option value={10}>Favorite Tutors Only</option>
+                          <option value={20}>All Tutors Accepted</option>
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Favorite Tutors</InputLabel>
+                        <Select
+                          native
+      
+                          label="Favorite Tutors"
+                          inputProps={{
+                            name: 'fave-tutors',
+                            id: 'fave-tutors',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          <option value={10}>Tolo Pena</option>
+                          <option value={20}>Charles Samoy</option>
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                
  
               </Grid>
             </Box>
