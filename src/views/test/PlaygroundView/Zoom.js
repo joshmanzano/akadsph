@@ -14,62 +14,98 @@ import {
   Button,
   Box,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+  InputAdornment,
+  Snackbar,
+  Typography
 } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
-  root: {}
-}));
+import axios from  'axios';
 
-const createZoomMeeting = () => {
-  var axios = require('axios');
-  var data = {
-    'tutee':'Test Tutee',
-    'subject':'TEST',
+
+class RandomFact extends React.Component {
+  useStyles = makeStyles(() => ({
+    root: {}
+  }));
+
+  createZoomMeeting = () => {
+    const data = {
+      'tutee': 'TEST TUTEE',
+      'subject': 'TEST',
+    }
+    axios.post('https://akadsph-backend.herokuapp.com/zoom/', data)
+    .then(res => {
+      console.log(res.data)
+      this.setState({
+        'start_url':res.data.start,
+        'join_url':res.data.join
+      },()=>{
+        this.setState({open: true})
+      })
+    })
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      open: false,
+      success: false,
+      start_url: '',
+      join_url: '',
+    };
+  }
+
+  componentDidMount(){
+  }
+
+  handleClose = () => {
+    this.setState({open: false})
+    this.setState({success:true})
   };
-  
-  var config = {
-    method: 'post',
-    url: 'http://localhost:8000/zoom/',
-    headers: { 
-      'Content-Type': 'application/json', 
-    },
-    data : data
-  };
-  
-  axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
 
-}
+  closeSuccess = () => {
+    this.setState({success:false})
+  }
 
-const Sales = ({ className, ...rest }) => {
-  const classes = useStyles();
-  const theme = useTheme()
-
-  return (
+  render() {
+    return (
     <Card
-      className={clsx(classes.root, className)}
-      {...rest}
     >
       <CardHeader
         title="Zoom"
       />
       <Divider />
       <CardContent>
-        <Button onClick={createZoomMeeting} variant='contained' color='primary'>
+        <Button onClick={this.createZoomMeeting} variant='contained' color='primary'>
             Create Zoom Meeting
         </Button>
+        <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
+        <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>,
+          Meeting Details
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography>
+            Start URL: <a href={this.state.start_url}>Click here</a> 
+          </Typography>
+          <Typography>
+            Join URL: <a href={this.state.join_url}>Click here</a> 
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={this.handleClose} color="primary">
+            Save changes
+          </Button>
+        </DialogActions>
+      </Dialog>
       </CardContent>
     </Card>
-  );
-};
+    )
+  }
+}
 
-Sales.propTypes = {
-  className: PropTypes.string
-};
-
-export default Sales;
+export default RandomFact;

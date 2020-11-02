@@ -32,47 +32,47 @@ const user = {
 
 const items = [
   {
-    href: '/dashboard',
+    href: '/parent/dashboard',
     icon: BarChartIcon,
     title: 'Overview'
   },
   {
-    href: '/customers',
+    href: '/parent/customers',
     icon: UsersIcon,
     title: 'Book A Tutor'
   },
   // {
-  //   href: '/products',
+  //   href: '/parent/products',
   //   icon: ShoppingBagIcon,
   //   title: 'Products'
   // },
   {
-    href: '/account',
+    href: '/parent/account',
     icon: UserIcon,
     title: 'Profile'
   },
   {
-    href: '/settings',
+    href: '/parent/settings',
     icon: SettingsIcon,
     title: 'Settings'
   },
   {
-    href: '/playground',
+    href: '/parent/playground',
     icon: SportsEsportsIcon,
     title: 'Testing Grounds'
   },
   // {
-  //   href: '/authorization/login',
+  //   href: '/parent/authorization/login',
   //   icon: LockIcon,
   //   title: 'Login'
   // },
   // {
-  //   href: '/authorization/register',
+  //   href: '/parent/authorization/register',
   //   icon: UserPlusIcon,
   //   title: 'Register'
   // },
   // {
-  //   href: '/404',
+  //   href: '/parent/404',
   //   icon: AlertCircleIcon,
   //   title: 'Error'
   // }
