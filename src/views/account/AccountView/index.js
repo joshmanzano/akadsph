@@ -7,6 +7,8 @@ import {
 import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
+import Children from './Children';
+import FaveTutors from './FaveTutors'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +48,25 @@ const Account = () => {
           >
             <ProfileDetails />
           </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Children/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <FaveTutors/>
+          </Grid>
+          
         </Grid>
       </Container>
     </Page>
