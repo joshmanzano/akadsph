@@ -25,6 +25,8 @@ import StarIcon from '@material-ui/icons/Star';
 import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
+import FeedbackIcon from '@material-ui/icons/Feedback';
+
 
 
 function createData(name, calories, fat, carbs, protein) {
@@ -390,7 +392,10 @@ export default function EnhancedTable(props) {
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                <Button variant='contained' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>
+                        <Button variant='contained' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>
+                      </Box>
+                      <Box mx={1} component='span'>
+                        <Button variant='contained' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
                       </Box>
                   </TableCell>
                   }
