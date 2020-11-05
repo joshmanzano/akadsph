@@ -1,0 +1,127 @@
+{
+    "Header": {
+
+        "title": "The New Normal for Tutorials.",
+        "paragraph": "An all-in-one platform that helps parents book tutors for their kids."
+
+    },
+    "About": {
+        "paragraph": "We want to make it easy for parents to find tutors for their kids by combining the booking process, video chat, and online payments, all-in-one platform. Online tutorial sessions are conducted through ZOOM. We accept any mode of payment such as credit cards, payment apps, and bank transfers.",
+        "Why": [
+            "Math",
+            "Science",
+            "English",
+            "Science"
+        ],
+        "Why2": []
+    },
+    "Services": [{
+            "icon": "fa fa-wordpress",
+            "name": "Lorem ipsum dolor",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+        },
+        {
+            "icon": "fa fa-cart-arrow-down",
+            "name": "Consectetur adipiscing",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+        },
+        {
+            "icon": "fa fa-cloud-download",
+            "name": "Lorem ipsum dolor",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+        },
+        {
+            "icon": "fa fa-language",
+            "name": "Consectetur adipiscing",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+        },
+        {
+            "icon": "fa fa-plane",
+            "name": "Lorem ipsum dolor",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+        },
+        {
+            "icon": "fa fa-pie-chart",
+            "name": "Consectetur adipiscing",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+        }
+
+
+    ],
+    "Testimonials": [
+        {
+            "img": "img/testimonials/Karl.png",
+            "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
+            "name": "Tutor Karl"
+        },
+        {
+            "img": "img/testimonials/Didi.png",
+            "text": "AKADS is the new normal for us. It compliments well with the online learning the school provides. Safe, easy and effective. Bonus part is when they started offering bundles! We are now sure we are booked and assured of our slot!",
+            "name": "Mommy Didi"
+        },
+        {
+            "img": "img/testimonials/Teddy.png",
+            "text": "Tutor Karl helps me solve my Math homework using an online whiteboard!",
+            "name": "Theodore"
+        },
+        {
+            "img": "img/testimonials/04.jpg",
+            "text": "Always had trouble finding reliable home based tutors... With AKADS it takes away the stress of not knowing if the tutor will make it or not on a daily basis. It was so fast and convenient to register and try their tutoring session! I couldn't be any happier that a tutoring center such as AKADS finally exists especially during these times!",
+            "name": "Emily Torrijos"
+        },
+        {
+            "img": "img/testimonials/05.jpg",
+            "text": "What I like about the tutors from AKADS PH is that they are young, but competent individuals. They can teach well (they undergo a vetting process) and can give relatable examples using current popular things, people and scenarios.",
+            "name": "Mommy Ginger"
+        },
+        {
+            "img": "img/testimonials/06.jpg",
+            "text": "Simply the best!",
+            "name": "Rolo Pena"
+        }
+    ],
+    "Team": [{
+            "img": "img/team/01.jpg",
+            "name": "John Doe",
+            "job": "Director"
+        },
+        {
+            "img": "img/team/02.jpg",
+            "name": "Mike Doe",
+            "job": "Senior Designer"
+        }, {
+            "img": "img/team/03.jpg",
+            "name": "Jane Doe",
+            "job": "Senior Designer"
+        },
+        {
+            "img": "img/team/04.jpg",
+            "name": "Karen Doe",
+            "job": "Project Manager"
+        }
+    ],
+    "Contact": {
+        "address": "2001 Spring Street, San Miguel Village",
+        "phone": "+639178949025",
+        "email": "akadsph@gmail.com",
+        "facebook": "fb.com",
+        "twitter": "twitter.com",
+        "youtube": "youtube.com"
+    },
+    "Features": [{
+            "icon": "fa fa-group",
+            "title": "One-on-One",
+            "text": "A more personal tutoring experience is essential to address your child's academic needs."
+        },
+        {
+            "icon": "fa fa-graduation-cap",
+            "title": "Top Notch Tutors",
+            "text": "Our college-student-tutors come from the Philippine's top universities such as Ateneo, U.P. etc."
+        },
+        {
+            "icon": "fa fa-laptop",
+            "title": "All-In-One",
+            "text": "We combine the booking, payment, and video call to streamline the tutoring experience for our users."
+        }
+    ]
+}

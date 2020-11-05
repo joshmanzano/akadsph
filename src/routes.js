@@ -13,29 +13,30 @@ import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
+import LandingPage from 'src/LandingPage';
+import Login from 'src/components/login';
 
 const routes = [
   {
     path: '/',
+    element: <LandingPage/>,
+  },
+  {
+    path: '/login',
+    element: <Login/>,
+  },
+  {
+    path: '/parent',
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
-      { path: 'find-tutor', element: <FindTutorView /> },
+      { path: '/customers', element: <FindTutorView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: 'playground', element: <PlaygroundView /> },
       { path: 'tutor-dashboard', element: <TutorDashboardView /> },
       { path: 'auth', element: <AuthView /> },
-      { path: '*', element: <NotFoundView /> }
-    ]
-  },
-  {
-    path: '/authorization',
-    element: <MainLayout />,
-    children: [
-      { path: 'login', element: <LoginView /> },
-      { path: 'register', element: <RegisterView /> },
       { path: '*', element: <NotFoundView /> }
     ]
   }

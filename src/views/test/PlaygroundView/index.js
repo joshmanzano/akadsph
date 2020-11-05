@@ -19,6 +19,7 @@ import Zoom from './Zoom'
 import Twilio from './Twilio'
 import Email from './Email'
 import RandomFact from './RandomFact'
+import Chat from './Chat'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,6 +93,15 @@ const Dashboard = () => {
             xs={12}
           >
             <Brankas/>
+          </Grid>
+          <Grid
+            item
+            lg={3}
+            md={6}
+            xl={3}
+            xs={12}
+          >
+            <Chat/>
           </Grid>
         </Grid>
       </Container>
