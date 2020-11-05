@@ -12,6 +12,7 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import TutorDashboardView from 'src/views/TutorDashboardView';
 
 const routes = [
   {
@@ -24,6 +25,7 @@ const routes = [
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: 'playground', element: <PlaygroundView /> },
+      { path: 'tutor-dashboard', element: <TutorDashboardView /> },
       { path: 'auth', element: <AuthView /> },
       { path: '*', element: <NotFoundView /> }
     ]
