@@ -16,6 +16,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Select,
+  FormControl,
+  InputLabel,
+  Grid,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(({
@@ -42,7 +46,7 @@ const SavedPayMethod = ({ className, ...rest }) => {
   };
 
   const handlePassSubmit = () =>{
-    setPassConfirmed(true);
+    setPassConfirmed(!passConfirmed);
     setOpen(false);
 
   }
@@ -61,7 +65,6 @@ const SavedPayMethod = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-         
           title="Payment Method/s"
         />
         <Divider />
@@ -82,38 +85,12 @@ const SavedPayMethod = ({ className, ...rest }) => {
           >
             Credit Card #: **** **** **** 1234
           </Typography>
-          </React.Fragment>
-          :
-          <React.Fragment>
-          <TextField
-            fullWidth
-            label="Password"
-            margin="normal"
-            name="password"
-            onChange={handleChange}
-            type="password"
-            value={values.password}
-            variant="outlined"
-          />
-          <TextField
-            fullWidth
-            label="Confirm password"
-            margin="normal"
-            name="confirm"
-            onChange={handleChange}
-            type="password"
-            value={values.confirm}
-            variant="outlined"
-          />
-          </React.Fragment>
-          }
-        </CardContent>
-        <Divider />
-        <Box
+
+          <Box
           display="flex"
           justifyContent="flex-end"
           p={2}
-        >
+          >
           <Button
             color="primary"
             variant="contained"
@@ -122,31 +99,142 @@ const SavedPayMethod = ({ className, ...rest }) => {
             Edit
           </Button>
 
-          <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Edit Payment Method/s</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Input your password to continue editing your payment details
-              </DialogContentText>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Password"
-                type="password"
-                fullWidth
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={handlePassSubmit} color="primary">
-                Done
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </Box>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+              <DialogTitle id="form-dialog-title">Edit Payment Method/s</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  Input your password to continue editing your payment details
+                </DialogContentText>
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="name"
+                  label="Password"
+                  type="password"
+                  fullWidth
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="primary">
+                  Cancel
+                </Button>
+                <Button onClick={handlePassSubmit} color="primary">
+                  Done
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </Box>
+          </React.Fragment>
+          :
+          <React.Fragment>
+            <CardContent>
+            <Grid container spacing={2}>
+              <Grid
+                item
+                lg={4}
+                md={4}
+                xl={4}
+                xs={12}
+              >
+                <FormControl variant="outlined" className={classes.formControl} style={{justifyContent: 'center', placeItems: 'center'}}>
+                  <InputLabel>Pay Through</InputLabel>
+                  <Select
+                    fullWidth
+                    native
+
+                    label="Pay Through"
+                    inputProps={{
+                      name: 'payment-method',
+                      id: 'payment-method',
+                    }}
+                  >
+                    <option aria-label="None" value="" />
+                    <option value={10}>Credit Cards  </option>
+                    <option value={20}>Bank Transfers    </option>
+                    <option value={20}>Gcash </option>
+                    <option value={20}>Grab Pay  </option>
+                  
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid
+                item
+                lg={4}
+                md={4}
+                xl={4}
+                xs={12}
+              >
+                <FormControl variant="outlined" className={classes.formControl} style={{justifyContent: 'center', placeItems: 'center'}}>
+                  <InputLabel>Banks</InputLabel>
+                  <Select
+                    fullWidth
+                    native
+
+                    label="Choose Bank"
+                    inputProps={{
+                      name: 'choose-bank',
+                      id: 'choose-bank',
+                    }}
+                  >
+                    <option aria-label="None" value="" />
+                    <option value={10}>BDO</option>
+                    <option value={20}>BPI</option>
+                    <option value={20}>RCBC</option>
+                    <option value={20}>Metrobank</option>
+                  
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid
+                item
+                lg={4}
+                md={4}
+                xl={4}
+                xs={12}
+              >
+                <TextField
+                  label="Credit Card #"
+                  margin="normal"
+                  name="ccno"
+                  onChange={handleChange}
+                  type="password"
+                  value={values.confirm}
+                  variant="outlined"
+                />
+              </Grid>
+            </Grid>
+              
+              
+            {/* <TextField
+              fullWidth
+              label="Password"
+              margin="normal"
+              name="password"
+              onChange={handleChange}
+              type="password"
+              value={values.password}
+              variant="outlined"
+            /> */}
+            
+              <Box
+              display="flex"
+              justifyContent="flex-end"
+              p={2}
+              >
+                <Button
+                  color="primary"
+                  variant="contained"
+                  onClick={handlePassSubmit}
+                >
+                  Update
+                </Button>
+              </Box>
+            </CardContent>
+          </React.Fragment>   
+          }
+        </CardContent>
+        <Divider />
+        
       </Card>
     </form>
   );

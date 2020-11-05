@@ -37,7 +37,7 @@ const items = [
     title: 'Overview'
   },
   {
-    href: '/customers',
+    href: '/find-tutor',
     icon: UsersIcon,
     title: 'Book A Tutor'
   },
@@ -60,6 +60,11 @@ const items = [
     href: '/playground',
     icon: SportsEsportsIcon,
     title: 'Testing Grounds'
+  },
+  {
+    href: '/tutor-dashboard',
+    icon: BarChartIcon,
+    title: 'Tutor Dashboard'
   },
   // {
   //   href: '/authorization/login',
