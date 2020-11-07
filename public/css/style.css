@@ -1,6 +1,6 @@
 :root {
-	--first: #5ADEE7;
-	--second: #3AB8FD;
+	--first: #4655A5;
+	--second: #0B3243;
 }
 
 body, html {
@@ -191,8 +191,8 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	display: table;
 	width: 100%;
 	padding: 0;
-	background: url(../img/intro-bg.png) center center no-repeat;
-	background-color: #e5e5e5;
+	/* background: url(../img/intro-bg.png) center center no-repeat; */
+	background-color: #4655A5;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -477,7 +477,7 @@ header .intro-text {
 /* Contact Section */
 #contact {
 	padding: 100px 0 60px 0;
-	background: linear-gradient(to right, var(--first) 0%, var(--second) 100%);
+	background: var(--first);
 	color: rgba(255,255,255,.75);
 }
 #contact .section-title {
