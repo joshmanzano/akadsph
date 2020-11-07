@@ -18,6 +18,7 @@ import TasksProgress from './TasksProgress';
 import TotalCustomers from './TotalCustomers';
 import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
+import Metrics from './Metrics';
 
 
 import Calendar from './Calendar'
@@ -93,6 +94,15 @@ const Dashboard = () => {
             xs={12}
           >
             <Transaction />
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Metrics />
           </Grid>
           {/* <Grid
             item
