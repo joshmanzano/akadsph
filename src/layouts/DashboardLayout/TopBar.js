@@ -9,12 +9,24 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  makeStyles
+  makeStyles,
+  Container,
+  Grid,
+  Button,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
+import SettingsIcon from '@material-ui/icons/Settings';
+import BookIcon from '@material-ui/icons/Book';
+import StoreIcon from '@material-ui/icons/Store';
+import ForumIcon from '@material-ui/icons/Forum';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import FaceIcon from '@material-ui/icons/Face';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -39,24 +51,63 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
+        <RouterLink to="/parent/dashboard">
           <Logo />
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
-          <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="primary"
-              variant="dot"
-            >
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton color="inherit">
-            <InputIcon />
-          </IconButton>
+        <Container>
+          <Grid container>
+            <Grid item sm={2}>
+              <IconButton color="inherit" href="/parent/dashboard">
+                <DashboardIcon/>
+              </IconButton>
+            </Grid>
+            <Grid item sm={2}>
+              <IconButton color="inherit" href="/parent/customers">
+                <BookIcon/>
+              </IconButton>
+            </Grid>
+            <Grid item sm={2}>
+              <IconButton color="inherit" href="/parent/">
+                <StoreIcon/>
+              </IconButton>
+            </Grid>
+            <Grid item sm={2}>
+              <IconButton color="inherit" href="/parent/account">
+                <AccountBoxIcon/>
+              </IconButton>
+            </Grid>
+            <Grid item sm={2}>
+              <IconButton color="inherit" href="/parent/settings">
+                <SettingsIcon/>
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Container>
         </Hidden>
+        {/* <Box flexGrow={1} /> */}
+        <IconButton color="inherit">
+          <Badge
+            badgeContent={notifications.length}
+            color="primary"
+            variant="dot"
+          >
+            <ForumIcon/>
+          </Badge>
+        </IconButton>
+        <IconButton color="inherit">
+          <Badge
+            badgeContent={notifications.length}
+            color="primary"
+            variant="dot"
+          >
+            <NotificationsIcon />
+          </Badge>
+        </IconButton>
+        <IconButton color="inherit">
+            <MeetingRoomIcon />
+        </IconButton>
         <Hidden lgUp>
           <IconButton
             color="inherit"

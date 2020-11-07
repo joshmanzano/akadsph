@@ -28,11 +28,11 @@ const routes = [
     path: '/parent',
     element: <DashboardLayout />,
     children: [
-      { path: 'account', element: <AccountView /> },
-      { path: 'customers', element: <TutorView /> },
-      { path: 'dashboard', element: <DashboardView /> },
+      { path: 'account', element: <React.Fragment><AccountView /></React.Fragment> },
+      { path: 'customers', element: <React.Fragment><TutorView/></React.Fragment> },
+      { path: 'dashboard', element: <React.Fragment><DashboardView/></React.Fragment> },
       { path: 'products', element: <ProductListView /> },
-      { path: 'settings', element: <SettingsView /> },
+      { path: 'settings', element: <React.Fragment><SettingsView/></React.Fragment> },
       { path: 'playground', element: <PlaygroundView /> },
       { path: 'auth', element: <AuthView /> },
       { path: '*', element: <NotFoundView /> }

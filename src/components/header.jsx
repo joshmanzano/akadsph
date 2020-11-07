@@ -28,7 +28,7 @@ export class Header extends Component {
                   </a>{" "}
                 </div>
                 <div className="intro-text">
-                  <img src="../img/akadslogo.png"></img>
+                  <img src="../img/header.jpg"></img>
                 </div>
               </div>
             </div>
