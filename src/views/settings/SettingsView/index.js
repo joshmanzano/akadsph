@@ -7,6 +7,7 @@ import {
 import Page from 'src/components/Page';
 import Notifications from './Notifications';
 import Password from './Password';
+import SavedPayMethod from './SavedPayMethod';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,9 @@ const SettingsView = () => {
         <Notifications />
         <Box mt={3}>
           <Password />
+        </Box>
+        <Box mt={3}>
+          <SavedPayMethod />
         </Box>
       </Container>
     </Page>

@@ -9251,24 +9251,10 @@ react-chartjs-2@^2.10.0:
     lodash "^4.17.19"
     prop-types "^15.7.2"
 
-react-clock@^2.3.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-clock/-/react-clock-2.4.0.tgz#39540f84e16f8b2c2137640f535c162041bd2a1e"
-  integrity sha512-BlzkzbhLEzLwdqtl+PAPvzMhRvg4xyxsiQnGpb+ZzL4YY5iFQgJa7C48EUGhbpnTtNwyMuaBG4KeYmUuUlTQUQ==
-  dependencies:
-    merge-class-names "^1.1.1"
-    prop-types "^15.6.0"
-
-react-day-picker@^7.4.8:
-  version "7.4.8"
-  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-7.4.8.tgz#675625240d3fae1b41c0a9d5177c968c8517c1d4"
-  integrity sha512-pp0hnxFVoRuBQcRdR1Hofw4CQtOCGVmzCNrscyvS0Q8NEc+UiYLEDqE5dk37bf0leSnBW4lheIt0CKKhuKzDVw==
-  dependencies:
-    prop-types "^15.6.2"
-react-chat-elements@^10.11.2:
-  version "10.11.2"
-  resolved "https://registry.yarnpkg.com/react-chat-elements/-/react-chat-elements-10.11.2.tgz#75c7a1ac116852875a55e778e302c1ac8caf7818"
-  integrity sha512-V/BckFnaR1HJbyvlT1XVzxW3s78Ro3h9K5RHsPGRHK8oge6c9CMcBS2zHYqp6fkdn7pkArevKVdTK/gE8njQ8g==
+react-chat-elements@^10.11.3:
+  version "10.11.3"
+  resolved "https://registry.yarnpkg.com/react-chat-elements/-/react-chat-elements-10.11.3.tgz#29d32ed9ba026d8cd56973b16a13c33d6770c59d"
+  integrity sha512-5Jr+qy9EDUvSmUq8hHKaBYM/XbHZsqMEcRy7UaHKAKupWYkJzHcLn3ZF8h2FcEehNVhsarWUcI5GBOGkVXYIdQ==
   dependencies:
     classnames "^2.2.5"
     react-icons "^2.2.5"
@@ -9291,6 +9277,21 @@ react-chat-widget@^3.0.5:
     markdown-it-sup "^1.0.0"
     react-redux "^7.2.0"
     redux "^4.0.5"
+
+react-clock@^2.3.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-clock/-/react-clock-2.4.0.tgz#39540f84e16f8b2c2137640f535c162041bd2a1e"
+  integrity sha512-BlzkzbhLEzLwdqtl+PAPvzMhRvg4xyxsiQnGpb+ZzL4YY5iFQgJa7C48EUGhbpnTtNwyMuaBG4KeYmUuUlTQUQ==
+  dependencies:
+    merge-class-names "^1.1.1"
+    prop-types "^15.6.0"
+
+react-day-picker@^7.4.8:
+  version "7.4.8"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-7.4.8.tgz#675625240d3fae1b41c0a9d5177c968c8517c1d4"
+  integrity sha512-pp0hnxFVoRuBQcRdR1Hofw4CQtOCGVmzCNrscyvS0Q8NEc+UiYLEDqE5dk37bf0leSnBW4lheIt0CKKhuKzDVw==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-dev-utils@^10.2.1:
   version "10.2.1"
@@ -9524,6 +9525,16 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
 
+react-spinkit@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-spinkit/-/react-spinkit-3.0.0.tgz#31fdaf4e18177766c57d1b1f3330290f8492a85a"
+  integrity sha1-Mf2vThgXd2bFfRsfMzApD4SSqFo=
+  dependencies:
+    classnames "^2.2.3"
+    loaders.css "^0.1.2"
+    object-assign "^4.1.0"
+    prop-types "^15.5.8"
+
 react-time-picker@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-time-picker/-/react-time-picker-4.0.1.tgz#ec3ee385377c8c6c8271a2dd1178452f6b11ad84"
@@ -9537,15 +9548,6 @@ react-time-picker@^4.0.0:
     react-clock "^2.3.0"
     react-fit "^1.0.3"
     update-input-width "^1.1.1"
-react-spinkit@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-spinkit/-/react-spinkit-3.0.0.tgz#31fdaf4e18177766c57d1b1f3330290f8492a85a"
-  integrity sha1-Mf2vThgXd2bFfRsfMzApD4SSqFo=
-  dependencies:
-    classnames "^2.2.3"
-    loaders.css "^0.1.2"
-    object-assign "^4.1.0"
-    prop-types "^15.5.8"
 
 react-transition-group@^4.4.0:
   version "4.4.1"

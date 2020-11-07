@@ -61,6 +61,11 @@ const items = [
     icon: SportsEsportsIcon,
     title: 'Testing Grounds'
   },
+  {
+    href: '/parent/tutor-dashboard',
+    icon: BarChartIcon,
+    title: 'Tutor Dashboard'
+  },
   // {
   //   href: '/parent/authorization/login',
   //   icon: LockIcon,

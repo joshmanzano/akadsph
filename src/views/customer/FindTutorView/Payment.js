@@ -73,24 +73,24 @@ const Payment = ({ className, ...rest }) => {
                   xs={12}
                 >
                   <FormControl variant="outlined" className={classes.formControl} style={{justifyContent: 'center', placeItems: 'center'}}>
-                        <InputLabel>Pay Through</InputLabel>
-                        <Select
-                          fullWidth
-                          native
-      
-                          label="Pay Through"
-                          inputProps={{
-                            name: 'payment-method',
-                            id: 'payment-method',
-                          }}
-                        >
-                          <option aria-label="None" value="" />
-                          <option value={10}>Credit Cards  </option>
-                          <option value={20}>Bank Transfers    </option>
-                          <option value={20}>Gcash </option>
-                          <option value={20}>Grab Pay  </option>
-                        
-                        </Select>
+                    <InputLabel>Pay Through</InputLabel>
+                    <Select
+                      fullWidth
+                      native
+  
+                      label="Pay Through"
+                      inputProps={{
+                        name: 'payment-method',
+                        id: 'payment-method',
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value={10}>Credit Cards  </option>
+                      <option value={20}>Bank Transfers    </option>
+                      <option value={20}>Gcash </option>
+                      <option value={20}>Grab Pay  </option>
+                    
+                    </Select>
                   </FormControl>
                   </Grid>
                   <Grid
@@ -135,7 +135,7 @@ const Payment = ({ className, ...rest }) => {
                     <TextField
                     
                       label="Expiry Date"
-                      defaultValue="MM/YYYY"
+                      placeholder="MM/YYYY"
                       name="expiryDate"
                       variant="outlined"
                       // helperText="MM/YYYY"
