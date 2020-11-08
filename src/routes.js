@@ -15,6 +15,7 @@ import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
+import RequestPage from 'src/views/RequestPage';
 
 const routes = [
   {
@@ -30,12 +31,13 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <React.Fragment><AccountView /></React.Fragment> },
-      { path: 'customers', element: <React.Fragment><TutorView/></React.Fragment> },
+      { path: 'customers', element: <React.Fragment><FindTutorView/></React.Fragment> },
       { path: 'dashboard', element: <React.Fragment><DashboardView/></React.Fragment> },
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <React.Fragment><SettingsView/></React.Fragment> },
       { path: 'playground', element: <PlaygroundView /> },
       { path: 'tutor-dashboard', element: <TutorDashboardView /> },
+      { path: 'requests', element: <RequestPage /> },
       { path: 'auth', element: <AuthView /> },
       { path: '*', element: <NotFoundView /> }
     ]

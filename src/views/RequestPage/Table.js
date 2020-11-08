@@ -33,56 +33,8 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-  const rows = [
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'Filipino',
-      tutor: {
-        name: 'Adrienne Soliven'
-      },
-    },
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'Math',
-      tutor: {
-        name: 'Adrienne Soliven'
-      },
-    },
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'Science',
-      tutor: {
-        name: 'Adrienne Soliven'
-      },
-    },
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'LoL',
-      tutor: {
-        name: 'Adrienne Soliven'
-      },
-    },
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'Filipino',
-      tutor: {
-        name: 'Adrienne Soliven'
-      },
-    },
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'Filipino',
-      tutor: {
-        name: 'Adrienne Soliven'
-      },
-    },
-  ]
+  
+  
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -260,6 +212,7 @@ export default function EnhancedTable(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
   const tableHeaders = props.tableHeaders;
   const tableRows = props.tableRows;
+  const rows = props.tableRows;
   // const sessionType = props.sessionType;
   const tableType = props.type;
 
@@ -349,80 +302,92 @@ export default function EnhancedTable(props) {
   const renderRows = () =>{
     
     if(tableRows != undefined){
-      if(tableType == "childList"){
+      if(tableType == "requests"){
           const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((child, index) => {
+          .map((request, index) => {
           return (
               <TableRow
                   hover
-                  key={child.id}
+                  key={request.id}
               >
                   <TableCell>
-                  {child.name}
+                  {request.type}
                   </TableCell>
                   <TableCell>
-                  {child.age}
+                  {request.subject}
                   </TableCell>
                   <TableCell>
-                  {child.gradeLevel}
+                  {request.topic}
                   </TableCell>
                   <TableCell>
-                  {child.school}
-                  </TableCell>                  
+                  {request.duration}
+                  </TableCell>
+                  <TableCell>
+                  {request.student}
+                  </TableCell>
+                  
+                  {tableType == "history" ?  
+                    <React.Fragment>
+                     
+                      <TableCell>
+                        {request.parent}
+                      </TableCell> 
+                      </React.Fragment>
+                    : 
+                    console.log()
+                  }
+
+                  {tableType == "requests" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' >Edit</Button>
+                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary'>Delete</Button>
+                      <Button variant='contained' color='primary'>Decline</Button>
                       </Box>
                   </TableCell>
+                  :
+                 
+                  <TableCell>
+                      <Box mx={1} component='span'>
+                        <Button variant='contained' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
+                      </Box>
+                  </TableCell>
+                  }
               </TableRow>
           );
           })
 
         return rowsResult
         
-      }else if(tableType == "faveTutorList"){
+      }else if(tableType == "transaction"){
         const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((tutor, index) => {
+          .map((transaction, index) => {
           return (
               <TableRow
                   hover
-                  key={tutor.id}
+                  key={transaction.id}
               >
                   <TableCell>
-                  {tutor.name}
+                  {transaction.date}
                   </TableCell>
                   <TableCell>
-                  {tutor.subject}
+                  {transaction.time}
                   </TableCell>
                   <TableCell>
-                      <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary'>Remove</Button>
-                      </Box>
-                  </TableCell>
-              </TableRow>
-          );
-          })
-        
-        return rowsResult;
-      }else if(tableType == "subjectList"){
-        const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((tutor, index) => {
-          return (
-              <TableRow
-                  hover
-                  key={tutor.id}
-              >
-
-                  <TableCell>
-                  {tutor.subject}
+                  {transaction.subject}
                   </TableCell>
                   <TableCell>
-                      <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary'>Remove</Button>
-                      </Box>
+                  {transaction.student}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.parent}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.amount}
+                  </TableCell>
+                  <TableCell>
+                  {transaction.sessionNo}
                   </TableCell>
               </TableRow>
           );

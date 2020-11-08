@@ -65,7 +65,7 @@ const SavedPayMethod = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          title="Payment Method/s"
+          title="Payment Details"
         />
         <Divider />
         <CardContent>
