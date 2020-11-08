@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
-import {Button, Box, Grid} from '@material-ui/core';
+import {Button, Box, Grid, Container} from '@material-ui/core';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import TimelineIcon from '@material-ui/icons/Timeline';
+
+import TotalProfit from './TotalProfit';
+import AveRating from './AveRating';
+import TotalStudents from './TotalStudents';
+import TotalHours from './TotalHours';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       // margin: '5vh',
       width: '110vh',
       height: '25vh',
-      marginBottom: '5vh',
+      // marginBottom: '10vh',
       padding: theme.spacing(2),
     },
   },
@@ -35,89 +40,52 @@ export default function BoxContent(props) {
 
 
   return (
-    <div className={classes.root}>
-        {/* <Grid container spacing={2}> */}
+  
+    <Container maxWidth={false}>
+        <Grid
+          container
+          spacing={3}
+        >
+
           <Grid
-          item
-          lg={6}
-          md={6}
-          xl={6}
-          xs={6}
+            item
+            lg={6}
+            sm={6}
+            xl={6}
+            xs={12}
           >
-            <Grid
-              item
-              lg={10}
-              md={10}
-              xl={10}
-              xs={10}
-              >
-                <div className={classes.root}>
-                  <Paper elevation={3}>
-                      <Grid spacing={2} sm container direction='column' 
-                          // alignItems="center"
-                          // justify="center"
-                          >
-                        <Grid item xs={12} direction='column' >
-                          <TimelineIcon size='large'/>
-                        </Grid>
-                        <Grid item xs={12} direction='column' >
-                          <Grid item xs={6}>
-                            <Typography variant='h4'>
-                              4.5
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Typography variant='h6'>
-                              Average Rating
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                  </Paper>
-                </div>
-            </Grid>
-            <Grid
-              item
-              lg={10}
-              md={10}
-              xl={10}
-              xs={10}
-              >
-                <div className={classes.root}>
-                  <Paper elevation={3}>Average Ratings</Paper>
-                </div>
-            </Grid>
+            <AveRating/>
           </Grid>
           <Grid
-          item
-          lg={6}
-          md={6}
-          xl={6}
-          xs={6}
-          >
+            item
+            lg={6}
+            sm={6}
+            xl={6}
+            xs={12}
+          >  
+            <TotalStudents/>
+            </Grid>
             <Grid
-              item
-              lg={10}
-              md={10}
-              xl={10}
-              xs={10}
-              >
-                <div className={classes.root}>
-                  <Paper elevation={3}>Total Hours</Paper>
-                </div>
+            item
+            lg={6}
+            sm={6}
+            xl={6}
+            xs={12}
+            >
+                <TotalHours/>
             </Grid>
             <Grid
               item
-              lg={10}
-              md={10}
-              xl={10}
-              xs={10}
-              >
-                <div className={classes.root}>
+              lg={6}
+              sm={6}
+              xl={6}
+              xs={12}
+            >
+                <TotalProfit/>
+                {/* <div className={classes.root}>
                   <Paper elevation={3}>Total Earnings</Paper>
-                </div>
+                </div> */}
             </Grid>
-          </Grid>
           <Grid
             item
             lg={12}
@@ -126,7 +94,7 @@ export default function BoxContent(props) {
             xs={12}
           >
           </Grid>
-        {/* </Grid> */}
-    </div>
+        </Grid>
+    </Container>
   );
 }

@@ -10,20 +10,20 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import PeopleIcon from '@material-ui/icons/PeopleOutlined';
 
 const useStyles = makeStyles(() => ({
   root: {
     height: '100%'
   },
   avatar: {
-    backgroundColor: colors.indigo[600],
+    backgroundColor: colors.green[600],
     height: 56,
     width: 56
   }
 }));
 
-const TotalProfit = ({ className, ...rest }) => {
+const TotalStudents = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -43,18 +43,18 @@ const TotalProfit = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              Total Earnings
+              # of Students
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              P15,200
+              5
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <AttachMoneyIcon />
+              <PeopleIcon />
             </Avatar>
           </Grid>
         </Grid>
@@ -63,8 +63,8 @@ const TotalProfit = ({ className, ...rest }) => {
   );
 };
 
-TotalProfit.propTypes = {
+TotalStudents.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default TotalStudents;

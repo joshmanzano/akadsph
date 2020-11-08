@@ -51,7 +51,7 @@ const Metrics = ({ className, ...rest }) => {
         xl={12}
         xs={12}
       >
-        <Typography variant='h4'>
+        <Typography variant='h3' style={{marginTop: '2vh'}}>
           Metrics
         </Typography>
       </Grid>
@@ -62,7 +62,7 @@ const Metrics = ({ className, ...rest }) => {
         xl={6}
         xs={12}
       >
-         <Typography variant='h5'>
+         <Typography variant='h4' align='center' gutterBottom='true'>
             This Month:
           </Typography>
           <MetricsBoxes/>
@@ -74,7 +74,7 @@ const Metrics = ({ className, ...rest }) => {
         xl={12}
         xs={12}
       >
-        <Typography variant='h5'>
+        <Typography variant='h4' align='center' gutterBottom='true'>
           All-Time:
         </Typography>
         <MetricsBoxes/>

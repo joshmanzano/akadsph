@@ -10,14 +10,14 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 
 const useStyles = makeStyles(() => ({
   root: {
     height: '100%'
   },
   avatar: {
-    backgroundColor: colors.indigo[600],
+    backgroundColor: colors.red[600],
     height: 56,
     width: 56
   }
@@ -43,18 +43,18 @@ const TotalProfit = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              Total Earnings
+              Total Hours
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              P15,200
+              50
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <AttachMoneyIcon />
+              <HourglassEmptyIcon />
             </Avatar>
           </Grid>
         </Grid>

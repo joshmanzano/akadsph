@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "30vh",
     paddingTop: "7%",
     paddingBottom: "7%",
+
   },
 }));
 
@@ -51,15 +52,21 @@ const Bundle = ({ className, ...rest }) => {
             title="Choose a Bundle"
           />
           <Divider />
-          <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-            <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-              <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
+          <CardContent>
+            <Box>
+              <Grid container spacing={2} 
+                alignItems="center"
+                justify="center"
+                style={{placeItems: 'center'}}>
                 <Grid
                   item
                   lg={4}
                   md={4}
                   xl={4}
                   xs={12}
+                  alignItems="center"
+                  justify="center"
+                  style={{placeItems: 'center'}}
                 >
                   <Button className={classes.bundleButton}  
                   color="primary"
