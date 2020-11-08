@@ -15,12 +15,8 @@ import {
 } from '@material-ui/core';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
+  avatar: localStorage.getItem('imageUrl'),
+  name: localStorage.getItem('name'),
 };
 
 const useStyles = makeStyles(() => ({
@@ -40,15 +36,17 @@ const Profile = ({ className, ...rest }) => {
       {...rest}
     >
       <CardContent>
-        <Box
+        <Box 
           alignItems="center"
           display="flex"
           flexDirection="column"
         >
-          <Avatar
-            className={classes.avatar}
-            src={user.avatar}
-          />
+          <Box my={2}>
+            <Avatar
+              className={classes.avatar}
+              src={user.avatar}
+            />
+          </Box>
           <Typography
             color="textPrimary"
             gutterBottom
@@ -56,19 +54,12 @@ const Profile = ({ className, ...rest }) => {
           >
             {user.name}
           </Typography>
-          <Typography
+          {/* <Typography
             color="textSecondary"
             variant="body1"
           >
             {`${user.city} ${user.country}`}
-          </Typography>
-          <Typography
-            className={classes.dateText}
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
-          </Typography>
+          </Typography> */}
         </Box>
       </CardContent>
       <Divider />

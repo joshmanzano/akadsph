@@ -42,7 +42,7 @@ const Dashboard = () => {
       <Container maxWidth={false}>
         <Box mb={4}>
           <Typography variant="h1">
-            Welcome Rolo!
+            Welcome {localStorage.getItem('givenName')}!
           </Typography>
         </Box>
         <Grid
@@ -51,18 +51,18 @@ const Dashboard = () => {
         >
           <Grid
             item
-            lg={3}
-            md={6}
-            xl={3}
+            lg={4}
+            md={4}
+            xl={4}
             xs={12}
           >
             <Calendar />
           </Grid>
           <Grid
             item
-            lg={9}
-            md={6}
-            xl={9}
+            lg={8}
+            md={8}
+            xl={8}
             xs={12}
           >
             <Upcoming />

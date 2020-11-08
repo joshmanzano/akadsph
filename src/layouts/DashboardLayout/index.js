@@ -21,6 +21,7 @@ import NotFoundView from 'src/views/errors/NotFoundView.jsx';
 import ProductListView from 'src/views/product/ProductListView';
 import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
+import ChatView from 'src/views/chat';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 
@@ -65,30 +66,41 @@ function DashboardLayout (props){
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
-            <Container>
-              <Switch>
-                <Route exact path={`${match.url}`}>
+            <Switch>
+              <Route exact path={`${match.url}`}>
+                <Container>
                   <Fragment>
                     <DashboardView></DashboardView>
                   </Fragment>
-                </Route>
-                <Route exact path={`${match.url}findtutor`}>
-                  <Fragment>
-                    <FindTutorView/>
-                  </Fragment>
-                </Route>
-                <Route exact path={`${match.url}account`}>
-                  <Fragment>
-                    <AccountView/>
-                  </Fragment>
-                </Route>
-                <Route exact path={`${match.url}settings`}>
-                  <Fragment>
-                    <SettingsView/>
-                  </Fragment>
-                </Route>
-              </Switch>
-            </Container>
+                </Container>
+              </Route>
+              <Route exact path={`${match.url}findtutor`}>
+                <Container>
+                <Fragment>
+                  <FindTutorView/>
+                </Fragment>
+                </Container>
+              </Route>
+              <Route exact path={`${match.url}account`}>
+                <Container>
+                <Fragment>
+                  <AccountView/>
+                </Fragment>
+                </Container>
+              </Route>
+              <Route exact path={`${match.url}settings`}>
+                <Container>
+                <Fragment>
+                  <SettingsView/>
+                </Fragment>
+                </Container>
+              </Route>
+              <Route exact path={`${match.url}messages`}>
+                <Fragment>
+                  <ChatView/>
+                </Fragment>
+              </Route>
+            </Switch>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Redirect } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -29,15 +30,28 @@ function Copyright() {
 
 export class LoginView extends Component {
 
+  state = {
+    redirect: false
+  }
+
   login = (response) => {
     const familyName = response.profileObj.familyName
     const givenName = response.profileObj.givenName
+    const email = response.profileObj.email
+    const name = response.profileObj.name
     const googleId = response.profileObj.googleId
     const imageUrl = response.profileObj.imageUrl
-    this.props.login(familyName, givenName, googleId, imageUrl)
+    this.props.login(email, name, familyName, givenName, googleId, imageUrl)
+    this.setState({redirect: true})
   }
 
   render(){
+    const { redirect } = this.state;
+
+    if (redirect)
+      return (
+        <Redirect to='/'/>
+      );
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />

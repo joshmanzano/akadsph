@@ -87,7 +87,7 @@ const TopBar = ({
         </Container>
         </Hidden>
         {/* <Box flexGrow={1} /> */}
-        <IconButton color="inherit">
+        <IconButton color="inherit" href="/messages">
           <Badge
             badgeContent={notifications.length}
             color="primary"

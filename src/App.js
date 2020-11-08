@@ -54,7 +54,9 @@ class App extends Component {
   componentDidMount(){
   }
 
-  login = (familyName, givenName, googleId, imageUrl) => {
+  login = (email, name, familyName, givenName, googleId, imageUrl) => {
+    localStorage.setItem('email',email)
+    localStorage.setItem('name',name)
     localStorage.setItem('givenName',givenName)
     localStorage.setItem('familyName',familyName)
     localStorage.setItem('googleId',googleId)
