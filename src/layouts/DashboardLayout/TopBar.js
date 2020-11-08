@@ -51,7 +51,7 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/parent/dashboard">
+        <RouterLink to="/">
           <Logo />
         </RouterLink>
         <Box flexGrow={1} />
@@ -59,27 +59,27 @@ const TopBar = ({
         <Container>
           <Grid container>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/parent/dashboard">
+              <IconButton color="inherit" href="/">
                 <DashboardIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/parent/customers">
+              <IconButton color="inherit" href="/findtutor">
                 <BookIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/parent/">
+              <IconButton color="inherit" href="/store">
                 <StoreIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/parent/account">
+              <IconButton color="inherit" href="/account">
                 <AccountBoxIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/parent/settings">
+              <IconButton color="inherit" href="/settings">
                 <SettingsIcon/>
               </IconButton>
             </Grid>

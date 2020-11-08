@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
@@ -7,8 +7,10 @@ import FindTutorView from 'src/views/customer/FindTutorView';
 import DashboardView from 'src/views/reports/DashboardView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
 import AuthView from 'src/views/test/AuthView';
-import NotFoundView from 'src/views/errors/NotFoundView.jsx';
+import LoginView from 'src/views/auth/LoginView';
+import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
+import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
 import LandingPage from 'src/LandingPage';
@@ -45,90 +47,35 @@ class App extends Component {
   constructor(props){
       super(props);
       this.state = {
-        session: localStorage.getItem('session'),
-        givenName: localStorage.getItem('givenName'),
-        familyName: localStorage.getItem('familyName'),
       };
   }
 
   componentDidMount(){
   }
 
-  login = (familyName, givenName, googleId, imageUrl) => {
-    localStorage.setItem('givenName',givenName)
-    localStorage.setItem('familyName',familyName)
-    localStorage.setItem('googleId',googleId)
-    localStorage.setItem('imageUrl',imageUrl)
-    localStorage.setItem('session','parent')
-    this.setState({
-      givenName,
-      familyName
-    })
-  }
-
   LandingView = () => {
     return (
-      <LandingPage/>
+      <Fragment>
+        <LandingPage/>
+      </Fragment>
     )
   }
 
-  LoginView = () => {
+  AccountView = () => {
     return (
-      <Login login={this.login} />
+      <Fragment>
+        <AccountView/>
+      </Fragment>
     )
   }
-
-  NotFoundView = () => {
-    return (
-      <NotFoundView/>
-    )
-  }
-
-  DashboardLayout = (page) => {
-    const child = <DashboardView/>
-    return (
-      <DashboardLayout children={child}/>
-    )
-  }
-
-  RedirectPage = () => {
-    return (
-      <Redirect to='/parent/dashboard/'/>
-    )
-  }
-
 
   render(){
     return (
       <Router>
-        {this.state.session == null &&
-        // Not Logged In
-        <Switch> 
-          <Route exact path='/' render={this.LandingView} /> 
-          <Route exact path='/login' render={this.LoginView} /> 
-          <Route path='*' render={this.NotFoundView} /> 
-        </Switch>
-        }
-        {this.state.session == 'parent' &&
-        // Parent Logged In
         <Switch>
-          <Route path='/'> 
-            <DashboardLayout/>
-          </Route>
+          <Route exact path='/' render={this.addScreen} /> 
+          <Route exact path='/account' render={this.AccountView} /> 
         </Switch>
-        }
-        {this.state.session == 'tutor' &&
-        // Tutor Logged In
-        <Switch>
-          <Route path='*' render={this.NotFoundView} /> 
-        </Switch>
-        }
-        {this.state.session == 'admin' &&
-        // Admin Logged In
-        <Switch>
-          <Route path='*' render={this.NotFoundView} /> 
-        </Switch>
-        }
       </Router>
     );
   }

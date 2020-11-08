@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { GoogleLogin } from 'react-google-login';
 
 function Copyright() {
   return (
@@ -26,77 +27,81 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+export class LoginView extends Component {
 
-export default function SignUp() {
-  const classes = useStyles();
+  login = (response) => {
+    const familyName = response.profileObj.familyName
+    const givenName = response.profileObj.givenName
+    const googleId = response.profileObj.googleId
+    const imageUrl = response.profileObj.imageUrl
+    this.props.login(familyName, givenName, googleId, imageUrl)
+  }
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <img src='./img/loginIcon.png'>
-        </img>
-        <Box mt={6}>
-            <h2>
-            Sign in as 
-            </h2>
+  render(){
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div>
+          <Box mt={6}>
+            <img src='./img/loginIcon.png'>
+            </img>
+          </Box>
+          <Box mt={6}>
+              <h2>
+              Sign in as 
+              </h2>
+          </Box>
+          <Box>
+              <div id="login" className="text-center">
+                  <Container>
+                  {/* <div className="col-md-10 col-md-offset-1 section-title">
+                      <h2>Features</h2>
+                  </div> */}
+                  <div className="row">
+                      <Grid container spacing={9}>
+                          <Grid item xs={6}>
+                          <GoogleLogin
+                            clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
+                            render={renderProps => (
+                              <div>
+                              <a
+                                  onClick={renderProps.onClick}
+                                  href="/"
+                                  className=""
+                              >
+                                  <i className={'fa fa-user'}></i>
+                              </a>{" "}
+                                  <h3>{'Parent'}</h3>
+                              </div>
+                            )}
+                            buttonText="Login"
+                            onSuccess={this.login}
+                            onFailure={this.login}
+                            cookiePolicy={'single_host_origin'}
+                          />
+                          </Grid>
+                          <Grid item xs={6}>
+                          <a
+                              href="/"
+                              className=""
+                          >
+                              <i className={'fa fa-graduation-cap'}></i>
+                          </a>{" "}
+                              <h3>{'Tutor'}</h3>
+                              {/* <p>{'The legendary laptop'}</p> */}
+                          </Grid>
+                      </Grid>
+                  </div>
+                  </Container>
+              </div>
+          </Box>
+        </div>
+        <Box mt={5}>
+          <Copyright />
         </Box>
-        <Box>
-            <div id="login" className="text-center">
-                <Container>
-                {/* <div className="col-md-10 col-md-offset-1 section-title">
-                    <h2>Features</h2>
-                </div> */}
-                <div className="row">
-                    <Grid container spacing={9}>
-                        <Grid item xs={6}>
-                        <a
-                            href="/parent/dashboard"
-                            className=""
-                        >
-                            <i className={'fa fa-user'}></i>
-                        </a>{" "}
-                            <h3>{'Parent'}</h3>
-                            {/* <p>{'The legendary laptop'}</p> */}
-                        </Grid>
-                        <Grid item xs={6}>
-                        <a
-                            href="/tutor"
-                            className=""
-                        >
-                            <i className={'fa fa-graduation-cap'}></i>
-                        </a>{" "}
-                            <h3>{'Tutor'}</h3>
-                            {/* <p>{'The legendary laptop'}</p> */}
-                        </Grid>
-                    </Grid>
-                </div>
-                </Container>
-            </div>
-        </Box>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
-  );
+      </Container>
+    );
+  }
 }
+
+export default LoginView;
