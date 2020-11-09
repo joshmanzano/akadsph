@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
@@ -92,13 +92,6 @@ class App extends Component {
       <DashboardLayout children={child}/>
     )
   }
-
-  RedirectPage = () => {
-    return (
-      <Redirect to='/parent/dashboard/'/>
-    )
-  }
-
 
   render(){
     return (

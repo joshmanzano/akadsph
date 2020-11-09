@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link,

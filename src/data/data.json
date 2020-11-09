@@ -49,21 +49,24 @@
 
     ],
     "Testimonials": [
-        {
-            "img": "img/testimonials/Karl.png",
-            "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
-            "name": "Tutor Karl"
-        },
-        {
-            "img": "img/testimonials/Didi.png",
-            "text": "AKADS is the new normal for us. It compliments well with the online learning the school provides. Safe, easy and effective. Bonus part is when they started offering bundles! We are now sure we are booked and assured of our slot!",
-            "name": "Mommy Didi"
-        },
-        {
-            "img": "img/testimonials/Teddy.png",
-            "text": "Tutor Karl helps me solve my Math homework using an online whiteboard!",
-            "name": "Theodore"
-        },
+        [
+            {
+                "img": "img/testimonials/Karl.png",
+                "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
+                "name": "Tutor Karl"
+            },
+            {
+                "img": "img/testimonials/Didi.png",
+                "text": "AKADS is the new normal for us. It compliments well with the online learning the school provides. Safe, easy and effective. Bonus part is when they started offering bundles! We are now sure we are booked and assured of our slot!",
+                "name": "Mommy Didi"
+            },
+            {
+                "img": "img/testimonials/Teddy.png",
+                "text": "Tutor Karl helps me solve my Math homework using an online whiteboard!",
+                "name": "Theodore"
+            }
+        ],
+        [
         {
             "img": "img/testimonials/04.jpg",
             "text": "Always had trouble finding reliable home based tutors... With AKADS it takes away the stress of not knowing if the tutor will make it or not on a daily basis. It was so fast and convenient to register and try their tutoring session! I couldn't be any happier that a tutoring center such as AKADS finally exists especially during these times!",
@@ -79,6 +82,7 @@
             "text": "Simply the best!",
             "name": "Rolo Pena"
         }
+        ]
     ],
     "Team": [{
             "img": "img/team/01.jpg",

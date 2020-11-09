@@ -9,6 +9,8 @@ import About from './components/about';
 import Testimonials from './components/testimonials';
 // import Team from './components/Team';
 import Contact from './components/contact';
+import Pricing from './components/pricing';
+import FreqAsk from './components/freqask';
 import JsonData from './data/data.json';
 
 export class LandingPage extends Component {
@@ -31,7 +33,9 @@ export class LandingPage extends Component {
         <About data={this.state.landingPageData.About} />
         {/* <Services data={this.state.landingPageData.Services} /> */}
         {/* <Gallery /> */}
+        <Pricing/>
         <Testimonials data={this.state.landingPageData.Testimonials} />
+        <FreqAsk />
         {/* <Team data={this.state.landingPageData.Team} /> */}
         <Contact data={this.state.landingPageData.Contact} />
       </div>

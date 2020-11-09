@@ -22,7 +22,7 @@ export class Navigation extends Component {
             {/* <a className="navbar-brand page-scroll" href="#page-top">
               <img src='../img/logo.png'></img>
             </a>{" "} */}
-            <a href="/#page-top">
+            <a href="/#/#page-top">
               <img src='../img/logo.png'></img>
             </a>{" "}
           </div>
@@ -33,22 +33,22 @@ export class Navigation extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="/#about" className="page-scroll">
+                <a href="#/#about" className="page-scroll">
                   About
                 </a>
               </li>
               <li>
-                <a href="/#services" className="page-scroll">
+                <a href="#/#services" className="page-scroll">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="/#testimonials" className="page-scroll">
+                <a href="#/#testimonials" className="page-scroll">
                   Testimonials
                 </a>
               </li>
               <li>
-                <a href="/#contact" className="page-scroll">
+                <a href="#/#contact" className="page-scroll">
                   Contact Us
                 </a>
               </li>

@@ -16,6 +16,12 @@ import {
   CardHeader,
   Divider,
 } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 import { Search as SearchIcon } from 'react-feather';
 import Calendar from './Calendar';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
@@ -77,7 +83,9 @@ const Availability = ({ className, ...rest }) => {
                   <Typography variant="h5" align= 'left'>
                     Write all the available times for the dates
                   </Typography>
-                  <Grid contianer spacing={2}>
+
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <Grid container spacing={2}>
                     <Grid
                     item
                     lg={6}
@@ -96,7 +104,8 @@ const Availability = ({ className, ...rest }) => {
                     xl={6}
                     xs={6}
                     > 
-                      <TimeRangePicker/>
+                    
+                        <KeyboardTimePicker/>
                     </Grid>
                     <Grid
                     item
@@ -116,9 +125,10 @@ const Availability = ({ className, ...rest }) => {
                     xl={6}
                     xs={6}
                     > 
-                      <TimeRangePicker/>
+                      <KeyboardTimePicker/>
                     </Grid>
                   </Grid>
+                  </MuiPickersUtilsProvider>
                   
                 </Grid>
                 

@@ -160,8 +160,7 @@ hr {
 	font-family: 'Raleway', sans-serif;
 	text-transform: uppercase;
 	color: #fff;
-	background-color: #5ca9fb;
-	background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
+	background-color: #6CC2B6;
 	padding: 14px 34px;
 	letter-spacing: 1px;
 	margin: 0;
@@ -420,7 +419,7 @@ header .intro-text {
 /* Testimonials Section */
 #testimonials {
 	padding: 100px 0;
-	background: #fff;
+	background: #f6f6f6;
 }
 #testimonials i {
 	color: #e6e6e6;
@@ -455,6 +454,55 @@ header .intro-text {
 	font-size: 15px;
 	font-weight: 600;
 	color: #666;
+}
+/* Pricing Section */
+#pricing {
+	padding: 100px 0;
+	background: #fff;
+}
+#pricing i {
+	color: #e6e6e6;
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+.pricing {
+	position: relative;
+	padding: 20px;
+}
+.pricing-image {
+	float: left;
+	margin-right: 15px;
+}
+.pricing-image, .pricing-image img {
+	display: block;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+}
+.pricing-content {
+	position: relative;
+	overflow: hidden;
+}
+.pricing-content p {
+	margin-bottom: 0;
+	font-size: 14px;
+	font-style: italic;
+}
+.pricing-meta {
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #666;
+}
+/* FreqAsk Section */
+#FreqAsk {
+	padding: 100px 0;
+	background: #fff;
+}
+#FreqAsk i {
+	color: #e6e6e6;
+	font-size: 32px;
+	margin-bottom: 20px;
 }
 /* Team Section */
 #team {

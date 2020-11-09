@@ -43,6 +43,10 @@ const TopBar = ({
 }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
+  const logout = () => {
+    localStorage.clear()
+    window.location.replace('/')
+  }
 
   return (
     <AppBar
@@ -59,27 +63,27 @@ const TopBar = ({
         <Container>
           <Grid container>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/">
+              <IconButton color="inherit" href="#/">
                 <DashboardIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/findtutor">
+              <IconButton color="inherit" href="#/findtutor">
                 <BookIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/store">
+              <IconButton color="inherit" href="#/store">
                 <StoreIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/account">
+              <IconButton color="inherit" href="#/account">
                 <AccountBoxIcon/>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="/settings">
+              <IconButton color="inherit" href="#/settings">
                 <SettingsIcon/>
               </IconButton>
             </Grid>
@@ -87,9 +91,9 @@ const TopBar = ({
         </Container>
         </Hidden>
         {/* <Box flexGrow={1} /> */}
-        <IconButton color="inherit" href="/messages">
+        <IconButton color="inherit" href="#/messages">
           <Badge
-            badgeContent={notifications.length}
+            badgeContent={3}
             color="primary"
             variant="dot"
           >
@@ -98,15 +102,15 @@ const TopBar = ({
         </IconButton>
         <IconButton color="inherit">
           <Badge
-            badgeContent={notifications.length}
-            color="primary"
+            badgeContent={2}
+            color="secondary"
             variant="dot"
           >
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <IconButton color="inherit">
-            <MeetingRoomIcon />
+        <IconButton onClick={logout} color="inherit">
+            <MeetingRoomIcon/>
         </IconButton>
         <Hidden lgUp>
           <IconButton

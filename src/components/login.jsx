@@ -42,28 +42,27 @@ export class LoginView extends Component {
     const googleId = response.profileObj.googleId
     const imageUrl = response.profileObj.imageUrl
     this.props.login(email, name, familyName, givenName, googleId, imageUrl)
-    this.setState({redirect: true})
+    window.location.replace('/')
   }
 
   render(){
     const { redirect } = this.state;
 
-    if (redirect)
-      return (
-        <Redirect to='/'/>
-      );
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div>
           <Box mt={6}>
-            <img src='./img/loginIcon.png'>
-            </img>
+            <Container>
+              <img src='./img/loginIcon.png'/>
+            </Container>
           </Box>
-          <Box mt={6}>
-              <h2>
+          <Box mt={8}>
+              <Container>
+              <h2 align="center">
               Sign in as 
               </h2>
+              </Container>
           </Box>
           <Box>
               <div id="login" className="text-center">
