@@ -30,7 +30,11 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "30vh",
     paddingTop: "7%",
     paddingBottom: "7%",
-
+    // border: "3px solid #4655A5",
+    // backgroundColor: "white",
+    // color: theme.color,
+    // borderRadius: "10px",
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
   },
 }));
 

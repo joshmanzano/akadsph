@@ -84,7 +84,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              <Bundle/>
+              {/* <Bundle/> */}
             </Grid>
             <Grid
               item
