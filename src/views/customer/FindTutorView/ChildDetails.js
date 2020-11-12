@@ -23,6 +23,10 @@ import PublishIcon from '@material-ui/icons/Publish';
 import { Search as SearchIcon } from 'react-feather';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -491,7 +495,15 @@ const ChildDetails = ({ className, ...rest }) => {
                       </FormControl>
                     </Grid>
                     <Grid item xs={12}>
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">Tutor Options</FormLabel>
+                        <RadioGroup name="tutor-choice">
+                          <FormControlLabel value="all-tutors" control={<Radio />} label="All Tutors Accepted" />
+                          <FormControlLabel value="fave-tutors" control={<Radio />} label="Favorite Tutors Only" />
+                          
+                        </RadioGroup>
+                      </FormControl>
+                      {/* <FormControl variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Tutor Options</InputLabel>
                         <Select
                           native
@@ -506,7 +518,7 @@ const ChildDetails = ({ className, ...rest }) => {
                           <option value={10}>Favorite Tutors Only</option>
                           <option value={20}>All Tutors Accepted</option>
                         </Select>
-                      </FormControl>
+                      </FormControl> */}
                     </Grid>
                     <Grid item xs={12}>
                       <FormControl variant="outlined" className={classes.formControl} fullWidth>

@@ -28,12 +28,13 @@ const SettingsView = () => {
     >
       <Container maxWidth="lg">
         <Notifications />
-        <Box mt={3}>
+        {/* Assume that google will handle passwords and also we won't be saving the payments */}
+        {/* <Box mt={3}>
           <Password />
         </Box>
         <Box mt={3}>
           <SavedPayMethod />
-        </Box>
+        </Box> */}
       </Container>
     </Page>
   );

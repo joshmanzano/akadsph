@@ -34,6 +34,18 @@ const useStyles = makeStyles((theme) => ({
     placeItems: "center",
     justifyContent: "center",
     // marginRight: theme.spacing(1)
+   
+  },
+  backButton: {
+    // backgroundColor: "white",
+    // color: theme.palette.primary,
+    // textColor: theme.palette.primary,
+    // border: "10px solid theme.palette.primary",
+    // borderColor: theme.palette.primary,
+    // // marginRight: theme.spacing(1)
+    // "&:hover": {
+    //   backgroundColor: theme.palette.primary,
+    // }
   },
 }));
 
@@ -142,21 +154,34 @@ const CustomerListView = () => {
             <Grid item 
               xs={12}
             >
-              <Payment/>
+              {/* <Payment/> */}
             </Grid>
             <Grid item xs={12}>
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
+              <Grid container spacing={0}>
+                <Grid
+                  item
+                  lg={3}
+                  md={3}
+                  xl={0}
+                  xs={0}
+                  ></Grid>
+                <Grid item
+                  lg={3}
+                  md={3}
+                  xl={3}
+                  xs={6}
+                  >
                   
-                  <Button className={classes.nextButton}  
+                  <Button className={classes.backButton}  
                     color="primary"
-                    variant="contained"
+                    
                     onClick={handleChangeNext}
+                    variant="outlined"
                     >
                     Back
                   </Button>
                   
-                  <Box component='span' m={2}>
+                  {/* <Box component='span' m={2}>
                     <Button className={classes.nextButton}  
                     color="primary"
                     variant="contained"
@@ -185,8 +210,47 @@ const CustomerListView = () => {
                       </Button>
                     </DialogActions>
                   </Dialog>
-                  </Box>
+                  </Box> */}
                 </Grid> 
+                <Grid
+                  item
+                  lg={3}
+                  md={3}
+                  xl={3}
+                  xs={6}
+                  align='right'
+                  >
+                  <Button className={classes.payButton}  
+                      color="primary"
+                      variant="contained"
+                      
+                      align='right'
+                      onClick={handleClickOpen}
+                      >
+                      Pay Now
+                    </Button>
+                    <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          Payment was successful. You will be notified once a tutor accepts your request.
+                        </DialogContentText>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                          Cancel
+                        </Button>
+                        <Button onClick={handleClose} color="primary" autoFocus>
+                          Done
+                        </Button>
+                      </DialogActions>
+                  </Dialog>
+                </Grid>
               </Grid>
             </Grid>
           
