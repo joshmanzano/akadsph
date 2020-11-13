@@ -16,6 +16,7 @@ import Login from 'src/components/login';
 import SignUp from 'src/components/signup.jsx';
 import axios from 'axios';
 import {get_api, post_api} from './Api'
+import TutorApp from 'src/views/TutorApp';
 
 class App extends Component {
 
@@ -99,6 +100,9 @@ class App extends Component {
           </Route>
           <Route exact path='/register'> 
             <SignUp {...this.state.registerProps} register={this.register} />
+          </Route>
+          <Route exact path='/tutor-form'> 
+            <TutorApp/>
           </Route>
           <Route path='*' render={this.NotFoundView} /> 
         </Switch>
