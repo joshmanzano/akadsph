@@ -4,7 +4,7 @@
 }
 
 body, html {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
 	color: #777;
@@ -13,7 +13,7 @@ body, html {
 	height: 100% !important;
 }
 h2, h3, h4 {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 }
 h2 {
 	text-transform: uppercase;
@@ -80,14 +80,14 @@ hr {
 	box-shadow: 0 0 10px rgba(0,0,0,0.15)
 }
 #menu a.navbar-brand {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	font-size: 24px;
 	font-weight: 700;
 	color: #333;
 	text-transform: uppercase;
 }
 #menu.navbar-default .navbar-nav > li > a {
-	font-family: 'Lato', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	text-transform: uppercase;
 	color: #555;
 	font-size: 15px;
@@ -157,15 +157,15 @@ hr {
 	font-size: 18px;
 }
 .btn-custom {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	text-transform: uppercase;
 	color: #fff;
-	background-color: #6CC2B6;
 	padding: 14px 34px;
 	letter-spacing: 1px;
 	margin: 0;
 	font-size: 15px;
 	font-weight: 500;
+	border: 5px solid white;
 	border-radius: 25px;
 	transition: all 0.5s linear;
 	border: 0;
@@ -201,7 +201,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	/* background: rgba(0,0,0,0.2); */
 }
 .intro h1 {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	color: #fff;
 	font-size: 82px;
 	font-weight: 700;
@@ -311,7 +311,7 @@ header .intro-text {
 }
 #about .about-text li:before {
 	content: '\f00c';
-	font-family: 'FontAwesome';
+	font-family: 'DM Sans', sans-serif;
 	color: #5ca9fb;
 	font-size: 11px;
 	font-weight: 300;
@@ -575,7 +575,7 @@ header .intro-text {
 label {
 	font-size: 12px;
 	font-weight: 400;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	float: left;
 }
 #contact .form-control {

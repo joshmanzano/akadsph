@@ -13,7 +13,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Modal } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
+
+import Loading from './loading.jsx'
 
 function Copyright() {
   return (
@@ -30,23 +33,29 @@ function Copyright() {
 
 export class LoginView extends Component {
 
-  state = {
-    redirect: false
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: true 
+    }
   }
 
   login = (response) => {
-    const familyName = response.profileObj.familyName
-    const givenName = response.profileObj.givenName
-    const email = response.profileObj.email
-    const name = response.profileObj.name
-    const googleId = response.profileObj.googleId
-    const imageUrl = response.profileObj.imageUrl
-    this.props.login(email, name, familyName, givenName, googleId, imageUrl)
-    window.location.replace('/')
+    const accessToken = response.tokenObj.access_token
+    const idToken = response.tokenObj.id_token
+    this.props.login(accessToken, idToken)
+  }
+
+  loaded = () => {
+    this.setState({loading: false})
+  }
+
+  handleClose = () => {
+    console.log('hello')
+
   }
 
   render(){
-    const { redirect } = this.state;
 
     return (
       <Container component="main" maxWidth="xs">
@@ -90,6 +99,8 @@ export class LoginView extends Component {
                             buttonText="Login"
                             onSuccess={this.login}
                             onFailure={this.login}
+                            uxMode={'popup'}
+                            onAutoLoadFinished={this.loaded}
                             cookiePolicy={'single_host_origin'}
                           />
                           </Grid>
@@ -114,6 +125,7 @@ export class LoginView extends Component {
         </Box>
       </Container>
     );
+
   }
 }
 

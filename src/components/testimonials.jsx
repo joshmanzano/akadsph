@@ -11,8 +11,6 @@ import Carousel from 'react-material-ui-carousel'
 
 function TestimonialGrid(props){
   return (
-    <Box height="25%">
-
     <Grid container spacing={1}>
     {props.d
       ? props.d.map((d, i) => (
@@ -33,8 +31,6 @@ function TestimonialGrid(props){
         ))
       : "loading"}
     </Grid>
-
-    </Box>
   )
 }
 export class testimonials extends Component {

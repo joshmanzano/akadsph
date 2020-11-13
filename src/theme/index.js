@@ -11,13 +11,22 @@ const theme = createMuiTheme({
     },
     primary: {
       main: '#4655A5',
+      second: '#6CC2B6',
+      third: '#0A3243',
+      fourth: '#EB5531',
     },
     secondary: {
       main: '#EB5531',
+      second: '#D4D4D4',
+      third: '#EBEBEB',
+      fourth: '#FFFFFF',
+    },
+    whiteButton: {
+      main: '#FFFFFF',
     },
     text: {
-      primary: colors.blueGrey[900],
-      secondary: colors.blueGrey[600]
+      primary: '#0A3243',
+      secondary: '#212121'
     }
   },
   shadows,

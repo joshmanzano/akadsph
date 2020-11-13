@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Container,
   Grid,
+  Button,
 } from '@material-ui/core';
 
 export class Header extends Component {
@@ -20,12 +21,20 @@ export class Header extends Component {
                   <p>
                     {this.props.data ? this.props.data.paragraph : "Loading"}
                   </p>
-                  <a
-                    href="#/login"
-                    className="btn btn-custom btn-lg page-scroll"
-                  >
-                    Get Started
-                  </a>{" "}
+                  <Grid container>
+                    <Grid item xs={3}/>
+                    <Grid item xs={3}>
+                      <Button href="#/login" style={{borderRadius: "25px"}} size="large" color="secondary" variant="outlined">
+                        Get started
+                      </Button>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Button style={{borderRadius: "25px"}} size="large" color="secondary" variant="outlined">
+                        Become A Tutor
+                      </Button>
+                    </Grid>
+                    <Grid item xs={3}/>
+                  </Grid>
                 </div>
                 <div className="intro-text">
                   <img src="../img/header.jpg"></img>

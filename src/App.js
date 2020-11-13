@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
@@ -13,32 +13,9 @@ import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
-
-// const routes = [
-//   {
-//     path: '/',
-//     element: <LandingPage/>,
-//   },
-//   {
-//     path: '/login',
-//     element: <Login/>,
-//   },
-//   {
-//     path: '/parent',
-//     element: <DashboardLayout />,
-//     children: [
-//       { path: 'account', element: <React.Fragment><AccountView /></React.Fragment> },
-//       { path: 'customers', element: <React.Fragment><FindTutorView/></React.Fragment> },
-//       { path: 'dashboard', element: <React.Fragment><DashboardView/></React.Fragment> },
-//       { path: 'products', element: <ProductListView /> },
-//       { path: 'settings', element: <React.Fragment><SettingsView/></React.Fragment> },
-//       { path: 'playground', element: <PlaygroundView /> },
-//       { path: 'tutor-dashboard', element: <TutorDashboardView /> },
-//       { path: 'auth', element: <AuthView /> },
-//       { path: '*', element: <NotFoundView /> }
-//     ]
-//   }
-// ];
+import SignUp from 'src/components/signup.jsx';
+import axios from 'axios';
+import {get_api, post_api} from './Api'
 
 class App extends Component {
 
@@ -46,37 +23,54 @@ class App extends Component {
       super(props);
       this.state = {
         session: localStorage.getItem('session'),
-        givenName: localStorage.getItem('givenName'),
-        familyName: localStorage.getItem('familyName'),
       };
+      console.log(props)
   }
 
   componentDidMount(){
   }
 
-  login = (email, name, familyName, givenName, googleId, imageUrl) => {
-    localStorage.setItem('email',email)
-    localStorage.setItem('name',name)
-    localStorage.setItem('givenName',givenName)
-    localStorage.setItem('familyName',familyName)
-    localStorage.setItem('googleId',googleId)
-    localStorage.setItem('imageUrl',imageUrl)
-    localStorage.setItem('session','parent')
-    this.setState({
-      givenName,
-      familyName
+  login = (accessToken, idToken) => {
+    const data = {
+      'id_token':idToken
+    }
+    post_api('login-parent', data, (res) =>{
+      if(res['exists']){
+        console.log(res)
+
+      }else{
+        const registerProps = {
+          'familyName': res['family_name'],
+          'givenName': res['given_name'],
+          'email': res['email'],
+          'googleId': res['sub'],
+          'picture': res['picture'],
+        }
+        this.setState({
+          registerProps
+        }, () => {
+          this.props.history.replace('/register')
+        })
+      }
     })
   }
+
+  register = (raw_data) => {
+    const data = {
+      username: raw_data['googleId'],
+      password: 'hello',
+      name: raw_data['firstName'],
+      email: raw_data['email'],
+    }
+    post_api('parents', data, (res) => {
+      console.log(res)
+    })
+  }
+
 
   LandingView = () => {
     return (
       <LandingPage/>
-    )
-  }
-
-  LoginView = () => {
-    return (
-      <Login login={this.login} />
     )
   }
 
@@ -100,7 +94,12 @@ class App extends Component {
         // Not Logged In
         <Switch> 
           <Route exact path='/' render={this.LandingView} /> 
-          <Route exact path='/login' render={this.LoginView} /> 
+          <Route exact path='/login'> 
+            <Login login={this.login} />
+          </Route>
+          <Route exact path='/register'> 
+            <SignUp {...this.state.registerProps} register={this.register} />
+          </Route>
           <Route path='*' render={this.NotFoundView} /> 
         </Switch>
         }
@@ -130,4 +129,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default withRouter(App);
