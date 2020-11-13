@@ -61,7 +61,9 @@ const Availability = ({ className, ...rest }) => {
           <Divider />
           <CardContent >
             <Box /*maxWidth={1000}*/>
-              <Grid container spacing={2}>
+              <Grid container spacing={2}
+                
+                >
                 <Grid
                   item
                   lg={6}
@@ -69,6 +71,8 @@ const Availability = ({ className, ...rest }) => {
                   xl={6}
                   xs={12}
                   style={{justifyContent: 'center', placeItems: 'center'}}
+                  alignItems="center"
+                  justify="center"
                 >
                   <Calendar/>
                 </Grid>

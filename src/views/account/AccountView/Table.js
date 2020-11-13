@@ -195,7 +195,7 @@ const EnhancedTableToolbar = (props) => {
         [classes.highlight]: numSelected > 0,
       })}
     >
-      {numSelected > 0 ? (
+      {/* {numSelected > 0 ? (
         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
           {numSelected} selected
         </Typography>
@@ -203,9 +203,11 @@ const EnhancedTableToolbar = (props) => {
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
           Nutrition
         </Typography>
-      )}
-
-      {numSelected > 0 ? (
+      )} */}
+      <IconButton aria-label="filter list">
+            <FilterListIcon />
+      </IconButton>
+      {/* {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
             <DeleteIcon />
@@ -217,7 +219,7 @@ const EnhancedTableToolbar = (props) => {
             <FilterListIcon />
           </IconButton>
         </Tooltip>
-      )}
+      )} */}
     </Toolbar>
   );
 };
@@ -472,6 +474,7 @@ export default function EnhancedTable(props) {
 
   return (
     <div className={classes.root}>
+        {/* <EnhancedTableToolbar/> */}
         <TableContainer>
           <Table
             className={classes.table}

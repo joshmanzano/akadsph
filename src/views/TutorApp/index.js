@@ -114,7 +114,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              <Availability/>
+              {/* <Availability/> */}
             </Grid>
             <Grid
               item

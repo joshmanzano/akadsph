@@ -62,7 +62,7 @@ ul, ol {
 }
 hr {
 	height: 2px;
-	width: 70px;
+	/* width: 70px; */
 	text-align: center;
 	position: relative;
 	background: #1E7A46;
