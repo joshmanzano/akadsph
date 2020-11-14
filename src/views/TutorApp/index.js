@@ -16,12 +16,10 @@ import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
 import data from './data';
-import Bundle from './Bundle';
-import ChildDetails from './ChildDetails';
-import Availability from './Availability';
+import FormDetails from './FormDetails';
 import SpecialRequests from './SpecialRequests';
 import Payment from './Payment';
-import Breakdown from './Breakdown';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,13 +72,13 @@ const CustomerListView = () => {
   return (
     <Page
       className={classes.root}
-      title="Find A Tutor - AKADSPH" 
+      title="Tutor Application - AKADSPH" 
     >
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
         <Box mb={4}>
           <Typography variant="h1" align='center'>
-            Find A Tutor
+            Tutor Application
           </Typography>
         </Box>
         {!detailsDone ? 
@@ -88,6 +86,8 @@ const CustomerListView = () => {
           <Grid
             container
             spacing={3}
+            alignItems="center"
+            justify="center"
           >
             <Grid
               item
@@ -96,48 +96,27 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              {/* <Bundle/> */}
+              <FormDetails/>
             </Grid>
+            
             <Grid
               item
               lg={12}
               md={12}
               xl={12}
               xs={12}
-            >
-              <ChildDetails/>
-            </Grid>
-            <Grid
-              item
-              lg={12}
-              md={12}
-              xl={12}
-              xs={12}
-            >
-              {/* <Availability/> */}
-            </Grid>
-            <Grid
-              item
-              lg={12}
-              md={12}
-              xl={12}
-              xs={12}
-            >
-              <SpecialRequests/>
-            </Grid>
-            <Grid
-              item
-              lg={12}
-              md={12}
-              xl={12}
-              xs={12}
+              alignItems="center"
+              justify="center"
+              style={{textAlign: "center"}}
             >
               <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleChangeNext}
-                    >
-                    Next
+                color="primary"
+                variant="contained"
+                // onClick={handleChangeNext}
+                alignItems="center"
+                justify="center"
+                >
+                  Register
               </Button>
             </Grid>
           </Grid>
@@ -149,7 +128,7 @@ const CustomerListView = () => {
             <Grid item 
                 xs={12}
             >
-              <Breakdown/>
+              {/* <Breakdown/> */}
             </Grid>
             <Grid item 
               xs={12}
@@ -157,14 +136,7 @@ const CustomerListView = () => {
               {/* <Payment/> */}
             </Grid>
             <Grid item xs={12}>
-              <Grid container spacing={0}>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={0}
-                  xs={0}
-                  ></Grid>
+              
                 <Grid item
                   lg={3}
                   md={3}
@@ -177,80 +149,12 @@ const CustomerListView = () => {
                     
                     onClick={handleChangeNext}
                     variant="outlined"
+                    justify='center'
                     >
-                    Back
+                    register
                   </Button>
-                  
-                  {/* <Box component='span' m={2}>
-                    <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleClickOpen}
-                    >
-                    Submit
-                  </Button>
-                  <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
-                    <DialogTitle id="alert-dialog-title">{"Transaction Complete!"}</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText id="alert-dialog-description">
-                        Please wait for a tutor to accept your request. You will receive a notification once it has been accepted. Thank you!
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Cancel
-                      </Button>
-                      <Button onClick={handleClose} color="primary" autoFocus>
-                        Done
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  </Box> */}
-                </Grid> 
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  align='right'
-                  >
-                  <Button className={classes.payButton}  
-                      color="primary"
-                      variant="contained"
-                      
-                      align='right'
-                      onClick={handleClickOpen}
-                      >
-                      Pay Now
-                    </Button>
-                    <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    >
-                      <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          Payment was successful. You will be notified once a tutor accepts your request.
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                          Cancel
-                        </Button>
-                        <Button onClick={handleClose} color="primary" autoFocus>
-                          Done
-                        </Button>
-                      </DialogActions>
-                  </Dialog>
-                </Grid>
+               
+                
               </Grid>
             </Grid>
           

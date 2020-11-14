@@ -88,7 +88,7 @@ const Availability = ({ className, ...rest }) => {
                     Write all the available times for the dates
                   </Typography>
 
-                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
                   <Grid container spacing={2}>
                     <Grid
                     item
@@ -109,7 +109,7 @@ const Availability = ({ className, ...rest }) => {
                     xs={6}
                     > 
                     
-                        <KeyboardTimePicker/>
+                        {/* <KeyboardTimePicker/> */}
                     </Grid>
                     <Grid
                     item
@@ -129,10 +129,10 @@ const Availability = ({ className, ...rest }) => {
                     xl={6}
                     xs={6}
                     > 
-                      <KeyboardTimePicker/>
+                      {/* <KeyboardTimePicker/> */}
                     </Grid>
                   </Grid>
-                  </MuiPickersUtilsProvider>
+                  {/* </MuiPickersUtilsProvider> */}
                   
                 </Grid>
                 
