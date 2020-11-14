@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Account = () => {
+const Account = (props) => {
   const classes = useStyles();
   const accountType = 'parent';
 
@@ -40,7 +40,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <Profile />
+            <Profile props={props}/>
           </Grid>
           <Grid
             item
@@ -48,7 +48,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <ProfileDetails />
+            <ProfileDetails props={props}/>
           </Grid>
           {accountType == 'parent' ? 
           <React.Fragment>

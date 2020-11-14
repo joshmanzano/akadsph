@@ -15,11 +15,39 @@ if(token == null){
   })
 }
 
+const headers = {
+  'Authorization': 'JWT '+localStorage.getItem('token'), 
+  'Content-Type': 'application/json'
+}
+
+export const verify_token = (_callback) => {
+  var axios = require('axios');
+  var token = localStorage.getItem('session_token')
+  var data = JSON.stringify({
+    'session_token': token
+  });
+  
+  var config = {
+    method: 'post',
+    url: api_url+'/'+'tokeninfo'+'/',
+    headers: headers, 
+    data : data
+  };
+  
+  axios(config)
+  .then(function (response) {
+    _callback(response.data)
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+
 export const get_api = (url, _callback) => {
   axios.get(api_url+'/'+url+'/',{
-    headers:{
-      'Authorization':'JWT '+localStorage.getItem('token')
-    }
+    headers
   })
   .then(res => {
     _callback(res.data)
@@ -33,10 +61,7 @@ export const post_api = (url, raw_data, _callback) => {
   var config = {
     method: 'post',
     url: api_url+'/'+url+'/',
-    headers: { 
-      'Authorization': 'JWT '+localStorage.getItem('token'), 
-      'Content-Type': 'application/json'
-    },
+    headers, 
     data : data
   };
   
@@ -48,4 +73,9 @@ export const post_api = (url, raw_data, _callback) => {
     console.log(error);
   });
   
+}
+
+export const api = (url, method, raw_data, _callback) => {
+  verify_token()
+
 }

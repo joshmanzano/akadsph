@@ -14,11 +14,6 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-const user = {
-  avatar: localStorage.getItem('imageUrl'),
-  name: localStorage.getItem('name'),
-};
-
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
@@ -27,7 +22,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Profile = ({ className, ...rest }) => {
+const Profile = ({ className, props, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -44,7 +39,7 @@ const Profile = ({ className, ...rest }) => {
           <Box my={2}>
             <Avatar
               className={classes.avatar}
-              src={user.avatar}
+              src={props.picture}
             />
           </Box>
           <Typography
@@ -52,7 +47,7 @@ const Profile = ({ className, ...rest }) => {
             gutterBottom
             variant="h3"
           >
-            {user.name}
+            {props.first_name} {props.last_name}
           </Typography>
           {/* <Typography
             color="textSecondary"

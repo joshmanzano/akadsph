@@ -12,7 +12,11 @@ import {
   makeStyles,
   Container,
   Grid,
-  Button,
+  SwipeableDrawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -27,6 +31,10 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import FaceIcon from '@material-ui/icons/Face';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -42,11 +50,46 @@ const TopBar = ({
   ...rest
 }) => {
   const classes = useStyles();
+  const anchor = 'left';
   const [notifications] = useState([]);
   const logout = () => {
     localStorage.clear()
     window.location.replace('/')
   }
+
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {['Overview', 'Book A Tutor', 'Buy Credits', 'Profile', 'Settings'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
   return (
     <AppBar
@@ -59,9 +102,9 @@ const TopBar = ({
           <Logo />
         </RouterLink>
         <Box flexGrow={1} />
-        <Hidden mdDown>
+        <Hidden xsDown>
         <Container>
-          <Grid container>
+          <Grid container maxWidth='xs'>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/">
                 <DashboardIcon/>
@@ -112,13 +155,23 @@ const TopBar = ({
         <IconButton onClick={logout} color="inherit">
             <MeetingRoomIcon/>
         </IconButton>
-        <Hidden lgUp>
+        <Hidden smUp>
           <IconButton
             color="inherit"
-            onClick={onMobileNavOpen}
+            onClick={toggleDrawer(anchor, true)}
           >
             <MenuIcon />
           </IconButton>
+        </Hidden>
+        <Hidden smUp>
+        <SwipeableDrawer
+      anchor={anchor}
+      open={state[anchor]}
+      onClose={toggleDrawer(anchor, false)}
+      onOpen={toggleDrawer(anchor, true)}
+    >
+      {list(anchor)}
+    </SwipeableDrawer>
         </Hidden>
       </Toolbar>
     </AppBar>

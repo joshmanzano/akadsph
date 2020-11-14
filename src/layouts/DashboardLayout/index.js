@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 function DashboardLayout (props){
   let classes = useStyles();
   let match = useRouteMatch();
+  const userData = props.getUserData();
 
   return (
     <div className={classes.root}>
@@ -70,7 +71,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <DashboardView></DashboardView>
+                    <DashboardView first_name={userData['accountview']['first_name']} {...userData['dashboardview']}></DashboardView>
                   </Fragment>
                 </Container>
               </Route>
@@ -84,7 +85,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}account`}>
                 <Container>
                 <Fragment>
-                  <AccountView/>
+                  <AccountView {...userData['accountview']}/>
                 </Fragment>
                 </Container>
               </Route>

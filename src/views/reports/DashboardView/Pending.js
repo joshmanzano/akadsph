@@ -14,57 +14,6 @@ import {
 import Calendar from 'react-calendar'
 import Table from './Table'
 
-const rows = [
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Math',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'LoL',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-]
-
 const headers = ["Date", "Time", "Subject", "Tutor", ""]
 
 const sessionType = "upcoming/pending"
@@ -75,7 +24,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const Sales = ({ className, rows, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -200,7 +149,8 @@ const Sales = ({ className, ...rest }) => {
 };
 
 Sales.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  rows: PropTypes.array
 };
 
 export default Sales;

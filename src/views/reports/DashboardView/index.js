@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const classes = useStyles();
 
   return (
@@ -42,7 +42,7 @@ const Dashboard = () => {
       <Container maxWidth={false}>
         <Box mb={4}>
           <Typography variant="h1">
-            Welcome {localStorage.getItem('givenName')}!
+            Welcome {props.first_name}!
           </Typography>
         </Box>
         <Grid
@@ -65,7 +65,7 @@ const Dashboard = () => {
             xl={8}
             xs={12}
           >
-            <Upcoming />
+            <Upcoming rows={props.upcoming} />
           </Grid>
           <Grid
             item
@@ -74,7 +74,7 @@ const Dashboard = () => {
             xl={12}
             xs={12}
           >
-            <Pending />
+            <Pending rows={props.pending} />
           </Grid>
           <Grid
             item
@@ -83,7 +83,7 @@ const Dashboard = () => {
             xl={12}
             xs={12}
           >
-            <History />
+            <History rows={props.history}/>
           </Grid>
           <Grid
             item
@@ -92,7 +92,7 @@ const Dashboard = () => {
             xl={12}
             xs={12}
           >
-            <Transaction />
+            <Transaction rows={props.transaction}/>
           </Grid>
           {/* <Grid
             item

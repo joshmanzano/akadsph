@@ -4,6 +4,7 @@ import {
   Container,
   makeStyles,
   Grid,
+  Hidden,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import {Button,MessageList, ChatList, Input, Popup, Sidebar, Navbar} from 'react-chat-elements';
@@ -25,6 +26,8 @@ const Chat = () => {
   return (
       <Grid container>
         <Grid item xs={12} lg={3}>
+        <Hidden xsDown>
+
         <ChatList
           className='chat-list'
           dataSource={[
@@ -45,6 +48,9 @@ const Chat = () => {
                   unread: 0,
               },
           ]} />
+
+        </Hidden>
+
         </Grid>
         <Grid item xs={12} lg={9}>
         <Container>

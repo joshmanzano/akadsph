@@ -19,38 +19,6 @@ import Calendar from 'react-calendar'
 import Table from './Table' 
 
 const rows = [
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Math',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    tutor: {
-      name: 'Adrienne Soliven'
-    },
-  },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'LoL',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
   // {
   //   date: 'July 7',
   //   time: '4 PM',
@@ -62,7 +30,15 @@ const rows = [
   // {
   //   date: 'July 7',
   //   time: '4 PM',
-  //   subject: 'Filipino',
+  //   subject: 'Math',
+  //   tutor: {
+  //     name: 'Adrienne Soliven'
+  //   },
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Science',
   //   tutor: {
   //     name: 'Adrienne Soliven'
   //   },
@@ -79,9 +55,11 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const Upcoming = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const className = props.className;
+  const rest = props.rest;
 
   return (
     <Card
@@ -93,14 +71,10 @@ const Sales = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+        <Table tableHeaders={headers} tableRows={props.rows} sessionType={sessionType} type={type}/>
       </CardContent>
     </Card>
   );
 };
 
-Sales.propTypes = {
-  className: PropTypes.string
-};
-
-export default Sales;
+export default Upcoming;
