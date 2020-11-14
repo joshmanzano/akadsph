@@ -15,20 +15,30 @@ import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 import SignUp from 'src/components/signup.jsx';
 import axios from 'axios';
-import {get_api, post_api} from './Api'
 import TutorApp from 'src/views/TutorApp';
+import {api, verify_token, get_api, post_api} from './Api'
 
 class App extends Component {
 
   constructor(props){
       super(props);
       this.state = {
-        session: localStorage.getItem('session'),
+        session: localStorage.getItem('session_token'),
       };
       console.log(props)
   }
 
   componentDidMount(){
+    if(this.state.session != null){
+      verify_token((res) => {
+        if(res['verified']){
+          this.setState({type: res['type']})
+        }else{
+          localStorage.clear()
+          window.location.replace('/')
+        }
+      })
+    }
   }
 
   login = (accessToken, idToken) => {
@@ -37,8 +47,8 @@ class App extends Component {
     }
     post_api('login-parent', data, (res) =>{
       if(res['exists']){
-        console.log(res)
-
+        localStorage.setItem('session_token',res['session_token'])
+        window.location.replace('/')
       }else{
         const registerProps = {
           'familyName': res['family_name'],
@@ -59,13 +69,33 @@ class App extends Component {
   register = (raw_data) => {
     const data = {
       username: raw_data['googleId'],
-      password: 'hello',
-      name: raw_data['firstName'],
+      first_name: raw_data['firstName'],
+      last_name: raw_data['lastName'],
       email: raw_data['email'],
     }
-    post_api('parents', data, (res) => {
+    post_api('register-parent', data, (res) => {
       console.log(res)
+      localStorage.setItem('session_token',res)
+      window.location.replace('/')
     })
+  }
+
+  getUserData = () => {
+    const data = {
+      'accountview': {
+        'picture': 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c-rg-br100/photo.jpg',
+        'first_name': 'Joshua',
+        'last_name': 'Manzano',
+        'email': 'Manzano',
+      },
+      'dashboardview': {
+        'upcoming':[],
+        'pending': [],
+        'history': [],
+        'transaction': []
+      },
+    }
+    return data;
   }
 
 
@@ -107,21 +137,21 @@ class App extends Component {
           <Route path='*' render={this.NotFoundView} /> 
         </Switch>
         }
-        {this.state.session == 'parent' &&
+        {this.state.type == 'parent' &&
         // Parent Logged In
         <Switch>
           <Route path='/'> 
-            <DashboardLayout/>
+            <DashboardLayout getUserData={this.getUserData}/>
           </Route>
         </Switch>
         }
-        {this.state.session == 'tutor' &&
+        {this.state.type == 'tutor' &&
         // Tutor Logged In
         <Switch>
           <Route path='*' render={this.NotFoundView} /> 
         </Switch>
         }
-        {this.state.session == 'admin' &&
+        {this.state.type == 'admin' &&
         // Admin Logged In
         <Switch>
           <Route path='*' render={this.NotFoundView} /> 

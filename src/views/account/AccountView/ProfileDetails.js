@@ -32,13 +32,13 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const ProfileDetails = ({ className, ...rest }) => {
+const ProfileDetails = ({ className, props, ...rest }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
-    firstName: localStorage.getItem('givenName'),
-    lastName: localStorage.getItem('familyName'),
-    email: localStorage.getItem('email'),
-    phone: '',
+    firstName: props.first_name,
+    lastName: props.last_name,
+    email: props.email,
+    phone: props.phone,
     state: 'NCR',
     country: 'Philippines'
   });
@@ -191,7 +191,8 @@ const ProfileDetails = ({ className, ...rest }) => {
 };
 
 ProfileDetails.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  props: PropTypes.array
 };
 
 export default ProfileDetails;
