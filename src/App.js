@@ -16,7 +16,8 @@ import Login from 'src/components/login';
 import SignUp from 'src/components/signup.jsx';
 import axios from 'axios';
 import TutorApp from 'src/views/TutorApp';
-import {api, verify_token, get_api, post_api} from './Api'
+import {api, verify_token, get_api, post_api} from './Api';
+import CreditStore from 'src/views/CreditStore';
 
 class App extends Component {
 
@@ -133,6 +134,9 @@ class App extends Component {
           </Route>
           <Route exact path='/tutor-form'> 
             <TutorApp/>
+          </Route>
+          <Route exact path='/credit-store'> 
+            <CreditStore/>
           </Route>
           <Route path='*' render={this.NotFoundView} /> 
         </Switch>
