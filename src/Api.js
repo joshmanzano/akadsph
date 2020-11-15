@@ -15,12 +15,12 @@ if(token == null){
   })
 }
 
-const headers = {
-  'Authorization': 'JWT '+localStorage.getItem('token'), 
-  'Content-Type': 'application/json'
-}
-
 export const verify_token = (_callback) => {
+  const headers = {
+    'Authorization': 'JWT '+localStorage.getItem('token'), 
+    'Content-Type': 'application/json'
+  }
+
   var axios = require('axios');
   var token = localStorage.getItem('session_token')
   var data = JSON.stringify({
@@ -46,6 +46,11 @@ export const verify_token = (_callback) => {
 
 
 export const get_api = (url, _callback) => {
+  const headers = {
+    'Authorization': 'JWT '+localStorage.getItem('token'), 
+    'Content-Type': 'application/json'
+  }
+
   axios.get(api_url+'/'+url+'/',{
     headers
   })
@@ -55,6 +60,11 @@ export const get_api = (url, _callback) => {
 }
 
 export const post_api = (url, raw_data, _callback) => {
+  const headers = {
+    'Authorization': 'JWT '+localStorage.getItem('token'), 
+    'Content-Type': 'application/json'
+  }
+
   var axios = require('axios');
   var data = JSON.stringify(raw_data);
   
