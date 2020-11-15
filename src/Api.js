@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api_url = 'https://akadsph-backend.herokuapp.com' /*'http://127.0.0.1:8000'*/
+const api_url = 'https://akadsph-staging.herokuapp.com' /*'http://127.0.0.1:8000'*/
 axios.defaults.withCredentials = true;
 
 const token = localStorage.getItem('token')
