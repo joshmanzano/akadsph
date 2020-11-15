@@ -16,7 +16,8 @@ import {
   CardHeader,
   Divider,
 } from '@material-ui/core';
-import { Search as SearchIcon } from 'react-feather';
+
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -27,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
     // marginRight: theme.spacing(1)
   },
   bundleButton: {
-    minWidth: "30vh",
-    paddingTop: "7%",
-    paddingBottom: "7%",
+    minWidth: "25vh",
+    paddingTop: "5%",
+    paddingBottom: "5%",
     // border: "3px solid #4655A5",
     // backgroundColor: "white",
     // color: theme.color,
@@ -52,7 +53,7 @@ const Bundle = ({ className, ...rest }) => {
       <Box /*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
           <CardHeader
-            subheader="Bundles that are for more than 1 hour are consummable for anytime"
+            // subheader="Bundles that are for more than 1 hour are consummable for anytime"
             title="Choose a Bundle"
           />
           <Divider />
@@ -61,7 +62,7 @@ const Bundle = ({ className, ...rest }) => {
               <Grid container spacing={2} 
                 alignItems="center"
                 justify="center"
-                style={{placeItems: 'center'}}>
+                style={{placeItems: 'center', textAlign: 'center'}}>
                 <Grid
                   item
                   lg={4}
@@ -75,7 +76,7 @@ const Bundle = ({ className, ...rest }) => {
                   <Button className={classes.bundleButton}  
                   color="primary"
                   variant="contained">
-                  P550/hour
+                  1 hour <br /> P500
                   </Button>
                 </Grid>
                 <Grid
@@ -88,7 +89,7 @@ const Bundle = ({ className, ...rest }) => {
                   <Button className={classes.bundleButton}  
                   color="primary"
                   variant="contained">
-                  P500/hour for 10 hours
+                  10 hours <br /> P4,750
                   </Button>
                 </Grid>
                 <Grid
@@ -101,7 +102,7 @@ const Bundle = ({ className, ...rest }) => {
                   <Button className={classes.bundleButton}  
                   color="primary"
                   variant="contained">
-                  P450/hour for 20 hours
+                  20 hours <br /> P9,000
                   </Button>
                 </Grid>
               </Grid>

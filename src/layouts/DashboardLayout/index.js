@@ -24,6 +24,7 @@ import TutorDashboardView from 'src/views/TutorDashboardView';
 import ChatView from 'src/views/chat';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
+import CreditStoreView from 'src/views/CreditStore';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,6 +80,13 @@ function DashboardLayout (props){
                 <Container>
                 <Fragment>
                   <FindTutorView/>
+                </Fragment>
+                </Container>
+              </Route>
+              <Route exact path={`${match.url}store`}>
+                <Container>
+                <Fragment>
+                  <CreditStoreView/>
                 </Fragment>
                 </Container>
               </Route>

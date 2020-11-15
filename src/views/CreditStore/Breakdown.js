@@ -50,25 +50,25 @@ const Breakdown = ({ className, ...rest }) => {
             Choose a Bundle
       </Typography> */}
       <Grid container spacing={2}>
-        <Grid
+        {/* <Grid
           item
           lg={3}
           md={3}
           xl={3}
           xs={0}
-          ></Grid>
+          ></Grid> */}
           <Grid
           item
-          lg={6}
-          md={6}
-          xl={6}
+          lg={12}
+          md={12}
+          xl={12}
           xs={12}
           >
-            <Box mx="auto" /*mt={3}*/>
+            <Box mx="auto" /*mt={3}*/ style={{boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",}}>
               <Card style={{justifyContent: 'center', placeItems: 'center'}}>
                 <CardHeader
                   // subheader="Bundles that are for more than 1 hour are consummable for anytime"
-                  title="Summary"
+                  title="Transaction Summary"
                 />
                 <Divider />
                 <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
@@ -76,32 +76,32 @@ const Breakdown = ({ className, ...rest }) => {
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <Typography variant="h6">
-                        Session/s
+                        Type
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h5" align="right">
+                      <Typography variant="h6" align="right">
+                        10 hours for P4,750 bundle
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h6">
+                        Quantity
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h6" align="right">
                         1
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h6">
-                        Duration
+                        Promo Code Discount
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h5" align="right">
-                        1 hour
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Session No.
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography variant="h5" align="right">
-                        1234
+                      <Typography variant="h6" align="right">
+                        -P750.00
                       </Typography>
                     </Grid>
                   </Grid>
@@ -118,7 +118,7 @@ const Breakdown = ({ className, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          P500.00
+                          P4,000.00
                         </Typography>
                       </Grid>
                     </Grid>
@@ -129,13 +129,13 @@ const Breakdown = ({ className, ...rest }) => {
             </Box>
           </Grid> 
 
-          <Grid
+          {/* <Grid
           item
           lg={3}
           md={3}
           xl={3}
           xs={0}
-          ></Grid>
+          ></Grid> */}
       </Grid>
     </div>
   );
