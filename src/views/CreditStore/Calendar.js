@@ -27,10 +27,10 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        {/* <DayPicker
+        <DayPicker
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
-        /> */}
+        />
       </div>
     );
   }
