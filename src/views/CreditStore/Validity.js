@@ -17,6 +17,7 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -33,8 +34,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SpecialRequests = ({ className, ...rest }) => {
+const Validity = ({ className, ...rest }) => {
   const classes = useStyles();
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var mm6 = String(today.getMonth() + 7).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  // var startDate = mm + '/' + dd + '/' + yyyy;
+  var endDate = mm6 + '/' + dd + '/' + yyyy;
+
+  var startDate = moment().format('MM/DD/YYYY');
+  var endDate = moment().add(6, 'M').format('MM/DD/YYYY');
+  // var futureMonthEnd = moment(futureMonth).endOf('month');
 
   return (
     <div
@@ -53,7 +65,7 @@ const SpecialRequests = ({ className, ...rest }) => {
           <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
             <Typography variant="h3" align='center'>
-              November 15, 2020 - May 15, 2021
+              {startDate} - {endDate}
             </Typography>
           </CardContent>
         </Card>
@@ -62,8 +74,8 @@ const SpecialRequests = ({ className, ...rest }) => {
   );
 };
 
-SpecialRequests.propTypes = {
+Validity.propTypes = {
   className: PropTypes.string
 };
 
-export default SpecialRequests;
+export default Validity
