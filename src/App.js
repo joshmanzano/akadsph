@@ -125,6 +125,26 @@ class App extends Component {
 
   }
 
+  create_paymentmethod = (card_number, exp_month, exp_year, cvc) => {
+    const url = "https://api.paymongo.com/v1/payment_methods"
+
+    const payload = {"data": {"attributes": {
+      "details": {
+          "card_number": card_number,
+          "exp_month": exp_month,
+          "exp_year": exp_year,
+          "cvc": cvc
+      },
+      "type": "card"
+    }}}
+
+    axios.post(url, payload)
+    .then(res => {
+      console.log(res)
+    })
+
+  }
+
   LandingView = () => {
     return (
       <LandingPage/>

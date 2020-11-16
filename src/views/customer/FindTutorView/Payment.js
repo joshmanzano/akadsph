@@ -120,7 +120,7 @@ const Payment = ({ className, ...rest }) => {
                     <TextField
                     
                       label="Credit Card Number"
-                      name="creditcardno"
+                      name="card_number"
                       variant="outlined"
                       // helperText="(e.g. Algebra, Trigonometry, Vocalubary)"
                       />
@@ -136,7 +136,7 @@ const Payment = ({ className, ...rest }) => {
                     
                       label="Expiry Date"
                       placeholder="MM/YYYY"
-                      name="expiryDate"
+                      name="exp_date"
                       variant="outlined"
                       // helperText="MM/YYYY"
                       />

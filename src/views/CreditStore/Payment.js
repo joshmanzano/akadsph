@@ -20,6 +20,7 @@ import {
   InputLabel,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import CreditCardForm from './CreditCardForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Payment = ({ className, ...rest }) => {
+const Payment = ({ className, setCardState, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -56,108 +57,7 @@ const Payment = ({ className, ...rest }) => {
           <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
             <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-              <Grid container spacing={2} style={{placeItems: 'center', textAlign: 'center'}}>
-                {/* <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                </Grid> */}
-                <Grid
-                  item
-                  lg={12}
-                  md={12}
-                  xl={12}
-                  xs={12}
-                >
-                  <FormControl variant="outlined" fullWidth className={classes.formControl} style={{justifyContent: 'center', placeItems: 'center'}}>
-                    <InputLabel>Payment Method</InputLabel>
-                    <Select
-                      fullWidth
-                      native
-  
-                      label="Payment Method"
-                      inputProps={{
-                        name: 'payment-method',
-                        id: 'payment-method',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Credit Cards  </option>
-                      <option value={20}>Bank Transfers    </option>
-                      <option value={20}>Gcash </option>
-                      <option value={20}>Grab Pay  </option>
-                    
-                    </Select>
-                  </FormControl>
-                  </Grid>
-                  {/* <Grid
-                    item
-                    lg={4}
-                    md={4}
-                    xl={4}
-                    xs={12}
-                  >
-                  </Grid> */}
-                  <Grid
-                    item
-                    lg={12}
-                    md={12}
-                    xl={12}
-                    xs={12}
-                  >
-                    <Divider />
-                  </Grid>
-                  <Grid
-                    item
-                    lg={4}
-                    md={4}
-                    xl={4}
-                    xs={12}
-                  >
-                    <TextField
-                    
-                      label="Credit Card No."
-                      name="creditcardno"
-                      variant="outlined"
-                      // helperText="(e.g. Algebra, Trigonometry, Vocalubary)"
-                      />
-                  </Grid>
-                  <Grid
-                    item
-                    lg={4}
-                    md={4}
-                    xl={4}
-                    xs={12}
-                  >
-                    <TextField
-                    
-                      label="Expiry Date"
-                      placeholder="MM/YYYY"
-                      name="expiryDate"
-                      variant="outlined"
-                      // helperText="MM/YYYY"
-                      />
-                  </Grid>
-                  <Grid
-                    item
-                    lg={4}
-                    md={4}
-                    xl={4}
-                    xs={12}
-                  >
-                    <TextField
-                    
-                      label="CVV Number"
-                      name="ccvNo"
-                      variant="outlined"
-                  
-                      />
-                  </Grid>
-                
-              </Grid>
+              <CreditCardForm setCardState={setCardState}></CreditCardForm>
               {/* <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
                 <Grid
                   item
@@ -221,7 +121,7 @@ const Payment = ({ className, ...rest }) => {
 };
 
 Payment.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Payment;

@@ -72,6 +72,8 @@ const CreditStore = () => {
   const [open, setOpen] = React.useState(false);
   const themebp = useTheme();
   const fullScreen = useMediaQuery(themebp.breakpoints.down('sm'));
+
+  const [cardState, setCardState] = React.useState();
   
 
 
@@ -85,6 +87,7 @@ const CreditStore = () => {
     };
   
     const handleClose = () => {
+      console.log(cardState)
       setOpen(false);
     };
   
@@ -167,7 +170,7 @@ const CreditStore = () => {
                       <DialogTitle id="alert-dialog-title">{"Checkout"}</DialogTitle>
                       <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                          <Payment/>
+                          <Payment setCardState={setCardState}/>
                           <br/>
                           <Breakdown/>
                         </DialogContentText>
