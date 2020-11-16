@@ -26,6 +26,10 @@ import Validity from './Validity';
 import PromoCode from './PromoCode';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import { withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +64,19 @@ const useStyles = makeStyles((theme) => ({
     // paddingTop: "7%",
     // paddingBottom: "7%",
   },
+  closeButton: {
+    // position: 'absolute',
+    // right: theme.spacing(1),
+    // top: theme.spacing(1),
+    // color: theme.palette.grey[500],
+    float:'right', marginTop: '5px'
+
+  },
+  dialogTitle:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }
 }));
 
 
@@ -87,6 +104,20 @@ const CreditStore = () => {
     const handleClose = () => {
       setOpen(false);
     };
+
+    const DialogTitle = withStyles(useStyles)((props) => {
+      const { children, classes, onClose, ...other } = props;
+      return (
+        <MuiDialogTitle disableTypography className={classes.root} {...other}>
+          <Typography variant="h6">{children}</Typography>
+          {onClose ? (
+            <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+              <CloseIcon />
+            </IconButton>
+          ) : null}
+        </MuiDialogTitle>
+      );
+    });
   
 
   return (
@@ -164,7 +195,7 @@ const CreditStore = () => {
                     aria-describedby="alert-dialog-description"
                     fullScreen={fullScreen}
                     >
-                      <DialogTitle id="alert-dialog-title">{"Checkout"}</DialogTitle>
+                      <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Checkout"}</DialogTitle>
                       <DialogContent>
                         <DialogContentText id="alert-dialog-description">
                           <Payment/>
