@@ -47,38 +47,38 @@ const Payment = ({ className, ...rest }) => {
       {/* <Typography variant="h4" align='center'>
             Choose a Bundle
       </Typography> */}
-      <Box /*mt={3}*/>
+      <Box /*mt={3}*/ style={{boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",}}>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
           <CardHeader
-            subheader="Choose your preferred payment method"
-            title="Payment Methods"
+            // subheader="Choose your preferred payment method"
+            title="Payment Details"
           />
           <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
             <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-              <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
-                <Grid
+              <Grid container spacing={2} style={{placeItems: 'center', textAlign: 'center'}}>
+                {/* <Grid
                   item
                   lg={4}
                   md={4}
                   xl={4}
                   xs={12}
                 >
-                </Grid>
+                </Grid> */}
                 <Grid
                   item
-                  lg={4}
-                  md={4}
-                  xl={4}
+                  lg={12}
+                  md={12}
+                  xl={12}
                   xs={12}
                 >
-                  <FormControl variant="outlined" className={classes.formControl} style={{justifyContent: 'center', placeItems: 'center'}}>
-                    <InputLabel>Pay Through</InputLabel>
+                  <FormControl variant="outlined" fullWidth className={classes.formControl} style={{justifyContent: 'center', placeItems: 'center'}}>
+                    <InputLabel>Payment Method</InputLabel>
                     <Select
                       fullWidth
                       native
   
-                      label="Pay Through"
+                      label="Payment Method"
                       inputProps={{
                         name: 'payment-method',
                         id: 'payment-method',
@@ -93,14 +93,14 @@ const Payment = ({ className, ...rest }) => {
                     </Select>
                   </FormControl>
                   </Grid>
-                  <Grid
+                  {/* <Grid
                     item
                     lg={4}
                     md={4}
                     xl={4}
                     xs={12}
                   >
-                  </Grid>
+                  </Grid> */}
                   <Grid
                     item
                     lg={12}
@@ -119,7 +119,7 @@ const Payment = ({ className, ...rest }) => {
                   >
                     <TextField
                     
-                      label="Credit Card Number"
+                      label="Credit Card No."
                       name="creditcardno"
                       variant="outlined"
                       // helperText="(e.g. Algebra, Trigonometry, Vocalubary)"

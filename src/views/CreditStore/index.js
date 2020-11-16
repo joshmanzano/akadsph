@@ -22,6 +22,10 @@ import Availability from './Availability';
 import SpecialRequests from './SpecialRequests';
 import Payment from './Payment';
 import Breakdown from './Breakdown';
+import Validity from './Validity';
+import PromoCode from './PromoCode';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,16 +51,29 @@ const useStyles = makeStyles((theme) => ({
     //   backgroundColor: theme.palette.primary,
     // }
   },
+  payButton: {
+    width: "80%",
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginTop: "5%",
+    marginBottom: "5%",
+    // paddingTop: "7%",
+    // paddingBottom: "7%",
+  },
 }));
 
 
 
 
-const CustomerListView = () => {
+const CreditStore = () => {
   const classes = useStyles();
   const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const themebp = useTheme();
+  const fullScreen = useMediaQuery(themebp.breakpoints.down('sm'));
+  
+
 
   const handleChangeNext = (event) => {
     setDetailsDone(!detailsDone);
@@ -70,20 +87,21 @@ const CustomerListView = () => {
     const handleClose = () => {
       setOpen(false);
     };
+  
 
   return (
     <Page
       className={classes.root}
-      title="Find A Tutor - AKADSPH" 
+      title="Store" 
     >
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
         <Box mb={4}>
           <Typography variant="h1" align='center'>
-            Find A Tutor
+            Buy Hours
           </Typography>
         </Box>
-        {!detailsDone ? 
+        {/* {!detailsDone ?  */}
         <React.Fragment>
           <Grid
             container
@@ -96,7 +114,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              {/* <Bundle/> */}
+              <Bundle/>
             </Grid>
             <Grid
               item
@@ -105,7 +123,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              <ChildDetails/>
+              <Validity/>
             </Grid>
             <Grid
               item
@@ -114,7 +132,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              <Availability/>
+              <PromoCode/>
             </Grid>
             <Grid
               item
@@ -123,7 +141,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              <SpecialRequests/>
+              {/* <Payment/> */}
             </Grid>
             <Grid
               item
@@ -135,16 +153,64 @@ const CustomerListView = () => {
               <Button className={classes.nextButton}  
                     color="primary"
                     variant="contained"
-                    onClick={handleChangeNext}
+                    onClick={handleClickOpen}
                     >
-                    Next
+                    Proceed to Checkout
               </Button>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    fullScreen={fullScreen}
+                    >
+                      <DialogTitle id="alert-dialog-title">{"Checkout"}</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          <Payment/>
+                          <br/>
+                          <Breakdown/>
+                        </DialogContentText>
+                      </DialogContent>
+                      <Button onClick={handleClose} color="primary" variant="contained" className={classes.payButton}>
+                          Pay Now
+                        </Button>
+                      {/* <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                          Cancel
+                        </Button>
+                        <Button onClick={handleClose} color="primary" autoFocus>
+                          Done
+                        </Button>
+                      </DialogActions> */}
+                  </Dialog>
+                  <Dialog
+                    // open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          Payment was successful. You will be notified once a tutor accepts your request.
+                        </DialogContentText>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                          Cancel
+                        </Button>
+                        <Button onClick={handleClose} color="primary" autoFocus>
+                          Done
+                        </Button>
+                      </DialogActions>
+                  </Dialog>
             </Grid>
           </Grid>
         </React.Fragment>
-        : 
+        {/* :  */}
         
-        <React.Fragment>
+        {/* <React.Fragment>
           <Grid container spacing={2}>
             <Grid item 
                 xs={12}
@@ -153,9 +219,9 @@ const CustomerListView = () => {
             </Grid>
             <Grid item 
               xs={12}
-            >
+            > */}
               {/* <Payment/> */}
-            </Grid>
+            {/* </Grid>
             <Grid item xs={12}>
               <Grid container spacing={0}>
                 <Grid
@@ -181,36 +247,6 @@ const CustomerListView = () => {
                     Back
                   </Button>
                   
-                  {/* <Box component='span' m={2}>
-                    <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleClickOpen}
-                    >
-                    Submit
-                  </Button>
-                  <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
-                    <DialogTitle id="alert-dialog-title">{"Transaction Complete!"}</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText id="alert-dialog-description">
-                        Please wait for a tutor to accept your request. You will receive a notification once it has been accepted. Thank you!
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Cancel
-                      </Button>
-                      <Button onClick={handleClose} color="primary" autoFocus>
-                        Done
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  </Box> */}
                 </Grid> 
                 <Grid
                   item
@@ -254,10 +290,9 @@ const CustomerListView = () => {
               </Grid>
             </Grid>
           
-            
           </Grid>
-        </React.Fragment>
-        }
+        </React.Fragment> */}
+        {/* } */}
         {/* <Box mt={3}>
           <Results customers={customers} />
         </Box> */}
@@ -266,4 +301,4 @@ const CustomerListView = () => {
   );
 };
 
-export default CustomerListView;
+export default CreditStore;
