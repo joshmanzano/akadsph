@@ -16,7 +16,7 @@ import Login from 'src/components/login';
 import SignUp from 'src/components/signup.jsx';
 import axios from 'axios';
 import TutorApp from 'src/views/TutorApp';
-import {api, verify_token, get_api, post_api} from './Api';
+import {api, get_user, verify_token, get_api, post_api} from './Api';
 import CreditStore from 'src/views/CreditStore';
 
 class App extends Component {
@@ -73,6 +73,7 @@ class App extends Component {
       first_name: raw_data['firstName'],
       last_name: raw_data['lastName'],
       email: raw_data['email'],
+      phone: raw_data['phone'],
     }
     post_api('register-parent', data, (res) => {
       console.log(res)
@@ -81,13 +82,21 @@ class App extends Component {
     })
   }
 
-  getUserData = () => {
+  getParentData = () => {
+
+    get_user((res) => {
+      console.log(res)
+    })
+
     const data = {
       'accountview': {
         'picture': 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c-rg-br100/photo.jpg',
         'first_name': 'Joshua',
         'last_name': 'Manzano',
         'email': 'Manzano',
+        'phone': '+639178949025',
+        'children': [],
+        'favtutors': [],
       },
       'dashboardview': {
         'upcoming':[],
@@ -95,10 +104,26 @@ class App extends Component {
         'history': [],
         'transaction': []
       },
+      'findtutorview': {
+        'tutees':[],
+        'favtutors':[],
+        'levels':[],
+        'subjects':[],
+        'lengths':[],
+      },
+      'settingsview': {
+        'selected':[],
+      },
+      'chatview': {
+        'chatlist':[],
+      },
     }
     return data;
   }
 
+  create_paymentintent = (amount) => {
+
+  }
 
   LandingView = () => {
     return (
@@ -145,7 +170,7 @@ class App extends Component {
         // Parent Logged In
         <Switch>
           <Route path='/'> 
-            <DashboardLayout getUserData={this.getUserData}/>
+            <DashboardLayout getUserData={this.getParentData}/>
           </Route>
         </Switch>
         }

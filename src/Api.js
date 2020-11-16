@@ -1,6 +1,9 @@
 import axios from 'axios';
+import jwt from 'jwt-decode';
 
-const api_url = 'https://akadsph-staging.herokuapp.com' /*'http://127.0.0.1:8000'*/
+const api_url = 'https://akadsph-staging.herokuapp.com'
+// const api_url = 'http://127.0.0.1:8000'
+const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 axios.defaults.withCredentials = true;
 
 const token = localStorage.getItem('token')
@@ -85,7 +88,27 @@ export const post_api = (url, raw_data, _callback) => {
   
 }
 
+export const get_user = (_callback) => {
+  const data = jwt(localStorage.getItem('session_token'))
+  _callback(data)
+}
+
 export const api = (url, method, raw_data, _callback) => {
   verify_token()
+
+}
+
+export const zoom = () => {
+
+}
+
+export const paymongo = () => {
+  post_api('paymongo',{amount: 500}, (res) => {
+    console.log(res)
+  })
+
+}
+
+export const brankas = () => {
 
 }

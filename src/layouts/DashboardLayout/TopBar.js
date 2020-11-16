@@ -103,8 +103,11 @@ const TopBar = ({
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden xsDown>
+        {/* <Box mx={2}> */}
+
         <Container>
-          <Grid container maxWidth='xs'>
+
+          <Grid container direction="row" justify="center" alignItems="center">
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/">
                 <DashboardIcon/>
@@ -131,9 +134,12 @@ const TopBar = ({
               </IconButton>
             </Grid>
           </Grid>
+
         </Container>
+
+        {/* </Box> */}
         </Hidden>
-        {/* <Box flexGrow={1} /> */}
+        <Box flexGrow={1} />
         <IconButton color="inherit" href="#/messages">
           <Badge
             badgeContent={3}

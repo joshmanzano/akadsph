@@ -78,7 +78,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}findtutor`}>
                 <Container>
                 <Fragment>
-                  <FindTutorView/>
+                  <FindTutorView {...userData['findtutorview']}/>
                 </Fragment>
                 </Container>
               </Route>
@@ -92,13 +92,13 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}settings`}>
                 <Container>
                 <Fragment>
-                  <SettingsView/>
+                  <SettingsView {...userData['settingsview']}/>
                 </Fragment>
                 </Container>
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  <ChatView/>
+                  <ChatView {...userData['chatview']}/>
                 </Fragment>
               </Route>
             </Switch>

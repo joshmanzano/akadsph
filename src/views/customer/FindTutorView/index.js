@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const CustomerListView = () => {
+const CustomerListView = (props) => {
   const classes = useStyles();
   const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
@@ -105,7 +105,7 @@ const CustomerListView = () => {
               xl={12}
               xs={12}
             >
-              <ChildDetails/>
+              <ChildDetails props={props}/>
             </Grid>
             <Grid
               item

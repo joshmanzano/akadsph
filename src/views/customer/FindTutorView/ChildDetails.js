@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ChildDetails = ({ className, ...rest }) => {
+const ChildDetails = ({ className, props, ...rest }) => {
   const classes = useStyles();
   const topicselections = ['Algebra', 'Calculus', 'Mga Tula', 'Vocabulary'];
 
@@ -339,9 +339,9 @@ const ChildDetails = ({ className, ...rest }) => {
                             id: 'child-name',
                           }}
                         >
-                          <option aria-label="None" value="" />
-                          <option value={10}>Nate Mercado</option>
-                          <option value={20}>Kate Mercado</option>
+                        {props.tutees.map((tutee) =>
+                          <option value={tutee.id}>{tutee.name}</option>
+                        )}
                         
                         </Select>
                       </FormControl>
@@ -365,8 +365,10 @@ const ChildDetails = ({ className, ...rest }) => {
                             id: 'grade-level',
                           }}
                         >
-                          <option aria-label="None" value="" />
-                          <option value={10}>Kinder</option>
+                          {props.levels.map((level) => 
+                            <option value={level.id}>level.name</option>
+                          )}
+                          {/* <option value={10}>Kinder</option>
                           <option value={10}>Prep</option>
                           <option value={10}>Grade 1</option>
                           <option value={20}>Grade 2</option>
@@ -378,7 +380,7 @@ const ChildDetails = ({ className, ...rest }) => {
                           <option value={10}>1st Year Highschool</option>
                           <option value={10}>2nd Year Highschool</option>
                           <option value={10}>3rd Year Highschool</option>
-                          <option value={10}>4th Year Highschool</option>
+                          <option value={10}>4th Year Highschool</option> */}
                         </Select>
                       </FormControl> 
                     </Grid>
@@ -411,11 +413,14 @@ const ChildDetails = ({ className, ...rest }) => {
                           }}
                         >
                           <option aria-label="None" value="" />
-                          <option value={10}>Math</option>
+                          {props.subjects.map((subject) => 
+                            <option value={subject.id}>subject.name</option>
+                          )}
+                          {/* <option value={10}>Math</option>
                           <option value={20}>Science</option>
                           <option value={10}>Filipino</option>
                           <option value={10}>English</option>
-                          <option value={20}>Chinese</option>
+                          <option value={20}>Chinese</option> */}
                         </Select>
                       </FormControl> 
                     </Grid>
@@ -487,10 +492,12 @@ const ChildDetails = ({ className, ...rest }) => {
                             id: 'session-length',
                           }}
                         >
-                          <option aria-label="None" value="" />
-                          <option value={10}>1 hour</option>
+                          {props.lengths.map((length) => 
+                            <option value={length.id}>length.name</option>
+                          )}
+                          {/* <option value={10}>1 hour</option>
                           <option value={20}>1 hour 30 minutes</option>
-                          <option value={10}>2 hours</option>
+                          <option value={10}>2 hours</option> */}
                         </Select>
                       </FormControl>
                     </Grid>
@@ -533,8 +540,11 @@ const ChildDetails = ({ className, ...rest }) => {
                           }}
                         >
                           <option aria-label="None" value="" />
-                          <option value={10}>Tolo Pena</option>
-                          <option value={20}>Charles Samoy</option>
+                          {props.favtutors.map((tutor) => 
+                            <option value={tutor.id}>tutor.name</option>
+                          )}
+                          {/* <option value={10}>Tolo Pena</option>
+                          <option value={20}>Charles Samoy</option> */}
                         </Select>
                       </FormControl>
                     </Grid>
