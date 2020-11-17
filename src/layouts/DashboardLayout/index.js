@@ -75,7 +75,7 @@ function DashboardLayout (props){
 
   return (
     <div className={classes.root}>
-      <TopBar credits={userData['navbar']['credits']}/>
+      <TopBar credits={props.credits}/>
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
@@ -105,7 +105,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}store`}>
                 <Container>
                 <Fragment>
-                  <CreditStoreView/>
+                  <CreditStoreView addCredit={props.addCredit}/>
                 </Fragment>
                 </Container>
               </Route>

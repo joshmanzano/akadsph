@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Bundle = ({ className, setAmount, setItem, ...rest }) => {
+const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
   const classes = useStyles();
 
   function handleAmountChange(event){
@@ -53,9 +53,15 @@ const Bundle = ({ className, setAmount, setItem, ...rest }) => {
       4750: '10 hours',
       9000: '20 hours'
     }
+    const hours = {
+      500: 1,
+      4750: 10,
+      9000: 20
+    }
     const amount = Number(event.target.value)
     setAmount(amount)
     setItem(items[amount])
+    setHours(hours[amount])
   }
 
   return (

@@ -83,6 +83,14 @@ class App extends Component {
     })
   }
 
+  addCredit = (credits) => {
+    console.log('adding credits')
+    console.log(credits)
+    this.setState({
+      credits: this.state.credits + credits
+    })
+  }
+
   getParentData = (_callback) => {
 
     get_user((res) => {
@@ -92,40 +100,41 @@ class App extends Component {
       }
       post_api('all-parent-details', data, (res) => {
         const parent = res['parent']
-        const data = {
-          'navbar': {
-            'credits': parent['credits']
-          },
-          'accountview': {
-            'picture': '',
-            'first_name': parent['first_name'],
-            'last_name': parent['last_name'],
-            'email': parent['email'],
-            'phone': '',
-            'children': [],
-            'favtutors': [],
-          },
-          'dashboardview': {
-            'upcoming':[],
-            'pending': [],
-            'history': [],
-            'transaction': []
-          },
-          'findtutorview': {
-            'tutees':[],
-            'favtutors':[],
-            'levels':[],
-            'subjects':[],
-            'lengths':[],
-          },
-          'settingsview': {
-            'selected':[],
-          },
-          'chatview': {
-            'chatlist':[],
-          },
-        }
-        _callback(data)
+        this.setState({
+          credits: parent['credits']
+        }, () => {
+          const data = {
+            'accountview': {
+              'picture': '',
+              'first_name': parent['first_name'],
+              'last_name': parent['last_name'],
+              'email': parent['email'],
+              'phone': '',
+              'children': [],
+              'favtutors': [],
+            },
+            'dashboardview': {
+              'upcoming':[],
+              'pending': [],
+              'history': [],
+              'transaction': []
+            },
+            'findtutorview': {
+              'tutees':[],
+              'favtutors':[],
+              'levels':[],
+              'subjects':[],
+              'lengths':[],
+            },
+            'settingsview': {
+              'selected':[],
+            },
+            'chatview': {
+              'chatlist':[],
+            },
+          }
+          _callback(data)
+        })
       })
     })
 
@@ -176,7 +185,7 @@ class App extends Component {
         // Parent Logged In
         <Switch>
           <Route path='/'> 
-            <DashboardLayout getUserData={this.getParentData}/>
+            <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
           </Route>
         </Switch>
         }

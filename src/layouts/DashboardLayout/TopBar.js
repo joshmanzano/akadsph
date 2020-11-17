@@ -34,6 +34,8 @@ import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 const useStyles = makeStyles(() => ({
@@ -111,26 +113,51 @@ const TopBar = ({
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/">
                 <DashboardIcon/>
+                <Box mx={1}>
+                  <h5>
+                    Overview
+                  </h5>
+                </Box>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/findtutor">
                 <BookIcon/>
+                <Box mx={1}>
+                  <h5>
+                    Booking
+                  </h5>
+                </Box>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/store">
-                <StoreIcon/>
+                <ShoppingCartIcon/>
+                <Box mx={1}>
+                  <h5>
+                    Buy Hours
+                  </h5>
+                </Box>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/account">
-                <AccountBoxIcon/>
+                <AccountCircleIcon/>
+                <Box mx={1}>
+                  <h5>
+                    Profile
+                  </h5>
+                </Box>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/settings">
                 <SettingsIcon/>
+                <Box mx={1}>
+                  <h5>
+                    Settings
+                  </h5>
+                </Box>
               </IconButton>
             </Grid>
           </Grid>

@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function CreditStore(){
+function CreditStore(props){
   const classes = useStyles();
   const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
@@ -102,6 +102,7 @@ function CreditStore(){
   const [cardState, setCardState] = React.useState();
   const [amount, setAmount] = React.useState(0);
   const [item, setItem] = React.useState();
+  const [hours, setHours] = React.useState(0);
   const [discount, setDiscount] = React.useState(0);
   
   useEffect(() => {
@@ -110,6 +111,7 @@ function CreditStore(){
         setProcessing(false);
         if(res){
           setSuccess(true);
+          props.addCredit(hours);
         }else{
           setError(true);
         }
@@ -209,7 +211,7 @@ function CreditStore(){
               xl={12}
               xs={12}
             >
-              <Bundle setAmount={setAmount} setItem={setItem}/>
+              <Bundle setAmount={setAmount} setItem={setItem} setHours={setHours}/>
             </Grid>
             <Grid
               item
@@ -259,7 +261,7 @@ function CreditStore(){
         : 
         
         <React.Fragment>
-          <PayPage amount={amount} item={item} discount={discount} setCardState={setCardState}/>
+          <PayPage amount={amount} item={item} discount={discount} hours={hours} setCardState={setCardState}/>
           <Grid container spacing={0}>
             <Grid
               item

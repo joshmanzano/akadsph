@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Breakdown = ({ className, amount, item, discount, ...rest }) => {
+const Breakdown = ({ className, amount, item, discount, hours, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -145,7 +145,7 @@ const Breakdown = ({ className, amount, item, discount, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          {item}
+                          {hours}
                         </Typography>
                       </Grid>
                       <Grid item xs={12}></Grid>

@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PayPage = ({ className, setCardState, paynow, amount, item, discount, ...rest }) => {
+const PayPage = ({ className, setCardState, paynow, amount, item, discount, hours, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -82,7 +82,7 @@ const PayPage = ({ className, setCardState, paynow, amount, item, discount, ...r
             xl={4}
             xs={12}
           >
-            <Breakdown amount={amount} item={item} discount={discount}/>
+            <Breakdown amount={amount} item={item} discount={discount} hours={hours}/>
           </Grid>
           <Grid
             item
