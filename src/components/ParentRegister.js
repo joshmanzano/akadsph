@@ -12,6 +12,9 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import AccountDetails from './AccountDetails';
 import Grid from '@material-ui/core/Grid';
+import PromoCode from './PromoCode';
+import Box from '@material-ui/core/Box';
+import ChildDetails from './ChildDetails';
 
 function Copyright() {
   return (
@@ -41,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
     // marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
+    
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
     //   marginBottom: theme.spacing(6),
@@ -69,16 +73,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Account Details', 'Child Details', 'Profile Photo'];
+const steps = ['Account Details', 'Child Details', 'Promo Code'];
 
 function getStepContent(step, props) {
   switch (step) {
     case 0:
       return <AccountDetails  givenName={props.firstName} familyName={props.lastName} email={props.email} googleId={props.googleId}/>;
     case 1:
-      return <AccountDetails   givenName={props.firstName} familyName={props.lastName} email={props.email} googleId={props.googleId}/>;
+      return <ChildDetails/>;
     case 2:
-      return <AccountDetails   givenName={props.firstName} familyName={props.lastName} email={props.email} googleId={props.googleId}/>;
+      return <PromoCode/>;
     default:
       throw new Error('Unknown step');
   }
@@ -91,6 +95,7 @@ export default function ParentRegister(props) {
   
 
   const handleNext = () => {
+    console.log(activeStep);
     setActiveStep(activeStep + 1);
   };
 
