@@ -45,20 +45,13 @@ const useStyles = makeStyles((theme) => ({
    
   },
   backButton: {
-    // backgroundColor: "white",
-    // color: theme.palette.primary,
-    // textColor: theme.palette.primary,
-    // border: "10px solid theme.palette.primary",
-    // borderColor: theme.palette.primary,
-    // // marginRight: theme.spacing(1)
-    // "&:hover": {
-    //   backgroundColor: theme.palette.primary,
-    // }
+    marginTop: "5%",
+    marginBottom: "5%",
   },
   payButton: {
-    width: "80%",
-    marginLeft: "10%",
-    marginRight: "10%",
+    width: "40%",
+    // marginLeft: "10%",
+    // marginRight: "10%",
     marginTop: "5%",
     marginBottom: "5%",
     // paddingTop: "7%",
@@ -192,54 +185,7 @@ const CreditStore = () => {
                     >
                     Proceed to Checkout
               </Button>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    fullScreen={fullScreen}
-                    >
-                      <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Checkout"}</DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          <Payment setCardState={setCardState}/>
-                          <br/>
-                          <Breakdown/>
-                        </DialogContentText>
-                      </DialogContent>
-                      <Button onClick={handleClose} color="primary" variant="contained" className={classes.payButton}>
-                          Pay Now
-                        </Button>
-                      {/* <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                          Cancel
-                        </Button>
-                        <Button onClick={handleClose} color="primary" autoFocus>
-                          Done
-                        </Button>
-                      </DialogActions> */}
-                  </Dialog>
-                  <Dialog
-                    // open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    >
-                      <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          Payment was successful. You will be notified once a tutor accepts your request.
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                          Cancel
-                        </Button>
-                        <Button onClick={handleClose} color="primary" autoFocus>
-                          Done
-                        </Button>
-                      </DialogActions>
-                  </Dialog>
+                
             </Grid>
           </Grid>
         </React.Fragment>
@@ -247,91 +193,75 @@ const CreditStore = () => {
         
         <React.Fragment>
           <PayPage/>
-          {/* <Grid container spacing={2}>
-            <Grid item 
-                xs={12}
-            >
-              <Breakdown/>
-            </Grid>
-            <Grid item 
-              xs={12}
-            > */}
-              {/* <Payment/> */}
-            {/* </Grid>
-            <Grid item xs={12}>
-              <Grid container spacing={0}>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={0}
-                  xs={0}
-                  ></Grid>
-                <Grid item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  >
+          <Grid container spacing={0}>
+            <Grid
+              item
+              lg={1}
+              md={1}
+              xl={0}
+              xs={0}
+              ></Grid>
+            <Grid item
+              lg={5}
+              md={5}
+              xl={5}
+              xs={6}
+              >
+              
+              <Button className={classes.backButton}  
+                color="primary"
+                onClick={handleChangeNext}
+                variant="outlined"
+                >
+                Back
+              </Button>
+              
+            </Grid> 
+            <Grid
+              item
+              lg={5}
+              md={5}
+              xl={5}
+              xs={6}
+              align='right'
+              >
+              <Button className={classes.payButton}  
+                  color="primary"
+                  variant="contained"
                   
-                  <Button className={classes.backButton}  
-                    color="primary"
-                    
-                    onClick={handleChangeNext}
-                    variant="outlined"
-                    >
-                    Back
-                  </Button>
-                  
-                </Grid> 
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
                   align='right'
+                  onClick={handleClickOpen}
                   >
-                  <Button className={classes.payButton}  
-                      color="primary"
-                      variant="contained"
-                      
-                      align='right'
-                      onClick={handleClickOpen}
-                      >
-                      Pay Now
+                  Pay Now
+                </Button>
+                <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      Payment was successful. You will be notified once a tutor accepts your request.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                      Cancel
                     </Button>
-                    <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    >
-                      <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          Payment was successful. You will be notified once a tutor accepts your request.
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                          Cancel
-                        </Button>
-                        <Button onClick={handleClose} color="primary" autoFocus>
-                          Done
-                        </Button>
-                      </DialogActions>
-                  </Dialog>
-                </Grid>
-              </Grid>
+                    <Button onClick={handleClose} color="primary" autoFocus>
+                      Done
+                    </Button>
+                  </DialogActions>
+              </Dialog>
             </Grid>
+          </Grid>
+        
           
-          </Grid> */}
         </React.Fragment>
         }
-        {/* <Box mt={3}>
-          <Results customers={customers} />
-        </Box> */}
+  
       </Container>
     </Page>
   );
