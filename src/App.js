@@ -33,7 +33,7 @@ class App extends Component {
     if(this.state.session != null){
       verify_token((res) => {
         if(res['verified']){
-          this.setState({type: res['type']})
+          this.setState({id:res['id'], type: res['type']})
         }else{
           localStorage.clear()
           window.location.replace('/')
@@ -82,65 +82,50 @@ class App extends Component {
     })
   }
 
-  getParentData = () => {
+  getParentData = (_callback) => {
 
     get_user((res) => {
-      console.log(res)
-    })
-
-    const data = {
-      'accountview': {
-        'picture': 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c-rg-br100/photo.jpg',
-        'first_name': 'Joshua',
-        'last_name': 'Manzano',
-        'email': 'Manzano',
-        'phone': '+639178949025',
-        'children': [],
-        'favtutors': [],
-      },
-      'dashboardview': {
-        'upcoming':[],
-        'pending': [],
-        'history': [],
-        'transaction': []
-      },
-      'findtutorview': {
-        'tutees':[],
-        'favtutors':[],
-        'levels':[],
-        'subjects':[],
-        'lengths':[],
-      },
-      'settingsview': {
-        'selected':[],
-      },
-      'chatview': {
-        'chatlist':[],
-      },
-    }
-    return data;
-  }
-
-  create_paymentintent = (amount) => {
-
-  }
-
-  create_paymentmethod = (card_number, exp_month, exp_year, cvc) => {
-    const url = "https://api.paymongo.com/v1/payment_methods"
-
-    const payload = {"data": {"attributes": {
-      "details": {
-          "card_number": card_number,
-          "exp_month": exp_month,
-          "exp_year": exp_year,
-          "cvc": cvc
-      },
-      "type": "card"
-    }}}
-
-    axios.post(url, payload)
-    .then(res => {
-      console.log(res)
+      const id = res['id']
+      const data = {
+        'parent_id': id
+      }
+      post_api('all-parent-details', data, (res) => {
+        const parent = res['parent']
+        const data = {
+          'navbar': {
+            'credits': parent['credits']
+          },
+          'accountview': {
+            'picture': '',
+            'first_name': parent['first_name'],
+            'last_name': parent['last_name'],
+            'email': parent['email'],
+            'phone': '',
+            'children': [],
+            'favtutors': [],
+          },
+          'dashboardview': {
+            'upcoming':[],
+            'pending': [],
+            'history': [],
+            'transaction': []
+          },
+          'findtutorview': {
+            'tutees':[],
+            'favtutors':[],
+            'levels':[],
+            'subjects':[],
+            'lengths':[],
+          },
+          'settingsview': {
+            'selected':[],
+          },
+          'chatview': {
+            'chatlist':[],
+          },
+        }
+        _callback(data)
+      })
     })
 
   }

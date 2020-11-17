@@ -45,7 +45,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const TopBar = ({
-  className,
+  className, credits,
   onMobileNavOpen,
   ...rest
 }) => {
@@ -140,6 +140,12 @@ const TopBar = ({
         {/* </Box> */}
         </Hidden>
         <Box flexGrow={1} />
+
+        <Hidden xsDown>
+          <Box mx={2}>
+            Hours: {credits}
+          </Box>
+        </Hidden>
         <IconButton color="inherit" href="#/messages">
           <Badge
             badgeContent={3}

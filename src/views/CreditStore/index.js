@@ -31,6 +31,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
+import {checkout} from 'src/Api';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -105,6 +107,7 @@ const CreditStore = () => {
   
     const handleClose = () => {
       console.log(cardState)
+      checkout(500, cardState['number'], cardState['expiry'], cardState['cvc']);
       setOpen(false);
     };
 

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import jwt from 'jwt-decode';
 
-const api_url = 'https://akadsph-staging.herokuapp.com'
+// const api_url = 'https://akadsph-staging.herokuapp.com'
+const api_url = 'https://akadsph-backend.herokuapp.com'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const token = localStorage.getItem('token')
 if(token == null){
@@ -98,17 +99,94 @@ export const api = (url, method, raw_data, _callback) => {
 
 }
 
-export const zoom = () => {
-
+export const checkout = (amount, card_number, exp_date, cvc) => {
+  create_paymentintent(amount, (payment_intent) => {
+    const exp_month = exp_date.split('/')[0] 
+    const exp_year = exp_date.split('/')[1] 
+    create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
+      console.log(payment_method)
+      const payment_method_id = payment_method['id']
+      attach_payment(payment_intent, payment_method_id);
+    });
+  });
 }
 
-export const paymongo = () => {
-  post_api('paymongo',{amount: 500}, (res) => {
-    console.log(res)
+export const create_paymentintent = (amount, _callback) => {
+  const data = {
+    'amount':amount
+  }
+  post_api('paymongo', data, (res) => {
+    _callback(res)
   })
+}
+
+export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _callback) => {
+  var axios = require('axios');
+  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":"4343434343434345","exp_month":7,"exp_year":2025,"cvc":"545"},"type":"card"}}});
+  
+  var config = {
+    method: 'post',
+    url: 'https://api.paymongo.com/v1/payment_methods',
+    headers: { 
+      'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6', 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+  
+  axios(config)
+  .then(function (response) {
+    _callback(response.data)
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 }
 
-export const brankas = () => {
+export const attach_payment = (payment_intent, payment_method) => {
+  var paymentMethodId = payment_method;
 
+  var clientKey = payment_intent;
+
+  // Get the payment intent id from the client key
+  var paymentIntentId = payment_intent.split('_client')[0];
+  
+  axios.post(
+    'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId + '/attach/',
+    {
+      data: {
+        attributes: {
+          client_key: clientKey,
+          payment_method: paymentMethodId,
+        }
+      }
+    },
+    {
+      headers: { 
+        'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
+      },
+      }
+  ).then(function(response) {
+    console.log(response)
+    var paymentIntent = response.data.data;
+    var paymentIntentStatus = paymentIntent.attributes.status;
+    
+    if (paymentIntentStatus === 'awaiting_next_action') {
+      console.log('wait')
+      // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
+    } else if (paymentIntentStatus === 'succeeded') {
+      console.log('success')
+      // You already received your customer's payment. You can show a success message from this condition.
+    } else if(paymentIntentStatus === 'awaiting_payment_method') {
+      console.log('await')
+      // The PaymentIntent encountered a processing error. You can refer to paymentIntent.attributes.last_payment_error to check the error and render the appropriate error message.
+    }  else if (paymentIntentStatus === 'processing'){
+      console.log('processing')
+      // You need to requery the PaymentIntent after a second or two. This is a transitory status and should resolve to `succeeded` or `awaiting_payment_method` quickly.
+    }
+  }).catch(err => {
+    console.log(err)
+    console.log(err.response)
+  })
 }

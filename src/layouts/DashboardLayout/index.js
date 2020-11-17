@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import {
   HashRouter as Router,
@@ -6,7 +6,7 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
 } from "react-router-dom";
 import NavBar from './NavBar';
 import TopBar from './TopBar';
@@ -56,11 +56,21 @@ const useStyles = makeStyles((theme) => ({
 function DashboardLayout (props){
   let classes = useStyles();
   let match = useRouteMatch();
-  const userData = props.getUserData();
+  let [loaded, setLoaded] = useState(false);
+  let [userData, setUserData] = useState();
+
+  if(!loaded){
+    props.getUserData((userData) => {
+      setUserData(userData);
+      setLoaded(true);
+    })
+  }
+
+  if(loaded){
 
   return (
     <div className={classes.root}>
-      <TopBar/>
+      <TopBar credits={userData['navbar']['credits']}/>
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
@@ -115,6 +125,15 @@ function DashboardLayout (props){
       </div>
     </div>
   );
+
+  }else{
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  }
+
 }
 
 export default DashboardLayout;
