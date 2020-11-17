@@ -105,18 +105,23 @@ export const checkout = (amount, card_number, exp_date, cvc) => {
     const exp_year = exp_date.split('/')[1] 
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
       console.log(payment_method)
-      const payment_method_id = payment_method['id']
+      const payment_method_id = payment_method['data']['id']
       attach_payment(payment_intent, payment_method_id);
     });
   });
 }
 
 export const create_paymentintent = (amount, _callback) => {
-  const data = {
-    'amount':amount
-  }
-  post_api('paymongo', data, (res) => {
-    _callback(res)
+  get_user((res) => {
+    const id = res['id']
+    const data = {
+      'parent_id':id,
+      'amount':amount
+    }
+    post_api('paymongo', data, (res) => {
+      _callback(res)
+    })
+
   })
 }
 
@@ -151,6 +156,10 @@ export const attach_payment = (payment_intent, payment_method) => {
 
   // Get the payment intent id from the client key
   var paymentIntentId = payment_intent.split('_client')[0];
+
+  console.log(paymentMethodId)
+  console.log(clientKey)
+  console.log(paymentIntentId)
   
   axios.post(
     'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId + '/attach/',
@@ -166,7 +175,7 @@ export const attach_payment = (payment_intent, payment_method) => {
       headers: { 
         'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
       },
-      }
+    }
   ).then(function(response) {
     console.log(response)
     var paymentIntent = response.data.data;

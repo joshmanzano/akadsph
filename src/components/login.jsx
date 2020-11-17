@@ -62,8 +62,8 @@ export class LoginView extends Component {
         <CssBaseline />
         <div>
           <Box mt={6}>
-            <Container>
-              <img src='./img/loginIcon.png'/>
+            <Container align="center">
+              <img height="100" src='./img/logo.png'/>
             </Container>
           </Box>
           <Box mt={8}>

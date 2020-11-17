@@ -21,25 +21,19 @@ export class NotFoundView extends Component {
           justifyContent="center"
         >
           <Container maxWidth="md">
-            <Typography
-              align="center"
-              color="textPrimary"
-              variant="h1"
-            >
+            <h2 align="center">
               404: The page you are looking for isn’t here
-            </Typography>
-            <Typography
-              align="center"
-              color="textPrimary"
-              variant="h3"
-            >
+            </h2>
+            <Box mb={4}>
+            <h3 align="center">
               You either tried some shady route or you came here by mistake.
               Whichever it is, try using the navigation
-            </Typography>
+            </h3>
+            </Box>
             <Box textAlign="center">
-              <img
+              <img width="400"
                 alt="Under development"
-                src="/static/images/undraw_page_not_found_su7k.svg"
+                src="/static/images/oli-confused.png"
               />
             </Box>
           </Container>

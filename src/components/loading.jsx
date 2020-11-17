@@ -1,16 +1,30 @@
 import React, { Component } from "react";
 import {
   Container,
+  Box,
 } from '@material-ui/core';
 
 class Loading extends Component {
   render() {
     return (
-        <Container>
-            <h1>
-                Loading...
-            </h1>
-        </Container>
+        <Box
+          display="flex"
+          flexDirection="column"
+          height="100%"
+          justifyContent="center"
+        >
+          <Container maxWidth="md">
+            <Box mb={4} textAlign="center">
+              <img width="400"
+                alt="Under development"
+                src="/img/loginIcon.png"
+              />
+            </Box>
+            {/* <h2 align="center">
+              Loading...
+            </h2> */}
+          </Container>
+        </Box>
     );
   }
 }

@@ -25,6 +25,7 @@ import ChatView from 'src/views/chat';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
+import Loading from 'src/components/loading';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -128,9 +129,7 @@ function DashboardLayout (props){
 
   }else{
     return (
-      <div>
-        Loading...
-      </div>
+      <Loading/>
     )
   }
 

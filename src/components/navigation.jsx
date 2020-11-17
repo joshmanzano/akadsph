@@ -23,7 +23,7 @@ export class Navigation extends Component {
               <img src='../img/logo.png'></img>
             </a>{" "} */}
             <a href="/#/#page-top">
-              <img src='../img/logo.png'></img>
+              <img height="50" src='../img/logo.png'></img>
             </a>{" "}
           </div>
 
