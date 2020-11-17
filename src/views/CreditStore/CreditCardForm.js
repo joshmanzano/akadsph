@@ -1,7 +1,22 @@
 import React from 'react';
 import Cards from 'react-credit-cards';
-import {Container,
-} from '@material-ui/core'
+
+import 'react-credit-cards/es/styles-compiled.css';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  InputAdornment,
+  SvgIcon,
+  makeStyles,
+  Typography,
+  Grid,
+  Container,
+  CardHeader,
+  Divider,
+} from '@material-ui/core';
 import 'react-credit-cards/es/styles-compiled.css';
 
 export default class PaymentForm extends React.Component {
@@ -35,37 +50,54 @@ export default class PaymentForm extends React.Component {
           name={this.state.name}
           number={this.state.number}
         />
+        <br/>
         <Container>
+        
           <form>
-            <input
-              type="tel"
-              name="number"
-              placeholder="Card Number"
-              onChange={this.handleInputChange}
-              onFocus={this.handleInputFocus}
-            />
-            <input
-              type="tel"
-              name="expiry"
-              placeholder="Expiry Date"
-              onChange={this.handleInputChange}
-              onFocus={this.handleInputFocus}
-            />
-            <input
-              type="tel"
-              name="name"
-              placeholder="Card Name"
-              onChange={this.handleInputChange}
-              onFocus={this.handleInputFocus}
-            />
-            <input
-              type="tel"
-              name="cvc"
-              placeholder="CVC"
-              onChange={this.handleInputChange}
-              onFocus={this.handleInputFocus}
-            />
+          <Grid container spacing={2}>
+              <Grid item xs={12}>
+              <TextField variant="outlined" fullWidth
+                type="tel"
+                name="number"
+                placeholder="Card Number"
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+              />
+              </Grid>
+              <Grid item xs={12}>
+              <TextField variant="outlined" fullWidth
+                type="tel"
+                name="name"
+                placeholder="Card Holder's Name"
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+              />
+              </Grid>
+              <Grid item xs={6}>
+              <TextField variant="outlined" fullWidth
+                type="tel"
+                name="expiry"
+                placeholder="Expiry Date"
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+              />
+              </Grid>
+              
+              <Grid item xs={6}>
+              <TextField variant="outlined" fullWidth
+                type="tel"
+                name="cvc"
+                placeholder="CVC"
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+              />
+              </Grid>
+            
+            
+            
+            </Grid>
           </form>
+          
         </Container>
       </div>
     );

@@ -104,6 +104,16 @@ const Breakdown = ({ className, ...rest }) => {
                         -P750.00
                       </Typography>
                     </Grid>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}></Grid>
+                    <Grid item lg={12} md={0} xl={0} xs={0}></Grid>
+                    <Grid item lg={12} md={0} xl={0} xs={0}></Grid>
+                    <Grid item lg={12} md={0} xl={0} xs={0}></Grid>
+                    <Grid item lg={12} md={0} xl={0} xs={0}></Grid>
                   </Grid>
                   </Box>
                 </CardContent>
@@ -121,6 +131,24 @@ const Breakdown = ({ className, ...rest }) => {
                           P4,000.00
                         </Typography>
                       </Grid>
+                    </Grid>
+                  </Box>
+                </CardContent>
+                <Divider />
+                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
+                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
+                    <Grid container spacing={2}>
+                      <Grid item xs={6}>
+                        <Typography variant="h5">
+                          Total Credit Hours
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography variant="h5" align="right">
+                          10
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}></Grid>
                     </Grid>
                   </Box>
                 </CardContent>

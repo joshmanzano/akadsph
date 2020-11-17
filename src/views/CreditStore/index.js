@@ -13,13 +13,9 @@ import {
   DialogTitle,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Results from './Results';
-import Toolbar from './Toolbar';
+
 import data from './data';
 import Bundle from './Bundle';
-import ChildDetails from './ChildDetails';
-import Availability from './Availability';
-import SpecialRequests from './SpecialRequests';
 import Payment from './Payment';
 import Breakdown from './Breakdown';
 import Validity from './Validity';
@@ -32,6 +28,8 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
 import {checkout} from 'src/Api';
+
+import PayPage from './PayPage';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -138,7 +136,7 @@ const CreditStore = () => {
             Buy Hours
           </Typography>
         </Box>
-        {/* {!detailsDone ?  */}
+        {!detailsDone ? 
         <React.Fragment>
           <Grid
             container
@@ -190,7 +188,7 @@ const CreditStore = () => {
               <Button className={classes.nextButton}  
                     color="primary"
                     variant="contained"
-                    onClick={handleClickOpen}
+                    onClick={handleChangeNext}
                     >
                     Proceed to Checkout
               </Button>
@@ -245,10 +243,11 @@ const CreditStore = () => {
             </Grid>
           </Grid>
         </React.Fragment>
-        {/* :  */}
+        : 
         
-        {/* <React.Fragment>
-          <Grid container spacing={2}>
+        <React.Fragment>
+          <PayPage/>
+          {/* <Grid container spacing={2}>
             <Grid item 
                 xs={12}
             >
@@ -327,9 +326,9 @@ const CreditStore = () => {
               </Grid>
             </Grid>
           
-          </Grid>
-        </React.Fragment> */}
-        {/* } */}
+          </Grid> */}
+        </React.Fragment>
+        }
         {/* <Box mt={3}>
           <Results customers={customers} />
         </Box> */}
