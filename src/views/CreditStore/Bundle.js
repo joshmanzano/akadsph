@@ -44,8 +44,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Bundle = ({ className, ...rest }) => {
+const Bundle = ({ className, setAmount, setItem, ...rest }) => {
   const classes = useStyles();
+
+  function handleAmountChange(event){
+    const items = {
+      500: '1 hour',
+      4750: '10 hours',
+      9000: '20 hours'
+    }
+    const amount = Number(event.target.value)
+    setAmount(amount)
+    setItem(items[amount])
+  }
 
   return (
     <div
@@ -80,10 +91,10 @@ const Bundle = ({ className, ...rest }) => {
                   style={{textAlign: 'center'}}
                 >
                   <FormControl component="fieldset" >
-                    <RadioGroup name="tutor-sex">
-                      <FormControlLabel value="1 hour P500" control={<Radio color="primary" />} label="1 hour for P500" />
-                      <FormControlLabel value="10 hours P4,750" control={<Radio color="primary" />} label="10 hours for P4,750" />
-                      <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours for P9,000" />
+                    <RadioGroup onChange={handleAmountChange} name="tutor-sex">
+                      <FormControlLabel value="500" control={<Radio color="primary" />} label="1 hour for P500" />
+                      <FormControlLabel value="4750" control={<Radio color="primary" />} label="10 hours for P4,750" />
+                      <FormControlLabel value="9000" control={<Radio color="primary" />} label="20 hours for P9,000" />
                     </RadioGroup>
                   </FormControl>
                 </Grid>
