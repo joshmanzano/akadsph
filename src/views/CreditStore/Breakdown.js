@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Breakdown = ({ className, ...rest }) => {
+const Breakdown = ({ className, amount, item, discount, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -81,7 +81,7 @@ const Breakdown = ({ className, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h6" align="right">
-                        10 hours for P4,750 bundle
+                        {item}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -101,7 +101,7 @@ const Breakdown = ({ className, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h6" align="right">
-                        -P750.00
+                        Php {discount}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}></Grid>
@@ -128,7 +128,7 @@ const Breakdown = ({ className, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          P4,000.00
+                          Php {amount}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -145,7 +145,7 @@ const Breakdown = ({ className, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          10
+                          {item}
                         </Typography>
                       </Grid>
                       <Grid item xs={12}></Grid>

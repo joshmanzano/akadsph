@@ -84,7 +84,7 @@ export const post_api = (url, raw_data, _callback) => {
     _callback(response.data)
   })
   .catch(function (error) {
-    console.log(error);
+    console.log(error.response);
   });
   
 }
@@ -99,14 +99,16 @@ export const api = (url, method, raw_data, _callback) => {
 
 }
 
-export const checkout = (amount, card_number, exp_date, cvc) => {
+export const checkout = (amount, card_number, exp_date, cvc, _callback) => {
   create_paymentintent(amount, (payment_intent) => {
     const exp_month = exp_date.split('/')[0] 
     const exp_year = exp_date.split('/')[1] 
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
       console.log(payment_method)
       const payment_method_id = payment_method['data']['id']
-      attach_payment(payment_intent, payment_method_id);
+      attach_payment(payment_intent, payment_method_id, (res) => {
+        _callback(res)
+      });
     });
   });
 }
@@ -149,7 +151,7 @@ export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _cal
 
 }
 
-export const attach_payment = (payment_intent, payment_method) => {
+export const attach_payment = (payment_intent, payment_method, _callback) => {
   var paymentMethodId = payment_method;
 
   var clientKey = payment_intent;
@@ -186,6 +188,18 @@ export const attach_payment = (payment_intent, payment_method) => {
       // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
     } else if (paymentIntentStatus === 'succeeded') {
       console.log('success')
+      get_user((res) => {
+        const id = res['id']
+        const data = {
+          'parent_id': id,
+          'client_key': clientKey,
+          'payment_intent': paymentIntentId
+        }
+        post_api('verify-paymongo', data, (res) => {
+          _callback(res)
+        })
+      })
+
       // You already received your customer's payment. You can show a success message from this condition.
     } else if(paymentIntentStatus === 'awaiting_payment_method') {
       console.log('await')
@@ -197,5 +211,6 @@ export const attach_payment = (payment_intent, payment_method) => {
   }).catch(err => {
     console.log(err)
     console.log(err.response)
+    _callback(false)
   })
 }

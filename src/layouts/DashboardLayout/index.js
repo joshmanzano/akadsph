@@ -6,6 +6,7 @@ import {
   Route,
   Link,
   useRouteMatch,
+  useLocation,
   useParams,
 } from "react-router-dom";
 import NavBar from './NavBar';
@@ -26,6 +27,8 @@ import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
+
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 function DashboardLayout (props){
   let classes = useStyles();
   let match = useRouteMatch();
+  let location = useLocation();
   let [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
 
@@ -79,7 +83,11 @@ function DashboardLayout (props){
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
-            <Switch>
+            <TransitionGroup>
+            
+            <CSSTransition key={location.key} in={true} timeout={{ enter: 300, exit: 300}} classNames={'fade'}>
+
+            <Switch location={location}>
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
@@ -121,6 +129,10 @@ function DashboardLayout (props){
                 </Fragment>
               </Route>
             </Switch>
+
+            </CSSTransition>
+
+            </TransitionGroup>
           </div>
         </div>
       </div>

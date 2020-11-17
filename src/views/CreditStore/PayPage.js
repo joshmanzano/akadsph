@@ -48,9 +48,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PayPage = ({ className, ...rest }) => {
+const PayPage = ({ className, setCardState, paynow, amount, item, discount, ...rest }) => {
   const classes = useStyles();
-  const [cardState, setCardState] = React.useState();
 
   return (
     <div
@@ -83,7 +82,7 @@ const PayPage = ({ className, ...rest }) => {
             xl={4}
             xs={12}
           >
-            <Breakdown/>
+            <Breakdown amount={amount} item={item} discount={discount}/>
           </Grid>
           <Grid
             item
@@ -106,7 +105,7 @@ const PayPage = ({ className, ...rest }) => {
             xl={8}
             xs={12}
           >
-            <Button color="primary" variant="contained" className={classes.payButton}>
+            <Button color="primary" variant="contained" onClick={paynow} className={classes.payButton}>
               Pay Now
             </Button>
           </Grid>

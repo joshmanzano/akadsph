@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Container,
   Box,
+  CircularProgress,
 } from '@material-ui/core';
 
 class Loading extends Component {
