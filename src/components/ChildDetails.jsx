@@ -14,8 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
-import ParentRegister from './ParentRegister';
-
+import AddIcon from '@material-ui/icons/Add';
 
 function Copyright() {
   return (
@@ -32,7 +31,7 @@ function Copyright() {
 
 const styles = (theme) => ({
   paper: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -48,9 +47,12 @@ const styles = (theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  addChild: {
+    textAlign: 'center',
+  },
 });
 
-class SignUp extends Component{
+class ChildDetails extends Component{
 
     constructor(props){
       super(props);
@@ -84,24 +86,7 @@ class SignUp extends Component{
         window.location.replace('/')
     }else{
   return (
-    <Container component="main">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Box mt={6}>
-            <Container align="center">
-              <img height="100" src='./img/logo.png'/>
-            </Container>
-        </Box>
-        <Container align="center">
-          <ParentRegister givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId}/>
-        </Container>
-        {/* <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <h2>
-          Sign up
-        </h2>
-        <form onSubmit={this.submitHandler} className={classes.form} noValidate>
+    <React.Fragment>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -130,54 +115,57 @@ class SignUp extends Component{
                 onChange={this.changeHandler}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                value={props.email}
-                autoComplete="email"
+                id="age"
+                label="Age"
+                name="age"
+                autoComplete="age"
+                onChange={this.changeHandler}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="grade-level"
+                label="Grade Level"
+                name="grade"
+                autoComplete="grade level"
                 onChange={this.changeHandler}
               />
             </Grid>
             <Grid item xs={12}>
-                <MuiPhoneNumber name="phone" fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>,
+              <TextField
+                  variant="outlined"
+                  fullWidth
+                  id="school"
+                  label="School"
+                  name="school"
+                  autoComplete="school"
+                  helperText="Optional"
+                  onChange={this.changeHandler}
+                />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
+              <Button
+                startIcon={<AddIcon/>}
+                variant="outlined"
+                color="primary"
+                className={classes.addChild}
+                >
+                Add Another Child
+              </Button>
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#/login" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form> */}
-      </div>
-      {/* <Box mt={5}>
-        <Copyright />
-      </Box> */}
-    </Container>
+      </React.Fragment>
   );
     }
     }
 }
 
-export default withStyles(styles)(SignUp);
+export default withStyles(styles)(ChildDetails);

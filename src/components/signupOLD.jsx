@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
-import ParentRegister from './ParentRegister';
 
 function Copyright() {
   return (
@@ -86,8 +85,7 @@ class SignUp extends Component{
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <ParentRegister givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId}/>
-        {/* <Avatar className={classes.avatar}>
+        <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <h2>
@@ -161,11 +159,11 @@ class SignUp extends Component{
               </Link>
             </Grid>
           </Grid>
-        </form> */}
+        </form>
       </div>
-      {/* <Box mt={5}>
+      <Box mt={5}>
         <Copyright />
-      </Box> */}
+      </Box>
     </Container>
   );
     }
