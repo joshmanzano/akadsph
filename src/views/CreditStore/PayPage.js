@@ -91,19 +91,19 @@ const PayPage = ({ className, setCardState, paynow, amount, item, discount, ...r
             xl={1}
             xs={0}
           ></Grid>
-          <Grid
+          {/* <Grid
             item
-            lg={2}
-            md={2}
-            xl={2}
+            lg={1}
+            md={1}
+            xl={1}
             xs={0}
           ></Grid>
           <Grid
             item
-            lg={8}
-            md={8}
-            xl={8}
-            xs={12}
+            lg={5}
+            md={5}
+            xl={5}
+            xs={5}
           >
             <Button color="primary" variant="contained" onClick={paynow} className={classes.payButton}>
               Pay Now
@@ -111,11 +111,11 @@ const PayPage = ({ className, setCardState, paynow, amount, item, discount, ...r
           </Grid>
           <Grid
             item
-            lg={2}
-            md={2}
-            xl={2}
+            lg={1}
+            md={1}
+            xl={1}
             xs={0}
-          ></Grid>
+          ></Grid> */}
         </Grid>
       </Box>
     </div>
