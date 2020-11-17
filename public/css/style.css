@@ -190,13 +190,19 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	display: table;
 	width: 100%;
 	padding: 0;
-	/* background: url(../img/intro-bg.png) center center no-repeat; */
 	background-color: #4655A5;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
 	-o-background-size: cover;
 }
+
+.introimage {
+	width: 100%;
+	background-image: url(../static/images/oli-white.png);
+	opacity: 0.2;
+}
+
 .intro .overlay {
 	/* background: rgba(0,0,0,0.2); */
 }

@@ -35,6 +35,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {checkout} from 'src/Api';
 
 import PayPage from './PayPage';
+import LoadingBack from 'src/components/loadingBack';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -168,29 +169,7 @@ function CreditStore(props){
           Transaction failed!
         </Alert>
       </Snackbar>
-      <Backdrop className={classes.backdrop} open={processing}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          height="100%"
-          justifyContent="center"
-        >
-          <Container maxWidth="md">
-            <Box mb={4} textAlign="center">
-              <img width="400"
-                alt="Loading..."
-                src="/img/backdrop-logo.png"
-              />
-            </Box>
-            <Box textAlign="center">
-              <CircularProgress color="inherit" />
-            </Box>
-            {/* <h2 align="center">
-              Loading...
-            </h2> */}
-          </Container>
-        </Box>
-      </Backdrop>
+      <LoadingBack processing={processing}/>
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
         <Box mb={4}>

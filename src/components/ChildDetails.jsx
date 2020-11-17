@@ -63,16 +63,19 @@ class ChildDetails extends Component{
         googleId: props.googleId,
         phone: '',
       }
+      props.setChild(this.state)
     }
 
     submitHandler = (event) => {
       event.preventDefault();
       this.props.register(this.state)
     }
+
     changeHandler = (event) => {
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val});
+      this.props.setChild(this.state)
     }
 
     phoneChangeHandler = (val) => {
@@ -82,9 +85,7 @@ class ChildDetails extends Component{
     render(){
     const props = this.props;
     const {classes} = this.props;
-    if(props.googleId == undefined){
-        window.location.replace('/')
-    }else{
+
   return (
     <React.Fragment>
           <Grid container spacing={2}>
@@ -164,7 +165,6 @@ class ChildDetails extends Component{
           </Grid>
       </React.Fragment>
   );
-    }
     }
 }
 

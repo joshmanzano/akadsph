@@ -76,6 +76,10 @@ class SignUp extends Component{
     phoneChangeHandler = (val) => {
       this.setState({phone: val});
     }
+    
+    changeState = (state) => {
+      this.setState(state);
+    }
 
     render(){
     const props = this.props;
@@ -93,7 +97,7 @@ class SignUp extends Component{
             </Container>
         </Box>
         <Container align="center">
-          <ParentRegister givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId}/>
+          <ParentRegister register={this.props.register} changeState={this.changeState} givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId}/>
         </Container>
         {/* <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

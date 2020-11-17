@@ -37,7 +37,7 @@ export class Header extends Component {
                   </Grid>
                 </div>
                 <div className="intro-text">
-                  <img src="../img/header.jpg"></img>
+                  <img style={{opacity: 0.2}} width="350" src="../static/images/oli-white.png"></img>
                 </div>
               </div>
             </div>

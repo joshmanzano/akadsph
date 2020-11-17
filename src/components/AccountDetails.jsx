@@ -59,6 +59,7 @@ class SignUp extends Component{
         googleId: props.googleId,
         phone: '',
       }
+      props.setAccount(this.state);
     }
 
     submitHandler = (event) => {
@@ -69,10 +70,12 @@ class SignUp extends Component{
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val});
+      this.props.setAccount(this.state);
     }
 
     phoneChangeHandler = (val) => {
       this.setState({phone: val});
+      this.props.setAccount(this.state);
     }
 
     render(){
@@ -93,6 +96,7 @@ class SignUp extends Component{
                 fullWidth
                 id="firstName"
                 defaultValue={props.givenName}
+                value={this.state.firstName}
                 label="First Name"
                 autoFocus
                 onChange={this.changeHandler}
@@ -107,6 +111,7 @@ class SignUp extends Component{
                 label="Last Name"
                 name="lastName"
                 defaultValue={props.familyName}
+                value={this.state.lastName}
                 autoComplete="lname"
                 onChange={this.changeHandler}
               />
@@ -125,7 +130,7 @@ class SignUp extends Component{
               />
             </Grid>
             <Grid item xs={12}>
-                <MuiPhoneNumber name="phone" fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>,
+                <MuiPhoneNumber name="phone" value={this.state.phone} fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>,
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel

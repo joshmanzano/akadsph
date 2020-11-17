@@ -42,8 +42,9 @@ class SignUp extends Component{
     constructor(props){
       super(props);
       this.state = {
-       
+        promo: ''
       }
+      props.setPromo(this.state)
     }
 
   
@@ -51,6 +52,7 @@ class SignUp extends Component{
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val});
+      this.props.setPromo(this.state)
     }
 
    
@@ -62,7 +64,7 @@ class SignUp extends Component{
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                name="Promo Code"
+                name="promo"
                 helperText="Optional"
                 variant="outlined"
                 fullWidth

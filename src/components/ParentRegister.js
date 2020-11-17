@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,6 +15,8 @@ import Grid from '@material-ui/core/Grid';
 import PromoCode from './PromoCode';
 import Box from '@material-ui/core/Box';
 import ChildDetails from './ChildDetails';
+
+import LoadingBack from 'src/components/loadingBack';
 
 function Copyright() {
   return (
@@ -73,29 +75,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Account Details', 'Child Details', 'Promo Code'];
 
-function getStepContent(step, props) {
-  switch (step) {
-    case 0:
-      return <AccountDetails  givenName={props.firstName} familyName={props.lastName} email={props.email} googleId={props.googleId}/>;
-    case 1:
-      return <ChildDetails/>;
-    case 2:
-      return <PromoCode/>;
-    default:
-      throw new Error('Unknown step');
-  }
-}
 
 export default function ParentRegister(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [accountDetails, setAccount] = React.useState();
+  const [childDetails, setChild] = React.useState();
+  const [promoDetails, setPromo] = React.useState();
  
-  
+  const steps = ['Account Details', 'Child Details', 'Promo Code'];
+
+  useEffect(() => {
+    if(activeStep === steps.length){
+      props.register(accountDetails)
+    }
+  },[activeStep])
+
+  function getStepContent(step, props) {
+    switch (step) {
+      case 0:
+        return <AccountDetails setAccount={setAccount} givenName={props.givenName} familyName={props.familyName} email={props.email} googleId={props.googleId}/>;
+      case 1:
+        return <ChildDetails setChild={setChild}/>;
+      case 2:
+        return <PromoCode setPromo={setPromo}/>;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
 
   const handleNext = () => {
     console.log(activeStep);
+    console.log(accountDetails)
+    console.log(childDetails)
+    console.log(promoDetails)
     setActiveStep(activeStep + 1);
   };
 
@@ -119,6 +133,7 @@ export default function ParentRegister(props) {
         </Toolbar>
       </AppBar> */}
       <main className={classes.layout}>
+        <LoadingBack processing={activeStep === steps.length}/>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
             Parent Account Registration
@@ -143,21 +158,45 @@ export default function ParentRegister(props) {
             ) : (
               <React.Fragment>
                 {getStepContent(activeStep, props)}
-                <div className={classes.buttons}>
+                <Box mx={4}>
+
+                <Grid container spacing={0}>
+                  <Grid item
+                  lg={1}
+                  md={1}
+                  xl={0}
+                  xs={0}
+                  ></Grid>
+                  <Grid item
+                  lg={5}
+                  md={5}
+                  xl={5}
+                  xs={6}
+                  >
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
                       Back
                     </Button>
                   )}
+                  </Grid>
+                  <Grid item
+                  lg={5}
+                  md={5}
+                  xl={5}
+                  xs={6}
+                  >
                   <Button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
-                    className={classes.button}
+                    // className={classes.button}
                   >
                     {activeStep === steps.length - 1 ? 'Sign Up' : 'Next'}
                   </Button>
-                </div>
+                  </Grid>
+                </Grid>
+
+                </Box>
               </React.Fragment>
             )}
           </React.Fragment>

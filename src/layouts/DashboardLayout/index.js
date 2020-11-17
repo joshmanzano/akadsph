@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState } from 'react';
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, Fade, makeStyles } from '@material-ui/core';
 import {
   HashRouter as Router,
   Switch,
@@ -27,6 +27,7 @@ import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
+import NoHourView from 'src/components/NoHourView';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -61,7 +62,7 @@ function DashboardLayout (props){
   let classes = useStyles();
   let match = useRouteMatch();
   let location = useLocation();
-  let [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
 
   if(!loaded){
@@ -71,9 +72,10 @@ function DashboardLayout (props){
     })
   }
 
-  if(loaded){
-
   return (
+    <div>
+
+    {loaded ? 
     <div className={classes.root}>
       <TopBar credits={props.credits}/>
       {/* <NavBar
@@ -98,7 +100,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}findtutor`}>
                 <Container>
                 <Fragment>
-                  <FindTutorView {...userData['findtutorview']}/>
+                  {props.credits == 0 ?
+                    <NoHourView/>
+                  :
+                    <FindTutorView {...userData['findtutorview']}/>
+                  }
                 </Fragment>
                 </Container>
               </Route>
@@ -137,13 +143,16 @@ function DashboardLayout (props){
         </div>
       </div>
     </div>
+    :
+    <Fade in={!loaded}>
+      <Loading/>
+    </Fade>
+    }
+
+    </div>
+
   );
 
-  }else{
-    return (
-      <Loading/>
-    )
-  }
 
 }
 

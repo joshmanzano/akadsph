@@ -17,6 +17,7 @@ import { Modal } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
 
 import Loading from './loading.jsx'
+import LoadingBack from 'src/components/loadingBack';
 
 function Copyright() {
   return (
@@ -36,14 +37,16 @@ export class LoginView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      loading: true 
+      loading: false 
     }
   }
 
   login = (response) => {
-    const accessToken = response.tokenObj.access_token
-    const idToken = response.tokenObj.id_token
-    this.props.login(accessToken, idToken)
+    this.setState({loading:true}, () => {
+      const accessToken = response.tokenObj.access_token
+      const idToken = response.tokenObj.id_token
+      this.props.login(accessToken, idToken)
+    })
   }
 
   loaded = () => {
@@ -60,6 +63,7 @@ export class LoginView extends Component {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+        <LoadingBack processing={this.state.loading}/>
         <div>
           <Box mt={6}>
             <Container align="center">
