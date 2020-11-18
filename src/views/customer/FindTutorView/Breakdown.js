@@ -50,25 +50,25 @@ const Breakdown = ({ className, ...rest }) => {
             Choose a Bundle
       </Typography> */}
       <Grid container spacing={2}>
-        <Grid
+        {/* <Grid
           item
           lg={3}
           md={3}
           xl={3}
           xs={0}
-          ></Grid>
+          ></Grid> */}
           <Grid
           item
-          lg={6}
-          md={6}
-          xl={6}
+          lg={12}
+          md={12}
+          xl={12}
           xs={12}
           >
             <Box mx="auto" /*mt={3}*/>
               <Card style={{justifyContent: 'center', placeItems: 'center'}}>
                 <CardHeader
                   // subheader="Bundles that are for more than 1 hour are consummable for anytime"
-                  title="Summary"
+                  title="Breakdown"
                 />
                 <Divider />
                 <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
@@ -129,13 +129,13 @@ const Breakdown = ({ className, ...rest }) => {
             </Box>
           </Grid> 
 
-          <Grid
+          {/* <Grid
           item
           lg={3}
           md={3}
           xl={3}
           xs={0}
-          ></Grid>
+          ></Grid> */}
       </Grid>
     </div>
   );

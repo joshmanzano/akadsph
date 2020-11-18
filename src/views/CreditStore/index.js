@@ -181,27 +181,30 @@ function CreditStore(props){
         <React.Fragment>
           <Grid
             container
-            spacing={3}
+            spacing={2}
           >
             <Grid
               item
-              lg={12}
-              md={12}
-              xl={12}
+              lg={7}
+              md={7}
+              xl={7}
               xs={12}
+             
             >
               <Bundle setAmount={setAmount} setItem={setItem} setHours={setHours}/>
             </Grid>
             <Grid
               item
-              lg={12}
-              md={12}
-              xl={12}
+              lg={5}
+              md={5}
+              xl={5}
               xs={12}
             >
               <Validity/>
+              <br/>
+              <PromoCode/>
             </Grid>
-            <Grid
+            {/* <Grid
               item
               lg={12}
               md={12}
@@ -209,7 +212,7 @@ function CreditStore(props){
               xs={12}
             >
               <PromoCode/>
-            </Grid>
+            </Grid> */}
             <Grid
               item
               lg={12}
@@ -225,13 +228,14 @@ function CreditStore(props){
               md={12}
               xl={12}
               xs={12}
+              align='right'
             >
               <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleChangeNext}
-                    >
-                    Proceed to Checkout
+                color="primary"
+                variant="contained"
+                onClick={handleChangeNext}
+                >
+                Proceed to Checkout
               </Button>
                 
             </Grid>
@@ -276,7 +280,6 @@ function CreditStore(props){
               <Button className={classes.payButton}  
                   color="primary"
                   variant="contained"
-                  align='right'
                   onClick={paynow}
                   >
                   Pay Now

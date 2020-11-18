@@ -53,7 +53,7 @@ const PromoCode = ({ className, ...rest }) => {
           <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
             <Grid container>
-              <Grid
+              {/* <Grid
                 item
                 lg={4}
                 md={4}
@@ -67,14 +67,14 @@ const PromoCode = ({ className, ...rest }) => {
                 md={4}
                 xl={4}
                 xs={12}
-              >
+              > */}
                 <TextField 
                 id="special-request" 
                 label="Promo Code" 
                 variant="outlined" fullWidth
                 defaultValue="AKADS2020"
                 />
-              </Grid>
+              {/* </Grid>
               <Grid
                 item
                 lg={4}
@@ -82,7 +82,7 @@ const PromoCode = ({ className, ...rest }) => {
                 xl={4}
                 xs={0}
               >
-              </Grid>
+              </Grid> */}
             </Grid>
             
           </CardContent>

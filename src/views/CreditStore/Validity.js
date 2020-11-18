@@ -59,12 +59,17 @@ const Validity = ({ className, ...rest }) => {
       <Box /*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
           <CardHeader
-            subheader="*Note these hours will expire after 6 MONTHS please use them before then."
+            // subheader="*Note these hours will expire after 6 MONTHS please use them before then."
             title="Period of Validity"
           />
+          <Box ml={2}>
+            <Typography variant="caption" display="block" >
+              *Note: these hours will expire after 6 MONTHS please use them before then
+            </Typography>
+          </Box>
           <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-            <Typography variant="h3" align='center'>
+            <Typography variant="h4" align='center'>
               {startDate} - {endDate}
             </Typography>
           </CardContent>
