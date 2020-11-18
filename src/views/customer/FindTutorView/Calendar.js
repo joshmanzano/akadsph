@@ -22,15 +22,16 @@ export default class Example extends React.Component {
       selectedDays.push(day);
     }
     this.setState({ selectedDays });
+    this.props.getDays(selectedDays);
   }
 
   render() {
     return (
       <div>
-        {/* <DayPicker
+        <DayPicker
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
-        /> */}
+        />
       </div>
     );
   }
