@@ -80,7 +80,13 @@ const useStyles = makeStyles((theme) => ({
 export default function ParentRegister(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [accountDetails, setAccount] = React.useState();
+  const [accountDetails, setAccount] = React.useState({
+    givenName:props.givenName,
+    familyName:props.familyName,
+    email:props.email,
+    googleId:props.googleId,
+    picture:props.picture,
+  });
   const [childDetails, setChild] = React.useState();
   const [promoDetails, setPromo] = React.useState();
  
@@ -88,18 +94,20 @@ export default function ParentRegister(props) {
 
   useEffect(() => {
     if(activeStep === steps.length){
-      props.register(accountDetails)
+      const data = accountDetails;
+      data['child'] = childDetails;
+      props.register(data)
     }
   },[activeStep])
 
   function getStepContent(step, props) {
     switch (step) {
       case 0:
-        return <AccountDetails setAccount={setAccount} givenName={props.givenName} familyName={props.familyName} email={props.email} googleId={props.googleId} picture={props.picture}/>;
+        return <AccountDetails setAccount={setAccount} {...accountDetails}/>;
       case 1:
-        return <ChildDetails setChild={setChild}/>;
+        return <ChildDetails setChild={setChild} {...childDetails}/>;
       case 2:
-        return <PromoCode setPromo={setPromo}/>;
+        return <PromoCode setPromo={setPromo} {...promoDetails}/>;
       default:
         throw new Error('Unknown step');
     }

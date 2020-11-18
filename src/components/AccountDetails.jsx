@@ -53,8 +53,8 @@ class SignUp extends Component{
     constructor(props){
       super(props);
       this.state = {
-        firstName: props.givenName,
-        lastName: props.familyName,
+        givenName: props.givenName,
+        familyName: props.familyName,
         email: props.email,
         googleId: props.googleId,
         phone: '',
@@ -67,11 +67,13 @@ class SignUp extends Component{
       event.preventDefault();
       this.props.register(this.state)
     }
+
     changeHandler = (event) => {
       let nam = event.target.name;
       let val = event.target.value;
-      this.setState({[nam]: val});
-      this.props.setAccount(this.state);
+      this.setState({[nam]: val}, () => {
+        this.props.setAccount(this.state);
+      });
     }
 
     phoneChangeHandler = (val) => {
@@ -96,7 +98,7 @@ class SignUp extends Component{
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="givenName"
                 variant="outlined"
                 required
                 fullWidth
@@ -113,7 +115,7 @@ class SignUp extends Component{
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                id="familyName"
                 label="Last Name"
                 name="lastName"
                 defaultValue={props.familyName}
