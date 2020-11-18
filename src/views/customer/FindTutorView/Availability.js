@@ -43,6 +43,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Availability = ({ className, ...rest }) => {
   const classes = useStyles();
+  const [days, setDays] = React.useState([]);
+
+  const getDays=(selectedDays)=>{
+    setDays(selectedDays);
+    console.log(days);
+    
+  }
 
   return (
     <div
@@ -70,12 +77,14 @@ const Availability = ({ className, ...rest }) => {
                   md={6}
                   xl={6}
                   xs={12}
-                  style={{justifyContent: 'center', placeItems: 'center'}}
+                  style={{justifyContent: 'center', placeItems: 'center', textAlign:'center'}}
                   alignItems="center"
                   justify="center"
+
                 >
-                  <Calendar/>
+                  <Calendar getDays={getDays}/>
                 </Grid>
+                
                 <Grid
                   item
                   lg={6}
@@ -89,7 +98,9 @@ const Availability = ({ className, ...rest }) => {
                   </Typography>
 
                   {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
+                  
                   <Grid container spacing={2}>
+                    {days.map((day)=>
                     <Grid
                     item
                     lg={6}
@@ -98,9 +109,10 @@ const Availability = ({ className, ...rest }) => {
                     xs={6}
                     > 
                       <Typography variant="h5" align= 'left'>
-                        November 20, 2020
+                        {day.toLocaleDateString()}
                       </Typography>
                     </Grid>
+                    )}
                     <Grid
                     item
                     lg={6}
