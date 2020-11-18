@@ -19,18 +19,18 @@ import Calendar from 'react-calendar'
 import Table from './Table' 
 
 const rows = [
-  {
-    name: 'Adam Crisostomo',
-    subject: 'English'
-  },
-  {
-    name: 'Carl Castillo',
-    subject: 'Math'
-  },
-  {
-    name: 'Eedijk Roque',
-    subject: 'Science'
-  },
+  // {
+  //   name: 'Adam Crisostomo',
+  //   subject: 'English'
+  // },
+  // {
+  //   name: 'Carl Castillo',
+  //   subject: 'Math'
+  // },
+  // {
+  //   name: 'Eedijk Roque',
+  //   subject: 'Science'
+  // },
   // {
   //   date: 'July 7',
   //   time: '4 PM',
@@ -67,7 +67,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Children = ({ className, ...rest }) => {
+const Children = ({ className, favtutors, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 

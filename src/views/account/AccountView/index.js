@@ -59,7 +59,7 @@ const Account = (props) => {
             xl={12}
             xs={12}
           >
-            <Children/>
+            <Children children={props.children}/>
           </Grid>
           <Grid
             item
@@ -68,7 +68,7 @@ const Account = (props) => {
             xl={12}
             xs={12}
           >
-            <FaveTutors/>
+            <FaveTutors favtutors={props.favtutors}/>
           </Grid>
           </React.Fragment>
           :

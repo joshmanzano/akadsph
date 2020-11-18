@@ -67,9 +67,19 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Children = ({ className, ...rest }) => {
+const Children = ({ className, children, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const rows = []
+  children.map((child) => {
+    rows.push({
+      'name':child.first_name + ' ' + child.last_name,
+      'age':child.age,
+      'gradeLevel':child.year_level,
+      'school':child.school,
+    })
+  })
 
   return (
     <Card

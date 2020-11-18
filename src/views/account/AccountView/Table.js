@@ -375,9 +375,9 @@ export default function EnhancedTable(props) {
                       <Box mx={1} component='span'>
                       <Button variant='contained' color='primary' >Edit</Button>
                       </Box>
-                      <Box mx={1} component='span'>
+                      {/* <Box mx={1} component='span'>
                       <Button variant='contained' color='primary'>Delete</Button>
-                      </Box>
+                      </Box> */}
                   </TableCell>
               </TableRow>
           );

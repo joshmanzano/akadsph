@@ -57,29 +57,21 @@ class ChildDetails extends Component{
     constructor(props){
       super(props);
       this.state = {
-        firstName: props.givenName,
-        lastName: props.familyName,
-        email: props.email,
-        googleId: props.googleId,
-        phone: '',
+        first_name: props.first_name,
+        last_name: props.last_name,
+        age: props.age,
+        year_level: props.year_level,
+        school: props.school,
       }
       props.setChild(this.state)
-    }
-
-    submitHandler = (event) => {
-      event.preventDefault();
-      this.props.register(this.state)
     }
 
     changeHandler = (event) => {
       let nam = event.target.name;
       let val = event.target.value;
-      this.setState({[nam]: val});
-      this.props.setChild(this.state)
-    }
-
-    phoneChangeHandler = (val) => {
-      this.setState({phone: val});
+      this.setState({[nam]: val}, () => {
+        this.props.setChild(this.state)
+      });
     }
 
     render(){
@@ -92,12 +84,12 @@ class ChildDetails extends Component{
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="first_name"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
-                defaultValue={props.givenName}
+                defaultValue={props.firstName}
                 label="First Name"
                 autoFocus
                 onChange={this.changeHandler}
@@ -110,8 +102,8 @@ class ChildDetails extends Component{
                 fullWidth
                 id="lastName"
                 label="Last Name"
-                name="lastName"
-                defaultValue={props.familyName}
+                name="last_name"
+                defaultValue={props.lastName}
                 autoComplete="lname"
                 onChange={this.changeHandler}
               />
@@ -124,6 +116,7 @@ class ChildDetails extends Component{
                 id="age"
                 label="Age"
                 name="age"
+                defaultValue={props.age}
                 autoComplete="age"
                 onChange={this.changeHandler}
               />
@@ -135,7 +128,8 @@ class ChildDetails extends Component{
                 fullWidth
                 id="grade-level"
                 label="Grade Level"
-                name="grade"
+                name="year_level"
+                defaultValue={props.grade}
                 autoComplete="grade level"
                 onChange={this.changeHandler}
               />
@@ -147,6 +141,7 @@ class ChildDetails extends Component{
                   id="school"
                   label="School"
                   name="school"
+                  defaultValue={props.school}
                   autoComplete="school"
                   helperText="Optional"
                   onChange={this.changeHandler}
