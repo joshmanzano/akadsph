@@ -140,12 +140,7 @@ class SignUp extends Component{
             <Grid item xs={12}>
                 <MuiPhoneNumber name="phone" value={this.state.phone} fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>,
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            
           </Grid>
       </React.Fragment>
   );

@@ -62,10 +62,11 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: 'flex',
     justifyContent: 'flex-end',
+    textAlign: 'right',
   },
   button: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(0),
   },
   alreadyLink: {
     marginBottom: theme.spacing(3),
@@ -73,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(6),
     },
   },
+
 }));
 
 
@@ -166,9 +168,9 @@ export default function ParentRegister(props) {
             ) : (
               <React.Fragment>
                 {getStepContent(activeStep, props)}
-                <Box mx={4}>
+                <Box>
 
-                <Grid container spacing={0}>
+                <Grid container spacing={0} className={classes.buttons}>
                   <Grid item
                   lg={1}
                   md={1}
@@ -180,24 +182,27 @@ export default function ParentRegister(props) {
                   md={5}
                   xl={5}
                   xs={6}
+                  align='right'
                   >
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
                       Back
                     </Button>
                   )}
-                  </Grid>
+                  {/* </Grid>
                   <Grid item
                   lg={5}
                   md={5}
                   xl={5}
                   xs={6}
-                  >
+                  > */}
                   <Button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
-                    // className={classes.button}
+                    className={classes.button}
+                    align='right'
+                    style={{textAlign: 'right'}}
                   >
                     {activeStep === steps.length - 1 ? 'Sign Up' : 'Next'}
                   </Button>
