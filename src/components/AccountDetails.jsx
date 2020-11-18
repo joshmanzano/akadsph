@@ -58,6 +58,7 @@ class SignUp extends Component{
         email: props.email,
         googleId: props.googleId,
         phone: '',
+        picture: props.picture,
       }
       props.setAccount(this.state);
     }
@@ -87,6 +88,11 @@ class SignUp extends Component{
   return (
     <React.Fragment>
           <Grid container spacing={2}>
+            <Grid item xs={12} sm={12}>
+              <img
+                src={this.state.picture}
+              />
+            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"

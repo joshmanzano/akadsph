@@ -59,6 +59,7 @@ class SignUp extends Component{
         lastName: props.familyName,
         email: props.email,
         googleId: props.googleId,
+        picture: props.picture,
         phone: '',
       }
     }
@@ -97,7 +98,7 @@ class SignUp extends Component{
             </Container>
         </Box>
         <Container align="center">
-          <ParentRegister register={this.props.register} changeState={this.changeState} givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId}/>
+          <ParentRegister register={this.props.register} changeState={this.changeState} givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId} picture={this.state.picture}/>
         </Container>
         {/* <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

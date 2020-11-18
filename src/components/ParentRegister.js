@@ -95,7 +95,7 @@ export default function ParentRegister(props) {
   function getStepContent(step, props) {
     switch (step) {
       case 0:
-        return <AccountDetails setAccount={setAccount} givenName={props.givenName} familyName={props.familyName} email={props.email} googleId={props.googleId}/>;
+        return <AccountDetails setAccount={setAccount} givenName={props.givenName} familyName={props.familyName} email={props.email} googleId={props.googleId} picture={props.picture}/>;
       case 1:
         return <ChildDetails setChild={setChild}/>;
       case 2:

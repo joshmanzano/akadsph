@@ -37,6 +37,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
+import 'intro.js/introjs.css';
+import { Steps } from 'intro.js-react';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -113,51 +115,61 @@ const TopBar = ({
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/">
                 <DashboardIcon/>
-                <Box mx={1}>
-                  <h5>
-                    Overview
-                  </h5>
-                </Box>
+                <Hidden mdDown>
+                  <Box mx={1}>
+                    <h5>
+                      Overview
+                    </h5>
+                  </Box>
+                </Hidden>
               </IconButton>
             </Grid>
-            <Grid item sm={2}>
+            <Grid sm={2}>
               <IconButton color="inherit" href="#/findtutor">
                 <BookIcon/>
-                <Box mx={1}>
-                  <h5>
-                    Booking
-                  </h5>
-                </Box>
+                <Hidden mdDown>
+                  <Box mx={1}>
+                    <h5>
+                      Booking
+                    </h5>
+                  </Box>
+                </Hidden>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/store">
                 <ShoppingCartIcon/>
-                <Box mx={1}>
-                  <h5>
-                    Buy Hours
-                  </h5>
-                </Box>
+                <Hidden mdDown>
+                  <Box mx={1}>
+                    <h5>
+                      Buy Hours
+                    </h5>
+                  </Box>
+                </Hidden>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/account">
                 <AccountCircleIcon/>
-                <Box mx={1}>
-                  <h5>
-                    Profile
-                  </h5>
-                </Box>
+                <Hidden mdDown>
+                  <Box mx={1}>
+                    <h5>
+                      Profile
+                    </h5>
+                  </Box>
+                </Hidden>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/settings">
                 <SettingsIcon/>
-                <Box mx={1}>
-                  <h5>
-                    Settings
-                  </h5>
-                </Box>
+                <Hidden mdDown>
+                  <Box mx={1}>
+                    <h5>
+                      Settings
+                    </h5>
+                  </Box>
+                </Hidden>
               </IconButton>
             </Grid>
           </Grid>
@@ -169,7 +181,9 @@ const TopBar = ({
 
         <Hidden xsDown>
           <Box mx={2}>
-            Hours: {credits}
+            <h5>
+              Hours: {credits}
+            </h5>
           </Box>
         </Hidden>
         <IconButton color="inherit" href="#/messages">

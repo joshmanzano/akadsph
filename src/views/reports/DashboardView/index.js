@@ -41,7 +41,7 @@ const Dashboard = (props) => {
     >
       <Container maxWidth={false}>
         <Box mb={4}>
-          <Typography variant="h1">
+          <Typography id='selector1' variant="h1">
             Welcome {props.first_name}!
           </Typography>
         </Box>
@@ -56,7 +56,7 @@ const Dashboard = (props) => {
             xl={4}
             xs={12}
           >
-            <Calendar />
+            <Calendar id='selector2' />
           </Grid>
           <Grid
             item
@@ -64,6 +64,7 @@ const Dashboard = (props) => {
             md={8}
             xl={8}
             xs={12}
+            id='selector3'
           >
             <Upcoming rows={props.upcoming} />
           </Grid>

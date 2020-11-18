@@ -31,6 +31,10 @@ import NoHourView from 'src/components/NoHourView';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
+import Tutorial from 'src/components/Tutorial';
+import 'intro.js/introjs.css';
+import { Steps } from 'intro.js-react';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -78,6 +82,7 @@ function DashboardLayout (props){
     {loaded ? 
     <div className={classes.root}>
       <TopBar credits={props.credits}/>
+      <Tutorial enabled={true}/>
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}

@@ -75,6 +75,7 @@ class App extends Component {
       last_name: raw_data['lastName'],
       email: raw_data['email'],
       phone: raw_data['phone'],
+      picture: raw_data['picture'],
     }
     post_api('register-parent', data, (res) => {
       console.log(res)
