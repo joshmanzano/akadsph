@@ -110,7 +110,7 @@ class App extends Component {
         }, () => {
           const data = {
             'accountview': {
-              'picture': '',
+              'picture': parent['picture'],
               'first_name': parent['first_name'],
               'last_name': parent['last_name'],
               'email': parent['email'],

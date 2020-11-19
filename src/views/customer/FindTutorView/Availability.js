@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -43,12 +43,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Availability = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [days, setDays] = React.useState([]);
+  const [days, setDays] = React.useState();
+  const [count, setCount] = React.useState(0);
+
+  useEffect(() => {
+    console.log(count)
+
+  }, [count])
 
   const getDays=(selectedDays)=>{
     setDays(selectedDays);
-    console.log(days);
-    
+    setCount(count + 1);
   }
 
   return (
@@ -99,8 +104,9 @@ const Availability = ({ className, ...rest }) => {
 
                   {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
                   
+                  {days != undefined &&
                   <Grid container spacing={2}>
-                    {days.map((day)=>
+                    {days.map(day=>(
                     <Grid
                     item
                     lg={6}
@@ -110,40 +116,12 @@ const Availability = ({ className, ...rest }) => {
                     > 
                       <Typography variant="h5" align= 'left'>
                         {day.toLocaleDateString()}
+                        <input type="time"></input>
                       </Typography>
                     </Grid>
-                    )}
-                    <Grid
-                    item
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    xs={6}
-                    > 
-                    
-                        {/* <KeyboardTimePicker/> */}
-                    </Grid>
-                    <Grid
-                    item
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    xs={6}
-                    > 
-                      <Typography variant="h5" align= 'left'>
-                        November 25, 2020
-                      </Typography>
-                    </Grid>
-                    <Grid
-                    item
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    xs={6}
-                    > 
-                      {/* <KeyboardTimePicker/> */}
-                    </Grid>
+                    ))}
                   </Grid>
+                  }
                   {/* </MuiPickersUtilsProvider> */}
                   
                 </Grid>
