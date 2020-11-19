@@ -138,10 +138,10 @@ class App extends Component {
               'upcoming':[
                   {
                   date: 'November 19',
-                  time: '4 PM',
+                  time: '2 PM',
                   subject: 'Filipino',
                   tutor: {
-                    name: 'Adrienne Soliven'
+                    name: 'Carl Cornejo'
                   },
                 },
                 {
@@ -149,15 +149,15 @@ class App extends Component {
                   time: '4 PM',
                   subject: 'Math',
                   tutor: {
-                    name: 'Adrienne Soliven'
+                    name: 'Tristan Reyes'
                   },
                 },
                 {
                   date: 'November 23',
-                  time: '4 PM',
+                  time: '6 PM',
                   subject: 'Science',
                   tutor: {
-                    name: 'Adrienne Soliven'
+                    name: 'Carla Cordero'
                   },
                 },
             ],
@@ -167,10 +167,10 @@ class App extends Component {
             },
             'findtutorview': {
               'tutees':children,
-              'favtutors':[],
+              'favtutors':["Carl Cornejo", "Carla Cordero"],
               'levels':[],
-              'subjects':[],
-              'lengths':[],
+              'subjects':["Math", "Science", "English", "Filipino"],
+              'lengths':["1 hour", "1 hour 30 minutes", "2 hours"],
             },
             'settingsview': {
               'selected':[],
