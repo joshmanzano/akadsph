@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -47,6 +47,21 @@ const useStyles = makeStyles((theme) => ({
 const ChildDetails = ({ className, props, ...rest }) => {
   const classes = useStyles();
   const topicselections = ['Algebra', 'Calculus', 'Mga Tula', 'Vocabulary'];
+  const [childDetails, setDetails] = useState({
+    'child-name':''
+  });
+
+  useEffect(() => {
+    console.log(childDetails);
+
+  }, [childDetails])
+
+  const handleChange = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    childDetails[nam] = val;
+    setDetails(childDetails)
+  }
 
   return (
     <div
@@ -64,253 +79,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
         />
         <Divider />
           <CardContent >
-            <Box /*maxWidth={1000}*/>
-              {/* single line version */}
-              {/* <Grid container spacing={2} justify='center' alignItem='center'>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <Typography variant="h5">
-                    Who needs tutoring?
-                  </Typography>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>Tutee's Name</InputLabel>
-                    <Select
-                      fullWidth
-                      native
-
-                      label="Child's Name"
-                      inputProps={{
-                        name: 'child-name',
-                        id: 'child-name',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Nate Mercado</option>
-                      <option value={20}>Kate Mercado</option>
-                    
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <Typography variant="h5">
-                    Tutee's Grade Level
-                  </Typography>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>Grade Level</InputLabel>
-                    <Select
-                      native
-
-                      label="Grade Level"
-                      inputProps={{
-                        name: 'grade-level',
-                        id: 'grade-level',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Kinder</option>
-                      <option value={10}>Prep</option>
-                      <option value={10}>Grade 1</option>
-                      <option value={20}>Grade 2</option>
-                      <option value={10}>Grade 3</option>
-                      <option value={10}>Grade 4</option>
-                      <option value={20}>Grade 5</option>
-                      <option value={10}>Grade 6</option>
-                      <option value={10}>Grade 7</option>
-                      <option value={10}>1st Year Highschool</option>
-                      <option value={10}>2nd Year Highschool</option>
-                      <option value={10}>3rd Year Highschool</option>
-                      <option value={10}>4th Year Highschool</option>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <Typography variant="h5">
-                    Let us know the subject, topics, and materials
-                  </Typography> 
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>Subject</InputLabel>
-                    <Select
-                      native
-  
-                      label="Subject"
-                      inputProps={{
-                        name: 'subject-matter',
-                        id: 'subject-matter',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Math</option>
-                      <option value={20}>Science</option>
-                      <option value={10}>Filipino</option>
-                      <option value={10}>English</option>
-                      <option value={20}>Chinese</option>
-                    </Select>
-                  </FormControl> 
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Topic/s"
-                    name="topics"
-                    required
-                    variant="outlined"
-                    helperText="(e.g. Algebra, Trigonometry, Vocalubary)"
-                  />
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <Typography variant="h5">
-                      Upload any relevant materials such handouts or slides
-                  </Typography>
-                  <Button className={classes}  
-                    color="primary"
-                    variant="contained"
-                    startIcon={<PublishIcon/>}>
-                    Upload Files
-                  </Button>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <Typography variant="h5">
-                    Sessions and Tutor Details
-                  </Typography>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>Length of Session</InputLabel>
-                    <Select
-                      native
-  
-                      label="Length of Session"
-                      inputProps={{
-                        name: 'session-length',
-                        id: 'session-length',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>1 hour</option>
-                      <option value={20}>1 hour 30 minutes</option>
-                      <option value={10}>2 hours</option>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>Tutor Options</InputLabel>
-                    <Select
-                      native
-  
-                      label="Tutor Options"
-                      inputProps={{
-                        name: 'tutor-options',
-                        id: 'tutor-options',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Favorite Tutors Only</option>
-                      <option value={20}>All Tutors Accepted</option>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-
-                <Grid item lg={4}
-                md={4}
-                xl={4}
-                xs={12}>
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>Favorite Tutors</InputLabel>
-                    <Select
-                      native
-  
-                      label="Favorite Tutors"
-                      inputProps={{
-                        name: 'fave-tutors',
-                        id: 'fave-tutors',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Tolo Pena</option>
-                      <option value={20}>Charles Samoy</option>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4} md={4} xl={4} xs={0}></Grid>
-              </Grid> */}
-              
-
-              
-
+            <Box>
               <Grid container spacing={2} >
                 
                 <Grid
@@ -328,7 +97,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     </Grid> */}
 
                     <Grid item xs={12}>  
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Tutee's Name</InputLabel>
                         <Select
                           fullWidth
@@ -341,8 +110,9 @@ const ChildDetails = ({ className, props, ...rest }) => {
                           }}
                         >
                         {props.tutees.map((tutee) =>
-                          <option value={tutee.id}>{tutee.name}</option>
+                          <option value={tutee.id}>{tutee.first_name}</option>
                         )}
+                          <option value={2}>Second choice</option>
                         
                         </Select>
                       </FormControl>
@@ -355,7 +125,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     </Grid> */}
 
                     <Grid item xs={12}>
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Grade Level</InputLabel>
                         <Select
                           native
@@ -366,8 +136,8 @@ const ChildDetails = ({ className, props, ...rest }) => {
                             id: 'grade-level',
                           }}
                         >
-                          {props.levels.map((level) => 
-                            <option value={level.id}>level.name</option>
+                          {props.tutees.map((tutee) => 
+                            <option value={tutee.year_level}>{tutee.year_level}</option>
                           )}
                           {/* <option value={10}>Kinder</option>
                           <option value={10}>Prep</option>
@@ -387,7 +157,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     </Grid>
                     <Grid item xs={12}>
                       
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Length of Session</InputLabel>
                         <Select
                           native
@@ -426,9 +196,9 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     </Grid> */}
                   
                     <Grid item xs={12}>
-                      <FormControl component="fieldset">
+                      <FormControl onChange={handleChange} component="fieldset">
                         <FormLabel component="legend">Tutor Options</FormLabel>
-                        <RadioGroup name="tutor-choice">
+                        <RadioGroup defaultValue="all-tutors" name="tutor-choice">
                           <FormControlLabel value="all-tutors" control={<Radio />} label="All Tutors Accepted" />
                           <FormControlLabel value="fave-tutors" control={<Radio />} label="Favorite Tutors Only" />
                           
@@ -437,7 +207,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                      
                     </Grid>
                     <Grid item xs={12}>
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Favorite Tutors</InputLabel>
                         <Select
                           native
@@ -475,7 +245,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     </Typography>
                     </Grid> */}
                     <Grid item xs={12}>
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Subject</InputLabel>
                         <Select
                           native
@@ -522,6 +292,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         renderInput={(params) => (
                           <TextField {...params} variant="outlined" label="Topic/s" placeholder="Topic" helperText="(e.g. Algebra, Trigonometry, Vocalubary)"/>
                         )}
+                        onChange={handleChange}
                       />
                     </Grid>
                     <Grid item xs={12} align='center'>

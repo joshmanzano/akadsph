@@ -15,7 +15,6 @@ import {
 import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
-import data from './data';
 import Bundle from './Bundle';
 import ChildDetails from './ChildDetails';
 import Availability from './Availability';
@@ -57,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomerListView = (props) => {
   const classes = useStyles();
-  const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -73,6 +71,8 @@ const CustomerListView = (props) => {
     const handleClose = () => {
       setOpen(false);
     };
+
+    console.log(props)
 
   return (
     <Page
@@ -153,7 +153,7 @@ const CustomerListView = (props) => {
                   <DialogTitle id="alert-dialog-title">{"Tutor Request Confirmation"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                      <Summary/>
+                      <Summary tutee={props.tutees[0]}/>
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
