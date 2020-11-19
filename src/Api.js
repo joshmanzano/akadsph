@@ -213,6 +213,7 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
           'payment_intent': paymentIntentId
         }
         post_api('verify-paymongo', data, (res) => {
+          console.log(res)
           _callback(res)
         })
       })

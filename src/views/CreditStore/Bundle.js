@@ -121,49 +121,26 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
   const [bundleB, setBundleB] =  React.useState(false);
   const [bundleC, setBundleC] =  React.useState(false);
 
-  function handleAmountChange(event){
-    const items = {
-      549: '1 hour',
-      4999: '10 hours',
-      7199: '15 hours'
-    }
-    const hours = {
-      500: 1,
-      4750: 10,
-      7199: 15
-    }
-    const amount = Number(event.target.value)
-    setAmount(amount)
-    setItem(items[amount])
-    setHours(hours[amount])
-  }
+  function bundleClick(type, amount, item, hours){
+    console.log(amount)
 
-  function bundleClick(type, amount, items, hours){
     if(type == 'bundleA'){
       setBundleA(true);
       setBundleB(false);
       setBundleC(false);
-
-      setAmount(amount)
-      setItem(items[amount])
-      setHours(hours[amount])
     }else if(type == 'bundleB'){
       setBundleA(false);
       setBundleB(true);
       setBundleC(false);
-
-      setAmount(amount)
-      setItem(items[amount])
-      setHours(hours[amount])
     }else if(type == 'bundleC'){
       setBundleA(false);
       setBundleB(false);
       setBundleC(true);
-
-      setAmount(amount)
-      setItem(items[amount])
-      setHours(hours[amount])
     }
+
+    setAmount(Number(amount))
+    setItem(item)
+    setHours(hours)
   }
   
   return (
@@ -225,7 +202,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   className={classes.buttonContainer}
                 >
                   
-                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA', '500', '1 hour', 1) }
+                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA', 549, '1 hour', 1) }
                   // color="primary"
                   variant="outlined">
                     <Grid container className={classes.buttonContainer}>
@@ -254,7 +231,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   
-                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB', '4750', '10 hours', 10)}
+                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB', 4999, '10 hours', 10)}
                   // color="primary"
                   variant="outlined">
                     <Grid container>
@@ -284,7 +261,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
-                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC', '7199', '15 hours', 15)}
+                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC', 7199, '15 hours', 15)}
                   // color="primary"
                   variant="outlined">
                     <Grid container>

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Summary = ({ className, ...rest }) => {
+const Summary = ({ className, tutee, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -74,7 +74,7 @@ const Summary = ({ className, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Rolo Pena
+                        {tutee.first_name}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -84,7 +84,7 @@ const Summary = ({ className, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Grade 4
+                        {tutee.year_level}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
