@@ -27,6 +27,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import FileUpload from './FileUpload';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -451,15 +452,16 @@ const ChildDetails = ({ className, props, ...rest }) => {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                    <Typography variant="h5">
+                    <Typography variant="h6">
                         Upload any relevant materials such handouts or slides
                     </Typography>
-                      <Button className={classes}  
+                    <FileUpload/>
+                      {/* <Button className={classes}  
                         color="primary"
                         variant="contained"
                         startIcon={<PublishIcon/>}>
                         Upload Files
-                      </Button>
+                      </Button> */}
                     </Grid>
                     
                     
