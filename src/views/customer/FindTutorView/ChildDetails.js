@@ -47,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
 const ChildDetails = ({ className, props, ...rest }) => {
   const classes = useStyles();
   const topicselections = ['Algebra', 'Calculus', 'Mga Tula', 'Vocabulary'];
+  const [tutorOption, setTutorOption] = React.useState('');
+
+  const handleRadioChange = (event) => {
+    setTutorOption(event.target.value);
+  };
 
   return (
     <div
@@ -422,7 +427,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     <Grid item xs={12}>
                       <FormControl component="fieldset">
                         <FormLabel component="legend">Tutor Options</FormLabel>
-                        <RadioGroup name="tutor-choice">
+                        <RadioGroup name="tutor-choice" onChange={handleRadioChange}>
                           <FormControlLabel value="all-tutors" control={<Radio />} label="All Tutors Accepted" />
                           <FormControlLabel value="fave-tutors" control={<Radio />} label="Favorite Tutors Only" />
                           
@@ -431,7 +436,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                      
                     </Grid>
                     <Grid item xs={12}>
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth disabled={(tutorOption == 'all-tutors')}>
                         <InputLabel>Favorite Tutors</InputLabel>
                         <Select
                           native
