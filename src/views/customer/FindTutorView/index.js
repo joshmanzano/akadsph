@@ -22,6 +22,7 @@ import Availability from './Availability';
 import SpecialRequests from './SpecialRequests';
 import Payment from './Payment';
 import Breakdown from './Breakdown';
+import Summary from './Summary';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -133,12 +134,34 @@ const CustomerListView = (props) => {
               xs={12}
             >
               <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleChangeNext}
-                    >
-                    Next
+                color="primary"
+                variant="contained"
+                onClick={handleClickOpen}
+                >
+                Submit
               </Button>
+            
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">{"Tutor Request Confirmation"}</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      <Summary/>
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                      Cancel
+                    </Button>
+                    <Button onClick={handleClose} color="primary" autoFocus>
+                      Send Request
+                    </Button>
+                  </DialogActions>
+              </Dialog>
             </Grid>
           </Grid>
         </React.Fragment>
@@ -229,27 +252,7 @@ const CustomerListView = (props) => {
                       >
                       Pay Now
                     </Button>
-                    <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    >
-                      <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          Payment was successful. You will be notified once a tutor accepts your request.
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                          Cancel
-                        </Button>
-                        <Button onClick={handleClose} color="primary" autoFocus>
-                          Done
-                        </Button>
-                      </DialogActions>
-                  </Dialog>
+                    
                 </Grid>
               </Grid>
             </Grid>

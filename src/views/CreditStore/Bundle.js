@@ -33,19 +33,88 @@ const useStyles = makeStyles((theme) => ({
     // marginRight: theme.spacing(1)
   },
   bundleButton: {
-    minWidth: "25vh",
-    paddingTop: "5%",
-    paddingBottom: "5%",
-    // border: "3px solid #4655A5",
-    // backgroundColor: "white",
-    // color: theme.color,
-    // borderRadius: "10px",
+    width: "17vh",
+    borderRadius: 15,
     boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    border: '2px solid #75c2b7',
+    "&:hover": {
+        backgroundColor: '#75c2b7',
+        color: 'white',
+      }
+  },
+  bundleButtonRev: {
+    width: "17vh",
+    borderRadius: 15,
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    border: '2px solid #75c2b7',
+    backgroundColor: '#75c2b7',
+    color: 'white',
+ 
+  },
+  textPriceSingle:{
+    fontWeight: 'bold',
+    marginTop: '25%',
+    marginBottom: '42%',
+    "&:hover": {
+      color: 'white',
+      fontColor: 'white',
+    }
+  },
+  textPriceSingleRev:{
+    fontWeight: 'bold',
+    marginTop: '25%',
+    marginBottom: '42%',
+    color: 'white',
+  },
+  textPrice:{
+    fontWeight: 'bold',
+    marginTop: '25%',
+    marginBottom: '25%',
+    "&:hover": {
+      color: 'white',
+      fontColor: 'white',
+    }
+  },
+  textPriceRev:{
+    fontWeight: 'bold',
+    marginTop: '25%',
+    marginBottom: '25%',
+    color: 'white',
+  },
+  textHours:{
+    // position: 'absolute',
+    color: '#75c2b7',
+    "&:hover": {
+      color: 'white',
+    }
+  },
+  textHoursRev:{
+    color: 'white',
+  },
+  textOldPrice:{
+    color: '#D4D4D4',
+    fontSize: '9px',
+    "&:hover": {
+      color: 'white',
+    }
+  },
+  textOldPriceRev:{
+    color: 'white',
+    fontSize: '9px',
+  },
+  buttonContainer:{
+
+    "&:hover": {
+      color: 'white',
+    }
   },
 }));
 
 const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
   const classes = useStyles();
+  const [bundleA, setBundleA] =  React.useState(false);
+  const [bundleB, setBundleB] =  React.useState(false);
+  const [bundleC, setBundleC] =  React.useState(false);
 
   function handleAmountChange(event){
     const items = {
@@ -56,7 +125,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
     const hours = {
       500: 1,
       4750: 10,
-      9000: 20
+      7199: 15
     }
     const amount = Number(event.target.value)
     setAmount(amount)
@@ -64,6 +133,22 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
     setHours(hours[amount])
   }
 
+  function bundleClick(type){
+    if(type == 'bundleA'){
+      setBundleA(true);
+      setBundleB(false);
+      setBundleC(false);
+    }else if(type == 'bundleB'){
+      setBundleA(false);
+      setBundleB(true);
+      setBundleC(false);
+    }else if(type == 'bundleC'){
+      setBundleA(false);
+      setBundleB(false);
+      setBundleC(true);
+    }
+  }
+  
   return (
     <div
       className={clsx(classes.root, className)}
@@ -82,8 +167,8 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
           <CardContent>
           
          
-            <Box>
-              <Grid container alignItems="center"
+            <Box py={6}>
+              {/* <Grid container alignItems="center"
                   justify="center">
                
                 <Grid
@@ -105,9 +190,9 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   </FormControl>
                 </Grid>
                 
-              </Grid>
+              </Grid> */}
             
-              {/* <Grid container spacing={2} 
+              <Grid container spacing={2} 
                 alignItems="center"
                 justify="center"
                 style={{placeItems: 'center', textAlign: 'center'}}>
@@ -122,10 +207,25 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   style={{placeItems: 'center'}}
                 >
                   
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  1 hour <br /> P500
+                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA')}
+                  // color="primary"
+                  variant="outlined">
+                    <Grid container className={classes.buttonContainer}>
+                      <Grid item xs={12} align='left' className={classes.buttonContainer}> 
+                        <Typography variant="caption" display="inline" className={ !bundleA ? classes.textHours : classes.textHoursRev} align='left'>
+                          1 hour
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} align='center' className={classes.buttonContainer}>
+                        <Typography variant="h4" display="block" className={ !bundleA ? classes.textPriceSingle : classes.textPriceSingleRev}>
+                          ₱500
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} align='left'>
+                        
+                      </Grid>
+                    </Grid>
+            
                   </Button>
                 </Grid>
                 <Grid
@@ -136,10 +236,26 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  10 hours <br /> P4,750
+                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB')}
+                  // color="primary"
+                  variant="outlined">
+                    <Grid container>
+                      <Grid item xs={12} align='left' className={classes.buttonContainer}>
+                        <Typography variant="caption" display="inline" className={ !bundleB ? classes.textHours : classes.textHoursRev} align='left'>
+                          10 Hours
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} align='center'>
+                        <Typography variant="h4" display="block" className={ !bundleB ? classes.textPrice : classes.textPriceRev}>
+                          ₱4,750
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} align='right'>
+                        <Typography variant="caption" display="inline" className={ !bundleB ? classes.textOldPrice : classes.textOldPriceRev} align='left'>
+                          From ₱5,490
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </Button>
                 </Grid>
                 <Grid
@@ -149,14 +265,30 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xl={4}
                   xs={12}
                 >
-                  <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" />
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  20 hours <br /> P9,000
+                  {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
+                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC')}
+                  // color="primary"
+                  variant="outlined">
+                    <Grid container>
+                      <Grid item xs={12} align='left'>
+                        <Typography variant="caption" display="inline" className={ !bundleC ? classes.textHours : classes.textHoursRev} align='left'>
+                          15 Hours
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} align='center'>
+                        <Typography variant="h4" display="block" className={ !bundleC ? classes.textPrice : classes.textPriceRev}>
+                          ₱7,199
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} align='right'>
+                        <Typography variant="caption" display="inline" className={ !bundleC ? classes.textOldPrice : classes.textOldPriceRev} align='left'>
+                          From ₱8,235
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </Button>
                 </Grid>
-              </Grid> */}
+              </Grid>
             </Box>
            
           </CardContent>
