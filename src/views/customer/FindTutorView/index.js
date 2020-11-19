@@ -34,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
   nextButton: {
     placeItems: "center",
     justifyContent: "center",
-    // marginRight: theme.spacing(1)
+    fontWeight: "bold",
+    width: "30vh",
+    padding: "1%"
    
   },
   backButton: {
@@ -132,13 +134,14 @@ const CustomerListView = (props) => {
               md={12}
               xl={12}
               xs={12}
+              align='right'
             >
               <Button className={classes.nextButton}  
                 color="primary"
                 variant="contained"
                 onClick={handleClickOpen}
                 >
-                Submit
+                  Submit Request
               </Button>
             
               <Dialog
