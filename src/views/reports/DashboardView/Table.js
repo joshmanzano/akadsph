@@ -408,9 +408,13 @@ export default function EnhancedTable(props) {
                   hover
                   key={session.id}
               >
-                  <TableCell>
-                  {session.date}
-                  </TableCell>
+                  {sessionType != "upcoming/pending" ?
+                    <TableCell>
+                    {session.date}
+                    </TableCell>
+                  :
+                    <React.Fragment></React.Fragment>
+                  }
                   <TableCell>
                   {session.time}
                   </TableCell>
