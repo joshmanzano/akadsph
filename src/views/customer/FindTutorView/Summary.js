@@ -94,7 +94,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Filipino
+                        Math
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -104,7 +104,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Ibong Adarna
+                        Algebra
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -114,7 +114,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Handouts.pdf, Slides.ppt
+                        None
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -144,7 +144,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Charles Samoy
+                        Carl Cornejo
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -154,7 +154,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        11/29/20 2:00pm-4:00pm <br/> 11/30/20 2:00pm-4:00pm <br/> 12/01/20 2:00pm-4:00pm 
+                        27/11/20 2:00pm-4:00pm <br/> 28/11/20 2:00pm-4:00pm
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
