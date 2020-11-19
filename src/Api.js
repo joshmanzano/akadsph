@@ -3,21 +3,38 @@ import jwt from 'jwt-decode';
 
 // const api_url = 'https://akadsph-staging.herokuapp.com'
 const api_url = 'https://akadsph-backend.herokuapp.com'
+const username = 'admin'
+const password = 'password'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 // axios.defaults.withCredentials = true;
 
-const token = localStorage.getItem('token')
-if(token == null){
+const get_token = () => {
+  localStorage.clear()
   const data = {
-    'username':'admin',
-    'password':'password'
+    'username': username,
+    'password': password
   }
   axios.post(api_url+'/'+'api-token-auth'+'/', data)
   .then(res => {
     localStorage.setItem('token',res.data.token)
   })
 }
+
+export const check_admin_token = () => {
+  const token = localStorage.getItem('token')
+  const timestamp = Number(Date.now());
+  if(token == null){
+    get_token()
+  }else{
+    const token_data = jwt(token)
+    const expiry = Number(token_data['exp']) * 1000
+    if(timestamp > expiry){
+      get_token()
+    }
+  }
+}
+
 
 export const verify_token = (_callback) => {
   const headers = {

@@ -16,7 +16,7 @@ import Login from 'src/components/login';
 import SignUp from 'src/components/signup.jsx';
 import axios from 'axios';
 import TutorApp from 'src/views/TutorApp';
-import {api, get_user, verify_token, get_api, post_api} from './Api';
+import {api, get_user, verify_token, check_admin_token, get_api, post_api} from './Api';
 import CreditStore from 'src/views/CreditStore';
 import PayoutHistory from 'src/views/PayoutHistory';
 
@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    check_admin_token();
     if(this.state.session != null){
       verify_token((res) => {
         if(res['verified']){
