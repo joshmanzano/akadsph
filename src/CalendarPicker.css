@@ -18,12 +18,18 @@
         -ms-user-select: none;
   
             user-select: none;
+    border: none;
+    outline:none !important;
+    outline-style: none;
   }
   
   .DayPicker-Months {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    border: none;
+    outline:none !important;
+    outline-style: none;
   }
   
   .DayPicker-Month {
@@ -40,9 +46,15 @@
         -ms-user-select: none;
   
             user-select: none;
+    border: none;
+    outline:none !important;
+    outline-style: none;
   }
   
   .DayPicker-NavBar {
+    border: none;
+    outline:none !important;
+    outline-style: none;
   }
   
   .DayPicker-NavButton {
@@ -128,6 +140,9 @@
     vertical-align: middle;
     text-align: center;
     cursor: pointer;
+    border: none;
+    outline:none !important;
+    outline-style: none;
   }
   
   .DayPicker-WeekNumber {
