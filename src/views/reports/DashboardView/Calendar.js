@@ -18,7 +18,7 @@ import {
 
 import Calendar from 'react-calendar'
 import Table from './Table' 
-import 'react-calendar/dist/Calendar.css'
+import 'src/Calendar.css'
 
 const useStyles = makeStyles(() => ({
   root: {}

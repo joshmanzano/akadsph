@@ -98,7 +98,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <DashboardView first_name={userData['accountview']['first_name']} {...userData['dashboardview']}></DashboardView>
+                    <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
                   </Fragment>
                 </Container>
               </Route>
@@ -139,6 +139,7 @@ function DashboardLayout (props){
                   <ChatView {...userData['chatview']}/>
                 </Fragment>
               </Route>
+              <Route path='*' component={NotFoundView} /> 
             </Switch>
 
             </CSSTransition>
