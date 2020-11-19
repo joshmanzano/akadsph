@@ -475,26 +475,24 @@ export default function EnhancedTable(props) {
                                 <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                               </Grid>
                             </Grid>
-                            {/* <Box mx={1} component='span'>
-                            <Button variant='contained' color='primary'>Join Now</Button>
-                            </Box>
-                            <Box mx={1} component='span'>
-                            <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
-                            </Box>
-                            <Box mx={1} component='span'>
-                            <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
-                            </Box> */}
+                            
                         </TableCell>
                       </React.Fragment>
                     : 
                       <React.Fragment>
                         <TableCell>
-                          <Box mx={1} component='span'>
-                          <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
-                          </Box>
-                          <Box mx={1} component='span'>
-                          <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
-                          </Box>
+                            <Grid container spacing={1}>
+                              <Grid item xs={4}>
+                                {/* <Button variant='contained' color='primary' onClick={handleClickOpen}startIcon={<CastForEducationIcon/>}>Join</Button> */}
+                              </Grid>
+                              <Grid item xs={4}>
+                                <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                              </Grid>
+                              <Grid item xs={4}>
+                                <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                              </Grid>
+                            </Grid>
+                            
                         </TableCell>
                       </React.Fragment>
                     }
