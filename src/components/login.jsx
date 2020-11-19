@@ -19,6 +19,8 @@ import { GoogleLogin } from 'react-google-login';
 import Loading from './loading.jsx'
 import LoadingBack from 'src/components/loadingBack';
 
+import {FaUser, FaGraduationCap} from 'react-icons/fa';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -46,6 +48,14 @@ export class LoginView extends Component {
       const accessToken = response.tokenObj.access_token
       const idToken = response.tokenObj.id_token
       this.props.login(accessToken, idToken)
+    })
+  }
+
+  login_tutor = (response) => {
+    this.setState({loading:true}, () => {
+      const accessToken = response.tokenObj.access_token
+      const idToken = response.tokenObj.id_token
+      this.props.login_tutor(accessToken, idToken)
     })
   }
 
@@ -95,7 +105,10 @@ export class LoginView extends Component {
                                   href="/"
                                   className=""
                               >
-                                  <i className={'fa fa-user'}></i>
+                                  <i className={'fa'}>
+                                    <FaUser/>
+
+                                  </i>
                               </a>{" "}
                                   <h3>{'Parent'}</h3>
                               </div>
@@ -109,14 +122,30 @@ export class LoginView extends Component {
                           />
                           </Grid>
                           <Grid item xs={6}>
-                          <a
-                              href="/"
-                              className=""
-                          >
-                              <i className={'fa fa-graduation-cap'}></i>
-                          </a>{" "}
-                              <h3>{'Tutor'}</h3>
-                              {/* <p>{'The legendary laptop'}</p> */}
+                          <GoogleLogin
+                            clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
+                            render={renderProps => (
+                              <div>
+                              <a
+                                  onClick={renderProps.onClick}
+                                  href="/"
+                                  className=""
+                              >
+                                  <i className={'fa'}>
+                                    <FaGraduationCap/>
+
+                                  </i>
+                              </a>{" "}
+                                  <h3>{'Tutor'}</h3>
+                              </div>
+                            )}
+                            buttonText="Login"
+                            onSuccess={this.login_tutor}
+                            onFailure={this.login_tutor}
+                            uxMode={'popup'}
+                            onAutoLoadFinished={this.loaded}
+                            cookiePolicy={'single_host_origin'}
+                          />
                           </Grid>
                       </Grid>
                   </div>

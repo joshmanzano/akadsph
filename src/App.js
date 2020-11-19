@@ -11,7 +11,7 @@ import NotFoundView from 'src/views/errors/NotFoundView.jsx';
 import ProductListView from 'src/views/product/ProductListView';
 import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
-import LandingPage from 'src/LandingPage';
+import LandingView from 'src/LandingPage';
 import Login from 'src/components/login';
 import SignUp from 'src/components/signup.jsx';
 import axios from 'axios';
@@ -64,6 +64,20 @@ class App extends Component {
         }, () => {
           this.props.history.replace('/register')
         })
+      }
+    })
+  }
+
+  login_tutor = (accessToken, idToken) => {
+    const data = {
+      'id_token':idToken
+    }
+    post_api('login-tutor', data, (res) =>{
+      if(res['exists']){
+        localStorage.setItem('session_token',res['session_token'])
+        window.location.replace('/')
+      }else{
+        this.props.history.replace('/')
       }
     })
   }
@@ -170,34 +184,15 @@ class App extends Component {
 
   }
 
-  LandingView = () => {
-    return (
-      <LandingPage/>
-    )
-  }
-
-  NotFoundView = () => {
-    return (
-      <NotFoundView/>
-    )
-  }
-
-  DashboardLayout = (page) => {
-    const child = <DashboardView/>
-    return (
-      <DashboardLayout children={child}/>
-    )
-  }
-
   render(){
     return (
       <Router>
         {this.state.session == null &&
         // Not Logged In
         <Switch> 
-          <Route exact path='/' render={this.LandingView} /> 
+          <Route exact path='/' component={LandingView} /> 
           <Route exact path='/login'> 
-            <Login login={this.login} />
+            <Login login={this.login} login_tutor={this.login_tutor} />
           </Route>
           <Route exact path='/register'> 
             <SignUp {...this.state.registerProps} register={this.register} />
@@ -208,7 +203,7 @@ class App extends Component {
           <Route exact path='/payout-history'> 
             <PayoutHistory/>
           </Route>
-          <Route path='*' render={this.NotFoundView} /> 
+          <Route path='*' component={NotFoundView} /> 
         </Switch>
         }
         {this.state.type == 'parent' &&
@@ -217,19 +212,22 @@ class App extends Component {
           <Route path='/'> 
             <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
           </Route>
-          <Route path='*' render={this.NotFoundView} /> 
+          <Route path='*' component={NotFoundView} /> 
         </Switch>
         }
         {this.state.type == 'tutor' &&
         // Tutor Logged In
         <Switch>
-          <Route path='*' render={this.NotFoundView} /> 
+          <Route path='/'> 
+            <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
+          </Route>
+          <Route path='*' component={NotFoundView} /> 
         </Switch>
         }
         {this.state.type == 'admin' &&
         // Admin Logged In
         <Switch>
-          <Route path='*' render={this.NotFoundView} /> 
+          <Route path='*' component={NotFoundView} /> 
         </Switch>
         }
       </Router>

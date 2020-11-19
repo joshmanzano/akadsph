@@ -27,7 +27,7 @@ const Account = (props) => {
   return (
     <Page
       className={classes.root}
-      title="Account"
+      title="Profile"
     >
       <Container maxWidth="lg">
         <Grid

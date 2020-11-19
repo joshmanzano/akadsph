@@ -113,17 +113,17 @@
         "youtube": "youtube.com"
     },
     "Features": [{
-            "icon": "fa fa-group",
+            "icon": "../static/images/one-on-one.png",
             "title": "One-on-One",
             "text": "A more personal tutoring experience is essential to address your child's academic needs."
         },
         {
-            "icon": "fa fa-graduation-cap",
+            "icon": "../static/images/top-notch.png",
             "title": "Top Notch Tutors",
             "text": "Our college-student-tutors come from the Philippine's top universities such as Ateneo, U.P. etc."
         },
         {
-            "icon": "fa fa-laptop",
+            "icon": "../static/images/all-in-one.png",
             "title": "All-In-One",
             "text": "We combine the booking, payment, and video call to streamline the tutoring experience for our users."
         }

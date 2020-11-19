@@ -18,7 +18,7 @@ export class features extends Component {
               ? this.props.data.map((d,i) => (
                   <Grid item xs={4} key={`${d.title}-${i}`}>
                     {" "}
-                    <i className={d.icon}></i>
+                    <img width="90" src={d.icon}/>
                     <h3>{d.title}</h3>
                     <p>{d.text}</p>
                   </Grid>

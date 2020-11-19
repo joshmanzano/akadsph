@@ -37,7 +37,7 @@ const Dashboard = (props) => {
   return (
     <Page
       className={classes.root}
-      title="Dashboard"
+      title="Overview"
     >
       <Container maxWidth={false}>
         <Box mb={2}>

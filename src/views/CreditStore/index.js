@@ -153,7 +153,7 @@ function CreditStore(props){
   return (
     <Page
       className={classes.root}
-      title="Store" 
+      title="Buy Hours" 
     >
       <Snackbar open={success} autoHideDuration={6000} onClose={() => setSuccess(false)}>
         <Alert onClose={() => setSuccess(false)} severity="success">

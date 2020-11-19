@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function DashboardLayout (props){
+function TutorDashboardLayout (props){
   let classes = useStyles();
   let match = useRouteMatch();
   let location = useLocation();
@@ -162,4 +162,4 @@ function DashboardLayout (props){
 
 }
 
-export default DashboardLayout;
+export default TutorDashboardLayout;
