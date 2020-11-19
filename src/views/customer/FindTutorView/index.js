@@ -80,7 +80,7 @@ const CustomerListView = (props) => {
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
         <Box mb={2}>
-          <Typography variant="h1" align='center'>
+          <Typography variant="h1" align='left'>
             Find A Tutor
           </Typography>
         </Box>
