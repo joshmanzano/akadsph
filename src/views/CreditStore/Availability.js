@@ -84,7 +84,7 @@ const Availability = ({ className, ...rest }) => {
                   xs={12}
                 > 
               
-                  <Typography variant="h5" align= 'left'>
+                  <Typography variant="h6" align= 'left'>
                     Write all the available times for the dates
                   </Typography>
 

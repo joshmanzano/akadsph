@@ -3,8 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import 'antd/dist/antd.css';
 // import './index.css';
-import { Upload, message } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { Upload, message, Button } from 'antd';
+import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 
 const FileUpload = ({ ...rest }) => {
 const { Dragger } = Upload;
@@ -29,7 +29,10 @@ const props = {
 return(
 // ReactDOM.render(
 <React.Fragment>
-  <Dragger {...props}>
+  <Upload {...props}>
+    <Button style={{padding: "5px"}} icon={<UploadOutlined />}>Click to Upload</Button>
+  </Upload>
+  {/* <Dragger {...props}>
     <p className="ant-upload-drag-icon">
       <InboxOutlined />
     </p>
@@ -38,7 +41,7 @@ return(
       Support for a single or bulk upload. Strictly prohibit from uploading company data or other
       band files
     </p>
-  </Dragger>{/*,*/}
+  </Dragger>, */}
   </React.Fragment>
 //   document.getElementById('container'),
 // )

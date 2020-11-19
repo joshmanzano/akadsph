@@ -25,19 +25,18 @@ import {
 import { Search as SearchIcon } from 'react-feather';
 import Calendar from './Calendar';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import Moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  importButton: {
-    // marginRight: theme.spacing(1)
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
   },
-  exportButton: {
-    // marginRight: theme.spacing(1)
-  },
-  bundleButton: {
-    minWidth: "30vh",
-    paddingTop: "7%",
-    paddingBottom: "7%",
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
   },
 }));
 
@@ -98,10 +97,10 @@ const Availability = ({ className, ...rest }) => {
                   xs={12}
                 > 
               
-                  <Typography variant="h5" align= 'left'>
+                  <Typography variant="h6" align= 'left' mb={2}>
                     Write all the available times for the dates
                   </Typography>
-
+                  <br/>
                   {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
                   
                   {days != undefined &&
@@ -109,15 +108,100 @@ const Availability = ({ className, ...rest }) => {
                     {days.map(day=>(
                     <Grid
                     item
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    xs={6}
+                    lg={12}
+                    md={12}
+                    xl={12}
+                    xs={12}
                     > 
-                      <Typography variant="h5" align= 'left'>
-                        {day.toLocaleDateString()}
-                        <input type="time"></input>
-                      </Typography>
+
+                      <Grid container spacing={2}>
+                        <Grid 
+                          item 
+                          lg={4}
+                          md={4}
+                          xl={4}
+                          xs={12}>
+                            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <KeyboardDatePicker
+                                  disableToolbar
+                                  variant="inline"
+                                  format="MM/dd/yyyy"
+                                  margin="normal"
+                                  id="date-picker-inline"
+                                  label="Date"
+                                  value="11/20/2020"
+                                  // onChange={handleDateChange}
+                                  KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                  }}
+                                />
+                            </MuiPickersUtilsProvider> */}
+                          <form className={classes.container} noValidate>
+                            <TextField
+                              id="date"
+                              label="Date"
+                              type="date"
+                              format="MM/dd/yyyy"
+                              // defaultValue="2017-05-24"
+                              //day.toLocaleDateString()
+                              value={Moment(day).format('YYYY-MM-DD')}
+                              className={classes.textField}
+                              InputLabelProps={{
+                                shrink: true,
+                              }}
+                
+                            />
+                          </form>
+                        </Grid>
+                        <Grid 
+                          item 
+                          lg={4}
+                          md={4}
+                          xl={4}
+                          xs={12}>
+                            <form className={classes.container} noValidate>
+                              <TextField
+                                id="time"
+                                label="From"
+                                type="time"
+                                // defaultValue="07:30"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                                inputProps={{
+                                  step: 300, // 5 min
+                                }}
+                              />
+                            </form>
+                          {/* <Typography variant="h5" >
+                            From: <input type="time"></input>
+                          </Typography> */}
+                        </Grid>
+                        <Grid 
+                          item 
+                          lg={4}
+                          md={4}
+                          xl={4}
+                          xs={12}>
+                          <form className={classes.container} noValidate>
+                              <TextField
+                                id="time"
+                                label="Until"
+                                type="time"
+                                // defaultValue="07:30"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                                inputProps={{
+                                  step: 300, // 5 min
+                                }}
+                              />
+                            </form>
+                        </Grid>
+                      </Grid>
+                      
                     </Grid>
                     ))}
                   </Grid>
