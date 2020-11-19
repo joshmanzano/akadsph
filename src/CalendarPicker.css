@@ -196,12 +196,12 @@
   }
   
   .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-    background-color: #51A0FA;
+    background-color:#EB5531;;
   }
   
   .DayPicker:not(.DayPicker--interactionDisabled)
     .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-    background-color: #F0F8FF;
+    background-color: #eb563177;;
   }
   
   /* DayPickerInput */
