@@ -321,11 +321,6 @@ const ChildDetails = ({ className, props, ...rest }) => {
                   xs={12}
                 >
                   <Grid container spacing={2}>
-                    {/* <Grid item >
-                      <Typography variant="h5">
-                          Who needs tutoring?
-                      </Typography>
-                    </Grid> */}
 
                     <Grid item xs={12}>  
                       <FormControl variant="outlined" className={classes.formControl} fullWidth>
@@ -333,7 +328,6 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         <Select
                           fullWidth
                           native
-      
                           label="Child's Name"
                           inputProps={{
                             name: 'child-name',
@@ -399,7 +393,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                           }}
                         >
                           {props.lengths.map((length) => 
-                            <option value={length.id}>length.name</option>
+                            <option value={length.id}>{length}</option>
                           )}
                           {/* <option value={10}>1 hour</option>
                           <option value={20}>1 hour 30 minutes</option>
@@ -450,7 +444,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         >
                           <option aria-label="None" value="" />
                           {props.favtutors.map((tutor) => 
-                            <option value={tutor.id}>tutor.name</option>
+                            <option value={tutor.id}>{tutor}</option>
                           )}
                           {/* <option value={10}>Tolo Pena</option>
                           <option value={20}>Charles Samoy</option> */}
@@ -488,7 +482,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         >
                           <option aria-label="None" value="" />
                           {props.subjects.map((subject) => 
-                            <option value={subject.id}>subject.name</option>
+                            <option value={subject.id}>{subject}</option>
                           )}
                           {/* <option value={10}>Math</option>
                           <option value={20}>Science</option>
