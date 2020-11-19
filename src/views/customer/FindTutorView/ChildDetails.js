@@ -385,9 +385,82 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         </Select>
                       </FormControl> 
                     </Grid>
+                    <Grid item xs={12}>
+                      
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Length of Session</InputLabel>
+                        <Select
+                          native
+      
+                          label="Length of Session"
+                          inputProps={{
+                            name: 'session-length',
+                            id: 'session-length',
+                          }}
+                        >
+                          {props.lengths.map((length) => 
+                            <option value={length.id}>length.name</option>
+                          )}
+                          {/* <option value={10}>1 hour</option>
+                          <option value={20}>1 hour 30 minutes</option>
+                          <option value={10}>2 hours</option> */}
+                        </Select>
+                      </FormControl>
+                    </Grid>
                   </Grid>
-                  
+                
                 </Grid>
+
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  xl={4}
+                  xs={12}
+                >
+                <Grid container spacing={2}>
+                  {/* <Grid item xs={12}>
+                      <Typography variant="h5">
+                          Sessions and Tutor Details
+                      </Typography>
+                    </Grid> */}
+                  
+                    <Grid item xs={12}>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">Tutor Options</FormLabel>
+                        <RadioGroup name="tutor-choice">
+                          <FormControlLabel value="all-tutors" control={<Radio />} label="All Tutors Accepted" />
+                          <FormControlLabel value="fave-tutors" control={<Radio />} label="Favorite Tutors Only" />
+                          
+                        </RadioGroup>
+                      </FormControl>
+                     
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <InputLabel>Favorite Tutors</InputLabel>
+                        <Select
+                          native
+      
+                          label="Favorite Tutors"
+                          inputProps={{
+                            name: 'fave-tutors',
+                            id: 'fave-tutors',
+                          }}
+                        >
+                          <option aria-label="None" value="" />
+                          {props.favtutors.map((tutor) => 
+                            <option value={tutor.id}>tutor.name</option>
+                          )}
+                          {/* <option value={10}>Tolo Pena</option>
+                          <option value={20}>Charles Samoy</option> */}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+
                 <Grid
                   item
                   lg={4}
@@ -451,7 +524,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} align='center'>
                     <Typography variant="h6">
                         Upload any relevant materials such handouts or slides
                     </Typography>
@@ -468,90 +541,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                   </Grid>
                   
                 </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                <Grid container spacing={2}>
-                  {/* <Grid item xs={12}>
-                      <Typography variant="h5">
-                          Sessions and Tutor Details
-                      </Typography>
-                    </Grid> */}
-                  <Grid item xs={12}>
-                      
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                        <InputLabel>Length of Session</InputLabel>
-                        <Select
-                          native
-      
-                          label="Length of Session"
-                          inputProps={{
-                            name: 'session-length',
-                            id: 'session-length',
-                          }}
-                        >
-                          {props.lengths.map((length) => 
-                            <option value={length.id}>length.name</option>
-                          )}
-                          {/* <option value={10}>1 hour</option>
-                          <option value={20}>1 hour 30 minutes</option>
-                          <option value={10}>2 hours</option> */}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">Tutor Options</FormLabel>
-                        <RadioGroup name="tutor-choice">
-                          <FormControlLabel value="all-tutors" control={<Radio />} label="All Tutors Accepted" />
-                          <FormControlLabel value="fave-tutors" control={<Radio />} label="Favorite Tutors Only" />
-                          
-                        </RadioGroup>
-                      </FormControl>
-                      {/* <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                        <InputLabel>Tutor Options</InputLabel>
-                        <Select
-                          native
-      
-                          label="Tutor Options"
-                          inputProps={{
-                            name: 'tutor-options',
-                            id: 'tutor-options',
-                          }}
-                        >
-                          <option aria-label="None" value="" />
-                          <option value={10}>Favorite Tutors Only</option>
-                          <option value={20}>All Tutors Accepted</option>
-                        </Select>
-                      </FormControl> */}
-                    </Grid>
-                    <Grid item xs={12}>
-                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                        <InputLabel>Favorite Tutors</InputLabel>
-                        <Select
-                          native
-      
-                          label="Favorite Tutors"
-                          inputProps={{
-                            name: 'fave-tutors',
-                            id: 'fave-tutors',
-                          }}
-                        >
-                          <option aria-label="None" value="" />
-                          {props.favtutors.map((tutor) => 
-                            <option value={tutor.id}>tutor.name</option>
-                          )}
-                          {/* <option value={10}>Tolo Pena</option>
-                          <option value={20}>Charles Samoy</option> */}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                  </Grid>
-                </Grid>
+                
                 
  
               </Grid>

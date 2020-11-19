@@ -1,6 +1,7 @@
 import React from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+import Moment from 'moment';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ export default class Example extends React.Component {
     this.setState({ selectedDays }, () => {
       this.props.getDays(selectedDays);
     });
+
+    console.log(day.toLocaleDateString('en-GB'));
+    console.log(Moment(day).format('YYYY-DD-MM'));
   }
 
   render() {
