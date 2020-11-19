@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 // import './index.css';
 import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';

@@ -68,10 +68,6 @@ const useStyles = makeStyles((theme) => ({
     // paddingBottom: "7%",
   },
   closeButton: {
-    // position: 'absolute',
-    // right: theme.spacing(1),
-    // top: theme.spacing(1),
-    // color: theme.palette.grey[500],
     float:'right', marginTop: '5px'
 
   },

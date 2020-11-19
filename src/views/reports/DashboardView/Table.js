@@ -26,7 +26,20 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import Grid from '@material-ui/core/Grid';
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  // DialogTitle,
+} from '@material-ui/core';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
 
+import CloseIcon from '@material-ui/icons/Close';
+
+import { withStyles } from '@material-ui/core/styles';
 
 
 function createData(name, calories, fat, carbs, protein) {
@@ -123,6 +136,8 @@ function EnhancedTableHead(props) {
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
+
+  
 
   return (
     <TableHead>
@@ -248,7 +263,22 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
+  closeButton: {
+    float:'right', marginTop: '5px'
+
+  },
+  dialogTitle:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
+
+
 
 export default function EnhancedTable(props) {
   const classes = useStyles();
@@ -262,8 +292,29 @@ export default function EnhancedTable(props) {
   const tableRows = props.tableRows;
   const sessionType = props.sessionType;
   const tableType = props.type;
+  const [open, setOpen] = React.useState(false);
 
-
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  const DialogTitle = withStyles(useStyles)((props) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <Typography variant="h4">{children}</Typography>
+        {onClose ? (
+          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -380,14 +431,66 @@ export default function EnhancedTable(props) {
                   }
 
                   {sessionType == "upcoming/pending" ? 
-                  <TableCell>
-                      <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
-                      </Box>
-                      <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
-                      </Box>
-                  </TableCell>
+                    <React.Fragment>
+                    {session.date == "November 19" ? 
+                      <React.Fragment>
+                        <TableCell>
+                            <Grid container spacing={1}>
+                              <Grid item xs={4}>
+                                <Button variant='contained' color='primary' onClick={handleClickOpen}startIcon={<CastForEducationIcon/>}>Join</Button>
+                              </Grid>
+                              <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                                >
+                                  {/* <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle> */}
+                                  <DialogContent>
+                                    <DialogContentText id="alert-dialog-description">
+                                      Your tutorial session is about to start! Join the call now.
+                                    </DialogContentText>
+                                  </DialogContent>
+                                  <DialogActions>
+                                    <Button onClick={handleClose} color="primary">
+                                      Cancel
+                                    </Button>
+                                    <Button onClick={handleClose} color="primary" autoFocus>
+                                      Join Session
+                                    </Button>
+                                  </DialogActions>
+                              </Dialog>
+                              <Grid item xs={4}>
+                                <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                              </Grid>
+                              <Grid item xs={4}>
+                                <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                              </Grid>
+                            </Grid>
+                            {/* <Box mx={1} component='span'>
+                            <Button variant='contained' color='primary'>Join Now</Button>
+                            </Box>
+                            <Box mx={1} component='span'>
+                            <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                            </Box>
+                            <Box mx={1} component='span'>
+                            <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                            </Box> */}
+                        </TableCell>
+                      </React.Fragment>
+                    : 
+                      <React.Fragment>
+                        <TableCell>
+                          <Box mx={1} component='span'>
+                          <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                          </Box>
+                          <Box mx={1} component='span'>
+                          <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                          </Box>
+                        </TableCell>
+                      </React.Fragment>
+                    }
+                    </React.Fragment>
                   :
                  
                   <TableCell>
