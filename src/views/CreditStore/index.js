@@ -169,7 +169,7 @@ function CreditStore(props){
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
         <Box mb={4}>
-          <Typography variant="h1" align='center'>
+          <Typography variant="h1" align='left'>
             Buy Hours
           </Typography>
         </Box>

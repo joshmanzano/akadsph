@@ -79,9 +79,9 @@ const CustomerListView = (props) => {
     >
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
-        <Box mb={4}>
-          <Typography variant="h1" align='center'>
-            Request A Tutor
+        <Box mb={2}>
+          <Typography variant="h1" align='left'>
+            Find A Tutor
           </Typography>
         </Box>
         {!detailsDone ? 
