@@ -123,8 +123,8 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
 
   function handleAmountChange(event){
     const items = {
-      500: '1 hour',
-      4750: '10 hours',
+      549: '1 hour',
+      4999: '10 hours',
       7199: '15 hours'
     }
     const hours = {
@@ -236,7 +236,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                       </Grid>
                       <Grid item xs={12} align='center' className={classes.buttonContainer}>
                         <Typography variant="h4" display="block" className={ !bundleA ? classes.textPriceSingle : classes.textPriceSingleRev}>
-                          ₱500
+                          ₱549
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='left'>
@@ -265,7 +265,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                       </Grid>
                       <Grid item xs={12} align='center'>
                         <Typography variant="h4" display="block" className={ !bundleB ? classes.textPrice : classes.textPriceRev}>
-                          ₱4,750
+                          ₱4,999
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='right'>
