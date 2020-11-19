@@ -40,48 +40,14 @@ const Dashboard = (props) => {
       title="Dashboard"
     >
       <Container maxWidth={false}>
-        <Box mb={2}>
-
-        <Grid container spacing={3}>
-          <Grid
-            item
-            lg={1}
-            md={1}
-            xl={1}
-            xs={12}
-          >
-          <img width='100' src='../static/images/oli-happy.png'>
-          </img>
-          </Grid>
-          <Grid
-            item
-            lg={11}
-            md={11}
-            xl={11}
-            xs={12}
-          >
-          <Box ml={2}>
-            <Typography id='selector1' variant="h1">
-              Welcome {props.first_name}! 
-            </Typography>
-              {props.credits > 0 ?
-              <Typography id='selector1' variant="h2">
-                You have {props.credits} credit hours left.
-              </Typography>
-              :
-              <Typography id='selector1' variant="h2">
-                You have no credit hours.
-              </Typography>
-              }
-          </Box>
-          </Grid>
-        </Grid>
-
+        <Box mb={4}>
+          <Typography id='selector1' variant="h1">
+            Welcome {props.first_name}!
+          </Typography>
         </Box>
-
         <Grid
           container
-          spacing={3}
+          spacing={2}
         >
           <Grid
             item
