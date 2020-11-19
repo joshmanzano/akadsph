@@ -38,9 +38,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     border: '2px solid #75c2b7',
     "&:hover": {
-        backgroundColor: '#75c2b7',
-        color: 'white!important',
-      }
+      backgroundColor: '#75c2b7',
+      color: 'white !important',
+    }
   },
   bundleButtonRev: {
     width: "17vh",
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContainer: {
     "&:hover": {
-        color: 'white!important',
+        color: 'white !important',
       }
   },
 }));
