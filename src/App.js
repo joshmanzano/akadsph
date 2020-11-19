@@ -119,6 +119,7 @@ class App extends Component {
       post_api('all-parent-details', data, (res) => {
         const parent = res['parent']
         const children = res['children'] 
+        console.log(children)
         this.setState({
           credits: parent['credits']
 
@@ -165,8 +166,8 @@ class App extends Component {
               'transaction': []
             },
             'findtutorview': {
-              'tutees':[],
-              'favtutors':["Carl Cornejo", "CarlaC Cordero"],
+              'tutees':children,
+              'favtutors':["Carl Cornejo", "Carla Cordero"],
               'levels':[],
               'subjects':["Math", "Science", "English", "Filipino"],
               'lengths':["1 hour", "1 hour 30 minutes", "2 hours"],

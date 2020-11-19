@@ -98,7 +98,7 @@ function CreditStore(props){
 
   const [cardState, setCardState] = React.useState();
   const [amount, setAmount] = React.useState(0);
-  const [item, setItem] = React.useState();
+  const [item, setItem] = React.useState('');
   const [hours, setHours] = React.useState(0);
   const [discount, setDiscount] = React.useState(0);
   
