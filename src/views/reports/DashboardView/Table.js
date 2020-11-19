@@ -444,11 +444,15 @@ export default function EnhancedTable(props) {
                                 onClose={handleClose}
                                 aria-labelledby="alert-dialog-title"
                                 aria-describedby="alert-dialog-description"
+                                
                                 >
-                                  {/* <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle> */}
+                                  <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{""}</DialogTitle>
                                   <DialogContent>
-                                    <DialogContentText id="alert-dialog-description">
-                                      Your tutorial session is about to start! Join the call now.
+                                    <Box align='center' mb={2}>
+                                    <img width='100' src='../static/images/oli-happy.png'></img>
+                                    </Box>
+                                    <DialogContentText id="alert-dialog-description" align='center'>
+                                      Your tutorial session is about to start!<br/>Join the call now.
                                     </DialogContentText>
                                   </DialogContent>
                                   <DialogActions>
