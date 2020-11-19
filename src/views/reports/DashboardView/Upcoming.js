@@ -45,7 +45,7 @@ const rows = [
   // },
 ]
 
-const headers = ["Date", "Time", "Subject", "Tutor", ""]
+const headers = ["Time", "Subject", "Tutor", ""]
 
 const sessionType = "upcoming/pending"
 

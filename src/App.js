@@ -217,6 +217,7 @@ class App extends Component {
           <Route path='/'> 
             <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
           </Route>
+          <Route path='*' render={this.NotFoundView} /> 
         </Switch>
         }
         {this.state.type == 'tutor' &&

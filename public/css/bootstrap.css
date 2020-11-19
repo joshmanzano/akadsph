@@ -50,7 +50,8 @@ a:hover {
   outline: 0;
 }
 abbr[title] {
-  border-bottom: 1px dotted;
+  color: #4655A5;
+  /* border-bottom: 1px dotted; */
 }
 b,
 strong {
@@ -641,7 +642,7 @@ dd {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #777;
+  /* border-bottom: 1px dotted #777; */
 }
 .initialism {
   font-size: 90%;

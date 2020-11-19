@@ -36,6 +36,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
@@ -126,11 +127,11 @@ const TopBar = ({
             </Grid>
             <Grid sm={2}>
               <IconButton color="inherit" href="#/findtutor">
-                <BookIcon/>
+                <InsertInvitationIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Booking
+                      Request
                     </h5>
                   </Box>
                 </Hidden>

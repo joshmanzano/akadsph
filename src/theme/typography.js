@@ -1,10 +1,12 @@
 export default {
   h1: {
-    fontWeight: 500,
+    color: '#4655A5',
+    fontWeight: 700,
     fontSize: 35,
     letterSpacing: '-0.24px'
   },
   h2: {
+    color: '#4655A5',
     fontWeight: 500,
     fontSize: 29,
     letterSpacing: '-0.24px'

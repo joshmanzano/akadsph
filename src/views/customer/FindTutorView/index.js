@@ -75,7 +75,7 @@ const CustomerListView = (props) => {
   return (
     <Page
       className={classes.root}
-      title="Find A Tutor - AKADSPH" 
+      title="Request" 
     >
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
