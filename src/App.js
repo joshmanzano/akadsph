@@ -119,7 +119,32 @@ class App extends Component {
               'favtutors': [],
             },
             'dashboardview': {
-              'upcoming':[],
+              'upcoming':[
+                  {
+                  date: 'November 19',
+                  time: '4 PM',
+                  subject: 'Filipino',
+                  tutor: {
+                    name: 'Adrienne Soliven'
+                  },
+                },
+                {
+                  date: 'November 20',
+                  time: '4 PM',
+                  subject: 'Math',
+                  tutor: {
+                    name: 'Adrienne Soliven'
+                  },
+                },
+                {
+                  date: 'November 23',
+                  time: '4 PM',
+                  subject: 'Science',
+                  tutor: {
+                    name: 'Adrienne Soliven'
+                  },
+                },
+            ],
               'pending': [],
               'history': [],
               'transaction': []
