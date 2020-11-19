@@ -21,8 +21,9 @@ export default class Example extends React.Component {
     } else {
       selectedDays.push(day);
     }
-    this.setState({ selectedDays });
-    this.props.getDays(selectedDays);
+    this.setState({ selectedDays }, () => {
+      this.props.getDays(selectedDays);
+    });
   }
 
   render() {
