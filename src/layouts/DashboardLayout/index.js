@@ -16,7 +16,6 @@ import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import FindTutorView from 'src/views/customer/FindTutorView';
 import DashboardView from 'src/views/reports/DashboardView';
-import PlaygroundView from 'src/views/test/PlaygroundView';
 import AuthView from 'src/views/test/AuthView';
 import NotFoundView from 'src/views/errors/NotFoundView.jsx';
 import ProductListView from 'src/views/product/ProductListView';
@@ -28,6 +27,8 @@ import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
 import NoHourView from 'src/components/NoHourView';
+import PlaygroundView from 'src/views/test/PlaygroundView';
+import Messenger from 'src/views/react-messenger/Messenger';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -136,7 +137,12 @@ function DashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  <ChatView {...userData['chatview']}/>
+                  <Messenger/> 
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}playground`}>
+                <Fragment>
+                  <PlaygroundView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 

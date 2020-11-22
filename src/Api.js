@@ -9,7 +9,7 @@ const password = 'password'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 // axios.defaults.withCredentials = true;
 
-const get_token = () => {
+const get_token = (_callback) => {
   localStorage.clear()
   const data = {
     'username': username,
@@ -18,20 +18,28 @@ const get_token = () => {
   axios.post(api_url+'/'+'api-token-auth'+'/', data)
   .then(res => {
     localStorage.setItem('token',res.data.token)
+    _callback(true)
+  }).catch(err => {
+    _callback(false)
   })
 }
 
-export const check_admin_token = () => {
+export const check_admin_token = (_callback) => {
   const token = localStorage.getItem('token')
   const timestamp = Number(Date.now());
   if(token == null){
-    get_token()
+    get_token((res) => {
+      _callback(res)
+    })
   }else{
     const token_data = jwt(token)
     const expiry = Number(token_data['exp']) * 1000
     if(timestamp > expiry){
-      get_token()
+      get_token((res) => {
+        _callback(res)
+      })
     }
+    _callback(true)
   }
 }
 
@@ -60,7 +68,9 @@ export const verify_token = (_callback) => {
     _callback(response.data)
   })
   .catch(function (error) {
-    console.log(error);
+    _callback({
+      'verified': false
+    })
   });
 
 }

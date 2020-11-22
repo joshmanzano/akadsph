@@ -1,4 +1,5 @@
 {
+  "homepage": "https://akadsph.github.io",
   "name": "AkadsPH",
   "author": "Rolo Co",
   "licence": "MIT",
@@ -35,6 +36,8 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/pickers": "^3.2.10",
     "@material-ui/styles": "^4.10.0",
+    "@mui-treasury/layout": "^4.5.0",
+    "@mui-treasury/mockup": "^1.2.9",
     "@syncfusion/ej2-react-inputs": "^18.3.48",
     "@wojtekmaj/react-timerange-picker": "^3.0.0",
     "antd": "^4.8.4",
@@ -73,6 +76,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-transition-group": "^4.4.1",
+    "shave": "^2.5.10",
+    "styled-components": "^5.2.1",
     "uuid": "^8.3.0",
     "yup": "^0.29.3"
   },

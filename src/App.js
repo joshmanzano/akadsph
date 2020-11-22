@@ -8,6 +8,7 @@ import DashboardView from 'src/views/reports/DashboardView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
 import AuthView from 'src/views/test/AuthView';
 import NotFoundView from 'src/views/errors/NotFoundView.jsx';
+import NotOnline from 'src/views/errors/NotOnline.jsx';
 import ProductListView from 'src/views/product/ProductListView';
 import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
@@ -26,22 +27,36 @@ class App extends Component {
       super(props);
       this.state = {
         session: localStorage.getItem('session_token'),
+        offline: false,
       };
-      console.log(props)
+
   }
 
   componentDidMount(){
-    check_admin_token();
-    if(this.state.session != null){
-      verify_token((res) => {
-        if(res['verified']){
-          this.setState({id:res['id'], type: res['type']})
-        }else{
-          localStorage.clear()
-          window.location.replace('/')
+    this.checkBackend((res) => {
+      this.setState({offline: !res})
+    })
+  }
+
+  checkBackend = (_callback) => {
+    check_admin_token(res => {
+      if(res){
+        if(this.state.session != null){
+          verify_token((res) => {
+            if(res['verified']){
+              this.setState({id:res['id'], type: res['type']})
+              _callback(true)
+            }else{
+              localStorage.clear()
+              window.location.replace('/')
+            }
+          })
         }
-      })
-    }
+        _callback(true)
+      }else{
+        _callback(false)
+      }
+    });
   }
 
   login = (accessToken, idToken) => {
@@ -188,6 +203,8 @@ class App extends Component {
 
   render(){
     return (
+      <div>
+      {this.state.offline == false ?
       <Router>
         {this.state.session == null &&
         // Not Logged In
@@ -233,6 +250,10 @@ class App extends Component {
         </Switch>
         }
       </Router>
+      :
+      <NotOnline/>
+      }
+      </div>
     );
   }
 
