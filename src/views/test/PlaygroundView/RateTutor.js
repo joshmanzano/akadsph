@@ -36,8 +36,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Rating from '@material-ui/lab/Rating';
 
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Avatar from '@material-ui/core/Avatar';
+import StarIcon from '@material-ui/icons/Star';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,7 +143,7 @@ const RateTutor = ({open, setOpen, className, ...rest }) => {
               defaultValue={0}
               precision={0.5}
               fontsize="large"
-              icon={<StarBorderIcon size="large" />}
+              icon={<StarIcon size="large" />}
             />
           </Box>
 

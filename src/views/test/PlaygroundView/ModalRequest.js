@@ -27,12 +27,25 @@ import {
     DialogContentText,
     // DialogTitle,
   } from '@material-ui/core';
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
   
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
   
 import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
+
+import RequestSummary from './RequestSummary';
+
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '4px 2px 5px 20px',
+  }, 
+  dialogStyle:{
+    minWidth: "100vh",
   },
 }));
 
@@ -99,15 +115,71 @@ const ModalRequest = ({open, setOpen, className, ...rest }) => {
     onClose={handleClose}
     aria-labelledby="alert-dialog-title"
     aria-describedby="alert-dialog-description"
-    
+    className={classes.dialogStyle}
+    fullWidth={true}
+    maxWidth={'md'}
     >
         <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Session Request"}</DialogTitle>
-        <DialogContent>
+        <DialogContent >
+          <RequestSummary/>
+          <Typography variant="body1" mb={2}  mt={3}>
+            Special Request: None
+          </Typography>
+          <Box style={{textAlign:"center"}} mb={2}>
+          <FormControl component="fieldset" >
+            <FormLabel component="legend">Available Schedule</FormLabel>
+            <RadioGroup aria-label="sched-date" name="sched-date">
+              <FormControlLabel value="12/01/20" control={<Radio />} label="December 1 2:00-4:00PM" />
+              <FormControlLabel value="12/02/20" control={<Radio />} label="December 2 1:00-3:00PM" />
+              <FormControlLabel value="12/03/20" control={<Radio />} label="December 3 4:00-6:00PM" />
+            </RadioGroup>
+          </FormControl>
+          </Box>
           
-          <DialogContentText id="alert-dialog-description" align='center'>
-              Your tutor has cancelled the session
-          </DialogContentText>
+          <Grid container style={{textAlign:"center"}}>
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xl={4}
+            xs={0}
+          >
+          </Grid>
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xl={4}
+            xs={12}
+          >
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel id="demo-simple-select-outlined-label">Start Time</InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                
+                label="Start Time"
+              >
+                <MenuItem value={"14:00"}>2:00PM</MenuItem>
+                <MenuItem value={"14:30"}>2:30PM</MenuItem>
+                <MenuItem value={"15:00"}>3:00PM</MenuItem>
+           
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xl={4}
+            xs={0}
+          >
+          </Grid>
+          </Grid>
+ 
         </DialogContent>
+        
+        
         <DialogActions>
           <Button onClick={handleClose} color="primary">
               Decline

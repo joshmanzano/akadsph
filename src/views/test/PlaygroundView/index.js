@@ -37,6 +37,7 @@ import ModalCancelled from './ModalCancelled';
 import ModalWaiting from './ModalWaiting';
 import ModalSure from './ModalSure';
 import RateTutor from './RateTutor';
+import ModalRequest from './ModalRequest';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,7 +142,8 @@ const Dashboard = () => {
                 {/* <ModalCancelled open={open} setOpen={setOpen}/> */}
                 {/* <ModalWaiting open={open} setOpen={setOpen}/> */}
                 {/* <ModalSure open={open} setOpen={setOpen}/> */}
-                <RateTutor open={open} setOpen={setOpen}/>
+                {/* <RateTutor open={open} setOpen={setOpen}/> */}
+                <ModalRequest open={open} setOpen={setOpen}/>
               </CardContent>
             </React.Fragment>
           </Grid>
