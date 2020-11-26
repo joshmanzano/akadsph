@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   bundleButton: {
     width: "17vh",
     borderRadius: 15,
-    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     border: '2px solid #75c2b7',
     "&:hover": {
       backgroundColor: '#75c2b7',
@@ -45,11 +45,10 @@ const useStyles = makeStyles((theme) => ({
   bundleButtonRev: {
     width: "17vh",
     borderRadius: 15,
-    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     border: '2px solid #75c2b7',
     backgroundColor: '#75c2b7',
     color: 'white',
- 
   },
   textPriceSingle:{
     fontWeight: 'bold',
@@ -162,29 +161,6 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
           
          
             <Box py={6}>
-              {/* <Grid container alignItems="center"
-                  justify="center">
-               
-                <Grid
-                  item
-                  lg={12}
-                  md={12}
-                  xl={12}
-                  xs={12}
-                  alignItems="center"
-                  justify="center"
-                  style={{textAlign: 'center'}}
-                >
-                  <FormControl component="fieldset" >
-                    <RadioGroup onChange={handleAmountChange} name="tutor-sex">
-                      <FormControlLabel value="500" control={<Radio color="primary" />} label="1 hour for P500" />
-                      <FormControlLabel value="4750" control={<Radio color="primary" />} label="10 hours for P4,750" />
-                      <FormControlLabel value="9000" control={<Radio color="primary" />} label="20 hours for P9,000" />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                
-              </Grid> */}
             
               <Grid container spacing={2} 
                 alignItems="center"

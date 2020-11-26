@@ -2,15 +2,21 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
+  Card,
+  CardContent,
+  CardHeader,
   Divider,
   useTheme,
   makeStyles,
   colors,
   Grid,
+  Tooltip,
   Button,
   Box,
   Container,
   TextField,
+  InputAdornment,
+  Snackbar,
   Typography, 
   IconButton,
 } from '@material-ui/core';
@@ -32,8 +38,6 @@ import Rating from '@material-ui/lab/Rating';
 
 import Avatar from '@material-ui/core/Avatar';
 import StarIcon from '@material-ui/icons/Star';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
+const FaveTutorDecline = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -119,53 +123,41 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
     aria-describedby="alert-dialog-description"
     
     >
-        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Tutor Profile"}</DialogTitle>
+        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Reason for Declining Session"}</DialogTitle>
         <DialogContent className={classes.dialogStyle}>
         
-          <Box align='center' mb={2} >
-            <Avatar>CS</Avatar>
-          </Box>
-          
-          <Typography variant="h4" align="center" mb={2}>
-            Charles Samoy
-          </Typography>
-          <Typography variant="h6" align="center" mb={2}>
-            Ateneo de Manila University
-          </Typography>
-          <Typography variant="h6" align="center" mb={2}>
-            4 BS Information Technology Techpreneurship
-          </Typography>
-          <Typography variant="h6" align="center" mb={2}>
-            Lan Kwai's DJ of the Year 2019
-          </Typography>
-
-          <Box my={5}>
-            <Grid container spacing={2} style={{textAlign: 'center'}}>
-              <Grid xs={6}>
-                <Typography variant="h3" align="center" mb={2}>
-                  40
-                </Typography>
-                <Typography variant="h6" align="center" mb={2}>
-                  hours
-                </Typography>
-              </Grid>
-              <Grid xs={6}>
-                <Typography variant="h4" align="center" mb={2}>
-                  40
-                </Typography>
-                <Typography variant="h6" align="center" mb={2}>
-                  Students
-                </Typography>
-              </Grid>
-            </Grid>
-          </Box>
+          <DialogContentText> 
+            <Typography variant="h6" align="center" mb={5}>
+              (for fave tutors only)
+            </Typography>
+            <Typography variant="h4" align="center" mb={5}>
+              Session Declined
+            </Typography>
+          </DialogContentText> 
+          <TextField 
+            id="reason" 
+            label="Reason" 
+            variant="outlined" fullWidth
+            multiline
+            rows={4}
+            placeholder="Optional"
+            />
+            
         </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+              Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary" autoFocus>
+              Confirm
+          </Button>
+        </DialogActions>
     </Dialog>
   );
 };
 
-ModalTutorProfile.propTypes = {
+FaveTutorDecline.propTypes = {
   className: PropTypes.string
 };
 
-export default ModalTutorProfile;
+export default FaveTutorDecline;

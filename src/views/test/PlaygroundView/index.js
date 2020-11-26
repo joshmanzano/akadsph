@@ -32,14 +32,17 @@ import Email from './Email'
 import RandomFact from './RandomFact'
 import Chat from './Chat'
 import ModalSessionExtension from './ModalSessionExtension';
-import ModalDeclined from './ModalDeclined';
+import ModalDeclined from './ModalDeclined'; 
 import ModalCancelled from './ModalCancelled';
 import ModalWaiting from './ModalWaiting';
-import ModalSure from './ModalSure';
-import RateTutor from './RateTutor';
-import ModalRequest from './ModalRequest';
+import ModalSure from './ModalSure'; //generic are you sure
+import RateTutor from './RateTutor'; //parent rating tutor
+import ModalRequest from './ModalRequest'; //Tutor viewing 
 import ModalConfRequest from './ModalConfRequest';
-import ModalTutorProfile from './ModalTutorProfile';
+import ModalTutorProfile from './ModalTutorProfile'; //profile dets of tutor
+import ExtensionPrompt from './ExtensionPrompt'; //asking parent if she wants an extension
+import TutorExtensionForm from './TutorExtensionForm'; //asking tutor if he accepts the extension
+import FaveTutorDecline from './FaveTutorDecline'; //tutor declining a session
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,7 +150,10 @@ const Dashboard = () => {
                 {/* <RateTutor open={open} setOpen={setOpen}/> */}
                 {/* <ModalRequest open={open} setOpen={setOpen}/> */}
                 {/* <ModalConfRequest open={open} setOpen={setOpen}/> */}
-                <ModalTutorProfile open={open} setOpen={setOpen}/>
+                {/* <ModalTutorProfile open={open} setOpen={setOpen}/> */}
+                {/* <ExtensionPrompt open={open} setOpen={setOpen}/> */}
+                {/* <TutorExtensionForm open={open} setOpen={setOpen}/> */}
+                <FaveTutorDecline open={open} setOpen={setOpen}/>
               </CardContent>
             </React.Fragment>
           </Grid>
