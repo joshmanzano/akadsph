@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -58,13 +58,21 @@ const CustomerListView = (props) => {
   const classes = useStyles();
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [data, setData] = React.useState({
+    tutees: props.tutees[0],
+    subjects: props.subjects[0],
+    lengths: props.lengths[0],
+    topics: [],
+    favTutor: [],
+    allTutors: true,
+  });
 
   const handleChangeNext = (event) => {
     setDetailsDone(!detailsDone);
   };
-
   
     const handleClickOpen = () => {
+      console.log(data)
       setOpen(true);
     };
   
@@ -108,7 +116,7 @@ const CustomerListView = (props) => {
               xl={12}
               xs={12}
             >
-              <ChildDetails props={props}/>
+              <ChildDetails data={data} setData={setData} props={props}/>
             </Grid>
             <Grid
               item
@@ -117,7 +125,7 @@ const CustomerListView = (props) => {
               xl={12}
               xs={12}
             >
-              <Availability/>
+              <Availability data={data} setData={setData}/>
             </Grid>
             <Grid
               item
@@ -126,7 +134,7 @@ const CustomerListView = (props) => {
               xl={12}
               xs={12}
             >
-              <SpecialRequests/>
+              <SpecialRequests data={data} setData={setData}/>
             </Grid>
             <Grid
               item
@@ -153,7 +161,7 @@ const CustomerListView = (props) => {
                   <DialogTitle id="alert-dialog-title">{"Tutor Request Confirmation"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                      <Summary tutee={props.tutees[0]}/>
+                      <Summary data={data}/>
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>

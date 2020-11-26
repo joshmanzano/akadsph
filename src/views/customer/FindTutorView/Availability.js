@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Availability = ({ className, ...rest }) => {
+const Availability = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
   const [days, setDays] = React.useState();
   const [count, setCount] = React.useState(0);
@@ -51,6 +51,8 @@ const Availability = ({ className, ...rest }) => {
   }, [count])
 
   const getDays=(selectedDays)=>{
+    data['days'] = selectedDays;
+    setData(data);
     setDays(selectedDays);
     setCount(count + 1);
   }
@@ -113,7 +115,6 @@ const Availability = ({ className, ...rest }) => {
                     xl={12}
                     xs={12}
                     > 
-
                       <Grid container spacing={2}>
                         <Grid 
                           item 

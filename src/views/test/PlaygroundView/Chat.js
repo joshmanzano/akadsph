@@ -27,7 +27,6 @@ import {
 
 import {Widget} from 'react-chat-widget';
 import {ChatList, Navbar} from 'react-chat-elements';
-import 'react-chat-widget/lib/styles.css';
 import 'react-chat-elements/dist/main.css';
 
 class Chat extends React.Component {

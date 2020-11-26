@@ -35,6 +35,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Tutorial from 'src/components/Tutorial';
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
+import {Widget} from 'react-chat-widget';
+import 'src/ChatWidget.css';
+import oli from 'src/oli.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -148,12 +151,18 @@ function DashboardLayout (props){
               <Route path='*' component={NotFoundView} /> 
             </Switch>
 
+
             </CSSTransition>
 
             </TransitionGroup>
           </div>
         </div>
       </div>
+      {/* <Widget
+      profileAvatar={'src/oli.svg'}
+      title={'Hello there!'}
+      subtitle={'Ask me anything'}
+      /> */}
     </div>
     :
     <Fade in={!loaded}>

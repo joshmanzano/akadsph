@@ -132,9 +132,12 @@ class App extends Component {
         'parent_id': id
       }
       post_api('all-parent-details', data, (res) => {
+        console.log(res)
         const parent = res['parent']
         const children = res['children'] 
-        console.log(children)
+        const subjects = res['subjects']
+        const settings = res['settings']
+        console.log(subjects)
         this.setState({
           credits: parent['credits']
 
@@ -184,8 +187,21 @@ class App extends Component {
               'tutees':children,
               'favtutors':["Carl Cornejo", "Carla Cordero"],
               'levels':[],
-              'subjects':["Math", "Science", "English", "Filipino"],
-              'lengths':["1 hour", "1 hour 30 minutes", "2 hours"],
+              'subjects':subjects,
+              'lengths':[
+                {
+                  value: 1,
+                  name: '1 hour'
+                },
+                {
+                  value: 2,
+                  name: '2 hours'
+                },
+                {
+                  value: 3,
+                  name: '3 hours'
+                },
+              ],
             },
             'settingsview': {
               'selected':[],

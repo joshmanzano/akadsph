@@ -28,6 +28,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import {DropzoneArea} from 'material-ui-dropzone'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -362,18 +363,8 @@ const ChildDetails = ({ className, ...rest }) => {
                 >
                   <Typography variant="h5">
                     School or Government ID
-                    <br/>
-                    <Button
-                      variant="contained"
-                      component="label"
-                    >
-                      Upload File
-                      <input
-                        type="file"
-                        hidden
-                      />
-                    </Button>
                   </Typography>
+                  <DropzoneArea filesLimit={3}/>
                 </Grid> 
                 <Grid
                   item
@@ -400,17 +391,7 @@ const ChildDetails = ({ className, ...rest }) => {
                   <Typography variant="h5">
                     Transcript of Records from High School or College
                   </Typography>
-                 
-                    <Button
-                      variant="contained"
-                      component="label"
-                    >
-                      Upload File
-                      <input
-                        type="file"
-                        hidden
-                      />
-                    </Button>
+                  <DropzoneArea filesLimit={3}/>
                 </Grid> 
                 <Grid
                   item

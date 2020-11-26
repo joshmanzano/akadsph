@@ -8,7 +8,6 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import {Button,MessageList, ChatList, Input, Popup, Sidebar, Navbar} from 'react-chat-elements';
-import 'react-chat-widget/lib/styles.css';
 import 'react-chat-elements/dist/main.css';
 
 const useStyles = makeStyles((theme) => ({

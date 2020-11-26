@@ -74,7 +74,7 @@ const CustomerListView = () => {
       className={classes.root}
       title="Tutor Application - AKADSPH" 
     >
-      <Container maxWidth={false}>
+      <Container>
         {/* <Toolbar /> */}
         <Box mb={4}>
           <Typography variant="h1" align='center'>

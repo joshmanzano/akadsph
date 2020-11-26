@@ -29,7 +29,7 @@ export class Header extends Component {
                       </Button>
                     </Grid>
                     <Grid item xs={3}>
-                      <Button style={{borderRadius: "25px"}} size="large" color="secondary" variant="outlined">
+                      <Button href="#/tutor-form" style={{borderRadius: "25px"}} size="large" color="secondary" variant="outlined">
                         Become A Tutor
                       </Button>
                     </Grid>

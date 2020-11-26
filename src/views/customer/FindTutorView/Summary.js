@@ -15,6 +15,7 @@ import {
   Container,
   CardHeader,
   Divider,
+  Chip,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
 
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Summary = ({ className, tutee, ...rest }) => {
+const Summary = ({ className, data, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -74,7 +75,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {tutee.first_name}
+                        {data['tutees'].first_name}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -84,7 +85,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {tutee.year_level}
+                        {data['tutees'].year_level}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -94,7 +95,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Math
+                        {data['subjects'].subject_field}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -104,7 +105,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Algebra
+                        {data['topics'].map(topic => <Chip label={topic} />)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -124,7 +125,7 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        1 hour
+                        {data['lengths'].name}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -133,9 +134,15 @@ const Summary = ({ className, tutee, ...rest }) => {
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
+                      {data['allTutors'] ? 
+                      <Typography variant="h5" align="right">
+                        All Tutors
+                      </Typography>
+                      :
                       <Typography variant="h5" align="right">
                         Favorite Tutors Only
                       </Typography>
+                      }
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h6">
@@ -154,7 +161,11 @@ const Summary = ({ className, tutee, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        27/11/20 2:00pm-4:00pm <br/> 28/11/20 2:00pm-4:00pm
+                        {data['days'].map(day => (
+                          // <Chip label={(day.getMonth()+1)+'/'+(day.getDay())+'/'+day.getFullYear()}/>
+                          <Chip label={day.toUTCString()}/>
+                        ))}
+                        {/* <Chip label="27/11/20 2:00pm-4:00pm" /> */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>

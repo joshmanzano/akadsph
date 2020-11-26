@@ -28,6 +28,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import FileUpload from './FileUpload';
+import { DropzoneDialog } from 'material-ui-dropzone';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -44,29 +45,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ChildDetails = ({ className, props, ...rest }) => {
+const ChildDetails = ({ className, data, setData, props, ...rest }) => {
   const classes = useStyles();
   const topicselections = ['Algebra', 'Calculus', 'Mga Tula', 'Vocabulary'];
-  const [tutorOption, setTutorOption] = React.useState('');
+  const [tutorOption, setTutorOption] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleRadioChange = (event) => {
-    setTutorOption(event.target.value);
+    if(event.target.value == 'all-tutors'){
+      data['allTutors'] = true;
+      setTutorOption(true);
+    }else{
+      data['allTutors'] = false;
+      setTutorOption(false);
+    }
   };
-
-  const [childDetails, setDetails] = useState({
-    'child-name':''
-  });
-
-  useEffect(() => {
-    console.log(childDetails);
-
-  }, [childDetails])
 
   const handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
-    childDetails[nam] = val;
-    setDetails(childDetails)
+    data[nam] = props[nam][val];
+    setData(data)
+  }
+
+  const handleFreeChange = (event, value) => {
+    data['topics'] = value; 
+    setData(data)
   }
 
   return (
@@ -105,15 +109,13 @@ const ChildDetails = ({ className, props, ...rest }) => {
                           native
                           label="Child's Name"
                           inputProps={{
-                            name: 'child-name',
-                            id: 'child-name',
+                            name: 'tutees',
+                            id: 'tutees',
                           }}
                         >
-                        {props.tutees.map((tutee) =>
-                          <option value={tutee.id}>{tutee.first_name}</option>
+                        {props.tutees.map((tutee, index) =>
+                          <option value={index}>{tutee.first_name}</option>
                         )}
-                          <option value={2}>Second choice</option>
-                        
                         </Select>
                       </FormControl>
                     </Grid>
@@ -129,29 +131,13 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         <InputLabel>Grade Level</InputLabel>
                         <Select
                           native
-      
                           label="Grade Level"
                           inputProps={{
-                            name: 'grade-level',
-                            id: 'grade-level',
+                            name: 'year_level',
+                            id: 'year_level',
                           }}
                         >
-                          {props.tutees.map((tutee) => 
-                            <option value={tutee.year_level}>{tutee.year_level}</option>
-                          )}
-                          {/* <option value={10}>Kinder</option>
-                          <option value={10}>Prep</option>
-                          <option value={10}>Grade 1</option>
-                          <option value={20}>Grade 2</option>
-                          <option value={10}>Grade 3</option>
-                          <option value={10}>Grade 4</option>
-                          <option value={20}>Grade 5</option>
-                          <option value={10}>Grade 6</option>
-                          <option value={10}>Grade 7</option>
-                          <option value={10}>1st Year Highschool</option>
-                          <option value={10}>2nd Year Highschool</option>
-                          <option value={10}>3rd Year Highschool</option>
-                          <option value={10}>4th Year Highschool</option> */}
+                        <option value={data['tutees'].year_level}>{data['tutees'].year_level}</option>
                         </Select>
                       </FormControl> 
                     </Grid>
@@ -164,12 +150,12 @@ const ChildDetails = ({ className, props, ...rest }) => {
       
                           label="Length of Session"
                           inputProps={{
-                            name: 'session-length',
-                            id: 'session-length',
+                            name: 'lengths',
+                            id: 'lengths',
                           }}
                         >
-                          {props.lengths.map((length) => 
-                            <option value={length.id}>{length}</option>
+                          {props.lengths.map((length, index) => 
+                            <option value={index}>{length.name}</option>
                           )}
                           {/* <option value={10}>1 hour</option>
                           <option value={20}>1 hour 30 minutes</option>
@@ -196,7 +182,7 @@ const ChildDetails = ({ className, props, ...rest }) => {
                     </Grid> */}
                   
                     <Grid item xs={12}>
-                      <FormControl onChange={handleChange} component="fieldset">
+                      <FormControl component="fieldset">
                         <FormLabel component="legend">Tutor Options</FormLabel>
                         <RadioGroup name="tutor-choice" defaultValue="all-tutors" onChange={handleRadioChange}>
                           <FormControlLabel value="all-tutors" control={<Radio />} label="All Tutors Accepted" />
@@ -207,20 +193,19 @@ const ChildDetails = ({ className, props, ...rest }) => {
                      
                     </Grid>
                     <Grid item xs={12}>
-                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth disabled={(tutorOption == 'all-tutors')}>
+                      <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth disabled={tutorOption}>
                         <InputLabel>Favorite Tutors</InputLabel>
                         <Select
                           native
       
                           label="Favorite Tutors"
                           inputProps={{
-                            name: 'fave-tutors',
-                            id: 'fave-tutors',
+                            name: 'favtutors',
+                            id: 'favtutors',
                           }}
                         >
-                          <option aria-label="None" value="" />
-                          {props.favtutors.map((tutor) => 
-                            <option value={tutor.id}>{tutor}</option>
+                          {props.favtutors.map((tutor, index) => 
+                            <option value={index}>{tutor}</option>
                           )}
                           {/* <option value={10}>Tolo Pena</option>
                           <option value={20}>Charles Samoy</option> */}
@@ -249,16 +234,14 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         <InputLabel>Subject</InputLabel>
                         <Select
                           native
-      
                           label="Subject"
                           inputProps={{
-                            name: 'subject-matter',
-                            id: 'subject-matter',
+                            name: 'subjects',
+                            id: 'subjects',
                           }}
                         >
-                          <option aria-label="None" value="" />
-                          {props.subjects.map((subject) => 
-                            <option value={subject.id}>{subject}</option>
+                          {props.subjects.map((subject, index) => 
+                            <option value={index}>{subject.subject_field}</option>
                           )}
                           {/* <option value={10}>Math</option>
                           <option value={20}>Science</option>
@@ -280,8 +263,8 @@ const ChildDetails = ({ className, props, ...rest }) => {
                       <Autocomplete
                         multiple
                         id="tags-filled"
+                        name='topics'
                         options={topicselections.map((option) => option)}
-                        defaultValue={[topicselections[1]]}
                         freeSolo
                         variant="outlined"
                         renderTags={(value, getTagProps) =>
@@ -292,14 +275,20 @@ const ChildDetails = ({ className, props, ...rest }) => {
                         renderInput={(params) => (
                           <TextField {...params} variant="outlined" label="Topic/s" placeholder="Topic" helperText="(e.g. Algebra, Trigonometry, Vocalubary)"/>
                         )}
-                        onChange={handleChange}
+                        onChange={handleFreeChange}
                       />
                     </Grid>
                     <Grid item xs={12} align='center'>
                     <Typography variant="h6">
                         Upload any relevant materials such handouts or slides
                     </Typography>
-                    <FileUpload/>
+                    <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
+                      Upload Files
+                    </Button>
+                    <DropzoneDialog open={open}
+                      onClose={() => setOpen(false)}
+                    
+                    />
                       {/* <Button className={classes}  
                         color="primary"
                         variant="contained"
