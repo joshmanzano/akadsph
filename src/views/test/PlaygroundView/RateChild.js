@@ -2,15 +2,21 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
+  Card,
+  CardContent,
+  CardHeader,
   Divider,
   useTheme,
   makeStyles,
   colors,
   Grid,
+  Tooltip,
   Button,
   Box,
   Container,
   TextField,
+  InputAdornment,
+  Snackbar,
   Typography, 
   IconButton,
 } from '@material-ui/core';
@@ -32,8 +38,6 @@ import Rating from '@material-ui/lab/Rating';
 
 import Avatar from '@material-ui/core/Avatar';
 import StarIcon from '@material-ui/icons/Star';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RateTutor = ({open, setOpen, className, ...rest }) => {
+const RateChild = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -119,7 +123,7 @@ const RateTutor = ({open, setOpen, className, ...rest }) => {
     aria-describedby="alert-dialog-description"
     
     >
-        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Rate Tutor"}</DialogTitle>
+        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Rate Tutee"}</DialogTitle>
         <DialogContent className={classes.dialogStyle}>
         
           <DialogContentText id="alert-dialog-description" align='center'>
@@ -130,7 +134,7 @@ const RateTutor = ({open, setOpen, className, ...rest }) => {
           </Box>
           
           <Typography variant="h4" align="center" mb={5}>
-            Charles Samoy
+            Nate Merchado
           </Typography>
           <Box mb={3} align='center' size="large">
             <Rating
@@ -150,14 +154,6 @@ const RateTutor = ({open, setOpen, className, ...rest }) => {
             multiline
             rows={4}
             />
-
-          <Box style={{textAlign: 'center'}} align='center' justify='center'>
-            <FormControlLabel
-              control={<Checkbox name="add-tutor" />}
-              label="Add tutor to Favorite Tutor List"
-              style={{textAlign: 'center'}} align='center'
-            />
-          </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -171,8 +167,8 @@ const RateTutor = ({open, setOpen, className, ...rest }) => {
   );
 };
 
-RateTutor.propTypes = {
+RateChild.propTypes = {
   className: PropTypes.string
 };
 
-export default RateTutor;
+export default RateChild;

@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RateTutor = ({open, setOpen, className, ...rest }) => {
+const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -119,60 +119,53 @@ const RateTutor = ({open, setOpen, className, ...rest }) => {
     aria-describedby="alert-dialog-description"
     
     >
-        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Rate Tutor"}</DialogTitle>
+        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Tutor Profile"}</DialogTitle>
         <DialogContent className={classes.dialogStyle}>
         
-          <DialogContentText id="alert-dialog-description" align='center'>
-              How was the session?
-          </DialogContentText>
           <Box align='center' mb={2} >
             <Avatar>CS</Avatar>
           </Box>
           
-          <Typography variant="h4" align="center" mb={5}>
+          <Typography variant="h4" align="center" mb={2}>
             Charles Samoy
           </Typography>
-          <Box mb={3} align='center' size="large">
-            <Rating
-              size="large"
-              name="tutor-rate"
-              defaultValue={0}
-              precision={0.5}
-              fontsize="large"
-              icon={<StarIcon size="large" />}
-            />
-          </Box>
+          <Typography variant="h6" align="center" mb={2}>
+            Ateneo de Manila University
+          </Typography>
+          <Typography variant="h6" align="center" mb={2}>
+            4 BS Information Technology Techpreneurship
+          </Typography>
+          <Typography variant="h6" align="center" mb={2}>
+            Lan Kwai's DJ of the Year 2019
+          </Typography>
 
-          <TextField 
-            id="comments" 
-            label="Comments" 
-            variant="outlined" fullWidth
-            multiline
-            rows={4}
-            />
-
-          <Box style={{textAlign: 'center'}} align='center' justify='center'>
-            <FormControlLabel
-              control={<Checkbox name="add-tutor" />}
-              label="Add tutor to Favorite Tutor List"
-              style={{textAlign: 'center'}} align='center'
-            />
+          <Box my={5}>
+            <Grid container spacing={2} style={{textAlign: 'center'}}>
+              <Grid xs={6}>
+                <Typography variant="h4" align="center" mb={2}>
+                  40
+                </Typography>
+                <Typography variant="h6" align="center" mb={2}>
+                  hours
+                </Typography>
+              </Grid>
+              <Grid xs={6}>
+                <Typography variant="h4" align="center" mb={2}>
+                  40
+                </Typography>
+                <Typography variant="h6" align="center" mb={2}>
+                  Students
+                </Typography>
+              </Grid>
+            </Grid>
           </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-              Report
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-              Finish
-          </Button>
-        </DialogActions>
     </Dialog>
   );
 };
 
-RateTutor.propTypes = {
+ModalTutorProfile.propTypes = {
   className: PropTypes.string
 };
 
-export default RateTutor;
+export default ModalTutorProfile;
