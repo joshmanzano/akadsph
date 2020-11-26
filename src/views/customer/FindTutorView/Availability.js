@@ -25,7 +25,7 @@ import {
 import { Search as SearchIcon } from 'react-feather';
 import Calendar from './Calendar';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
-import Moment from 'moment';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
 const Availability = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
   const [days, setDays] = React.useState();
+  const [times, setTimes] = React.useState({
+
+  });
   const [count, setCount] = React.useState(0);
 
   useEffect(() => {
@@ -51,10 +54,31 @@ const Availability = ({ className, data, setData, ...rest }) => {
   }, [count])
 
   const getDays=(selectedDays)=>{
+    setTimes(times)
+    console.log(times)
     data['days'] = selectedDays;
-    setData(data);
     setDays(selectedDays);
     setCount(count + 1);
+  }
+
+  const changeFrom = (index, value) => {
+    if(!(index in times)){
+      times[index] = {}
+    }
+    times[index]['from'] = value;
+    data['times'] = times
+    setTimes(times)
+    setData(data)
+  }
+
+  const changeUntil = (index, value) => {
+    if(!(index in times)){
+      times[index] = {}
+    }
+    times[index]['until'] = value;
+    data['times'] = times
+    setTimes(times)
+    setData(data)
   }
 
   return (
@@ -145,7 +169,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                               format="MM/dd/yyyy"
                               // defaultValue="2017-05-24"
                               //day.toLocaleDateString()
-                              value={Moment(day).format('YYYY-MM-DD')}
+                              value={moment(day).format('YYYY-MM-DD')}
                               className={classes.textField}
                               InputLabelProps={{
                                 shrink: true,
@@ -173,6 +197,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                                 inputProps={{
                                   step: 300, // 5 min
                                 }}
+                                onChange={(event) => changeFrom(day.getTime(), event.target.value)}
                               />
                             </form>
                           {/* <Typography variant="h5" >
@@ -198,6 +223,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                                 inputProps={{
                                   step: 300, // 5 min
                                 }}
+                                onChange={(event) => changeUntil(day.getTime(), event.target.value)}
                               />
                             </form>
                         </Grid>

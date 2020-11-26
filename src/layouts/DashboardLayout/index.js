@@ -112,7 +112,7 @@ function DashboardLayout (props){
                   {props.credits == 0 ?
                     <NoHourView/>
                   :
-                    <FindTutorView {...userData['findtutorview']}/>
+                    <FindTutorView credits={props.credits} {...userData['findtutorview']}/>
                   }
                 </Fragment>
                 </Container>

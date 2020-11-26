@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
+import TutorDashboardLayout from 'src/layouts/TutorDashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import FindTutorView from 'src/views/customer/FindTutorView';
@@ -254,7 +255,7 @@ class App extends Component {
         // Tutor Logged In
         <Switch>
           <Route path='/'> 
-            <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
+            <TutorDashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>

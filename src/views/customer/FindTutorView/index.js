@@ -22,6 +22,7 @@ import SpecialRequests from './SpecialRequests';
 import Payment from './Payment';
 import Breakdown from './Breakdown';
 import Summary from './Summary';
+import {get_user, post_api} from 'src/Api'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,8 +64,12 @@ const CustomerListView = (props) => {
     subjects: props.subjects[0],
     lengths: props.lengths[0],
     topics: [],
+    times: [],
     favTutor: [],
+    files: [],
+    specialRequest: '',
     allTutors: true,
+    credits: props.credits,
   });
 
   const handleChangeNext = (event) => {
@@ -80,7 +85,40 @@ const CustomerListView = (props) => {
       setOpen(false);
     };
 
-    console.log(props)
+  const submitData = () => {
+    console.log(data)
+    get_user((res) => {
+      const id = res['id']
+      const available_days = []
+      Object.keys(data['times']).forEach(time => {
+        const fromDay = new Date(Number(time))
+        const untilDay = new Date(Number(time))
+        const from = data['times'][time].from.split(':')
+        const until = data['times'][time].until.split(':')
+        fromDay.setUTCHours(Number(from[0]), Number(from[1]))
+        untilDay.setUTCHours(Number(until[0]), Number(until[1]))
+        available_days.push({
+          'start_date_time': fromDay,
+          'end_date_time': untilDay,
+          'time': data['lengths'].value,
+        })
+      })
+      const postData = {
+        'parent_id': id,
+        'child_id': data['tutees'].id,
+        'extra_files': '',
+        'is_favourite': !data['allTutors'],
+        'subject': data['subjects'].id,
+        'topics': data['topics'].join(),
+        'special_request': 'None',
+        'available_days': available_days,
+        'fav_tutor': null,
+      }
+      post_api('parent-make-request', postData, (res) => {
+        console.log(res)
+      })
+    })
+  }
 
   return (
     <Page
@@ -168,7 +206,7 @@ const CustomerListView = (props) => {
                     <Button onClick={handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
+                    <Button onClick={submitData} color="primary" autoFocus>
                       Send Request
                     </Button>
                   </DialogActions>
@@ -254,7 +292,7 @@ const CustomerListView = (props) => {
                   xs={6}
                   align='right'
                   >
-                  <Button className={classes.payButton}  
+                    <Button className={classes.payButton}  
                       color="primary"
                       variant="contained"
                       

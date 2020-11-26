@@ -18,6 +18,7 @@ import {
   Chip,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import moment from 'moment';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -115,7 +116,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        None
+                        {data['files']}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -151,7 +152,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        Carl Cornejo
+                        {data['favTutor']}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -161,9 +162,9 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['days'].map(day => (
+                        {Object.keys(data['times']).map(time => (
                           // <Chip label={(day.getMonth()+1)+'/'+(day.getDay())+'/'+day.getFullYear()}/>
-                          <Chip label={day.toUTCString()}/>
+                          <Chip label={moment((new Date(Number(time)))).format('MMM Do')}/>
                         ))}
                         {/* <Chip label="27/11/20 2:00pm-4:00pm" /> */}
                       </Typography>
@@ -175,7 +176,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        None
+                        {data['specialRequest']}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -192,7 +193,7 @@ const Summary = ({ className, data, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          10
+                          {data['credits']}
                         </Typography>
                       </Grid>
                       <Grid item xs={6}>
@@ -202,7 +203,7 @@ const Summary = ({ className, data, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          -1
+                          -{data['lengths'].value}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -219,7 +220,7 @@ const Summary = ({ className, data, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          9
+                          {data['credits'] - data['lengths'].value}
                         </Typography>
                       </Grid>
                     </Grid>

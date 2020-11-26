@@ -37,6 +37,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
@@ -131,19 +132,19 @@ const TopBar = ({
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Request
+                      Requests
                     </h5>
                   </Box>
                 </Hidden>
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/store">
-                <ShoppingCartIcon/>
+              <IconButton color="inherit" href="#/account">
+                <AccountBalanceWalletIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Buy Hours
+                      Payout
                     </h5>
                   </Box>
                 </Hidden>

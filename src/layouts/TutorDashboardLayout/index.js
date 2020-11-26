@@ -15,7 +15,6 @@ import TopBar from './TopBar';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import FindTutorView from 'src/views/customer/FindTutorView';
-import DashboardView from 'src/views/reports/DashboardView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
 import AuthView from 'src/views/test/AuthView';
 import NotFoundView from 'src/views/errors/NotFoundView.jsx';
@@ -98,7 +97,7 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
+                    <TutorDashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></TutorDashboardView>
                   </Fragment>
                 </Container>
               </Route>
