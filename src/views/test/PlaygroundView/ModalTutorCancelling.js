@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FaveTutorDecline = ({open, setOpen, className, ...rest }) => {
+const ModalTutorCancelling = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -126,41 +126,37 @@ const FaveTutorDecline = ({open, setOpen, className, ...rest }) => {
         <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Reason for Declining Session"}</DialogTitle>
         <DialogContent className={classes.dialogStyle}>
         
-          <DialogContentText> 
-            <Typography variant="h6" align="center" mb={5}>
-              (for fave tutors only)
-            </Typography>
-            <Typography variant="h4" align="center" mb={5}>
-              Session Declined
-            </Typography>
-          </DialogContentText> 
 
-          <Box my={5}>
+          <Box my={3}>
             <TextField 
               id="reason" 
               label="Reason" 
               variant="outlined" fullWidth
               multiline
               rows={4}
-              placeholder="Optional"
+              placeholder="(Optional)"
               />
           </Box>
+
+          <Typography variant="body1" align="center" >
+          *Cancelling multiple sessions less than 48 hours before the session will put you on probation. Check <a>Tutor Policies</a> for more details.
+          </Typography>
             
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-              Cancel
+              Exit
           </Button>
           <Button onClick={handleClose} color="primary" autoFocus>
-              Confirm
+              Cancel Session
           </Button>
         </DialogActions>
     </Dialog>
   );
 };
 
-FaveTutorDecline.propTypes = {
+ModalTutorCancelling.propTypes = {
   className: PropTypes.string
 };
 
-export default FaveTutorDecline;
+export default ModalTutorCancelling;

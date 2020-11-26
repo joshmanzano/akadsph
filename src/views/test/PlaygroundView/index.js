@@ -43,6 +43,7 @@ import ModalTutorProfile from './ModalTutorProfile'; //profile dets of tutor
 import ExtensionPrompt from './ExtensionPrompt'; //asking parent if she wants an extension
 import TutorExtensionForm from './TutorExtensionForm'; //asking tutor if he accepts the extension
 import FaveTutorDecline from './FaveTutorDecline'; //tutor declining a session
+import ModalTutorCancelling from './ModalTutorCancelling'; //tutor giving reason for cancelling before actually cancelling
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -153,7 +154,8 @@ const Dashboard = () => {
                 {/* <ModalTutorProfile open={open} setOpen={setOpen}/> */}
                 {/* <ExtensionPrompt open={open} setOpen={setOpen}/> */}
                 {/* <TutorExtensionForm open={open} setOpen={setOpen}/> */}
-                <FaveTutorDecline open={open} setOpen={setOpen}/>
+                {/* <FaveTutorDecline open={open} setOpen={setOpen}/> */}
+                <ModalTutorCancelling open={open} setOpen={setOpen}/>
               </CardContent>
             </React.Fragment>
           </Grid>
