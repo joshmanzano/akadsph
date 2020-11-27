@@ -27,6 +27,7 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import EditIcon from '@material-ui/icons/Edit';
+import ModalTutorProfile from './ModalTutorProfile';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -263,6 +264,7 @@ export default function EnhancedTable(props) {
   const tableRows = props.tableRows;
   // const sessionType = props.sessionType;
   const tableType = props.type;
+  const [openTutor, setOpenTutor] = React.useState(false);
 
 
 
@@ -317,6 +319,7 @@ export default function EnhancedTable(props) {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
   const renderHeaders =()=>{
   
@@ -392,9 +395,10 @@ export default function EnhancedTable(props) {
                   hover
                   key={tutor.id}
               >
-                  <TableCell>
+                  <TableCell onClick={() => setOpenTutor(true)}>
                   {tutor.name}
                   </TableCell>
+                  <ModalTutorProfile open={openTutor} setOpen={setOpenTutor}/>
                   <TableCell>
                   {tutor.subject}
                   </TableCell>
@@ -422,7 +426,7 @@ export default function EnhancedTable(props) {
                   </TableCell>
                   <TableCell>
                       <Box mx={1} component='span'>
-          <Button variant='contained' color='primary'  startIcon={<DeleteIcon/>}>Remove</Button>
+                        <Button variant='contained' color='primary'  startIcon={<DeleteIcon/>}>Remove</Button>
                       </Box>
                   </TableCell>
               </TableRow>
