@@ -311,9 +311,6 @@ export default function EnhancedTable(props) {
                   key={request.id}
               >
                   <TableCell>
-                  {request.type}
-                  </TableCell>
-                  <TableCell>
                   {request.subject}
                   </TableCell>
                   <TableCell>
@@ -340,10 +337,10 @@ export default function EnhancedTable(props) {
                   {tableType == "requests" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                      <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>}>View</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary'>Decline</Button>
+                      <Button variant='outlined' color='secondary'>Decline</Button>
                       </Box>
                   </TableCell>
                   :
