@@ -51,9 +51,11 @@ const Metrics = ({ className, ...rest }) => {
         xl={12}
         xs={12}
       >
-        <Typography variant='h3' style={{marginTop: '2vh'}}>
+      <Box mt={2}>
+        <Typography variant='h1'>
           Metrics
         </Typography>
+      </Box>
       </Grid>
       <Grid
         item
@@ -62,22 +64,26 @@ const Metrics = ({ className, ...rest }) => {
         xl={6}
         xs={12}
       >
-         <Typography variant='h4' align='center' gutterBottom='true'>
-            This Month:
+        <Box mb={2}>
+         <Typography variant='h2' align='center' gutterBottom='true'>
+            This Month
           </Typography>
-          <MetricsBoxes/>
+        </Box>
+          <MetricsBoxes noStudents={0} aveRating={'N/A'} totalHours={0} totalEarnings={0}/>
       </Grid>
       <Grid
         item
         lg={6}
         md={6}
-        xl={12}
+        xl={6}
         xs={12}
       >
-        <Typography variant='h4' align='center' gutterBottom='true'>
-          All-Time:
-        </Typography>
-        <MetricsBoxes/>
+        <Box mb={2}>
+          <Typography variant='h2' align='center' gutterBottom='true'>
+            All-Time
+          </Typography>
+        </Box>
+        <MetricsBoxes noStudents={0} aveRating={'N/A'} totalHours={0} totalEarnings={0}/>
       </Grid>
     </Grid>
     </React.Fragment>

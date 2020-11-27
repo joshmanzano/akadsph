@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TotalStudents = ({ className, ...rest }) => {
+const TotalStudents = ({ className, noStudents, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -49,7 +49,7 @@ const TotalStudents = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              5
+              {noStudents}
             </Typography>
           </Grid>
           <Grid item>

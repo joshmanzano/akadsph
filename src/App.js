@@ -218,6 +218,77 @@ class App extends Component {
 
   }
 
+  getTutorData = (_callback) => {
+
+    get_user((res) => {
+      const id = res['id']
+      const data = {
+        'tutor_id': id
+      }
+      post_api('all-tutor-details', data, (res) => {
+        console.log(res)
+        const tutor = res['tutor']
+        const subjects = res['subjects']
+        const requests = res['pending_requests']
+        const settings = res['settings']
+        console.log(subjects)
+        this.setState({
+        }, () => {
+          const data = {
+            'accountview': {
+              'picture': tutor['picture'],
+              'first_name': tutor['first_name'],
+              'last_name': tutor['last_name'],
+              'email': tutor['email'],
+            },
+            'dashboardview': {
+              'upcoming':[
+                  {
+                  date: 'November 19',
+                  time: '2 PM',
+                  subject: 'Filipino',
+                  tutor: {
+                    name: 'Carl Cornejo'
+                  },
+                },
+                {
+                  date: 'November 20',
+                  time: '4 PM',
+                  subject: 'Math',
+                  tutor: {
+                    name: 'Tristan Reyes'
+                  },
+                },
+                {
+                  date: 'November 23',
+                  time: '6 PM',
+                  subject: 'Science',
+                  tutor: {
+                    name: 'Carla Cordero'
+                  },
+                },
+              ],
+              'pending': [],
+              'history': [],
+              'transaction': []
+            },
+            'requestsview': {
+              'pending':requests,
+            },
+            'settingsview': {
+              'selected':[],
+            },
+            'chatview': {
+              'chatlist':[],
+            },
+          }
+          _callback(data)
+        })
+      })
+    })
+
+  }
+
   render(){
     return (
       <div>
@@ -255,7 +326,7 @@ class App extends Component {
         // Tutor Logged In
         <Switch>
           <Route path='/'> 
-            <TutorDashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
+            <TutorDashboardLayout credits={2} getUserData={this.getTutorData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>

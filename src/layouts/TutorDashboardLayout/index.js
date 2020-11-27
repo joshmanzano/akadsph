@@ -109,7 +109,7 @@ function TutorDashboardLayout (props){
                   {props.credits == 0 ?
                     <NoHourView/>
                   :
-                    <RequestPage/>
+                    <RequestPage {...userData['requestsview']}/>
                   }
                 </Fragment>
                 </Container>

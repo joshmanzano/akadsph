@@ -40,7 +40,7 @@ const rows = [
   
 ]
 
-const headers = ["Type", "Subject", "Topic", "Duration", "Student", ""]
+const headers = ["Subject", "Topic", "Duration", "Student", ""]
 
 // const sessionType = "requests"
 
@@ -50,9 +50,20 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Requests = ({ className, ...rest }) => {
+const Requests = ({ className, pending, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const rows = []
+  pending.forEach(request => {
+    console.log(request)
+    rows.push({
+      'subject': 'subject',
+      'topic': request.topics,
+      'duration': 'duration',
+      'student': 'Grade 99'
+    })
+
+  })
 
   return (
     <Card

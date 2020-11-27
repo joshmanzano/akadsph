@@ -9,6 +9,59 @@
 	font-family: 'DM Sans', sans-serif !important;
 }
 
+
+/* Material-UI Overrides */
+
+.MuiTableCell-head {
+	color: #4655A5 !important;
+	font-weight: 700 !important;
+	/* text-transform: uppercase; */
+}
+
+.MuiTableSortLabel-root.MuiTableSortLabel-active {
+	color: #4655A5 !important;
+
+}
+
+.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+	color: #4655A5 !important;
+}
+
+.MuiCard-root {
+	border-radius: 25px !important;
+}
+
+.MuiButton-outlinedPrimary {
+	color: #6CC2B6 !important;
+	border: 1px solid rgb(175, 223, 216) !important;
+	border-radius: 25px !important;
+}
+
+.MuiButton-outlinedPrimary:hover {
+	border: 1px solid rgba(108,194,182,1) !important;
+	/* background-color: #6CC2B6 !important; */
+}
+
+.MuiButton-outlinedSecondary {
+	color: #EB5531 !important;
+	border: 1px solid rgba(235,85,49,1) !important;
+	border-radius: 25px !important;
+
+}
+.MuiButton-outlinedSecondary:hover {
+	border: 1px solid rgba(235,85,49,1) !important;
+	/* background-color: #6CC2B6 !important; */
+}
+
+.MuiButton-outlinedSizeLarge {
+	color: #FFF !important;
+	border: 1px solid rgb(255, 255, 255) !important;
+	
+}
+
+
+/* boop */
+
 body, html {
 	font-family: 'DM Sans', sans-serif !important;
 	text-rendering: optimizeLegibility !important;

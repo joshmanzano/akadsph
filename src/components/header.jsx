@@ -24,12 +24,12 @@ export class Header extends Component {
                   <Grid container>
                     <Grid item xs={3}/>
                     <Grid item xs={3}>
-                      <Button href="#/login" style={{borderRadius: "25px"}} size="large" color="secondary" variant="outlined">
+                      <Button href="#/login" style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
                         Get started
                       </Button>
                     </Grid>
                     <Grid item xs={3}>
-                      <Button href="#/tutor-form" style={{borderRadius: "25px"}} size="large" color="secondary" variant="outlined">
+                      <Button href="#/tutor-form" style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
                         Become A Tutor
                       </Button>
                     </Grid>

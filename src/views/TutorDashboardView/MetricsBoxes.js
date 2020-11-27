@@ -54,7 +54,7 @@ export default function BoxContent(props) {
             xl={6}
             xs={12}
           >
-            <AveRating/>
+            <AveRating aveRating={aveRating}/>
           </Grid>
           <Grid
             item
@@ -63,7 +63,7 @@ export default function BoxContent(props) {
             xl={6}
             xs={12}
           >  
-            <TotalStudents/>
+            <TotalStudents noStudents={noStudents}/>
             </Grid>
             <Grid
             item
@@ -72,7 +72,7 @@ export default function BoxContent(props) {
             xl={6}
             xs={12}
             >
-                <TotalHours/>
+                <TotalHours totalHours={totalHours}/>
             </Grid>
             <Grid
               item
@@ -81,7 +81,7 @@ export default function BoxContent(props) {
               xl={6}
               xs={12}
             >
-                <TotalProfit/>
+                <TotalProfit totalEarnings={totalEarnings}/>
                 {/* <div className={classes.root}>
                   <Paper elevation={3}>Total Earnings</Paper>
                 </div> */}

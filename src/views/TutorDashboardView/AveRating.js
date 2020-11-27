@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const AveRating = ({ className, ...rest }) => {
+const AveRating = ({ className, aveRating, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -49,7 +49,7 @@ const AveRating = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              4.5
+              {aveRating}
             </Typography>
           </Grid>
           <Grid item>

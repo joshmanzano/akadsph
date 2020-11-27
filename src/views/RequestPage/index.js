@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
+const RequestView = (props) => {
   const classes = useStyles();
 
   return (
@@ -33,10 +33,10 @@ const Dashboard = () => {
             Requests
           </Typography>
         </Box>
-        <Requests/>
+        <Requests pending={props.pending}/>
       </Container>
     </Page>
   );
 };
 
-export default Dashboard;
+export default RequestView;
