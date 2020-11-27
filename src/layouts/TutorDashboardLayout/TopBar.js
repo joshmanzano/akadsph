@@ -38,6 +38,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import Notifications from "react-notifications-menu";
+import 'src/React-Notifs.css'
 
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
@@ -203,7 +205,26 @@ const TopBar = ({
             color="secondary"
             variant="dot"
           > */}
-            <NotificationsIcon />
+            {/* <NotificationsIcon /> */}
+            <Notifications
+              // data={data}
+              data={[
+                {
+                  image: '../static/images/oli-happy.png',
+                  message: 'New request for Math (Algebra)',
+                  detailPage: '/',
+                },
+                {
+                  image: '../static/images/oli-happy.png',
+                  message: 'Accepted a session December 3, 2020 2PM-3PM',
+                  detailPage: '/',
+                },
+              ]}
+              header={{
+                title: 'Notifications',
+                option: { text: 'View All', onClick: () => console.log('Clicked') },
+              }}
+            />
           {/* </Badge> */}
         </IconButton>
         <IconButton onClick={logout} color="inherit">
