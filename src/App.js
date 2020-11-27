@@ -90,11 +90,12 @@ class App extends Component {
       'id_token':idToken
     }
     post_api('login-tutor', data, (res) =>{
+      console.log(res);
       if(res['exists']){
         localStorage.setItem('session_token',res['session_token'])
-        window.location.replace('/')
+        // window.location.replace('/')
       }else{
-        this.props.history.replace('/')
+        // this.props.history.replace('/')
       }
     })
   }

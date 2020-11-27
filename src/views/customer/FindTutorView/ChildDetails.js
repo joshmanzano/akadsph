@@ -282,7 +282,7 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                     <Typography variant="h6">
                         Upload any relevant materials such handouts or slides
                     </Typography>
-                    <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
+                    <Button variant="contained" color="primary" startIcon={<PublishIcon/>} onClick={() => setOpen(true)}>
                       Upload Files
                     </Button>
                     <DropzoneDialog open={open}
