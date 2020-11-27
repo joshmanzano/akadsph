@@ -60,19 +60,30 @@ const Dashboard = (props) => {
           xl={11}
           xs={12}
         >
-        <Box ml={2}>
-          <Typography id='selector1' variant="h1">
-            Welcome {props.first_name}! 
-          </Typography>
-            {props.credits > 0 ?
-            <Typography id='selector1' variant="h2">
-              You have {props.credits} credit hours left.
-            </Typography>
-            :
-            <Typography id='selector1' variant="h2">
-              You have no credit hours.
-            </Typography>
-            }
+        <Box ml={2} mt={2}>
+          <Grid container spacing={0}
+          direction="column"
+          >
+            <Grid item>
+            <Box flexGrow={1}/>
+            </Grid>
+            <Grid item>
+              <Typography id='selector1' variant="h1">
+                Welcome {props.first_name}! 
+              </Typography>
+            </Grid>
+            <Grid item>
+              {props.credits > 0 ?
+              <Typography id='selector1' variant="h2">
+                You have {props.credits} credit hours left.
+              </Typography>
+              :
+              <Typography id='selector1' variant="h2">
+                You have no credit hours.
+              </Typography>
+              }
+            </Grid>
+          </Grid>
         </Box>
         </Grid>
       </Grid>

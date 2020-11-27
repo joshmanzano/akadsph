@@ -106,7 +106,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['topics'].map(topic => <Chip label={topic} />)}
+                        {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -164,7 +164,7 @@ const Summary = ({ className, data, ...rest }) => {
                       <Typography variant="h5" align="right">
                         {Object.keys(data['times']).map(time => (
                           // <Chip label={(day.getMonth()+1)+'/'+(day.getDay())+'/'+day.getFullYear()}/>
-                          <Chip label={moment((new Date(Number(time)))).format('MMM Do')}/>
+                          <Chip color="primary" size="small" label={moment((new Date(Number(time)))).format('MMM Do')}/>
                         ))}
                         {/* <Chip label="27/11/20 2:00pm-4:00pm" /> */}
                       </Typography>

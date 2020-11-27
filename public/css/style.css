@@ -39,7 +39,8 @@
 
 .MuiButton-outlinedPrimary:hover {
 	border: 1px solid rgba(108,194,182,1) !important;
-	/* background-color: #6CC2B6 !important; */
+	color: #FFF !important;
+	background-color: #6CC2B6 !important;
 }
 
 .MuiButton-outlinedSecondary {
@@ -50,7 +51,8 @@
 }
 .MuiButton-outlinedSecondary:hover {
 	border: 1px solid rgba(235,85,49,1) !important;
-	/* background-color: #6CC2B6 !important; */
+	color: #FFF !important;
+	background-color: #EB5531 !important;
 }
 
 .MuiButton-outlinedSizeLarge {

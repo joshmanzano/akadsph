@@ -65,13 +65,19 @@ const Dashboard = (props) => {
           <Typography id='selector1' variant="h1">
             Welcome {props.first_name}! 
           </Typography>
-            {props.credits > 0 ?
-            <Typography id='selector1' variant="h2">
-              There are {props.credits} new requests.
-            </Typography>
-            :
+            {props.requests == 0 &&
             <Typography id='selector1' variant="h2">
               There are no new requests.
+            </Typography>
+            }
+            {props.requests == 1 &&
+            <Typography id='selector1' variant="h2">
+              There is {props.requests} new request.
+            </Typography>
+            }
+            {props.requests > 1 &&
+            <Typography id='selector1' variant="h2">
+              There are {props.requests} new requests.
             </Typography>
             }
         </Box>

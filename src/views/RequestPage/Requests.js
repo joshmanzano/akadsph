@@ -57,12 +57,11 @@ const Requests = ({ className, pending, ...rest }) => {
   pending.forEach(request => {
     console.log(request)
     rows.push({
-      'subject': 'subject',
-      'topic': request.topics,
-      'duration': 'duration',
-      'student': 'Grade 99'
+      'subject': request.subject.subject_field,
+      'topic': request.request.topics,
+      'duration': request.request.time + ' hours',
+      'student': request.child.first_name + ' (' + request.child.year_level + ')'
     })
-
   })
 
   return (

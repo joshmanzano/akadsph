@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Snackbar,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Results from './Results';
@@ -23,6 +24,12 @@ import Payment from './Payment';
 import Breakdown from './Breakdown';
 import Summary from './Summary';
 import {get_user, post_api} from 'src/Api'
+import LoadingBack from 'src/components/loadingBack';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,6 +66,10 @@ const CustomerListView = (props) => {
   const classes = useStyles();
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const [processing, setProcessing] = React.useState(false);
+  const [returnMessage, setMessage] = React.useState('');
   const [data, setData] = React.useState({
     tutees: props.tutees[0],
     subjects: props.subjects[0],
@@ -77,7 +88,6 @@ const CustomerListView = (props) => {
   };
   
     const handleClickOpen = () => {
-      console.log(data)
       setOpen(true);
     };
   
@@ -86,7 +96,8 @@ const CustomerListView = (props) => {
     };
 
   const submitData = () => {
-    console.log(data)
+    setOpen(false);
+    setProcessing(true);
     get_user((res) => {
       const id = res['id']
       const available_days = []
@@ -116,6 +127,14 @@ const CustomerListView = (props) => {
       }
       post_api('parent-make-request', postData, (res) => {
         console.log(res)
+        if(res['return_status'] == 'success'){
+          setMessage(res['return_message']);
+          setSuccess(true);
+        }else if(res['return_status'] == 'error'){
+          setMessage(res['return_message']);
+          setError(true);
+        }
+        setProcessing(false);
       })
     })
   }
@@ -134,6 +153,17 @@ const CustomerListView = (props) => {
         </Box>
         {!detailsDone ? 
         <React.Fragment>
+          <Snackbar open={success} autoHideDuration={6000} onClose={() => setSuccess(false)}>
+            <Alert onClose={() => setSuccess(false)} severity="success">
+              {returnMessage}
+            </Alert>
+          </Snackbar>
+          <Snackbar open={error} autoHideDuration={6000} onClose={() => setError(false)}>
+            <Alert onClose={() => setError(false)} severity="error">
+              {returnMessage}
+            </Alert>
+          </Snackbar>
+          <LoadingBack processing={processing}/>
           <Grid
             container
             spacing={3}

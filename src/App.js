@@ -326,7 +326,7 @@ class App extends Component {
         // Tutor Logged In
         <Switch>
           <Route path='/'> 
-            <TutorDashboardLayout credits={2} getUserData={this.getTutorData}/>
+            <TutorDashboardLayout getUserData={this.getTutorData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>

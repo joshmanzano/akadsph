@@ -13,7 +13,7 @@ import NavBar from './NavBar';
 import TopBar from './TopBar';
 
 import MainLayout from 'src/layouts/MainLayout';
-import AccountView from 'src/views/account/AccountView';
+import TutorAccountView from 'src/views/tutorAccount/AccountView';
 import FindTutorView from 'src/views/customer/FindTutorView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
 import AuthView from 'src/views/test/AuthView';
@@ -28,7 +28,7 @@ import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
-import NoHourView from 'src/components/NoHourView';
+import NoRequestView from 'src/components/NoRequestView';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -99,15 +99,15 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <TutorDashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></TutorDashboardView>
+                    <TutorDashboardView first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
                   </Fragment>
                 </Container>
               </Route>
               <Route exact path={`${match.url}viewrequest`}>
                 <Container>
                 <Fragment>
-                  {props.credits == 0 ?
-                    <NoHourView/>
+                  {userData['requestsview'].pending.length == 0 ?
+                    <NoRequestView/>
                   :
                     <RequestPage {...userData['requestsview']}/>
                   }
@@ -124,7 +124,7 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}account`}>
                 <Container>
                 <Fragment>
-                  <AccountView {...userData['accountview']}/>
+                  <TutorAccountView {...userData['accountview']}/>
                 </Fragment>
                 </Container>
               </Route>

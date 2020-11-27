@@ -7,8 +7,8 @@ export default {
   },
   h2: {
     color: '#4655A5',
-    fontWeight: 500,
-    fontSize: 29,
+    fontWeight: 400,
+    fontSize: 28,
     letterSpacing: '-0.24px'
   },
   h3: {
