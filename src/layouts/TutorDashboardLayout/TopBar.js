@@ -127,7 +127,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid sm={2}>
-              <IconButton color="inherit" href="#/findtutor">
+              <IconButton color="inherit" href="#/viewrequest">
                 <InsertInvitationIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -139,7 +139,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/account">
+              <IconButton color="inherit" href="#/payout">
                 <AccountBalanceWalletIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -182,10 +182,10 @@ const TopBar = ({
         <Box flexGrow={1} />
 
         <Hidden xsDown>
-          <Box mx={2}>
-            <h5>
+          <Box mx={4}>
+            {/* <h5>
               Hours: {credits}
-            </h5>
+            </h5> */}
           </Box>
         </Hidden>
         <IconButton color="inherit" href="#/messages">

@@ -32,59 +32,75 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const classes = useStyles();
 
   return (
     <Page
       className={classes.root}
-      title="Dashboard"
+      title="Overview"
     >
       <Container maxWidth={false}>
-        <Box mb={4}>
-          <Typography variant="h1">
-            Welcome Josh!
+      <Box mb={2}>
+
+      <Grid container spacing={3}>
+        <Grid
+          item
+          lg={1}
+          md={1}
+          xl={1}
+          xs={12}
+        >
+        <img width='100' src='../static/images/oli-happy.png'>
+        </img>
+        </Grid>
+        <Grid
+          item
+          lg={11}
+          md={11}
+          xl={11}
+          xs={12}
+        >
+        <Box ml={2}>
+          <Typography id='selector1' variant="h1">
+            Welcome {props.first_name}! 
           </Typography>
+            {props.credits > 0 ?
+            <Typography id='selector1' variant="h2">
+              There are {props.credits} new requests.
+            </Typography>
+            :
+            <Typography id='selector1' variant="h2">
+              There are no new requests.
+            </Typography>
+            }
         </Box>
+        </Grid>
+      </Grid>
+
+      </Box>
         <Grid
           container
-          spacing={3}
+          spacing={2}
         >
           <Grid
             item
-            lg={3}
-            md={6}
-            xl={3}
+            lg={4}
+            md={4}
+            xl={4}
             xs={12}
           >
-            <Calendar />
+            <Calendar id='selector2' />
           </Grid>
           <Grid
             item
-            lg={9}
-            md={6}
-            xl={9}
+            lg={8}
+            md={8}
+            xl={8}
             xs={12}
+            id='selector3'
           >
-            <Upcoming />
-          </Grid>
-          {/* <Grid
-            item
-            lg={12}
-            md={12}
-            xl={12}
-            xs={12}
-          >
-            <Pending />
-          </Grid> */}
-          <Grid
-            item
-            lg={12}
-            md={12}
-            xl={12}
-            xs={12}
-          >
-            <History />
+            <Upcoming rows={props.upcoming} />
           </Grid>
           <Grid
             item
@@ -93,7 +109,7 @@ const Dashboard = () => {
             xl={12}
             xs={12}
           >
-            <Transaction />
+            <History rows={props.history}/>
           </Grid>
           <Grid
             item
@@ -102,7 +118,16 @@ const Dashboard = () => {
             xl={12}
             xs={12}
           >
-            <Metrics />
+            <Transaction rows={props.transaction}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Metrics/>
           </Grid>
           {/* <Grid
             item

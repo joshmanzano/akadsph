@@ -21,6 +21,8 @@ import NotFoundView from 'src/views/errors/NotFoundView.jsx';
 import ProductListView from 'src/views/product/ProductListView';
 import SettingsView from 'src/views/settings/SettingsView';
 import TutorDashboardView from 'src/views/TutorDashboardView';
+import PayoutHistory from 'src/views/PayoutHistory';
+import RequestPage from 'src/views/RequestPage';
 import ChatView from 'src/views/chat';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
@@ -101,21 +103,21 @@ function TutorDashboardLayout (props){
                   </Fragment>
                 </Container>
               </Route>
-              <Route exact path={`${match.url}findtutor`}>
+              <Route exact path={`${match.url}viewrequest`}>
                 <Container>
                 <Fragment>
                   {props.credits == 0 ?
                     <NoHourView/>
                   :
-                    <FindTutorView {...userData['findtutorview']}/>
+                    <RequestPage/>
                   }
                 </Fragment>
                 </Container>
               </Route>
-              <Route exact path={`${match.url}store`}>
+              <Route exact path={`${match.url}payout`}>
                 <Container>
                 <Fragment>
-                  <CreditStoreView addCredit={props.addCredit}/>
+                  <PayoutHistory/> 
                 </Fragment>
                 </Container>
               </Route>

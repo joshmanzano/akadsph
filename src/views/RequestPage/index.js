@@ -28,6 +28,11 @@ const Dashboard = () => {
       title="Requests"
     >
       <Container maxWidth={false}>
+        <Box mb={4}>
+          <Typography variant="h1" align="center">
+            Requests
+          </Typography>
+        </Box>
         <Requests/>
       </Container>
     </Page>

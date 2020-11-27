@@ -59,10 +59,10 @@ const Requests = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader
+      {/* <CardHeader
         title="Requests"
       />
-      <Divider />
+      <Divider /> */}
       <CardContent>
         <Table tableHeaders={headers} tableRows={rows} type={type}/>
       </CardContent>

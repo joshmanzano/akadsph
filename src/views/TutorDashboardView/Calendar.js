@@ -36,7 +36,9 @@ const Sales = ({ className, ...rest }) => {
       /> */}
       {/* <Divider /> */}
       <CardContent>
-          <Calendar/>
+          <Calendar
+          defaultValue={new Date()}
+          />
       </CardContent>
     </Card>
   );

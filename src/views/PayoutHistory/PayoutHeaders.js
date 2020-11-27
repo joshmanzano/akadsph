@@ -24,6 +24,7 @@ import AccordionActions from '@material-ui/core/AccordionActions';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
+import ReceiptIcon from '@material-ui/icons/Receipt';
 
 import Upcoming from './WeeklySessions';
 
@@ -145,8 +146,8 @@ const PayoutHeaders = ({ className, ...rest }) => {
           <div className={clsx(classes.column, classes.helper)}>
             <Typography className={classes.heading}>10/2/2020 <br/> Payout Date</Typography>
           </div>
-          <div className={clsx(classes.column)} style={{justifyContent: 'center', placeItems: 'center', textAlign: 'center'}}>
-          <Button size="small" variant='contained' className={classes.receiptButton}
+          <div className={clsx(classes.column)}>
+          <Button startIcon={<ReceiptIcon/>} color='primary' variant='contained'
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
           >View Receipt</Button>
