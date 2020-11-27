@@ -27,7 +27,7 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
-
+import RateChild from './RateChild';
 
 
 function createData(name, calories, fat, carbs, protein) {
@@ -263,7 +263,7 @@ export default function EnhancedTable(props) {
   const tableRows = props.tableRows;
   const sessionType = props.sessionType;
   const tableType = props.type;
-
+  const [openFeedback, setOpenFeedback] = React.useState(false);
 
 
   const handleRequestSort = (event, property) => {
@@ -398,8 +398,9 @@ export default function EnhancedTable(props) {
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
+                        <Button variant='contained' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>
                       </Box>
+                      <RateChild open={openFeedback} setOpen={setOpenFeedback}/>
                   </TableCell>
                   }
               </TableRow>
