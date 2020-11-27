@@ -37,6 +37,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
+import Notifications from "react-notifications-menu";
+import 'src/React-Notifs.css'
 
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
@@ -96,7 +98,17 @@ const TopBar = ({
     </div>
   );
 
+  const data = [
+    {
+      image :'https://synergi-dev.s3.ap-southeast-1.amazonaws.com/profile-pictures/6b9.png' ,
+      message : 'Lorem ipsum dolor sit amet.',
+      detailPage : '/events', 
+      receivedTime:'12h ago'
+    }
+ ];
+
   return (
+    
     <AppBar
       className={clsx(classes.root, className)}
       elevation={0}
@@ -202,7 +214,26 @@ const TopBar = ({
             color="secondary"
             variant="dot"
           > */}
-            <NotificationsIcon />
+            {/* <NotificationsIcon /> */}
+            <Notifications
+              // data={data}
+              data={[
+                {
+                  image: '../static/images/oli-happy.png',
+                  message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
+                  detailPage: '/',
+                },
+                {
+                  image: '../static/images/oli-happy.png',
+                  message: 'Carl Cornejo declined your session request',
+                  detailPage: '/',
+                },
+              ]}
+              header={{
+                title: 'Notifications',
+                option: { text: 'View All', onClick: () => console.log('Clicked') },
+              }}
+            />
           {/* </Badge> */}
         </IconButton>
         <IconButton onClick={logout} color="inherit">

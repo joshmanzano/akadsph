@@ -26,8 +26,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
-
-
+import EditIcon from '@material-ui/icons/Edit';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -373,7 +372,7 @@ export default function EnhancedTable(props) {
                   </TableCell>                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' >Edit</Button>
+                      <Button variant='contained' color='primary' startIcon={<EditIcon/>}>Edit</Button>
                       </Box>
                       {/* <Box mx={1} component='span'>
                       <Button variant='contained' color='primary'>Delete</Button>
@@ -401,7 +400,7 @@ export default function EnhancedTable(props) {
                   </TableCell>
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary'>Remove</Button>
+                        <Button variant='contained' color='primary' startIcon={<DeleteIcon/>}>Remove</Button>
                       </Box>
                   </TableCell>
               </TableRow>
@@ -423,7 +422,7 @@ export default function EnhancedTable(props) {
                   </TableCell>
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary'>Remove</Button>
+          <Button variant='contained' color='primary'  startIcon={<DeleteIcon/>}>Remove</Button>
                       </Box>
                   </TableCell>
               </TableRow>

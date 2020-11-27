@@ -14,10 +14,6 @@ import Upcoming from './Upcoming';
 import Pending from './Pending';
 import History from './History';
 import Transaction from './Transaction';
-import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
-import TotalProfit from './TotalProfit';
-import TrafficByDevice from './TrafficByDevice';
 import Metrics from './Metrics';
 
 

@@ -26,6 +26,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 
 
 
@@ -390,7 +391,7 @@ export default function EnhancedTable(props) {
                       <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary'>Start</Button>
+                      <Button variant='contained' color='primary' startIcon={<CastForEducationIcon/>}>Start</Button>
                       </Box>
                   </TableCell>
                   :
