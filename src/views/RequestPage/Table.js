@@ -26,6 +26,9 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import ModalRequest from './ModalRequest';
+import ModalConfRequest from './ModalConfRequest';
+import FaveTutorDecline from './FaveTutorDecline';
 
 
 
@@ -140,6 +143,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
+  
 
   return (
     <Toolbar
@@ -215,6 +219,9 @@ export default function EnhancedTable(props) {
   const rows = props.tableRows;
   // const sessionType = props.sessionType;
   const tableType = props.type;
+  const [openRequest, setOpenRequest] = React.useState(false);
+  const [openConf, setOpenConf] = React.useState(false);
+  const [openDecline, setDecline] = React.useState(false);
 
 
 
@@ -337,11 +344,14 @@ export default function EnhancedTable(props) {
                   {tableType == "requests" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                      <Button variant='outlined' color='primary' onClick={() => setOpenRequest(true)} startIcon={<PageviewIcon/>}>View</Button>
                       </Box>
+                      <ModalRequest open={openRequest} setOpen={setOpenRequest} setOpenConf={setOpenConf}/> 
+                      <ModalConfRequest open={openConf} setOpen={setOpenConf}/>
                       <Box mx={1} component='span'>
-                      <Button variant='outlined' color='secondary'>Decline</Button>
+                      <Button variant='outlined' color='secondary' onClick={() => setDecline(true)}>Decline</Button>
                       </Box>
+                      <FaveTutorDecline open={openDecline} setOpen={setDecline}/>
                   </TableCell>
                   :
                  
