@@ -41,6 +41,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import ModalSessionDetails from './ModalSessionDetails';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -293,6 +294,7 @@ export default function EnhancedTable(props) {
   const sessionType = props.sessionType;
   const tableType = props.type;
   const [open, setOpen] = React.useState(false);
+  const [openSessionDets, setOpenSessionDets] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -469,7 +471,8 @@ export default function EnhancedTable(props) {
                                   </DialogActions>
                               </Dialog>
                               <Grid item xs={4}>
-                                <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                                <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
+                                <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                               </Grid>
                               <Grid item xs={4}>
                                 <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
