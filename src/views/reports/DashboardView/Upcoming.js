@@ -14,6 +14,7 @@ import {
   Button,
   Box,
   Container,
+  Typography
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
 import Table from './Table' 
@@ -70,9 +71,21 @@ const Upcoming = (props) => {
         title="Upcoming Sessions"
       />
       <Divider />
-      <CardContent>
-        <Table tableHeaders={headers} tableRows={props.rows} sessionType={sessionType} type={type}/>
-      </CardContent>
+      {(rows).length != 0 ? 
+        <React.Fragment>
+          <CardContent>
+            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+          </CardContent>
+        </React.Fragment>
+      :
+        <React.Fragment>
+          <Box m={6}>
+            <Typography variant='h3' align='center'>
+              No upcoming sessions
+            </Typography>
+          </Box>
+        </React.Fragment>
+      }
     </Card>
   );
 };
