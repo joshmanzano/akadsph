@@ -29,6 +29,9 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import Upcoming from './WeeklySessions';
 
 
+import ModalReceipt from './ModalReceipt';
+
+
 const rows = [
   {
     date: 'July 7',
@@ -48,30 +51,7 @@ const rows = [
     subject: 'Science',
     student: 'Rolo Pena',
   },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'LoL',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
+
 ]
 
 
@@ -102,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: `2px solid ${theme.palette.divider}`,
     padding: theme.spacing(1, 2),
   },
+  makingEven:{
+    padding: theme.spacing(1, 2),
+  },
   link: {
     color: theme.palette.primary.main,
     textDecoration: 'none',
@@ -125,6 +108,13 @@ const useStyles = makeStyles((theme) => ({
 const PayoutHeaders = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const [openReceipt, setOpenReceipt] = React.useState(false);
+
+  const handleClickReceipt=(event)=>{
+    event.stopPropagation()
+    setOpenReceipt(true)
+    event.stopPropagation()
+  }
 
   return (
     <div className={classes.root}>
@@ -134,7 +124,7 @@ const PayoutHeaders = ({ className, ...rest }) => {
           aria-controls="panel1c-content"
           id="panel1c-header"
         >
-          <div className={classes.column}>
+          <div className={clsx(classes.column, classes.makingEven)}>
             <Typography className={classes.heading}>From: 09/25/2020 <br/> To: 10/1/2020</Typography>
           </div>
           <div className={clsx(classes.column, classes.helper)}>
@@ -147,10 +137,14 @@ const PayoutHeaders = ({ className, ...rest }) => {
             <Typography className={classes.heading}>10/2/2020 <br/> Payout Date</Typography>
           </div>
           <div className={clsx(classes.column)}>
-          <Button startIcon={<ReceiptIcon/>} color='primary' variant='contained'
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-          >View Receipt</Button>
+            <Box my={2}>
+              <Button startIcon={<ReceiptIcon/>} color='primary' variant='contained'
+                onClick={(event) => handleClickReceipt(event)}
+                onFocus={(event) => event.stopPropagation()}
+              >View Receipt</Button>
+              <ModalReceipt open={openReceipt} setOpen={setOpenReceipt}/>
+            </Box>
+
           </div>
         </AccordionSummary>
         <AccordionDetails style={{display: 'block', padding: '0'}}>
