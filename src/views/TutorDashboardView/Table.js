@@ -29,11 +29,8 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 import RateChild from './RateChild';
 import ModalSessionDetails from './ModalSessionDetails';
+import ModalSure from './ModalSure';
 
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
   const rows = [
     {
@@ -111,14 +108,6 @@ function stableSort(array, comparator) {
   });
   return stabilizedThis.map((el) => el[0]);
 }
-
-const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
-];
 
 function EnhancedTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
@@ -266,6 +255,7 @@ export default function EnhancedTable(props) {
   const tableType = props.type;
   const [openFeedback, setOpenFeedback] = React.useState(false);
   const [openSessionDets, setOpenSessionDets] = React.useState(false);
+  const [openSure, setOpenSure] = React.useState(false);
 
 
   const handleRequestSort = (event, property) => {

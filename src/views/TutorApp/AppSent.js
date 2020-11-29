@@ -41,7 +41,7 @@ const AppSent= (props) => {
               />
             </Box>
             <h2 align="center">
-              Tutor application successfully sent! We will email you soon about your confirmation.
+              Thank you for applying! We'll review your documents and let you know the following steps through email.
             </h2>
            <Box textAlign='center'>
               <Button href='#/'>
