@@ -56,6 +56,11 @@
 	border-radius: 25px !important;
 }
 
+.MuiButton-containedPrimary {
+	background: #4655A5 !important;
+	border-radius: 25px !important;
+}
+
 .MuiButton-outlinedPrimary {
 	color: #6CC2B6 !important;
 	border: 1px solid rgb(175, 223, 216) !important;
@@ -104,16 +109,16 @@ h2 {
 	margin: 0 0 20px 0;
 	font-weight: 800;
 	font-size: 36px;
-	color: #333;
+	color: #4655A5;
 }
 h3 {
 	font-size: 20px;
 	font-weight: 600;
-	color: #333;
+	color: #4655A5;
 }
 h4 {
 	font-size: 18px;
-	color: #333;
+	color: #4655A5;
 	font-weight: 600;
 }
 h5 {
@@ -172,14 +177,22 @@ hr {
 }
 #menu.navbar-default .navbar-nav > li > a {
 	font-family: 'DM Sans', sans-serif;
-	text-transform: uppercase;
-	color: #555;
-	font-size: 15px;
-	font-weight: 400;
+	/* text-transform: uppercase; */
+	color: #EB5531;
+	font-size: 16px;
+	font-weight: 700;
 	padding: 8px 2px;
 	border-radius: 0;
 	margin: 9px 20px 0 20px;
 }
+
+#loginButton {
+	/* padding: 8px 2px; */
+	font-weight: 700;
+	width: 100px;
+	margin: 9px 20px 0 20px;
+}
+
 #menu.navbar-default .navbar-nav > li > a:after {
 	display: block;
 	position: absolute;
@@ -295,7 +308,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	color: #fff;
 	font-size: 82px;
 	font-weight: 700;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	margin-top: 0;
 	margin-bottom: 10px;
 }
@@ -311,6 +324,11 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	margin: 0 auto;
 	margin-bottom: 60px;
 }
+
+.intro p > b {
+	color: #6cc2b6;
+}
+
 header .intro-text {
 	padding-top: 350px;
 	padding-bottom: 200px;

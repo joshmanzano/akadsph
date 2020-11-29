@@ -28,7 +28,7 @@ const Chat = () => {
   const joshMessages = [
     {
       id: 1,
-      text: 'Good morning ! Can I have more details about which specific parts\nabout Algebra in which Angel is having a hard time with?',
+      text: 'Good morning! Can I have more details about which specific parts\nabout Algebra in which Angel is having a hard time with?',
       createdAt: new Date(),
       user: {
         id: 2,

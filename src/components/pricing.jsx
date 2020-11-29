@@ -78,7 +78,7 @@ const tiers = [
       '1 Hour Session',
     ],
     buttonText: 'Book A Session',
-    buttonVariant: 'contained',
+    buttonVariant: 'outlined',
   },
   {
     title: '10-Sessions',
@@ -90,7 +90,7 @@ const tiers = [
       'Zoom Video Chat',
     ],
     buttonText: 'Book 10 Sessions',
-    buttonVariant: 'contained',
+    buttonVariant: 'outlined',
   },
 ];
 

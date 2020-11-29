@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import {
+  Button,
+} from '@material-ui/core';
 
 export class Navigation extends Component {
 
@@ -49,8 +52,13 @@ export class Navigation extends Component {
               </li>
               <li>
                 <a href="#/#contact" className="page-scroll">
-                  Contact Us
+                  Become A Tutor
                 </a>
+              </li>
+              <li>
+                <Button variant="outlined" color="secondary" id="loginButton">
+                  Login
+                </Button>
               </li>
             </ul>
           </div>

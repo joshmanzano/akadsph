@@ -19,7 +19,7 @@ export class Header extends Component {
                     <span></span>
                   </h1>
                   <p>
-                    {this.props.data ? this.props.data.paragraph : "Loading"}
+                    Akads helps you match with a tutor that is most suited for your child. <b>Create an account now</b> and have your <b>first hour for FREE.</b>
                   </p>
                   <Grid container>
                     <Grid item xs={3}/>
