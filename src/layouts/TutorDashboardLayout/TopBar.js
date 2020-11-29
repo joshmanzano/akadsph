@@ -199,7 +199,7 @@ const TopBar = ({
             <ForumIcon/>
           </Badge>
         </IconButton>
-        <IconButton color="inherit">
+        <IconButton onClick={() => console.log('Clicky')} color="inherit">
           {/* <Badge
             badgeContent={2}
             color="secondary"

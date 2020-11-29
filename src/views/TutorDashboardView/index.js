@@ -83,6 +83,7 @@ const Dashboard = (props) => {
       </Box>
         <Grid
           container
+          alignItems="center"
           spacing={2}
         >
           <Grid

@@ -15,10 +15,8 @@ import {
   Box,
   Container,
 } from '@material-ui/core';
-
 import Calendar from 'react-calendar'
 import Table from './Table' 
-import 'src/Calendar.css'
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -38,9 +36,13 @@ const Sales = ({ className, ...rest }) => {
       /> */}
       {/* <Divider /> */}
       <CardContent>
-          <Calendar
-          defaultValue={new Date()}
-          />
+        <Grid alignItems="center" direction="column" container>
+          <Grid item xs={12}>
+            <Calendar
+            defaultValue={new Date()}
+            />
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

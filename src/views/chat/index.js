@@ -39,6 +39,8 @@ const Chat = () => {
   ]
 
   const [messages, changeMessage] = useState(joshMessages)
+  const [joshUnread, changeJosh] = useState(1)
+  const [akadsUnread, changeAkads] = useState(1)
 
   const styles = {
     container: {
@@ -72,8 +74,10 @@ const Chat = () => {
   const changeChat = (id) => {
     if(id == 0){
       changeMessage(akadMessages)
+      changeAkads(0)
     }else if (id == 1){
       changeMessage(joshMessages)
+      changeJosh(0)
     }else if (id == 2){
       changeMessage(null)
     }
@@ -89,7 +93,7 @@ const Chat = () => {
         date: new Date(),
         onClick:{changeChat},
         chatID: 0,
-        unread: 1,
+        unread: akadsUnread,
     },
     {
         avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
@@ -98,7 +102,7 @@ const Chat = () => {
         subtitle: 'Hello! Can I have more details about...',
         date: new Date(),
         chatID: 1,
-        unread: 1,
+        unread: joshUnread,
     },
     {
         avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
@@ -175,6 +179,7 @@ const Chat = () => {
           subtitle={chat.subtitle}
           date={chat.date}
           unread={chat.unread}
+          className={chat.className}
           onClick={() => changeChat(chat.chatID)}
           />
         ))}

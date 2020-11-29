@@ -22,6 +22,8 @@ import {api, get_user, verify_token, check_admin_token, get_api, post_api} from 
 import CreditStore from 'src/views/CreditStore';
 import PayoutHistory from 'src/views/PayoutHistory';
 
+import 'src/Calendar.css'
+
 class App extends Component {
 
   constructor(props){
