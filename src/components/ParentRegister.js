@@ -158,11 +158,8 @@ export default function ParentRegister(props) {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom>
+                <Typography variant="h1" gutterBottom>
                   Successfully Registered!
-                </Typography>
-                <Typography variant="subtitle1">
-                  Something something blah help child
                 </Typography>
               </React.Fragment>
             ) : (

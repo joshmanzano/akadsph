@@ -215,7 +215,7 @@ const ChildDetails = ({ className, ...rest }) => {
                   </Typography>
                   <Button className={classes}  
                     color="primary"
-                    variant="contained"
+                    variant="outlined"
                     startIcon={<PublishIcon/>}>
                     Upload Files
                   </Button>
@@ -451,7 +451,7 @@ const ChildDetails = ({ className, ...rest }) => {
                     </Typography>
                       <Button className={classes}  
                         color="primary"
-                        variant="contained"
+                        variant="outlined"
                         startIcon={<PublishIcon/>}>
                         Upload Files
                       </Button>

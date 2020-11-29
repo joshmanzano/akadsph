@@ -29,6 +29,7 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 import ModalRequest from './ModalRequest';
 import ModalConfRequest from './ModalConfRequest';
 import FaveTutorDecline from './FaveTutorDecline';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 
@@ -349,7 +350,7 @@ export default function EnhancedTable(props) {
                       <ModalRequest open={openRequest} setOpen={setOpenRequest} setOpenConf={setOpenConf}/> 
                       <ModalConfRequest open={openConf} setOpen={setOpenConf}/>
                       <Box mx={1} component='span'>
-                      <Button variant='outlined' color='secondary' onClick={() => setDecline(true)}>Decline</Button>
+                      <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() => setDecline(true)}>Decline</Button>
                       </Box>
                       <FaveTutorDecline open={openDecline} setOpen={setDecline}/>
                   </TableCell>
