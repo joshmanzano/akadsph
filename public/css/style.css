@@ -9,14 +9,33 @@
 	font-family: 'DM Sans', sans-serif !important;
 }
 
+.notifications .icon .count {
+	background-color: #EB5531 !important;
+}
+
+.rce-citem-body--bottom-status span {
+	background: #EB5531 !important;
+}
+
+.icon {
+	margin-top: 5px; 
+}
+
 /* Chat overrides */
 .inactiveChat {
 	font-style: italic;
-	opacity: 75%;
+	opacity: 50%;
 }
 
 
 /* Material-UI Overrides */
+
+.MuiCardHeader-root {
+	padding: 20px !important;
+}
+
+.MuiTableCell-root {
+}
 
 .MuiTableCell-head {
 	color: #4655A5 !important;
