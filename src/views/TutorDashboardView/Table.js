@@ -83,6 +83,8 @@ import ModalSure from './ModalSure';
     },
   ]
 
+const headCells = []
+
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -384,7 +386,8 @@ export default function EnhancedTable(props) {
                       <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                      <Button variant='outlined' color='primary' startIcon={<CastForEducationIcon/>}>Start</Button>
+                      <Button variant='outlined' color='primary' onClick={() => setOpenSure(true)} startIcon={<CastForEducationIcon/>}>Start</Button>
+                      <ModalSure open={openSure} setOpen={setOpenSure}/>
                       </Box>
                   </TableCell>
                   :

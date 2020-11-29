@@ -19,6 +19,7 @@ import {
   Snackbar,
   Typography, 
   IconButton,
+  CircularProgress,
 } from '@material-ui/core';
 import {
     Dialog,
@@ -33,8 +34,6 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
-
-import ModalZoomStart from './ModalZoomStart';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,14 +61,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: '4px 2px 5px 20px',
   },
-  dialogStyle:{
-    minWidth: "60vh",
-  },
 }));
 
-const ModalSure = ({open, setOpen, className, ...rest }) => {
+const ModalWaiting = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
-  const [openZoom, setOpenZoom] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
 
   const handleClickOpen = () => {
@@ -77,11 +73,6 @@ const ModalSure = ({open, setOpen, className, ...rest }) => {
   };
   
   const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleStart = () => {
-    setOpenZoom(true);
     setOpen(false);
   };
 
@@ -104,36 +95,31 @@ const ModalSure = ({open, setOpen, className, ...rest }) => {
   });
 
   return (
-    <React.Fragment>
-      <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      
-      >
-          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Start Session"}</DialogTitle>
-          <DialogContent className={classes.dialogStyle}>
-            <DialogContentText id="alert-dialog-description" align='center' >
-                Are you ready to start the Zoom call?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={()=> handleStart()} color="primary">
-                Yes
-            </Button>
-            <Button onClick={handleClose} color="primary" autoFocus>
-                No
-            </Button>
-          </DialogActions>
-      </Dialog>
-      <ModalZoomStart open={openZoom} setOpen={setOpenZoom}/>
-    </React.Fragment>
+    <Dialog
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="alert-dialog-title"
+    aria-describedby="alert-dialog-description"
+    
+    >
+        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Session Starting"}</DialogTitle>
+        <DialogContent mx={4}>
+          <Box align='center' mb={2}>
+          <img width='100' src='../static/images/oli-happy.png'></img>
+          </Box>
+          <DialogContentText id="alert-dialog-description" align='center'>
+              Preparing Zoom call to start.
+          </DialogContentText>
+          <Box textAlign="center" mb={3}>
+            <CircularProgress color="inherit" />
+          </Box>
+        </DialogContent>
+    </Dialog>
   );
 };
 
-ModalSure.propTypes = {
+ModalWaiting.propTypes = {
   className: PropTypes.string
 };
 
-export default ModalSure;
+export default ModalWaiting;
