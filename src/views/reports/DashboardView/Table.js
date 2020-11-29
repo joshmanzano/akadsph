@@ -475,7 +475,7 @@ export default function EnhancedTable(props) {
                                 <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                               </Grid>
                               <Grid item xs={4}>
-                                <Button variant='outlined' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                                <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
                               </Grid>
                             </Grid>
                             
@@ -493,7 +493,7 @@ export default function EnhancedTable(props) {
                                 <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                               </Grid>
                               <Grid item xs={4}>
-                                <Button variant='outlined' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                                <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
                               </Grid>
                             </Grid>
                             

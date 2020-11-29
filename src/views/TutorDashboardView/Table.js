@@ -391,7 +391,7 @@ export default function EnhancedTable(props) {
                       </Box>
                       <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                       <Box mx={1} component='span'>
-                      <Button variant='outlined' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                      <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
                       </Box>
                       <Box mx={1} component='span'>
                       <Button variant='outlined' color='primary' startIcon={<CastForEducationIcon/>}>Start</Button>
