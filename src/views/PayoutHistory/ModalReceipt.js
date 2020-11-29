@@ -76,8 +76,9 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
     setOpen(true);
   };
   
-  const handleClose = () => {
+  const handleClose = (event) => {
     setOpen(false);
+    event.stopPropagation()
   };
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -108,7 +109,7 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
     // fullWidth={true}
     // maxWidth={'md'}
     >
-        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Receipt"}</DialogTitle>
+        <DialogTitle onClose={(event)=>handleClose(event)} id="alert-dialog-title" className={classes.dialogTitle}>{"Receipt"}</DialogTitle>
         <DialogContent >
           <Box align='center' mb={2}>
             <img width='300' src='../static/images/temp_receipt.png'></img>

@@ -138,7 +138,7 @@ const PayoutHeaders = ({ className, ...rest }) => {
           </div>
           <div className={clsx(classes.column)}>
             <Box my={2}>
-              <Button startIcon={<ReceiptIcon/>} color='primary' variant='contained'
+              <Button startIcon={<ReceiptIcon/>} color='primary' variant='outlined'
                 onClick={(event) => handleClickReceipt(event)}
                 onFocus={(event) => event.stopPropagation()}
               >View Receipt</Button>

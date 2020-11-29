@@ -387,21 +387,21 @@ export default function EnhancedTable(props) {
                   {sessionType == "upcoming" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
+                      <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
                       </Box>
                       <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                      <Button variant='outlined' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<CastForEducationIcon/>}>Start</Button>
+                      <Button variant='outlined' color='primary' startIcon={<CastForEducationIcon/>}>Start</Button>
                       </Box>
                   </TableCell>
                   :
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>
+                        <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>
                       </Box>
                       <RateChild open={openFeedback} setOpen={setOpenFeedback}/>
                   </TableCell>

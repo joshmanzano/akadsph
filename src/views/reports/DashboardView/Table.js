@@ -443,7 +443,7 @@ export default function EnhancedTable(props) {
                         <TableCell>
                             <Grid container spacing={1}>
                               <Grid item xs={4}>
-                                <Button variant='contained' color='primary' onClick={handleClickOpen}startIcon={<CastForEducationIcon/>}>Join</Button>
+                                <Button variant='outlined' color='primary' onClick={handleClickOpen}startIcon={<CastForEducationIcon/>}>Join</Button>
                               </Grid>
                               <Dialog
                                 open={open}
@@ -471,11 +471,11 @@ export default function EnhancedTable(props) {
                                   </DialogActions>
                               </Dialog>
                               <Grid item xs={4}>
-                                <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
+                                <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
                                 <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                               </Grid>
                               <Grid item xs={4}>
-                                <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                                <Button variant='outlined' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                               </Grid>
                             </Grid>
                             
@@ -486,14 +486,14 @@ export default function EnhancedTable(props) {
                         <TableCell>
                             <Grid container spacing={1}>
                               <Grid item xs={4}>
-                                {/* <Button variant='contained' color='primary' onClick={handleClickOpen}startIcon={<CastForEducationIcon/>}>Join</Button> */}
+                                {/* <Button variant='outlined' color='primary' onClick={handleClickOpen}startIcon={<CastForEducationIcon/>}>Join</Button> */}
                               </Grid>
                               <Grid item xs={4}>
-                              <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
+                              <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
                                 <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                               </Grid>
                               <Grid item xs={4}>
-                                <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
+                                <Button variant='outlined' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                               </Grid>
                             </Grid>
                             
@@ -505,10 +505,10 @@ export default function EnhancedTable(props) {
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>
+                        <Button variant='outlined' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>
                       </Box>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
+                        <Button variant='outlined' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
                       </Box>
                   </TableCell>
                   }
@@ -578,10 +578,10 @@ export default function EnhancedTable(props) {
       //           </TableCell>
       //           <TableCell>
       //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>View</Button>
+      //               <Button variant='outlined' color='primary'>View</Button>
       //               </Box>
       //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>Chat</Button>
+      //               <Button variant='outlined' color='primary'>Chat</Button>
       //               </Box>
       //           </TableCell>
       //       </TableRow>
@@ -650,10 +650,10 @@ export default function EnhancedTable(props) {
                             </TableCell>
                             <TableCell>
                                 <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>View</Button>
+                                <Button variant='outlined' color='primary'>View</Button>
                                 </Box>
                                 <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>Chat</Button>
+                                <Button variant='outlined' color='primary'>Chat</Button>
                                 </Box>
                             </TableCell>
                         </TableRow>

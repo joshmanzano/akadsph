@@ -36,6 +36,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Tutorial from 'src/components/Tutorial';
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
+import NoPayoutView from 'src/components/NoPayoutView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,7 @@ function TutorDashboardLayout (props){
   let location = useLocation();
   const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
+  const [payoutPresent, setPayoutPresent] = useState(true);
 
   if(!loaded){
     props.getUserData((userData) => {
@@ -118,7 +120,11 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}payout`}>
                 <Container>
                 <Fragment>
-                  <PayoutHistory/> 
+                  {payoutPresent ?
+                    <PayoutHistory/> 
+                  :
+                    <NoPayoutView/>
+                  }
                 </Fragment>
                 </Container>
               </Route>

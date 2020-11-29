@@ -31,6 +31,7 @@ import PlaygroundView from 'src/views/test/PlaygroundView';
 import Messenger from 'src/views/chat';
 import ReactGifted from 'src/components/ReactGiftedChat';
 
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Tutorial from 'src/components/Tutorial';
@@ -73,6 +74,7 @@ function DashboardLayout (props){
   let location = useLocation();
   const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
+  
 
   if(!loaded){
     props.getUserData((userData) => {
