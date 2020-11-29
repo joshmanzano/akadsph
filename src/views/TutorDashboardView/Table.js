@@ -28,6 +28,7 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 import RateChild from './RateChild';
+import ModalSessionDetails from './ModalSessionDetails';
 
 
 function createData(name, calories, fat, carbs, protein) {
@@ -264,6 +265,7 @@ export default function EnhancedTable(props) {
   const sessionType = props.sessionType;
   const tableType = props.type;
   const [openFeedback, setOpenFeedback] = React.useState(false);
+  const [openSessionDets, setOpenSessionDets] = React.useState(false);
 
 
   const handleRequestSort = (event, property) => {
@@ -385,8 +387,9 @@ export default function EnhancedTable(props) {
                   {sessionType == "upcoming" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
                       </Box>
+                      <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                       <Box mx={1} component='span'>
                       <Button variant='contained' color='primary' startIcon={<ForumIcon/>}>Chat</Button>
                       </Box>
