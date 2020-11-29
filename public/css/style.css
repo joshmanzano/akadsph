@@ -9,6 +9,12 @@
 	font-family: 'DM Sans', sans-serif !important;
 }
 
+/* Chat overrides */
+.inactiveChat {
+	font-style: italic;
+	opacity: 75%;
+}
+
 
 /* Material-UI Overrides */
 

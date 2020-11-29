@@ -142,7 +142,7 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Rolo Pena
+                  Angel Manzano
                 </Typography>
               </Grid>
               <Grid
@@ -255,7 +255,7 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
                     xs={6}
                   >
                     <Typography variant='h6' align='right'>
-                      December 3, 2020
+                      December 7, 2020
                     </Typography>
                   </Grid>
                   <Grid

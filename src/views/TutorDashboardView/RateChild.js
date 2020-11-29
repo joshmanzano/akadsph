@@ -130,11 +130,11 @@ const RateChild = ({open, setOpen, className, ...rest }) => {
               How was the session?
           </DialogContentText>
           <Box align='center' mb={2} >
-            <Avatar>CS</Avatar>
+            <Avatar>AM</Avatar>
           </Box>
           
           <Typography variant="h4" align="center" mb={5}>
-            Nate Merchado
+            Angel Manzano
           </Typography>
           <Box mb={3} align='center' size="large">
             <Rating

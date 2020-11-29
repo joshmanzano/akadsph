@@ -32,6 +32,8 @@ const TutorAccountView = (props) => {
     >
       <Container maxWidth="lg">
         <Grid
+          direction="row"
+          alignItems="center"
           container
           spacing={3}
         >
@@ -41,6 +43,7 @@ const TutorAccountView = (props) => {
             md={6}
             xs={12}
           >
+            {/* <Box flexGrow={1}/> */}
             <Profile props={props}/>
           </Grid>
           <Grid

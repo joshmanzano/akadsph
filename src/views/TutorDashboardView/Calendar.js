@@ -36,9 +36,13 @@ const Sales = ({ className, ...rest }) => {
       /> */}
       {/* <Divider /> */}
       <CardContent>
-          <Calendar
-          defaultValue={new Date()}
-          />
+        <Grid alignItems="center" direction="column" container>
+          <Grid item xs={12}>
+            <Calendar
+            defaultValue={new Date()}
+            />
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

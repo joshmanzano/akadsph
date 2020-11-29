@@ -1,27 +1,37 @@
 import React, { Component, Fragment, useState } from 'react';
 import { GiftedChat } from 'react-web-gifted-chat';
+import {
+  Container,
+  Box,
+  CircularProgress,
+} from '@material-ui/core';
 
 class Example extends Component {
 
-  state = {
-    messages: [],
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      messages: this.props.messages,
+      loading: false,
+    };
+  }
 
-  componentWillMount() {
-    this.setState({
-      messages: [
-        {
-          id: 1,
-          text: 'Welcome to AKADS!\nIf you need any help, don\'t hesitate to message us!',
-          createdAt: new Date(),
-          user: {
-            id: 2,
-            name: 'AKADS Buddy',
-            avatar: '/static/images/oli-happy.png',
-          },
-        },
-      ],
-    });
+  loadingCircle = () => {
+    return (
+      <Container>
+        <CircularProgress/>
+      </Container>
+    )
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.messages !== prevProps.messages){
+      this.setState({loading: true},() => {
+        this.setState({messages:this.props.messages}, () => {
+          this.setState({loading:false})
+        })
+      })
+    }
   }
 
   onSend(messages = []) {
@@ -32,6 +42,10 @@ class Example extends Component {
 
   render() {
     return (
+      <Fragment>
+      {this.state.loading ? 
+        this.loadingCircle
+      :
       <GiftedChat
         messages={this.state.messages}
         onSend={(messages) => this.onSend(messages)}
@@ -39,6 +53,8 @@ class Example extends Component {
           id: 1,
         }}
       />
+      }
+      </Fragment>
     );
   }
 
