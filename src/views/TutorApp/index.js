@@ -150,6 +150,7 @@ const CustomerListView = () => {
                     onClick={handleChangeNext}
                     variant="outlined"
                     justify='center'
+                    size="large"
                     >
                     register
                   </Button>

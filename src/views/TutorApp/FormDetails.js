@@ -389,7 +389,7 @@ const ChildDetails = ({ className, ...rest }) => {
                   xs={12}
                 >
                   <Typography variant="h5">
-                    Transcript of Records from High School or College
+                    Transcript of Records from High School or College (Optional)
                   </Typography>
                   <DropzoneArea filesLimit={3}/>
                 </Grid> 
