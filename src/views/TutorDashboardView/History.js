@@ -10,6 +10,8 @@ import {
   makeStyles,
   colors,
   Grid,
+  Typography,
+  Box
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
 import Table from './Table'
@@ -167,33 +169,21 @@ const Sales = ({ className, ...rest }) => {
         title="Session History"
       />
       <Divider />
-      <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
-        {/* <Box
-          height={400}
-          position="relative"
-        >
-          <Bar
-            data={data}
-            options={options}
-          />
-        </Box> */}
-      </CardContent>
-      {/* <Divider /> */}
-      {/* <Box
-        display="flex"
-        justifyContent="flex-end"
-        p={2}
-      >
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          size="small"
-          variant="text"
-        >
-          Overview
-        </Button>
-      </Box> */}
+      {(rows).length != 0 ? 
+        <React.Fragment>
+          <CardContent>
+            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+          </CardContent>
+        </React.Fragment>
+      :
+        <React.Fragment>
+          <Box m={6}>
+            <Typography variant='h3' align='center'>
+              No past sessions
+            </Typography>
+          </Box>
+        </React.Fragment>
+      }
     </Card>
   );
 };
