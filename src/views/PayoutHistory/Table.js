@@ -26,6 +26,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import ModalSessionDetails from './ModalSessionDetails'
 
 
 
@@ -262,6 +263,7 @@ export default function EnhancedTable(props) {
   const tableRows = props.tableRows;
   const sessionType = props.sessionType;
   const tableType = props.type;
+  const [openSessionDets, setOpenSessionDets] = React.useState(false);
 
 
 
@@ -386,7 +388,8 @@ export default function EnhancedTable(props) {
                   {sessionType == "payout" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                      <Button variant='contained' color='primary' startIcon={<PageviewIcon/>}>View</Button>
+                        <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
+                        <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                       </Box>
                      
                   </TableCell>
@@ -442,41 +445,7 @@ export default function EnhancedTable(props) {
       
     }
 
-    // if(rowsResult != undefined){
-    //   return (<TableRow>{rowsResult}</TableRow>)
-    // }
     
-      // {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-      //   .map((session, index) => {
-      //   return (
-      //       <TableRow
-      //           hover
-      //           key={session.id}
-      //       >
-      //           <TableCell>
-      //           {session.date}
-      //           </TableCell>
-      //           <TableCell>
-      //           {session.time}
-      //           </TableCell>
-      //           <TableCell>
-      //           {session.subject}
-      //           </TableCell>
-      //           <TableCell>
-      //           {session.tutor.name}
-      //           </TableCell>
-      //           <TableCell>
-      //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>View</Button>
-      //               </Box>
-      //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>Chat</Button>
-      //               </Box>
-      //           </TableCell>
-      //       </TableRow>
-      //   );
-      //   })
-      // }
   };
 
   return (
@@ -489,66 +458,11 @@ export default function EnhancedTable(props) {
             <TableHead>
                 {renderHeaders()}
 
-                {/* <TableRow>
-                    <TableCell sortDirection="desc">
-                    <Tooltip
-                        enterDelay={300}
-                        title="Sort"
-                    >
-                        <TableSortLabel
-                        active
-                        direction="desc"
-                        >
-                        Date
-                        </TableSortLabel>
-                    </Tooltip>
-                    </TableCell>
-                    <TableCell>
-                    Time
-                    </TableCell>
-                    <TableCell>
-                    Subject
-                    </TableCell>
-                    <TableCell>
-                    Tutor
-                    </TableCell>
-                    <TableCell>
-                    </TableCell>
-                </TableRow> */}
+                
             </TableHead>
             <TableBody>
               {renderRows()}
-                {/* {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((session, index) => {
-                    return (
-                        <TableRow
-                            hover
-                            key={session.id}
-                        >
-                            <TableCell>
-                            {session.date}
-                            </TableCell>
-                            <TableCell>
-                            {session.time}
-                            </TableCell>
-                            <TableCell>
-                            {session.subject}
-                            </TableCell>
-                            <TableCell>
-                            {session.tutor.name}
-                            </TableCell>
-                            <TableCell>
-                                <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>View</Button>
-                                </Box>
-                                <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>Chat</Button>
-                                </Box>
-                            </TableCell>
-                        </TableRow>
-                    );
-                    })
-                } */}
+                
             </TableBody>
           </Table>
         </TableContainer>
