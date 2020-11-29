@@ -28,7 +28,8 @@ import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
 import NoHourView from 'src/components/NoHourView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
-import Messenger from 'src/views/react-messenger/Messenger';
+import Messenger from 'src/views/chat';
+import ReactGifted from 'src/components/ReactGiftedChat';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 

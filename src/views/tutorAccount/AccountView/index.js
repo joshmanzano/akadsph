@@ -49,7 +49,7 @@ const TutorAccountView = (props) => {
             md={6}
             xs={12}
           >
-            <SubjectArea/>
+            <ProfileDetails props={props}/>
           </Grid>
           <Grid
             item

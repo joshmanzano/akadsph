@@ -20,23 +20,23 @@ import Table from './Table'
 
 const rows = [
   {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    student: 'Rolo Pena',
-  },
-  {
-    date: 'July 7',
+    date: 'Dec 7',
     time: '4 PM',
     subject: 'Math',
-    student: 'Rolo Pena',
+    student: 'Joshua Manzano',
   },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    student: 'Rolo Pena',
-  },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Math',
+  //   student: 'Rolo Pena',
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Science',
+  //   student: 'Rolo Pena',
+  // },
   // {
   //   date: 'July 7',
   //   time: '4 PM',

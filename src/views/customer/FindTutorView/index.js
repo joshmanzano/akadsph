@@ -124,6 +124,7 @@ const CustomerListView = (props) => {
         'special_request': 'None',
         'available_days': available_days,
         'fav_tutor': null,
+        'time': data['lengths'].value,
       }
       post_api('parent-make-request', postData, (res) => {
         console.log(res)

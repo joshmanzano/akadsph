@@ -29,6 +29,7 @@ import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
 import NoRequestView from 'src/components/NoRequestView';
+import Messenger from 'src/views/chat';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -137,7 +138,7 @@ function TutorDashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  <ChatView {...userData['chatview']}/>
+                  <Messenger/> 
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 

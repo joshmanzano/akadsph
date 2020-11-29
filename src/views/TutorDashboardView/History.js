@@ -16,53 +16,52 @@ import Table from './Table'
 
 const rows = [
   {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    student: 'Josh Manzano',
-    parent: 'Tadhg McHearty'
-    
-  },
-  {
-    date: 'July 7',
+    date: 'Dec 4',
     time: '4 PM',
     subject: 'Math',
-    student: 'Josh Manzano',
-    parent: 'Tadhg McHearty'
-    
+    student: 'Angel',
+    parent: 'Joshua Manzano'
   },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    student: 'Josh Manzano',
-    parent: 'Tadhg McHearty'
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Math',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
+    
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Science',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
    
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'LoL',
-    student: 'Josh Manzano',
-    parent: 'Tadhg McHearty'
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'LoL',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
     
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    student: 'Josh Manzano',
-    parent: 'Tadhg McHearty'
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Filipino',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
 
-  },
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Filipino',
-    student: 'Josh Manzano',
-    parent: 'Tadhg McHearty'
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Filipino',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
     
-  },
+  // },
 ]
 
 const headers = ["Date", "Time", "Subject", "Student", "Parent",""]

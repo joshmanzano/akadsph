@@ -75,7 +75,6 @@ const ProfileDetails = ({ className, props, ...rest }) => {
             >
               <TextField
                 fullWidth
-                helperText="Please specify the first name"
                 label="First name"
                 name="firstName"
                 onChange={handleChange}
