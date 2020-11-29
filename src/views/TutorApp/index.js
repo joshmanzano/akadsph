@@ -19,7 +19,7 @@ import data from './data';
 import FormDetails from './FormDetails';
 import SpecialRequests from './SpecialRequests';
 import Payment from './Payment';
-
+import AppSent from './AppSent'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +56,7 @@ const CustomerListView = () => {
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
-  const handleChangeNext = (event) => {
+  const handleSend = (event) => {
     setDetailsDone(!detailsDone);
   };
 
@@ -112,7 +112,7 @@ const CustomerListView = () => {
               <Button className={classes.nextButton}  
                 color="primary"
                 variant="contained"
-                // onClick={handleChangeNext}
+                onClick={handleSend}
                 alignItems="center"
                 justify="center"
                 >
@@ -124,42 +124,7 @@ const CustomerListView = () => {
         : 
         
         <React.Fragment>
-          <Grid container spacing={2}>
-            <Grid item 
-                xs={12}
-            >
-              {/* <Breakdown/> */}
-            </Grid>
-            <Grid item 
-              xs={12}
-            >
-              {/* <Payment/> */}
-            </Grid>
-            <Grid item xs={12}>
-              
-                <Grid item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  >
-                  
-                  <Button className={classes.backButton}  
-                    color="primary"
-                    
-                    onClick={handleChangeNext}
-                    variant="outlined"
-                    justify='center'
-                    >
-                    register
-                  </Button>
-               
-                
-              </Grid>
-            </Grid>
-          
-            
-          </Grid>
+          <AppSent/>
         </React.Fragment>
         }
         {/* <Box mt={3}>
