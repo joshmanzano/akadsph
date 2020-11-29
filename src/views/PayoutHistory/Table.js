@@ -388,7 +388,7 @@ export default function EnhancedTable(props) {
                   {sessionType == "payout" ? 
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
+                        <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
                         <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
                       </Box>
                      
@@ -397,7 +397,7 @@ export default function EnhancedTable(props) {
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
+                        <Button variant='outlined' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
                       </Box>
                   </TableCell>
                   }

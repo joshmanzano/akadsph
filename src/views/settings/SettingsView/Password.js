@@ -71,7 +71,7 @@ const Password = ({ className, ...rest }) => {
         >
           <Button
             color="primary"
-            variant="contained"
+            variant="outlined"
           >
             Update
           </Button>

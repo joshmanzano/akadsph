@@ -180,7 +180,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
         >
           <Button
             color="primary"
-            variant="contained"
+            variant="outlined"
           >
             Save details
           </Button>

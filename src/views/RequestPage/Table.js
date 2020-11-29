@@ -357,7 +357,7 @@ export default function EnhancedTable(props) {
                  
                   <TableCell>
                       <Box mx={1} component='span'>
-                        <Button variant='contained' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
+                        <Button variant='outlined' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>
                       </Box>
                   </TableCell>
                   }
@@ -430,10 +430,10 @@ export default function EnhancedTable(props) {
       //           </TableCell>
       //           <TableCell>
       //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>View</Button>
+      //               <Button variant='outlined' color='primary'>View</Button>
       //               </Box>
       //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>Chat</Button>
+      //               <Button variant='outlined' color='primary'>Chat</Button>
       //               </Box>
       //           </TableCell>
       //       </TableRow>
@@ -502,10 +502,10 @@ export default function EnhancedTable(props) {
                             </TableCell>
                             <TableCell>
                                 <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>View</Button>
+                                <Button variant='outlined' color='primary'>View</Button>
                                 </Box>
                                 <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>Chat</Button>
+                                <Button variant='outlined' color='primary'>Chat</Button>
                                 </Box>
                             </TableCell>
                         </TableRow>

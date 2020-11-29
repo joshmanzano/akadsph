@@ -93,7 +93,7 @@ const SavedPayMethod = ({ className, ...rest }) => {
           >
           <Button
             color="primary"
-            variant="contained"
+            variant="outlined"
             onClick={handleClickOpen}
           >
             Edit
@@ -223,7 +223,7 @@ const SavedPayMethod = ({ className, ...rest }) => {
               >
                 <Button
                   color="primary"
-                  variant="contained"
+                  variant="outlined"
                   onClick={handlePassSubmit}
                 >
                   Update
