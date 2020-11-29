@@ -38,6 +38,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 import Notifications from "react-notifications-menu";
+import { useConfirm } from 'material-ui-confirm';
 import 'src/React-Notifs.css'
 
 import 'intro.js/introjs.css';
@@ -59,9 +60,17 @@ const TopBar = ({
   const classes = useStyles();
   const anchor = 'left';
   const [notifications] = useState([]);
+  const confirm = useConfirm();
   const logout = () => {
-    localStorage.clear()
-    window.location.replace('/')
+    confirm({ title:'Logout' ,description: 'Would you like to logout?' })
+      .then(() => {
+        localStorage.clear()
+        window.location.replace('/')
+      })
+      .catch(() => {
+
+      });
+
   }
 
   const [state, setState] = React.useState({

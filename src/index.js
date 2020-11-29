@@ -7,12 +7,15 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import { ThemeProvider } from '@material-ui/core';
 import GlobalStyles from 'src/components/GlobalStyles';
 import theme from 'src/theme';
+import { ConfirmProvider } from 'material-ui-confirm';
 
 ReactDOM.render((
   <Router>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <App/>
+      <ConfirmProvider>
+        <App/>
+      </ConfirmProvider>
     </ThemeProvider>
   </Router>
 ), document.getElementById('root'));
