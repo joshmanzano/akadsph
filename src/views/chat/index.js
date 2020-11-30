@@ -28,7 +28,7 @@ const Chat = () => {
   const joshMessages = [
     {
       id: 1,
-      text: 'Good morning! Can I have more details about which specific parts\nabout Algebra in which Angel is having a hard time with?',
+      text: 'Good morning! May I know what we would need to prepare\nfor the tutoring session?',
       createdAt: new Date(),
       user: {
         id: 2,
@@ -74,17 +74,18 @@ const Chat = () => {
   const changeChat = (id) => {
     if(id == 0){
       changeMessage(akadMessages)
+      changeChatlist(chatListAkads)
       changeAkads(0)
     }else if (id == 1){
       changeMessage(joshMessages)
+      changeChatlist(chatListJosh)
       changeJosh(0)
     }else if (id == 2){
-      changeMessage(null)
     }
 
   }
 
-  const chatList = [
+  const chatListJosh = [
     {
         avatar: '/static/images/oli-chat.png',
         alt: 'Oli',
@@ -94,6 +95,43 @@ const Chat = () => {
         onClick:{changeChat},
         chatID: 0,
         unread: akadsUnread,
+    },
+    {
+        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
+        alt: 'Joshua',
+        title: 'Joshua Manzano',
+        subtitle: 'Hello! Can I have more details about...',
+        date: new Date(),
+        chatID: 1,
+        unread: joshUnread,
+        className: 'selectedChat',
+    },
+    {
+        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
+        alt: 'Carl Cornejo',
+        title: 'Carl Cornejo (Inactive)',
+        subtitle: 'Thank you!',
+        date: new Date(1603958808000),
+        chatID: 2,
+        unread: 0,
+        statusColor: '#D4D4D4',
+        statusColorType: 'encircle',
+        className: 'inactiveChat',
+        // statusText: 'Done',
+    },
+  ]
+
+  const chatListAkads = [
+    {
+        avatar: '/static/images/oli-chat.png',
+        alt: 'Oli',
+        title: 'AKADS Buddy',
+        subtitle: 'Welcome to AKADS!',
+        date: new Date(),
+        onClick:{changeChat},
+        chatID: 0,
+        unread: akadsUnread,
+        className: 'selectedChat',
     },
     {
         avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
@@ -118,6 +156,8 @@ const Chat = () => {
         // statusText: 'Done',
     },
   ]
+
+  const [chatList , changeChatlist] = useState(chatListJosh)
 
   const chatList2 = [
     {

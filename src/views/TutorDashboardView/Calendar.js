@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const Sales = ({ className, selectedDate, changeDate, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -39,7 +39,8 @@ const Sales = ({ className, ...rest }) => {
         <Grid alignItems="center" direction="column" container>
           <Grid item xs={12}>
             <Calendar
-            defaultValue={new Date()}
+            onChange={changeDate}
+            value={selectedDate}
             />
           </Grid>
         </Grid>

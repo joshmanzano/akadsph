@@ -32,6 +32,7 @@ import FaveTutorDecline from './FaveTutorDecline';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 
+import { useConfirm } from 'material-ui-confirm';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -79,6 +80,7 @@ function EnhancedTableHead(props) {
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
+  const confirm = useConfirm();
 
   return (
     <TableHead>
@@ -214,7 +216,7 @@ export default function EnhancedTable(props) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(3);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const tableHeaders = props.tableHeaders;
   const tableRows = props.tableRows;
   const rows = props.tableRows;
@@ -222,8 +224,16 @@ export default function EnhancedTable(props) {
   const tableType = props.type;
   const [openRequest, setOpenRequest] = React.useState(false);
   const [openConf, setOpenConf] = React.useState(false);
-  const [openDecline, setDecline] = React.useState(false);
+  const [openDecline, setModalDecline] = React.useState(false);
+  const confirm = useConfirm()
 
+  const setDecline = () => {
+    confirm({ title:'Confirm Decline' , description: 'Are you sure you would like to decline this session?' })
+      .then(() => {
+      })
+      .catch(() => {
+      });
+  }
 
 
   const handleRequestSort = (event, property) => {
@@ -347,10 +357,10 @@ export default function EnhancedTable(props) {
                       <Box mx={1} component='span'>
                       <Button variant='outlined' color='primary' onClick={() => setOpenRequest(true)} startIcon={<PageviewIcon/>}>View</Button>
                       </Box>
-                      <ModalRequest open={openRequest} setOpen={setOpenRequest} setOpenConf={setOpenConf}/> 
+                      <ModalRequest open={openRequest} rows={rows} setOpen={setOpenRequest} setOpenConf={setOpenConf}/> 
                       <ModalConfRequest open={openConf} setOpen={setOpenConf}/>
                       <Box mx={1} component='span'>
-                      <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() => setDecline(true)}>Decline</Button>
+                      <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() => setDecline()}>Decline</Button>
                       </Box>
                       <FaveTutorDecline open={openDecline} setOpen={setDecline}/>
                   </TableCell>

@@ -131,7 +131,7 @@ const PayoutHeaders = ({ className, ...rest }) => {
             <Typography className={classes.heading}>2 <br/> Complete hours</Typography>
           </div>
           <div className={clsx(classes.column, classes.helper)}>
-            <Typography className={classes.heading}>P600 <br/> Pending Amount</Typography>
+            <Typography className={classes.heading}>Php 600 <br/> Pending Amount</Typography>
           </div>
           <div className={clsx(classes.column, classes.helper)}>
             <Typography className={classes.heading}>10/2/2020 <br/> Payout Date</Typography>

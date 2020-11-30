@@ -156,10 +156,10 @@ const RateChild = ({open, setOpen, className, ...rest }) => {
             />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="secondary" variant="outlined">
               Report
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleClose} color="primary" variant="outlined" autoFocus>
               Finish
           </Button>
         </DialogActions>

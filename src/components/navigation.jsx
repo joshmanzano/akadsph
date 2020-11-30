@@ -56,7 +56,7 @@ export class Navigation extends Component {
                 </a>
               </li>
               <li>
-                <Button variant="outlined" color="secondary" id="loginButton">
+                <Button onClick={() => window.location.replace('#/login')} variant="outlined" color="secondary" id="loginButton">
                   Login
                 </Button>
               </li>

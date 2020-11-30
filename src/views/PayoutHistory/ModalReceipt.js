@@ -19,12 +19,14 @@ import {
   Snackbar,
   Typography, 
   IconButton,
+  Backdrop,
 } from '@material-ui/core';
 import {
     Dialog,
     DialogActions,
     DialogContent,
     DialogContentText,
+    Modal
     // DialogTitle,
   } from '@material-ui/core';
 
@@ -100,6 +102,11 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
   });
 
   return (
+    <Modal
+    open={open}
+    onClose={handleClose}
+    >
+
     <Dialog
     open={open}
     onClose={handleClose}
@@ -122,6 +129,9 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
           </Button>
         </DialogActions>
     </Dialog>
+
+    </Modal>
+
   );
 };
 

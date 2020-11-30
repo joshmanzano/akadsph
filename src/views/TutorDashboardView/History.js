@@ -76,7 +76,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const Sales = ({ className, setHistory, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -169,7 +169,7 @@ const Sales = ({ className, ...rest }) => {
         title="Session History"
       />
       <Divider />
-      {(rows).length != 0 ? 
+      {setHistory ?
         <React.Fragment>
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>

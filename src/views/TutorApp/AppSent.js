@@ -43,8 +43,8 @@ const AppSent= (props) => {
             <h2 align="center">
               Thank you for applying! We'll review your documents and let you know the following steps through email.
             </h2>
-           <Box textAlign='center'>
-              <Button href='#/'>
+           <Box mt={2} textAlign='center'>
+              <Button size="large" variant="contained" color="primary" href='#/'>
                 Go back to home page
               </Button>
            </Box>

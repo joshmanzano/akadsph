@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalRequest = ({open, setOpen, setOpenConf, className, ...rest }) => {
+const ModalRequest = ({open, setOpen, setOpenConf, rows, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -89,7 +89,15 @@ const ModalRequest = ({open, setOpen, setOpenConf, className, ...rest }) => {
   
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleAccept = () => {
+    setOpen(false);
     setOpenConf(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
   };
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -110,6 +118,10 @@ const ModalRequest = ({open, setOpen, setOpenConf, className, ...rest }) => {
     );
   });
 
+  const onChange = (event) => {
+    console.log(event.target.value)
+  }
+
   return (
     <Dialog
     open={open}
@@ -122,70 +134,187 @@ const ModalRequest = ({open, setOpen, setOpenConf, className, ...rest }) => {
     >
         <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Session Request"}</DialogTitle>
         <DialogContent >
-          <RequestSummary/>
-          <Typography variant="body1" mb={2}  mt={3}>
+          {/* <RequestSummary rows={rows}/> */}
+          {/* <Typography variant="body1" mb={2}  mt={3}>
             Special Request: None
-          </Typography>
-          <Box style={{textAlign:"center"}} mb={2}>
-          <FormControl component="fieldset" >
-            <FormLabel component="legend">Available Schedule</FormLabel>
-            <RadioGroup aria-label="sched-date" name="sched-date">
-              <FormControlLabel value="12/01/20" control={<Radio />} label="December 1 2:00-4:00PM" />
-              <FormControlLabel value="12/02/20" control={<Radio />} label="December 2 1:00-3:00PM" />
-              <FormControlLabel value="12/03/20" control={<Radio />} label="December 3 4:00-6:00PM" />
-            </RadioGroup>
-          </FormControl>
-          </Box>
-          
-          <Grid container style={{textAlign:"center"}}>
-          <Grid
-            item
-            lg={4}
-            md={4}
-            xl={4}
-            xs={0}
-          >
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={4}
-            xl={4}
-            xs={12}
-          >
-            <FormControl variant="outlined" fullWidth>
-              <InputLabel id="demo-simple-select-outlined-label">Start Time</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                
-                label="Start Time"
+          </Typography> */}
+          <Grid container>
+            <Grid item xs={8}>
+
+            <Box mx={8}>
+            <Grid container spacing={2}>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
               >
-                <MenuItem value={"14:00"}>2:00PM</MenuItem>
-                <MenuItem value={"14:30"}>2:30PM</MenuItem>
-                <MenuItem value={"15:00"}>3:00PM</MenuItem>
-           
-              </Select>
+                <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                  Parent
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='right'>
+                  Joshua Manzano
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                  Student
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='right'>
+                  Rolo Pena
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                  Subject
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='right'>
+                  Math
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                  Topic
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='right'>
+                  Algebra
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                  Duration
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='right'>
+                  1 hour
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                  Special Request
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={6}
+              >
+                <Typography variant='h6' align='right'>
+                  None
+                </Typography>
+              </Grid>
+            </Grid>
+          </Box>
+
+            </Grid>
+            <Grid item xs={4}>
+
+            <FormControl onChange={onChange} component="fieldset" >
+              <FormLabel component="legend">Available Schedules</FormLabel>
+              <RadioGroup aria-label="sched-date" name="sched-date">
+                <FormControlLabel value="1" control={<Radio />} label="December 1st, 2:00PM - 4:00PM" />
+                <FormControlLabel value="2" control={<Radio />} label="December 2nd, 1:00PM - 3:00PM" />
+                <FormControlLabel value="3" control={<Radio />} label="December 3rd, 4:00PM - 6:00PM" />
+              </RadioGroup>
             </FormControl>
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={4}
-            xl={4}
-            xs={0}
-          >
-          </Grid>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="demo-simple-select-outlined-label">Start Time</InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  
+                  label="Start Time"
+                >
+                  <MenuItem value={"14:00"}>2:00PM</MenuItem>
+                  <MenuItem value={"14:30"}>2:30PM</MenuItem>
+                  <MenuItem value={"15:00"}>3:00PM</MenuItem>
+            
+                </Select>
+              </FormControl>
+
+            </Grid>
           </Grid>
  
         </DialogContent>
         
         
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-              Decline
+          <Button onClick={handleCancel} color="primary">
+              Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleAccept} color="primary" autoFocus>
               Accept
           </Button>
         </DialogActions>

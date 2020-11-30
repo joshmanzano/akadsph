@@ -21,6 +21,8 @@ import TutorApp from 'src/views/TutorApp';
 import {api, get_user, verify_token, check_admin_token, get_api, post_api} from './Api';
 import CreditStore from 'src/views/CreditStore';
 import PayoutHistory from 'src/views/PayoutHistory';
+import ReactPolling from 'react-polling';
+
 
 import 'src/Calendar.css'
 
@@ -32,7 +34,6 @@ class App extends Component {
         session: localStorage.getItem('session_token'),
         offline: false,
       };
-
   }
 
   componentDidMount(){

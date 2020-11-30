@@ -27,8 +27,20 @@
 	opacity: 50%;
 }
 
+.selectedChat {
+	background: #EBEBEB !important;
+}
+
+.rce-citem {
+	background: inherit !important;
+}
 
 /* Material-UI Overrides */
+
+.MuiBadge-colorSecondary {
+	background: #EB5531 !important;
+}
+
 
 .MuiCardHeader-root {
 	padding: 20px !important;
@@ -88,7 +100,11 @@
 .MuiButton-outlinedSizeLarge {
 	color: #FFF !important;
 	border: 1px solid rgb(255, 255, 255) !important;
-	
+}
+.MuiButton-outlinedSizeLarge:hover {
+	color: #FFF !important;
+	background-color: #6CC2B6 !important;
+	border: 1px solid rgba(108,194,182,1) !important;
 }
 
 

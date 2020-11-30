@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Container,
   Grid,
@@ -15,6 +15,7 @@ import Pending from './Pending';
 import History from './History';
 import Transaction from './Transaction';
 import Metrics from './Metrics';
+import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
 
 
 import Calendar from './Calendar'
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = (props) => {
   const classes = useStyles();
+  const [selectedDate, changeDate] = useState(new Date())
 
   return (
     <Page
@@ -37,6 +39,7 @@ const Dashboard = (props) => {
       title="Overview"
     >
       <Container maxWidth={false}>
+        <TutorExtensionForm open={props.open} setOpen={props.setOpen}/>
       <Box mb={2}>
 
       <Grid container spacing={3}>
@@ -57,25 +60,36 @@ const Dashboard = (props) => {
           xl={11}
           xs={12}
         >
-        <Box ml={2}>
-          <Typography id='selector1' variant="h1">
-            Welcome {props.first_name}! 
-          </Typography>
-            {props.requests == 0 &&
-            <Typography id='selector1' variant="h2">
-              There are no new requests.
+        <Box ml={2} mt={2}>
+          <Grid container
+          direction="column"
+          >
+            <Grid item>
+            <Box flexGrow={1}/>
+            </Grid>
+            <Grid item>
+            <Typography id='selector1' variant="h1">
+              Welcome {props.first_name}! 
             </Typography>
-            }
-            {props.requests == 1 &&
-            <Typography id='selector1' variant="h2">
-              There is {props.requests} new request.
-            </Typography>
-            }
-            {props.requests > 1 &&
-            <Typography id='selector1' variant="h2">
-              There are {props.requests} new requests.
-            </Typography>
-            }
+            </Grid>
+            <Grid item>
+              {props.requests == 0 &&
+              <Typography id='selector1' variant="h2">
+                There are no new requests.
+              </Typography>
+              }
+              {props.requests == 1 &&
+              <Typography id='selector1' variant="h2">
+                There is {props.requests} new request.
+              </Typography>
+              }
+              {props.requests > 1 &&
+              <Typography id='selector1' variant="h2">
+                There are {props.requests} new requests.
+              </Typography>
+              }
+            </Grid>
+            </Grid>
         </Box>
         </Grid>
       </Grid>
@@ -93,7 +107,7 @@ const Dashboard = (props) => {
             xl={4}
             xs={12}
           >
-            <Calendar id='selector2' />
+            <Calendar changeDate={changeDate} selectedDate={selectedDate} id='selector2' />
           </Grid>
           <Grid
             item
@@ -103,7 +117,7 @@ const Dashboard = (props) => {
             xs={12}
             id='selector3'
           >
-            <Upcoming rows={props.upcoming} />
+            <Upcoming currentDate={selectedDate} setUpcoming={props.setUpcoming} rows={props.upcoming} />
           </Grid>
           <Grid
             item
@@ -112,7 +126,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <History rows={props.history}/>
+            <History setHistory={props.setHistory} rows={props.history}/>
           </Grid>
           {/* <Grid
             item

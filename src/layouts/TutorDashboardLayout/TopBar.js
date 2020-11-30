@@ -54,13 +54,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 const TopBar = ({
-  className, credits,
+  className, credits, notifications,
   onMobileNavOpen,
   ...rest
 }) => {
   const classes = useStyles();
   const anchor = 'left';
-  const [notifications] = useState([]);
+  const [notifs, setNotif] = useState(notifications)
+  const [chatNotif, setChatNotif] = useState(true)
   const confirm = useConfirm();
   const logout = () => {
     confirm({ title:'Logout' , description: 'Would you like to logout?' })
@@ -197,16 +198,19 @@ const TopBar = ({
             </h5> */}
           </Box>
         </Hidden>
-        <IconButton color="inherit" href="#/messages">
+        <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
+          {chatNotif ?
           <Badge
-            badgeContent={3}
-            color="primary"
+            color="secondary"
             variant="dot"
           >
             <ForumIcon/>
           </Badge>
+          :
+            <ForumIcon/>
+          }
         </IconButton>
-        <IconButton onClick={() => console.log('Clicky')} color="inherit">
+        <IconButton onClick={() => setNotif([])} color="inherit">
           {/* <Badge
             badgeContent={2}
             color="secondary"
@@ -215,22 +219,12 @@ const TopBar = ({
             {/* <NotificationsIcon /> */}
             <Notifications
               // data={data}
-              data={[
-                {
-                  image: '../static/images/oli-happy.png',
-                  message: 'New request for Math (Algebra)',
-                  detailPage: '/',
-                },
-                {
-                  image: '../static/images/oli-happy.png',
-                  message: 'Accepted a session December 3, 2020 2PM-3PM',
-                  detailPage: '/',
-                },
-              ]}
+              data={notifs}
               header={{
                 title: 'Notifications',
                 option: { text: 'View All', onClick: () => console.log('Clicked') },
               }}
+              markAsRead={data => console.log(data)}
             />
           {/* </Badge> */}
         </IconButton>

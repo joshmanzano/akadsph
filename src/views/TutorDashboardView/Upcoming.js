@@ -18,6 +18,7 @@ import {
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
 import Table from './Table' 
+import moment from 'moment';
 
 const rows = [
   {
@@ -74,7 +75,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const Sales = ({ className, currentDate, setUpcoming, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -87,7 +88,8 @@ const Sales = ({ className, ...rest }) => {
         title="Upcoming Sessions"
       />
       <Divider />
-      {(rows).length != 0 ? 
+      {/* {(rows).length != 0 ?  */}
+      {setUpcoming ?
         <React.Fragment>
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
@@ -97,7 +99,10 @@ const Sales = ({ className, ...rest }) => {
         <React.Fragment>
           <Box m={6}>
             <Typography variant='h3' align='center'>
-              No upcoming sessions
+              No upcoming sessions 
+            </Typography>
+            <Typography variant='h3' align='center'>
+              on {moment(currentDate).format('MMMM Do YYYY')}
             </Typography>
           </Box>
         </React.Fragment>

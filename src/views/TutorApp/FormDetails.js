@@ -211,40 +211,26 @@ const ChildDetails = ({ className, ...rest }) => {
                 </Grid>
                 <Grid
                   item
-                  lg={8}
-                  md={8}
-                  xl={8}
+                  lg={4}
+                  md={4}
+                  xl={4}
                   xs={12}
                 >
-                  <TextField id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined" fullWidth/>
+                  <TextField id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
+            startAdornment: <InputAdornment position="start">+63</InputAdornment>,
+          }}fullWidth/>
                 </Grid> 
                 <Grid
                   item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={8}
-                  md={8}
-                  xl={8}
+                  lg={4}
+                  md={4}
+                  xl={4}
                   xs={12}
                 >
                   <Autocomplete
                     multiple
                     id="tags-filled"
                     options={subjectselections.map((option) => option)}
-                    defaultValue={[subjectselections[1]]}
                     freeSolo
                     variant="outlined"
                     renderTags={(value, getTagProps) =>
@@ -263,15 +249,16 @@ const ChildDetails = ({ className, ...rest }) => {
                   md={2}
                   xl={2}
                   xs={0}
-                ></Grid>
+                >
+                </Grid>
                 <Grid
                   item
                   lg={2}
                   md={2}
                   xl={2}
                   xs={0}
-                >
-                </Grid>
+                ></Grid>
+
                 <Grid
                   item
                   lg={8}
