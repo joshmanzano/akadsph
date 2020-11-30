@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
+const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -255,7 +255,7 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
                     xs={6}
                   >
                     <Typography variant='h6' align='right'>
-                      December 3, 2020
+                      {date}
                     </Typography>
                   </Grid>
                   <Grid
@@ -277,7 +277,7 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
                   xs={6}
                 >
                   <Typography variant='h6' align='right'>
-                    2:00PM - 3:00PM
+                    {time}
                   </Typography>
                 </Grid>
               </Grid>

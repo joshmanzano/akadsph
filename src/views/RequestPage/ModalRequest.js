@@ -45,6 +45,7 @@ import RequestSummary from './RequestSummary';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import ModalConfRequest from './ModalConfRequest'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -78,8 +79,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalRequest = ({open, setOpen, setOpenConf, rows, className, ...rest }) => {
+const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest }) => {
   const classes = useStyles();
+  const [openConf, setOpenConf] = React.useState(false);
+  const [time, setTime] = React.useState('');
+  const [date, setDate] = React.useState('1');
   // const [open, setOpen] = React.useState(false);
 
 
@@ -98,6 +102,14 @@ const ModalRequest = ({open, setOpen, setOpenConf, rows, className, ...rest }) =
 
   const handleCancel = () => {
     setOpen(false);
+  };
+
+  const handleChange = (event) => {
+    setDate(event.target.value);
+  };
+
+  const handleChangeTime = (event) => {
+    setTime(event.target.value);
   };
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -123,6 +135,7 @@ const ModalRequest = ({open, setOpen, setOpenConf, rows, className, ...rest }) =
   }
 
   return (
+    <React.Fragment>
     <Dialog
     open={open}
     onClose={handleClose}
@@ -283,25 +296,42 @@ const ModalRequest = ({open, setOpen, setOpenConf, rows, className, ...rest }) =
 
             <FormControl onChange={onChange} component="fieldset" >
               <FormLabel component="legend">Available Schedules</FormLabel>
-              <RadioGroup aria-label="sched-date" name="sched-date">
-                <FormControlLabel value="1" control={<Radio />} label="December 1st, 2:00PM - 4:00PM" />
-                <FormControlLabel value="2" control={<Radio />} label="December 2nd, 1:00PM - 3:00PM" />
-                <FormControlLabel value="3" control={<Radio />} label="December 3rd, 4:00PM - 6:00PM" />
+              <RadioGroup aria-label="sched-date" name="sched-date" onChange={handleChange}>
+                <FormControlLabel value="December 1st" control={<Radio />} label="December 1st, 2:00PM - 4:00PM" />
+                <FormControlLabel value="December 2nd" control={<Radio />} label="December 2nd, 1:00PM - 3:00PM" />
               </RadioGroup>
             </FormControl>
               <FormControl variant="outlined" fullWidth>
                 <InputLabel id="demo-simple-select-outlined-label">Start Time</InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
+              
+                  { date == "December 1st" ?
+                    <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    onChange={handleChangeTime}
+                    label="Start Time"
+                    value={time}
+                  >
+                    <MenuItem value={"2:00PM - 3:00PM"}>2:00PM</MenuItem>
+                    <MenuItem value={"2:30PM - 3:30PM"}>2:30PM</MenuItem>
+                    <MenuItem value={"3:00PM - 4:00PM"}>3:00PM</MenuItem>
+                    </Select>
+                   :
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      onChange={handleChangeTime}
+                      label="Start Time"
+                      value={time}
+                    >
+                    <MenuItem value={"1:00PM - 2:00PM"}>1:00PM</MenuItem>
+                    <MenuItem value={"1:30PM - 2:30PM"}>1:30PM</MenuItem>
+                    <MenuItem value={"2:00PM - 3:00PM"}>2:00PM</MenuItem>
+                    </Select>
                   
-                  label="Start Time"
-                >
-                  <MenuItem value={"14:00"}>2:00PM</MenuItem>
-                  <MenuItem value={"14:30"}>2:30PM</MenuItem>
-                  <MenuItem value={"15:00"}>3:00PM</MenuItem>
+                  }
             
-                </Select>
+
               </FormControl>
 
             </Grid>
@@ -319,6 +349,8 @@ const ModalRequest = ({open, setOpen, setOpenConf, rows, className, ...rest }) =
           </Button>
         </DialogActions>
     </Dialog>
+    <ModalConfRequest open={openConf} setOpen={setOpenConf} time={time} date={date}/>
+    </React.Fragment>
   );
 };
 

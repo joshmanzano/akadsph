@@ -223,7 +223,7 @@ export default function EnhancedTable(props) {
   // const sessionType = props.sessionType;
   const tableType = props.type;
   const [openRequest, setOpenRequest] = React.useState(false);
-  const [openConf, setOpenConf] = React.useState(false);
+ 
   const [openDecline, setModalDecline] = React.useState(false);
   const confirm = useConfirm()
 
@@ -357,8 +357,8 @@ export default function EnhancedTable(props) {
                       <Box mx={1} component='span'>
                       <Button variant='outlined' color='primary' onClick={() => setOpenRequest(true)} startIcon={<PageviewIcon/>}>View</Button>
                       </Box>
-                      <ModalRequest open={openRequest} rows={rows} setOpen={setOpenRequest} setOpenConf={setOpenConf}/> 
-                      <ModalConfRequest open={openConf} setOpen={setOpenConf}/>
+                      <ModalRequest open={openRequest} rows={rows} setOpen={setOpenRequest} /*setOpenConf={setOpenConf}*//> 
+                      
                       <Box mx={1} component='span'>
                       <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() => setDecline()}>Decline</Button>
                       </Box>
