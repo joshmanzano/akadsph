@@ -25,7 +25,7 @@ const rows = [
     date: 'Dec 7',
     time: '4 PM',
     subject: 'Math',
-    student: 'Joshua Manzano',
+    student: 'Angel Manzano',
   },
   // {
   //   date: 'July 7',
