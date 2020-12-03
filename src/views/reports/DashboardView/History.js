@@ -17,30 +17,36 @@ import {
 import Table from 'src/components/Table.js';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import StarIcon from '@material-ui/icons/Star'; 
+import Feedback from 'src/components/Feedback';
 
-// const rows = [
-//   {
-//     date: 'July 7',
-//     time: '4 PM',
-//     subject: 'Science',
-//     tutor:  'Adrienne Soliven',
-//     student: 'Rolo Pena'
-//   }
-// ]
+
 
 const headers = ["Date", "Time", "Subject", "Tutor", "Student", ""]
 
-const buttonList = [<Button variant='outlined' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>,
-<Button variant='outlined' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
-]
+
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, rows, ...rest }) => {
+const Sales = ({ className, /*rows,*/ ...rest }) => {
+  const rows = [
+    {
+      date: 'July 7',
+      time: '4 PM',
+      subject: 'Science',
+      tutor:  'Adrienne Soliven',
+      student: 'Rolo Pena'
+    }
+  ]
   const classes = useStyles();
   const theme = useTheme();
+  const [openFeedback, setOpenFeedback] = React.useState(false);
+  const [name, setName] = React.useState(rows[0].student);
+
+  const buttonList = [<Button variant='outlined' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>,
+  <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
+  ]
 
   const data = {
     datasets: [
@@ -127,6 +133,7 @@ const Sales = ({ className, rows, ...rest }) => {
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
+          <Feedback open={openFeedback} setOpen={setOpenFeedback} name={name}/>
         </React.Fragment>
       :
         <React.Fragment>

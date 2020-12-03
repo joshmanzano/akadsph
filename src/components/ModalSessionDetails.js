@@ -40,7 +40,6 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -77,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
+const ModalConfRequest = ({open, setOpen, details, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -122,7 +121,65 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
         <DialogContent >
           <Box mx={8}>
             <Grid container spacing={2}>
-              <Grid
+              { Object.entries(details).map(([key, value]) => {
+                  
+                return(
+                  <React.Fragment>
+                  <Grid
+                  item
+                  lg={6}
+                  md={6}
+                  xl={6}
+                  xs={6}
+                  >
+                    <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                      {key}
+                    </Typography>
+                  </Grid>
+                  <Grid
+                  item
+                  lg={6}
+                  md={6}
+                  xl={6}
+                  xs={6}
+                >
+                  <Typography variant='h6' align='right'>
+                    {value}
+                  </Typography>
+                </Grid>
+                </React.Fragment>
+                );
+                // :
+                //   <React.Fragment>
+                //     <Box mt={8} mb={2}>
+                //     <Grid
+                //       item
+                //       lg={6}
+                //       md={6}
+                //       xl={6}
+                //       xs={6}
+                //       >
+                //         <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+                //           {key}
+                //         </Typography>
+                //       </Grid>
+                //       <Grid
+                //       item
+                //       lg={6}
+                //       md={6}
+                //       xl={6}
+                //       xs={6}
+                //     >
+                //       <Typography variant='h6' align='right'>
+                //         {value}
+                //       </Typography>
+                //     </Grid>
+                //     </Box>
+                //   </React.Fragment>
+                //   }
+
+              })}
+              {/* <Grid
                 item
                 lg={6}
                 md={6}
@@ -231,9 +288,9 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
                 <Typography variant='h6' align='right'>
                   None
                 </Typography>
-              </Grid>
+              </Grid> */}
             </Grid>
-            <Box mt={8} mb={2}>
+            {/* <Box mt={8} mb={2}>
               <Grid container spacing={2}>
                 <Grid
                     item
@@ -280,7 +337,7 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
                   </Typography>
                 </Grid>
               </Grid>
-            </Box>
+            </Box> */}
           </Box>
         </DialogContent>
 {/*         

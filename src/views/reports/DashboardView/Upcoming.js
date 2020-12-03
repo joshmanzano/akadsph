@@ -16,7 +16,6 @@ import {
   Container,
   Typography
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
 // import Table from './Table' 
 import Table from 'src/components/Table.js' 
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
@@ -33,6 +32,8 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 
 import CloseIcon from '@material-ui/icons/Close';
 import TableCell from '@material-ui/core/TableCell';
+import ModalJoin from './ModalJoin';
+import ModalSessionDetails from './ModalSessionDetails';
 
 const rows = [
   {
@@ -57,10 +58,16 @@ const rows = [
 
 const headers = ["Time", "Subject", "Tutor", ""]
 
-const buttonList = [<Button variant='outlined' color='primary' /*onClick={handleClickOpen}*/ startIcon={<CastForEducationIcon/>}>Join</Button>, 
-<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} /*onClick={() => setOpenSessionDets(true)}*/>View</Button>,
-<Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
-]
+
+const sessionDetails = [{
+  Student: "Rolo Pena",
+  Subject: "Math",
+  Topic: "Algebra",
+  Duration: "1 hour",
+  Special_Request: "None",
+  Date: "December 9, 2020",
+  Time: "2:00PM - 3:00PM",
+}]
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -71,54 +78,14 @@ const Upcoming = (props) => {
   const theme = useTheme();
   const className = props.className;
   const rest = props.rest;
+  const [openJoin, setOpenJoin] = React.useState(false);
+  const [openDetails, setOpenDetails] = React.useState(false);
 
-  const buttonSetup=()=>{
-    return(
-    <React.Fragment>
-      {/* <TableCell> */}
-          <Grid container spacing={1}>
-            <Grid item xs={4}>
-              <Button variant='outlined' color='primary' /*onClick={handleClickOpen}*/ startIcon={<CastForEducationIcon/>}>Join</Button>
-            </Grid>
-            {/* <Dialog
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-              
-              >
-                <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{""}</DialogTitle>
-                <DialogContent>
-                  <Box align='center' mb={2}>
-                  <img width='100' src='../static/images/oli-happy.png'></img>
-                  </Box>
-                  <DialogContentText id="alert-dialog-description" align='center'>
-                    Your tutorial session is about to start!<br/>Join the call now.
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose} color="primary">
-                    Cancel
-                  </Button>
-                  <Button onClick={handleClose} color="primary" autoFocus>
-                    Join Session
-                  </Button>
-                </DialogActions>
-            </Dialog> */}
-            <Grid item xs={4}>
-              <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} /*onClick={() => setOpenSessionDets(true)}*/>View</Button>
-              {/* <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/> */}
-            </Grid>
-            <Grid item xs={4}>
-              <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
-            </Grid>
-          </Grid>
-          
-      {/* </TableCell> */}
-    </React.Fragment>
-    );
-  }
 
+  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenJoin(true)} startIcon={<CastForEducationIcon/>}>Join</Button>, 
+  <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+  ]
 
   return (
     <Card
@@ -134,6 +101,8 @@ const Upcoming = (props) => {
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
+          <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
+          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
         </React.Fragment>
       :
         <React.Fragment>

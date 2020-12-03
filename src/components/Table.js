@@ -41,7 +41,6 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-// import ModalSessionDetails from './ModalSessionDetails';
 
   const rows = [
     {
@@ -266,7 +265,7 @@ export default function EnhancedTable(props) {
 
     Object.entries(inputRow).map(([key, value]) => {
       row.push(value);
-  })
+    })
 
  
     return row;
