@@ -17,25 +17,34 @@ import {
   Typography
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
-import Table from './Table' 
+// import Table from './Table' 
+import Table from 'src/components/Table.js' 
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
+import ForumIcon from '@material-ui/icons/Forum';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  // DialogTitle,
+} from '@material-ui/core';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+
+import CloseIcon from '@material-ui/icons/Close';
+import TableCell from '@material-ui/core/TableCell';
 
 const rows = [
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Math',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
+  {
+    time: '4 PM',
+    subject: 'Filipino',
+    tutor: 'Adrienne Soliven',
+  },
+  {
+    time: '4 PM',
+    subject: 'Math',
+    tutor: 'Adrienne Soliven',
+  },
   // {
   //   date: 'July 7',
   //   time: '4 PM',
@@ -48,9 +57,10 @@ const rows = [
 
 const headers = ["Time", "Subject", "Tutor", ""]
 
-const sessionType = "upcoming/pending"
-
-const type = "session"
+const buttonList = [<Button variant='outlined' color='primary' /*onClick={handleClickOpen}*/ startIcon={<CastForEducationIcon/>}>Join</Button>, 
+<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} /*onClick={() => setOpenSessionDets(true)}*/>View</Button>,
+<Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+]
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -61,6 +71,64 @@ const Upcoming = (props) => {
   const theme = useTheme();
   const className = props.className;
   const rest = props.rest;
+
+  const buttonSetup=()=>{
+    return(
+    <React.Fragment>
+      {/* <TableCell> */}
+          <Grid container spacing={1}>
+            <Grid item xs={4}>
+              <Button variant='outlined' color='primary' /*onClick={handleClickOpen}*/ startIcon={<CastForEducationIcon/>}>Join</Button>
+            </Grid>
+            {/* <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              
+              >
+                <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{""}</DialogTitle>
+                <DialogContent>
+                  <Box align='center' mb={2}>
+                  <img width='100' src='../static/images/oli-happy.png'></img>
+                  </Box>
+                  <DialogContentText id="alert-dialog-description" align='center'>
+                    Your tutorial session is about to start!<br/>Join the call now.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color="primary">
+                    Cancel
+                  </Button>
+                  <Button onClick={handleClose} color="primary" autoFocus>
+                    Join Session
+                  </Button>
+                </DialogActions>
+            </Dialog> */}
+            <Grid item xs={4}>
+              <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} /*onClick={() => setOpenSessionDets(true)}*/>View</Button>
+              {/* <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/> */}
+            </Grid>
+            <Grid item xs={4}>
+              <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
+            </Grid>
+          </Grid>
+          
+      {/* </TableCell> */}
+    </React.Fragment>
+    );
+  }
+
+  const buttonAppended=()=>{
+  
+    buttonList.push(<Button variant='outlined' color='primary' /*onClick={handleClickOpen}*/ startIcon={<CastForEducationIcon/>}>Join</Button>);
+  
+    buttonList.push(<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} /*onClick={() => setOpenSessionDets(true)}*/>View</Button>);
+    
+    buttonList.push(<Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>);
+            
+    
+  }
 
   return (
     <Card
@@ -74,7 +142,7 @@ const Upcoming = (props) => {
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList} /*sessionType={sessionType} type={type}*//>
           </CardContent>
         </React.Fragment>
       :
