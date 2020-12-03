@@ -394,13 +394,13 @@ export default function EnhancedTable(props) {
         
           ))}
           
-          {/* {tableButtons != undefined ? */}
+          {tableButtons != undefined ?
             <TableCell>
               <React.Fragment>
                 <Grid container spacing={1}>
                 {tableButtons.map(button=>{
                   return(
-                  <Grid item xs={tableButtons.length/12}>
+                  <Grid item  align='center' xs={12/tableButtons.length}>
                     {button}
                   </Grid>
                   );
@@ -408,11 +408,10 @@ export default function EnhancedTable(props) {
                 </Grid>
               </React.Fragment>
             </TableCell>
-          {/* :
+          :
             <React.Fragment></React.Fragment>
-          } */}
+          }
         
-          {/* </React.Fragment> */}
           </TableRow>
         );
         })

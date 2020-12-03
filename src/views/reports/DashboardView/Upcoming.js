@@ -119,16 +119,6 @@ const Upcoming = (props) => {
     );
   }
 
-  const buttonAppended=()=>{
-  
-    buttonList.push(<Button variant='outlined' color='primary' /*onClick={handleClickOpen}*/ startIcon={<CastForEducationIcon/>}>Join</Button>);
-  
-    buttonList.push(<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} /*onClick={() => setOpenSessionDets(true)}*/>View</Button>);
-    
-    buttonList.push(<Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>);
-            
-    
-  }
 
   return (
     <Card
@@ -142,7 +132,7 @@ const Upcoming = (props) => {
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList} /*sessionType={sessionType} type={type}*//>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
         </React.Fragment>
       :

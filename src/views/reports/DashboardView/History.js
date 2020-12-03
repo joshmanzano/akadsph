@@ -12,15 +12,27 @@ import {
   Grid,
   Typography,
   Box,
+  Button,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table'
+import Table from 'src/components/Table.js';
+import FeedbackIcon from '@material-ui/icons/Feedback';
+import StarIcon from '@material-ui/icons/Star'; 
+
+// const rows = [
+//   {
+//     date: 'July 7',
+//     time: '4 PM',
+//     subject: 'Science',
+//     tutor:  'Adrienne Soliven',
+//     student: 'Rolo Pena'
+//   }
+// ]
 
 const headers = ["Date", "Time", "Subject", "Tutor", "Student", ""]
 
-const sessionType = "history"
-
-const type = "session"
+const buttonList = [<Button variant='outlined' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>,
+<Button variant='outlined' color='primary' startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
+]
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -107,22 +119,13 @@ const Sales = ({ className, rows, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        // action={(
-        //   <Button
-        //     endIcon={<ArrowDropDownIcon />}
-        //     size="small"
-        //     variant="text"
-        //   >
-        //     Last 7 days
-        //   </Button>
-        // )}
         title="Session History"
       />
       <Divider />
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
         </React.Fragment>
       :
