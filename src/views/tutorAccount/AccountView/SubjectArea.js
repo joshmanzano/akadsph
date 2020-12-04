@@ -8,15 +8,11 @@ import {
   Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
-  Box,
-  Container,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table' 
+import Table from 'src/components/Table.js'; 
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useConfirm } from 'material-ui-confirm';
 
 const rows = [
   {
@@ -53,9 +49,6 @@ const rows = [
 
 const headers = ["Subject", ""]
 
-// const sessionType = "childrenList"
-
-const type = "subjectList"
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -64,6 +57,21 @@ const useStyles = makeStyles(() => ({
 const Children = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const confirm = useConfirm();
+
+  const buttonList = [
+  <Button variant='outlined' color='primary' startIcon={<DeleteIcon/>}
+  onClick={() =>{
+    confirm({ title:'Delete Subject' ,description: 'Are you sure you want to remove this subject from your profile?' })
+      .then(() => {
+       
+      })
+      .catch(() => {
+
+      });
+
+  }}
+  >Remove</Button>]
 
   return (
     <Card
@@ -75,7 +83,7 @@ const Children = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} type={type}/>
+        <Table tableHeaders={headers} tableRows={rows} type={type}tableButtons={buttonList}/>
       </CardContent>
     </Card>
   );
