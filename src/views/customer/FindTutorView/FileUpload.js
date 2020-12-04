@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOM from 'react-dom';
 // import 'antd/dist/antd.css';
 // import './index.css';
 import { Upload, message, Button } from 'antd';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import {UploadOutlined } from '@ant-design/icons';
 
 const FileUpload = ({ ...rest }) => {
 const { Dragger } = Upload;
