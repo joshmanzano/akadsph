@@ -8186,6 +8186,13 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+light-toast@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/light-toast/-/light-toast-0.3.0.tgz#e58add29a8b109037d011767fde88c30d733fa70"
+  integrity sha512-Nx3BFjugP/sFpzOdNXiS6L+p4WvYp8wv7Y8nEx9PNG0z2sDt1JQABXKd9N6YkNqhHbBMjvEpwfmJHOnqedexDQ==
+  dependencies:
+    micro-event-manager "^0.0.1"
+
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
@@ -8618,6 +8625,11 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
+
+micro-event-manager@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/micro-event-manager/-/micro-event-manager-0.0.1.tgz#1473a7c24b6f8367348e6785b095656e884e3b1c"
+  integrity sha512-Etz6x7utyupRiSD3qTVz/8NjePitxFDVUo6VvnqtoZocGYGpkmW3YMbJi18LsO1B+HTNW08rocaPdpR+gFU/CA==
 
 microevent.ts@~0.1.1:
   version "0.1.1"

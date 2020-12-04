@@ -8,17 +8,18 @@ import {
   Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
   Typography,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table' 
+import Table from 'src/components/Table.js' 
 import moment from 'moment';
+import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
+import ForumIcon from '@material-ui/icons/Forum';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import { useConfirm } from 'material-ui-confirm';
+import ModalZoomStart from 'src/components/ModalZoomStart.js';
 
 const rows = [
   {
@@ -67,10 +68,6 @@ const rows = [
 
 const headers = ["Date", "Time", "Subject", "Student", ""]
 
-const sessionType = "upcoming"
-
-const type = "session"
-
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -78,6 +75,24 @@ const useStyles = makeStyles(() => ({
 const Sales = ({ className, currentDate, setUpcoming, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const [openDetails, setOpenDetails] = React.useState(false);
+  const confirm = useConfirm();
+  const [openZoom, setOpenZoom] = React.useState(false);
+
+  const buttonList = [ 
+  <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+  <Button variant='outlined' color='primary' onClick={() =>{
+    confirm({ title:'Start Session' ,description: 'Would you like to start the session?' })
+      .then(() => {
+        setOpenZoom(true);
+      })
+      .catch(() => {
+
+      });
+  }} 
+  startIcon={<CastForEducationIcon/>}>Start</Button>
+  ]
 
   return (
     <Card
@@ -92,8 +107,10 @@ const Sales = ({ className, currentDate, setUpcoming, ...rest }) => {
       {setUpcoming ?
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
+          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
+          <ModalZoomStart open={openZoom} setOpen={setOpenZoom}/>
         </React.Fragment>
       :
         <React.Fragment>

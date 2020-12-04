@@ -2,21 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
-  Card,
-  CardContent,
-  CardHeader,
   Divider,
-  useTheme,
   makeStyles,
   colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
   TextField,
-  InputAdornment,
-  Snackbar,
   Typography, 
   IconButton,
 } from '@material-ui/core';
@@ -84,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RateChild = ({open, setOpen, className, ...rest }) => {
+const RateChild = ({open, setOpen, name, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -130,11 +121,11 @@ const RateChild = ({open, setOpen, className, ...rest }) => {
               How was the session?
           </DialogContentText>
           <Box align='center' mb={2} >
-            <Avatar>AM</Avatar>
+            <Avatar>CS</Avatar>
           </Box>
           
           <Typography variant="h4" align="center" mb={5}>
-            Angel Manzano
+            {name}
           </Typography>
           <Box mb={3} align='center' size="large">
             <Rating
@@ -156,10 +147,10 @@ const RateChild = ({open, setOpen, className, ...rest }) => {
             />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="secondary" variant="outlined">
+          <Button onClick={handleClose} color="primary">
               Report
           </Button>
-          <Button onClick={handleClose} color="primary" variant="outlined" autoFocus>
+          <Button onClick={handleClose} color="primary" autoFocus>
               Finish
           </Button>
         </DialogActions>

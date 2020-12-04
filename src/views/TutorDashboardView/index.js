@@ -7,14 +7,8 @@ import {
   Typography,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Budget from './Budget';
-import LatestOrders from './LatestOrders';
-import LatestProducts from './LatestProducts';
 import Upcoming from './Upcoming';
-import Pending from './Pending';
 import History from './History';
-import Transaction from './Transaction';
-import Metrics from './Metrics';
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
 
 

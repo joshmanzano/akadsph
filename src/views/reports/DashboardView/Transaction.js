@@ -13,14 +13,20 @@ import {
   Box,
   Typography,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table'
+import Table from 'src/components/Table.js';
 
 const headers = ["Date", "Time", "Subject", "Tutor", "Amount", "Session Number"]
 
-const sessionType = "N/A"
-
-const type = "transaction"
+// const rows = [
+//   {
+//     date: 'July 7',
+//     time: '4 PM',
+//     subject: 'Science',
+//     tutor:  'Adrienne Soliven',
+//     amount: 'P600',
+//     sessionNo: '1234',
+//   }
+// ]
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -107,22 +113,13 @@ const Sales = ({ className, rows, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        // action={(
-        //   <Button
-        //     endIcon={<ArrowDropDownIcon />}
-        //     size="small"
-        //     variant="text"
-        //   >
-        //     Last 7 days
-        //   </Button>
-        // )}
         title="Transactions"
       />
       <Divider />
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows}/>
           </CardContent>
         </React.Fragment>
       :

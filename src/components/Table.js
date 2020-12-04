@@ -26,10 +26,20 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import Grid from '@material-ui/core/Grid';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
-import RateChild from './RateChild';
-import ModalSessionDetails from './ModalSessionDetails';
-import ModalSure from './ModalSure';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  // DialogTitle,
+} from '@material-ui/core';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+
+import CloseIcon from '@material-ui/icons/Close';
+
+import { withStyles } from '@material-ui/core/styles';
 
 
   const rows = [
@@ -83,8 +93,6 @@ import ModalSure from './ModalSure';
     },
   ]
 
-const headCells = []
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -111,39 +119,18 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+
 function EnhancedTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
 
+  
+
   return (
     <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
-        </TableCell>
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'default'}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
+
     </TableHead>
   );
 }
@@ -241,7 +228,22 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
+  closeButton: {
+    float:'right', marginTop: '5px'
+
+  },
+  dialogTitle:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
+
+
 
 export default function EnhancedTable(props) {
   const classes = useStyles();
@@ -253,12 +255,42 @@ export default function EnhancedTable(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
   const tableHeaders = props.tableHeaders;
   const tableRows = props.tableRows;
-  const sessionType = props.sessionType;
-  const tableType = props.type;
-  const [openFeedback, setOpenFeedback] = React.useState(false);
+  // const [tableRows, setTableRows] = React.useState([]);
+  const tableButtons = props.tableButtons;
+  const [open, setOpen] = React.useState(false);
   const [openSessionDets, setOpenSessionDets] = React.useState(false);
-  const [openSure, setOpenSure] = React.useState(false);
 
+  const changeToArray =(inputRow)=>{
+    var row = []
+
+    Object.entries(inputRow).map(([key, value]) => {
+      row.push(value);
+    })
+
+ 
+    return row;
+  }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  const DialogTitle = withStyles(useStyles)((props) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <Typography variant="h4">{children}</Typography>
+        {onClose ? (
+          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -343,141 +375,48 @@ export default function EnhancedTable(props) {
 
   const renderRows = () =>{
     
-    if(tableRows != undefined){
-      if(tableType == "session"){
-          const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((session, index) => {
-          return (
-              <TableRow
-                  hover
-                  key={session.id}
-              >
-                  <TableCell>
-                  {session.date}
-                  </TableCell>
-                  <TableCell>
-                  {session.time}
-                  </TableCell>
-                  <TableCell>
-                  {session.subject}
-                  </TableCell>
-                  <TableCell>
-                  {session.student}
-                  </TableCell>
-                  
-                  {sessionType == "history" ?  
-                    <React.Fragment>
-                     
-                      <TableCell>
-                        {session.parent}
-                      </TableCell> 
-                      </React.Fragment>
-                    : 
-                    console.log()
-                  }
-
-                  {sessionType == "upcoming" ? 
-                  <TableCell>
-                      <Box mx={1} component='span'>
-                      <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenSessionDets(true)}>View</Button>
-                      </Box>
-                      <ModalSessionDetails open={openSessionDets} setOpen={setOpenSessionDets}/>
-                      <Box mx={1} component='span'>
-                      <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>
-                      </Box>
-                      <Box mx={1} component='span'>
-                      <Button variant='outlined' color='primary' onClick={() => setOpenSure(true)} startIcon={<CastForEducationIcon/>}>Start</Button>
-                      <ModalSure open={openSure} setOpen={setOpenSure}/>
-                      </Box>
-                  </TableCell>
-                  :
-                 
-                  <TableCell>
-                      <Box mx={1} component='span'>
-                        <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>
-                      </Box>
-                      <RateChild open={openFeedback} setOpen={setOpenFeedback}/>
-                  </TableCell>
-                  }
-              </TableRow>
-          );
-          })
-
-        return rowsResult
-        
-      }else if(tableType == "transaction"){
+    // if(tableRows != undefined){
         const rowsResult = tableRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((transaction, index) => {
-          return (
-              <TableRow
-                  hover
-                  key={transaction.id}
-              >
-                  <TableCell>
-                  {transaction.date}
-                  </TableCell>
-                  <TableCell>
-                  {transaction.time}
-                  </TableCell>
-                  <TableCell>
-                  {transaction.subject}
-                  </TableCell>
-                  <TableCell>
-                  {transaction.student}
-                  </TableCell>
-                  <TableCell>
-                  {transaction.parent}
-                  </TableCell>
-                  <TableCell>
-                  {transaction.amount}
-                  </TableCell>
-                  <TableCell>
-                  {transaction.sessionNo}
-                  </TableCell>
-              </TableRow>
-          );
-          })
+        .map((session, index) => {
+          changeToArray(session)
+        return (
+          <TableRow
+            hover
+            key={session.id}
+            >
+            
         
-        return rowsResult;
-      }
-      
-    }
+          {changeToArray(session).map((data)=>(
+          <TableCell>
+            {data}
+          </TableCell>
+        
+          ))}
+          
+          {tableButtons != undefined ?
+            <TableCell>
+              <React.Fragment>
+                <Grid container spacing={1}>
+                {tableButtons.map(button=>{
+                  return(
+                  <Grid item  align='center' xs={12/tableButtons.length}>
+                    {button}
+                  </Grid>
+                  );
+                })}
+                </Grid>
+              </React.Fragment>
+            </TableCell>
+          :
+            <React.Fragment></React.Fragment>
+          }
+        
+          </TableRow>
+        );
+        })
 
-    // if(rowsResult != undefined){
-    //   return (<TableRow>{rowsResult}</TableRow>)
+      return rowsResult 
     // }
-    
-      // {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-      //   .map((session, index) => {
-      //   return (
-      //       <TableRow
-      //           hover
-      //           key={session.id}
-      //       >
-      //           <TableCell>
-      //           {session.date}
-      //           </TableCell>
-      //           <TableCell>
-      //           {session.time}
-      //           </TableCell>
-      //           <TableCell>
-      //           {session.subject}
-      //           </TableCell>
-      //           <TableCell>
-      //           {session.tutor.name}
-      //           </TableCell>
-      //           <TableCell>
-      //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>View</Button>
-      //               </Box>
-      //               <Box mx={1} component='span'>
-      //               <Button variant='contained' color='primary'>Chat</Button>
-      //               </Box>
-      //           </TableCell>
-      //       </TableRow>
-      //   );
-      //   })
-      // }
   };
 
   return (
@@ -490,66 +429,11 @@ export default function EnhancedTable(props) {
             <TableHead>
                 {renderHeaders()}
 
-                {/* <TableRow>
-                    <TableCell sortDirection="desc">
-                    <Tooltip
-                        enterDelay={300}
-                        title="Sort"
-                    >
-                        <TableSortLabel
-                        active
-                        direction="desc"
-                        >
-                        Date
-                        </TableSortLabel>
-                    </Tooltip>
-                    </TableCell>
-                    <TableCell>
-                    Time
-                    </TableCell>
-                    <TableCell>
-                    Subject
-                    </TableCell>
-                    <TableCell>
-                    Tutor
-                    </TableCell>
-                    <TableCell>
-                    </TableCell>
-                </TableRow> */}
+              
             </TableHead>
             <TableBody>
               {renderRows()}
-                {/* {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((session, index) => {
-                    return (
-                        <TableRow
-                            hover
-                            key={session.id}
-                        >
-                            <TableCell>
-                            {session.date}
-                            </TableCell>
-                            <TableCell>
-                            {session.time}
-                            </TableCell>
-                            <TableCell>
-                            {session.subject}
-                            </TableCell>
-                            <TableCell>
-                            {session.tutor.name}
-                            </TableCell>
-                            <TableCell>
-                                <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>View</Button>
-                                </Box>
-                                <Box mx={1} component='span'>
-                                <Button variant='contained' color='primary'>Chat</Button>
-                                </Box>
-                            </TableCell>
-                        </TableRow>
-                    );
-                    })
-                } */}
+                
             </TableBody>
           </Table>
         </TableContainer>

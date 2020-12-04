@@ -40,7 +40,6 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import RequestSummary from '../RequestPage/RequestSummary';
 
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';

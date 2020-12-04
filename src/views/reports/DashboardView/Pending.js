@@ -12,23 +12,39 @@ import {
   Grid,
   Typography,
   Box,
+  Button,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table'
+import Table from 'src/components/Table.js' 
+import ForumIcon from '@material-ui/icons/Forum';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 
 const headers = ["Date", "Time", "Subject", "Tutor", ""]
 
-const sessionType = "upcoming/pending"
 
-const type = "session"
+
+// const rows = [
+//   {
+//     date: 'July 7',
+//     time: '4 PM',
+//     subject: 'Science',
+//     tutor:  'Adrienne Soliven'
+//   }
+// ]
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, rows, ...rest }) => {
+const Pending = ({ className, rows, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const [openDetails, setOpenDetails] = React.useState(false);
+
+
+  const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
+  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>, "",
+  ]
 
   const data = {
     datasets: [
@@ -107,23 +123,15 @@ const Sales = ({ className, rows, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        // action={(
-        //   <Button
-        //     endIcon={<ArrowDropDownIcon />}
-        //     size="small"
-        //     variant="text"
-        //   >
-        //     Last 7 days
-        //   </Button>
-        // )}
         title="Pending Requests"
       />
       <Divider />
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
+          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
         </React.Fragment>
       :
         <React.Fragment>
@@ -139,9 +147,9 @@ const Sales = ({ className, rows, ...rest }) => {
   );
 };
 
-Sales.propTypes = {
+Pending.propTypes = {
   className: PropTypes.string,
   rows: PropTypes.array
 };
 
-export default Sales;
+export default Pending;

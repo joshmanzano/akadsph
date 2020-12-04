@@ -9,12 +9,13 @@ import {
   useTheme,
   makeStyles,
   colors,
-  Grid,
   Typography,
-  Box
+  Box,
+  Button,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table'
+import Table from 'src/components/Table.js'
+import Feedback from 'src/components/Feedback';
+import FeedbackIcon from '@material-ui/icons/Feedback';
 
 const rows = [
   {
@@ -68,10 +69,6 @@ const rows = [
 
 const headers = ["Date", "Time", "Subject", "Student", "Parent",""]
 
-const sessionType = "history"
-
-const type = "session"
-
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -79,6 +76,12 @@ const useStyles = makeStyles(() => ({
 const Sales = ({ className, setHistory, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const [openFeedback, setOpenFeedback] = React.useState(false);
+  const [name, setName] = React.useState(rows[0].student);
+
+  const buttonList = [
+  <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
+  ]
 
   const data = {
     datasets: [
@@ -157,23 +160,15 @@ const Sales = ({ className, setHistory, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        // action={(
-        //   <Button
-        //     endIcon={<ArrowDropDownIcon />}
-        //     size="small"
-        //     variant="text"
-        //   >
-        //     Last 7 days
-        //   </Button>
-        // )}
         title="Session History"
       />
       <Divider />
       {setHistory ?
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
+          <Feedback open={openFeedback} setOpen={setOpenFeedback} name={name}/>
         </React.Fragment>
       :
         <React.Fragment>

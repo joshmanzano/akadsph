@@ -4,19 +4,16 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
-  CardHeader,
-  Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
-  Box,
-  Container,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table' 
+import Table from 'src/components/Table.js';
+import ModalRequest from './ModalRequest';
+import FaveTutorDecline from './FaveTutorDecline';
+import CancelIcon from '@material-ui/icons/Cancel';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import { useConfirm } from 'material-ui-confirm';
 
 const rows = [
   {
@@ -42,9 +39,6 @@ const rows = [
 
 const headers = ["Subject", "Topic", "Duration", "Student", ""]
 
-// const sessionType = "requests"
-
-const type = "requests"
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -64,6 +58,24 @@ const Requests = ({ className, pending, ...rest }) => {
     })
   })
 
+  const [openRequest, setOpenRequest] = React.useState(false);
+  const [openDecline, setModalDecline] = React.useState(false);
+  const confirm = useConfirm();
+
+  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenRequest(true)} startIcon={<PageviewIcon/>}>View</Button>,
+<Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() =>{
+    confirm({ title:'Decline Request' ,description: 'Are you sure you want to decline this request?' })
+      .then(() => {
+        setModalDecline(true);
+      })
+      .catch(() => {
+
+      });
+
+  }}
+  >Decline</Button>,
+]
+
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -74,8 +86,10 @@ const Requests = ({ className, pending, ...rest }) => {
       />
       <Divider /> */}
       <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} type={type}/>
+          <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
       </CardContent>
+      <ModalRequest open={openRequest} rows={rows} setOpen={setOpenRequest} /*setOpenConf={setOpenConf}*//> 
+      <FaveTutorDecline open={openDecline} setOpen={setModalDecline}/>
     </Card>
   );
 };

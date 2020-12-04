@@ -7,9 +7,6 @@ import {
 import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
-import Children from './Children';
-import FaveTutors from './FaveTutors'; 
-import SubjectArea from './SubjectArea';
 import Metrics from './Metrics';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 
 const TutorAccountView = (props) => {
   const classes = useStyles();
-  const accountType = 'parent';
 
   return (
     <Page

@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
@@ -8,34 +8,28 @@ import {
   Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
   Typography
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table' 
+import Table from 'src/components/Table.js'; 
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
+import ForumIcon from '@material-ui/icons/Forum';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import ModalJoin from './ModalJoin';
+import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 
 const rows = [
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Math',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
+  {
+    time: '4 PM',
+    subject: 'Filipino',
+    tutor: 'Adrienne Soliven',
+  },
+  {
+    time: '4 PM',
+    subject: 'Math',
+    tutor: 'Adrienne Soliven',
+  },
   // {
   //   date: 'July 7',
   //   time: '4 PM',
@@ -48,9 +42,16 @@ const rows = [
 
 const headers = ["Time", "Subject", "Tutor", ""]
 
-const sessionType = "upcoming/pending"
 
-const type = "session"
+const sessionDetails = [{
+  Student: "Rolo Pena",
+  Subject: "Math",
+  Topic: "Algebra",
+  Duration: "1 hour",
+  Special_Request: "None",
+  Date: "December 9, 2020",
+  Time: "2:00PM - 3:00PM",
+}]
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -61,6 +62,14 @@ const Upcoming = (props) => {
   const theme = useTheme();
   const className = props.className;
   const rest = props.rest;
+  const [openJoin, setOpenJoin] = React.useState(false);
+  const [openDetails, setOpenDetails] = React.useState(false);
+
+
+  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenJoin(true)} startIcon={<CastForEducationIcon/>}>Join</Button>, 
+  <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+  ]
 
   return (
     <Card
@@ -74,8 +83,10 @@ const Upcoming = (props) => {
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
+          <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
+          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
         </React.Fragment>
       :
         <React.Fragment>

@@ -16,7 +16,7 @@ import {
   Container,
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
-import Table_Modal from './Table' 
+import Table from 'src/components/Table.js';  
 
 const rows = [
   {
@@ -49,7 +49,7 @@ const Sales = ({ className, ...rest }) => {
     //   />
     //   <Divider />
     //   <CardContent>
-        <Table_Modal tableHeaders={headers} tableRows={rows}/>
+        <Table tableHeaders={headers} tableRows={rows}/>
     //   </CardContent>
     // </Card>
   );

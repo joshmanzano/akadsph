@@ -2,21 +2,11 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
-  Card,
-  CardContent,
-  CardHeader,
   Divider,
-  useTheme,
   makeStyles,
   colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
-  TextField,
-  InputAdornment,
-  Snackbar,
   Typography, 
   IconButton,
 } from '@material-ui/core';
@@ -34,7 +24,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import ModalZoomStart from './ModalZoomStart';
+import ModalZoomStart from 'src/components/ModalZoomStart.js' 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,12 +52,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: '4px 2px 5px 20px',
   },
-  dialogStyle:{
-    minWidth: "60vh",
-  },
 }));
 
-const ModalSure = ({open, setOpen, className, ...rest }) => {
+const ModalDeclined = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   const [openZoom, setOpenZoom] = React.useState(false);
 
@@ -80,9 +67,9 @@ const ModalSure = ({open, setOpen, className, ...rest }) => {
     setOpen(false);
   };
 
-  const handleStart = () => {
-    setOpenZoom(true);
+  const handleJoinZoom = () => {
     setOpen(false);
+    setOpenZoom(true);
   };
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -106,24 +93,27 @@ const ModalSure = ({open, setOpen, className, ...rest }) => {
   return (
     <React.Fragment>
       <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      
-      >
-          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Start Session"}</DialogTitle>
-          <DialogContent className={classes.dialogStyle}>
-            <DialogContentText id="alert-dialog-description" align='center' >
-                Are you ready to start the Zoom call?
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        
+        >
+          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{""}</DialogTitle>
+          <DialogContent>
+            <Box align='center' mb={2}>
+            <img width='100' src='../static/images/oli-happy.png'></img>
+            </Box>
+            <DialogContentText id="alert-dialog-description" align='center'>
+              Your tutorial session is about to start!<br/>Join the call now.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={()=> handleStart()} color="primary">
-                Yes
+            <Button onClick={handleClose} color="primary">
+              Cancel
             </Button>
-            <Button onClick={handleClose} color="primary" autoFocus>
-                No
+            <Button onClick={() => handleJoinZoom()} color="primary" autoFocus>
+              Join Session
             </Button>
           </DialogActions>
       </Dialog>
@@ -132,8 +122,8 @@ const ModalSure = ({open, setOpen, className, ...rest }) => {
   );
 };
 
-ModalSure.propTypes = {
+ModalDeclined.propTypes = {
   className: PropTypes.string
 };
 
-export default ModalSure;
+export default ModalDeclined;
