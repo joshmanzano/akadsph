@@ -18,8 +18,10 @@ import Table from 'src/components/Table.js'
 import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { useConfirm } from 'material-ui-confirm';
 
-const headers = ["Date", "Time", "Subject", "Tutor", ""]
+const headers = ["Date", "Time", "Subject", "Student", ""]
 
 
 
@@ -40,10 +42,22 @@ const Pending = ({ className, rows, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [openDetails, setOpenDetails] = React.useState(false);
+  const confirm = useConfirm();
 
 
   const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
-  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>, "",
+  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+  <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
+  onClick={() =>{
+    confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
+      .then(() => {
+        
+      })
+      .catch(() => {
+
+      });
+  }} 
+  >Cancel</Button>,
   ]
 
   const data = {

@@ -14,13 +14,9 @@ import {
   Snackbar,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Results from './Results';
-import Toolbar from './Toolbar';
-import Bundle from './Bundle';
 import ChildDetails from './ChildDetails';
 import Availability from './Availability';
 import SpecialRequests from './SpecialRequests';
-import Payment from './Payment';
 import Breakdown from './Breakdown';
 import Summary from './Summary';
 import {get_user, post_api} from 'src/Api'
