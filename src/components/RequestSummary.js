@@ -16,7 +16,7 @@ import {
   Container,
 } from '@material-ui/core';
 import Calendar from 'react-calendar'
-import Table from './Table' 
+import Table from 'src/components/Table.js';  
 
 const rows = [
   {

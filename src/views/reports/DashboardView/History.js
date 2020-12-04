@@ -30,20 +30,20 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, /*rows,*/ ...rest }) => {
-  const rows = [
-    {
-      date: 'July 7',
-      time: '4 PM',
-      subject: 'Science',
-      tutor:  'Adrienne Soliven',
-      student: 'Rolo Pena'
-    }
-  ]
+const Sales = ({ className, rows, ...rest }) => {
+  // const rows = [
+  //   {
+  //     date: 'July 7',
+  //     time: '4 PM',
+  //     subject: 'Science',
+  //     tutor:  'Adrienne Soliven',
+  //     student: 'Rolo Pena'
+  //   }
+  // ]
   const classes = useStyles();
   const theme = useTheme();
   const [openFeedback, setOpenFeedback] = React.useState(false);
-  const [name, setName] = React.useState(rows[0].student);
+  const [name, setName] = React.useState("Rolo Pena"/*rows[0].student*/);
 
   const buttonList = [<Button variant='outlined' color='primary' onClick={() => {
     Toast.success(rows[0].tutor + ' added to the favorite tutor list', 3000, () => {

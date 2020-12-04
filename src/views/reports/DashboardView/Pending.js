@@ -23,20 +23,20 @@ const headers = ["Date", "Time", "Subject", "Tutor", ""]
 
 
 
-const rows = [
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    tutor:  'Adrienne Soliven'
-  }
-]
+// const rows = [
+//   {
+//     date: 'July 7',
+//     time: '4 PM',
+//     subject: 'Science',
+//     tutor:  'Adrienne Soliven'
+//   }
+// ]
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Pending = ({ className, /*rows,*/ ...rest }) => {
+const Pending = ({ className, rows, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [openDetails, setOpenDetails] = React.useState(false);

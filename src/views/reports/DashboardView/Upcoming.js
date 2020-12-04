@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
@@ -8,30 +8,14 @@ import {
   Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
   Typography
 } from '@material-ui/core';
-// import Table from './Table' 
 import Table from 'src/components/Table.js'; 
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  // DialogTitle,
-} from '@material-ui/core';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-
-import CloseIcon from '@material-ui/icons/Close';
-import TableCell from '@material-ui/core/TableCell';
 import ModalJoin from './ModalJoin';
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 
