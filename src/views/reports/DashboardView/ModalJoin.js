@@ -24,7 +24,8 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import ModalZoomStart from 'src/components/ModalZoomStart.js' 
+import ModalZoomStart from 'src/components/ModalZoomStart.js';
+import ExtensionPrompt from './ExtensionPrompt'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 const ModalDeclined = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   const [openZoom, setOpenZoom] = React.useState(false);
+  const [openExtension, setOpenExtension] = React.useState(false);
 
 
   const handleClickOpen = () => {
@@ -71,6 +73,13 @@ const ModalDeclined = ({open, setOpen, className, ...rest }) => {
     setOpen(false);
     setOpenZoom(true);
   };
+
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+    setOpen(false);
+    setOpenExtension(true);
+}
 
   const DialogTitle = withStyles(useStyles)((props) => {
     const { children, classes, onClose, ...other } = props;
@@ -112,12 +121,13 @@ const ModalDeclined = ({open, setOpen, className, ...rest }) => {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={() => handleJoinZoom()} color="primary" autoFocus>
+            <Button onClick={() =>  {openInNewTab('https://zoom.us/')}} color="primary" autoFocus>
               Join Session
             </Button>
           </DialogActions>
       </Dialog>
       <ModalZoomStart open={openZoom} setOpen={setOpenZoom}/>
+      <ExtensionPrompt open={openExtension} setOpen={setOpenExtension}/>
     </React.Fragment>
   );
 };
