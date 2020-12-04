@@ -9,9 +9,7 @@ import {
   useTheme,
   makeStyles,
   colors,
-  Grid,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
 import Table from './Table'
 
 const rows = [
