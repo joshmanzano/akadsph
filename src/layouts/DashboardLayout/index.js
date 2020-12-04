@@ -15,7 +15,7 @@ import TopBar from './TopBar';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import FindTutorView from 'src/views/customer/FindTutorView';
-import DashboardView from 'src/views/reports/DashboardView';
+import DashboardView from 'src/views/DashboardView/DashboardView';
 import AuthView from 'src/views/test/AuthView';
 import NotFoundView from 'src/views/errors/NotFoundView.jsx';
 import ProductListView from 'src/views/product/ProductListView';
