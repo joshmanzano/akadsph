@@ -6,27 +6,17 @@ import {
   Button,
   Card,
   CardContent,
-  TextField,
-  InputAdornment,
-  SvgIcon,
   makeStyles,
-  Typography,
-  Grid,
-  Container,
   CardHeader,
   Divider,
-  Select,
-  FormControl,
-  InputLabel,
-  IconButton,
   Tabs,
   Tab,
 } from '@material-ui/core';
-import { Search as SearchIcon } from 'react-feather';
 import CreditCardForm from './CreditCardForm';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import UnderConstruction from './UnderConstruction';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -84,6 +74,12 @@ const Payment = ({ className, setCardState, ...rest }) => {
             <Box mt={4}>
               {value == 0 &&
                 <CreditCardForm setCardState={setCardState}></CreditCardForm>
+              }
+              {value == 1 &&
+                <UnderConstruction/>
+              }
+              {value == 2 &&
+                <UnderConstruction/>
               }
             </Box>
               {/* <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
