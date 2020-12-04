@@ -2,28 +2,17 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
 } from '@material-ui/core';
-import Table from './Table' 
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionActions from '@material-ui/core/AccordionActions';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Chip from '@material-ui/core/Chip';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 
 import Upcoming from './WeeklySessions';
@@ -149,41 +138,11 @@ const PayoutHeaders = ({ className, ...rest }) => {
         </AccordionSummary>
         <AccordionDetails style={{display: 'block', padding: '0'}}>
           <Upcoming/>
-          {/* <div className={classes.column} />
-          <div className={classes.column}>
-            <Chip label="Barbados" onDelete={() => {}} />
-          </div>
-          <div className={clsx(classes.column, classes.helper)}>
-            <Typography variant="caption">
-              Select your destination of choice
-              <br />
-              <a href="#secondary-heading-and-columns" className={classes.link}>
-                Learn more
-              </a>
-            </Typography>
-          </div> */}
         </AccordionDetails>
-        {/* <Divider />
-        <AccordionActions>
-          <Button size="small">Cancel</Button>
-          <Button size="small" color="primary">
-            Save
-          </Button>
-        </AccordionActions> */}
+
       </Accordion>
     </div>
-    // <Card
-    //   className={clsx(classes.root, className)}
-    //   {...rest}
-    // >
-    //   <CardHeader
-    //     title="Upcoming Sessions"
-    //   />
-    //   <Divider />
-    //   <CardContent>
-    //     <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
-    //   </CardContent>
-    // </Card>
+  
   );
 };
 
