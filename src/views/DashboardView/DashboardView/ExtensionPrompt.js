@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   Divider,
@@ -15,14 +14,13 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    // DialogTitle,
   } from '@material-ui/core';
   
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
-  
 import CloseIcon from '@material-ui/icons/Close';
-
 import { withStyles } from '@material-ui/core/styles';
+import { useConfirm } from 'material-ui-confirm';
+import ModalJoin from './ModalJoin';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -112,6 +110,8 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
   const [extendMins, setExtendMins] =  React.useState(false);
   const [extendHour, setExtendHour] =  React.useState(false);
   const [endSession, setEndSession] =  React.useState(false);
+  const confirm = useConfirm();
+  const [openJoin, setOpenJoin] = React.useState(false);
 
   function buttonClick(type){
  
@@ -119,14 +119,40 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
       setExtendMins(true);
       setExtendHour(false);
       setEndSession(false);
+      confirm({ title:'Extend Confirmation', description: 'Do you want to extend the session for an additional 30 minutes?' })
+      .then(() => {
+        setOpen(false);
+        setOpenJoin(true);
+        
+      })
+      .catch(() => {
+        setOpen(true);
+      });
     }else if(type == 'extendHour'){
       setExtendMins(false);
       setExtendHour(true);
       setEndSession(false);
+      confirm({ title:'Extend Confirmation', description: 'Do you want to extend the session for an additional 1 hour?' })
+      .then(() => {
+        
+        setOpenJoin(true)
+        setOpen(false);
+      })
+      .catch(() => {
+        setOpen(true);
+      });
     }else if(type == 'endSession'){
       setExtendMins(false);
       setExtendHour(false);
       setEndSession(true);
+      confirm({ title:'Extend Confirmation', description: 'Are you sure you do not want to extend the session?' })
+      .then(() => {
+        setOpen(false);
+      })
+      .catch(() => {
+
+      });
+      
     }
 
   }
@@ -153,91 +179,96 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
         </MuiDialogTitle>
         <Divider/>
         <br/>
+        <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
       </React.Fragment>
     );
   });
 
   return (
-    <Dialog
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="alert-dialog-title"
-    aria-describedby="alert-dialog-description"
-    fullWidth={true}
-    maxWidth={'sm'}
-    >
-        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Tutor Profile"}</DialogTitle>
-        <DialogContent className={classes.dialogStyle}>
-        
-          <Box align='center' mb={6} >
-            <Typography variant="h4" align="center" mb={2}>
-              End Session?
-            </Typography>
-          </Box>
+    <React.Fragment>
+      <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      fullWidth={true}
+      maxWidth={'sm'}
+      >
+          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Tutor Profile"}</DialogTitle>
+          <DialogContent className={classes.dialogStyle}>
+          
+            <Box align='center' mb={6} >
+              <Typography variant="h4" align="center" mb={2}>
+                End Session?
+              </Typography>
+            </Box>
 
-          <Box py={6}>
-            
-            <Grid container spacing={2} 
-              alignItems="center"
-              justify="center"
-              style={{placeItems: 'center', textAlign: 'center'}}>
-              <Grid
-                item
-                lg={4}
-                md={4}
-                xl={4}
-                xs={12}
+            <Box py={6}>
+              
+              <Grid container spacing={2} 
                 alignItems="center"
                 justify="center"
-                style={{placeItems: 'center'}}
-                className={classes.buttonContainer}
-              >
-                <Button className={ !extendMins? classes.choicesBtn : classes.selectedBtn} onClick={()=>buttonClick('extendMins') } variant="outlined">
-                  Extend 30 Minutes
-                </Button>
+                style={{placeItems: 'center', textAlign: 'center'}}>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  xl={4}
+                  xs={12}
+                  alignItems="center"
+                  justify="center"
+                  style={{placeItems: 'center'}}
+                  className={classes.buttonContainer}
+                >
+                  <Button className={ !extendMins? classes.choicesBtn : classes.selectedBtn} onClick={()=>buttonClick('extendMins') } variant="outlined">
+                    Extend 30 Minutes
+                  </Button>
+                </Grid>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  xl={4}
+                  xs={12}
+                >
+                  
+                  <Button className={ !extendHour? classes.choicesBtn : classes.selectedBtn} onClick={()=>buttonClick('extendHour') } variant="outlined">
+                    Extend 1 Hour
+                  </Button>
+                </Grid>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  xl={4}
+                  xs={12}
+                >
+                  {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
+                  <Button className={ !endSession? classes.exitBtn : classes.selectExitBtn} onClick={()=>buttonClick('endSession') } variant="outlined">
+                    End
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid
-                item
-                lg={4}
-                md={4}
-                xl={4}
-                xs={12}
-              >
-                
-                <Button className={ !extendHour? classes.choicesBtn : classes.selectedBtn} onClick={()=>buttonClick('extendHour') } variant="outlined">
-                  Extend 1 Hour
-                </Button>
-              </Grid>
-              <Grid
-                item
-                lg={4}
-                md={4}
-                xl={4}
-                xs={12}
-              >
-                {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
-                <Button className={ !endSession? classes.exitBtn : classes.selectExitBtn} onClick={()=>buttonClick('endSession') } variant="outlined">
-                  End
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-          
-          <Box my={5}>
-            <Typography variant="body1" align="center" >
-            Extending the session means you agree to pay for the extension fee (550 for 1 hour and 300 for 20 minutes). You will be charged once the tutor accepts.
-            </Typography>
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-              Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-              Done
-          </Button>
-        </DialogActions>
-    </Dialog>
+            </Box>
+            
+            <Box my={5}>
+              <Typography variant="body1" align="center" >
+              Extending the session means you agree to pay for the extension fee (550 for 1 hour and 300 for 20 minutes). You will be charged once the tutor accepts.
+              </Typography>
+            </Box>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+                Cancel
+            </Button>
+            <Button onClick={handleClose} color="primary">
+                Done
+            </Button>
+          </DialogActions>
+          <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
+      </Dialog>
+      
+    </React.Fragment>
   );
 };
 
