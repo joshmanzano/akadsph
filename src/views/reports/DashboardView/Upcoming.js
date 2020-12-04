@@ -18,6 +18,8 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import ModalJoin from './ModalJoin';
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { useConfirm } from 'material-ui-confirm';
 
 const rows = [
   {
@@ -64,11 +66,22 @@ const Upcoming = (props) => {
   const rest = props.rest;
   const [openJoin, setOpenJoin] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
-
+  const confirm = useConfirm();
 
   const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenJoin(true)} startIcon={<CastForEducationIcon/>}>Join</Button>, 
   <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
   <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+  <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
+  onClick={() =>{
+    confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
+      .then(() => {
+        
+      })
+      .catch(() => {
+
+      });
+  }} 
+  >Cancel</Button>,
   ]
 
   return (
