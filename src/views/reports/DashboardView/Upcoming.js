@@ -17,7 +17,7 @@ import {
   Typography
 } from '@material-ui/core';
 // import Table from './Table' 
-import Table from 'src/components/Table.js' 
+import Table from 'src/components/Table.js'; 
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 import ForumIcon from '@material-ui/icons/Forum';
 import PageviewIcon from '@material-ui/icons/Pageview';
@@ -33,7 +33,7 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import TableCell from '@material-ui/core/TableCell';
 import ModalJoin from './ModalJoin';
-import ModalSessionDetails from './ModalSessionDetails';
+import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 
 const rows = [
   {

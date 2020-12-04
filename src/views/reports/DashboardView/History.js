@@ -18,6 +18,7 @@ import Table from 'src/components/Table.js';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import StarIcon from '@material-ui/icons/Star'; 
 import Feedback from 'src/components/Feedback';
+import Toast from 'light-toast';
 
 
 
@@ -44,7 +45,11 @@ const Sales = ({ className, /*rows,*/ ...rest }) => {
   const [openFeedback, setOpenFeedback] = React.useState(false);
   const [name, setName] = React.useState(rows[0].student);
 
-  const buttonList = [<Button variant='outlined' color='primary' startIcon={<StarIcon/>}>Add to Favorites List</Button>,
+  const buttonList = [<Button variant='outlined' color='primary' onClick={() => {
+    Toast.success(rows[0].tutor + ' added to the favorite tutor list', 3000, () => {
+      // do something after the toast disappears
+    });
+  }} startIcon={<StarIcon/>}>Add to Favorites List</Button>,
   <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
   ]
 
