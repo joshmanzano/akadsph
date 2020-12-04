@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -18,9 +18,15 @@ import {
   Select,
   FormControl,
   InputLabel,
+  IconButton,
+  Tabs,
+  Tab,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
 import CreditCardForm from './CreditCardForm';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -39,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Payment = ({ className, setCardState, ...rest }) => {
   const classes = useStyles();
+  const [value, setValue] = useState(0);
+
+  function handleChange(event, value){
+    setValue(value)
+  }
 
   return (
     <div
@@ -57,7 +68,24 @@ const Payment = ({ className, setCardState, ...rest }) => {
           <Divider />
           <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
             <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-              <CreditCardForm setCardState={setCardState}></CreditCardForm>
+            <Tabs
+              value={value}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={handleChange}
+              variant={'fullWidth'}
+              aria-label="disabled tabs example"
+            >
+              <Tab icon={<CreditCardIcon/>}>
+              </Tab>
+              <Tab icon={<PhoneAndroidIcon/>}/>
+              <Tab icon={<AccountBalanceIcon/>}/>
+            </Tabs>
+            <Box mt={4}>
+              {value == 0 &&
+                <CreditCardForm setCardState={setCardState}></CreditCardForm>
+              }
+            </Box>
               {/* <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
                 <Grid
                   item

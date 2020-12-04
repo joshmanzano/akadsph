@@ -167,12 +167,14 @@ const Availability = ({ className, data, setData, ...rest }) => {
                               label="Date"
                               type="date"
                               format="MM/dd/yyyy"
+                              onClick={(e) => e.stopPropagation()}
                               // defaultValue="2017-05-24"
                               //day.toLocaleDateString()
                               value={moment(day).format('YYYY-MM-DD')}
                               className={classes.textField}
                               InputLabelProps={{
                                 shrink: true,
+                                readOnly: true,
                               }}
                 
                             />

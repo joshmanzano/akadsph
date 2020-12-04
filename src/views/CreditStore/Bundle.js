@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 15,
     // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     border: '2px solid #75c2b7',
+    color: '#212121 !important',
     "&:hover": {
       backgroundColor: '#75c2b7',
       color: 'white !important',
@@ -54,8 +55,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     marginTop: '25%',
     marginBottom: '42%',
+    color: '#212121 !important',
     "&:hover": {
-      color: 'white',
+      color: 'white !important',
       fontColor: 'white',
     }
   },
@@ -69,8 +71,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     marginTop: '25%',
     marginBottom: '25%',
+    color: '#212121 !important',
     "&:hover": {
-      color: 'white',
+      color: 'white !important',
       fontColor: 'white',
     }
   },

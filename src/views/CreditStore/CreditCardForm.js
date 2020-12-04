@@ -16,6 +16,7 @@ import {
   Container,
   CardHeader,
   Divider,
+  Hidden
 } from '@material-ui/core';
 import 'react-credit-cards/es/styles-compiled.css';
 
@@ -43,13 +44,15 @@ export default class PaymentForm extends React.Component {
   render() {
     return (
       <div id="PaymentForm">
-        <Cards
-          cvc={this.state.cvc}
-          expiry={this.state.expiry}
-          focused={this.state.focus}
-          name={this.state.name}
-          number={this.state.number}
-        />
+        <Hidden xsDown>
+          <Cards
+            cvc={this.state.cvc}
+            expiry={this.state.expiry}
+            focused={this.state.focus}
+            name={this.state.name}
+            number={this.state.number}
+          />
+        </Hidden>
         <br/>
         <Container>
         

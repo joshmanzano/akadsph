@@ -13,7 +13,11 @@ export default class Example extends React.Component {
     };
   }
 
-  handleDayClick(day, { selected }) {
+  handleDayClick(day, modifiers={}) {
+    if(modifiers.disabled){
+      return
+    }
+    const selected = modifiers.selected
     const { selectedDays } = this.state;
     if (selected) {
       const selectedIndex = selectedDays.findIndex(selectedDay =>
@@ -32,11 +36,33 @@ export default class Example extends React.Component {
   }
 
   render() {
+    const now = new Date()
+    const fromMonth = new Date() 
+    const toMonth = new Date()
+    toMonth.setMonth(now.getMonth() + 1)
+    const toDay = new Date() 
+    toDay.setDate(now.getDate() + 3)
     return (
       <div>
         <DayPicker
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
+          disabledDays={[
+            {
+              before: now
+            },
+            {
+              after: toMonth
+            },
+            {
+              after: now,
+              before: toDay
+            },
+            now
+          ]}
+          month={now}
+          fromMonth={fromMonth}
+          toMonth={toMonth}
         />
       </div>
     );

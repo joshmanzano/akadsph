@@ -131,6 +131,7 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                         <InputLabel>Grade Level</InputLabel>
                         <Select
                           native
+                          disabled
                           label="Grade Level"
                           inputProps={{
                             name: 'year_level',

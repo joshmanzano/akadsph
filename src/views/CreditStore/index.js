@@ -178,6 +178,7 @@ function CreditStore(props){
           <Grid
             container
             spacing={2}
+            alignItems="center"
           >
             <Grid
               item

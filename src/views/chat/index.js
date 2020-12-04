@@ -28,7 +28,7 @@ const Chat = () => {
   const joshMessages = [
     {
       id: 1,
-      text: 'Good morning! May I know what we would need to prepare\nfor the tutoring session?',
+      text: 'Good morning! May I ask what particular topics in which your child is having a hard time with?',
       createdAt: new Date(),
       user: {
         id: 2,

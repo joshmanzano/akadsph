@@ -58,7 +58,7 @@ const PayPage = ({ className, setCardState, paynow, amount, item, discount, hour
     >
       
       <Box >
-        <Grid container spacing={2}>
+        <Grid container alignItems="center" spacing={2}>
           <Grid
             item
             lg={1}

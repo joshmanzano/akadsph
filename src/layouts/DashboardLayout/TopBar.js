@@ -227,16 +227,11 @@ const TopBar = ({
             <Notifications
               // data={data}
               data={[
-                {
-                  image: '../static/images/oli-happy.png',
-                  message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
-                  detailPage: '/',
-                },
-                {
-                  image: '../static/images/oli-happy.png',
-                  message: 'Carl Cornejo declined your session request',
-                  detailPage: '/',
-                },
+                // {
+                //   image: '../static/images/oli-happy.png',
+                //   message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
+                //   detailPage: '/',
+                // },
               ]}
               header={{
                 title: 'Notifications',
