@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box,
   Typography,
+  makeStyles,
 } from '@material-ui/core';
 
 
@@ -21,10 +22,10 @@ function UnderConstruction(props){
   return (
     <React.Fragment>
       <Box align='center' mb={2}>
-        <img width='300' src='../static/images/oli-confused.png'></img>
+        <img width='200' src='../static/images/oli-confused.png'></img>
       </Box>
       <Typography variant='h2' align='center'>
-        Your tutorial session is about to start!<br/>Join the call now.
+        Currently Under Construction
       </Typography>
 
     </React.Fragment>
