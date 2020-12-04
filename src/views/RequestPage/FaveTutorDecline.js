@@ -1,22 +1,12 @@
 import React from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
-  Card,
-  CardContent,
-  CardHeader,
   Divider,
-  useTheme,
   makeStyles,
   colors,
-  Grid,
-  Tooltip,
   Button,
   Box,
-  Container,
   TextField,
-  InputAdornment,
-  Snackbar,
   Typography, 
   IconButton,
 } from '@material-ui/core';
@@ -34,10 +24,6 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Rating from '@material-ui/lab/Rating';
-
-import Avatar from '@material-ui/core/Avatar';
-import StarIcon from '@material-ui/icons/Star';
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -90,7 +90,6 @@ const Sales = ({ className, currentDate, setUpcoming, ...rest }) => {
       .catch(() => {
 
       });
-
   }} 
   startIcon={<CastForEducationIcon/>}>Start</Button>
   ]
