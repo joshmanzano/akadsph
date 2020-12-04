@@ -7,12 +7,9 @@ import {
   Card,
   CardContent,
   TextField,
-  InputAdornment,
-  SvgIcon,
   makeStyles,
   Typography,
   Grid,
-  Container,
   Select,
   FormControl,
   InputLabel,
@@ -20,14 +17,12 @@ import {
   Divider,
 } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
-import { Search as SearchIcon } from 'react-feather';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
-import FileUpload from './FileUpload';
 import { DropzoneDialog } from 'material-ui-dropzone';
 
 const useStyles = makeStyles((theme) => ({

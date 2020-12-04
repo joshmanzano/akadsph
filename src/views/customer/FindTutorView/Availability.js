@@ -3,28 +3,16 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   TextField,
-  InputAdornment,
-  SvgIcon,
   makeStyles,
   Typography,
   Grid,
-  Container,
   CardHeader,
   Divider,
 } from '@material-ui/core';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import { Search as SearchIcon } from 'react-feather';
 import Calendar from './Calendar';
-import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
@@ -86,13 +74,11 @@ const Availability = ({ className, data, setData, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      {/* <Typography variant="h4" align='center'>
-            Choose a Bundle
-      </Typography> */}
+    
       <Box /*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
           <CardHeader
-            subheader="You can only book sessions for 2 weeks from now"
+            subheader="You can only book sessions 2 days from now until a month (favorite tutors are exempted from the 2 day rule)"
             title="Choose all available dates for the session"
           />
           <Divider />
