@@ -8,8 +8,7 @@ import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
 import Children from './Children';
-import FaveTutors from './FaveTutors'; 
-import SubjectArea from './SubjectArea';
+import FaveTutors from './FaveTutors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Account = (props) => {
   const classes = useStyles();
-  const accountType = 'parent';
 
   return (
     <Page
@@ -50,8 +48,6 @@ const Account = (props) => {
           >
             <ProfileDetails props={props}/>
           </Grid>
-          {accountType == 'parent' ? 
-          <React.Fragment>
           <Grid
             item
             lg={12}
@@ -70,19 +66,7 @@ const Account = (props) => {
           >
             <FaveTutors favtutors={props.favtutors}/>
           </Grid>
-          </React.Fragment>
-          :
-          <Grid
-            item
-            lg={6}
-            md={6}
-            xl={6}
-            xs={6}
-          >
-            <SubjectArea/>
-          </Grid>
-          }
-          
+         
         </Grid>
       </Container>
     </Page>

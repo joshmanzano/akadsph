@@ -8,15 +8,10 @@ import {
   Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
-  Box,
-  Container,
 } from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from './Table' 
+import Table from 'src/components/Table.js'; 
+import EditIcon from '@material-ui/icons/Edit';
 
 const rows = [
   {
@@ -59,10 +54,6 @@ const rows = [
 
 const headers = ["Name", "Age", "Grade Level", "School", ""]
 
-// const sessionType = "childrenList"
-
-const type = "childList"
-
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -81,6 +72,8 @@ const Children = ({ className, children, ...rest }) => {
     })
   })
 
+  const buttonList = [<Button variant='outlined' color='primary' startIcon={<EditIcon/>}>Edit</Button>]
+
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -91,7 +84,7 @@ const Children = ({ className, children, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} type={type}/>
+        <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
       </CardContent>
     </Card>
   );

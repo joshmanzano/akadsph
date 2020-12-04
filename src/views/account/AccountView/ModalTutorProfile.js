@@ -1,24 +1,17 @@
 import React from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   Divider,
-  useTheme,
   makeStyles,
   colors,
   Grid,
-  Button,
   Box,
-  Container,
-  TextField,
   Typography, 
   IconButton,
 } from '@material-ui/core';
 import {
     Dialog,
-    DialogActions,
     DialogContent,
-    DialogContentText,
     // DialogTitle,
   } from '@material-ui/core';
   
@@ -28,12 +21,8 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Rating from '@material-ui/lab/Rating';
 
 import Avatar from '@material-ui/core/Avatar';
-import StarIcon from '@material-ui/icons/Star';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
