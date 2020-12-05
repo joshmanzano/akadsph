@@ -30,7 +30,8 @@ import NoHourView from 'src/components/NoHourView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
 import Messenger from 'src/views/chat';
 import ReactGifted from 'src/components/ReactGiftedChat';
-
+import ReactPolling from 'react-polling';
+import jwt from 'jwt-decode';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -74,6 +75,7 @@ function DashboardLayout (props){
   let location = useLocation();
   const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
+  const user_id = jwt(localStorage.getItem('session_token')).id
   
 
   if(!loaded){
@@ -88,6 +90,26 @@ function DashboardLayout (props){
 
     {loaded ? 
     <div className={classes.root}>
+      <ReactPolling
+        url={'https://akadsph.pythonanywhere.com/poll?q='+user_id}
+        interval= {3000} // in milliseconds(ms)
+        onSuccess={(res) => {
+          const command = Number(res['res'])
+          console.log(command)
+          if(command == 1){
+          }else if(command == 2){
+          }
+          return true
+        }
+        }
+        onFailure={() => console.log('error on poll')} // this is optional
+        method={'GET'}
+        // headers={} // this is optional
+        // body={JSON.stringify(data)} // data to send in a post call. Should be stringified always
+        render={({ startPolling, stopPolling, isPolling }) => {
+          return null
+        }}
+      />
       <TopBar credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar

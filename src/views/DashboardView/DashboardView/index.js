@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Container,
   Grid,
@@ -26,6 +26,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = (props) => {
   const classes = useStyles();
+  const [selectedDate, changeDate] = useState(new Date())
+
+  const upcoming = []
+  const pending = []
+  const history = []
+  const transaction = []
 
   return (
     <Page
@@ -94,7 +100,7 @@ const Dashboard = (props) => {
             xl={4}
             xs={12}
           >
-            <Calendar id='selector2' />
+            <Calendar changeDate={changeDate} selectedDate={selectedDate} id='selector2' />
           </Grid>
           <Grid
             item
@@ -104,7 +110,7 @@ const Dashboard = (props) => {
             xs={12}
             id='selector3'
           >
-            <Upcoming rows={props.upcoming} />
+            <Upcoming currentDate={selectedDate} rows={upcoming} />
           </Grid>
           <Grid
             item
@@ -113,7 +119,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <Pending rows={props.pending} />
+            <Pending rows={pending} />
           </Grid>
           <Grid
             item
@@ -122,7 +128,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <History rows={props.history}/>
+            <History rows={history}/>
           </Grid>
           <Grid
             item
@@ -131,7 +137,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <Transaction rows={props.transaction}/>
+            <Transaction rows={transaction}/>
           </Grid>
         
         </Grid>

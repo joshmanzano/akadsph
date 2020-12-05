@@ -20,18 +20,19 @@ import ModalJoin from './ModalJoin';
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useConfirm } from 'material-ui-confirm';
+import moment from 'moment';
 
 const rows = [
   {
     time: '4 PM',
-    subject: 'Filipino',
-    tutor: 'Adrienne Soliven',
-  },
-  {
-    time: '4 PM',
     subject: 'Math',
-    tutor: 'Adrienne Soliven',
+    tutor: 'Joshua Manzano',
   },
+  // {
+  //   time: '4 PM',
+  //   subject: 'Math',
+  //   tutor: 'Adrienne Soliven',
+  // },
   // {
   //   date: 'July 7',
   //   time: '4 PM',
@@ -46,13 +47,13 @@ const headers = ["Time", "Subject", "Tutor", ""]
 
 
 const sessionDetails = [{
-  Student: "Rolo Pena",
+  Student: "Angel Manzano",
   Subject: "Math",
   Topic: "Algebra",
   Duration: "1 hour",
   Special_Request: "None",
   Date: "December 9, 2020",
-  Time: "2:00PM - 3:00PM",
+  Time: "4:00PM - 5:00PM",
 }]
 
 const useStyles = makeStyles(() => ({
@@ -93,10 +94,10 @@ const Upcoming = (props) => {
         title="Upcoming Sessions"
       />
       <Divider />
-      {(rows).length != 0 ? 
+      {(props.rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+            <Table tableHeaders={headers} tableRows={props.rows} tableButtons={buttonList}/>
           </CardContent>
           <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
           <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
@@ -106,6 +107,9 @@ const Upcoming = (props) => {
           <Box m={6}>
             <Typography variant='h3' align='center'>
               No upcoming sessions
+            </Typography>
+            <Typography variant='h3' align='center'>
+              on {moment(props.currentDate).format('MMMM Do YYYY')}
             </Typography>
           </Box>
         </React.Fragment>

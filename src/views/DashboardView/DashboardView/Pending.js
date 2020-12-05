@@ -25,14 +25,14 @@ const headers = ["Date", "Time", "Subject", "Student", ""]
 
 
 
-// const rows = [
-//   {
-//     date: 'July 7',
-//     time: '4 PM',
-//     subject: 'Science',
-//     tutor:  'Adrienne Soliven'
-//   }
-// ]
+const rows = [
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Science',
+    tutor:  'Adrienne Soliven'
+  }
+]
 
 const useStyles = makeStyles(() => ({
   root: {}

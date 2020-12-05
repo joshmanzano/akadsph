@@ -167,22 +167,6 @@ class App extends Component {
                     name: 'Carl Cornejo'
                   },
                 },
-                {
-                  date: 'November 20',
-                  time: '4 PM',
-                  subject: 'Math',
-                  tutor: {
-                    name: 'Tristan Reyes'
-                  },
-                },
-                {
-                  date: 'November 23',
-                  time: '6 PM',
-                  subject: 'Science',
-                  tutor: {
-                    name: 'Carla Cordero'
-                  },
-                },
             ],
               'pending': [],
               'history': [],
