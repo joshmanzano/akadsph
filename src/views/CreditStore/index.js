@@ -37,6 +37,8 @@ import {checkout} from 'src/Api';
 import PayPage from './PayPage';
 import LoadingBack from 'src/components/loadingBack';
 
+import Toast from 'light-toast';
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -107,10 +109,10 @@ function CreditStore(props){
       checkout(amount, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
         setProcessing(false);
         if(res){
-          setSuccess(true);
+          Toast.success('Transaction successful!')
           props.addCredit(hours);
         }else{
-          setError(true);
+          Toast.fail('Transaction failed!')
         }
       });
     }

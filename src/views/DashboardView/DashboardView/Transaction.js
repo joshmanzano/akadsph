@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import Table from 'src/components/Table.js';
 
-const headers = ["Date", "Time", "Subject", "Tutor", "Amount", "Session Number"]
+const headers = ["Date", "Time", "Credits", "Amount", "Ref. Num"]
 
 const rows = [
   {

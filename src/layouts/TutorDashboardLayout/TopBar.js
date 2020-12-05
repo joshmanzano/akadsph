@@ -211,12 +211,10 @@ const TopBar = ({
           }
         </IconButton>
         <IconButton onClick={() => setNotif([])} color="inherit">
-          {/* <Badge
-            badgeContent={2}
+          <Badge
             color="secondary"
             variant="dot"
-          > */}
-            {/* <NotificationsIcon /> */}
+          >
             <Notifications
               // data={data}
               data={notifs}
@@ -226,7 +224,7 @@ const TopBar = ({
               }}
               markAsRead={data => console.log(data)}
             />
-          {/* </Badge> */}
+          </Badge>
         </IconButton>
         <IconButton onClick={logout} color="inherit">
             <MeetingRoomIcon/>

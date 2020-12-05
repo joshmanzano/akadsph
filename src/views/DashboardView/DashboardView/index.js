@@ -33,6 +33,47 @@ const Dashboard = (props) => {
   const history = []
   const transaction = []
 
+  if(props.setUpcoming){
+    upcoming.push(
+      {
+        time: '4 PM',
+        subject: 'Math',
+        tutor: 'Joshua Manzano',
+      }
+    )
+  }
+
+  if(props.setHistory){
+    history.push(
+      {
+        date: 'Dec 3',
+        time: '4 PM',
+        subject: 'Math',
+        tutor: 'Joshua Manzano',
+        tutor: props.tutees[0].first_name,
+      }
+    )
+  }
+
+  props.pending.forEach(p => {
+    pending.push({
+      date: 'Dec 5',
+      time: '4 PM',
+      subject: 'Math',
+      student: props.tutees[0].first_name
+    })
+  })
+
+  props.transaction.forEach(t => {
+    transaction.push({
+      date:'Dec 5',
+      time: '4 PM',
+      credits: t.credits,
+      amount: 'Php ' + String(Number(t.amount)/100),
+      ref: t.id
+    })
+  })
+
   return (
     <Page
       className={classes.root}

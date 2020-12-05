@@ -15,6 +15,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { useConfirm } from 'material-ui-confirm';
 import ModalTutorProfile from './ModalTutorProfile';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import Toast from 'light-toast';
 
 const rows = [
   {
@@ -72,7 +73,7 @@ const FaveTutors = ({ className, favtutors, ...rest }) => {
   onClick={() =>{
     confirm({ title:'Remove Tutor' ,description: 'Are you sure you want to remove this tutor from favorites?' })
       .then(() => {
-       
+        Toast.success('Removed tutor from favorites!')
       })
       .catch(() => {
 

@@ -76,6 +76,12 @@ function DashboardLayout (props){
   const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
   const user_id = jwt(localStorage.getItem('session_token')).id
+
+  const [setUpcoming, changeUpcoming] = useState(false)
+  const [setPending, changePending] = useState(false)
+  const [setHistory, changeHistory] = useState(false)
+  const [setTransaction, changeTransaction] = useState(false)
+  const [setNotification, changeNotification] = useState('')
   
 
   if(!loaded){
@@ -97,7 +103,11 @@ function DashboardLayout (props){
           const command = Number(res['res'])
           console.log(command)
           if(command == 1){
+            changeNotification('dot')
           }else if(command == 2){
+            changeUpcoming(true)
+          }else if(command == 3){
+            changeHistory(true)
           }
           return true
         }
@@ -110,7 +120,7 @@ function DashboardLayout (props){
           return null
         }}
       />
-      <TopBar credits={props.credits}/>
+      <TopBar changeNotification={changeNotification} setNotification={setNotification} credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
@@ -127,7 +137,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
+                    <DashboardView setPending={setPending} setTransaction={setTransaction} setHistory={setHistory} setUpcoming={setUpcoming} first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
                   </Fragment>
                 </Container>
               </Route>

@@ -54,12 +54,22 @@ const useStyles = makeStyles(() => ({
 
 const TopBar = ({
   className, credits,
+  setNotification,
+  changeNotification,
   onMobileNavOpen,
   ...rest
 }) => {
   const classes = useStyles();
   const anchor = 'left';
-  const [notifications] = useState([]);
+  const [notifications, changeNotifications] = useState([
+    {
+      image: '../static/images/oli-happy.png',
+      message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
+      detailPage: '#/',
+      receivedTime:'5m ago'
+    },
+  ]);
+  const [chatNotif, setChatNotif] = useState(true)
   const confirm = useConfirm();
   const logout = () => {
     confirm({ title:'Logout' ,description: 'Would you like to logout?' })
@@ -208,37 +218,36 @@ const TopBar = ({
             </h5>
           </Box>
         </Hidden>
-        <IconButton color="inherit" href="#/messages">
+        <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
+          {chatNotif ?
           <Badge
-            badgeContent={3}
-            color="primary"
+            color="secondary"
             variant="dot"
           >
             <ForumIcon/>
           </Badge>
+          :
+            <ForumIcon/>
+          }
         </IconButton>
-        <IconButton color="inherit">
-          {/* <Badge
-            badgeContent={2}
+        <IconButton color="inherit"
+          onClick={() => changeNotification('')}
+        >
+          <Badge
+            className={'specialBadge'}
             color="secondary"
-            variant="dot"
-          > */}
-            {/* <NotificationsIcon /> */}
+            variant={setNotification}
+          >
             <Notifications
               // data={data}
-              data={[
-                // {
-                //   image: '../static/images/oli-happy.png',
-                //   message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
-                //   detailPage: '/',
-                // },
-              ]}
+              data={notifications}
+              markAsRead={(e) => {console.log(e)}}
               header={{
                 title: 'Notifications',
                 option: { text: 'View All', onClick: () => console.log('Clicked') },
               }}
             />
-          {/* </Badge> */}
+        </Badge>
         </IconButton>
         <IconButton onClick={logout} color="inherit">
             <MeetingRoomIcon/>

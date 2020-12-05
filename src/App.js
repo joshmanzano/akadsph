@@ -142,6 +142,8 @@ class App extends Component {
         const children = res['children'] 
         const subjects = res['subjects']
         const settings = res['settings']
+        const pending = res['pending_requests']
+        const transaction = res['transactions']
         console.log(subjects)
         this.setState({
           credits: parent['credits']
@@ -168,9 +170,10 @@ class App extends Component {
                   },
                 },
             ],
-              'pending': [],
+              'pending': pending,
               'history': [],
-              'transaction': []
+              'transaction': transaction,
+              'tutees':children,
             },
             'findtutorview': {
               'tutees':children,

@@ -21,6 +21,7 @@ import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
+import Toast from 'light-toast';
 
 const rows = [
   {
@@ -76,7 +77,7 @@ const Upcoming = (props) => {
   onClick={() =>{
     confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
       .then(() => {
-        
+        Toast.success('Successfully cancelled session!')
       })
       .catch(() => {
 
