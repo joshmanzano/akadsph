@@ -40,7 +40,6 @@ import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
 import {Widget} from 'react-chat-widget';
 import 'src/ChatWidget.css';
-import oli from 'src/oli.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -194,7 +193,7 @@ function DashboardLayout (props){
         </div>
       </div>
       {/* <Widget
-      profileAvatar={'src/oli.svg'}
+      profileAvatar={''}
       title={'Hello there!'}
       subtitle={'Ask me anything'}
       /> */}
