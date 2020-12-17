@@ -817,3 +817,7 @@ color: #777;
 .count {
 	display: none !important;
 }
+
+.session_date {
+	color: #EB5531;
+}

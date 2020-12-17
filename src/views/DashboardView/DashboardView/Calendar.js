@@ -33,6 +33,9 @@ const Sales = ({ className, selectedDate, changeDate, ...rest }) => {
             <Calendar
             onChange={changeDate}
             value={selectedDate}
+            tileClassName={({date}) => 
+              date.getDate() == 19 || date.getDate() == 15 ? 'session_date' : null
+            }
             />
           </Grid>
         </Grid>

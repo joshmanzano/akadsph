@@ -32,8 +32,8 @@ const Availability = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
   const [days, setDays] = React.useState();
   const [times, setTimes] = React.useState({
-
   });
+  const [until, setUntil] = React.useState(null)
   const [count, setCount] = React.useState(0);
 
   useEffect(() => {
@@ -54,16 +54,14 @@ const Availability = ({ className, data, setData, ...rest }) => {
       times[index] = {}
     }
     times[index]['from'] = value;
-    data['times'] = times
-    setTimes(times)
-    setData(data)
-  }
-
-  const changeUntil = (index, value) => {
-    if(!(index in times)){
-      times[index] = {}
-    }
-    times[index]['until'] = value;
+    const untilTime = new Date();
+    const splitTime = value.split(':')
+    let hours = Number(splitTime[0])
+    let minutes = splitTime[1]
+    untilTime.setHours(hours + 1)
+    hours = untilTime.getHours()
+    times[index]['until'] = String(hours) + ':' + String(minutes) ;
+    setUntil(times[index]['until'])
     data['times'] = times
     setTimes(times)
     setData(data)
@@ -185,6 +183,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                                 inputProps={{
                                   step: 300, // 5 min
                                 }}
+                                value={times[day.getTime()] != undefined ? times[day.getTime()]['from'] : null}
                                 onChange={(event) => changeFrom(day.getTime(), event.target.value)}
                               />
                             </form>
@@ -205,13 +204,15 @@ const Availability = ({ className, data, setData, ...rest }) => {
                                 type="time"
                                 // defaultValue="07:30"
                                 className={classes.textField}
+                                // value={times[day.getTime()] != undefined ? times[day.getTime()]['until'] : null}
+                                value={until}
                                 InputLabelProps={{
                                   shrink: true,
                                 }}
                                 inputProps={{
-                                  step: 300, // 5 min
+                                  readOnly: true,
                                 }}
-                                onChange={(event) => changeUntil(day.getTime(), event.target.value)}
+                                // onChange={(event) => changeUntil(day.getTime(), event.target.value)}
                               />
                             </form>
                         </Grid>
