@@ -2,9 +2,9 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 
 // const api_url = 'https://akadsph-staging.herokuapp.com'
-const api_url = 'https://akadsph-backend.herokuapp.com'
+const api_url = 'http://api.akadsph.com:8000'
 const username = 'admin'
-const password = 'password'
+const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 // axios.defaults.withCredentials = true;

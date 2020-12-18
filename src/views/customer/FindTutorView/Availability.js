@@ -87,9 +87,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
                 >
                 <Grid
                   item
-                  lg={6}
-                  md={6}
-                  xl={6}
+                  lg={5}
+                  md={5}
+                  xl={5}
                   xs={12}
                   style={{justifyContent: 'center', placeItems: 'center', textAlign:'center'}}
                   alignItems="center"
@@ -105,9 +105,10 @@ const Availability = ({ className, data, setData, ...rest }) => {
                   md={6}
                   xl={6}
                   xs={12}
+                  style={{border: "1px solid #EBEBEB", borderRadius: "30px"}}
                 > 
               
-                  <Typography variant="h6" align= 'left' mb={2}>
+                  <Typography variant="h6" align='center' my={2}>
                     Write all the available times for the dates
                   </Typography>
                   <br/>
@@ -224,6 +225,14 @@ const Availability = ({ className, data, setData, ...rest }) => {
                   }
                   {/* </MuiPickersUtilsProvider> */}
                   
+                </Grid>
+                <Grid
+                  item
+                  lg={1}
+                  md={1}
+                  xl={1}
+                  xs={12}
+                >
                 </Grid>
                 
               </Grid>

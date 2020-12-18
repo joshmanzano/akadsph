@@ -9,55 +9,78 @@ import {
   useTheme,
   makeStyles,
   colors,
-  Grid,
   Typography,
   Box,
   Button,
 } from '@material-ui/core';
-import Table from 'src/components/Table.js' 
-import ForumIcon from '@material-ui/icons/Forum';
-import PageviewIcon from '@material-ui/icons/Pageview';
-import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { useConfirm } from 'material-ui-confirm';
-
-const headers = ["Date Requested", "Subject", "Student", ""]
-
-
+import Table from 'src/components/Table.js'
+import Feedback from 'src/components/Feedback';
+import FeedbackIcon from '@material-ui/icons/Feedback';
 
 const rows = [
   {
-    date: 'July 7',
+    date: 'Dec 4',
     time: '4 PM',
-    subject: 'Science',
-    tutor:  'Adrienne Soliven'
-  }
+    subject: 'Math',
+    student: 'Angel',
+    parent: 'Joshua Manzano'
+  },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Math',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
+    
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Science',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
+   
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'LoL',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
+    
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Filipino',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
+
+  // },
+  // {
+  //   date: 'July 7',
+  //   time: '4 PM',
+  //   subject: 'Filipino',
+  //   student: 'Josh Manzano',
+  //   parent: 'Tadhg McHearty'
+    
+  // },
 ]
+
+const headers = ["Date", "Time", "Subject", "Student", "Parent",""]
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Pending = ({ className, rows, ...rest }) => {
+const Sales = ({ className, setHistory, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [openDetails, setOpenDetails] = React.useState(false);
-  const confirm = useConfirm();
+  const [openFeedback, setOpenFeedback] = React.useState(false);
+  const [name, setName] = React.useState(rows[0].student);
 
-
-  const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
-  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
-  <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
-  onClick={() =>{
-    confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
-      .then(() => {
-        
-      })
-      .catch(() => {
-
-      });
-  }} 
-  >Cancel</Button>,
+  const buttonList = [
+  <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
   ]
 
   const data = {
@@ -137,33 +160,31 @@ const Pending = ({ className, rows, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        title="Pending Requests"
+        title="Session History"
       />
       <Divider />
-      {(rows).length != 0 ? 
+      {setHistory ?
         <React.Fragment>
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
-          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
+          <Feedback open={openFeedback} setOpen={setOpenFeedback} name={name}/>
         </React.Fragment>
       :
         <React.Fragment>
           <Box m={6}>
             <Typography variant='h3' align='center'>
-              No pending requests
+              No past sessions
             </Typography>
           </Box>
         </React.Fragment>
       }
-  
     </Card>
   );
 };
 
-Pending.propTypes = {
-  className: PropTypes.string,
-  rows: PropTypes.array
+Sales.propTypes = {
+  className: PropTypes.string
 };
 
-export default Pending;
+export default Sales;

@@ -44,8 +44,8 @@ const Validity = ({ className, ...rest }) => {
   // var startDate = mm + '/' + dd + '/' + yyyy;
   var endDate = mm6 + '/' + dd + '/' + yyyy;
 
-  var startDate = moment().format('MM/DD/YYYY');
-  var endDate = moment().add(6, 'M').format('MM/DD/YYYY');
+  var startDate = moment().format('MMM Do YYYY');
+  var endDate = moment().add(6, 'M').format('MMM Do YYYY');
   // var futureMonthEnd = moment(futureMonth).endOf('month');
 
   return (

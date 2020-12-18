@@ -3,6 +3,8 @@
 .DayPicker {
     display: inline-block;
     font-size: 1rem;
+    border: 1px solid #EBEBEB;
+    border-radius: 30px;
   }
   
   .DayPicker-wrapper {

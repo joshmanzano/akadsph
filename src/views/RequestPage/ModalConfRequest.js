@@ -24,6 +24,9 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import { post_api, get_user } from 'src/Api.js';
+import Toast from 'light-toast';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
+const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -64,6 +67,31 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const handleConfirm = () => {
+    get_user((user) => {
+      const id = user.id;
+      const data = {
+        'request_id': info.id,
+        'available_day_id': schedule,
+        'tutor_id': id,
+        'start_date_time': info.availableData[schedule].start_date_time
+      }
+      console.log(data)
+      Toast.loading('Accepting request...')
+      post_api('tutor-accept-request',data,(res) => {
+        console.log(res)
+        if(res){
+          Toast.success('Request accepted!')
+          removeRequest(info.index)
+          window.location.reload()
+        }else{
+          Toast.fail('Request failed!')
+        }
+        setOpen(false)
+      })
+    })
+  }
   
   const handleClose = () => {
     setOpen(false);
@@ -120,7 +148,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Rolo Pena
+                  {info.student}
                 </Typography>
               </Grid>
               <Grid
@@ -142,7 +170,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Math
+                  {info.subject}
                 </Typography>
               </Grid>
               <Grid
@@ -164,7 +192,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Algebra
+                  {info.topic}
                 </Typography>
               </Grid>
               <Grid
@@ -186,7 +214,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  1 hour
+                  {info.duration}
                 </Typography>
               </Grid>
               <Grid
@@ -208,7 +236,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  None
+                  {info.specialRequest}
                 </Typography>
               </Grid>
             </Grid>
@@ -233,7 +261,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                     xs={6}
                   >
                     <Typography variant='h6' align='right'>
-                      {date}
+                      {info.availableData[schedule].date}
                     </Typography>
                   </Grid>
                   <Grid
@@ -255,7 +283,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
                   xs={6}
                 >
                   <Typography variant='h6' align='right'>
-                    {time}
+                    {info.availableData[schedule].time}
                   </Typography>
                 </Grid>
               </Grid>
@@ -268,7 +296,7 @@ const ModalConfRequest = ({open, setOpen, date, time, className, ...rest }) => {
           <Button onClick={handleClose} color="primary">
               Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleConfirm} color="primary" autoFocus>
               Confirm
           </Button>
         </DialogActions>

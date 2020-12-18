@@ -9,56 +9,85 @@ import {
   useTheme,
   makeStyles,
   colors,
-  Grid,
-  Typography,
-  Box,
-  Button,
 } from '@material-ui/core';
-import Table from 'src/components/Table.js' 
-import ForumIcon from '@material-ui/icons/Forum';
-import PageviewIcon from '@material-ui/icons/Pageview';
-import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { useConfirm } from 'material-ui-confirm';
-
-const headers = ["Date Requested", "Subject", "Student", ""]
-
-
+import Table from './Table'
 
 const rows = [
   {
     date: 'July 7',
     time: '4 PM',
+    subject: 'Filipino',
+    amount: 'P300.00',
+    sessionNo: '1234',
+    student: 'Rolo Pena',
+    parent: 'Joshua Manzano Pena'
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Math',
+    amount: 'P300.00',
+    sessionNo: '1034',
+    student: 'Rolo Pena',
+    parent: 'Joshua Manzano Pena'
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
     subject: 'Science',
-    tutor:  'Adrienne Soliven'
-  }
+    amount: 'P300.00',
+    sessionNo: '1204',
+    student: 'Rolo Pena',
+    parent: 'Joshua Manzano Pena'
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'LoL',
+    amount: 'P300.00',
+    sessionNo: '1231',
+    student: 'Rolo Pena',
+    parent: 'Joshua Manzano Pena'
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    amount: 'P300.00',
+    sessionNo: '1203',
+    student: 'Rolo Pena',
+    parent: 'Joshua Manzano Pena'
+    
+  },
+  {
+    date: 'July 7',
+    time: '4 PM',
+    subject: 'Filipino',
+    amount: 'P300.00',
+    sessionNo: '1014',
+    student: 'Rolo Pena',
+    parent: 'Joshua Manzano Pena'
+    
+  },
 ]
+
+const headers = ["Date", "Time", "Subject", "Student", "Parent", "Amount", "Session Number"]
+
+const sessionType = "N/A"
+
+const type = "transaction"
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Pending = ({ className, rows, ...rest }) => {
+const Sales = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [openDetails, setOpenDetails] = React.useState(false);
-  const confirm = useConfirm();
-
-
-  const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
-  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
-  <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
-  onClick={() =>{
-    confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
-      .then(() => {
-        
-      })
-      .catch(() => {
-
-      });
-  }} 
-  >Cancel</Button>,
-  ]
 
   const data = {
     datasets: [
@@ -137,33 +166,51 @@ const Pending = ({ className, rows, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        title="Pending Requests"
+        // action={(
+        //   <Button
+        //     endIcon={<ArrowDropDownIcon />}
+        //     size="small"
+        //     variant="text"
+        //   >
+        //     Last 7 days
+        //   </Button>
+        // )}
+        title="Transactions"
       />
       <Divider />
-      {(rows).length != 0 ? 
-        <React.Fragment>
-          <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
-          </CardContent>
-          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
-        </React.Fragment>
-      :
-        <React.Fragment>
-          <Box m={6}>
-            <Typography variant='h3' align='center'>
-              No pending requests
-            </Typography>
-          </Box>
-        </React.Fragment>
-      }
-  
+      <CardContent>
+        <Table tableHeaders={headers} tableRows={rows} sessionType={sessionType} type={type}/>
+        {/* <Box
+          height={400}
+          position="relative"
+        >
+          <Bar
+            data={data}
+            options={options}
+          />
+        </Box> */}
+      </CardContent>
+      {/* <Divider /> */}
+      {/* <Box
+        display="flex"
+        justifyContent="flex-end"
+        p={2}
+      >
+        <Button
+          color="primary"
+          endIcon={<ArrowRightIcon />}
+          size="small"
+          variant="text"
+        >
+          Overview
+        </Button>
+      </Box> */}
     </Card>
   );
 };
 
-Pending.propTypes = {
-  className: PropTypes.string,
-  rows: PropTypes.array
+Sales.propTypes = {
+  className: PropTypes.string
 };
 
-export default Pending;
+export default Sales;

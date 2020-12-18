@@ -67,11 +67,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest }) => {
+const ModalRequest = ({open, setOpen, setSchedule, removeRequest, schedule, modalInfo, rows, className, ...rest }) => {
   const classes = useStyles();
   const [openConf, setOpenConf] = React.useState(false);
-  const [time, setTime] = React.useState('');
-  const [date, setDate] = React.useState('1');
   // const [open, setOpen] = React.useState(false);
 
 
@@ -92,13 +90,9 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
     setOpen(false);
   };
 
-  const handleChange = (event) => {
-    setDate(event.target.value);
-  };
-
-  const handleChangeTime = (event) => {
-    setTime(event.target.value);
-  };
+  const changeSchedule = (event) => {
+    setSchedule(event.target.value)
+  }
 
   const DialogTitle = withStyles(useStyles)((props) => {
     const { children, classes, onClose, ...other } = props;
@@ -123,7 +117,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
   }
 
   return (
-    <React.Fragment>
+    <React.Fragment key={modalInfo['availables'][0].id}>
     <Dialog
     open={open}
     onClose={handleClose}
@@ -163,7 +157,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Joshua Manzano
+                  {modalInfo['parent']}
                 </Typography>
               </Grid>
               <Grid
@@ -185,7 +179,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Rolo Pena
+                  {modalInfo['student']}
                 </Typography>
               </Grid>
               <Grid
@@ -207,7 +201,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Math
+                  {modalInfo['subject']}
                 </Typography>
               </Grid>
               <Grid
@@ -229,7 +223,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  Algebra
+                  {modalInfo['topic']}
                 </Typography>
               </Grid>
               <Grid
@@ -251,7 +245,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  1 hour
+                  {modalInfo['duration']}
                 </Typography>
               </Grid>
               <Grid
@@ -273,7 +267,7 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
                 xs={6}
               >
                 <Typography variant='h6' align='right'>
-                  None
+                  {modalInfo['specialRequest']}
                 </Typography>
               </Grid>
             </Grid>
@@ -282,45 +276,20 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
             </Grid>
             <Grid item xs={4}>
 
-            <FormControl onChange={onChange} component="fieldset" >
+            <FormControl component="fieldset" >
               <FormLabel component="legend">Available Schedules</FormLabel>
-              <RadioGroup aria-label="sched-date" name="sched-date" onChange={handleChange}>
-                <FormControlLabel value="December 1st" control={<Radio />} label="December 1st, 2:00PM - 4:00PM" />
-                <FormControlLabel value="December 2nd" control={<Radio />} label="December 2nd, 1:00PM - 3:00PM" />
-              </RadioGroup>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  label="Schedule"
+                  value={schedule}
+                  onChange={changeSchedule}
+                >
+                {modalInfo['availables'].map(row => (
+                  <MenuItem value={row.id}>{row.label}</MenuItem>
+                ))}
+                </Select>
             </FormControl>
-              <FormControl variant="outlined" fullWidth>
-                <InputLabel id="demo-simple-select-outlined-label">Start Time</InputLabel>
-              
-                  { date == "December 1st" ?
-                    <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    onChange={handleChangeTime}
-                    label="Start Time"
-                    value={time}
-                  >
-                    <MenuItem value={"2:00PM - 3:00PM"}>2:00PM</MenuItem>
-                    <MenuItem value={"2:30PM - 3:30PM"}>2:30PM</MenuItem>
-                    <MenuItem value={"3:00PM - 4:00PM"}>3:00PM</MenuItem>
-                    </Select>
-                   :
-                    <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
-                      onChange={handleChangeTime}
-                      label="Start Time"
-                      value={time}
-                    >
-                    <MenuItem value={"1:00PM - 2:00PM"}>1:00PM</MenuItem>
-                    <MenuItem value={"1:30PM - 2:30PM"}>1:30PM</MenuItem>
-                    <MenuItem value={"2:00PM - 3:00PM"}>2:00PM</MenuItem>
-                    </Select>
-                  
-                  }
-            
-
-              </FormControl>
 
             </Grid>
           </Grid>
@@ -337,7 +306,9 @@ const ModalRequest = ({open, setOpen, /*setOpenConf,*/ rows, className, ...rest 
           </Button>
         </DialogActions>
     </Dialog>
-    <ModalConfRequest open={openConf} setOpen={setOpenConf} time={time} date={date}/>
+    {modalInfo['availableData'][schedule] != undefined &&
+      <ModalConfRequest open={openConf} setOpen={setOpenConf} removeRequest={removeRequest} info={modalInfo} schedule={schedule}/>
+    }
     </React.Fragment>
   );
 };

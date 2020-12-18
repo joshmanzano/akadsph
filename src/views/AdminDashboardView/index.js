@@ -8,10 +8,7 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Upcoming from './Upcoming';
-import Pending from './Pending';
 import History from './History';
-import Transaction from './Transaction';
-import moment from 'moment';
 
 
 import Calendar from './Calendar'
@@ -28,37 +25,6 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
-
-  const upcoming = []
-  const pending = []
-  const history = []
-  const transaction = []
-
-  props.upcoming.forEach(u => {
-    upcoming.push({
-      'start_time': u.session.start_date_time,
-      'subject': u.subject.subject_field,
-      'tutor':u.session.tutor,
-    })
-  })
-
-  props.pending.forEach(p => {
-    pending.push({
-      date: moment(p.request.time_created).format('MMM Do YYYY'),
-      subject: p.subject.subject_field,
-      student: p.child.first_name
-    })
-  })
-
-  props.transaction.forEach(t => {
-    transaction.push({
-      date: moment(t.date).format('MMMM Do YYYY'),
-      time: moment(t.date).format('h:mm:ss a'),
-      credits: t.credits,
-      amount: 'Php ' + String(Number(t.amount)/100),
-      ref: t.id
-    })
-  })
 
   return (
     <Page
@@ -87,29 +53,35 @@ const Dashboard = (props) => {
           xs={12}
         >
         <Box ml={2} mt={2}>
-          <Grid container spacing={0}
+          <Grid container
           direction="column"
           >
             <Grid item>
             <Box flexGrow={1}/>
             </Grid>
             <Grid item>
-              <Typography id='selector1' variant="h1">
-                Welcome {props.first_name}! 
-              </Typography>
+            <Typography id='selector1' variant="h1">
+              Welcome {props.first_name}! 
+            </Typography>
             </Grid>
             <Grid item>
-              {props.credits > 0 ?
+              {props.requests == 0 &&
               <Typography id='selector1' variant="h2">
-                You have {props.credits} credit hours left.
+                There are no new requests.
               </Typography>
-              :
+              }
+              {props.requests == 1 &&
               <Typography id='selector1' variant="h2">
-                You have no credit hours.
+                There is {props.requests} new request.
+              </Typography>
+              }
+              {props.requests > 1 &&
+              <Typography id='selector1' variant="h2">
+                There are {props.requests} new requests.
               </Typography>
               }
             </Grid>
-          </Grid>
+            </Grid>
         </Box>
         </Grid>
       </Grid>
@@ -117,7 +89,7 @@ const Dashboard = (props) => {
       </Box>
         <Grid
           container
-          alignItems="stretch"
+          alignItems="center"
           spacing={2}
         >
           <Grid
@@ -127,7 +99,7 @@ const Dashboard = (props) => {
             xl={4}
             xs={12}
           >
-            <Calendar changeDate={changeDate} upcoming={upcoming} selectedDate={selectedDate} id='selector2' />
+            <Calendar changeDate={changeDate} selectedDate={selectedDate} id='selector2' />
           </Grid>
           <Grid
             item
@@ -137,9 +109,7 @@ const Dashboard = (props) => {
             xs={12}
             id='selector3'
           >
-            <Box flexGrow={1}>
-              <Upcoming currentDate={selectedDate} upcoming={upcoming} />
-            </Box>
+            <Upcoming currentDate={selectedDate} setUpcoming={props.setUpcoming} rows={props.upcoming} />
           </Grid>
           <Grid
             item
@@ -148,27 +118,17 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <Pending rows={pending} />
+            <History setHistory={props.setHistory} rows={props.history}/>
           </Grid>
-          <Grid
+          {/* <Grid
             item
             lg={12}
             md={12}
             xl={12}
             xs={12}
           >
-            <History rows={history}/>
-          </Grid>
-          <Grid
-            item
-            lg={12}
-            md={12}
-            xl={12}
-            xs={12}
-          >
-            <Transaction rows={transaction}/>
-          </Grid>
-        
+            <Metrics/>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>

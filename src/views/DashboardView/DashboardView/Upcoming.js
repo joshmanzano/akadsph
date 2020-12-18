@@ -66,9 +66,24 @@ const Upcoming = (props) => {
   const theme = useTheme();
   const className = props.className;
   const rest = props.rest;
+  const rows = [];
   const [openJoin, setOpenJoin] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const confirm = useConfirm();
+
+  props.upcoming.forEach(u => {
+    const sessionDate = new Date(u.start_time)
+    // if(props.currentDate.getDate() == sessionDate.getDate() && props.currentdate.getMonth() == sessionDate.getMonth()){
+    if(props.currentDate.getMonth() == sessionDate.getMonth()){
+      if(props.currentDate.getDate() == sessionDate.getDate()){
+        rows.push({
+          'time':moment(sessionDate).format('h:mm a'),
+          'subject':u.subject,
+          'tutor':u.tutor,
+        })
+      }
+    }
+  })
 
   const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenJoin(true)} startIcon={<CastForEducationIcon/>}>Join</Button>, 
   <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
@@ -90,22 +105,23 @@ const Upcoming = (props) => {
     <Card
       className={clsx(classes.root, className)}
       {...rest}
+      style={{height: "100%"}}
     >
       <CardHeader
         title="Upcoming Sessions"
       />
       <Divider />
-      {(props.rows).length != 0 ? 
+      {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={props.rows} tableButtons={buttonList}/>
+            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
           </CardContent>
           <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
           <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
         </React.Fragment>
       :
         <React.Fragment>
-          <Box m={6}>
+          <Box m={12}>
             <Typography variant='h3' align='center'>
               No upcoming sessions
             </Typography>

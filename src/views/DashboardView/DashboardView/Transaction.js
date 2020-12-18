@@ -17,17 +17,6 @@ import Table from 'src/components/Table.js';
 
 const headers = ["Date", "Time", "Credits", "Amount", "Ref. Num"]
 
-const rows = [
-  {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    tutor:  'Adrienne Soliven',
-    amount: 'P600',
-    sessionNo: '1234',
-  }
-]
-
 const useStyles = makeStyles(() => ({
   root: {}
 }));

@@ -25,6 +25,7 @@ import {
 import { Search as SearchIcon } from 'react-feather';
 import Calendar from './Calendar';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

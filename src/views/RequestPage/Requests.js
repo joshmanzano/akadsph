@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment, useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -14,6 +14,7 @@ import FaveTutorDecline from './FaveTutorDecline';
 import CancelIcon from '@material-ui/icons/Cancel';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import { useConfirm } from 'material-ui-confirm';
+import moment from 'moment';
 
 const rows = [
   {
@@ -37,7 +38,7 @@ const rows = [
   
 ]
 
-const headers = ["Subject", "Topic", "Duration", "Student", ""]
+const headers = ["Date Requested", "Subject", "Topic", "Duration", "Student", "Year Level",""]
 
 
 const useStyles = makeStyles(() => ({
@@ -47,49 +48,117 @@ const useStyles = makeStyles(() => ({
 const Requests = ({ className, pending, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const rows = []
+  const requests = [];
+  const rows = [];
+  const [schedule, setSchedule] = useState(null)
+  const [modalInfo, setModalInfo] = useState(null)
+  // const [modalInfo, setModalInfo] = useState({
+  //   'parent': '',
+  //   'student': '',
+  //   'subject': '',
+  //   'topic': '',
+  //   'duration': '',
+  //   'specialRequest': '',
+  //   'availables': [{
+  //     'id': 0,
+  //     'label': '',
+  //     'date': '',
+  //     'time': '' 
+  //   }],
+  //   'availableData': {
+  //   }
+  // })
+  const [openRequest, setOpenRequest] = useState(false) 
+  const [openDecline, setOpenDecline] = useState(false) 
+
+  const removeRequest = (index) => {
+    delete rows[index];
+  }
+
+  let index = 0;
   pending.forEach(request => {
     console.log(request)
-    rows.push({
+    const id = request.request.id
+    const availables = []
+    const availableData = {}
+    request.available_days.forEach(available => {
+      const start_date = new Date(available.start_date_time)
+      const end_date = new Date(available.end_date_time)
+      const label = moment(start_date).format('MMM Do, h:mm a') + ' - ' + moment(end_date).format('h:mm a')
+      const date = moment(start_date).format('MMM Do YYYY')
+      const time = moment(start_date).format('h:mm a') + ' - ' + moment(end_date).format('h:mm a')
+      console.log(start_date)
+      availables.push({
+        'id': available.id,
+        'label': label,
+      })
+      availableData[available.id] = {
+        'label': label,
+        'start_date_time': start_date,
+        'date': date,
+        'time': time,
+      }
+    })
+    console.log(availables)
+    const row = {
+      'date': moment(request.time_created).format('MMMM do YYYY'),
       'subject': request.subject.subject_field,
       'topic': request.request.topics,
       'duration': request.request.time + ' hours',
-      'student': request.child.first_name + ' (' + request.child.year_level + ')'
+      'student': request.child.first_name,
+      'level': request.child.year_level, 
+      'viewButton': <Button variant='outlined' color='primary' onClick={() => {
+        setModalInfo({
+          'id': id,
+          'parent': request.parent.first_name,
+          'student': request.child.first_name,
+          'subject': request.subject.subject_field,
+          'topic': request.request.topics,
+          'duration': request.request.time + ' hours',
+          'specialRequest': request.request.special_request,
+          'availables': availables,
+          'availableData': availableData,
+          'index': index,
+        })
+        setSchedule(availables[0].id)
+        setOpenRequest(true)
+      }
+      } startIcon={<PageviewIcon/>}>View</Button>,
+      'declineButton': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() =>{
+        confirm({ title:'Decline Request' ,description: 'Are you sure you want to decline this request?' })
+          .then(() => {
+            // setModalDecline(true);
+          })
+          .catch(() => {
+
+          });
+
+      }}
+      >Decline</Button>
+    }
+    requests.push({
+      'id': id,
+      'row': row,
     })
+    rows.push(row)
+    index += 1
   })
+  console.log(requests)
 
-  const [openRequest, setOpenRequest] = React.useState(false);
-  const [openDecline, setModalDecline] = React.useState(false);
   const confirm = useConfirm();
-
-  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenRequest(true)} startIcon={<PageviewIcon/>}>View</Button>,
-<Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() =>{
-    confirm({ title:'Decline Request' ,description: 'Are you sure you want to decline this request?' })
-      .then(() => {
-        setModalDecline(true);
-      })
-      .catch(() => {
-
-      });
-
-  }}
-  >Decline</Button>,
-]
 
   return (
     <Card
       className={clsx(classes.root, className)}
       {...rest}
     >
-      {/* <CardHeader
-        title="Requests"
-      />
-      <Divider /> */}
       <CardContent>
-          <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+          <Table tableHeaders={headers} tableRows={rows}/>
       </CardContent>
-      <ModalRequest open={openRequest} rows={rows} setOpen={setOpenRequest} /*setOpenConf={setOpenConf}*//> 
-      <FaveTutorDecline open={openDecline} setOpen={setModalDecline}/>
+      {modalInfo != null &&
+        <ModalRequest open={openRequest} setSchedule={setSchedule} schedule={schedule} modalInfo={modalInfo} removeRequest={removeRequest} setOpen={setOpenRequest} /> 
+      }
+      {/* <FaveTutorDecline open={openDecline} setOpen={setModalDecline}/>  */}
     </Card>
   );
 };
