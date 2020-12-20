@@ -46,7 +46,6 @@ const Pending = ({ className, rows, ...rest }) => {
 
 
   const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
-  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
   <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
   onClick={() =>{
     confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })

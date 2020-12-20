@@ -44,7 +44,7 @@ const Dashboard = (props) => {
 
   props.pending.forEach(p => {
     pending.push({
-      date: moment(p.request.time_created).format('MMM Do YYYY'),
+      date: moment(p.request.time_created).format('MMMM Do YYYY'),
       subject: p.subject.subject_field,
       student: p.child.first_name
     })

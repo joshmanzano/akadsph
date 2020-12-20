@@ -88,6 +88,7 @@ class SignUp extends Component{
     if(props.googleId == undefined){
         window.location.replace('/')
     }else{
+    console.log(props.googleId)
   return (
     <Container component="main">
       <CssBaseline />

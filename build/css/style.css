@@ -813,3 +813,11 @@ color: #777;
 	opacity: 0.01;
 	transition: opacity 300ms ease-in;
 }
+
+.count {
+	display: none !important;
+}
+
+.session_date {
+	color: #EB5531;
+}

@@ -88,6 +88,7 @@ const Requests = ({ className, pending, ...rest }) => {
       const date = moment(start_date).format('MMM Do YYYY')
       const time = moment(start_date).format('h:mm a') + ' - ' + moment(end_date).format('h:mm a')
       console.log(start_date)
+      console.log(date)
       availables.push({
         'id': available.id,
         'label': label,
@@ -100,8 +101,9 @@ const Requests = ({ className, pending, ...rest }) => {
       }
     })
     console.log(availables)
+    const time_created = request.request.time_created
     const row = {
-      'date': moment(request.time_created).format('MMMM do YYYY'),
+      'date': moment(new Date(request.request.time_created)).format('MMMM Do YYYY'),
       'subject': request.subject.subject_field,
       'topic': request.request.topics,
       'duration': request.request.time + ' hours',

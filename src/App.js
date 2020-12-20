@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
+import AdminDashboardLayout from 'src/layouts/AdminDashboardLayout';
 import TutorDashboardLayout from 'src/layouts/TutorDashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
@@ -224,32 +225,7 @@ class App extends Component {
               'email': tutor['email'],
             },
             'dashboardview': {
-              'upcoming':[
-                  {
-                  date: 'November 19',
-                  time: '2 PM',
-                  subject: 'Filipino',
-                  tutor: {
-                    name: 'Carl Cornejo'
-                  },
-                },
-                {
-                  date: 'November 20',
-                  time: '4 PM',
-                  subject: 'Math',
-                  tutor: {
-                    name: 'Tristan Reyes'
-                  },
-                },
-                {
-                  date: 'November 23',
-                  time: '6 PM',
-                  subject: 'Science',
-                  tutor: {
-                    name: 'Carla Cordero'
-                  },
-                },
-              ],
+              'upcoming':[],
               'pending': [],
               'history': [],
               'transaction': []
@@ -271,6 +247,21 @@ class App extends Component {
 
   }
 
+  getAdminData = (_callback) => {
+    get_api('all-admin-details', (res) => {
+      console.log(res)
+      this.setState({
+      }, () => {
+        const data = {
+          'dashboardview': {
+          },
+        }
+        _callback(data)
+      })
+    })
+  }
+
+
   render(){
     return (
       <div>
@@ -289,8 +280,8 @@ class App extends Component {
           <Route exact path='/tutor-form'> 
             <TutorApp/>
           </Route>
-          <Route exact path='/payout-history'> 
-            <PayoutHistory/>
+          <Route exact path='/admin'> 
+            <AdminDashboardLayout getUserData={this.getAdminData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>
@@ -316,6 +307,9 @@ class App extends Component {
         {this.state.type == 'admin' &&
         // Admin Logged In
         <Switch>
+          <Route path='/'> 
+            <AdminDashboardLayout getUserData={this.getAdminData}/>
+          </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>
         }
