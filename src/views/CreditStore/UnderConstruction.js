@@ -16,16 +16,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function UnderConstruction(props){
+function UnderConstruction({payMethod, ...rest }){
   const classes = useStyles();
-  
+  const msg = "Paying through " + payMethod + " coming real soon!";
   return (
     <React.Fragment>
       <Box align='center' mb={2}>
-        <img width='200' src='../static/images/oli-confused.png'></img>
+        <img width='200' src='../static/images/oli-construction.png'></img>
       </Box>
-      <Typography variant='h2' align='center'>
-        Currently Under Construction
+      <Typography variant='h3' align='center'>
+        {msg}
       </Typography>
 
     </React.Fragment>

@@ -76,10 +76,10 @@ const Payment = ({ className, setCardState, ...rest }) => {
                 <CreditCardForm setCardState={setCardState}></CreditCardForm>
               }
               {value == 1 &&
-                <UnderConstruction/>
+                <UnderConstruction payMethod={'GCash'}/>
               }
               {value == 2 &&
-                <UnderConstruction/>
+                <UnderConstruction payMethod={'Brankas'}/>
               }
             </Box>
               {/* <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>

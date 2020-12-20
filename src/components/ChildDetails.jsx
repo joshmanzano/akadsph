@@ -15,6 +15,13 @@ import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import AddIcon from '@material-ui/icons/Add';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
+} from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -62,6 +69,7 @@ class ChildDetails extends Component{
         age: props.age,
         year_level: props.year_level,
         school: props.school,
+        // gradeLevels: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'],
       }
       props.setChild(this.state)
     }
@@ -77,6 +85,7 @@ class ChildDetails extends Component{
     render(){
     const props = this.props;
     const {classes} = this.props;
+    const gradeLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
 
   return (
     <React.Fragment>
@@ -90,7 +99,7 @@ class ChildDetails extends Component{
                 fullWidth
                 id="firstName"
                 defaultValue={props.firstName}
-                label="First Name"
+                label="Child's First Name"
                 autoFocus
                 onChange={this.changeHandler}
               />
@@ -101,7 +110,7 @@ class ChildDetails extends Component{
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                label="Child's Last Name"
                 name="last_name"
                 defaultValue={props.lastName}
                 autoComplete="lname"
@@ -116,23 +125,40 @@ class ChildDetails extends Component{
                 id="age"
                 label="Age"
                 name="age"
+                type="number"
                 defaultValue={props.age}
                 autoComplete="age"
                 onChange={this.changeHandler}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+            <FormControl variant="outlined" className={classes.formControl} fullWidth>
+              <InputLabel>Grade Level</InputLabel>
+              <Select
+                native
                 variant="outlined"
-                required
                 fullWidth
-                id="grade-level"
                 label="Grade Level"
+                required 
+                id="grade-level"
                 name="year_level"
                 defaultValue={props.grade}
-                autoComplete="grade level"
                 onChange={this.changeHandler}
-              />
+                inputProps={{
+                  name: 'year_level',
+                  id: 'grade-level',
+                }}
+              >
+                {gradeLevels.map((level) => (
+                  <option key={level} value={level} >
+                    {level}
+                  </option>
+                ))}
+                
+              </Select>
+            </FormControl> 
+
+    
             </Grid>
             <Grid item xs={12}>
               <TextField
