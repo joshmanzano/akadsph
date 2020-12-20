@@ -41,7 +41,7 @@ const AppSent= (props) => {
             <Box mb={4} textAlign="center">
               <img width="300"
                 alt="Under development"
-                src="/static/images/oli-happy.png"
+                src="/static/images/oli-idea.png"
               />
             </Box>
             <h3 align="center">

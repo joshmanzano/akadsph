@@ -10,8 +10,6 @@ import {
   Divider,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import data from './data';
-import FormDetails from './FormDetails';
 import Biodata from './Biodata';
 import TutorExp from './TutorExp';
 import ModeOfPayment from './ModeOfPayment';
@@ -21,8 +19,6 @@ import AppSent from './AppSent'
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
 
 import LoadingBack from 'src/components/loadingBack';
 
@@ -82,7 +78,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function(props){
   const classes = useStyles();
-  const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const steps = ['About You', 'Tutoring Related Details', 'Mode of Payment'];
