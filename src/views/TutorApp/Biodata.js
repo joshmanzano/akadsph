@@ -79,9 +79,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ChildDetails = ({ className, ...rest }) => {
+const Biodata = ({ className, ...rest }) => {
   const classes = useStyles();
-  const subjectselections = ['Math', 'English', 'Filipino', 'Science'];
 
   return (
     <div
@@ -91,306 +90,187 @@ const ChildDetails = ({ className, ...rest }) => {
       {/* <Typography variant="h4" align='center'>
             Tutoring Details
       </Typography> */}
-      <Box mx={2}>
-          
-            <Box mx={2} /*maxWidth={1000}*/>
-
-              <Grid container spacing={3} >
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <TextField id="outlined-basic" label="First Name" variant="outlined" fullWidth/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <TextField id="outlined-basic" label="Last Name" variant="outlined" fullWidth/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">Sex</FormLabel>
-                    <RadioGroup row name="tutor-sex">
-                      <FormControlLabel value="male" control={<Radio />} label="Male" />
-                      <FormControlLabel value="female" control={<Radio />} label="Female" />
-                      
-                    </RadioGroup>
-                  </FormControl>
-                </Grid> 
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <TextField id="outlined-basic" label="Birth Date" variant="outlined" type="date" InputLabelProps={{ shrink: true }}fullWidth/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={8}
-                  md={8}
-                  xl={8}
-                  xs={12}
-                >
-                  <TextField id="outlined-basic" label="Email Address" type="email" variant="outlined" fullWidth/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <TextField id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
-            startAdornment: <InputAdornment position="start">+63</InputAdornment>,
-          }}fullWidth/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <Autocomplete
-                    multiple
-                    id="tags-filled"
-                    options={subjectselections.map((option) => option)}
-                    freeSolo
-                    variant="outlined"
-                    renderTags={(value, getTagProps) =>
-                      value.map((option, index) => (
-                        <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                      ))
-                    }
-                    renderInput={(params) => (
-                      <TextField {...params} variant="outlined" label="What subjects do you teach?" />
-                    )}
-                  />
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
-
-                <Grid
-                  item
-                  lg={8}
-                  md={8}
-                  xl={8}
-                  xs={12}
-                >
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>How much tutoring experience do you have?</InputLabel>
-                    <Select
-                      native
-
-                      label="How much tutoring experience do you have?"
-                      inputProps={{
-                        name: 'subject-matter',
-                        id: 'subject-matter',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>None</option>
-                      <option value={20}>Less than 12 months</option>
-                      <option value={10}>More than a year</option>
-                      
-                    </Select>
-                  </FormControl> 
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={8}
-                  md={8}
-                  xl={8}
-                  xs={12}
-                >
-                  <FormControl variant="outlined" className={classes.formControl} fullWidth>
-                    <InputLabel>What Grade Levels were the students you taught?</InputLabel>
-                    <Select
-                      native
-
-                      label="What Grade Levels were the students you taught?"
-                      inputProps={{
-                        name: 'subject-matter',
-                        id: 'subject-matter',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>Grade 1-4 (Lower Sec)</option>
-                      <option value={20}>Grade 5-7 (Middle Sec)</option>
-                      <option value={10}>Grade 8-12 (High Sec)</option>
-                      
-                    </Select>
-                  </FormControl> 
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={8}
-                  md={8}
-                  xl={8}
-                  xs={12}
-                >
-                  <Typography variant="h5">
-                    School or Government ID
-                  </Typography>
-                  <DropzoneArea filesLimit={3}/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                >
-                </Grid>
-                <Grid
-                  item
-                  lg={8}
-                  md={8}
-                  xl={8}
-                  xs={12}
-                >
-                  <Typography variant="h5">
-                    Transcript of Records from High School or College (Optional)
-                  </Typography>
-                  <DropzoneArea filesLimit={3}/>
-                </Grid> 
-                <Grid
-                  item
-                  lg={2}
-                  md={2}
-                  xl={2}
-                  xs={0}
-                ></Grid>
+      <Box mx={4}>
+      <Grid container spacing={3} >
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Typography variant="h3">
+              Contact Details
+            </Typography>
+          </Grid> 
+          <Grid
+            item
+            lg={6}
+            md={6}
+            xl={6}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="First Name" variant="outlined" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={6}
+            md={6}
+            xl={6}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Last Name" variant="outlined" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={6}
+            md={6}
+            xl={6}
+            xs={12}
+          >
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Sex</FormLabel>
+              <RadioGroup row name="tutor-sex">
+                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                <FormControlLabel value="female" control={<Radio />} label="Female" />
                 
-              </Grid>
-            </Box>
+              </RadioGroup>
+            </FormControl>
+          </Grid> 
+          <Grid
+            item
+            lg={6}
+            md={6}
+            xl={6}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Birth Date" variant="outlined" type="date" InputLabelProps={{ shrink: true }}fullWidth/>
+          </Grid> 
+
+          <Grid
+            item
+            lg={6}
+            md={6}
+            xl={6}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Email Address" type="email" variant="outlined" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={6}
+            md={6}
+            xl={6}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
+      startAdornment: <InputAdornment position="start">+63</InputAdornment>,
+    }}fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Typography variant="h3">
+              Education Background
+            </Typography>
+          </Grid> 
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xl={4}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Tertiary Education" type="college" variant="outlined" placeholder="Ex. Ateneo De Manila University" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xl={4}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Year of Graduation" type="year" variant="outlined" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xl={4}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Course/Major" type="course" variant="outlined" placeholder="Ex. BS Information Technology Entrepreneurship" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Notable Achievements" type="course" variant="outlined" placeholder="Ex. Consistent Dean's Lister" helperText="This is what we'll show to parents whose child you accepted. Ex. Graduated honors in Ateneo High School, ACET Director's Lister" fullWidth/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Typography variant="h3">
+              Documents
+            </Typography>
+          </Grid> 
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Typography variant="h5">
+              School or Government ID
+            </Typography>
+            <DropzoneArea filesLimit={3}/>
+          </Grid> 
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Typography variant="h5">
+              Resume
+            </Typography>
+            <DropzoneArea filesLimit={3}/>
+          </Grid> 
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <Typography variant="h5">
+              Transcript of Records from High School or College (Optional)
+            </Typography>
+            <DropzoneArea filesLimit={3}/>
+          </Grid> 
+        </Grid>
+
+
       </Box>
     </div>
   );
 };
 
-ChildDetails.propTypes = {
+Biodata.propTypes = {
   className: PropTypes.string
 };
 
-export default ChildDetails;
+export default Biodata;

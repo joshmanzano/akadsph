@@ -13,6 +13,8 @@ import Page from 'src/components/Page';
 import data from './data';
 import FormDetails from './FormDetails';
 import Biodata from './Biodata';
+import TutorExp from './TutorExp';
+import ModeOfPayment from './ModeOfPayment';
 
 import AppSent from './AppSent'
 
@@ -99,9 +101,9 @@ export default function(props){
       case 0:
         return <Biodata/>;
       case 1:
-        return <Biodata/>;
+        return  <TutorExp/>;
       case 2:
-        return <Biodata/>;
+        return  <ModeOfPayment/>;
       default:
         throw new Error('Unknown step');
     }
