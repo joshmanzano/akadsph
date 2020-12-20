@@ -235,6 +235,9 @@ const Biodata = ({ className, ...rest }) => {
             <Typography variant="h5">
               School or Government ID
             </Typography>
+            <Typography variant="body1">
+              (Filename: Lastname_Firstname_ID)
+            </Typography>
             <DropzoneArea filesLimit={3}/>
           </Grid> 
           <Grid
@@ -247,6 +250,9 @@ const Biodata = ({ className, ...rest }) => {
             <Typography variant="h5">
               Resume
             </Typography>
+            <Typography variant="body1">
+              We will only use the resume to asses your achievements as well as to show to parents whose child you have accepted to tutor, when asked for data to check quality and credibility. (Filename: Lastname_Firstname_Resume)
+            </Typography>
             <DropzoneArea filesLimit={3}/>
           </Grid> 
           <Grid
@@ -258,6 +264,9 @@ const Biodata = ({ className, ...rest }) => {
           >
             <Typography variant="h5">
               Transcript of Records from High School or College (Optional)
+            </Typography>
+            <Typography variant="body1">
+              (Filename: Lastname_Firstname_TOR)
             </Typography>
             <DropzoneArea filesLimit={3}/>
           </Grid> 

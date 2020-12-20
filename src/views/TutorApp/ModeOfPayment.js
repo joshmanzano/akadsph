@@ -102,6 +102,9 @@ const Biodata = ({ className, ...rest }) => {
             <Typography variant="h3">
               Mode of Payment
             </Typography>
+            <Typography variant="body1">
+              Bank deposit/Gcash will be the primary mode of payment for Akads (BDO and GCash are preferred)
+            </Typography>
           </Grid> 
           <Grid
             item
@@ -119,7 +122,7 @@ const Biodata = ({ className, ...rest }) => {
             xl={6}
             xs={12}
           >
-            <TextField id="outlined-basic" label="Bank Account Number" variant="outlined" fullWidth/>
+            <TextField id="outlined-basic" label="Bank Account Number" type="number" variant="outlined" fullWidth/>
           </Grid> 
           <Grid
             item

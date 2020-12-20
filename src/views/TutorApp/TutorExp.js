@@ -87,7 +87,7 @@ const TutorExp = ({ className, ...rest }) => {
   const classes = useStyles();
   const subjectselections = ['Math', 'English', 'Filipino', 'Science'];
   const [levelsTaught, setLevelsTaught] = React.useState([]);
-  const gradelevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
+  const gradelevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
 
   const handleChange = (event) => {
     setLevelsTaught(event.target.value);
@@ -200,7 +200,16 @@ const TutorExp = ({ className, ...rest }) => {
             xl={6}
             xs={12}
           >
-            <TextField id="outlined-basic" label="Preferred Times for Tutorials" variant="outlined" fullWidth/>
+            <TextField id="outlined-basic" label="Preferred Times for Tutorials" placeholder="Ex. Mondays 1PM-6PM, Thursday 3PM-5PM" variant="outlined" fullWidth/>
+          </Grid> 
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <TextField id="outlined-basic" label="Is there anything you want to let Akads know?" placeholder="Ex. Ex. I can teach Science but only up to Grade 7, I can teach Math even to first year college students" variant="outlined" fullWidth/>
           </Grid> 
           <Grid
             item
@@ -211,6 +220,9 @@ const TutorExp = ({ className, ...rest }) => {
           >
             <Typography variant="h5">
               Current Class Schedule
+            </Typography>
+            <Typography variant="body1">
+              (Filename: Lastname_Firstname_Schedule)
             </Typography>
             <DropzoneArea filesLimit={3}/>
           </Grid> 
@@ -223,6 +235,9 @@ const TutorExp = ({ className, ...rest }) => {
           >
             <Typography variant="h5">
               Presentable Picture
+            </Typography>
+            <Typography variant="body1">
+              We will only use this picture to show to parents whose child you have accepted to tutor. (Filename: Lastname_Firstname_Picture)
             </Typography>
             <DropzoneArea filesLimit={3}/>
           </Grid> 
