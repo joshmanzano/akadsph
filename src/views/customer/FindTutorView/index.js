@@ -74,7 +74,7 @@ const CustomerListView = (props) => {
     topics: [],
     times: [],
     favTutor: [],
-    files: [],
+    files: props.files,
     specialRequest: '',
     allTutors: true,
     credits: props.credits,

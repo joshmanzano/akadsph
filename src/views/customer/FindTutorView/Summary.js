@@ -103,7 +103,7 @@ const Summary = ({ className, data, ...rest }) => {
                         {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)}
                       </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    {/* <Grid item xs={6}>
                       <Typography variant="h6">
                         Files
                       </Typography>
@@ -112,7 +112,7 @@ const Summary = ({ className, data, ...rest }) => {
                       <Typography variant="h5" align="right">
                         {data['files']}
                       </Typography>
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={6}>
                       <Typography variant="h6">
                         Length of Session

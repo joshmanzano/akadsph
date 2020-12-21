@@ -69,6 +69,7 @@ class App extends Component {
       'id_token':idToken
     }
     post_api('login-parent', data, (res) =>{
+      console.log(res)
       if(res['exists']){
         localStorage.setItem('session_token',res['session_token'])
         window.location.replace('/')
@@ -169,6 +170,7 @@ class App extends Component {
             },
             'findtutorview': {
               'tutees':children,
+              'files': parent['files'],
               'favtutors':["Carl Cornejo", "Carla Cordero"],
               'levels':[],
               'subjects':subjects,

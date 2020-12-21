@@ -16,6 +16,7 @@ import {
   CardHeader,
   Divider,
 } from '@material-ui/core';
+import { useHistory } from 'react-router-dom'
 import PublishIcon from '@material-ui/icons/Publish';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -45,6 +46,8 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
   const topicselections = ['Algebra', 'Calculus', 'Mga Tula', 'Vocabulary'];
   const [tutorOption, setTutorOption] = React.useState(true);
   const [open, setOpen] = React.useState(false);
+  const [url, setURL] = React.useState(data['files']+'?path=%2F'+data['subjects']['subject_field'])
+  const history = useHistory();
 
   const handleRadioChange = (event) => {
     if(event.target.value == 'all-tutors'){
@@ -61,6 +64,9 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
     let val = event.target.value;
     data[nam] = props[nam][val];
     setData(data)
+    if(nam === 'subjects'){
+      setURL(data['files']+'?path=%2F'+data['subjects']['subject_field'])
+    }
   }
 
   const handleFreeChange = (event, value) => {
@@ -278,7 +284,7 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                     <Typography variant="h6">
                         Upload any relevant materials such handouts or slides
                     </Typography>
-                    <Button variant="contained" color="primary" startIcon={<PublishIcon/>} onClick={() => setOpen(true)}>
+                    <Button variant="contained" color="primary" startIcon={<PublishIcon/>} href={url} target='_blank'>
                       Upload Files
                     </Button>
                     <DropzoneDialog open={open}

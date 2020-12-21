@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Upcoming from './Upcoming';
+import Metrics from './Metrics';
 import History from './History';
 
 
@@ -57,29 +57,9 @@ const Dashboard = (props) => {
           direction="column"
           >
             <Grid item>
-            <Box flexGrow={1}/>
-            </Grid>
-            <Grid item>
             <Typography id='selector1' variant="h1">
-              Welcome {props.first_name}! 
+              Hello there Boss! 
             </Typography>
-            </Grid>
-            <Grid item>
-              {props.requests == 0 &&
-              <Typography id='selector1' variant="h2">
-                There are no new requests.
-              </Typography>
-              }
-              {props.requests == 1 &&
-              <Typography id='selector1' variant="h2">
-                There is {props.requests} new request.
-              </Typography>
-              }
-              {props.requests > 1 &&
-              <Typography id='selector1' variant="h2">
-                There are {props.requests} new requests.
-              </Typography>
-              }
             </Grid>
             </Grid>
         </Box>
@@ -94,31 +74,12 @@ const Dashboard = (props) => {
         >
           <Grid
             item
-            lg={4}
-            md={4}
-            xl={4}
-            xs={12}
-          >
-            <Calendar changeDate={changeDate} selectedDate={selectedDate} id='selector2' />
-          </Grid>
-          <Grid
-            item
-            lg={8}
-            md={8}
-            xl={8}
-            xs={12}
-            id='selector3'
-          >
-            <Upcoming currentDate={selectedDate} setUpcoming={props.setUpcoming} rows={props.upcoming} />
-          </Grid>
-          <Grid
-            item
             lg={12}
             md={12}
             xl={12}
             xs={12}
           >
-            <History setHistory={props.setHistory} rows={props.history}/>
+            <Metrics/>
           </Grid>
           {/* <Grid
             item

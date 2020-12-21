@@ -150,11 +150,11 @@ const TopBar = ({
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/payout">
-                <AccountBalanceWalletIcon/>
+                {/* <AccountBalanceWalletIcon/> */}
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Payout
+                      Parents
                     </h5>
                   </Box>
                 </Hidden>
@@ -162,11 +162,11 @@ const TopBar = ({
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/account">
-                <AccountCircleIcon/>
+                {/* <AccountCircleIcon/> */}
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Profile
+                      Tutors
                     </h5>
                   </Box>
                 </Hidden>
