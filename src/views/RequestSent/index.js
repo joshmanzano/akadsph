@@ -3,18 +3,12 @@ import {
   Box,
   Container,
   makeStyles,
-  Typography,
-  Grid,
-  Button,
- 
   Card,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Summary from './Summary';
 import {get_user, post_api} from 'src/Api'
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
-import Toast from 'light-toast';
 import Content from './Content';
 
 function Alert(props) {
