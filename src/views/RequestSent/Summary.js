@@ -70,7 +70,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['tutees'].first_name}
+                        {/* {data['tutees'].first_name} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -80,7 +80,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['tutees'].year_level}
+                        {/* {data['tutees'].year_level} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -90,7 +90,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['subjects'].subject_field}
+                        {/* {data['subjects'].subject_field} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -100,7 +100,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)}
+                        {/* {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -110,7 +110,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['files']}
+                        {/* {data['files']} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -120,7 +120,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['lengths'].name}
+                        {/* {data['lengths'].name} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -129,15 +129,15 @@ const Summary = ({ className, data, ...rest }) => {
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      {data['allTutors'] ? 
+                      {/* {data['allTutors'] ?  */}
                       <Typography variant="h5" align="right">
                         All Tutors
                       </Typography>
-                      :
+                      {/* :
                       <Typography variant="h5" align="right">
                         Favorite Tutors Only
                       </Typography>
-                      }
+                      } */}
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h6">
@@ -146,7 +146,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['favTutor']}
+                        {/* {data['favTutor']} */}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -156,11 +156,11 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {Object.keys(data['times']).map(time => (
-                          // <Chip label={(day.getMonth()+1)+'/'+(day.getDay())+'/'+day.getFullYear()}/>
+                        {/* {Object.keys(data['times']).map(time => (
+                          
                           <Chip color="primary" size="small" label={moment((new Date(Number(time)))).format('MMM Do')}/>
-                        ))}
-                        {/* <Chip label="27/11/20 2:00pm-4:00pm" /> */}
+                        ))} */}
+                        <Chip label="27/11/20 2:00pm-4:00pm" />
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -170,56 +170,13 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['specialRequest']}
+                        {/* {data['specialRequest']} */}
                       </Typography>
                     </Grid>
                   </Grid>
                   </Box>
                 </CardContent>
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Current Hours Credits
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          {data['credits']}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Hours Deducted
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          -{data['lengths'].value}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </CardContent>
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Hours Left
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          {data['credits'] - data['lengths'].value}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </CardContent>
+                
               </Card>
             </Box>
           </Grid> 

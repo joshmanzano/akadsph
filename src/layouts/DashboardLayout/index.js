@@ -41,6 +41,8 @@ import { Steps } from 'intro.js-react';
 import {Widget} from 'react-chat-widget';
 import 'src/ChatWidget.css';
 
+import RequestSentView from 'src/views/RequestSent';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -180,6 +182,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}playground`}>
                 <Fragment>
                   <PlaygroundView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}request-sent`}>
+                <Fragment>
+                  <RequestSentView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 
