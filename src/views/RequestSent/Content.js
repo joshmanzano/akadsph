@@ -7,7 +7,6 @@ import {
   Grid,
   Box,
 } from '@material-ui/core';
-import Summary from './Summary';
 import RequestDetails from './RequestDetails';
 
 const useStyles = makeStyles((theme) => ({
