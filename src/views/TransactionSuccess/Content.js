@@ -7,7 +7,7 @@ import {
   Grid,
   Box,
 } from '@material-ui/core';
-import RequestDetails from './RequestDetails';
+import TableDetails from './TableDetails';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -39,7 +39,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Typography variant="h2" align='center'>
-                Tutor request successfully sent!
+                Transaction Successful!
               </Typography>
             </Grid>
             <Grid
@@ -50,7 +50,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <img width='100' src='../static/images/oli-wink.png'/>
+              <img width='100' src='../static/images/oli-smirk.png'/>
             </Grid>
             <Grid
               item
@@ -61,10 +61,10 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Typography variant="h6" align='center'>
-                Your request has been sent to our tutors. You will receive a notification once your request gets accepted. 
+                You can now book tutors with your hour credits. 
               </Typography>
               <Typography variant="h6" align='center'>
-                Details of your request can be found in the overview.
+                Transaction history can be found in the overview. Please make sure to use your credits within its 6 months validity.
               </Typography>
             </Grid>
             <Grid
@@ -75,33 +75,45 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <RequestDetails/>
+              <TableDetails/>
             </Grid>
-            <Grid
+            {/* <Grid
               item
               lg={3}
               md={3}
               xl={3}
               xs={0}
               align='center'
-            ></Grid>
+            ></Grid> */}
             <Grid
               item
-              lg={3}
-              md={3}
-              xl={3}
+              lg={4}
+              md={4}
+              xl={4}
               xs={12}
               align='center'
             >
               <Button size="large" variant="contained" color="primary" href='#/findtutor'>
-                Book more tutors
+                Book tutors
               </Button>
             </Grid>
             <Grid
               item
-              lg={3}
-              md={3}
-              xl={3}
+              lg={4}
+              md={4}
+              xl={4}
+              xs={12}
+              align='center'
+            >
+              <Button size="large" variant="contained" color="primary" href='#/store'>
+                Buy more credits
+              </Button>
+            </Grid>
+            <Grid
+              item
+              lg={4}
+              md={4}
+              xl={4}
               xs={12}
               align='center'
             >
@@ -109,14 +121,14 @@ const Availability = ({ className, data, setData, ...rest }) => {
                 Go to overview
               </Button>
             </Grid>
-            <Grid
+            {/* <Grid
               item
               lg={3}
               md={3}
               xl={3}
               xs={0}
               align='center'
-            ></Grid>
+            ></Grid> */}
           
           </Grid>
       </Box>

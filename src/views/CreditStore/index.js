@@ -103,13 +103,16 @@ function CreditStore(props){
   const [item, setItem] = React.useState('');
   const [hours, setHours] = React.useState(0);
   const [discount, setDiscount] = React.useState(0);
+  const [sendingRequest, setSendingRequest] = React.useState(false);
   
   useEffect(() => {
     if(processing){
       checkout(amount, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
         setProcessing(false);
         if(res){
-          Toast.success('Transaction successful!')
+          // Toast.success('Transaction successful!')
+          setProcessing(true)
+          window.location.replace('#/transaction-successful')
           props.addCredit(hours);
         }else{
           Toast.fail('Transaction failed!')

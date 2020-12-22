@@ -42,6 +42,7 @@ import {Widget} from 'react-chat-widget';
 import 'src/ChatWidget.css';
 
 import RequestSentView from 'src/views/RequestSent';
+import TransactionSuccessView from 'src/views/TransactionSuccess';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -187,6 +188,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}request-sent`}>
                 <Fragment>
                   <RequestSentView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}transaction-successful`}>
+                <Fragment>
+                  <TransactionSuccessView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 
