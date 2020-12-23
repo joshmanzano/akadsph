@@ -43,6 +43,9 @@ import 'src/React-Notifs.css'
 
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
+import NotifCard from './NotifCard'
+import toast from 'react-hot-toast';
+import {useSnackbar} from 'notistack';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -52,23 +55,42 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+const checkNotifs = (notifs) => {
+  notifs.forEach(notif => {
+    if(!(notif.seen)){
+      return false 
+    }
+  })
+  return true 
+}
+
 const TopBar = ({
   className, credits,
-  setNotification,
-  changeNotification,
+  notifications,
+  seen,
+  seenParentNotif,
+  refresh,
   onMobileNavOpen,
   ...rest
 }) => {
   const classes = useStyles();
   const anchor = 'left';
-  const [notifications, changeNotifications] = useState([
+  const [notifications2, changeNotifications] = useState([
+    {
+      image: '../static/images/oli-happy.png',
+      message: 'You have no notifications!',
+      seen: true,
+    },
+  ]);
+  const exampleNotif = 
     {
       image: '../static/images/oli-happy.png',
       message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
       detailPage: '#/',
-      receivedTime:'5m ago'
-    },
-  ]);
+      receivedTime:'5m ago',
+      seen: false,
+    }
+
   const [chatNotif, setChatNotif] = useState(true)
   const confirm = useConfirm();
   const logout = () => {
@@ -97,6 +119,13 @@ const TopBar = ({
 
     setState({ ...state, [anchor]: open });
   };
+
+  const toggleSeen = () => {
+    seenParentNotif((res) => {
+      console.log(res)
+      refresh()
+    })
+  }
 
   const list = (anchor) => (
     <div
@@ -231,17 +260,18 @@ const TopBar = ({
           }
         </IconButton>
         <IconButton color="inherit"
-          onClick={() => changeNotification('')}
+          onClick={toggleSeen}
         >
           <Badge
-            className={'specialBadge'}
             color="secondary"
-            variant={setNotification}
+            variant="dot"
+            invisible={seen}
           >
             <Notifications
               // data={data}
               data={notifications}
               markAsRead={(e) => {console.log(e)}}
+              notificationCard={NotifCard}
               header={{
                 title: 'Notifications',
                 option: { text: 'View All', onClick: () => console.log('Clicked') },

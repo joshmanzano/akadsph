@@ -1,5 +1,5 @@
-import React, { Component, Fragment, useState } from 'react';
-import { Container, Fade, makeStyles } from '@material-ui/core';
+import React, { Component, Fragment, useState, useEffect, useRef } from 'react';
+import { Container, Button, IconButton, Fade, makeStyles } from '@material-ui/core';
 import {
   HashRouter as Router,
   Switch,
@@ -38,8 +38,14 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Tutorial from 'src/components/Tutorial';
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
-import {Widget} from 'react-chat-widget';
+import Websocket from 'react-websocket';
 import 'src/ChatWidget.css';
+import toast from 'react-hot-toast';
+import {useSnackbar} from 'notistack';
+import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'react-chat-widget';
+import PageviewIcon from '@material-ui/icons/Pageview';
+
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,11 +73,32 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function useInterval(callback, delay){
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if(delay != null){
+      const id = setInterval(tick, delay);
+      return () => {
+        clearInterval(id);
+      };
+    }
+  }, [callback, delay])
+}
+
 
 function DashboardLayout (props){
   let classes = useStyles();
   let match = useRouteMatch();
   let location = useLocation();
+
   const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
   const user_id = jwt(localStorage.getItem('session_token')).id
@@ -81,7 +108,10 @@ function DashboardLayout (props){
   const [setHistory, changeHistory] = useState(false)
   const [setTransaction, changeTransaction] = useState(false)
   const [setNotification, changeNotification] = useState('')
+  const {enqueueSnackbar, closeSnackbar} = useSnackbar();
   
+  console.log('#loaded')
+  console.log(loaded)
 
   if(!loaded){
     props.getUserData((userData) => {
@@ -89,37 +119,59 @@ function DashboardLayout (props){
       setLoaded(true);
     })
   }
+  
+  // if(loaded){
+  //   userData['notifications'].forEach(notif => {
+  //     enqueueSnackbar('notif', {
+  //       'variant':'info'
+  //     })
+  //   })
+  // }
+  const closeNotif = (key) => {
+    props.seenParentNotif()
+    closeSnackbar(key)
+  }
+
+  const action = key => (
+    <Fragment>
+        <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
+            <PageviewIcon />
+        </IconButton>
+        <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
+            <CloseIcon />
+        </IconButton>
+    </Fragment>
+  );
+
+  const refresh = () => {
+    props.getUserData((userData) => {
+      setUserData(userData);
+      setLoaded(true);
+      userData['notifications'].forEach(notif => {
+        if(!notif.seen){
+          const message = notif.message 
+          enqueueSnackbar(message, {
+            variant:'info',
+            persist: true,
+            action
+          })
+        }
+      })
+    })
+  }
+
+  useInterval(() => {
+    refresh()
+  }, 5000)
+
+
 
   return (
     <div>
 
     {loaded ? 
     <div className={classes.root}>
-      <ReactPolling
-        url={'https://akadsph.pythonanywhere.com/poll?q='+user_id}
-        interval= {3000} // in milliseconds(ms)
-        onSuccess={(res) => {
-          const command = Number(res['res'])
-          console.log(command)
-          if(command == 1){
-            changeNotification('dot')
-          }else if(command == 2){
-            changeUpcoming(true)
-          }else if(command == 3){
-            changeHistory(true)
-          }
-          return true
-        }
-        }
-        onFailure={() => console.log('error on poll')} // this is optional
-        method={'GET'}
-        // headers={} // this is optional
-        // body={JSON.stringify(data)} // data to send in a post call. Should be stringified always
-        render={({ startPolling, stopPolling, isPolling }) => {
-          return null
-        }}
-      />
-      <TopBar changeNotification={changeNotification} setNotification={setNotification} credits={props.credits}/>
+      <TopBar refresh={refresh} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}

@@ -23,6 +23,8 @@ import {api, get_user, verify_token, check_admin_token, get_api, post_api} from 
 import CreditStore from 'src/views/CreditStore';
 import PayoutHistory from 'src/views/PayoutHistory';
 import ReactPolling from 'react-polling';
+import moment from 'moment';
+import toast, {Toaster} from 'react-hot-toast';
 
 
 import 'src/Calendar.css'
@@ -131,6 +133,30 @@ class App extends Component {
     })
   }
 
+  seenParentNotif = (_callback) => {
+    get_user((res) => {
+      const id = res['id']
+      const data = {
+        'parent_id': id
+      }
+      post_api('seen-all-parent-notifications', data, (res) => {
+        _callback(res)
+      })
+    })
+  }
+
+  seenTutorNotif = (_callback) => {
+    get_user((res) => {
+      const id = res['id']
+      const data = {
+        'tutor_id': id
+      }
+      post_api('seen-all-tutor-notifications', data, (res) => {
+        _callback(res)
+      })
+    })
+  }
+
   getParentData = (_callback) => {
 
     get_user((res) => {
@@ -138,67 +164,89 @@ class App extends Component {
       const data = {
         'parent_id': id
       }
-      post_api('all-parent-details', data, (res) => {
-        console.log(res)
-        const parent = res['parent']
-        const children = res['children'] 
-        const subjects = res['subjects']
-        const settings = res['settings']
-        const pending = res['pending_requests']
-        const transaction = res['transactions']
-        const upcoming = res['accepted_requests']
-        this.setState({
-          credits: parent['credits']
 
-        }, () => {
-          const data = {
-            'accountview': {
-              'picture': parent['picture'],
-              'first_name': parent['first_name'],
-              'last_name': parent['last_name'],
-              'email': parent['email'],
-              'phone': '',
-              'children': children,
-              'favtutors': [],
-            },
-            'dashboardview': {
-              'upcoming': upcoming,
-              'pending': pending,
-              'history': [],
-              'transaction': transaction,
-              'tutees':children,
-            },
-            'findtutorview': {
-              'tutees':children,
-              'files': parent['files'],
-              'favtutors':["Carl Cornejo", "Carla Cordero"],
-              'levels':[],
-              'subjects':subjects,
-              'lengths':[
-                {
-                  value: 1,
-                  name: '1 hour'
-                },
-                {
-                  value: 2,
-                  name: '2 hours'
-                },
-                {
-                  value: 3,
-                  name: '3 hours'
-                },
-              ],
-            },
-            'settingsview': {
-              'selected':[],
-            },
-            'chatview': {
-              'chatlist':[],
-            },
+      post_api('parent-recent-notifications', data, (res) => {
+        console.log(res)
+        const notifications = []
+        let seen = true 
+        res.forEach(notif => {
+          if(!notif.is_seen){
+            seen = false
           }
-          _callback(data)
+          notifications.push({
+            image:'../static/images/oli-happy.png',
+            message: notif.notification, 
+            detailPage: '#/',
+            receivedTime: moment(notif.time).fromNow(),
+            seen: notif.is_seen,
+          })
+        })
+
+        post_api('all-parent-details', data, (res) => {
+          console.log(res)
+          const parent = res['parent']
+          const children = res['children'] 
+          const subjects = res['subjects']
+          const settings = res['settings']
+          const pending = res['pending_requests']
+          const transaction = res['transactions']
+          const upcoming = res['accepted_requests']
+          this.setState({
+            credits: parent['credits']
+
+          }, () => {
+            const data = {
+              'notifications': notifications,
+              'seen': seen,
+              'accountview': {
+                'picture': parent['picture'],
+                'first_name': parent['first_name'],
+                'last_name': parent['last_name'],
+                'email': parent['email'],
+                'phone': '',
+                'children': children,
+                'favtutors': [],
+              },
+              'dashboardview': {
+                'upcoming': upcoming,
+                'pending': pending,
+                'history': [],
+                'transaction': transaction,
+                'tutees':children,
+              },
+              'findtutorview': {
+                'tutees':children,
+                'files': parent['files'],
+                'favtutors':["Carl Cornejo", "Carla Cordero"],
+                'levels':[],
+                'subjects':subjects,
+                'lengths':[
+                  {
+                    value: 1,
+                    name: '1 hour'
+                  },
+                  {
+                    value: 2,
+                    name: '2 hours'
+                  },
+                  {
+                    value: 3,
+                    name: '3 hours'
+                  },
+                ],
+              },
+              'settingsview': {
+                'selected':[],
+              },
+              'chatview': {
+                'chatlist':[],
+              },
+            }
+            _callback(data)
+          })
         })
       })
+
     })
 
   }
@@ -210,6 +258,24 @@ class App extends Component {
       const data = {
         'tutor_id': id
       }
+      post_api('tutor-recent-notifications', data, (res) => {
+        console.log(res)
+        const notifications = []
+        let seen = true 
+        res['notifications'].forEach(notif => {
+          if(!notif.is_seen){
+            seen = false
+          }
+          notifications.push({
+            image:'../static/images/oli-happy.png',
+            message: notif.notification, 
+            detailPage: '#/',
+            receivedTime: moment(notif.time).fromNow(),
+            seen: notif.is_seen,
+          })
+        })
+
+
       post_api('all-tutor-details', data, (res) => {
         console.log(res)
         const tutor = res['tutor']
@@ -220,6 +286,9 @@ class App extends Component {
         this.setState({
         }, () => {
           const data = {
+            'notifications': notifications,
+            'seen': seen,
+            'pendingIndicator': !(requests.length > 0),
             'accountview': {
               'picture': tutor['picture'],
               'first_name': tutor['first_name'],
@@ -246,19 +315,19 @@ class App extends Component {
         })
       })
     })
+    })
 
   }
 
   getAdminData = (_callback) => {
     get_api('all-admin-details', (res) => {
-      console.log(res)
       this.setState({
       }, () => {
         const data = {
           'dashboardview': {
           },
         }
-        _callback(data)
+        _callback(res)
       })
     })
   }
@@ -292,7 +361,7 @@ class App extends Component {
         // Parent Logged In
         <Switch>
           <Route path='/'> 
-            <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} getUserData={this.getParentData}/>
+            <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>
@@ -301,7 +370,7 @@ class App extends Component {
         // Tutor Logged In
         <Switch>
           <Route path='/'> 
-            <TutorDashboardLayout getUserData={this.getTutorData}/>
+            <TutorDashboardLayout seenTutorNotif={this.seenTutorNotif} getUserData={this.getTutorData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>
@@ -319,6 +388,7 @@ class App extends Component {
       :
       <NotOnline/>
       }
+      <Toaster/>
       </div>
     );
   }

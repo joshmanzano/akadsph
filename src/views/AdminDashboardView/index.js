@@ -8,8 +8,9 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Metrics from './Metrics';
-import History from './History';
-
+import InfoTable from './InfoTable';
+import InfoBox from './InfoBox';
+import "gridjs/dist/theme/mermaid.css";
 
 import Calendar from './Calendar'
 
@@ -25,6 +26,21 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
+  const data = props.data
+  console.log(data)
+  const parentRows = []
+  data.parents.forEach(p => {
+    parentRows.push([
+      p.first_name, p.last_name, p.email, p.credits, p.files, 'N/A'  
+
+    ])
+  })
+  const tutorRows = []
+  data.tutors.forEach(t => {
+    tutorRows.push([
+      t.first_name, t.last_name, t.email  
+    ])
+  })
 
   return (
     <Page
@@ -81,15 +97,33 @@ const Dashboard = (props) => {
           >
             <Metrics/>
           </Grid>
-          {/* <Grid
+          <Grid
             item
             lg={12}
             md={12}
             xl={12}
             xs={12}
           >
-            <Metrics/>
-          </Grid> */}
+            <InfoBox name={'Parents'} rows={parentRows} headers={['First Name', 'Last Name', 'Email', 'Credits', 'Files', 'Picture']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Tutors'} rows={tutorRows} headers={['First Name', 'Last Name', 'Email']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Transactions'} rows={[]} headers={[]}/>
+          </Grid>
         </Grid>
       </Container>
     </Page>

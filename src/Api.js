@@ -111,7 +111,7 @@ export const post_api = (url, raw_data, _callback) => {
     _callback(response.data)
   })
   .catch(function (error) {
-    console.log(error.response);
+    console.log(error);
   });
   
 }

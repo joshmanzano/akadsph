@@ -55,6 +55,10 @@ const useStyles = makeStyles(() => ({
 
 const TopBar = ({
   className, credits, notifications,
+  seen,
+  pendingIndicator,
+  seenTutorNotif,
+  refresh,
   onMobileNavOpen,
   ...rest
 }) => {
@@ -107,6 +111,13 @@ const TopBar = ({
     </div>
   );
 
+  const toggleSeen = () => {
+    seenTutorNotif((res) => {
+      console.log(res)
+      refresh()
+    })
+  }
+
   return (
     <AppBar
       className={clsx(classes.root, className)}
@@ -138,7 +149,13 @@ const TopBar = ({
             </Grid>
             <Grid sm={2}>
               <IconButton color="inherit" href="#/viewrequest">
+              <Badge
+              color="secondary"
+              variant="dot"
+              invisible={pendingIndicator}
+              >
                 <InsertInvitationIcon/>
+              </Badge>
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
@@ -210,10 +227,11 @@ const TopBar = ({
             <ForumIcon/>
           }
         </IconButton>
-        <IconButton onClick={() => setNotif([])} color="inherit">
+        <IconButton onClick={toggleSeen} color="inherit">
           <Badge
             color="secondary"
             variant="dot"
+            invisible={seen}
           >
             <Notifications
               // data={data}

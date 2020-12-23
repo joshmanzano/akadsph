@@ -136,7 +136,7 @@ const TopBar = ({
                 </Hidden>
               </IconButton>
             </Grid>
-            <Grid sm={2}>
+            {/* <Grid sm={2}>
               <IconButton color="inherit" href="#/viewrequest">
                 <InsertInvitationIcon/>
                 <Hidden mdDown>
@@ -150,11 +150,11 @@ const TopBar = ({
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/payout">
-                {/* <AccountBalanceWalletIcon/> */}
+                <AccountBalanceWalletIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Parents
+                      Users
                     </h5>
                   </Box>
                 </Hidden>
@@ -162,11 +162,11 @@ const TopBar = ({
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/account">
-                {/* <AccountCircleIcon/> */}
+                <AccountCircleIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
                     <h5>
-                      Tutors
+                      Profile
                     </h5>
                   </Box>
                 </Hidden>
@@ -183,7 +183,7 @@ const TopBar = ({
                   </Box>
                 </Hidden>
               </IconButton>
-            </Grid>
+            </Grid> */}
           </Grid>
 
         </Container>
@@ -215,7 +215,8 @@ const TopBar = ({
             color="secondary"
             variant="dot"
           >
-            <Notifications
+            <NotificationsIcon/>
+            {/* <Notifications
               // data={data}
               data={notifs}
               header={{
@@ -223,7 +224,8 @@ const TopBar = ({
                 option: { text: 'View All', onClick: () => console.log('Clicked') },
               }}
               markAsRead={data => console.log(data)}
-            />
+              classNamePrefix="notif"
+            /> */}
           </Badge>
         </IconButton>
         <IconButton onClick={logout} color="inherit">

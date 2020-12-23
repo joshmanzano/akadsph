@@ -49,10 +49,6 @@ function AdminDashboardLayout (props){
   let location = useLocation();
   const [loaded, setLoaded] = useState(false);
   let [userData, setUserData] = useState();
-  const [payoutPresent, setPayoutPresent] = useState(true);
-  const [setUpcoming, changeUpcoming] = useState(false);
-  const [setHistory, changeHistory] = useState(false);
-  const [open, setOpen] = useState(false);
   // const user_id = jwt(localStorage.getItem('session_token')).id
   const notifData = [
                 {
@@ -94,7 +90,7 @@ function AdminDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <AdminDashboardView></AdminDashboardView>
+                    <AdminDashboardView data={userData}></AdminDashboardView>
                   </Fragment>
                 </Container>
               </Route>

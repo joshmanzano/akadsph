@@ -9,16 +9,8 @@
 	font-family: 'DM Sans', sans-serif !important;
 }
 
-.notifications .icon .count {
-	background-color: #EB5531 !important;
-}
-
 .rce-citem-body--bottom-status span {
 	background: #EB5531 !important;
-}
-
-.icon {
-	margin-top: 5px; 
 }
 
 /* Chat overrides */
@@ -816,8 +808,22 @@ color: #777;
 
 .count {
 	display: none !important;
+	/* padding-top: 20px; */
+}
+
+.notifications .icon {
+	height:inherit !important;
+	width:inherit !important;
+}
+
+.card:hover {
+	background-color: #ebebeb !important;
 }
 
 .session_date {
 	color: #EB5531;
+}
+
+div .info{
+	background-color: #4655A5 !important;	
 }

@@ -8,14 +8,17 @@ import { ThemeProvider } from '@material-ui/core';
 import GlobalStyles from 'src/components/GlobalStyles';
 import theme from 'src/theme';
 import { ConfirmProvider } from 'material-ui-confirm';
+import { SnackbarProvider } from 'notistack';
 
 ReactDOM.render((
   <Router>
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <ConfirmProvider>
-        <App/>
-      </ConfirmProvider>
+      <SnackbarProvider classes={{variantInfo: 'info'}} preventDuplicate={true} maxSnack={6}>
+        <GlobalStyles />
+        <ConfirmProvider>
+          <App/>
+        </ConfirmProvider>
+      </SnackbarProvider>
     </ThemeProvider>
   </Router>
 ), document.getElementById('root'));

@@ -1,5 +1,5 @@
-import React, { Component, Fragment, useState } from 'react';
-import { Container, Fade, makeStyles } from '@material-ui/core';
+import React, { Component, Fragment, useState, useRef, useEffect } from 'react';
+import { Container, Fade, IconButton, makeStyles } from '@material-ui/core';
 import {
   HashRouter as Router,
   Switch,
@@ -45,6 +45,13 @@ import {get_user} from 'src/Api';
 
 import jwt from 'jwt-decode';
 
+import toast from 'react-hot-toast';
+import {useSnackbar} from 'notistack';
+import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'react-chat-widget';
+import PageviewIcon from '@material-ui/icons/Pageview';
+
+import CloseIcon from '@material-ui/icons/Close'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -71,6 +78,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function useInterval(callback, delay){
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if(delay != null){
+      const id = setInterval(tick, delay);
+      return () => {
+        clearInterval(id);
+      };
+    }
+  }, [callback, delay])
+}
 
 function TutorDashboardLayout (props){
   let classes = useStyles();
@@ -98,6 +124,8 @@ function TutorDashboardLayout (props){
               ]
 
   const [notifications, setNotifs] = useState(notifData);
+  const {enqueueSnackbar, closeSnackbar} = useSnackbar();
+
   if(!loaded){
     props.getUserData((userData) => {
       setUserData(userData);
@@ -105,35 +133,49 @@ function TutorDashboardLayout (props){
     })
   }
 
+  const closeNotif = (key) => {
+    props.seenTutorNotif()
+    closeSnackbar(key)
+  }
+
+  const action = key => (
+    <Fragment>
+        <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
+            <PageviewIcon />
+        </IconButton>
+        <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
+            <CloseIcon />
+        </IconButton>
+    </Fragment>
+  );
+
+  const refresh = () => {
+    props.getUserData((userData) => {
+      setUserData(userData);
+      setLoaded(true);
+      userData['notifications'].forEach(notif => {
+        if(!notif.seen){
+          const message = notif.message
+          enqueueSnackbar(message, {
+            variant:'info',
+            persist: true,
+            action
+          })
+        }
+      })
+    })
+  }
+
+  useInterval(() => {
+    refresh()
+  }, 5000)
+
   return (
     <div>
 
     {loaded ? 
     <div className={classes.root}>
-      <ReactPolling
-        url={'https://akadsph.pythonanywhere.com/poll?q='+user_id}
-        interval= {3000} // in milliseconds(ms)
-        onSuccess={(res) => {
-          const command = Number(res['res'])
-          console.log(command)
-          if(command == 1){
-            changeUpcoming(true)
-            changeHistory(true)
-          }else if(command == 2){
-            setOpen(true)
-          }
-          return true
-        }
-        }
-        onFailure={() => console.log('error on poll')} // this is optional
-        method={'GET'}
-        // headers={} // this is optional
-        // body={JSON.stringify(data)} // data to send in a post call. Should be stringified always
-        render={({ startPolling, stopPolling, isPolling }) => {
-          return null
-        }}
-      />
-      <TopBar notifications={notifications} credits={props.credits}/>
+      <TopBar seen={userData['seen']} refresh={refresh} seenTutorNotif={props.seenTutorNotif} pendingIndicator={userData['pendingIndicator']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
