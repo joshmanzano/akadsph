@@ -47,6 +47,9 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 
 import CloseIcon from '@material-ui/icons/Close';
 
+import RequestSentView from 'src/views/RequestSent';
+import TransactionSuccessView from 'src/views/TransactionSuccess';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -232,6 +235,16 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}playground`}>
                 <Fragment>
                   <PlaygroundView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}request-sent`}>
+                <Fragment>
+                  <RequestSentView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}transaction-successful`}>
+                <Fragment>
+                  <TransactionSuccessView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 

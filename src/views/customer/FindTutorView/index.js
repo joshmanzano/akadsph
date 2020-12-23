@@ -19,7 +19,7 @@ import Availability from './Availability';
 import SpecialRequests from './SpecialRequests';
 import Breakdown from './Breakdown';
 import Summary from './Summary';
-import {get_user, post_api} from 'src/Api'
+import {get_user, post_api} from 'src/Api';
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
 import Toast from 'light-toast';
@@ -79,6 +79,7 @@ const CustomerListView = (props) => {
     allTutors: true,
     credits: props.credits,
   });
+  const [sendingRequest, setSendingRequest] = React.useState(false);
 
   const handleChangeNext = (event) => {
     setDetailsDone(!detailsDone);
@@ -127,7 +128,9 @@ const CustomerListView = (props) => {
         console.log(res)
         setProcessing(false);
         if(res['return_status'] == 'success'){
-          Toast.success(res['return_message']);
+          // Toast.success(res['return_message']);
+          setSendingRequest(true)
+          window.location.replace('#/request-sent')
         }else if(res['return_status'] == 'error'){
           Toast.fail(res['return_message']);
         }else{
@@ -142,6 +145,7 @@ const CustomerListView = (props) => {
       className={classes.root}
       title="Request A Tutor" 
     >
+      <LoadingBack processing={sendingRequest}/>
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
         <Grid container spacing={3}>

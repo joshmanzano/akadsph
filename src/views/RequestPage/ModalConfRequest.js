@@ -27,6 +27,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { post_api, get_user } from 'src/Api.js';
 import Toast from 'light-toast';
 
+import LoadingBack from 'src/components/loadingBack';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, className, ...rest }) => {
   const classes = useStyles();
-  // const [open, setOpen] = React.useState(false);
+  const [processing, setProcessing] = React.useState(false);
 
 
   const handleClickOpen = () => {
@@ -83,8 +85,10 @@ const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, classNa
         console.log(res)
         if(res){
           Toast.success('Request accepted!')
-          removeRequest(info.index)
+          setProcessing(true)
+          window.location.replace('#/request-accepted')
           window.location.reload()
+          removeRequest(info.index)
         }else{
           Toast.fail('Request failed!')
         }
@@ -101,6 +105,7 @@ const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, classNa
     const { children, classes, onClose, ...other } = props;
     return (
       <React.Fragment>
+         <LoadingBack processing={processing}/>
         <MuiDialogTitle disableTypography className={classes.root} {...other}>
           <Typography variant="h4">{children}</Typography>
           {onClose ? (
