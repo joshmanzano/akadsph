@@ -30,6 +30,7 @@ import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
 import NoRequestView from 'src/components/NoRequestView';
 import Messenger from 'src/views/chat';
+import RequestAcceptedView from 'src/views/RequestAccepted';
 
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -193,6 +194,11 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
                   <Messenger/> 
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}request-accepted`}>
+                <Fragment>
+                  <RequestAcceptedView/> 
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 

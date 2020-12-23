@@ -19,7 +19,7 @@ import Availability from './Availability';
 import SpecialRequests from './SpecialRequests';
 import Breakdown from './Breakdown';
 import Summary from './Summary';
-import {get_user, post_api} from 'src/Api'
+import {get_user, post_api} from 'src/Api';
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
 import Toast from 'light-toast';
