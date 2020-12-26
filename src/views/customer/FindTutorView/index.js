@@ -183,7 +183,6 @@ const CustomerListView = (props) => {
             </Box>
           </Grid>
         </Grid>
-        {!detailsDone ? 
         <React.Fragment>
           <Snackbar open={success} autoHideDuration={6000} onClose={() => setSuccess(false)}>
             <Alert onClose={() => setSuccess(false)} severity="success">
@@ -276,74 +275,7 @@ const CustomerListView = (props) => {
             </Grid>
           </Grid>
         </React.Fragment>
-        : 
         
-        <React.Fragment>
-          <Grid container spacing={2}>
-            <Grid item 
-                xs={12}
-            >
-              <Breakdown/>
-            </Grid>
-            <Grid item 
-              xs={12}
-            >
-              {/* <Payment/> */}
-            </Grid>
-            <Grid item xs={12}>
-              <Grid container spacing={0}>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={0}
-                  xs={0}
-                  ></Grid>
-                <Grid item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  >
-                  
-                  <Button className={classes.backButton}  
-                    color="primary"
-                    
-                    onClick={handleChangeNext}
-                    variant="outlined"
-                    >
-                    Back
-                  </Button>
-                  
-                
-                </Grid> 
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  align='right'
-                  >
-                    <Button className={classes.payButton}  
-                      color="primary"
-                      variant="contained"
-                      
-                      align='right'
-                      onClick={handleClickOpen}
-                      >
-                      Pay Now
-                    </Button>
-                    
-                </Grid>
-              </Grid>
-            </Grid>
-          
-            
-          </Grid>
-        </React.Fragment>
-        }
-
       </Container>
     </Page>
   );
