@@ -315,36 +315,7 @@ const CustomerListView = (props) => {
                     Back
                   </Button>
                   
-                  {/* <Box component='span' m={2}>
-                    <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleClickOpen}
-                    >
-                    Submit
-                  </Button>
-                  <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
-                    <DialogTitle id="alert-dialog-title">{"Transaction Complete!"}</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText id="alert-dialog-description">
-                        Please wait for a tutor to accept your request. You will receive a notification once it has been accepted. Thank you!
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Cancel
-                      </Button>
-                      <Button onClick={handleClose} color="primary" autoFocus>
-                        Done
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  </Box> */}
+                
                 </Grid> 
                 <Grid
                   item
@@ -372,9 +343,7 @@ const CustomerListView = (props) => {
           </Grid>
         </React.Fragment>
         }
-        {/* <Box mt={3}>
-          <Results customers={customers} />
-        </Box> */}
+
       </Container>
     </Page>
   );

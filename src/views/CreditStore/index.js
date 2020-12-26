@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5%",
   },
   payButton: {
-    width: "40%",
+    minWidth: "40%",
     // marginLeft: "10%",
     // marginRight: "10%",
     marginTop: "5%",
@@ -275,13 +275,6 @@ function CreditStore(props){
               xs={6}
               >
               
-              <Button className={classes.backButton}  
-                color="primary"
-                onClick={handleChangeNext}
-                variant="outlined"
-                >
-                Back
-              </Button>
               
             </Grid> 
             <Grid
@@ -292,6 +285,9 @@ function CreditStore(props){
               xs={6}
               align='right'
               >
+              <Button onClick={handleChangeNext} className={classes.backButton}>
+                Back
+              </Button>
               <Button className={classes.payButton}  
                   color="primary"
                   variant="contained"
