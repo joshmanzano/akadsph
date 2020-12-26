@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomerListView = (props) => {
   const classes = useStyles();
-  const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -81,9 +80,6 @@ const CustomerListView = (props) => {
   });
   const [sendingRequest, setSendingRequest] = React.useState(false);
 
-  const handleChangeNext = (event) => {
-    setDetailsDone(!detailsDone);
-  };
   
     const handleClickOpen = () => {
       setOpen(true);
