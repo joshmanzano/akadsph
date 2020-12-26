@@ -52,13 +52,12 @@ const styles = (theme) => ({
     paddingLeft: theme.spacing(3),
 
   },
-  applyhere: {
-    cursor: "pointer",
-    "&:hover": {
-      color: theme.palette.primary.main,
-      textDecoration: "underline"
-    }
-  },
+  alreadyLink: {
+    marginBottom: theme.spacing(3),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginBottom: theme.spacing(6),
+    },
+  }
 });
 
 export class LoginView extends Component {
@@ -190,11 +189,13 @@ export class LoginView extends Component {
             </Box>
           </Paper>
         </div>
-        <Box align="right">
-          <Button  href="/#/tutor-form">
-          <Typography className={classes.applyhere} variant="body2">No tutor account yet? Click here to apply!</Typography>
-          </Button>
-        </Box>
+        <Grid container justify="flex-end">
+        <Grid item>
+            <Link href="#/tutor-form" variant="body2" className={classes.alreadyLink}>
+              No tutor account? Apply to be a tutor
+            </Link>
+        </Grid>
+        </Grid>
         <Box mt={5}>
           <Copyright />
         </Box>
