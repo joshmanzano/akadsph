@@ -22,6 +22,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {FaUser, FaGraduationCap} from 'react-icons/fa';
+import Paper from '@material-ui/core/Paper';
 
 function Copyright() {
   return (
@@ -43,6 +44,19 @@ const styles = (theme) => ({
     color: theme.palette.primary.main,
     "&:hover": {
       color: theme.palette.text.primary,
+    }
+  },
+  paperstyle: {
+    paddingTop: theme.spacing(1),
+    paddingRight: theme.spacing(3),
+    paddingLeft: theme.spacing(3),
+
+  },
+  applyhere: {
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.palette.primary.main,
+      textDecoration: "underline"
     }
   },
 });
@@ -101,79 +115,86 @@ export class LoginView extends Component {
               <img height="100" src='./img/logo.png'/>
             </Container>
           </Box>
-          <Box mt={8}>
-              <Container>
-              <h2 align="center">
-              Sign in as 
-              </h2>
-              </Container>
-          </Box>
-          <Box>
-              <div id="login" className="text-center">
-                  <Container>
-                  {/* <div className="col-md-10 col-md-offset-1 section-title">
-                      <h2>Features</h2>
-                  </div> */}
-                  <div className="row">
-                      <Grid container spacing={9}>
-                          <Grid item xs={6}>
-                          <GoogleLogin
-                            clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
-                            render={renderProps => (
-                              <div>
-                              <a
-                                  onClick={renderProps.onClick}
-                                  href="/"
-                                  className=""
-                              >
-                                  <i className={'fa'}>
-                                    <FaUser/>
+          <Paper className={classes.paperstyle} align="center">
+            <Box mt={3}>
+                <Container>
+                <h2 align="center">
+                Sign in as 
+                </h2>
+                </Container>
+            </Box>
+            <Box>
+                <div id="login" className="text-center" style={{paddingTop: "100px", paddingBottom: "100px"}}>
+                    <Container mx={5}>
+                    {/* <div className="col-md-10 col-md-offset-1 section-title">
+                        <h2>Features</h2>
+                    </div> */}
+                    <div className="row">
+                        <Grid container spacing={9}>
+                            <Grid item xs={6}>
+                            <GoogleLogin
+                              clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
+                              render={renderProps => (
+                                <div>
+                                <a
+                                    onClick={renderProps.onClick}
+                                    href="/"
+                                    className=""
+                                >
+                                    <i className={'fa'}>
+                                      <FaUser/>
 
-                                  </i>
-                              </a>{" "}
-                                  <h3>{'Parent'}</h3>
-                              </div>
-                            )}
-                            buttonText="Login"
-                            onSuccess={this.login}
-                            onFailure={this.login}
-                            uxMode={'popup'}
-                            onAutoLoadFinished={this.loaded}
-                            cookiePolicy={'single_host_origin'}
-                          />
-                          </Grid>
-                          <Grid item xs={6}>
-                          <GoogleLogin
-                            clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
-                            render={renderProps => (
-                              <div>
-                              <a
-                                  onClick={renderProps.onClick}
-                                  href="/"
-                                  className=""
-                              >
-                                  <i className={'fa'}>
-                                    <FaGraduationCap/>
+                                    </i>
+                                </a>{" "}
+                                    <h3>{'Parent'}</h3>
+                                </div>
+                              )}
+                              buttonText="Login"
+                              onSuccess={this.login}
+                              onFailure={this.login}
+                              uxMode={'popup'}
+                              onAutoLoadFinished={this.loaded}
+                              cookiePolicy={'single_host_origin'}
+                            />
+                            </Grid>
+                            <Grid item xs={6}>
+                            <GoogleLogin
+                              clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
+                              render={renderProps => (
+                                <div>
+                                <a
+                                    onClick={renderProps.onClick}
+                                    href="/"
+                                    className=""
+                                >
+                                    <i className={'fa'}>
+                                      <FaGraduationCap/>
 
-                                  </i>
-                              </a>{" "}
-                                  <h3>{'Tutor'}</h3>
-                              </div>
-                            )}
-                            buttonText="Login"
-                            onSuccess={this.login_tutor}
-                            onFailure={this.login_tutor}
-                            uxMode={'popup'}
-                            onAutoLoadFinished={this.loaded}
-                            cookiePolicy={'single_host_origin'}
-                          />
-                          </Grid>
-                      </Grid>
-                  </div>
-                  </Container>
-              </div>
-          </Box>
+                                    </i>
+                                </a>{" "}
+                                    <h3>{'Tutor'}</h3>
+                                </div>
+                              )}
+                              buttonText="Login"
+                              onSuccess={this.login_tutor}
+                              onFailure={this.login_tutor}
+                              uxMode={'popup'}
+                              onAutoLoadFinished={this.loaded}
+                              cookiePolicy={'single_host_origin'}
+                            />
+                            </Grid>
+                        </Grid>
+                    </div>
+                    </Container>
+                </div>
+            </Box>
+          </Paper>
         </div>
+        <Box align="right">
+          <Button  href="/#/tutor-form">
+          <Typography className={classes.applyhere} variant="body2">No tutor account yet? Click here to apply!</Typography>
+          </Button>
+        </Box>
         <Box mt={5}>
           <Copyright />
         </Box>
