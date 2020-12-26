@@ -49,7 +49,14 @@ const styles = (theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  
+  homebutton: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(0),
+    color: theme.palette.primary.main,
+    "&:hover": {
+      color: theme.palette.text.primary,
+    }
+  },
 });
 
 class SignUp extends Component{
@@ -92,6 +99,12 @@ class SignUp extends Component{
     }else{
     console.log(props.googleId)
   return (
+    <React.Fragment>
+      <Box mx={3}> 
+        <Button href="/#/login" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+          Back
+        </Button>
+      </Box>
     <Container component="main">
       <CssBaseline />
       
@@ -184,6 +197,7 @@ class SignUp extends Component{
         <Copyright />
       </Box> */}
     </Container>
+    </React.Fragment>
   );
     }
     }

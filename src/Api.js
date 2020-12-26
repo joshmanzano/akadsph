@@ -3,7 +3,7 @@ import jwt from 'jwt-decode';
 
 // const api_url = 'https://akadsph-staging.herokuapp.com'
 // const api_url = 'https://api.akadsph.com'
-const api_url = 'https://api.akadsph.com:8000'
+const api_url = 'http://api.akadsph.com:8000'
 const username = 'admin'
 const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
