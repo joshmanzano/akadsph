@@ -111,7 +111,7 @@ const Dashboard = (props) => {
             xs={12}
             id='selector3'
           >
-            <Upcoming currentDate={selectedDate} setUpcoming={props.setUpcoming} rows={props.upcoming} />
+            <Upcoming currentDate={selectedDate} upcoming={props.upcoming} />
           </Grid>
           <Grid
             item

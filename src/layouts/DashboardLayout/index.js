@@ -137,9 +137,9 @@ function DashboardLayout (props){
 
   const action = key => (
     <Fragment>
-        <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
+        {/* <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
             <PageviewIcon />
-        </IconButton>
+        </IconButton> */}
         <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
             <CloseIcon />
         </IconButton>
@@ -154,6 +154,7 @@ function DashboardLayout (props){
         if(!notif.seen){
           const message = notif.message 
           enqueueSnackbar(message, {
+            key: notif.id,
             variant:'info',
             persist: true,
             action
@@ -174,7 +175,7 @@ function DashboardLayout (props){
 
     {loaded ? 
     <div className={classes.root}>
-      <TopBar refresh={refresh} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
+      <TopBar refresh={refresh} closeSnackbar={closeSnackbar} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
@@ -191,7 +192,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <DashboardView setPending={setPending} setTransaction={setTransaction} setHistory={setHistory} setUpcoming={setUpcoming} first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
+                    <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
                   </Fragment>
                 </Container>
               </Route>

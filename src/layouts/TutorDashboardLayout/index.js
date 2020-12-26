@@ -141,9 +141,9 @@ function TutorDashboardLayout (props){
 
   const action = key => (
     <Fragment>
-        <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
+        {/* <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
             <PageviewIcon />
-        </IconButton>
+        </IconButton> */}
         <IconButton color="inherit" onClick={() => { closeNotif(key)}}>
             <CloseIcon />
         </IconButton>
@@ -156,8 +156,9 @@ function TutorDashboardLayout (props){
       setLoaded(true);
       userData['notifications'].forEach(notif => {
         if(!notif.seen){
-          const message = notif.message
+          const message = notif.message 
           enqueueSnackbar(message, {
+            key: notif.key,
             variant:'info',
             persist: true,
             action
@@ -176,7 +177,7 @@ function TutorDashboardLayout (props){
 
     {loaded ? 
     <div className={classes.root}>
-      <TopBar seen={userData['seen']} refresh={refresh} seenTutorNotif={props.seenTutorNotif} pendingIndicator={userData['pendingIndicator']} notifications={userData['notifications']} credits={props.credits}/>
+      <TopBar seen={userData['seen']} closeSnackbar={closeSnackbar} refresh={refresh} seenTutorNotif={props.seenTutorNotif} pendingIndicator={userData['pendingIndicator']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
@@ -193,7 +194,7 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <TutorDashboardView open={open} setOpen={setOpen} setHistory ={setHistory} setUpcoming={setUpcoming} first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
+                    <TutorDashboardView open={open} setOpen={setOpen} first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
                   </Fragment>
                 </Container>
               </Route>

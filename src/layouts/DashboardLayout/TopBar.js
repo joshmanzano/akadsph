@@ -70,6 +70,7 @@ const TopBar = ({
   seen,
   seenParentNotif,
   refresh,
+  closeSnackbar,
   onMobileNavOpen,
   ...rest
 }) => {
@@ -121,6 +122,7 @@ const TopBar = ({
   };
 
   const toggleSeen = () => {
+    closeSnackbar()
     seenParentNotif((res) => {
       console.log(res)
       refresh()

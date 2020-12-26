@@ -59,6 +59,7 @@ const TopBar = ({
   pendingIndicator,
   seenTutorNotif,
   refresh,
+  closeSnackbar,
   onMobileNavOpen,
   ...rest
 }) => {
@@ -112,6 +113,7 @@ const TopBar = ({
   );
 
   const toggleSeen = () => {
+    closeSnackbar()
     seenTutorNotif((res) => {
       console.log(res)
       refresh()

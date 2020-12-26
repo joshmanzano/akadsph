@@ -174,6 +174,7 @@ class App extends Component {
             seen = false
           }
           notifications.push({
+            id: notif.id,
             image:'../static/images/oli-happy.png',
             message: notif.notification, 
             detailPage: '#/',
@@ -193,7 +194,6 @@ class App extends Component {
           const upcoming = res['accepted_requests']
           this.setState({
             credits: parent['credits']
-
           }, () => {
             const data = {
               'notifications': notifications,
@@ -267,6 +267,7 @@ class App extends Component {
             seen = false
           }
           notifications.push({
+            id: notif.id,
             image:'../static/images/oli-happy.png',
             message: notif.notification, 
             detailPage: '#/',
@@ -282,6 +283,7 @@ class App extends Component {
         const subjects = res['subjects']
         const requests = res['pending_requests']
         const settings = res['settings']
+        const upcoming = res['accepted_requests']
         console.log(subjects)
         this.setState({
         }, () => {
@@ -296,7 +298,7 @@ class App extends Component {
               'email': tutor['email'],
             },
             'dashboardview': {
-              'upcoming':[],
+              'upcoming':upcoming,
               'pending': [],
               'history': [],
               'transaction': []
