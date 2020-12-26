@@ -10,19 +10,12 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle,
-  Backdrop,
-  Paper,
-  CircularProgress,
   Snackbar,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import MuiAlert from '@material-ui/lab/Alert';
-
-import data from './data';
 import Bundle from './Bundle';
-import Payment from './Payment';
-import Breakdown from './Breakdown';
+
 import Validity from './Validity';
 import PromoCode from './PromoCode';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -89,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
 
 function CreditStore(props){
   const classes = useStyles();
-  const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [processing, setProcessing] = React.useState(false);
@@ -237,15 +229,6 @@ function CreditStore(props){
               <br/>
               <PromoCode/>
             </Grid>
-            {/* <Grid
-              item
-              lg={12}
-              md={12}
-              xl={12}
-              xs={12}
-            >
-              <PromoCode/>
-            </Grid> */}
             <Grid
               item
               lg={12}
@@ -253,7 +236,6 @@ function CreditStore(props){
               xl={12}
               xs={12}
             >
-              {/* <Payment/> */}
             </Grid>
             <Grid
               item
