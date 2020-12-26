@@ -18,6 +18,8 @@ import { GoogleLogin } from 'react-google-login';
 
 import Loading from './loading.jsx'
 import LoadingBack from 'src/components/loadingBack';
+import { withStyles } from '@material-ui/core/styles';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {FaUser, FaGraduationCap} from 'react-icons/fa';
 
@@ -33,6 +35,17 @@ function Copyright() {
     </Typography>
   );
 }
+
+const styles = (theme) => ({
+  homebutton: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(0),
+    color: theme.palette.primary.main,
+    "&:hover": {
+      color: theme.palette.text.primary,
+    }
+  },
+});
 
 export class LoginView extends Component {
 
@@ -69,9 +82,17 @@ export class LoginView extends Component {
   }
 
   render(){
-
+    const props = this.props;
+    const {classes} = this.props;
     return (
+      <React.Fragment>
+      <Box mx={3}> 
+        <Button href="/#" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+          Home
+        </Button>
+      </Box>
       <Container component="main" maxWidth="xs">
+
         <CssBaseline />
         <LoadingBack processing={this.state.loading}/>
         <div>
@@ -157,9 +178,10 @@ export class LoginView extends Component {
           <Copyright />
         </Box>
       </Container>
+      </React.Fragment>
     );
 
   }
 }
 
-export default LoginView;
+export default withStyles(styles)(LoginView);

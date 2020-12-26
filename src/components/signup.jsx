@@ -15,6 +15,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import ParentRegister from './ParentRegister';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 
 function Copyright() {
@@ -48,6 +49,7 @@ const styles = (theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  
 });
 
 class SignUp extends Component{
@@ -92,6 +94,7 @@ class SignUp extends Component{
   return (
     <Container component="main">
       <CssBaseline />
+      
       <div className={classes.paper}>
         <Box mt={6}>
             <Container align="center">
