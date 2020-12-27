@@ -2,7 +2,8 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 
 // const api_url = 'https://akadsph-staging.herokuapp.com'
-const api_url = 'https://api.akadsph.com'
+// const api_url = 'https://api.akadsph.com'
+const api_url = 'http://api.akadsph.com:8000'
 const username = 'admin'
 const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
@@ -126,8 +127,8 @@ export const api = (url, method, raw_data, _callback) => {
 
 }
 
-export const checkout = (amount, card_number, exp_date, cvc, _callback) => {
-  create_paymentintent(amount, (payment_intent) => {
+export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callback) => {
+  create_paymentintent(shopItem, promoCode, (payment_intent) => {
     const exp_month = exp_date.split('/')[0] 
     const exp_year = exp_date.split('/')[1] 
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
@@ -140,12 +141,13 @@ export const checkout = (amount, card_number, exp_date, cvc, _callback) => {
   });
 }
 
-export const create_paymentintent = (amount, _callback) => {
+export const create_paymentintent = (shopItem, promoCode, _callback) => {
   get_user((res) => {
     const id = res['id']
     const data = {
       'parent_id':id,
-      'amount':amount
+      'shop_item':shopItem,
+      'promo_code':promoCode
     }
     post_api('paymongo', data, (res) => {
       _callback(res)

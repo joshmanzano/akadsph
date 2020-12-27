@@ -104,10 +104,12 @@ function CreditStore(props){
   const [hours, setHours] = React.useState(0);
   const [discount, setDiscount] = React.useState(0);
   const [sendingRequest, setSendingRequest] = React.useState(false);
+  const [promoCode, setPromo] = React.useState('');
+  const [shopItem, setShopItem] = React.useState('');
   
   useEffect(() => {
     if(processing){
-      checkout(amount, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
+      checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
         setProcessing(false);
         if(res){
           // Toast.success('Transaction successful!')
@@ -137,7 +139,6 @@ function CreditStore(props){
     
     const paynow = () => {
       setProcessing(true);
-
     }
 
     const DialogTitle = withStyles(useStyles)((props) => {

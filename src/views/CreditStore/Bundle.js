@@ -181,7 +181,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   className={classes.buttonContainer}
                 >
                   
-                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA', 549, '1 hour', 1) }
+                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA', 549, 1, 1) }
                   // color="primary"
                   variant="outlined">
                     <Grid container className={classes.buttonContainer}>
@@ -210,7 +210,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   
-                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB', 4999, '10 hours', 10)}
+                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB', 4999, 2, 10)}
                   // color="primary"
                   variant="outlined">
                     <Grid container>
@@ -240,7 +240,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
-                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC', 7199, '15 hours', 15)}
+                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC', 7199, 3, 15)}
                   // color="primary"
                   variant="outlined">
                     <Grid container>

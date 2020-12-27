@@ -23,9 +23,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
+
+  const upcoming = []
+
+  props.upcoming.forEach(u => {
+    upcoming.push({
+      'start_time': u.session.start_date_time,
+      'subject': u.subject.subject_field,
+      'tutor':u.session.tutor,
+    })
+  })
 
   return (
     <Page
@@ -101,7 +113,7 @@ const Dashboard = (props) => {
             xl={4}
             xs={12}
           >
-            <Calendar changeDate={changeDate} selectedDate={selectedDate} id='selector2' />
+            <Calendar changeDate={changeDate} selectedDate={selectedDate} upcoming={upcoming} id='selector2' />
           </Grid>
           <Grid
             item
@@ -111,7 +123,7 @@ const Dashboard = (props) => {
             xs={12}
             id='selector3'
           >
-            <Upcoming currentDate={selectedDate} upcoming={props.upcoming} />
+            <Upcoming currentDate={selectedDate} upcoming={upcoming} />
           </Grid>
           <Grid
             item
