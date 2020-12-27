@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomerListView = (props) => {
   const classes = useStyles();
-  const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -81,9 +80,6 @@ const CustomerListView = (props) => {
   });
   const [sendingRequest, setSendingRequest] = React.useState(false);
 
-  const handleChangeNext = (event) => {
-    setDetailsDone(!detailsDone);
-  };
   
     const handleClickOpen = () => {
       setOpen(true);
@@ -183,7 +179,6 @@ const CustomerListView = (props) => {
             </Box>
           </Grid>
         </Grid>
-        {!detailsDone ? 
         <React.Fragment>
           <Snackbar open={success} autoHideDuration={6000} onClose={() => setSuccess(false)}>
             <Alert onClose={() => setSuccess(false)} severity="success">
@@ -276,105 +271,7 @@ const CustomerListView = (props) => {
             </Grid>
           </Grid>
         </React.Fragment>
-        : 
         
-        <React.Fragment>
-          <Grid container spacing={2}>
-            <Grid item 
-                xs={12}
-            >
-              <Breakdown/>
-            </Grid>
-            <Grid item 
-              xs={12}
-            >
-              {/* <Payment/> */}
-            </Grid>
-            <Grid item xs={12}>
-              <Grid container spacing={0}>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={0}
-                  xs={0}
-                  ></Grid>
-                <Grid item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  >
-                  
-                  <Button className={classes.backButton}  
-                    color="primary"
-                    
-                    onClick={handleChangeNext}
-                    variant="outlined"
-                    >
-                    Back
-                  </Button>
-                  
-                  {/* <Box component='span' m={2}>
-                    <Button className={classes.nextButton}  
-                    color="primary"
-                    variant="contained"
-                    onClick={handleClickOpen}
-                    >
-                    Submit
-                  </Button>
-                  <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
-                    <DialogTitle id="alert-dialog-title">{"Transaction Complete!"}</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText id="alert-dialog-description">
-                        Please wait for a tutor to accept your request. You will receive a notification once it has been accepted. Thank you!
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Cancel
-                      </Button>
-                      <Button onClick={handleClose} color="primary" autoFocus>
-                        Done
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  </Box> */}
-                </Grid> 
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={6}
-                  align='right'
-                  >
-                    <Button className={classes.payButton}  
-                      color="primary"
-                      variant="contained"
-                      
-                      align='right'
-                      onClick={handleClickOpen}
-                      >
-                      Pay Now
-                    </Button>
-                    
-                </Grid>
-              </Grid>
-            </Grid>
-          
-            
-          </Grid>
-        </React.Fragment>
-        }
-        {/* <Box mt={3}>
-          <Results customers={customers} />
-        </Box> */}
       </Container>
     </Page>
   );

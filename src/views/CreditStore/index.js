@@ -10,19 +10,12 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle,
-  Backdrop,
-  Paper,
-  CircularProgress,
   Snackbar,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import MuiAlert from '@material-ui/lab/Alert';
-
-import data from './data';
 import Bundle from './Bundle';
-import Payment from './Payment';
-import Breakdown from './Breakdown';
+
 import Validity from './Validity';
 import PromoCode from './PromoCode';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -61,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5%",
   },
   payButton: {
-    width: "40%",
+    minWidth: "40%",
     // marginLeft: "10%",
     // marginRight: "10%",
     marginTop: "5%",
@@ -89,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
 
 function CreditStore(props){
   const classes = useStyles();
-  const [customers] = useState(data);
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [processing, setProcessing] = React.useState(false);
@@ -238,15 +230,6 @@ function CreditStore(props){
               <br/>
               <PromoCode/>
             </Grid>
-            {/* <Grid
-              item
-              lg={12}
-              md={12}
-              xl={12}
-              xs={12}
-            >
-              <PromoCode/>
-            </Grid> */}
             <Grid
               item
               lg={12}
@@ -254,7 +237,6 @@ function CreditStore(props){
               xl={12}
               xs={12}
             >
-              {/* <Payment/> */}
             </Grid>
             <Grid
               item
@@ -294,13 +276,6 @@ function CreditStore(props){
               xs={6}
               >
               
-              <Button className={classes.backButton}  
-                color="primary"
-                onClick={handleChangeNext}
-                variant="outlined"
-                >
-                Back
-              </Button>
               
             </Grid> 
             <Grid
@@ -311,6 +286,9 @@ function CreditStore(props){
               xs={6}
               align='right'
               >
+              <Button onClick={handleChangeNext} className={classes.backButton}>
+                Back
+              </Button>
               <Button className={classes.payButton}  
                   color="primary"
                   variant="contained"

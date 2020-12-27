@@ -3,48 +3,20 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Box,
-  Button,
-  Card,
-  CardContent,
-  TextField,
-  InputAdornment,
-  SvgIcon,
   makeStyles,
-  Typography,
   Grid,
-  Container,
-  CardHeader,
-  Divider,
-  Select,
-  FormControl,
-  InputLabel,
 } from '@material-ui/core';
-import { Search as SearchIcon } from 'react-feather';
-import CreditCardForm from './CreditCardForm';
-import Payment from './Payment';
+import Payment from './PaymentMethods';
 import Breakdown from './Breakdown';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  importButton: {
-    // marginRight: theme.spacing(1)
-  },
-  exportButton: {
-    // marginRight: theme.spacing(1)
-  },
-  bundleButton: {
-    minWidth: "30vh",
-    paddingTop: "7%",
-    paddingBottom: "7%",
-  },
   payButton: {
     width: "80%",
     marginLeft: "10%",
     marginRight: "10%",
     marginTop: "5%",
     marginBottom: "5%",
-    // paddingTop: "7%",
-    // paddingBottom: "7%",
   },
 }));
 
@@ -91,31 +63,6 @@ const PayPage = ({ className, setCardState, paynow, amount, item, discount, hour
             xl={1}
             xs={0}
           ></Grid>
-          {/* <Grid
-            item
-            lg={1}
-            md={1}
-            xl={1}
-            xs={0}
-          ></Grid>
-          <Grid
-            item
-            lg={5}
-            md={5}
-            xl={5}
-            xs={5}
-          >
-            <Button color="primary" variant="contained" onClick={paynow} className={classes.payButton}>
-              Pay Now
-            </Button>
-          </Grid>
-          <Grid
-            item
-            lg={1}
-            md={1}
-            xl={1}
-            xs={0}
-          ></Grid> */}
         </Grid>
       </Box>
     </div>
