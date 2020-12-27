@@ -48,6 +48,7 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
   const [open, setOpen] = React.useState(false);
   const [url, setURL] = React.useState(data['files']+'?path=%2F'+data['subjects']['subject_field'])
   const history = useHistory();
+  const [faveExist, setFaveExist] = React.useState(false);
 
   const handleRadioChange = (event) => {
     if(event.target.value == 'all-tutors'){
@@ -92,13 +93,13 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
           <CardContent >
             <Box>
               <Grid container spacing={2} >
-                
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
+
+                <Grid item
+                  lg={faveExist ? 4: 6}
+                  md={faveExist ? 4: 6}
+                  xl={faveExist ? 4: 6}
                   xs={12}
+                  
                 >
                   <Grid container spacing={2}>
 
@@ -159,16 +160,14 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                           {props.lengths.map((length, index) => 
                             <option value={index}>{length.name}</option>
                           )}
-                          {/* <option value={10}>1 hour</option>
-                          <option value={20}>1 hour 30 minutes</option>
-                          <option value={10}>2 hours</option> */}
                         </Select>
                       </FormControl>
                     </Grid>
                   </Grid>
-                
                 </Grid>
-
+                
+                {faveExist ?
+                    <React.Fragment> 
                 <Grid
                   item
                   lg={4}
@@ -192,8 +191,8 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                           
                         </RadioGroup>
                       </FormControl>
-                     
                     </Grid>
+                    
                     <Grid item xs={12}>
                       <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth disabled={tutorOption}>
                         <InputLabel>Favorite Tutors</InputLabel>
@@ -214,15 +213,20 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                         </Select>
                       </FormControl>
                     </Grid>
+                   
                   </Grid>
+                  
                 </Grid>
-
+                </React.Fragment>
+                  :
+                  <Box></Box>
+                }
 
                 <Grid
                   item
-                  lg={4}
-                  md={4}
-                  xl={4}
+                  lg={faveExist ? 4: 6}
+                  md={faveExist ? 4: 6}
+                  xl={faveExist ? 4: 6}
                   xs={12}
                 >
                   <Grid container spacing={2}>
@@ -298,10 +302,7 @@ const ChildDetails = ({ className, data, setData, props, ...rest }) => {
                         Upload Files
                       </Button> */}
                     </Grid>
-                    
-                    
                   </Grid>
-                  
                 </Grid>
                 
                 

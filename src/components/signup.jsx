@@ -15,6 +15,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import ParentRegister from './ParentRegister';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 
 function Copyright() {
@@ -47,6 +48,14 @@ const styles = (theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  homebutton: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(0),
+    color: theme.palette.primary.main,
+    "&:hover": {
+      color: theme.palette.text.primary,
+    }
   },
 });
 
@@ -90,8 +99,15 @@ class SignUp extends Component{
     }else{
     console.log(props.googleId)
   return (
+    <React.Fragment>
+      <Box mx={3}> 
+        <Button href="/#/login" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+          Back
+        </Button>
+      </Box>
     <Container component="main">
       <CssBaseline />
+      
       <div className={classes.paper}>
         <Box mt={6}>
             <Container align="center">
@@ -181,6 +197,7 @@ class SignUp extends Component{
         <Copyright />
       </Box> */}
     </Container>
+    </React.Fragment>
   );
     }
     }

@@ -21,13 +21,14 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 
 import LoadingBack from 'src/components/loadingBack';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
+    // paddingTop: theme.spacing(3)
   },
   appBar: {
     position: 'relative',
@@ -64,6 +65,14 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(0),
+  },
+  homebutton: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(0),
+    color: theme.palette.primary.main,
+    "&:hover": {
+      color: theme.palette.text.primary,
+    }
   },
   alreadyLink: {
     marginBottom: theme.spacing(3),
@@ -131,6 +140,11 @@ export default function(props){
       className={classes.root}
       title="Tutor Application - AKADSPH" 
     >
+      <Box mx={3}> 
+        <Button href="/#" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+          Home
+        </Button>
+      </Box>
       {activeStep === steps.length ? (
         <React.Fragment>
           <AppSent/>

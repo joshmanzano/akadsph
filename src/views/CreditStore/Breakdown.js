@@ -3,20 +3,14 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Box,
-  Button,
   Card,
   CardContent,
-  TextField,
-  InputAdornment,
-  SvgIcon,
   makeStyles,
   Typography,
   Grid,
-  Container,
   CardHeader,
   Divider,
 } from '@material-ui/core';
-import { Search as SearchIcon } from 'react-feather';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,17 +40,7 @@ const Breakdown = ({ className, amount, item, discount, hours, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      {/* <Typography variant="h4" align='center'>
-            Choose a Bundle
-      </Typography> */}
       <Grid container spacing={2}>
-        {/* <Grid
-          item
-          lg={3}
-          md={3}
-          xl={3}
-          xs={0}
-          ></Grid> */}
           <Grid
           item
           lg={12}
@@ -64,7 +48,7 @@ const Breakdown = ({ className, amount, item, discount, hours, ...rest }) => {
           xl={12}
           xs={12}
           >
-            <Box mx="auto" /*mt={3}*/ style={{boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",}}>
+            <Box mx="auto"  style={{boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",}}>
               <Card style={{justifyContent: 'center', placeItems: 'center'}}>
                 <CardHeader
                   // subheader="Bundles that are for more than 1 hour are consummable for anytime"
@@ -72,7 +56,7 @@ const Breakdown = ({ className, amount, item, discount, hours, ...rest }) => {
                 />
                 <Divider />
                 <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
+                  <Box style={{justifyContent: 'center', placeItems: 'center'}}>
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <Typography variant="h6">
