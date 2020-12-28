@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Metrics = ({ className, name, rows, headers, ...rest }) => {
+const Metrics = ({ className, name, rows, actions, headers, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -58,10 +58,11 @@ const Metrics = ({ className, name, rows, headers, ...rest }) => {
         </Typography>
       </Box>
       </Grid>
-      <Box>
+      {actions}
+      {/* <Box>
         <Button variant={'contained'} color='primary'>Add {name}</Button>
         <Button variant={'contained'} color='primary'>Disable {name}</Button>
-      </Box>
+      </Box> */}
       <InfoTable rows={rows} headers={headers}></InfoTable>
 
     </Grid>

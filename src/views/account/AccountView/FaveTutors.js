@@ -17,45 +17,6 @@ import ModalTutorProfile from './ModalTutorProfile';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import Toast from 'light-toast';
 
-const rows = [
-  {
-    name: 'Adam Crisostomo',
-    subject: 'English'
-  },
-  // {
-  //   name: 'Carl Castillo',
-  //   subject: 'Math'
-  // },
-  // {
-  //   name: 'Eedijk Roque',
-  //   subject: 'Science'
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'LoL',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   tutor: {
-  //     name: 'Adrienne Soliven'
-  //   },
-  // },
-]
-
 const headers = ["Name", "Subject", ""]
 
 const useStyles = makeStyles(() => ({
@@ -67,6 +28,8 @@ const FaveTutors = ({ className, favtutors, ...rest }) => {
   const theme = useTheme();
   const confirm = useConfirm();
   const [openTutor, setOpenTutor] = React.useState(false);
+
+  const rows = []
 
   const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenTutor(true)} startIcon={<PageviewIcon/>}>View</Button>,,
   <Button variant='outlined' color='primary' startIcon={<DeleteIcon/>}

@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalDeclined = ({open, setOpen, className, ...rest }) => {
+const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
   const classes = useStyles();
   const [openZoom, setOpenZoom] = React.useState(false);
   const [openExtension, setOpenExtension] = React.useState(false);
@@ -121,7 +121,7 @@ const ModalDeclined = ({open, setOpen, className, ...rest }) => {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={() =>  {openInNewTab('https://zoom.us/')}} color="primary" autoFocus>
+            <Button onClick={() =>  {openInNewTab(join_url)}} color="primary" autoFocus>
               Join Session
             </Button>
           </DialogActions>

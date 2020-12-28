@@ -217,7 +217,7 @@ class App extends Component {
               'findtutorview': {
                 'tutees':children,
                 'files': parent['files'],
-                'favtutors':["Carl Cornejo", "Carla Cordero"],
+                'favtutors':[],
                 'levels':[],
                 'subjects':subjects,
                 'lengths':[

@@ -101,17 +101,7 @@ function CreditStore(props){
   
   useEffect(() => {
     if(processing){
-      checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
-        setProcessing(false);
-        if(res){
-          // Toast.success('Transaction successful!')
-          setProcessing(true)
-          window.location.replace('#/transaction-successful')
-          props.addCredit(hours);
-        }else{
-          Toast.fail('Transaction failed!')
-        }
-      });
+
     }
   },[processing])
 
@@ -131,6 +121,17 @@ function CreditStore(props){
     
     const paynow = () => {
       setProcessing(true);
+      checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
+        setProcessing(false);
+        if(res){
+          // Toast.success('Transaction successful!')
+          setProcessing(true)
+          window.location.replace('#/transaction-successful')
+          props.addCredit(hours);
+        }else{
+          Toast.fail('Transaction failed!')
+        }
+      });
     }
 
     const DialogTitle = withStyles(useStyles)((props) => {

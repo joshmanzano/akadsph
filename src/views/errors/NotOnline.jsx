@@ -26,7 +26,7 @@ export class NotFoundView extends Component {
             </h2>
             <Box mb={4}>
             <h3 align="center">
-              Kindly try again later. If this persists, kindly contact akadsph@gmail.com
+              Kindly try again later. If this persists, kindly contact akads.ph@gmail.com
             </h3>
             </Box>
             <Box textAlign="center">

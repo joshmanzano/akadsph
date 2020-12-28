@@ -87,7 +87,6 @@ const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, classNa
           Toast.success('Request accepted!')
           setProcessing(true)
           window.location.replace('#/request-accepted')
-          window.location.reload()
           removeRequest(info.index)
         }else{
           Toast.fail('Request failed!')

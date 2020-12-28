@@ -35,7 +35,6 @@ import RequestAcceptedView from 'src/views/RequestAccepted';
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import Tutorial from 'src/components/Tutorial';
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
 import NoPayoutView from 'src/components/NoPayoutView';
@@ -170,7 +169,7 @@ function TutorDashboardLayout (props){
 
   useInterval(() => {
     refresh()
-  }, 5000)
+  }, 60000)
 
   return (
     <div>

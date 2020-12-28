@@ -79,6 +79,7 @@ const CustomerListView = (props) => {
     credits: props.credits,
   });
   const [sendingRequest, setSendingRequest] = React.useState(false);
+  const [url, setURL] = React.useState(data['files']+'?path=%2F'+data['subjects']['subject_field'])
 
   
     const handleClickOpen = () => {
@@ -111,7 +112,7 @@ const CustomerListView = (props) => {
       const postData = {
         'parent_id': id,
         'child_id': data['tutees'].id,
-        'extra_files': '',
+        'extra_files': url,
         'is_favourite': !data['allTutors'],
         'subject': data['subjects'].id,
         'topics': data['topics'].join(),
@@ -211,7 +212,7 @@ const CustomerListView = (props) => {
               xl={12}
               xs={12}
             >
-              <ChildDetails data={data} setData={setData} props={props}/>
+              <ChildDetails data={data} url={url} setURL={setURL} setData={setData} props={props}/>
             </Grid>
             <Grid
               item

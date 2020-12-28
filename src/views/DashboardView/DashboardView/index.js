@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import {
   Container,
   Grid,
@@ -12,7 +12,7 @@ import Pending from './Pending';
 import History from './History';
 import Transaction from './Transaction';
 import moment from 'moment';
-
+import DashboardViewTutorial from 'src/components/DashboardViewTutorial';
 
 import Calendar from './Calendar'
 
@@ -39,6 +39,7 @@ const Dashboard = (props) => {
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
       'tutor':u.session.tutor,
+      'join_url':u.session.join_zoom_link,
     })
   })
 
@@ -65,6 +66,7 @@ const Dashboard = (props) => {
       className={classes.root}
       title="Overview"
     >
+      <DashboardViewTutorial enabled={true}/>
       <Container maxWidth={false}>
       <Box mb={2}>
 
@@ -94,17 +96,17 @@ const Dashboard = (props) => {
             <Box flexGrow={1}/>
             </Grid>
             <Grid item>
-              <Typography id='selector1' variant="h1">
+              <Typography variant="h1">
                 Welcome {props.first_name}! 
               </Typography>
             </Grid>
             <Grid item>
               {props.credits > 0 ?
-              <Typography id='selector1' variant="h2">
+              <Typography variant="h2">
                 You have {props.credits} credit hours left.
               </Typography>
               :
-              <Typography id='selector1' variant="h2">
+              <Typography variant="h2">
                 You have no credit hours.
               </Typography>
               }
@@ -126,6 +128,7 @@ const Dashboard = (props) => {
             md={4}
             xl={4}
             xs={12}
+            id="calendar"
           >
             <Calendar changeDate={changeDate} upcoming={upcoming} selectedDate={selectedDate} id='selector2' />
           </Grid>
@@ -135,7 +138,7 @@ const Dashboard = (props) => {
             md={8}
             xl={8}
             xs={12}
-            id='selector3'
+            id="upcoming"
           >
             <Box flexGrow={1}>
               <Upcoming currentDate={selectedDate} upcoming={upcoming} />
@@ -156,6 +159,7 @@ const Dashboard = (props) => {
             md={12}
             xl={12}
             xs={12}
+            id="history"
           >
             <History rows={history}/>
           </Grid>

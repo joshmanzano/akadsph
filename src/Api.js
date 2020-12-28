@@ -158,7 +158,8 @@ export const create_paymentintent = (shopItem, promoCode, _callback) => {
 
 export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _callback) => {
   var axios = require('axios');
-  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":"4343434343434345","exp_month":7,"exp_year":2025,"cvc":"545"},"type":"card"}}});
+  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":card_number,"exp_month":7,"exp_year":2025,"cvc":"545"},"type":"card"}}});
+  console.log(data)
   
   var config = {
     method: 'post',

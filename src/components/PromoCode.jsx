@@ -69,7 +69,7 @@ class SignUp extends Component{
                 variant="outlined"
                 fullWidth
                 id="promo-code"
-                defaultValue="AKADSPH2020"
+                defaultValue=""
                 label="Promo Code"
                 autoFocus
                 onChange={this.changeHandler}

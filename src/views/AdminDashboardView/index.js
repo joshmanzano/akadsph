@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import {
   Container,
   Grid,
   Box,
   makeStyles,
   Typography,
+  Button
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Metrics from './Metrics';
@@ -12,7 +13,10 @@ import InfoTable from './InfoTable';
 import InfoBox from './InfoBox';
 import "gridjs/dist/theme/mermaid.css";
 
-import Calendar from './Calendar'
+import {_} from 'gridjs-react';
+
+import Calendar from './Calendar';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +27,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const parentActions = () => {
+  return (
+    <Fragment>
+      <Button variant="contained" color="primary">Edit</Button>
+      <Button variant="contained" color="primary">Disable</Button>
+    </Fragment>
+  )
+}
+
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
@@ -31,14 +44,36 @@ const Dashboard = (props) => {
   const parentRows = []
   data.parents.forEach(p => {
     parentRows.push([
-      p.first_name, p.last_name, p.email, p.credits, p.files, 'N/A'  
-
+      _(<img width="40" src={p.picture}/>), p.first_name, p.last_name, p.email, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
+        <Fragment>
+          <Button variant="contained" color="primary">Edit</Button>
+          <Button variant="contained" color="primary">Disable</Button>
+        </Fragment>
+      ) 
     ])
   })
   const tutorRows = []
   data.tutors.forEach(t => {
     tutorRows.push([
-      t.first_name, t.last_name, t.email  
+      _(<img width="40" src={t.picture}/>), t.first_name, t.last_name, t.email, _(<a target="_blank" href={t.files}>Link</a>), _(
+        <Fragment>
+          <Button variant="contained" color="primary">Edit</Button>
+          <Button variant="contained" color="primary">Disable</Button>
+        </Fragment>
+      )  
+    ])
+  })
+  const stats = data.business_stats
+
+  const metricRows = []
+  metricRows.push([
+    moment().format('MMMM'),stats.BOUGHT, stats.GMV, stats.NET_REVENUE, stats.NET_REVENUE_CMGR, stats.USED, stats.USER_RETENTION
+  ])
+
+  const transactionRows = []
+  data.payments.forEach(p => {
+    transactionRows.push([
+      moment(p.date).format('MMMM Do YYYY, h:mm:ss a'), 'Php ' + String(p.amount/100), p.credits, p.parent 
     ])
   })
 
@@ -95,7 +130,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <Metrics/>
+            <InfoBox name={'Metrics'} rows={metricRows} headers={['MONTH', 'BOUGHT', 'GMV', 'NET_REVENUE', 'NET_REVENUE_CMGR', 'USED', 'USER_RETENTION']}/>
           </Grid>
           <Grid
             item
@@ -104,7 +139,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} rows={parentRows} headers={['First Name', 'Last Name', 'Email', 'Credits', 'Files', 'Picture']}/>
+            <InfoBox name={'Parents'} rows={parentRows} headers={['Picture', 'First Name', 'Last Name', 'Email', 'Credits', 'Files', 'Actions']}/>
           </Grid>
           <Grid
             item
@@ -113,7 +148,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Tutors'} rows={tutorRows} headers={['First Name', 'Last Name', 'Email']}/>
+            <InfoBox name={'Tutors'} rows={tutorRows} headers={['Picture', 'First Name', 'Last Name', 'Email', 'Files', 'Actions']}/>
           </Grid>
           <Grid
             item
@@ -122,7 +157,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Transactions'} rows={[]} headers={[]}/>
+            <InfoBox name={'Transactions'} rows={transactionRows} headers={['Date', 'Amount', 'Credits', 'Parent']}/>
           </Grid>
         </Grid>
       </Container>

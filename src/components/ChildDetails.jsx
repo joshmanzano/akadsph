@@ -174,14 +174,14 @@ class ChildDetails extends Component{
                 />
             </Grid>
             <Grid item xs={12}>
-              <Button
+              {/* <Button
                 startIcon={<AddIcon/>}
                 variant="outlined"
                 color="primary"
                 className={classes.addChild}
                 >
                 Add Another Child
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
       </React.Fragment>

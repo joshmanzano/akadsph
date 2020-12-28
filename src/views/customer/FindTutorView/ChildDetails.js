@@ -41,12 +41,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ChildDetails = ({ className, data, setData, props, ...rest }) => {
+const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest }) => {
   const classes = useStyles();
   const topicselections = ['Algebra', 'Calculus', 'Mga Tula', 'Vocabulary'];
   const [tutorOption, setTutorOption] = React.useState(true);
   const [open, setOpen] = React.useState(false);
-  const [url, setURL] = React.useState(data['files']+'?path=%2F'+data['subjects']['subject_field'])
   const history = useHistory();
   const [faveExist, setFaveExist] = React.useState(false);
 

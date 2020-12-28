@@ -36,9 +36,9 @@ export class Header extends Component {
                     <Grid item xs={3}/>
                   </Grid>
                 </div>
-                <div className="intro-text">
+                {/* <div className="intro-text">
                   <img style={{opacity: 0.2}} width="350" src="../static/images/oli-white.png"></img>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

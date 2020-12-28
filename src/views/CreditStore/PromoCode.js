@@ -38,7 +38,7 @@ const PromoCode = ({ className, ...rest }) => {
                 id="special-request" 
                 label="Promo Code" 
                 variant="outlined" fullWidth
-                defaultValue="AKADS2020"
+                defaultValue=""
                 />
             </Grid>
             

@@ -13,6 +13,7 @@ import ModalRequest from './ModalRequest';
 import FaveTutorDecline from './FaveTutorDecline';
 import CancelIcon from '@material-ui/icons/Cancel';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
 
@@ -38,7 +39,7 @@ const rows = [
   
 ]
 
-const headers = ["Date Requested", "Subject", "Topic", "Duration", "Student", "Year Level",""]
+const headers = ["Subject", "Topic", "Duration", "Student", "Year Level",""]
 
 
 const useStyles = makeStyles(() => ({
@@ -103,7 +104,7 @@ const Requests = ({ className, pending, ...rest }) => {
     console.log(availables)
     const time_created = request.request.time_created
     const row = {
-      'date': moment(new Date(request.request.time_created)).format('MMMM Do YYYY'),
+      // 'date': moment(new Date(request.request.time_created)).format('MMMM Do YYYY'),
       'subject': request.subject.subject_field,
       'topic': request.request.topics,
       'duration': request.request.time + ' hours',
@@ -126,6 +127,9 @@ const Requests = ({ className, pending, ...rest }) => {
         setOpenRequest(true)
       }
       } startIcon={<PageviewIcon/>}>View</Button>,
+      'fileButton': <Button variant='outlined' color='primary' startIcon={<InsertDriveFileIcon/>} 
+      href={request.request.extra_files} target="_blank"
+      >Files</Button>,
       'declineButton': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() =>{
         confirm({ title:'Decline Request' ,description: 'Are you sure you want to decline this request?' })
           .then(() => {

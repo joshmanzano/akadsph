@@ -17,13 +17,23 @@ const useStyles = makeStyles(() => ({
 const Sales = ({ className, selectedDate, upcoming, changeDate, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const selectedSessionsDays = []
-  const selectedSessionsMonths = []
+  const selectedSessions = {}
   upcoming.forEach(u => {
     const start_date = new Date(u.start_time)
-    selectedSessionsDays.push(start_date.getDate())
-    selectedSessionsMonths.push(start_date.getMonth())
+    if(!(start_date.getMonth() in selectedSessions)){
+      selectedSessions[start_date.getMonth()] = []
+    }
+    selectedSessions[start_date.getMonth()].push(start_date.getDate())  
   })
+
+  const isIncluded = (date) => {
+    let included = false
+    if(date.getMonth() in selectedSessions){
+      if(selectedSessions[date.getMonth()].includes(date.getDate()))
+        included = true
+    }
+    return included
+  }
 
   return (
     <Card
@@ -41,7 +51,7 @@ const Sales = ({ className, selectedDate, upcoming, changeDate, ...rest }) => {
             onChange={changeDate}
             value={selectedDate}
             tileClassName={({date}) => 
-              selectedSessionsDays.includes(date.getDate()) && selectedSessionsMonths.includes(date.getMonth()) ? 'session_date' : null
+              isIncluded(date) ? 'session_date' : null
             }
             />
           </Grid>
@@ -56,4 +66,3 @@ Sales.propTypes = {
 };
 
 export default Sales;
-

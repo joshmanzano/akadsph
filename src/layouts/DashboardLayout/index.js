@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState, useEffect, useRef } from 'react';
-import { Container, Button, IconButton, Fade, makeStyles } from '@material-ui/core';
+import { Container, Fab, Button, IconButton, Fade, makeStyles } from '@material-ui/core';
 import {
   HashRouter as Router,
   Switch,
@@ -35,7 +35,6 @@ import jwt from 'jwt-decode';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import Tutorial from 'src/components/Tutorial';
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
 import Websocket from 'react-websocket';
@@ -49,6 +48,10 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import RequestSentView from 'src/views/RequestSent';
 import TransactionSuccessView from 'src/views/TransactionSuccess';
+
+import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
+
+import HelperModal from 'src/components/HelperModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,6 +115,8 @@ function DashboardLayout (props){
   const [setTransaction, changeTransaction] = useState(false)
   const [setNotification, changeNotification] = useState('')
   const {enqueueSnackbar, closeSnackbar} = useSnackbar();
+
+  const [open, setOpen] = useState(false)
   
   console.log('#loaded')
   console.log(loaded)
@@ -166,8 +171,12 @@ function DashboardLayout (props){
 
   useInterval(() => {
     refresh()
-  }, 5000)
+  }, 60000)
 
+  const showHelp = () => {
+    setOpen(true)
+
+  }
 
 
   return (
@@ -175,8 +184,7 @@ function DashboardLayout (props){
 
     {loaded ? 
     <div className={classes.root}>
-      <TopBar refresh={refresh} closeSnackbar={closeSnackbar} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
-      {/* <Tutorial enabled={true}/> */}
+      <TopBar id='topbar' refresh={refresh} closeSnackbar={closeSnackbar} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
@@ -190,7 +198,7 @@ function DashboardLayout (props){
 
             <Switch location={location}>
               <Route exact path={`${match.url}`}>
-                <Container>
+                <Container id="overview">
                   <Fragment>
                     <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
                   </Fragment>
@@ -263,6 +271,10 @@ function DashboardLayout (props){
       title={'Hello there!'}
       subtitle={'Ask me anything'}
       /> */}
+      <HelperModal open={open} setOpen={setOpen}/>
+      <Fab size="large" onClick={showHelp} color="primary" className={'floater'}>
+        <img id="helper-oli" width='50' src='../static/images/helper-oli.png'/>
+      </Fab>
     </div>
     :
     <Fade in={!loaded}>
