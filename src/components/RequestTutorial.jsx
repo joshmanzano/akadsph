@@ -74,7 +74,7 @@ function Tutorial(props) {
       },
       {
         element: '#specialRequests',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Feel free to specify any special request here! This is just option if ever.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Feel free to specify any special request here! This is just optional if ever.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
