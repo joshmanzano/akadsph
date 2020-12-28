@@ -35,7 +35,7 @@ const Validity = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <Box id="validty"/*mt={3}*/>
+      <Box id="validity"/*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
           <CardHeader
             // subheader="*Note these hours will expire after 6 MONTHS please use them before then."

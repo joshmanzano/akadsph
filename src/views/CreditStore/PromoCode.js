@@ -24,6 +24,7 @@ const PromoCode = ({ className, ...rest }) => {
     <div
       className={clsx(classes.root, className)}
       {...rest}
+      id="promo"
     >
       <Box id="promo"/*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>

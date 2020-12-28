@@ -9,6 +9,7 @@ import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
 import Children from './Children';
 import FaveTutors from './FaveTutors';
+import ParentProfileTutorial from 'src/components/ParentProfileTutorial';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,7 @@ const Account = (props) => {
       className={classes.root}
       title="Profile"
     >
+      <ParentProfileTutorial enabled={true}/>
       <Container maxWidth="lg">
         <Grid
           container
@@ -37,6 +39,7 @@ const Account = (props) => {
             lg={4}
             md={6}
             xs={12}
+            id="profilePic"
           >
             <Profile props={props}/>
           </Grid>
@@ -45,6 +48,7 @@ const Account = (props) => {
             lg={8}
             md={6}
             xs={12}
+            id="profileDets"
           >
             <ProfileDetails props={props}/>
           </Grid>
@@ -54,6 +58,7 @@ const Account = (props) => {
             md={12}
             xl={12}
             xs={12}
+            id="children"
           >
             <Children children={props.children}/>
           </Grid>
@@ -63,6 +68,7 @@ const Account = (props) => {
             md={12}
             xl={12}
             xs={12}
+            id="faveTutors"
           >
             <FaveTutors favtutors={props.favtutors}/>
           </Grid>
