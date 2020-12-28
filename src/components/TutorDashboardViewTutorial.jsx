@@ -14,7 +14,7 @@ function Tutorial(props) {
     const onExit = () => {
       localStorage.setItem('steps','done')
       setEnable(false)
-      props.openTerms()
+      // props.openTerms()
     }
 
     const pictures = [

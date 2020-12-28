@@ -8,6 +8,8 @@ import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
 import Metrics from './Metrics';
+import TutorProfileTutorial from 'src/components/TutorProfileTutorial';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +28,7 @@ const TutorAccountView = (props) => {
       className={classes.root}
       title="Profile"
     >
+       <TutorProfileTutorial enabled={true}/>
       <Container maxWidth="lg">
         <Grid
           direction="row"
@@ -38,6 +41,7 @@ const TutorAccountView = (props) => {
             lg={4}
             md={6}
             xs={12}
+            id="profilePic"
           >
             {/* <Box flexGrow={1}/> */}
             <Profile props={props}/>
@@ -47,6 +51,7 @@ const TutorAccountView = (props) => {
             lg={8}
             md={6}
             xs={12}
+            id="profileDets"
           >
             <ProfileDetails props={props}/>
           </Grid>
@@ -56,6 +61,7 @@ const TutorAccountView = (props) => {
             md={12}
             xl={12}
             xs={12}
+            id="metrics"
           >
             <Metrics/>
           </Grid>
