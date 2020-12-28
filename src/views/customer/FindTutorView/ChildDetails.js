@@ -121,12 +121,6 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                       </FormControl>
                     </Grid>
 
-                    {/* <Grid item xs={12}>
-                      <Typography variant="h5">
-                        Tutee's Grade Level
-                      </Typography>
-                    </Grid> */}
-
                     <Grid item xs={12}>
                       <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Grade Level</InputLabel>
@@ -175,11 +169,6 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                   xs={12}
                 >
                 <Grid container spacing={2}>
-                  {/* <Grid item xs={12}>
-                      <Typography variant="h5">
-                          Sessions and Tutor Details
-                      </Typography>
-                    </Grid> */}
                   
                     <Grid item xs={12}>
                       <FormControl component="fieldset">
@@ -207,8 +196,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                           {props.favtutors.map((tutor, index) => 
                             <option value={index}>{tutor}</option>
                           )}
-                          {/* <option value={10}>Tolo Pena</option>
-                          <option value={20}>Charles Samoy</option> */}
+                         
                         </Select>
                       </FormControl>
                     </Grid>
@@ -248,23 +236,11 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                           {props.subjects.map((subject, index) => 
                             <option value={index}>{subject.subject_field}</option>
                           )}
-                          {/* <option value={10}>Math</option>
-                          <option value={20}>Science</option>
-                          <option value={10}>Filipino</option>
-                          <option value={10}>English</option>
-                          <option value={20}>Chinese</option> */}
                         </Select>
                       </FormControl> 
                     </Grid>
                     <Grid item xs={12}>
-                    {/* <TextField
-                        fullWidth
-                        label="Topic/s"
-                        name="topics"
-                        required
-                        variant="outlined"
-                        helperText="(e.g. Algebra, Trigonometry, Vocalubary)"
-                      /> */}
+                   
                       <Autocomplete
                         multiple
                         id="tags-filled"
@@ -294,12 +270,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                       onClose={() => setOpen(false)}
                     
                     />
-                      {/* <Button className={classes}  
-                        color="primary"
-                        variant="contained"
-                        startIcon={<PublishIcon/>}>
-                        Upload Files
-                      </Button> */}
+                      
                     </Grid>
                   </Grid>
                 </Grid>
