@@ -35,7 +35,8 @@ const Dashboard = (props) => {
     upcoming.push({
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
-      'tutor':u.session.tutor,
+      'tutee':u.child.first_name,
+      'start_url':u.session.start_zoom_link,
     })
   })
 

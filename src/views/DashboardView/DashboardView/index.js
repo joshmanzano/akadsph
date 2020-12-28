@@ -13,6 +13,7 @@ import History from './History';
 import Transaction from './Transaction';
 import moment from 'moment';
 import DashboardViewTutorial from 'src/components/DashboardViewTutorial';
+import TermsModal from 'src/components/TermsModal';
 
 import Calendar from './Calendar'
 
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
 
   const upcoming = []
   const pending = []
@@ -38,7 +40,7 @@ const Dashboard = (props) => {
     upcoming.push({
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
-      'tutor':u.session.tutor,
+      'tutor':u.tutor.first_name,
       'join_url':u.session.join_zoom_link,
     })
   })
@@ -48,6 +50,16 @@ const Dashboard = (props) => {
       date: moment(p.request.time_created).format('MMMM Do YYYY'),
       subject: p.subject.subject_field,
       student: p.child.first_name
+    })
+  })
+
+  props.upcoming.forEach(u => {
+    history.push({
+      'date': moment(u.session.start_date_time).format('MMMM Do YYYY'),
+      'time': moment(u.session.start_date_time).format('h:mm:ss a'),
+      'subject': u.subject.subject_field,
+      'tutor':u.tutor.first_name,
+      'student':u.child.first_name,
     })
   })
 
@@ -61,12 +73,17 @@ const Dashboard = (props) => {
     })
   })
 
+  const openTerms = () => {
+    setOpen(true)
+  }
+
   return (
     <Page
       className={classes.root}
       title="Overview"
     >
-      <DashboardViewTutorial enabled={true}/>
+      <DashboardViewTutorial openTerms={openTerms} enabled={true}/>
+      <TermsModal open={open} setOpen={setOpen}/>
       <Container maxWidth={false}>
       <Box mb={2}>
 

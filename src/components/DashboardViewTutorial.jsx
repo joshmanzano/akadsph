@@ -14,12 +14,15 @@ function Tutorial(props) {
     const onExit = () => {
       localStorage.setItem('steps','done')
       setEnable(false)
+      props.openTerms()
     }
 
     const pictures = [
       '../static/images/start_oli.gif',
-      '../static/images/oli-happy.gif',
-      '../static/images/oli-wink.gif',
+      '../static/images/oli-happy.png',
+      '../static/images/oli-wink.png',
+      '../static/images/oli-smirk.png',
+      '../static/images/oli-idea.png',
     ]
 
     pictures.forEach(picture => {

@@ -192,6 +192,7 @@ class App extends Component {
           const pending = res['pending_requests']
           const transaction = res['transactions']
           const upcoming = res['accepted_requests']
+          const history = res['finished_requests']
           this.setState({
             credits: parent['credits']
           }, () => {
@@ -210,7 +211,7 @@ class App extends Component {
               'dashboardview': {
                 'upcoming': upcoming,
                 'pending': pending,
-                'history': [],
+                'history': history,
                 'transaction': transaction,
                 'tutees':children,
               },
