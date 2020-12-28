@@ -23,6 +23,7 @@ import {get_user, post_api} from 'src/Api';
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
 import Toast from 'light-toast';
+import RequestTutorial from 'src/components/RequestTutorial';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -142,6 +143,7 @@ const CustomerListView = (props) => {
       className={classes.root}
       title="Request A Tutor" 
     >
+      <RequestTutorial enabled={true}/>
       <LoadingBack processing={sendingRequest}/>
       <Container maxWidth={false}>
         {/* <Toolbar /> */}
@@ -211,6 +213,7 @@ const CustomerListView = (props) => {
               md={12}
               xl={12}
               xs={12}
+              id="tutoringDetails"
             >
               <ChildDetails data={data} url={url} setURL={setURL} setData={setData} props={props}/>
             </Grid>
@@ -220,6 +223,7 @@ const CustomerListView = (props) => {
               md={12}
               xl={12}
               xs={12}
+              id="availability"
             >
               <Availability data={data} setData={setData}/>
             </Grid>
@@ -229,6 +233,7 @@ const CustomerListView = (props) => {
               md={12}
               xl={12}
               xs={12}
+              id="specialRequests"
             >
               <SpecialRequests data={data} setData={setData}/>
             </Grid>

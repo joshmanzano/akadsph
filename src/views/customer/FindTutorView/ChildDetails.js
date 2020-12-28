@@ -137,7 +137,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                         </Select>
                       </FormControl> 
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} id="sessionLength">
                       
                       <FormControl onChange={handleChange} variant="outlined" className={classes.formControl} fullWidth>
                         <InputLabel>Length of Session</InputLabel>
@@ -216,7 +216,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                   xl={faveExist ? 4: 6}
                   xs={12}
                 >
-                  <Grid container spacing={2}>
+                  <Grid container spacing={2} id="subjectDetails">
                     {/* <Grid item xs={12}>
                     <Typography variant="h5">
                         Let us know the subject, topics, and materials

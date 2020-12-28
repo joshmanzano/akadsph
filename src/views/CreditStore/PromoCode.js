@@ -25,7 +25,7 @@ const PromoCode = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <Box /*mt={3}*/>
+      <Box id="promo"/*mt={3}*/>
         <Card style={{justifyContent: 'center', placeItems: 'center'}}>
           <CardHeader
             // subheader="Bundles that are for more than 1 hour are consummable for anytime"

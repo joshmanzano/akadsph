@@ -31,6 +31,7 @@ import PayPage from './PayPage';
 import LoadingBack from 'src/components/loadingBack';
 
 import Toast from 'light-toast';
+import BuyHoursTutorial from 'src/components/BuyHoursTutorial';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -154,6 +155,7 @@ function CreditStore(props){
       className={classes.root}
       title="Buy Hours" 
     >
+      <BuyHoursTutorial enabled={true}/>
       <Snackbar open={success} autoHideDuration={6000} onClose={() => setSuccess(false)}>
         <Alert onClose={() => setSuccess(false)} severity="success">
           Transaction successful!
@@ -216,7 +218,7 @@ function CreditStore(props){
               md={7}
               xl={7}
               xs={12}
-             
+              id="chooseBundles"
             >
               <Bundle setAmount={setAmount} setItem={setItem} setHours={setHours}/>
             </Grid>

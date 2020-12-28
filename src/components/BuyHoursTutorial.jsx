@@ -28,38 +28,41 @@ function Tutorial(props) {
 
     const steps = [
       {
-        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Hello there! This page is for requesting and matching the best tutors for your child.</center>'
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Oli here! Before you can request for a tutor you need hour credits.</center>'
+      },
+      {
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Hour credits are....</center>'
       },
       {
         element: '#topbar',
-        intro: ' <br/> <center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>You can always access this page through the navigation bar by clicking on "Request".</center>',
+        intro: ' <br/> <center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>You can always access this page through the navigation bar by clicking on "Buy Hours".</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
-        element: '#tutoringDetails',
-        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>Specify the details for the single tutor request here!</center>',
+        element: '#chooseBundles',
+        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>You can pick how many hour credits you can purchase with our bundles. For your reference, a single tutoring session is typically 1-2hours long.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
-        element: '#sessionLength',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Hour credits will be used depending on the length of the session regardless of the subject and tutor option. Ex. A session length of 2 hours will deduct 2 from the hour credits. </center>',
+        element: '#bundles',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>We suggest picking the 10 hours or 15 hours bundles so you can save more!</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
-        element: '#subjectDetails',
-        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>Specify the details for the single tutor request here! We highly encourage to send learning materials so our tutors can appropriately prepare.</center>',
+        element: '#validity',
+        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>The credits are</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
-        element: '#tutoringDetails',
+        element: '#promo',
         intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Once you add a tutor to your favorites, you can specifically request them here next time!</center> <center>You can add tutors in favorite after experiencing at least one session with them.</center>' ,
         position: 'right',
         // tooltipClass: 'myTooltipClass',

@@ -150,7 +150,9 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
               <Grid container spacing={2} 
                 alignItems="center"
                 justify="center"
-                style={{placeItems: 'center', textAlign: 'center'}}>
+                style={{placeItems: 'center', textAlign: 'center'}}
+                id="bundles"
+                >
                 <Grid
                   item
                   lg={4}
