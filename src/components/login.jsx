@@ -22,7 +22,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {FaUser, FaGraduationCap} from 'react-icons/fa';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 
 function Copyright() {
   return (
@@ -114,7 +114,7 @@ export class LoginView extends Component {
               <img height="100" src='./img/logo.png'/>
             </Container>
           </Box>
-          <Paper className={classes.paperstyle} align="center">
+          <Card className={classes.paperstyle} align="center">
             <Box mt={3}>
                 <Container>
                 <h2 align="center">
@@ -187,7 +187,7 @@ export class LoginView extends Component {
                     </Container>
                 </div>
             </Box>
-          </Paper>
+          </Card>
         </div>
         <Grid container justify="flex-end">
         <Grid item>
