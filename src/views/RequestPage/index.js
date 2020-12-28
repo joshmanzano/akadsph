@@ -8,6 +8,7 @@ import {
 
 import Page from 'src/components/Page';
 import Requests from './Requests';
+import JobRequestTutorial from 'src/components/JobRequestTutorial';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,8 @@ const RequestView = (props) => {
       className={classes.root}
       title="Requests"
     >
-      <Container maxWidth={false}>
+      <JobRequestTutorial enabled={true}/>
+      <Container maxWidth={false} id="requests">
         <Box mb={4}>
           <Typography variant="h1" align="center">
             Requests
