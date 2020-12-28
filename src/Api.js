@@ -1,8 +1,13 @@
 import axios from 'axios';
 import jwt from 'jwt-decode';
 
+
+if(localStorage.getItem('api_url') == null){
+  localStorage.setItem('api_url', 'https://api.akadsph.com')
+}
+
 // const api_url = 'https://akadsph-staging.herokuapp.com'
-const api_url = 'https://api.akadsph.com'
+const api_url = localStorage.getItem('api_url') 
 // const api_url = 'http://api.akadsph.com:8000'
 const username = 'admin'
 const password = 'EelBoneyTwitterImperfect'
@@ -185,6 +190,8 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
   var paymentMethodId = payment_method;
 
   var clientKey = payment_intent;
+
+  console.log(payment_intent)
 
   // Get the payment intent id from the client key
   var paymentIntentId = payment_intent.split('_client')[0];
