@@ -4,20 +4,15 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
-  CardHeader,
   Divider,
   useTheme,
   makeStyles,
-  colors,
-  Grid,
-  Tooltip,
   Button,
-  Box,
-  Container,
 } from '@material-ui/core';
 import Table from 'src/components/Table.js' 
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import PayoutTutorial from 'src/components/PayoutTutorial';
 
 const rows = [
   {
@@ -87,18 +82,16 @@ const WeeklySessions = ({ className, ...rest }) => {
   const theme = useTheme();
   const [openDetails, setOpenDetails] = React.useState(false);
 
-  const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>]
+  const buttonList = [<Button variant='outlined' color='primary' id="view" startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>]
 
   return (
     <Card
       className={clsx(classes.root, className)}
       {...rest}
     >
-      {/* <CardHeader
-        title="Upcoming Sessions"
-      /> */}
+      <PayoutTutorial enabled={true}/>
       <Divider />
-      <CardContent>
+      <CardContent id="table">
         <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
       </CardContent>
       <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 

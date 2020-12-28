@@ -98,6 +98,7 @@ const PayoutHeaders = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [openReceipt, setOpenReceipt] = React.useState(false);
+  const [expand, setExpand] = React.useState(true);
 
   const handleClickReceipt=(event)=>{
     event.stopPropagation()
@@ -105,29 +106,34 @@ const PayoutHeaders = ({ className, ...rest }) => {
     event.stopPropagation()
   }
 
+  const clickExpand=(event)=>{
+    setExpand(!expand);
+  }
+
   return (
     <div className={classes.root}>
-      <Accordion >
+      <Accordion expanded={expand} onChange={clickExpand}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1c-content"
-          id="panel1c-header"
+          id="header"
+          
         >
-          <div className={clsx(classes.column, classes.makingEven)}>
+          <div className={clsx(classes.column, classes.makingEven)} id="dates">
             <Typography className={classes.heading}>From: 09/25/2020 <br/> To: 10/1/2020</Typography>
           </div>
-          <div className={clsx(classes.column, classes.helper)}>
+          <div className={clsx(classes.column, classes.helper)} id="hours">
             <Typography className={classes.heading}>2 <br/> Complete hours</Typography>
           </div>
-          <div className={clsx(classes.column, classes.helper)}>
+          <div className={clsx(classes.column, classes.helper)} id="amount">
             <Typography className={classes.heading}>Php 600 <br/> Pending Amount</Typography>
           </div>
-          <div className={clsx(classes.column, classes.helper)}>
+          <div className={clsx(classes.column, classes.helper)} id="payoutDate">
             <Typography className={classes.heading}>10/2/2020 <br/> Payout Date</Typography>
           </div>
           <div className={clsx(classes.column)}>
             <Box my={2}>
-              <Button startIcon={<ReceiptIcon/>} color='primary' variant='outlined'
+              <Button startIcon={<ReceiptIcon/>} color='primary' variant='outlined' id="receipt"
                 onClick={(event) => handleClickReceipt(event)}
                 onFocus={(event) => event.stopPropagation()}
               >View Receipt</Button>
