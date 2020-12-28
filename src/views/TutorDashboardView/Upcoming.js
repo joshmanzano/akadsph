@@ -19,6 +19,7 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 // import ModalJoin from './ModalJoin';
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 import CancelIcon from '@material-ui/icons/Cancel';
+import ModalJoin from './ModalJoin';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
 import Toast from 'light-toast';
@@ -44,7 +45,7 @@ const rows = [
   // },
 ]
 
-const headers = ["Time", "Subject", "Tutor", ""]
+const headers = ["Time", "Subject", "Tutee", ""]
 
 
 const sessionDetails = [{
@@ -69,9 +70,13 @@ const Upcoming = (props) => {
   const rows = [];
   const [openJoin, setOpenJoin] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
+  const [start_url, setStartURL] = React.useState('https://google.com');
   const confirm = useConfirm();
 
-  console.log(props)
+  const start_session = (url) => {
+    setStartURL(url)
+    setOpenJoin(true)
+  }
 
   props.upcoming.forEach(u => {
     const sessionDate = new Date(u.start_time)
@@ -82,26 +87,24 @@ const Upcoming = (props) => {
           'time':moment(sessionDate).format('h:mm a'),
           'subject':u.subject,
           'tutor':u.tutor,
+          'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.start_url)} startIcon={<CastForEducationIcon/>}>Start</Button>,
+          'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+          'chat_button': <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+          'cancel_button': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
+          onClick={() =>{
+            confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
+              .then(() => {
+                Toast.success('Successfully cancelled session!')
+              })
+              .catch(() => {
+
+              });
+          }} 
+          >Cancel</Button>,
         })
       }
     }
   })
-
-  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenJoin(true)} startIcon={<CastForEducationIcon/>}>Join</Button>, 
-  <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
-  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
-  <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
-  onClick={() =>{
-    confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
-      .then(() => {
-        Toast.success('Successfully cancelled session!')
-      })
-      .catch(() => {
-
-      });
-  }} 
-  >Cancel</Button>,
-  ]
 
   return (
     <Card
@@ -116,9 +119,9 @@ const Upcoming = (props) => {
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+            <Table tableHeaders={headers} tableRows={rows}/>
           </CardContent>
-          {/* <ModalJoin open={openJoin} setOpen={setOpenJoin}/> */}
+          <ModalJoin open={openJoin} join_url={start_url} setOpen={setOpenJoin}/>
           <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
         </React.Fragment>
       :

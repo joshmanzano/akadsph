@@ -94,6 +94,7 @@ function Tutorial(props) {
         element: '.floater',
         intro: 'No matter where you are, you can always click here to ask me for help!',
       },
+
     ];
 
     return (

@@ -14,12 +14,15 @@ function Tutorial(props) {
     const onExit = () => {
       localStorage.setItem('steps','done')
       setEnable(false)
+      props.openTerms()
     }
 
     const pictures = [
       '../static/images/start_oli.gif',
-      '../static/images/oli-happy.gif',
-      '../static/images/oli-wink.gif',
+      '../static/images/oli-happy.png',
+      '../static/images/oli-wink.png',
+      '../static/images/oli-smirk.png',
+      '../static/images/oli-idea.png',
     ]
 
     pictures.forEach(picture => {
@@ -52,7 +55,7 @@ function Tutorial(props) {
       },
       {
         element: '#overview',
-        intro: '<center><img width="70" src="../static/images/oli-smirk.png"/></center> <center>Right now you are in the "Overview" page, where you can keep track of various information.</center>',
+        intro: '<center><img width="70" src="../static/images/oli-happy.png"/></center> <center>Right now you are in the "Overview" page, where you can keep track of various information.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
@@ -66,21 +69,21 @@ function Tutorial(props) {
       },
       {
         element: '#upcoming',
-        intro: '<center><img width="70" src="../static/images/oli-smirk.png"/></center> <center>Upcoming sessions for the selected date in the calendar will appear here.</center>',
+        intro: '<center><img width="70" src="../static/images/oli-wink.png"/></center> <center>Upcoming sessions for the selected date in the calendar will appear here.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#upcoming',
-        intro: '<center><img width="70" src="../static/images/oli-smirk.png"/></center> <center>When it\'s time for your session, I\'ll remind you to join the Zoom call with your tutor.</center>',
+        intro: '<center><img width="70" src="../static/images/oli-happy.png"/></center> <center>When it\'s time for your session, I\'ll remind you to join the Zoom call with your tutor.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#history',
-        intro: '<center><img width="70" src="../static/images/oli-smirk.png"/></center> <center>After a session, if you liked the tutor we booked for you, you can add them to your favorite tutors list so that you can request for them specifically next time.</center>',
+        intro: '<center><img width="70" src="../static/images/oli-wink.png"/></center> <center>After a session, if you liked the tutor we booked for you, you can add them to your favorite tutors list so that you can request for them specifically next time.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
@@ -97,7 +100,7 @@ function Tutorial(props) {
         // highlightClass: 'myHighlightClass',
       },
       {
-        intro: '<center><img width="70" src="../static/images/oli-smirk.png"/></center> <center>I\'ll explain what "request a tutor" and "buy hours" means later when you get to those pages. So go ahead and explore!</center>',
+        intro: '<center><img width="70" src="../static/images/oli-idea.png"/></center> <center>I\'ll explain what "request a tutor" and "buy hours" means later when you get to those pages. So go ahead and explore!</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
