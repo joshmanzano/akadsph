@@ -71,7 +71,7 @@ const ModalWaiting = ({open, setOpen, className, ...rest }) => {
   const support = () => {
     confirm({ title:'Questions for AkadsPH' ,description: 'If you have any questions you can email support@akadsph.com' })
       .then(() => {
-        setOpen(false);
+  
       })
       .catch(() => {
 
