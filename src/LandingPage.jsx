@@ -35,9 +35,16 @@ export class LandingPage extends Component {
         {/* <Gallery /> */}
         <Pricing/>
         <Testimonials data={this.state.landingPageData.Testimonials} />
-        <FreqAsk />
+        {/* <FreqAsk /> */}
         {/* <Team data={this.state.landingPageData.Team} /> */}
-        <Contact data={this.state.landingPageData.Contact} />
+        {/* <Contact data={this.state.landingPageData.Contact} /> */}
+        <div id="footer">
+          <div className="container text-center">
+            <p>
+              &copy; AkadsPH 2020{" "}
+            </p>
+          </div>
+        </div>
       </div>
     )
 

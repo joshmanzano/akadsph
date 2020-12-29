@@ -76,18 +76,21 @@ class App extends Component {
         localStorage.setItem('session_token',res['session_token'])
         window.location.replace('/')
       }else{
-        const registerProps = {
-          'familyName': res['family_name'],
-          'givenName': res['given_name'],
-          'email': res['email'],
-          'googleId': res['sub'],
-          'picture': res['picture'],
-        }
-        this.setState({
-          registerProps
-        }, () => {
-          this.props.history.replace('/register')
-        })
+        // IF NO ACCOUNT PARENT
+
+        // const registerProps = {
+        //   'familyName': res['family_name'],
+        //   'givenName': res['given_name'],
+        //   'email': res['email'],
+        //   'googleId': res['sub'],
+        //   'picture': res['picture'],
+        // }
+        // this.setState({
+        //   registerProps
+        // }, () => {
+        //   this.props.history.replace('/register')
+        // })
+        window.location.replace('/')
       }
     })
   }
@@ -102,7 +105,8 @@ class App extends Component {
         localStorage.setItem('session_token',res['session_token'])
         window.location.replace('/')
       }else{
-        this.props.history.replace('/')
+        // IF NO ACCOUNT TUTOR
+        window.location.replace('/')
       }
     })
   }
