@@ -74,7 +74,7 @@ function Tutorial(props) {
         // highlightClass: 'myHighlightClass',
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Not satisfied or can\'t match with a tutor? We have a 30 day money back guarantee. You may refer to the link below.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center> Not satisfied or can\'t match with a tutor? Don\'t worry, we have a 30 day money back guarantee! You may refer to the link below.</center>',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
