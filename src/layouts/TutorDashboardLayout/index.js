@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState, useRef, useEffect } from 'react';
-import { Container, Fade, IconButton, makeStyles } from '@material-ui/core';
+import { Container, Fade, Fab, IconButton, makeStyles } from '@material-ui/core';
 import {
   HashRouter as Router,
   Switch,
@@ -52,6 +52,7 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
 
 import CloseIcon from '@material-ui/icons/Close'
+import HelperModal from 'src/components/HelperModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -172,6 +173,10 @@ function TutorDashboardLayout (props){
     refresh()
   }, 60000)
 
+  const showHelp = () => {
+    setOpen(true)
+  }
+
   return (
     <div>
 
@@ -194,7 +199,7 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container id="overview">
                   <Fragment>
-                    <TutorDashboardView open={open} setOpen={setOpen} first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
+                    <TutorDashboardView first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
                   </Fragment>
                 </Container>
               </Route>
@@ -254,6 +259,10 @@ function TutorDashboardLayout (props){
           </div>
         </div>
       </div>
+      <HelperModal open={open} setOpen={setOpen}/>
+      <Fab size="large" onClick={showHelp} color="primary" className={'floater'}>
+        <img id="helper-oli" width='50' src='../static/images/helper-oli.png'/>
+      </Fab>
     </div>
     :
     <Fade in={!loaded}>

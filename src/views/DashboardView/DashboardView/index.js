@@ -87,7 +87,7 @@ const Dashboard = (props) => {
       className={classes.root}
       title="Overview"
     >
-      <DashboardViewTutorial openTerms={openTerms} enabled={steps=="done" ? false : true}/>
+      <DashboardViewTutorial openTerms={openTerms} enabled={localStorage.getItem('steps') == "done" ? false : true}/>
       {updateSteps}
       <TermsModal open={open} setOpen={setOpen}/>
       <Container maxWidth={false}>
