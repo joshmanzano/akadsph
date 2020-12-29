@@ -80,8 +80,6 @@ class App extends Component {
       }else{
         // IF NO ACCOUNT PARENT
         window.location.replace('#/NoParentAccount')
-        
-
         // const registerProps = {
         //   'familyName': res['family_name'],
         //   'givenName': res['given_name'],
@@ -94,7 +92,6 @@ class App extends Component {
         // }, () => {
         //   this.props.history.replace('/register')
         // })
-        window.location.replace('/')
       }
     })
   }
