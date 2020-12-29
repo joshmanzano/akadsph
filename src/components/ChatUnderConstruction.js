@@ -35,7 +35,7 @@ const CustomerListView = (props) => {
         >
           <Container maxWidth="md">
             <Box mb={4} textAlign="center">
-              <img width="400"
+              <img width="200vh"
                 alt="Under development"
                 src="/static/images/oli-construction.png"
               />
