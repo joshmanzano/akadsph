@@ -156,7 +156,7 @@ const TopBar = ({
               <Badge
               color="secondary"
               variant="dot"
-              invisible={pendingIndicator}
+              invisible={localStorage.getItem('stepsTutorRequest') != undefined}
               >
                 <InsertInvitationIcon/>
               </Badge>
@@ -220,7 +220,7 @@ const TopBar = ({
           </Box>
         </Hidden>
         <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
-          {chatNotif ?
+          {false ?
           <Badge
             color="secondary"
             variant="dot"

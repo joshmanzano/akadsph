@@ -12,7 +12,6 @@ import {
 import Table from 'src/components/Table.js' 
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 import PageviewIcon from '@material-ui/icons/Pageview';
-import PayoutTutorial from 'src/components/PayoutTutorial';
 
 const rows = [
   {
@@ -89,7 +88,6 @@ const WeeklySessions = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <PayoutTutorial enabled={true}/>
       <Divider />
       <CardContent id="table">
         <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>

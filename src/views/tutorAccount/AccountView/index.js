@@ -28,7 +28,7 @@ const TutorAccountView = (props) => {
       className={classes.root}
       title="Profile"
     >
-       <TutorProfileTutorial enabled={true}/>
+       <TutorProfileTutorial enabled={props.tutorial}/>
       <Container maxWidth="lg">
         <Grid
           direction="row"

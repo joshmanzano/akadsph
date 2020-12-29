@@ -52,7 +52,7 @@ const Dashboard = (props) => {
       className={classes.root}
       title="Overview"
     >
-       <TutorDashboardTutorial openTerms={openTerms} enabled={steps=="done" ? false : true}/>
+       <TutorDashboardTutorial openTerms={openTerms} enabled={props.tutorial}/>
        <TermsModal open={open} setOpen={setOpen}/>
       <Container maxWidth={false}>
         <TutorExtensionForm open={props.open} setOpen={props.setOpen}/>

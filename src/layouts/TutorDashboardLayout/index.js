@@ -177,6 +177,11 @@ function TutorDashboardLayout (props){
     setOpen(true)
   }
 
+  const [DashTutorial, setDashTutorial] = useState(localStorage.getItem('stepsTutorDash') == undefined)
+  const [RequestTutorial, setRequestTutorial] = useState(localStorage.getItem('stepsTutorRequest') == undefined)
+  const [PayoutTutorial, setPayoutTutorial] = useState(localStorage.getItem('stepsTutorPayout') == undefined)
+  const [ProfileTutorial, setProfileTutorial] = useState(localStorage.getItem('stepsTutorProfile') == undefined)
+
   return (
     <div>
 
@@ -199,17 +204,17 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container id="overview">
                   <Fragment>
-                    <TutorDashboardView first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
+                    <TutorDashboardView tutorial={DashTutorial} first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
                   </Fragment>
                 </Container>
               </Route>
               <Route exact path={`${match.url}viewrequest`}>
                 <Container>
                 <Fragment>
-                  {userData['requestsview'].pending.length == 0 ?
-                    <NoRequestView/>
+                  {RequestTutorial ?
+                    <RequestPage tutorial={RequestTutorial} {...userData['requestsview']}/>
                   :
-                    <RequestPage {...userData['requestsview']}/>
+                    <NoRequestView/>
                   }
                 </Fragment>
                 </Container>
@@ -217,8 +222,8 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}payout`}>
                 <Container>
                 <Fragment>
-                  {payoutPresent ?
-                    <PayoutHistory/> 
+                  {PayoutTutorial ?
+                    <PayoutHistory tutorial={PayoutTutorial}/> 
                   :
                     <NoPayoutView/>
                   }
@@ -228,7 +233,7 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}account`}>
                 <Container>
                 <Fragment>
-                  <TutorAccountView {...userData['accountview']}/>
+                  <TutorAccountView tutorial={ProfileTutorial} {...userData['accountview']}/>
                 </Fragment>
                 </Container>
               </Route>
