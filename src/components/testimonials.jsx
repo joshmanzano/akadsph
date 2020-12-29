@@ -5,6 +5,7 @@ import {
   Paper,
   Button,
   Box,
+  Hidden
 } from '@material-ui/core';
 
 import Carousel from 'react-material-ui-carousel'
@@ -46,6 +47,7 @@ export class testimonials extends Component {
       }
   ]
     return (
+      <Hidden xsDown>
       <div id="testimonials">
         <Container>
           <Box>
@@ -65,6 +67,7 @@ export class testimonials extends Component {
           </Box>
         </Container>
       </div>
+      </Hidden>
     );
   }
 }

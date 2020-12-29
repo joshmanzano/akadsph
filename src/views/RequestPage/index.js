@@ -27,7 +27,7 @@ const RequestView = (props) => {
       className={classes.root}
       title="Requests"
     >
-      <JobRequestTutorial enabled={true}/>
+      <JobRequestTutorial enabled={props.tutorial}/>
       <Container maxWidth={false} id="requests">
         <Box mb={4}>
           <Typography variant="h1" align="center">

@@ -5,15 +5,10 @@ import { Steps } from 'intro.js-react';
 function Tutorial(props) {
     const [enabled, setEnable] = useState(props.enabled);
 
-    if(!enabled){
-      if(localStorage.getItem('steps') == undefined){
-        setEnable(true)
-      }
-    }
-
     const onExit = () => {
-      localStorage.setItem('steps','done')
+      localStorage.setItem('stepsTutorPayout','done')
       setEnable(false)
+      window.location.reload()
     }
 
     const pictures = [

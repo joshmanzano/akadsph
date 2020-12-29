@@ -4,6 +4,7 @@ import {
   Grid,
   Box,
   Button,
+  Hidden,
 } from '@material-ui/core';
 
 export class Header extends Component {
@@ -28,9 +29,11 @@ export class Header extends Component {
                       </Button>
                   </Box>
                 </div>
-                <div className="intro-text">
-                  <img style={{opacity: 0.2}} width="350" src="../static/images/oli-white.png"></img>
-                </div>
+                <Hidden xsDown>
+                  <div className="intro-text">
+                    <img style={{opacity: 0.2}} width="350" src="../static/images/oli-white.png"></img>
+                  </div>
+                </Hidden>
               </div>
             </div>
           </div>

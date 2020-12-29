@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import PayoutHeaders from './PayoutHeaders';
+import PayoutTutorial from 'src/components/PayoutTutorial';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,14 +20,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const classes = useStyles();
 
   return (
     <Page
       className={classes.root}
-      title="Dashboard"
+      title="Payouts"
     >
+      <PayoutTutorial enabled={props.tutorial}/>
       <Container maxWidth={false}>
         <Box mb={4}>
           <Typography variant="h1" align="center">
