@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 :root {
-	--first: #4655A5;
-	--second: #0B3243;
+	--first: #EB5531;
+	/* --first: #f9b16e; */
+	--second: #f68080;
 }
 
 * {
@@ -296,11 +297,12 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	width: 100%;
 	padding: 0;
 	background-color: #4655A5;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;
-	-o-background-size: cover;
-	/* background-image: url(../static/images/matty.png); */
+	/* -webkit-background-size: cover; */
+	/* -moz-background-size: cover; */
+	background-size: 100% 100%;
+	/* -o-background-size: cover; */
+	/* background-image: url(../static/images/matty_new.png); */
+	background-repeat: no-repeat;
 }
 
 .introimage {
@@ -339,8 +341,8 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 
 header .intro-text {
-	padding-top: 350px;
-	padding-bottom: 200px;
+	padding-top: 250px;
+	padding-bottom: 100px;
 	text-align: center;
 }
 /* Features Section */
@@ -642,7 +644,7 @@ header .intro-text {
 /* Contact Section */
 #contact {
 	padding: 100px 0 60px 0;
-	background: var(--first);
+	background: #4655A5;
 	color: rgba(255,255,255,.75);
 }
 #contact .section-title {
