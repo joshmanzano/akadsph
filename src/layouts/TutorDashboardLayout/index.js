@@ -49,6 +49,7 @@ import toast from 'react-hot-toast';
 import {useSnackbar} from 'notistack';
 import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'react-chat-widget';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
 
 import CloseIcon from '@material-ui/icons/Close'
 
@@ -235,7 +236,8 @@ function TutorDashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  <Messenger/> 
+                  {/* <Messenger/>  */}
+                  <ChatUnderConstruction/>
                 </Fragment>
               </Route>
               <Route exact path={`${match.url}request-accepted`}>

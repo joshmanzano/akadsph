@@ -33,26 +33,27 @@ function Tutorial(props) {
       },
       {
         element: '#topbar',
-        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>New requests are notified through a red badge on request or on notifications and also through pop-up stacks. The pop-up stacks can all be removed by opening the notifications dropdown.</center>',
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Click the Requests icon to see all the requests that are currently available..</center>',
         position: 'right',
       },
       {
-        element: '#requests',
-        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>Basic details can be easily found in the table</center>',
+        element: '#view',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>If you want to see more details on the tutoring request, you can click the View Requests button to view more details.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
+      
       {
         element: '#view',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Click here to view more details, choose a date, and accept a request.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>To accept the session, simply click the Accept button.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#files',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Click here to view the learning materials the parents and tutee sent.</center>' ,
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>You can also view as any files the parent sent.</center>' ,
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
