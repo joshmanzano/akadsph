@@ -34,6 +34,7 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { withStyles } from '@material-ui/core/styles';
+import { useConfirm } from 'material-ui-confirm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,6 +67,17 @@ const useStyles = makeStyles((theme) => ({
 const ModalWaiting = ({open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
+  const confirm = useConfirm();
+  const support = () => {
+    confirm({ title:'Questions for AkadsPH' ,description: 'If you have any questions you can email support@akadsph.com' })
+      .then(() => {
+        setOpen(false);
+      })
+      .catch(() => {
+
+      });
+
+  }
 
 
   const handleClickOpen = () => {
@@ -119,12 +131,12 @@ const ModalWaiting = ({open, setOpen, className, ...rest }) => {
               </Grid>
               <Grid item>
                 <Box my={2}>
-                  <Button color="primary" variant="contained">I have a question.</Button>
+                  <Button color="primary" variant="contained" onClick={support}>I have a question.</Button>
                 </Box>
               </Grid>
               <Grid item>
                 <Box my={2}>
-                  <Button color="primary" variant="contained">I would like to give feedback about the website.</Button>
+                  <Button color="primary" variant="contained" onClick={() => window.open('http://tiny.cc/AkadsEATutorFeedback')}>I would like to give feedback about the website.</Button>
                 </Box>
               </Grid>
             </Grid>

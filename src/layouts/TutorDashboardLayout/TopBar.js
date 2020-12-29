@@ -78,6 +78,8 @@ const TopBar = ({
       });
   }
 
+  const pagelinks = ["#/", "#/viewrequest", "#/payout", "#/account", "#/settings"]
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -103,9 +105,9 @@ const TopBar = ({
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Overview', 'Book A Tutor', 'Buy Credits', 'Profile', 'Settings'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+        {['Overview', 'Requests', 'Payout', 'Profile', 'Settings'].map((text, index) => (
+          <ListItem button key={text} href={pagelinks[index]}>
+            <ListItemText primary={text} href={pagelinks[index]}/>
           </ListItem>
         ))}
       </List>
