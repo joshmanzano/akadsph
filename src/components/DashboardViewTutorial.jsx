@@ -34,10 +34,10 @@ function Tutorial(props) {
         intro: '<img width="300" src="../static/images/start_oli.gif"/> <center>Welcome to AKADS!</center>'
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-happy.png"/></center><br/> <center>Hello there! My name is Oli, the mascot of AKADS!</center>'
+        intro: '<br/><center><img width="70" src="../static/images/oli-happy.png"/></center><br/> <center>Hello there! My name is Oli, the Akads mascot, and I\'d love to guide you through the site! </center>'
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>I\'m here to guide you in using AKADS, so no need to worry about getting lost!</center>'
+        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>Akads lets you match with the best tutor for your child’s academic goals. Let\'s get started with the tour!</center>'
       },
       {
         element: '#topbar',
