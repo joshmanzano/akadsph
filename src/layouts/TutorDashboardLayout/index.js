@@ -176,7 +176,7 @@ function TutorDashboardLayout (props){
 
     {loaded ? 
     <div className={classes.root}>
-      <TopBar seen={userData['seen']} closeSnackbar={closeSnackbar} refresh={refresh} seenTutorNotif={props.seenTutorNotif} pendingIndicator={userData['pendingIndicator']} notifications={userData['notifications']} credits={props.credits}/>
+      <TopBar id='topbar' seen={userData['seen']} closeSnackbar={closeSnackbar} refresh={refresh} seenTutorNotif={props.seenTutorNotif} pendingIndicator={userData['pendingIndicator']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <Tutorial enabled={true}/> */}
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
@@ -191,7 +191,7 @@ function TutorDashboardLayout (props){
 
             <Switch location={location}>
               <Route exact path={`${match.url}`}>
-                <Container>
+                <Container id="overview">
                   <Fragment>
                     <TutorDashboardView open={open} setOpen={setOpen} first_name={userData['accountview']['first_name']} requests={userData['requestsview'].pending.length} {...userData['dashboardview']}></TutorDashboardView>
                   </Fragment>

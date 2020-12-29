@@ -10,6 +10,7 @@ import Page from 'src/components/Page';
 import Upcoming from './Upcoming';
 import History from './History';
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
+import TutorDashboardTutorial from 'src/components/TutorDashboardViewTutorial';
 
 
 import Calendar from './Calendar'
@@ -45,6 +46,7 @@ const Dashboard = (props) => {
       className={classes.root}
       title="Overview"
     >
+       <TutorDashboardTutorial enabled={true}/>
       <Container maxWidth={false}>
         <TutorExtensionForm open={props.open} setOpen={props.setOpen}/>
       <Box mb={2}>
@@ -113,6 +115,7 @@ const Dashboard = (props) => {
             md={4}
             xl={4}
             xs={12}
+            id="calendar"
           >
             <Calendar changeDate={changeDate} selectedDate={selectedDate} upcoming={upcoming} id='selector2' />
           </Grid>
@@ -122,7 +125,7 @@ const Dashboard = (props) => {
             md={8}
             xl={8}
             xs={12}
-            id='selector3'
+            id="upcoming"
           >
             <Upcoming currentDate={selectedDate} upcoming={upcoming} />
           </Grid>
@@ -132,6 +135,7 @@ const Dashboard = (props) => {
             md={12}
             xl={12}
             xs={12}
+            id="history"
           >
             <History setHistory={props.setHistory} rows={props.history}/>
           </Grid>

@@ -39,7 +39,7 @@ const rows = [
   
 ]
 
-const headers = ["Subject", "Topic", "Duration", "Student", "Year Level",""]
+const headers = ["Subject", "Topic", "Duration", "Student", "Year Level","", "", ""]
 
 
 const useStyles = makeStyles(() => ({
@@ -126,11 +126,11 @@ const Requests = ({ className, pending, ...rest }) => {
         setSchedule(availables[0].id)
         setOpenRequest(true)
       }
-      } startIcon={<PageviewIcon/>}>View</Button>,
-      'fileButton': <Button variant='outlined' color='primary' startIcon={<InsertDriveFileIcon/>} 
+      } id="view" startIcon={<PageviewIcon/>}>View</Button>,
+      'fileButton': <Button variant='outlined' color='primary' id="files" startIcon={<InsertDriveFileIcon/>} 
       href={request.request.extra_files} target="_blank"
       >Files</Button>,
-      'declineButton': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>} onClick={() =>{
+      'declineButton': <Button variant='outlined' color='secondary' id="decline" startIcon={<CancelIcon/>} onClick={() =>{
         confirm({ title:'Decline Request' ,description: 'Are you sure you want to decline this request?' })
           .then(() => {
             // setModalDecline(true);

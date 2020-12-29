@@ -63,6 +63,7 @@ const Metrics = ({ className, ...rest }) => {
         md={6}
         xl={6}
         xs={12}
+        id="monthlyMetrics"
       >
         <Box mb={2}>
          <Typography variant='h2' align='center' gutterBottom='true'>
@@ -77,6 +78,7 @@ const Metrics = ({ className, ...rest }) => {
         md={6}
         xl={6}
         xs={12}
+        id="allTimeMetrics"
       >
         <Box mb={2}>
           <Typography variant='h2' align='center' gutterBottom='true'>

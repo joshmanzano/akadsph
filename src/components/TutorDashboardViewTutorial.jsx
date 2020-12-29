@@ -14,7 +14,7 @@ function Tutorial(props) {
     const onExit = () => {
       localStorage.setItem('steps','done')
       setEnable(false)
-      props.openTerms()
+      // props.openTerms()
     }
 
     const pictures = [
@@ -34,10 +34,10 @@ function Tutorial(props) {
         intro: '<img width="300" src="../static/images/start_oli.gif"/> <center>Welcome to AKADS!</center>'
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-happy.png"/></center><br/> <center>Hello there! My name is Oli, the Akads mascot, and I\'d love to guide you through the site! </center>'
+        intro: '<br/><center><img width="70" src="../static/images/oli-happy.png"/></center><br/> <center>Hello there! My name is Oli, the spirit of AKADS!</center>'
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>Akads lets you match with the best tutor for your child’s academic goals. Let\'s get started with the tour!</center>'
+        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>I\'m here to guide you in using AKADS, so no need to worry about getting lost!</center>'
       },
       {
         element: '#topbar',
@@ -62,7 +62,7 @@ function Tutorial(props) {
       },
       {
         element: '#calendar',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Here you can keep track of your upcoming sessions. Days where you have sessions will be <span id="highlighted">highlighted</span>.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Here you can keep track of your upcoming sessions. Days where you have a tutor job will be <span id="highlighted">highlighted</span>.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
@@ -76,31 +76,26 @@ function Tutorial(props) {
       },
       {
         element: '#upcoming',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>When it\'s time for your session, I\'ll remind you to join the Zoom call with your tutor.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>When it\'s time for your session, I\'ll remind you to start the Zoom call with your tutee.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#history',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>After a session, if you liked the tutor we booked for you, you can add them to your favorite tutors list so that you can request for them specifically next time.</center>',
-        position: 'right',
-        // tooltipClass: 'myTooltipClass',
-        // highlightClass: 'myHighlightClass',
-      },
-      // {
-      //   element: '#overview',
-      //   intro: '<center><img width="70" src="../static/images/oli-smirk.png"/></center> <center>Below that, you can see your pending requests, past sessions, and past transactions.</center>',
-      //   position: 'right',
-      // },
-      {
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>To start off, I suggest to either request a tutor or buy hours. Since it\'s your first time, your first hour is on us!</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>You can view all your past sessions here.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>I\'ll explain what "request a tutor" and "buy hours" means later when you get to those pages. So go ahead and explore!</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>I\'ll explain what "Request" and "Payout" means later when you get to those pages. So go ahead and explore!</center>',
+        position: 'right',
+        // tooltipClass: 'myTooltipClass',
+        // highlightClass: 'myHighlightClass',
+      },
+      {
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>We\'re glad to have you part of the Akads family!</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',

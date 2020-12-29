@@ -28,10 +28,10 @@ function Tutorial(props) {
 
     const steps = [
       {
-        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Oli here! Before you can request for a tutor you need hour credits.</center>'
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Oli here! Before you can request for a tutor, you need to buy credits.</center>'
       },
       {
-        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Hour credits are....</center>'
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>1 Credit = 1 hour of tutoring.</center>'
       },
       {
         element: '#chooseBundles',
@@ -74,7 +74,7 @@ function Tutorial(props) {
         // highlightClass: 'myHighlightClass',
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>If you have any questions about the refund process please refer to the link below</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center> Not satisfied or can\'t match with a tutor? Don\'t worry, we have a 30 day money back guarantee! You may refer to the link below.</center>',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },

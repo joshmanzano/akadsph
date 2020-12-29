@@ -10,6 +10,7 @@ import {
   Box,
   Typography, 
   IconButton,
+  Container,
 } from '@material-ui/core';
 import {
     Dialog,
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '4px 2px 5px 20px',
   }, 
   dialogStyle:{
-    minWidth: "100vh",
+    minWidth: "40vh",
   },
 }));
 
@@ -125,7 +126,7 @@ const ModalRequest = ({open, setOpen, setSchedule, removeRequest, schedule, moda
     aria-describedby="alert-dialog-description"
     className={classes.dialogStyle}
     fullWidth={true}
-    maxWidth={'md'}
+    maxWidth={'sm'}
     >
         <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Session Request"}</DialogTitle>
         <DialogContent >
@@ -133,10 +134,9 @@ const ModalRequest = ({open, setOpen, setSchedule, removeRequest, schedule, moda
           {/* <Typography variant="body1" mb={2}  mt={3}>
             Special Request: None
           </Typography> */}
-          <Grid container>
-            <Grid item xs={8}>
-
+        
             <Box mx={8}>
+              <Container /*maxWidth="sm"*/>
             <Grid container spacing={2}>
               <Grid
                 item
@@ -270,29 +270,34 @@ const ModalRequest = ({open, setOpen, setSchedule, removeRequest, schedule, moda
                   {modalInfo['specialRequest']}
                 </Typography>
               </Grid>
+              <Grid item 
+                lg={12}
+                md={12}
+                xl={12}
+                xs={12}
+                align="center"
+              >
+                <Box my={6} align="center">
+                <FormControl component="fieldset" >
+                  <FormLabel component="legend">Available Schedules</FormLabel>
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      label="Schedule"
+                      value={schedule}
+                      onChange={changeSchedule}
+                    >
+                    {modalInfo['availables'].map(row => (
+                      <MenuItem value={row.id}>{row.label}</MenuItem>
+                    ))}
+                    </Select>
+                </FormControl>
+                </Box>
+                </Grid>
             </Grid>
+            </Container>
           </Box>
 
-            </Grid>
-            <Grid item xs={4}>
-
-            <FormControl component="fieldset" >
-              <FormLabel component="legend">Available Schedules</FormLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  label="Schedule"
-                  value={schedule}
-                  onChange={changeSchedule}
-                >
-                {modalInfo['availables'].map(row => (
-                  <MenuItem value={row.id}>{row.label}</MenuItem>
-                ))}
-                </Select>
-            </FormControl>
-
-            </Grid>
-          </Grid>
  
         </DialogContent>
         
