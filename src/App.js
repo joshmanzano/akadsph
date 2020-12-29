@@ -25,6 +25,8 @@ import PayoutHistory from 'src/views/PayoutHistory';
 import ReactPolling from 'react-polling';
 import moment from 'moment';
 import toast, {Toaster} from 'react-hot-toast';
+import NoParentAccount from 'src/components/NoParentAccount';
+import NoTutorAccount from 'src/components/NoTutorAccount'
 
 
 import 'src/Calendar.css'
@@ -77,6 +79,8 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT PARENT
+        window.location.replace('#/NoParentAccount')
+        
 
         // const registerProps = {
         //   'familyName': res['family_name'],
@@ -106,7 +110,7 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT TUTOR
-        window.location.replace('/')
+        window.location.replace('#/NoTutorAccount/')
       }
     })
   }
@@ -361,7 +365,14 @@ class App extends Component {
           <Route exact path='/admin'> 
             <AdminDashboardLayout getUserData={this.getAdminData}/>
           </Route>
+          <Route exact path='/NoParentAccount'> 
+            <NoParentAccount/>
+          </Route>
+          <Route exact path='/NoTutorAccount'> 
+            <NoTutorAccount/>
+          </Route>
           <Route path='*' component={NotFoundView} /> 
+          
         </Switch>
         }
         {this.state.type == 'parent' &&
