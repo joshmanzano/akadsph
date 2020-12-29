@@ -114,13 +114,7 @@ export class Contact extends Component {
             </div>
           </div>
         </div>
-        <div id="footer">
-          <div className="container text-center">
-            <p>
-              &copy; AkadsPH 2020{" "}
-            </p>
-          </div>
-        </div>
+
       </div>
     );
   }

@@ -300,7 +300,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	-moz-background-size: cover;
 	background-size: cover;
 	-o-background-size: cover;
-	background-image: url(../static/images/matty.png);
+	/* background-image: url(../static/images/matty.png); */
 }
 
 .introimage {
