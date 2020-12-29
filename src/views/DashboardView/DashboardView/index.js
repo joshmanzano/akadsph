@@ -30,6 +30,7 @@ const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
   const [open, setOpen] = useState(false)
+  const [steps, setSteps] = useState("not done") /*localStorage.getItem('steps')*/;
 
   const upcoming = []
   const pending = []
@@ -77,12 +78,17 @@ const Dashboard = (props) => {
     setOpen(true)
   }
 
+  const updateSteps = () =>{
+    setSteps(localStorage.getItem('steps'))
+  }
+
   return (
     <Page
       className={classes.root}
       title="Overview"
     >
-      <DashboardViewTutorial openTerms={openTerms} enabled={true}/>
+      <DashboardViewTutorial openTerms={openTerms} enabled={steps=="done" ? false : true}/>
+      {updateSteps}
       <TermsModal open={open} setOpen={setOpen}/>
       <Container maxWidth={false}>
       <Box mb={2}>
