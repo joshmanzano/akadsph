@@ -106,7 +106,7 @@ const TopBar = ({
     >
       <List>
         {['Overview', 'Requests', 'Payout', 'Profile', 'Settings'].map((text, index) => (
-          <ListItem button key={text} href={pagelinks[index]}>
+          <ListItem button key={text} onClick={()=> window.location.replace(pagelinks[index])}>
             <ListItemText primary={text} href={pagelinks[index]}/>
           </ListItem>
         ))}
