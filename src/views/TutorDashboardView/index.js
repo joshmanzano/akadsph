@@ -11,7 +11,7 @@ import Upcoming from './Upcoming';
 import History from './History';
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
 import TutorDashboardTutorial from 'src/components/TutorDashboardViewTutorial';
-
+import TermsModal from 'src/components/TermsModal';
 
 import Calendar from './Calendar'
 
@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
+  const [steps, setSteps] = useState("not done");
+  const [open, setOpen] = useState(false);
 
   const upcoming = []
 
@@ -41,12 +43,17 @@ const Dashboard = (props) => {
     })
   })
 
+  const openTerms = () => {
+    setOpen(true)
+  }
+
   return (
     <Page
       className={classes.root}
       title="Overview"
     >
-       <TutorDashboardTutorial enabled={true}/>
+       <TutorDashboardTutorial openTerms={openTerms} enabled={steps=="done" ? false : true}/>
+       <TermsModal open={open} setOpen={setOpen}/>
       <Container maxWidth={false}>
         <TutorExtensionForm open={props.open} setOpen={props.setOpen}/>
       <Box mb={2}>

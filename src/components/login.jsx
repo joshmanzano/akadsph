@@ -109,7 +109,7 @@ export class LoginView extends Component {
         <CssBaseline />
         <LoadingBack processing={this.state.loading}/>
         <div>
-          <Box mt={6}>
+          <Box mt={1} mb={3}>
             <Container align="center">
               <img height="100" src='./img/logo.png'/>
             </Container>

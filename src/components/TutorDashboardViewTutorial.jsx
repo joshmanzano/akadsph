@@ -34,10 +34,13 @@ function Tutorial(props) {
         intro: '<img width="300" src="../static/images/start_oli.gif"/> <center>Welcome to AKADS!</center>'
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-happy.png"/></center><br/> <center>Hello there! My name is Oli, the spirit of AKADS!</center>'
+        intro: '<br/><center><img width="70" src="../static/images/oli-happy.png"/></center><br/> <center>Hi there! I\’m Oli, the Akads mascot and your guide.  </center>'
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>I\'m here to guide you in using AKADS, so no need to worry about getting lost!</center>'
+        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>Akads lets parents match with the best tutor for their child\’s academic goals. Accept requests based on the best subjects and topics you can teach and how well you can handle the request.</center>'
+      },
+      {
+        intro: '<br/><center><img width="70" src="../static/images/oli-wink.png"/></center><br/> <center>Impress the tutees and their parents and they\’ll likely book you more in the future!</center>'
       },
       {
         element: '#topbar',
@@ -61,26 +64,41 @@ function Tutorial(props) {
         // highlightClass: 'myHighlightClass',
       },
       {
+        element: '#upcoming',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>You can view your upcoming accepted sessions in the Upcoming Sessions portion. You may also view again the details of each session here.</center>',
+        position: 'right',
+        // tooltipClass: 'myTooltipClass',
+        // highlightClass: 'myHighlightClass',
+      },
+      {
         element: '#calendar',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Here you can keep track of your upcoming sessions. Days where you have a tutor job will be <span id="highlighted">highlighted</span>.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>The days of your upcoming sessions will be <span id="highlighted">highlighted</span> in this calendar.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#upcoming',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Upcoming sessions for the selected date in the calendar will appear here.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>10 minutes before your session, a pop up will appear for you to start the ZOOM call. Start the call to test your internet and presentation. </center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#upcoming',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>When it\'s time for your session, I\'ll remind you to start the Zoom call with your tutee.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Note that all calls will be recorded automatically (don’t worry, the parents have already consented to this). Once you’ve concluded your session, do not end recording - simply end the call.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
+      {
+        element: '#upcoming',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>You will be prompted to upload the video of your calls to the Akads site shortly afterwards.</center>',
+        position: 'right',
+        // tooltipClass: 'myTooltipClass',
+        // highlightClass: 'myHighlightClass',
+      },
+      
       {
         element: '#history',
         intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>You can view all your past sessions here.</center>',

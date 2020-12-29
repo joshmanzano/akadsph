@@ -29,32 +29,36 @@ function Tutorial(props) {
     const steps = [
       {
         element: '#header',
-        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>Payout & History page is breakdown of your past sessions and your profits. It helps track when you\'ll receive your earnings.</center>'
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>As of now, payouts for tutorial services happen every Friday - taking into account all sessions from the previous Friday til the last Thursday.</center>'
+      },
+      {
+        element: '#header',
+        intro: ' <br/><center><img width="70" src="../static/images/oli-happy.png"/></center> <br/> <center>You may view your session history in this section as well as your expected payout amounts.</center>'
       },
       {
         element: '#dates',
-        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>Payout are accumalated in a week and released by Friday.</center>',
+        intro: '<br/> <center><img width="70" src="../static/images/oli-smirk.png"/></center> <br/> <center>Date range of all sessions from the previous Friday til the last Thursday.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#hours',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>This tells you how many hours of tutoring you\'ve accomplished in a week.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Tutoring hours accumulated in a week.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#amount',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>The total amount you will receive from all your sessions during the specified date range.</center>' ,
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>The payout amount.</center>' ,
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',
       },
       {
         element: '#payoutDate',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>The day when your pay is given to you.</center>' ,
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>When it will be released.</center>' ,
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',

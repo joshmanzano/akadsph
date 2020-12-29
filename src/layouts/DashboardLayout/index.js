@@ -53,6 +53,8 @@ import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
 import HelperModal from 'src/components/HelperModal';
 
+import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -238,7 +240,8 @@ function DashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  <Messenger/> 
+                  {/* <Messenger/>  */}
+                  <ChatUnderConstruction/>
                 </Fragment>
               </Route>
               <Route exact path={`${match.url}playground`}>
