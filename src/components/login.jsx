@@ -84,9 +84,9 @@ export class LoginView extends Component {
   login_tutor = (response) => {
     this.setState({loading:true}, () => {
       try{
-        const accessToken = response.tokenObj.access_token
-        const idToken = response.tokenObj.id_token
-        this.props.login_tutor(accessToken, idToken)
+      const accessToken = response.tokenObj.access_token
+      const idToken = response.tokenObj.id_token
+      this.props.login_tutor(accessToken, idToken)
       }catch{
         this.setState({loading:false})
       }
@@ -140,7 +140,7 @@ export class LoginView extends Component {
                         <Grid container spacing={9}>
                             <Grid item xs={6}>
                             <GoogleLogin
-                              clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
+                              clientId="591828890140-4psbm57eo09i9hguf1j9pnmsnc71dbdb.apps.googleusercontent.com"
                               render={renderProps => (
                                 <div>
                                 <a
@@ -166,7 +166,7 @@ export class LoginView extends Component {
                             </Grid>
                             <Grid item xs={6}>
                             <GoogleLogin
-                              clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
+                              clientId="591828890140-4psbm57eo09i9hguf1j9pnmsnc71dbdb.apps.googleusercontent.com"
                               render={renderProps => (
                                 <div>
                                 <a

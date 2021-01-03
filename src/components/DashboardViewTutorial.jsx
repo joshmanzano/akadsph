@@ -117,7 +117,14 @@ function Tutorial(props) {
         steps={steps}
         initialStep={0}
         onExit={onExit}
-      />
+options={{
+        disableInteraction:true,
+        showProgress:true,
+        showBullets:false,
+       showStepNumbers:true,
+exitOnOverlayClick:false
+}}
+/>
     );
 }
 

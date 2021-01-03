@@ -7,8 +7,10 @@ function Tutorial(props) {
 
     const onExit = () => {
       localStorage.setItem('stepsTutorPayout','done')
+      if(enabled){
+        window.location.reload()
+      }
       setEnable(false)
-      window.location.reload()
     }
 
     const pictures = [
@@ -96,7 +98,14 @@ function Tutorial(props) {
         steps={steps}
         initialStep={0}
         onExit={onExit}
-      />
+options={{
+        disableInteraction:true,
+        showProgress:true,
+        showBullets:false,
+       showStepNumbers:true,
+exitOnOverlayClick:false
+}}
+/>
     );
 }
 
