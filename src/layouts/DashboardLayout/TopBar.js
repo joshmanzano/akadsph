@@ -113,6 +113,8 @@ const TopBar = ({
     right: false,
   });
 
+  const pagelinks = ["#/", "#/findtutor", "#/store", "#/account", "#/settings"]
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -140,7 +142,7 @@ const TopBar = ({
     >
       <List>
         {['Overview', 'Book A Tutor', 'Buy Credits', 'Profile', 'Settings'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={()=> window.location.replace(pagelinks[index])}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -171,7 +173,7 @@ const TopBar = ({
         <Box flexGrow={1} />
         <Hidden xsDown>
         <Container>
-
+        
           <Grid container direction="row" justify="center" alignItems="center">
             <Grid item sm={2}>
             </Grid>
