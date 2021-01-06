@@ -538,10 +538,15 @@ header .intro-text {
 /* Testimonials Section */
 #testimonials {
 	padding: 100px 0;
-	background: #f6f6f6;
+	background: #0B3243;
 }
+
+#testimonials h2 {
+	color: #6CC2B6;
+}
+
 #testimonials i {
-	color: #e6e6e6;
+	color: #FFFFFF;
 	font-size: 32px;
 	margin-bottom: 20px;
 }
@@ -562,6 +567,7 @@ header .intro-text {
 .testimonial-content {
 	position: relative;
 	overflow: hidden;
+	color: #FFFFFF;
 }
 .testimonial-content p {
 	margin-bottom: 0;
@@ -572,7 +578,7 @@ header .intro-text {
 	margin-top: 10px;
 	font-size: 15px;
 	font-weight: 600;
-	color: #666;
+	color: #eb5531;
 }
 /* Pricing Section */
 #pricing {

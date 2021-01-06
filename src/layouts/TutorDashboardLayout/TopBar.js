@@ -156,7 +156,7 @@ const TopBar = ({
               <Badge
               color="secondary"
               variant="dot"
-              invisible={localStorage.getItem('stepsTutorRequest') != undefined}
+              invisible={pendingIndicator}
               >
                 <InsertInvitationIcon/>
               </Badge>

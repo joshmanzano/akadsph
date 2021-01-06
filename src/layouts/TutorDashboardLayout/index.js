@@ -154,7 +154,6 @@ function TutorDashboardLayout (props){
   const refresh = () => {
     props.getUserData((userData) => {
       setUserData(userData);
-      setLoaded(true);
       userData['notifications'].forEach(notif => {
         if(!notif.seen){
           const message = notif.message 
@@ -166,6 +165,7 @@ function TutorDashboardLayout (props){
           })
         }
       })
+      setLoaded(true);
     })
   }
 
@@ -211,7 +211,7 @@ function TutorDashboardLayout (props){
               <Route exact path={`${match.url}viewrequest`}>
                 <Container>
                 <Fragment>
-                  {RequestTutorial ?
+                  {userData['requestsview'].pending.length > 0 ?
                     <RequestPage tutorial={RequestTutorial} {...userData['requestsview']}/>
                   :
                     <NoRequestView/>

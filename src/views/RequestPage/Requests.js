@@ -107,7 +107,7 @@ const Requests = ({ className, pending, ...rest }) => {
       // 'date': moment(new Date(request.request.time_created)).format('MMMM Do YYYY'),
       'subject': request.subject.subject_field,
       'topic': request.request.topics,
-      'duration': request.request.time + ' hours',
+      'duration': request.request.time + (request.request.time > 1 ? ' hours' : ' hour'),
       'student': request.child.first_name,
       'level': request.child.year_level, 
       'viewButton': <Button variant='outlined' color='primary' onClick={() => {

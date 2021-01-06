@@ -126,7 +126,7 @@ const Dashboard = (props) => {
             <Grid item>
               {props.credits > 0 ?
               <Typography variant="h2">
-                You have {props.credits} credit hours left.
+                You have {props.credits} credit {props.credits > 1 ? 'hours' : 'hour'} left.
               </Typography>
               :
               <Typography variant="h2">

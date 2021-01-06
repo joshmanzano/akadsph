@@ -97,18 +97,18 @@
     },
     "Features": [{
             "icon": "../static/images/one-on-one.png",
-            "title": "One-on-One",
-            "text": "A more personal tutoring experience is essential to address your child's academic needs."
+            "title": "Buy Hour Credits",
+            "text": "Buy 1 hour, 10 hour, or 15 hour sessions easily through multiple safe and secure payment methods."
         },
         {
             "icon": "../static/images/top-notch.png",
-            "title": "Top Notch Tutors",
-            "text": "Our college-student-tutors come from the Philippine's top universities such as Ateneo, U.P. etc."
+            "title": "Book A Tutor",
+            "text": "Fill up a form and match with a tutor. You can chat with your tutor and send files."
         },
         {
             "icon": "../static/images/all-in-one.png",
-            "title": "All-In-One",
-            "text": "We combine the booking, payment, and video call to streamline the tutoring experience for our users."
+            "title": "Start your online session",
+            "text": "One-on-one sessions with an online whiteboard and screen share. If you liked your tutor, add them to your Favorites List and book them again in the future."
         }
     ]
 }

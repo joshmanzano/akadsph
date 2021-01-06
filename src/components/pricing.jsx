@@ -64,12 +64,12 @@ const tiers = [
   {
     title: 'Free Trial',
     price: '0',
-    description: ['First-time Users Only', 'Akads Verified Tutor', 'Zoom Video Chat', '1 Hour Session'],
+    description: ['*First-time Users Only', 'Akads Verified Tutor', 'Zoom Video Chat', '1 Hour Session'],
     buttonText: 'Sign Up for Free',
     buttonVariant: 'outlined',
   },
   {
-    title: 'Full Session',
+    title: '1 Hour',
     price: '549',
     description: [
       'Akads Verified Tutor',
@@ -81,15 +81,27 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
-    title: '10-Sessions',
-    price: '4999',
+    title: '10 Hours',
+    price: '499',
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
       'Zoom Video Chat',
-      '1 Hour Worth Of Credit',
+      '10 Hours Worth Of Credit',
     ],
     buttonText: 'Book 10 Sessions',
+    buttonVariant: 'outlined',
+  },
+  {
+    title: '15 Hours',
+    price: '479',
+    description: [
+      'Akads Verified Tutor',
+      'Any Mode Of Payment',
+      'Zoom Video Chat',
+      '15 Hours Worth Of Credit',
+    ],
+    buttonText: 'Book 15 Sessions',
     buttonVariant: 'outlined',
   },
 ];
@@ -101,15 +113,17 @@ export default function Pricing() {
       <div id="pricing">
         <Container>
           <Box>
-            <div className="section-title text-center">
+            <div className="text-center">
               <h2>Pricing</h2>
             </div>
             <div className="row">
+      <Box mt={4}>
+
       <Container maxWidth="lg" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={3}>
               <Card>
                 <CardHeader
                   title={tier.title}
@@ -146,6 +160,7 @@ export default function Pricing() {
           ))}
         </Grid>
       </Container>
+      </Box>
 
             </div>
           </Box>

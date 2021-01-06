@@ -305,7 +305,7 @@ class App extends Component {
             },
             'dashboardview': {
               'upcoming':upcoming,
-              'pending': [],
+              'pending': requests,
               'history': [],
               'transaction': []
             },

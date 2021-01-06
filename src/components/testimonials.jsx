@@ -51,12 +51,14 @@ export class testimonials extends Component {
       <div id="testimonials">
         <Container>
           <Box>
-            <div className="section-title text-center">
-              <h2>Testimonials</h2>
+            <div className="text-center">
+              <h2>Don't just take our word for it. See what parents have to say...</h2>
             </div>
+            <Box mt={8}>
+
             <div className="row">
               {this.props.data &&
-                <Carousel>
+                <Carousel indicators={false}>
                 {
                     this.props.data.map( (d, i) => <TestimonialGrid d={d} i={i} /> )
                 }
@@ -64,6 +66,8 @@ export class testimonials extends Component {
               }
 
             </div>
+
+            </Box>
           </Box>
         </Container>
       </div>

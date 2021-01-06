@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const RequestView = (props) => {
   const classes = useStyles();
+  console.log(props.pending)
 
   return (
     <Page

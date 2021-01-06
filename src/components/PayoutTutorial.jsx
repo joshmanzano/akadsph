@@ -8,9 +8,9 @@ function Tutorial(props) {
     const onExit = () => {
       localStorage.setItem('stepsTutorPayout','done')
       if(enabled){
+        setEnable(false)
         window.location.reload()
       }
-      setEnable(false)
     }
 
     const pictures = [

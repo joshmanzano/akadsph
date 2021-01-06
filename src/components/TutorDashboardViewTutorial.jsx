@@ -7,9 +7,10 @@ function Tutorial(props) {
 
     const onExit = () => {
       localStorage.setItem('stepsTutorDash','done')
-      setEnable(false)
+      if(enabled){
+        setEnable(false)
+      }
       props.openTerms()
-      window.location.reload()
     }
 
     const pictures = [
@@ -129,7 +130,7 @@ options={{
         disableInteraction:true,
         showProgress:true,
         showBullets:false,
-       showStepNumbers:true,
+       showStepNumbers:false,
 exitOnOverlayClick:false
 }}
 />
