@@ -401,8 +401,8 @@ header .intro-text {
 
 /* About Section */
 #about {
-	padding: 100px 0;
-	background: #f6f6f6;
+	/* padding: 100px 0; */
+	background: #EBEBEB;
 }
 #about h3 {
 	font-size: 22px;
@@ -447,6 +447,28 @@ header .intro-text {
 	line-height: 24px;
 	margin: 30px 0;
 }
+
+/* About Section */
+.about-cover {
+	display: table;
+	width: 100%;
+	padding: 0;
+	background-color: #EBEBEB;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: 100% 100%;
+	-o-background-size: cover;
+	background-image: url(../static/images/about_us_background.png);
+	background-repeat: no-repeat;
+	
+}
+
+.aboutimage {
+	/* width: 100%;
+	background-image: url(../static/images/oli-white.png);
+	opacity: 0.2; */
+}
+
 /* Services Section */
 #services {
 	padding: 100px 0;
