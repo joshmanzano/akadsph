@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import {IconButton} from '@material-ui/core';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 export class Contact extends Component {
   render() {
@@ -65,23 +70,23 @@ export class Contact extends Component {
                 <h3>Contact Info</h3>
                 <p>
                   <span>
-                    <i className="fa fa-map-marker"></i> Address
-                  </span>
-                  {this.props.data ? this.props.data.address : "loading"}
-                </p>
-              </div>
-              <div className="contact-item">
-                <p>
-                  <span>
-                    <i className="fa fa-phone"></i> Phone
+                    Phone
                   </span>{" "}
                   {this.props.data ? this.props.data.phone : "loading"}
                 </p>
               </div>
+              {/* <div className="contact-item">
+                <p>
+                  <span>
+                    Phone
+                  </span>{" "}
+                  {this.props.data ? this.props.data.phone : "loading"}
+                </p>
+              </div> */}
               <div className="contact-item">
                 <p>
                   <span>
-                    <i className="fa fa-envelope-o"></i> Email
+                    Email
                   </span>{" "}
                   {this.props.data ? this.props.data.email : "loading"}
                 </p>
@@ -92,21 +97,19 @@ export class Contact extends Component {
                 <div className="social">
                   <ul>
                     <li>
-                      <a
-                        href={this.props.data ? this.props.data.facebook : "/"}
-                      >
-                        <i className="fa fa-facebook"></i>
-                      </a>
+                        <IconButton href="https://www.facebook.com/LearnWithAkads">
+                          <FacebookIcon color='secondary'/>
+                        </IconButton>
                     </li>
                     <li>
-                      <a href={this.props.data ? this.props.data.twitter : "/"}>
-                        <i className="fa fa-twitter"></i>
-                      </a>
+                        <IconButton href="https://www.linkedin.com/company/akads-ph/">
+                          <LinkedInIcon color='secondary'/>
+                        </IconButton>
                     </li>
                     <li>
-                      <a href={this.props.data ? this.props.data.youtube : "/"}>
-                        <i className="fa fa-youtube"></i>
-                      </a>
+                        <IconButton href="https://www.instagram.com/akadsph">
+                          <InstagramIcon color='secondary'/>
+                        </IconButton>
                     </li>
                   </ul>
                 </div>

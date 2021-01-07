@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Button,
 } from '@material-ui/core';
+import {Link} from 'react-scroll';
 
 export class Navigation extends Component {
 
@@ -35,26 +36,26 @@ export class Navigation extends Component {
             id="bs-example-navbar-collapse-1"
           >
             <ul className="nav navbar-nav navbar-right">
-              <li>
+              {/* <li>
                 <a href="#/#about" className="page-scroll">
                   About
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="#/#services" className="page-scroll">
+                <Link to="pricing" spy={true} smooth={true}>
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#/#testimonials" className="page-scroll">
+                <Link to="testimonials" spy={true} smooth={true}>
                   Testimonials
-                </a>
+                </Link>
               </li>
-              <li>
+              {/* <li>
                 <a href="#/#contact" className="page-scroll">
                   Become A Tutor
                 </a>
-              </li>
+              </li> */}
               <li>
                 <Button onClick={() => window.location.replace('#/login')} variant="outlined" color="secondary" id="loginButton">
                   Login

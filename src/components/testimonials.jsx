@@ -58,7 +58,7 @@ export class testimonials extends Component {
 
             <div className="row">
               {this.props.data &&
-                <Carousel indicators={false}>
+                <Carousel autoPlay={true} interval={10000} indicators={true}>
                 {
                     this.props.data.map( (d, i) => <TestimonialGrid d={d} i={i} /> )
                 }

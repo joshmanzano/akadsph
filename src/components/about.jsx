@@ -15,7 +15,7 @@ export class about extends Component {
         <div className="aboutCover">
             <Grid container>
               <Hidden mdDown>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} className='aboutimage'>
                 </Grid>
               </Hidden>
               {/* <Hidden lgUp>

@@ -63,6 +63,7 @@
     "notistack": "^1.0.2",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
+    "rc-queue-anim": "^1.8.5",
     "react": "^16.13.1",
     "react-calendar": "^3.2.0",
     "react-chartjs-2": "^2.10.0",
@@ -86,6 +87,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-scroll": "^1.8.1",
     "react-swipeable-views": "^0.13.9",
     "react-transition-group": "^4.4.1",
     "react-useinterval": "^1.0.2",
@@ -95,6 +97,7 @@
     "socket.io-client": "^3.0.3",
     "styled-components": "^5.2.1",
     "uuid": "^8.3.0",
+    "windups": "^1.1.2",
     "yup": "^0.29.3"
   },
   "devDependencies": {

@@ -51,6 +51,23 @@
     "Testimonials": [
         [
             {
+                "img": "img/testimonials/Trixie.png",
+                "text": "Everything that I need to get a tutor for my daughter, Martina, is in AKADS. They help support her by providing a tutor that can help with the lessons given online schooling.",
+                "name": "Trixie Reganit"
+            },
+            {
+                "img": "img/testimonials/Marti.png",
+                "text": "Ate Bea super helped me understand trigonometry more. She even gave me tips to help me remember the formulas.",
+                "name": "Martina Reganit"
+            },
+            {
+                "img": "img/testimonials/anon.jpeg",
+                "text": "...It was really fulfilling to be able to teach Martina as she was able to understand our lesson on trigonometry. I do hope to continue teaching younger students in the future!",
+                "name": "Tutor Bea"
+            }
+        ],
+        [
+            {
                 "img": "img/testimonials/Karl.png",
                 "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
                 "name": "Tutor Karl"
@@ -66,6 +83,7 @@
                 "name": "Theodore"
             }
         ]
+
     ],
     "Team": [{
             "img": "img/team/01.jpg",
@@ -88,8 +106,7 @@
         }
     ],
     "Contact": {
-        "address": "2001 Spring Street, San Miguel Village",
-        "phone": "+639178949025",
+        "phone": "+639178966009",
         "email": "akads.ph@gmail.com",
         "facebook": "fb.com",
         "twitter": "twitter.com",

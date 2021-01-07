@@ -6,10 +6,13 @@ import {
   Button,
   Hidden,
 } from '@material-ui/core';
+import QueueAnim from 'rc-queue-anim';
 
 export class Header extends Component {
   render() {
     return (
+      <QueueAnim>
+
       <header id="header">
               <Hidden mdDown>
         <div className="intro">
@@ -20,14 +23,18 @@ export class Header extends Component {
                       {this.props.data ? this.props.data.title : "Loading"}
                       <span></span>
                     </h1>
-                    <p>
-                      Akads helps you match with a tutor that is most suited for your child. <b>Create an account now</b> and have your <b>first hour for FREE.</b>
-                    </p>
+                      <div key="1">
+                      <p>
+                        Akads helps you match with a tutor that is most suited for your child. <b>Create an account now</b> and have your <b>first hour for FREE.</b>
+                      </p>
+                      </div>
+                    <div key="2">
                     <Box mb={8} alignItems="center">
                         <Button href="#/login" style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
                           Get started
                         </Button>
                     </Box>
+                    </div>
                   </div>
                 </div>
             </div>
@@ -60,6 +67,8 @@ export class Header extends Component {
           </div>
               </Hidden>
       </header>
+
+      </QueueAnim>
     );
   }
 }

@@ -11,6 +11,7 @@ import Testimonials from './components/testimonials';
 import Contact from './components/contact';
 import Pricing from './components/pricing';
 import FreqAsk from './components/freqask';
+import Footer from './components/footer';
 import JsonData from './data/data.json';
 
 export class LandingPage extends Component {
@@ -38,13 +39,7 @@ export class LandingPage extends Component {
         <FreqAsk />
         {/* <Team data={this.state.landingPageData.Team} /> */}
         <Contact data={this.state.landingPageData.Contact} />
-        <div id="footer">
-          <div className="container text-center">
-            <p>
-              &copy; AkadsPH 2021{" "}
-            </p>
-          </div>
-        </div>
+        <Footer/>
       </div>
     )
 

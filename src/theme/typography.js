@@ -12,7 +12,7 @@ export default {
     letterSpacing: '-0.24px'
   },
   h3: {
-    fontWeight: 500,
+    fontWeight: 700,
     fontSize: 24,
     letterSpacing: '-0.06px'
   },

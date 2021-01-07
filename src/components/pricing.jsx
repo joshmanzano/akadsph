@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 6),
   },
   cardHeader: {
-    backgroundColor:
-      '#ebebeb',
+    // backgroundColor:
+    //   '#ebebeb',
   },
   cardPricing: {
     display: 'flex',
@@ -62,14 +62,14 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
   {
-    title: 'Free Trial',
+    title: 'FREE TRIAL',
     price: '0',
     description: ['*First-time Users Only', 'Akads Verified Tutor', 'Zoom Video Chat', '1 Hour Session'],
     buttonText: 'Sign Up for Free',
     buttonVariant: 'outlined',
   },
   {
-    title: '1 Hour',
+    title: '1 HOUR',
     price: '500',
     oldPrice: '549',
     description: [
@@ -82,7 +82,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
-    title: '10 Hours',
+    title: '10 HOURS',
     price: '4750',
     oldPrice: '4990',
     description: [
@@ -95,7 +95,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
-    title: '15 Hours',
+    title: '15 HOURS',
     price: '6750',
     oldPrice: '7185',
     description: [
@@ -131,19 +131,23 @@ export default function Pricing() {
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
+                  titleTypographyProps={{ variant:'h3', align: 'center', className: 'priceHeader' }}
                   subheaderTypographyProps={{ align: 'center' }}
                   action={tier.title === 'Pro' ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
                 <CardContent>
                   <div className={classes.cardPricing}>
+                    <Grid>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ₱{tier.price}
                     </Typography>
-                    <Typography component="h2" variant="h3" color="textSecondary">
+                    {tier.oldPrice && 
+                    <Typography align="center" component="h2" variant="h5" className='oldPrice'>
                       ₱{tier.oldPrice}
                     </Typography>
+                    }
+                    </Grid>
                     {/* <Typography variant="h6" color="textSecondary">
                       /hr
                     </Typography> */}
