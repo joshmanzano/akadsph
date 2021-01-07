@@ -26,7 +26,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: '#0A3243',
-      secondary: '#212121'
+      secondary: '#212121',
     }
   },
   shadows,

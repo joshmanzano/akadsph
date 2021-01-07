@@ -467,32 +467,24 @@ header .intro-row{
 	font-weight: 300;
 	padding-right: 8px;
 }
-#about img {
-	width: 520px;
-	margin-top: 10px;
+#about .about-cover {
+	/* width: 520px; */
+	width: 90vh;
+	/* margin-top: 10px; */
 	/* background: #fff; */
 	border-right: 0;
+	float: left;
 	/* box-shadow: 0 0 50px rgba(0,0,0,0.06); */
 }
+
+
 #about p {
 	line-height: 24px;
 	margin: 30px 0;
 }
 
 /* About Section */
-.about-cover {
-	display: table;
-	width: 100%;
-	padding: 0;
-	background-color: #EBEBEB;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: 100% 100%;
-	-o-background-size: cover;
-	background-image: url(../static/images/about_us_background.png);
-	background-repeat: no-repeat;
-	
-}
+
 
 .aboutimage {
 	/* width: 100%;
