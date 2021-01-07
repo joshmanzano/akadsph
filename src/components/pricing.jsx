@@ -70,7 +70,8 @@ const tiers = [
   },
   {
     title: '1 Hour',
-    price: '549',
+    price: '500',
+    oldPrice: '549',
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
@@ -82,7 +83,8 @@ const tiers = [
   },
   {
     title: '10 Hours',
-    price: '499',
+    price: '4750',
+    oldPrice: '4990',
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
@@ -94,7 +96,8 @@ const tiers = [
   },
   {
     title: '15 Hours',
-    price: '479',
+    price: '6750',
+    oldPrice: '7185',
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
@@ -138,9 +141,12 @@ export default function Pricing() {
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ₱{tier.price}
                     </Typography>
-                    <Typography variant="h6" color="textSecondary">
-                      /hr
+                    <Typography component="h2" variant="h3" color="textSecondary">
+                      ₱{tier.oldPrice}
                     </Typography>
+                    {/* <Typography variant="h6" color="textSecondary">
+                      /hr
+                    </Typography> */}
                   </div>
                   <ul>
                     {tier.description.map((line) => (

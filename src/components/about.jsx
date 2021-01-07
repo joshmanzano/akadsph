@@ -14,28 +14,39 @@ export class about extends Component {
         <div id="about" >
         <div className="aboutCover">
             <Grid container>
-              <Grid item xs={12} md={6} > <img className="about-cover" src="../static/images/about_us_background.png" /*className="img-responsive"*/ alt=""/> 
-              </Grid>
-              <Grid item xs={12} md={6}>
+              <Hidden mdDown>
+                <Grid item xs={12} md={6}>
+                </Grid>
+              </Hidden>
+              {/* <Hidden lgUp>
+              </Hidden> */}
+              <Grid item xs={12} sm={12} md={12} lg={6}>
                 <Box my={4}>
                 <div className="about-text">
                   
-                  <h3>Year Level</h3>
+                  <Hidden mdDown>
+                      <h3>Year Level</h3>
+                  </Hidden>
+                  <Hidden lgUp>
+                      <Box align="center">
+                        <h3>Year Level</h3>
+                      </Box>
+                  </Hidden>
                   <Box mb={7}>
                     <Grid container alignContent="center" my={2}>
-                      <Grid item xs={4} alignItems="center">
+                      <Grid item md={4} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/abc-block.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>Lower School</Typography>
                       </Grid>
-                      <Grid item xs={4} alignItems="center">
+                      <Grid item md={4} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/student.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>Middle School</Typography>
                       </Grid>
-                      <Grid item xs={4} alignItems="center">
+                      <Grid item md={4} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/compass.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
@@ -44,35 +55,42 @@ export class about extends Component {
                     </Grid>
                   </Box>
                   {/* <p>{this.props.data ? this.props.data.paragraph : 'loading...'}</p> */}
-                  <h3>Subjects</h3>
+                  <Hidden mdDown>
+                      <h3>Subjects</h3>
+                  </Hidden>
+                  <Hidden lgUp>
+                      <Box align="center">
+                        <h3>Subjects</h3>
+                      </Box>
+                  </Hidden>
                   <Box mb={5}>
                     <Grid container alignContent="center" my={2} spacing={4}>
                     <Grid item xs={1} alignItems="center"></Grid>
-                      <Grid item xs={2} alignItems="center">
+                      <Grid item md={2} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/calculator_icon.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>Math</Typography>
                       </Grid>
-                      <Grid item xs={2} alignItems="center">
+                      <Grid item md={2} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/atom.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>Science</Typography>
                       </Grid>
-                      <Grid item xs={2} alignItems="center">
+                      <Grid item md={2} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/book.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>English</Typography>
                       </Grid>
-                      <Grid item xs={2} alignItems="center">
+                      <Grid item md={2} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/chat.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>Filipino</Typography>
                       </Grid>
-                      <Grid item xs={2} alignItems="center">
+                      <Grid item md={2} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/scroll.png" width="80" /*className="img-responsive"*/ alt=""/> 
                         </Box>
