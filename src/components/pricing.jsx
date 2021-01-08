@@ -64,6 +64,7 @@ const tiers = [
   {
     title: 'FREE TRIAL',
     price: '0',
+    oldPrice: 'FREE',
     description: ['*First-time Users Only', 'Akads Verified Tutor', 'Zoom Video Chat', '1 Hour Session'],
     buttonText: 'Sign Up for Free',
     buttonVariant: 'outlined',
@@ -142,9 +143,14 @@ export default function Pricing() {
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ₱{tier.price}
                     </Typography>
-                    {tier.oldPrice && 
+                    {tier.oldPrice && tier.oldPrice != "FREE" &&
                     <Typography align="center" component="h2" variant="h5" className='oldPrice'>
                       ₱{tier.oldPrice}
+                    </Typography>
+                    }
+                    {tier.oldPrice == "FREE" &&
+                    <Typography align="center" component="h2" variant="h5" style={{color: "#c4c4c4"}}>
+                      {tier.oldPrice}
                     </Typography>
                     }
                     </Grid>

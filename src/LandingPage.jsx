@@ -27,7 +27,7 @@ export class LandingPage extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{overflowX: 'hidden'}}>
         <Navigation />
         <Header data={this.state.landingPageData.Header} />
         <Features data={this.state.landingPageData.Features} />
