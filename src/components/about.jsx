@@ -93,8 +93,11 @@ export class about extends Component {
                       <Grid item md={2} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/scroll.png" width="80" /*className="img-responsive"*/ alt=""/> 
-                        </Box>
                         <Typography variant="h5" align="center" style={{color: "#EB5531", fontStyle: "bold"}}>Chinese</Typography>
+                        <span style={{color: "#EB5531", fontSize: "11px"}}>(Coming Soon!)</span>
+                        </Box>
+                        
+                        
                       </Grid>
                       <Grid item xs={1} alignItems="center"></Grid>
                     </Grid>
