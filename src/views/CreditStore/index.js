@@ -33,6 +33,8 @@ import LoadingBack from 'src/components/loadingBack';
 import Toast from 'light-toast';
 import BuyHoursTutorial from 'src/components/BuyHoursTutorial';
 
+import SecurePaymentModal from 'src/components/SecurePaymentModal';
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }

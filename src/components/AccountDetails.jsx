@@ -58,7 +58,7 @@ class SignUp extends Component{
         email: props.email,
         googleId: props.googleId,
         phone: '',
-        picture: props.picture,
+        picture: '',
       }
       props.setAccount(this.state);
     }
@@ -117,7 +117,7 @@ class SignUp extends Component{
                 fullWidth
                 id="familyName"
                 label="Last Name"
-                name="lastName"
+                name="familyName"
                 defaultValue={props.familyName}
                 value={this.state.lastName}
                 autoComplete="lname"

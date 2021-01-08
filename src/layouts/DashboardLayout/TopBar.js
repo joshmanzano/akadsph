@@ -256,6 +256,7 @@ const TopBar = ({
           <Badge
             color="secondary"
             variant="dot"
+            invisible={true}
           >
             <ForumIcon/>
           </Badge>
