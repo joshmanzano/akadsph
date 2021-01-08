@@ -60,7 +60,7 @@ const CustomerListView = (props) => {
               />
             </Box>
             <h2 align="center">
-              Hello! The site is currently in beta-production. Only select parents can login. If you are interested in trying it out then you can sign using the link below.
+            Hello! Only Early Access parents can login. If you are interested in trying Akads out then you can sign using the link below.
             </h2>
             <Box mt={4} align="center">
             <Button size="large" color="primary" variant="contained" onClick={() =>  window.open("tiny.cc/AkadsEarlyAccess","_blank")}>
