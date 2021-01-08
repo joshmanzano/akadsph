@@ -240,24 +240,9 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                       </FormControl> 
                     </Grid>
                     <Grid item xs={12}>
-                   
-                      <Autocomplete
-                        multiple
-                        id="tags-filled"
-                        name='topics'
-                        options={topicselections.map((option) => option)}
-                        freeSolo
-                        variant="outlined"
-                        renderTags={(value, getTagProps) =>
-                          value.map((option, index) => (
-                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                          ))
-                        }
-                        renderInput={(params) => (
-                          <TextField {...params} variant="outlined" label="Topic/s" placeholder="Topic" helperText="(e.g. Algebra, Trigonometry, Vocalubary)"/>
-                        )}
-                        onChange={handleFreeChange}
-                      />
+                      <FormControl onChange={handleFreeChange} variant="outlined" className={classes.formControl} fullWidth>
+                        <TextField name="topics" variant="outlined" label="Topic/s" placeholder="Topic" helperText="(e.g. Algebra, Trigonometry, Vocabulary)"/>
+                      </FormControl> 
                     </Grid>
                     <Grid item xs={12} align='center'>
                     <Typography variant="h6">

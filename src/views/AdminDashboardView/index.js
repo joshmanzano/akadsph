@@ -44,7 +44,7 @@ const Dashboard = (props) => {
   const parentRows = []
   data.parents.forEach(p => {
     parentRows.push([
-      _(<img width="40" src={p.picture}/>), p.first_name, p.last_name, p.email, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
+      p.id, _(<img width="40" src={p.picture}/>), p.first_name, p.last_name, p.email, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
         <Fragment>
           <Button variant="contained" color="primary">Edit</Button>
           <Button variant="contained" color="primary">Disable</Button>
@@ -55,7 +55,7 @@ const Dashboard = (props) => {
   const tutorRows = []
   data.tutors.forEach(t => {
     tutorRows.push([
-      _(<img width="40" src={t.picture}/>), t.first_name, t.last_name, t.email, _(<a target="_blank" href={t.files}>Link</a>), _(
+      t.id, _(<img width="40" src={t.picture}/>), t.first_name, t.last_name, t.email, _(<a target="_blank" href={t.files}>Link</a>), _(
         <Fragment>
           <Button variant="contained" color="primary">Edit</Button>
           <Button variant="contained" color="primary">Disable</Button>
@@ -139,7 +139,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} rows={parentRows} headers={['Picture', 'First Name', 'Last Name', 'Email', 'Credits', 'Files', 'Actions']}/>
+            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Credits', 'Files', 'Actions']}/>
           </Grid>
           <Grid
             item
@@ -148,7 +148,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Tutors'} rows={tutorRows} headers={['Picture', 'First Name', 'Last Name', 'Email', 'Files', 'Actions']}/>
+            <InfoBox name={'Tutors'} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Files', 'Actions']}/>
           </Grid>
           <Grid
             item

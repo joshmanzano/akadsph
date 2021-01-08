@@ -354,7 +354,7 @@ class App extends Component {
             <Login login={this.login} login_tutor={this.login_tutor} />
           </Route>
           <Route exact path='/register'> 
-            <SignUp {...this.state.registerProps} register={this.register} />
+            <SignUp {...this.state.registerProps} googleId="0" register={this.register} />
           </Route>
           <Route exact path='/tutor-form'> 
             <TutorApp/>
