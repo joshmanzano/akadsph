@@ -13,6 +13,8 @@ const username = 'admin'
 const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
+const paymongo_public_live = 'pk_live_3Ef8VJ23gNTU6JYCGEcxZzhb'
+const paymongo_public_test = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -241,7 +243,8 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
         const status = {
           'state':paymentIntentStatus,
           'url':url,
-          'payment_intent':paymentIntent.id
+          'payment_intent':paymentIntentId,
+          'client_key': clientKey
         }
         // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
         _callback(status)
@@ -318,7 +321,8 @@ export const get_payment_intent = (payment_intent, client_key, _callback) => {
         const status = {
           'state':paymentIntentStatus,
           'url':url,
-          'payment_intent':paymentIntent.id
+          'payment_intent':paymentIntent.id,
+          'client_key': clientKey
         }
         // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
         _callback(status)
