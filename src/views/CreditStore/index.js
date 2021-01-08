@@ -119,18 +119,30 @@ function CreditStore(props){
       console.log(cardState)
       setOpen(false);
     };
+
+    function sleep(milliseconds) {
+      const date = Date.now();
+      let currentDate = null;
+      do {
+        currentDate = Date.now();
+      } while (currentDate - date < milliseconds);
+    }
     
     const paynow = () => {
       setProcessing(true);
+      console.log(cardState)
       checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
-        setProcessing(false);
-        if(res){
+        if(res['state'] == 'success'){
           // Toast.success('Transaction successful!')
-          setProcessing(true)
           window.location.replace('#/transaction-successful')
           props.addCredit(hours);
-        }else{
+        }else if(res['state'] == 'fail'){
           Toast.fail('Transaction failed!')
+        }else if(res['state'] == 'awaiting_next_action'){
+          console.log(res)
+        }else if(res['state'] == 'processing'){
+          sleep(1000)
+          paynow()
         }
       });
     }

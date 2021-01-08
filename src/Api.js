@@ -15,6 +15,14 @@ const password = 'EelBoneyTwitterImperfect'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 // axios.defaults.withCredentials = true;
 
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 const get_token = (_callback) => {
   localStorage.clear()
   const data = {
@@ -138,6 +146,9 @@ export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callb
     const exp_year = exp_date.split('/')[1] 
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
       console.log(payment_method)
+      if(payment_method == null){
+
+      }
       const payment_method_id = payment_method['data']['id']
       attach_payment(payment_intent, payment_method_id, (res) => {
         _callback(res)
@@ -163,7 +174,10 @@ export const create_paymentintent = (shopItem, promoCode, _callback) => {
 
 export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _callback) => {
   var axios = require('axios');
-  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":card_number,"exp_month":7,"exp_year":2025,"cvc":"545"},"type":"card"}}});
+  console.log(exp_month)
+  console.log(exp_year)
+  console.log(cvc)
+  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":card_number,"exp_month":Number(exp_month),"exp_year":Number('20'+exp_year),"cvc":cvc},"type":"card"}}});
   console.log(data)
   
   var config = {
@@ -182,6 +196,7 @@ export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _cal
   })
   .catch(function (error) {
     console.log(error);
+    _callback(null)
   });
 
 }
@@ -219,36 +234,140 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
     console.log(response)
     var paymentIntent = response.data.data;
     var paymentIntentStatus = paymentIntent.attributes.status;
-    
-    if (paymentIntentStatus === 'awaiting_next_action') {
-      console.log('wait')
-      // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
-    } else if (paymentIntentStatus === 'succeeded') {
-      console.log('success')
-      get_user((res) => {
-        const id = res['id']
-        const data = {
-          'parent_id': id,
-          'client_key': clientKey,
-          'payment_intent': paymentIntentId
+      
+      if (paymentIntentStatus === 'awaiting_next_action') {
+        console.log('wait')
+        const url = paymentIntent.attributes.next_action.redirect.url
+        const status = {
+          'state':paymentIntentStatus,
+          'url':url,
+          'payment_intent':paymentIntent.id
         }
-        post_api('verify-paymongo', data, (res) => {
-          console.log(res)
-          _callback(res)
+        // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
+        _callback(status)
+      } else if (paymentIntentStatus === 'succeeded') {
+        console.log('success')
+        get_user((res) => {
+          const id = res['id']
+          const data = {
+            'parent_id': id,
+            'client_key': clientKey,
+            'payment_intent': paymentIntentId
+          }
+          post_api('verify-paymongo', data, (res) => {
+            const status = {
+              'state':'success',
+            }
+            if(res){
+              _callback(status)
+            }else{
+              status['state'] = 'fail'
+              _callback(status)
+            }
+          })
         })
-      })
 
-      // You already received your customer's payment. You can show a success message from this condition.
-    } else if(paymentIntentStatus === 'awaiting_payment_method') {
-      console.log('await')
-      // The PaymentIntent encountered a processing error. You can refer to paymentIntent.attributes.last_payment_error to check the error and render the appropriate error message.
-    }  else if (paymentIntentStatus === 'processing'){
-      console.log('processing')
-      // You need to requery the PaymentIntent after a second or two. This is a transitory status and should resolve to `succeeded` or `awaiting_payment_method` quickly.
-    }
+        // You already received your customer's payment. You can show a success message from this condition.
+      } else if(paymentIntentStatus === 'awaiting_payment_method') {
+        console.log('await')
+        const status = {
+        'state':'fail',
+        }
+        _callback(status)
+        // The PaymentIntent encountered a processing error. You can refer to paymentIntent.attributes.last_payment_error to check the error and render the appropriate error message.
+      }  else if (paymentIntentStatus === 'processing'){
+        console.log('processing')
+        // You need to requery the PaymentIntent after a second or two. This is a transitory status and should resolve to `succeeded` or `awaiting_payment_method` quickly.
+        const status = {
+        'state':paymentIntentStatus,
+        'payment_intent':paymentIntent.id
+        }
+        _callback(status)
+      }
+
   }).catch(err => {
     console.log(err)
     console.log(err.response)
-    _callback(false)
+    const status = {
+    'state':'fail',
+    }
+    _callback(status)
+  })
+}
+
+export const get_payment_intent = (payment_intent, client_key, _callback) => {
+  // Get the payment intent id from the client key
+  var paymentIntentId = payment_intent
+  var clientKey = client_key 
+  
+  axios.get(
+    'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId,
+    {
+      headers: { 
+        'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
+      },
+    }
+  ).then(function(response) {
+    console.log(response)
+    var paymentIntent = response.data.data;
+    var paymentIntentStatus = paymentIntent.attributes.status;
+      
+      if (paymentIntentStatus === 'awaiting_next_action') {
+        console.log('wait')
+        const url = paymentIntent.attributes.next_action.redirect.url
+        const status = {
+          'state':paymentIntentStatus,
+          'url':url,
+          'payment_intent':paymentIntent.id
+        }
+        // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
+        _callback(status)
+      } else if (paymentIntentStatus === 'succeeded') {
+        console.log('success')
+        get_user((res) => {
+          const id = res['id']
+          const data = {
+            'parent_id': id,
+            'client_key': clientKey,
+            'payment_intent': paymentIntentId
+          }
+          post_api('verify-paymongo', data, (res) => {
+            const status = {
+              'state':'success',
+            }
+            if(res){
+              _callback(status)
+            }else{
+              status['state'] = 'fail'
+              _callback(status)
+            }
+          })
+        })
+
+        // You already received your customer's payment. You can show a success message from this condition.
+      } else if(paymentIntentStatus === 'awaiting_payment_method') {
+        console.log('await')
+        const status = {
+        'state':'fail',
+        }
+        _callback(status)
+        // The PaymentIntent encountered a processing error. You can refer to paymentIntent.attributes.last_payment_error to check the error and render the appropriate error message.
+      }  else if (paymentIntentStatus === 'processing'){
+        console.log('processing')
+        // You need to requery the PaymentIntent after a second or two. This is a transitory status and should resolve to `succeeded` or `awaiting_payment_method` quickly.
+        const status = {
+        'state':paymentIntentStatus,
+        'payment_intent':paymentIntent.id
+        }
+        _callback(status)
+      }
+
+  }).catch(err => {
+    console.log(err)
+    console.log(err.response)
+    const status = {
+    'state':'fail',
+    }
+    _callback(status)
   })
 }

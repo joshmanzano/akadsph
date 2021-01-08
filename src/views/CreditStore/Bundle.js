@@ -165,7 +165,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   className={classes.buttonContainer}
                 >
                   
-                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA', 549, 1, 1) }
+                  <Button className={ !bundleA ? classes.bundleButton : classes.bundleButtonRev} onClick={()=>bundleClick('bundleA', 500, 1, 1) }
                   // color="primary"
                   variant="outlined">
                     <Grid container className={classes.buttonContainer}>
@@ -176,7 +176,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                       </Grid>
                       <Grid item xs={12} align='center' className={classes.buttonContainer}>
                         <Typography variant="h4" display="block" className={ !bundleA ? classes.textPriceSingle : classes.textPriceSingleRev}>
-                          ₱549
+                          ₱500
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='left'>
@@ -194,7 +194,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   
-                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB', 4999, 2, 10)}
+                  <Button className={ !bundleB ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleB', 4750, 2, 10)}
                   // color="primary"
                   variant="outlined">
                     <Grid container>
@@ -205,7 +205,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                       </Grid>
                       <Grid item xs={12} align='center'>
                         <Typography variant="h4" display="block" className={ !bundleB ? classes.textPrice : classes.textPriceRev}>
-                          ₱4,999
+                          ₱4,750
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='right'>
@@ -224,7 +224,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                   xs={12}
                 >
                   {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
-                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC', 7199, 3, 15)}
+                  <Button className={ !bundleC ? classes.bundleButton : classes.bundleButtonRev}  onClick={()=>bundleClick('bundleC', 6750, 3, 15)}
                   // color="primary"
                   variant="outlined">
                     <Grid container>
@@ -235,7 +235,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                       </Grid>
                       <Grid item xs={12} align='center'>
                         <Typography variant="h4" display="block" className={ !bundleC ? classes.textPrice : classes.textPriceRev}>
-                          ₱7,199
+                          ₱6,750
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='right'>

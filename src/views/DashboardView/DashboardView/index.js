@@ -54,7 +54,7 @@ const Dashboard = (props) => {
     })
   })
 
-  props.upcoming.forEach(u => {
+  props.history.forEach(u => {
     history.push({
       'date': moment(u.session.start_date_time).format('MMMM Do YYYY'),
       'time': moment(u.session.start_date_time).format('h:mm:ss a'),
