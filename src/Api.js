@@ -14,7 +14,8 @@ const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 const paymongo_public_live = 'pk_live_3Ef8VJ23gNTU6JYCGEcxZzhb'
-const paymongo_public_test = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
+const paymongo_key_live = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
+const paymongo_key = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -149,12 +150,11 @@ export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callb
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
       console.log(payment_method)
       if(payment_method == null){
-
+        const payment_method_id = payment_method['data']['id']
+        attach_payment(payment_intent, payment_method_id, (res) => {
+          _callback(res)
+        });
       }
-      const payment_method_id = payment_method['data']['id']
-      attach_payment(payment_intent, payment_method_id, (res) => {
-        _callback(res)
-      });
     });
   });
 }
@@ -186,7 +186,7 @@ export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _cal
     method: 'post',
     url: 'https://api.paymongo.com/v1/payment_methods',
     headers: { 
-      'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6', 
+      'Authorization': paymongo_key, 
       'Content-Type': 'application/json'
     },
     data : data
@@ -229,7 +229,7 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
     },
     {
       headers: { 
-        'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
+        'Authorization': paymongo_key
       },
     }
   ).then(function(response) {
@@ -307,7 +307,7 @@ export const get_payment_intent = (payment_intent, client_key, _callback) => {
     'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId,
     {
       headers: { 
-        'Authorization': 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
+        'Authorization': paymongo_key
       },
     }
   ).then(function(response) {
