@@ -296,19 +296,31 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	display: table;
 	width: 100%;
 	padding: 0;
-	background-color: #4655A5;
+	background-color: #4655B5;
 	/* -webkit-background-size: cover; */
 	/* -moz-background-size: cover; */
-	background-size: 100% 100%;
-	/* -o-background-size: cover; */
-	/* background-image: url(../static/images/matty_new.png); */
+	/* background-size: 100% 100%; */
+	background-size: cover;
+	background-image: url("../static/images/header_background.png");
 	background-repeat: no-repeat;
+	position: relative;
+	background-position: center;
+}
+
+.intro-small {
+	display: table;
+	width: 100%;
+	padding: 0;
+	background-color: #4655B5;
+	background-image: None !important;
+	/* -webkit-background-size: cover; */
+	/* -moz-background-size: cover; */
+	/* background-size: 100% 100%; */
 }
 
 .introimage {
-	/* width: 100%;
-	background-image: url(../static/images/oli-white.png);
-	opacity: 0.2; */
+	padding-top: 200px;
+	padding-left: 70px;
 }
 
 .intro .overlay {
@@ -345,12 +357,31 @@ header .intro-text {
 	padding-bottom: 100px;
 	text-align: center;
 }
+header .intro-row{
+	margin-left: 150px;
+}
+
+#freqask {
+	padding-top: 150px;
+	padding-bottom: 125px;
+	background: #fff;
+}
+
+#freqask .MuiSvgIcon-root {
+	color:#EB5531;
+}
+
+#freqask .MuiAccordion-root {
+	padding:10px;
+}
+
 /* Features Section */
 #features {
 	padding-top: 150px;
 	padding-bottom: 125px;
 	background: #fff;
 }
+
 #features i.fa {
 	font-size: 38px;
 	margin-bottom: 20px;
@@ -401,8 +432,8 @@ header .intro-text {
 
 /* About Section */
 #about {
-	padding: 100px 0;
-	background: #f6f6f6;
+	/* padding: 100px 0; */
+	background: #EBEBEB;
 }
 #about h3 {
 	font-size: 22px;
@@ -436,17 +467,32 @@ header .intro-text {
 	font-weight: 300;
 	padding-right: 8px;
 }
-#about img {
-	width: 520px;
-	margin-top: 10px;
+#about .about-cover {
+	/* width: 520px; */
+	width: 90vh;
+	/* margin-top: 10px; */
 	/* background: #fff; */
 	border-right: 0;
+	float: left;
 	/* box-shadow: 0 0 50px rgba(0,0,0,0.06); */
 }
+
+
 #about p {
 	line-height: 24px;
 	margin: 30px 0;
 }
+
+/* About Section */
+
+.aboutimage {
+	background-size: cover;
+	background-image: url('../static/images/about_us_background.png');
+	background-repeat: no-repeat;
+	position: relative;
+	background-position: center;
+}
+
 /* Services Section */
 #services {
 	padding: 100px 0;
@@ -538,10 +584,15 @@ header .intro-text {
 /* Testimonials Section */
 #testimonials {
 	padding: 100px 0;
-	background: #f6f6f6;
+	background: #0B3243;
 }
+
+#testimonials h2 {
+	color: #6CC2B6;
+}
+
 #testimonials i {
-	color: #e6e6e6;
+	color: #FFFFFF;
 	font-size: 32px;
 	margin-bottom: 20px;
 }
@@ -562,6 +613,7 @@ header .intro-text {
 .testimonial-content {
 	position: relative;
 	overflow: hidden;
+	color: #FFFFFF;
 }
 .testimonial-content p {
 	margin-bottom: 0;
@@ -572,7 +624,7 @@ header .intro-text {
 	margin-top: 10px;
 	font-size: 15px;
 	font-weight: 600;
-	color: #666;
+	color: #eb5531;
 }
 /* Pricing Section */
 #pricing {
@@ -584,6 +636,17 @@ header .intro-text {
 	font-size: 32px;
 	margin-bottom: 20px;
 }
+
+.priceHeader {
+	padding-top:10px;
+	color: #EB5531 !important;
+}
+
+.oldPrice {
+	color: #c4c4c4 !important;
+	text-decoration: line-through;
+}
+
 .pricing {
 	position: relative;
 	padding: 20px;
