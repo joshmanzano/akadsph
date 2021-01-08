@@ -63,7 +63,7 @@ const CustomerListView = (props) => {
               Hello! The site is currently in beta-production. Only select parents can login. If you are interested in trying it out then you can sign using the link below.
             </h2>
             <Box mt={4} align="center">
-            <Button size="large" color="primary" variant="contained" onClick={() =>  window.open("https://google.com","_blank")}>
+            <Button size="large" color="primary" variant="contained" onClick={() =>  window.open("tiny.cc/AkadsEarlyAccess","_blank")}>
               Sign up here!
             </Button>
             </Box>
