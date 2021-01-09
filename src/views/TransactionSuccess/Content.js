@@ -75,7 +75,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <TableDetails/>
+              {/* <TableDetails/> */}
             </Grid>
             {/* <Grid
               item
