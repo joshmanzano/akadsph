@@ -124,11 +124,11 @@ const ModalWaiting = ({open, setOpen, className, user, ...rest }) => {
           </DialogContentText>
           <Box mt={2}>
             <Grid align="center" spacing={4}>
-              <Grid item>
+              {/* <Grid item>
                 <Box>
                   <Button color="primary" variant="contained">What do I do in this page?</Button>
                 </Box>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Box my={2}>
                   <Button color="primary" variant="contained" onClick={support}>I have a question.</Button>
