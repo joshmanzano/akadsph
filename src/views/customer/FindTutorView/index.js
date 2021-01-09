@@ -71,11 +71,11 @@ const CustomerListView = (props) => {
     tutees: props.tutees[0],
     subjects: props.subjects[0],
     lengths: props.lengths[0],
-    topics: [],
+    topics: '',
     times: [],
-    favTutor: [],
+    favTutor: props.favtutors.length > 0 ? props.favtutors[0] : null,
     files: props.files,
-    specialRequest: '',
+    special_request: '',
     allTutors: true,
     credits: props.credits,
   });
@@ -116,25 +116,26 @@ const CustomerListView = (props) => {
         'extra_files': url,
         'is_favourite': !data['allTutors'],
         'subject': data['subjects'].id,
-        'topics': data['topics'].join(),
-        'special_request': 'None',
+        'topics': data['topics'],
+        'special_request': data['special_request'],
         'available_days': available_days,
-        'fav_tutor': null,
+        'fav_tutor': !data['allTutors'] ? data['favTutor'].tutor.id : null,
         'time': data['lengths'].value,
       }
-      post_api('parent-make-request', postData, (res) => {
-        console.log(res)
-        setProcessing(false);
-        if(res['return_status'] == 'success'){
-          // Toast.success(res['return_message']);
-          setSendingRequest(true)
-          window.location.replace('#/request-sent')
-        }else if(res['return_status'] == 'error'){
-          Toast.fail(res['return_message']);
-        }else{
-          Toast.fail('Request Failed. Please complete the form.');
-        }
-      })
+      console.log(postData)
+    //   post_api('parent-make-request', postData, (res) => {
+    //     console.log(res)
+    //     setProcessing(false);
+    //     if(res['return_status'] == 'success'){
+    //       // Toast.success(res['return_message']);
+    //       setSendingRequest(true)
+    //       window.location.replace('#/request-sent')
+    //     }else if(res['return_status'] == 'error'){
+    //       Toast.fail(res['return_message']);
+    //     }else{
+    //       Toast.fail('Request Failed. Please complete the form.');
+    //     }
+    //   })
     })
   }
 

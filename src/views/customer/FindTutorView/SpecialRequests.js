@@ -26,8 +26,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SpecialRequests = ({ className, ...rest }) => {
+const SpecialRequests = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
+  const [specialRequest,setSpecial] = React.useState('')
+
+  const handleChange = (event) => {
+    const value = event.target.value
+    setSpecial(value)
+    data['special_request'] = value
+    setData(data)
+  }
 
   return (
     <div
@@ -51,6 +59,8 @@ const SpecialRequests = ({ className, ...rest }) => {
             variant="outlined" fullWidth
             multiline
             rows={4}
+            onChange={handleChange}
+            value={specialRequest}
             />
           </CardContent>
         </Card>

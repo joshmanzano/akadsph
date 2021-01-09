@@ -59,7 +59,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
+          // subheader="The information can be edited"
           title="Profile"
         />
         <Divider />
@@ -82,6 +82,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 required
                 value={values.firstName}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -97,6 +98,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 required
                 value={values.lastName}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -112,6 +114,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 required
                 value={values.email}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -127,6 +130,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 type="tel"
                 value={values.phone}
                 variant="outlined"
+                disabled
               />
             </Grid>
             {/* <Grid
@@ -181,6 +185,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
           <Button
             color="primary"
             variant="outlined"
+            disabled
           >
             Save details
           </Button>

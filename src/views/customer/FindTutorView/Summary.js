@@ -100,7 +100,8 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)}
+                        {/* {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)} */}
+                        {data['topics']}
                       </Typography>
                     </Grid>
                     {/* <Grid item xs={6}>
@@ -139,6 +140,8 @@ const Summary = ({ className, data, ...rest }) => {
                       </Typography>
                       }
                     </Grid>
+                    {data['allTutors'] ? null : 
+                    <React.Fragment>
                     <Grid item xs={6}>
                       <Typography variant="h6">
                         Favorite Tutor
@@ -146,9 +149,11 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['favTutor']}
+                        {data['favTutor'].tutor.first_name} {data['favTutor'].tutor.last_name}
                       </Typography>
                     </Grid>
+                    </React.Fragment>
+                    }
                     <Grid item xs={6}>
                       <Typography variant="h6">
                         Available Dates
@@ -163,16 +168,16 @@ const Summary = ({ className, data, ...rest }) => {
                         {/* <Chip label="27/11/20 2:00pm-4:00pm" /> */}
                       </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    {/* <Grid item xs={6}>
                       <Typography variant="h6">
                         Special Request
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['specialRequest']}
+                        {data['special_request']}
                       </Typography>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                   </Box>
                 </CardContent>

@@ -47,7 +47,8 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
   const [tutorOption, setTutorOption] = React.useState(true);
   const [open, setOpen] = React.useState(false);
   const history = useHistory();
-  const [faveExist, setFaveExist] = React.useState(false);
+  const [faveExist, setFaveExist] = React.useState(props.favtutors.length > 0);
+  const [topics, setTopics] = React.useState('')
 
   const handleRadioChange = (event) => {
     if(event.target.value == 'all-tutors'){
@@ -69,8 +70,10 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
     }
   }
 
-  const handleFreeChange = (event, value) => {
+  const handleFreeChange = (event) => {
+    const value = event.target.value
     data['topics'] = value; 
+    setTopics(value)
     setData(data)
   }
 
@@ -159,7 +162,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                   </Grid>
                 </Grid>
                 
-                {faveExist ?
+                {faveExist && props.favtutors ?
                     <React.Fragment> 
                 <Grid
                   item
@@ -193,8 +196,8 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                             id: 'favtutors',
                           }}
                         >
-                          {props.favtutors.map((tutor, index) => 
-                            <option value={index}>{tutor}</option>
+                          {props.favtutors.map((t, index) => 
+                            <option value={index}>{t.tutor.first_name} {t.tutor.last_name}</option>
                           )}
                          
                         </Select>
@@ -240,8 +243,8 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                       </FormControl> 
                     </Grid>
                     <Grid item xs={12}>
-                      <FormControl onChange={handleFreeChange} variant="outlined" className={classes.formControl} fullWidth>
-                        <TextField name="topics" variant="outlined" label="Topic/s" placeholder="Topic" helperText="(e.g. Algebra, Trigonometry, Vocabulary)"/>
+                      <FormControl variant="outlined" className={classes.formControl} fullWidth>
+                        <TextField onChange={handleFreeChange} name="topics" value={topics} variant="outlined" label="Topic/s" placeholder="Topic" helperText="(e.g. Algebra, Trigonometry, Vocabulary)"/>
                       </FormControl> 
                     </Grid>
                     <Grid item xs={12} align='center'>
