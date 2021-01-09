@@ -15,7 +15,7 @@ const password = 'EelBoneyTwitterImperfect'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 const paymongo_public_live = 'pk_live_3Ef8VJ23gNTU6JYCGEcxZzhb'
 const paymongo_key_live = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
+const paymongo_key = paymongo_key
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -181,7 +181,10 @@ export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _cal
   console.log(exp_month)
   console.log(exp_year)
   console.log(cvc)
-  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":card_number,"exp_month":Number(exp_month),"exp_year":Number('20'+exp_year),"cvc":cvc},"type":"card"}}});
+  if(Number(exp_year) < 100){
+    exp_year = Number(exp_year) + 2000
+  }
+  var data = JSON.stringify({"data":{"attributes":{"details":{"card_number":card_number,"exp_month":Number(exp_month),"exp_year":exp_year,"cvc":cvc},"type":"card"}}});
   console.log(data)
   
   var config = {
