@@ -26,9 +26,10 @@ export class Navigation extends Component {
             {/* <a className="navbar-brand page-scroll" href="#page-top">
               <img src='../img/logo.png'></img>
             </a>{" "} */}
-            <a href="/#/#page-top">
-              <img height="50" src='../img/logo.png'></img>
-            </a>{" "}
+
+              <Link to="header" smooth={true}>
+                <img height="50" src='../img/logo.png'></img>
+              </Link>
           </div>
 
           <div
