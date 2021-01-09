@@ -106,11 +106,11 @@
         }
     ],
     "Contact": {
-        "phone": "+639178966009",
-        "email": "akads.ph@gmail.com",
-        "facebook": "fb.com",
-        "twitter": "twitter.com",
-        "youtube": "youtube.com"
+        "phone": "0917 899 9369",
+        "email": "hello@akadsph.com",
+        "facebook": "https://www.facebook.com/LearnWithAkads",
+        "linkedin": "https://www.linkedin.com/company/akads-ph/",
+        "instagram": "https://www.instagram.com/akadsph/"
     },
     "Features": [{
             "icon": "../static/images/one-on-one.png",
