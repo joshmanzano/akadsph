@@ -67,7 +67,7 @@ class ChildDetails extends Component{
         first_name: '',
         last_name: '',
         age: '',
-        year_level: '',
+        year_level: 'Grade 1',
         school: '',
         // gradeLevels: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'],
       }
@@ -86,7 +86,6 @@ class ChildDetails extends Component{
     const props = this.props;
     const {classes} = this.props;
     const gradeLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
-
   return (
     <React.Fragment>
           <Grid container spacing={2}>
@@ -142,7 +141,7 @@ class ChildDetails extends Component{
                 required 
                 id="grade-level"
                 name="year_level"
-                defaultValue={''}
+                defaultValue={'Grade 1'}
                 onChange={this.changeHandler}
                 inputProps={{
                   name: 'year_level',
