@@ -33,13 +33,8 @@ const Availability = ({ className, data, setData, ...rest }) => {
   const [days, setDays] = React.useState();
   const [times, setTimes] = React.useState({
   });
-  const [until, setUntil] = React.useState(null)
   const [count, setCount] = React.useState(0);
-
-  useEffect(() => {
-    console.log(count)
-
-  }, [count])
+  let [,setState] = React.useState();
 
   const getDays=(selectedDays)=>{
     setTimes(times)
@@ -58,13 +53,20 @@ const Availability = ({ className, data, setData, ...rest }) => {
     const splitTime = value.split(':')
     let hours = Number(splitTime[0])
     let minutes = splitTime[1]
-    untilTime.setHours(hours + 1)
+    untilTime.setHours(hours + data['lengths']['value'])
     hours = untilTime.getHours()
-    times[index]['until'] = String(hours) + ':' + String(minutes) ;
-    setUntil(times[index]['until'])
+    if(hours < 10){
+      hours = '0' + String(hours)
+    }
+    console.log(hours)
+    console.log(minutes)
+    times[index]['until'] = hours + ':' + minutes;
+    // setUntil(times[index]['until'])
     data['times'] = times
+    console.log(times)
     setTimes(times)
     setData(data)
+    setState({})
   }
 
   return (
@@ -101,6 +103,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                 
                 <Grid
                   item
+                  alignItems="center"
                   lg={6}
                   md={6}
                   xl={6}
@@ -115,7 +118,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                   {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
                   
                   {days != undefined &&
-                  <Grid container spacing={2}>
+                  <Grid alignItems="center" container spacing={2}>
                     {days.map(day=>(
                     <Grid
                     item
@@ -130,6 +133,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                           lg={4}
                           md={4}
                           xl={4}
+                          sm={4}
                           xs={12}>
                             {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <KeyboardDatePicker
@@ -170,6 +174,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                           lg={4}
                           md={4}
                           xl={4}
+                          sm={4}
                           xs={12}>
                             <form className={classes.container} noValidate>
                               <TextField
@@ -197,6 +202,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                           lg={4}
                           md={4}
                           xl={4}
+                          sm={4}
                           xs={12}>
                           <form className={classes.container} noValidate>
                               <TextField
@@ -205,8 +211,8 @@ const Availability = ({ className, data, setData, ...rest }) => {
                                 type="time"
                                 // defaultValue="07:30"
                                 className={classes.textField}
-                                // value={times[day.getTime()] != undefined ? times[day.getTime()]['until'] : null}
-                                value={until}
+                                value={times[day.getTime()] != undefined ? times[day.getTime()]['until'] : null}
+                                // value={until}
                                 InputLabelProps={{
                                   shrink: true,
                                 }}
