@@ -17,7 +17,7 @@ import ModalTutorProfile from './ModalTutorProfile';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import Toast from 'light-toast';
 
-const headers = ["Name", "Subject", ""]
+const headers = ["Name", "School", "Course", "", ""]
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -30,14 +30,27 @@ const FaveTutors = ({ className, favtutors, ...rest }) => {
   const [openTutor, setOpenTutor] = React.useState(false);
 
   const rows = []
-  favtutors.map((tutor) => {
-    rows.push({
-      'name':tutor.first_name + ' ' + tutor.last_name,
-      'subject':tutor.subject,
-    })
+  const tutors = []
+  favtutors.map((t) => {
+    // tutor.map((t)=>{
+      tutors.push(t['tutor'])
+    // })
+    console.log(t)
   })
 
-  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenTutor(true)} startIcon={<PageviewIcon/>}>View</Button>,,
+  tutors.map((t) => {
+    // tutor.map((t)=>{
+      rows.push({
+        'name':t.first_name + ' ' + t.last_name,
+        'school':t.school,
+        'course': t.course,
+      })
+      console.log(t)
+    // })
+    
+  })
+
+  const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenTutor(true)} startIcon={<PageviewIcon/>}>View</Button>,
   <Button variant='outlined' color='primary' startIcon={<DeleteIcon/>}
   onClick={() =>{
     confirm({ title:'Remove Tutor' ,description: 'Are you sure you want to remove this tutor from favorites?' })

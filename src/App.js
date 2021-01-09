@@ -198,6 +198,7 @@ class App extends Component {
           const transaction = res['transactions']
           const upcoming = res['accepted_requests']
           const history = res['finished_requests']
+          const favourite_tutors = res['favourite_tutors']
           this.setState({
             credits: parent['credits']
           }, () => {
@@ -211,7 +212,7 @@ class App extends Component {
                 'email': parent['email'],
                 'phone': parent['phone']/*''*/,
                 'children': children,
-                'favtutors': [],
+                'favtutors': favourite_tutors,
               },
               'dashboardview': {
                 'upcoming': upcoming,
@@ -223,7 +224,7 @@ class App extends Component {
               'findtutorview': {
                 'tutees':children,
                 'files': parent['files'],
-                'favtutors':[],
+                'favtutors':favourite_tutors,
                 'levels':[],
                 'subjects':subjects,
                 'lengths':[
