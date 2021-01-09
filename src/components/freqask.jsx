@@ -51,7 +51,7 @@ export class faq extends Component {
               </Grid>
               <Grid item>
                 {this.question('How do I become a tutor?',
-                <span>To become a tutor, read through the <a href="#">Become a Tutor</a> page to learn more about our application process.</span>
+                <span>To become a tutor, read through the <a href="#" onClick={() => window.open("http://bit.ly/AKADSTutorForm","_blank")}>Become a Tutor</a> page to learn more about our application process.</span>
                 )}
               </Grid>
               <Grid item>
