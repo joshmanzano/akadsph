@@ -3,10 +3,10 @@ import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
 
 function Tutorial(props) {
-    const [enabled, setEnable] = useState(props.enabled);
+    const [enabled, setEnable] = useState(localStorage.getItem('stepsParentRequest') == undefined);
 
     const onExit = () => {
-      localStorage.setItem('stepsRequest','done')
+      localStorage.setItem('stepsParentRequest','done')
       setEnable(false)
     }
 
