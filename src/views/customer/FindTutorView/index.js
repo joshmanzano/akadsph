@@ -123,19 +123,19 @@ const CustomerListView = (props) => {
         'time': data['lengths'].value,
       }
       console.log(postData)
-    //   post_api('parent-make-request', postData, (res) => {
-    //     console.log(res)
-    //     setProcessing(false);
-    //     if(res['return_status'] == 'success'){
-    //       // Toast.success(res['return_message']);
-    //       setSendingRequest(true)
-    //       window.location.replace('#/request-sent')
-    //     }else if(res['return_status'] == 'error'){
-    //       Toast.fail(res['return_message']);
-    //     }else{
-    //       Toast.fail('Request Failed. Please complete the form.');
-    //     }
-    //   })
+      post_api('parent-make-request', postData, (res) => {
+        console.log(res)
+        setProcessing(false);
+        if(res['return_status'] == 'success'){
+          // Toast.success(res['return_message']);
+          setSendingRequest(true)
+          window.location.replace('#/request-sent')
+        }else if(res['return_status'] == 'error'){
+          Toast.fail(res['return_message']);
+        }else{
+          Toast.fail('Request Failed. Please complete the form.');
+        }
+      })
     })
   }
 
