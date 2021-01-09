@@ -148,9 +148,10 @@ export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callb
   create_paymentintent(shopItem, promoCode, (payment_intent) => {
     const exp_month = exp_date.split('/')[0] 
     const exp_year = exp_date.split('/')[1] 
+    console.log(payment_intent)
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
       console.log(payment_method)
-      if(payment_method == null){
+      if(payment_method != null){
         const payment_method_id = payment_method['data']['id']
         attach_payment(payment_intent, payment_method_id, (res) => {
           _callback(res)
