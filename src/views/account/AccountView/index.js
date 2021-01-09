@@ -22,14 +22,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+
 const Account = (props) => {
   const classes = useStyles();
-
+  console.log(props);
+  
+  
   return (
     <Page
       className={classes.root}
       title="Profile"
     >
+      
       <ParentProfileTutorial enabled={true}/>
       
       <Container maxWidth="lg">
