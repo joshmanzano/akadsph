@@ -20,8 +20,9 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useConfirm } from 'material-ui-confirm';
+import { post_api } from 'src/Api.js';
 
-const headers = ["Date Requested", "Subject", "Student", ""]
+const headers = ["Date Requested", "Subject", "Student", "Topic",""]
 
 
 
@@ -43,13 +44,41 @@ const Pending = ({ className, rows, ...rest }) => {
   const theme = useTheme();
   const [openDetails, setOpenDetails] = React.useState(false);
   const confirm = useConfirm();
-
+  const tableRows = [] 
+  rows.forEach(row => {
+    tableRows.push({
+      'date':row.date,
+      'subject':row.subject,
+      'student':row.student,
+      'topics':row.topics,
+      'files':
+      <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={row.files} target="_blank">Files</Button>,
+      'cancel':
+      <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
+        onClick={() =>{
+          confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
+            .then(() => {
+              const payload = {
+                'request': row.id
+              }
+              post_api('parent-cancel-request', payload, (res) => {
+                window.location.reload()
+              })             
+            })
+            .catch(() => {
+            });
+        }} 
+      >Cancel</Button>,
+    })
+    console.log(row)
+  })
 
   const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
   <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
   onClick={() =>{
     confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
       .then(() => {
+
         
       })
       .catch(() => {
@@ -142,7 +171,7 @@ const Pending = ({ className, rows, ...rest }) => {
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+            <Table tableHeaders={headers} tableRows={tableRows}/>
           </CardContent>
           <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
         </React.Fragment>

@@ -80,13 +80,12 @@ const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, classNa
         'start_date_time': info.availableData[schedule].start_date_time
       }
       console.log(data)
-      Toast.loading('Accepting request...')
+      setProcessing(true)
       post_api('tutor-accept-request',data,(res) => {
         console.log(res)
         if(res){
-          Toast.success('Request accepted!')
-          setProcessing(true)
           window.location.replace('#/request-accepted')
+          window.location.reload()
           removeRequest(info.index)
         }else{
           Toast.fail('Request failed!')

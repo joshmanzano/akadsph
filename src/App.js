@@ -56,7 +56,8 @@ class App extends Component {
               this.setState({id:res['id'], type: res['type']})
               _callback(true)
             }else{
-              localStorage.clear()
+                      localStorage.removeItem('token')
+        localStorage.removeItem('session_token')
               window.location.replace('/')
             }
           })

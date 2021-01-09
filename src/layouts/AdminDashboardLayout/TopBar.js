@@ -66,7 +66,8 @@ const TopBar = ({
   const logout = () => {
     confirm({ title:'Logout' , description: 'Would you like to logout?' })
       .then(() => {
-        localStorage.clear()
+                localStorage.removeItem('token')
+        localStorage.removeItem('session_token')
         window.location.replace('/')
       })
       .catch(() => {

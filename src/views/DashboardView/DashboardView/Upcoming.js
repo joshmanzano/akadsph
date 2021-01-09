@@ -22,6 +22,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
 import Toast from 'light-toast';
+import { post_api } from 'src/Api.js'
 
 const rows = [
   {
@@ -82,18 +83,26 @@ const Upcoming = (props) => {
     // if(props.currentDate.getDate() == sessionDate.getDate() && props.currentdate.getMonth() == sessionDate.getMonth()){
     if(props.currentDate.getMonth() == sessionDate.getMonth()){
       if(props.currentDate.getDate() == sessionDate.getDate()){
+        console.log(u)
         rows.push({
           'time':moment(sessionDate).format('h:mm a'),
           'subject':u.subject,
           'tutor':u.tutor,
           'join_button':<Button variant='outlined' color='primary' onClick={() => join_session(u.join_url)} startIcon={<CastForEducationIcon/>}>Join</Button>,
-          'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+          // 'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+          'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
           'chat_button': <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
           'cancel_button': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
           onClick={() =>{
             confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
               .then(() => {
-                Toast.success('Successfully cancelled session!')
+                const payload = {
+                  'session': u.id
+                }
+                post_api('cancel-session', payload, (res) => {
+                  console.log(res)
+                  window.location.reload()
+                })          
               })
               .catch(() => {
 

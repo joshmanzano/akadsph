@@ -27,7 +27,8 @@ function sleep(milliseconds) {
 }
 
 const get_token = (_callback) => {
-  localStorage.clear()
+          localStorage.removeItem('token')
+        localStorage.removeItem('session_token')
   const data = {
     'username': username,
     'password': password
