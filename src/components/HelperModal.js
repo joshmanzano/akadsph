@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalWaiting = ({open, setOpen, className, ...rest }) => {
+const ModalWaiting = ({open, setOpen, className, user, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
   const confirm = useConfirm();
@@ -136,7 +136,7 @@ const ModalWaiting = ({open, setOpen, className, ...rest }) => {
               </Grid>
               <Grid item>
                 <Box my={2}>
-                  <Button color="primary" variant="contained" onClick={() => window.open('http://tiny.cc/AkadsEATutorFeedback')}>I would like to give feedback about the website.</Button>
+                  <Button color="primary" variant="contained" onClick={ () => { user=="parent" ? window.open('https://forms.gle/rJX41yq3kC21azHm7') : window.open('http://tiny.cc/AkadsEATutorFeedback')}}>I would like to give feedback about the website.</Button>
                 </Box>
               </Grid>
             </Grid>

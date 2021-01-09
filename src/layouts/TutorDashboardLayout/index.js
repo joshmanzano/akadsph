@@ -264,7 +264,7 @@ function TutorDashboardLayout (props){
           </div>
         </div>
       </div>
-      <HelperModal open={open} setOpen={setOpen}/>
+      <HelperModal open={open} setOpen={setOpen} user={"tutor"}/>
       <Fab size="large" onClick={showHelp} color="primary" className={'floater'}>
         <img id="helper-oli" width='50' src='../static/images/helper-oli.png'/>
       </Fab>

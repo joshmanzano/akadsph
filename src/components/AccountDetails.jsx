@@ -77,8 +77,12 @@ class SignUp extends Component{
     }
 
     phoneChangeHandler = (val) => {
-      this.setState({phone: val});
-      this.props.setAccount(this.state);
+      this.setState({"phone": val}, () => {
+        this.props.setAccount(this.state);
+      });
+      // this.setState({"phone": val});
+      // this.props.setAccount(this.state);
+      
     }
 
     render(){

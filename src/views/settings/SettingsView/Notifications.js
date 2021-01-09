@@ -57,23 +57,23 @@ const Notifications = ({ className, ...rest }) => {
               >
                 Notifications
               </Typography>
-              <FormControlLabel
+              <FormControlLabel disabled
                 control={(
                   <Checkbox defaultChecked />
                 )}
                 label="Email"
               />
-              <FormControlLabel
+              <FormControlLabel disabled
                 control={(
                   <Checkbox defaultChecked />
                 )}
                 label="Push Notifications"
               />
-              <FormControlLabel
-                control={<Checkbox />}
+              <FormControlLabel disabled
+                control={<Checkbox defaultChecked />}
                 label="Text Messages"
               />
-              <FormControlLabel
+              <FormControlLabel disabled
                 control={(
                   <Checkbox defaultChecked />
                 )}
@@ -94,17 +94,17 @@ const Notifications = ({ className, ...rest }) => {
               >
                 Messages
               </Typography>
-              <FormControlLabel
+              <FormControlLabel disabled
                 control={(
                   <Checkbox defaultChecked />
                 )}
                 label="Email"
               />
-              <FormControlLabel
-                control={<Checkbox />}
+              <FormControlLabel disabled
+                control={<Checkbox defaultChecked />}
                 label="Push Notifications"
               />
-              <FormControlLabel
+              <FormControlLabel disabled
                 control={(
                   <Checkbox defaultChecked />
                 )}

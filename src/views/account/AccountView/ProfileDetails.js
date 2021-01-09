@@ -124,7 +124,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 label="Phone Number"
                 name="phone"
                 onChange={handleChange}
-                type="number"
+                type="tel"
                 value={values.phone}
                 variant="outlined"
               />
