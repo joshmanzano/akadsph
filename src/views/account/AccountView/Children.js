@@ -84,7 +84,7 @@ const Children = ({ className, children, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+        <Table tableHeaders={headers} tableRows={rows} /*tableButtons={buttonList}*/ />
       </CardContent>
     </Card>
   );

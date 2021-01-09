@@ -74,7 +74,7 @@ const FaveTutors = ({ className, favtutors, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+        <Table tableHeaders={headers} tableRows={rows} /*tableButtons={buttonList}*//>
       </CardContent>
       <ModalTutorProfile open={openTutor} setOpen={setOpenTutor}/>
     </Card>
