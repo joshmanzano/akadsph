@@ -81,6 +81,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 required
                 value={values.firstName}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -96,6 +97,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 required
                 value={values.lastName}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -111,6 +113,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 required
                 value={values.email}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -123,9 +126,10 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 label="Phone Number"
                 name="phone"
                 onChange={handleChange}
-                type="number"
+                type="tel"
                 value={values.phone}
                 variant="outlined"
+                disabled
               />
             </Grid>
             {/* <Grid
@@ -180,6 +184,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
           <Button
             color="primary"
             variant="outlined"
+            disabled
           >
             Save details
           </Button>

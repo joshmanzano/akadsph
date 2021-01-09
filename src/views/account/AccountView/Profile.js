@@ -56,7 +56,7 @@ const Profile = ({ className, props, ...rest }) => {
           </Typography> */}
         </Box>
       </CardContent>
-      <Divider />
+      {/* <Divider />
       <CardActions>
         <Button
           color="primary"
@@ -65,7 +65,7 @@ const Profile = ({ className, props, ...rest }) => {
         >
           Upload picture
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };
