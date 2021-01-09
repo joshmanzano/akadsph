@@ -63,7 +63,7 @@ const CustomerListView = (props) => {
             Hello! Only Early Access parents can login. If you are interested in trying Akads out then you can sign using the link below.
             </h2>
             <Box mt={4} align="center">
-            <Button size="large" color="primary" variant="contained" onClick={() =>  window.open("tiny.cc/AkadsEarlyAccess","_blank")}>
+            <Button size="large" color="primary" variant="contained" onClick={() =>  window.open("https://tiny.cc/AkadsEarlyAccess","_blank")}>
               Sign up here!
             </Button>
             </Box>
