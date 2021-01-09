@@ -141,6 +141,7 @@ function CreditStore(props){
       checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
         if(res['state'] == 'success'){
           // Toast.success('Transaction successful!')
+          props.refresh()
           window.location.replace('#/transaction-successful')
           props.addCredit(hours);
         }else if(res['state'] == 'fail'){

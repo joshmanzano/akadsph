@@ -39,6 +39,8 @@ const Dashboard = (props) => {
 
   props.upcoming.forEach(u => {
     upcoming.push({
+      'id': u.session.id,
+      'files': u.request.extra_files,
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
       'tutor':u.tutor.first_name,
@@ -48,9 +50,12 @@ const Dashboard = (props) => {
 
   props.pending.forEach(p => {
     pending.push({
+      id: p.request.id,
       date: moment(p.request.time_created).format('MMMM Do YYYY'),
       subject: p.subject.subject_field,
-      student: p.child.first_name
+      student: p.child.first_name,
+      topics: p.request.topics,
+      files: p.request.extra_files
     })
   })
 

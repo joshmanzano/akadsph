@@ -212,7 +212,7 @@ function DashboardLayout (props){
                   {props.credits == 0 ?
                     <NoHourView/>
                   :
-                    <FindTutorView credits={props.credits} {...userData['findtutorview']}/>
+                    <FindTutorView refresh={refresh} credits={props.credits} {...userData['findtutorview']}/>
                   }
                 </Fragment>
                 </Container>
@@ -220,7 +220,7 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}store`}>
                 <Container>
                 <Fragment>
-                  <CreditStoreView addCredit={props.addCredit}/>
+                  <CreditStoreView refresh={refresh} addCredit={props.addCredit}/>
                 </Fragment>
                 </Container>
               </Route>
