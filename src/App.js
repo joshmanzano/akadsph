@@ -209,7 +209,7 @@ class App extends Component {
                 'first_name': parent['first_name'],
                 'last_name': parent['last_name'],
                 'email': parent['email'],
-                'phone': '',
+                'phone': parent['phone']/*''*/,
                 'children': children,
                 'favtutors': [],
               },

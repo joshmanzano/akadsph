@@ -86,6 +86,7 @@ export default function ParentRegister(props) {
     givenName:props.givenName,
     familyName:props.familyName,
     email:props.email,
+    phone: props.phone,
     googleId:props.googleId,
     picture:props.picture,
   });

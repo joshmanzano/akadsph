@@ -165,7 +165,7 @@ const CustomerListView = (props) => {
           xl={11}
           xs={12}
           >
-            <Box ml={2} mt={2}>
+            <Box ml={2} mt={3}>
               <Grid container spacing={0}
               direction="column"
               >

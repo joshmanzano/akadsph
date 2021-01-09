@@ -64,11 +64,11 @@ class ChildDetails extends Component{
     constructor(props){
       super(props);
       this.state = {
-        first_name: props.first_name,
-        last_name: props.last_name,
-        age: props.age,
-        year_level: props.year_level,
-        school: props.school,
+        first_name: '',
+        last_name: '',
+        age: '',
+        year_level: 'Grade 1',
+        school: '',
         // gradeLevels: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'],
       }
       props.setChild(this.state)
@@ -86,7 +86,6 @@ class ChildDetails extends Component{
     const props = this.props;
     const {classes} = this.props;
     const gradeLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
-
   return (
     <React.Fragment>
           <Grid container spacing={2}>
@@ -98,7 +97,7 @@ class ChildDetails extends Component{
                 required
                 fullWidth
                 id="firstName"
-                defaultValue={props.firstName}
+                defaultValue={''}
                 label="Child's First Name"
                 autoFocus
                 onChange={this.changeHandler}
@@ -112,7 +111,7 @@ class ChildDetails extends Component{
                 id="lastName"
                 label="Child's Last Name"
                 name="last_name"
-                defaultValue={props.lastName}
+                defaultValue={''}
                 autoComplete="lname"
                 onChange={this.changeHandler}
               />
@@ -126,7 +125,7 @@ class ChildDetails extends Component{
                 label="Age"
                 name="age"
                 type="number"
-                defaultValue={props.age}
+                defaultValue={''}
                 autoComplete="age"
                 onChange={this.changeHandler}
               />
@@ -142,7 +141,7 @@ class ChildDetails extends Component{
                 required 
                 id="grade-level"
                 name="year_level"
-                defaultValue={props.grade}
+                defaultValue={'Grade 1'}
                 onChange={this.changeHandler}
                 inputProps={{
                   name: 'year_level',
@@ -167,7 +166,7 @@ class ChildDetails extends Component{
                   id="school"
                   label="School"
                   name="school"
-                  defaultValue={props.school}
+                  defaultValue={''}
                   autoComplete="school"
                   helperText="Optional"
                   onChange={this.changeHandler}

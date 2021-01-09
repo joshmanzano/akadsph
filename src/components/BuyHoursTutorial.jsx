@@ -68,7 +68,7 @@ function Tutorial(props) {
         // highlightClass: 'myHighlightClass',
       },
       {
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Please note that we do not store any of your baking details.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Please note that we do not store any of your banking details.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',

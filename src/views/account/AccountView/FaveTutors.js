@@ -30,6 +30,12 @@ const FaveTutors = ({ className, favtutors, ...rest }) => {
   const [openTutor, setOpenTutor] = React.useState(false);
 
   const rows = []
+  favtutors.map((tutor) => {
+    rows.push({
+      'name':tutor.first_name + ' ' + tutor.last_name,
+      'subject':tutor.subject,
+    })
+  })
 
   const buttonList = [<Button variant='outlined' color='primary' onClick={() => setOpenTutor(true)} startIcon={<PageviewIcon/>}>View</Button>,,
   <Button variant='outlined' color='primary' startIcon={<DeleteIcon/>}
