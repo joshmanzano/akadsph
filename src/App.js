@@ -289,10 +289,12 @@ class App extends Component {
         console.log(res)
         const tutor = res['tutor']
         const subjects = res['subjects']
-        const requests = res['pending_requests']
+        const norm_requests = res['pending_requests']
         const settings = res['settings']
         const upcoming = res['accepted_requests']
+        const fav_requests = res['favorite_pending_requests']
         const history = res['finished_requests']
+        const requests = fav_requests.concat(norm_requests)
         console.log(subjects)
         this.setState({
         }, () => {
@@ -308,9 +310,7 @@ class App extends Component {
             },
             'dashboardview': {
               'upcoming':upcoming,
-              'pending': requests,
               'history': history,
-              'transaction': []
             },
             'requestsview': {
               'pending':requests,

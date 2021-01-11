@@ -16,6 +16,7 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
+import { get_user, post_api } from 'src/Api.js';
 
 const rows = [
   {
@@ -133,7 +134,18 @@ const Requests = ({ className, pending, ...rest }) => {
       'declineButton': <Button variant='outlined' color='secondary' id="decline" startIcon={<CancelIcon/>} onClick={() =>{
         confirm({ title:'Decline Request' ,description: 'Are you sure you want to decline this request?' })
           .then(() => {
-            // setModalDecline(true);
+            get_user(res => {
+              console.log(res)
+              const payload = {
+                'request': id,
+                'tutor': res.id,
+                'decline_reason': ''
+              }
+              post_api('tutor-decline-request', payload, (res) => {
+                console.log(res)
+                window.location.reload()
+              })
+            })
           })
           .catch(() => {
 
