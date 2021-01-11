@@ -31,7 +31,7 @@ export class Header extends Component {
                     <div key="2">
                     <Box mb={8} alignItems="center">
                         <Button /*href="#/login"*/ onClick={() =>  window.open("https://tiny.cc/AkadsEarlyAccess","_blank")} style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
-                          Get started
+                          Sign Up For Early Access
                         </Button>
                     </Box>
                     </div>
@@ -56,7 +56,7 @@ export class Header extends Component {
                     </p>
                     <Box mb={8} alignItems="center">
                         <Button /*href="#/login"*/ onClick={() =>  window.open("https://tiny.cc/AkadsEarlyAccess","_blank")} style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
-                          Get started
+                          Sign Up For Early Access
                         </Button>
                     </Box>
                   </div>
