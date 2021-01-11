@@ -54,6 +54,8 @@ import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
 import CloseIcon from '@material-ui/icons/Close'
 import HelperModal from 'src/components/HelperModal';
 
+import Websocket from 'react-websocket';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -169,9 +171,17 @@ function TutorDashboardLayout (props){
     })
   }
 
-  useInterval(() => {
-    refresh()
-  }, 60000)
+  // useInterval(() => {
+  //   refresh()
+  // }, 60000)
+
+  const handleData = (data) => {
+    console.log(data)
+    const message = JSON.parse(data)
+    if(message['message'] == 'update'){
+      refresh()
+    }
+  }
 
   const showHelp = () => {
     setOpen(true)
@@ -193,6 +203,7 @@ function TutorDashboardLayout (props){
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       /> */}
+      <Websocket url={'ws://api.akadsph.com:8000/ws/'+'tutor'+String(user_id)+'/'} onMessage={handleData}/>
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>

@@ -37,7 +37,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
-import Websocket from 'react-websocket';
+
 import 'src/ChatWidget.css';
 import toast from 'react-hot-toast';
 import {useSnackbar} from 'notistack';
@@ -54,6 +54,8 @@ import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 import HelperModal from 'src/components/HelperModal';
 
 import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
+
+import Websocket from 'react-websocket';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -171,15 +173,21 @@ function DashboardLayout (props){
     })
   }
 
-  useInterval(() => {
-    refresh()
-  }, 60000)
+  // useInterval(() => {
+  //   refresh()
+  // }, 60000)
 
   const showHelp = () => {
     setOpen(true)
 
   }
 
+  const handleData = (data) => {
+    const message = JSON.parse(data)
+    if(message['message'] == 'update'){
+      refresh()
+    }
+  }
 
   return (
     <div>
@@ -191,6 +199,7 @@ function DashboardLayout (props){
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       /> */}
+      <Websocket url={'ws://api.akadsph.com:8000/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/>
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
