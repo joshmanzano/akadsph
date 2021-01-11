@@ -149,7 +149,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['favTutor'].tutor.first_name} {data['favTutor'].tutor.last_name}
+                        {data['favtutors'].tutor.first_name} {data['favtutors'].tutor.last_name}
                       </Typography>
                     </Grid>
                     </React.Fragment>

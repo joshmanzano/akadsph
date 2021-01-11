@@ -73,7 +73,7 @@ const CustomerListView = (props) => {
     lengths: props.lengths[0],
     topics: '',
     times: [],
-    favTutor: props.favtutors.length > 0 ? props.favtutors[0] : null,
+    favtutors: props.favtutors.length > 0 ? props.favtutors[0] : null,
     files: props.files,
     special_request: '',
     allTutors: true,
@@ -119,7 +119,7 @@ const CustomerListView = (props) => {
         'topics': data['topics'],
         'special_request': data['special_request'],
         'available_days': available_days,
-        'fav_tutor': !data['allTutors'] ? data['favTutor'].tutor.id : null,
+        'fav_tutor': !data['allTutors'] ? data['favtutors'].tutor.id : null,
         'time': data['lengths'].value,
       }
       console.log(postData)

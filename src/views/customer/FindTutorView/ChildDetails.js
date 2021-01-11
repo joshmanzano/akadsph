@@ -63,6 +63,8 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
   const handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
+    console.log(nam)
+    console.log(val)
     data[nam] = props[nam][val];
     setData(data)
     if(nam === 'subjects'){

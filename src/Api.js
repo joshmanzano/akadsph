@@ -15,7 +15,7 @@ const password = 'EelBoneyTwitterImperfect'
 const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
 const paymongo_public_live = 'pk_live_3Ef8VJ23gNTU6JYCGEcxZzhb'
 const paymongo_key_live = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = paymongo_key
+const paymongo_key = paymongo_key_live
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -141,7 +141,6 @@ export const get_user = (_callback) => {
 
 export const api = (url, method, raw_data, _callback) => {
   verify_token()
-
 }
 
 export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callback) => {
@@ -199,6 +198,7 @@ export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _cal
   
   axios(config)
   .then(function (response) {
+    console.log(response);
     _callback(response.data)
   })
   .catch(function (error) {

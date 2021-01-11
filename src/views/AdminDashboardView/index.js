@@ -5,8 +5,14 @@ import {
   Box,
   makeStyles,
   Typography,
-  Button
+  Button,
+  Menu,
+  MenuItem,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Page from 'src/components/Page';
 import Metrics from './Metrics';
 import InfoTable from './InfoTable';
@@ -17,6 +23,8 @@ import {_} from 'gridjs-react';
 
 import Calendar from './Calendar';
 import moment from 'moment';
+
+import ActionMenu from './ActionMenu.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,15 +47,15 @@ const parentActions = () => {
 const Dashboard = (props) => {
   const classes = useStyles();
   const [selectedDate, changeDate] = useState(new Date())
+
   const data = props.data
   console.log(data)
   const parentRows = []
   data.parents.forEach(p => {
     parentRows.push([
-      p.id, _(<img width="40" src={p.picture}/>), p.first_name, p.last_name, p.email, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
+      p.id, _(<img width="40" src={p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
         <Fragment>
-          <Button variant="contained" color="primary">Edit</Button>
-          <Button variant="contained" color="primary">Disable</Button>
+          <ActionMenu p={p}/>
         </Fragment>
       ) 
     ])
@@ -55,10 +63,9 @@ const Dashboard = (props) => {
   const tutorRows = []
   data.tutors.forEach(t => {
     tutorRows.push([
-      t.id, _(<img width="40" src={t.picture}/>), t.first_name, t.last_name, t.email, _(<a target="_blank" href={t.files}>Link</a>), _(
+      t.id, _(<img width="40" src={t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(<a target="_blank" href={t.files}>Link</a>), _(
         <Fragment>
-          <Button variant="contained" color="primary">Edit</Button>
-          <Button variant="contained" color="primary">Disable</Button>
+          <ActionMenu t={t}/>
         </Fragment>
       )  
     ])
@@ -73,9 +80,24 @@ const Dashboard = (props) => {
   const transactionRows = []
   data.payments.forEach(p => {
     transactionRows.push([
-      moment(p.date).format('MMMM Do YYYY, h:mm:ss a'), 'Php ' + String(p.amount/100), p.credits, p.parent 
+      moment(p.date).format('MMMM Do YYYY, h:mm:ss a'), 'Php ' + String(p.amount/100), p.credits, p.parent, _(
+        <Button variant="contained" color="primary">
+          Refund
+        </Button>
+      ) 
     ])
   })
+
+  const requestRows = []
+  // data.payments.forEach(p => {
+  //   transactionRows.push([
+  //     moment(p.date).format('MMMM Do YYYY, h:mm:ss a'), 'Php ' + String(p.amount/100), p.credits, p.parent, _(
+  //       <Button variant="contained" color="primary">
+  //         Refund
+  //       </Button>
+  //     ) 
+  //   ])
+  // })
 
   return (
     <Page
@@ -139,7 +161,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Credits', 'Files', 'Actions']}/>
+            <InfoBox name={'Requests'} rows={requestRows} headers={['ID','']}/>
           </Grid>
           <Grid
             item
@@ -148,7 +170,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Tutors'} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Files', 'Actions']}/>
+            {/* <InfoBox name={'Sessions'} rows={sessionRows} headers={['ID','Start Date','End Date','Join Link','Start Link']}/> */}
           </Grid>
           <Grid
             item
@@ -157,7 +179,25 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Transactions'} rows={transactionRows} headers={['Date', 'Amount', 'Credits', 'Parent']}/>
+            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Files', 'Actions']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Tutors'} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Files', 'Actions']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Transactions'} rows={transactionRows} headers={['Date', 'Amount', 'Credits', 'Parent', 'Actions']}/>
           </Grid>
         </Grid>
       </Container>

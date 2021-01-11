@@ -97,7 +97,7 @@ const Upcoming = (props) => {
             confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
               .then(() => {
                 const payload = {
-                  'session': u.id
+                  'session_id': u.id
                 }
                 post_api('cancel-session', payload, (res) => {
                   console.log(res)
