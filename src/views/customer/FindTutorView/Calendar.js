@@ -40,7 +40,7 @@ export default class Example extends React.Component {
     const toMonth = new Date()
     toMonth.setMonth(now.getMonth() + 1)
     const toDay = new Date() 
-    toDay.setDate(now.getDate() + 3)
+    toDay.setDate(now.getDate() + 1)
     return (
       <div>
         <DayPicker
