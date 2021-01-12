@@ -171,9 +171,9 @@ function TutorDashboardLayout (props){
     })
   }
 
-  // useInterval(() => {
-  //   refresh()
-  // }, 60000)
+  useInterval(() => {
+    refresh()
+  }, 60000)
 
   const handleData = (data) => {
     console.log(data)

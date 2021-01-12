@@ -173,9 +173,9 @@ function DashboardLayout (props){
     })
   }
 
-  // useInterval(() => {
-  //   refresh()
-  // }, 60000)
+  useInterval(() => {
+    refresh()
+  }, 60000)
 
   const showHelp = () => {
     setOpen(true)
