@@ -71,10 +71,12 @@ const Upcoming = (props) => {
   const [openJoin, setOpenJoin] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const [join_url, setJoinURL] = React.useState('https://google.com');
+  const [session_id, setSession] = React.useState(null);
   const confirm = useConfirm();
 
-  const join_session = (url) => {
+  const join_session = (url, session_id) => {
     setJoinURL(url)
+    setSession(session_id)
     setOpenJoin(true)
   }
 
@@ -88,7 +90,7 @@ const Upcoming = (props) => {
           'time':moment(sessionDate).format('h:mm a'),
           'subject':u.subject,
           'tutor':u.tutor,
-          'join_button':<Button variant='outlined' color='primary' onClick={() => join_session(u.join_url)} startIcon={<CastForEducationIcon/>}>Join</Button>,
+          'join_button':<Button variant='outlined' color='primary' onClick={() => join_session(u.join_url, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
           // 'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
           'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
           'chat_button': <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
@@ -129,7 +131,7 @@ const Upcoming = (props) => {
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows}/>
           </CardContent>
-          <ModalJoin open={openJoin} join_url={join_url} setOpen={setOpenJoin}/>
+          <ModalJoin open={openJoin} join_url={join_url} session_id={session_id} duration={1} setOpen={setOpenJoin}/>
           <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
         </React.Fragment>
       :

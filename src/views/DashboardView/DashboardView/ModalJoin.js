@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
+const ModalDeclined = ({open, setOpen, join_url, session_id, duration, className, ...rest }) => {
   const classes = useStyles();
   const [openZoom, setOpenZoom] = React.useState(false);
   const [openExtension, setOpenExtension] = React.useState(false);
@@ -78,7 +78,7 @@ const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
     setOpen(false);
-    setOpenExtension(true);
+    // setOpenExtension(true);
 }
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -127,7 +127,7 @@ const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
           </DialogActions>
       </Dialog>
       <ModalZoomStart open={openZoom} setOpen={setOpenZoom}/>
-      <ExtensionPrompt open={openExtension} setOpen={setOpenExtension}/>
+      <ExtensionPrompt session_id={session_id} duration={duration} open={openExtension} setOpen={setOpenExtension}/>
     </React.Fragment>
   );
 };

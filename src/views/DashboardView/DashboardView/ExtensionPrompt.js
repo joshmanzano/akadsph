@@ -22,6 +22,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { useConfirm } from 'material-ui-confirm';
 import ModalJoin from './ModalJoin';
 
+import toast, {Toaster} from 'react-hot-toast';
+
+import { post_api } from 'src/Api'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
+const ModalTutorProfile = ({open, setOpen, session_id, duration, className, ...rest }) => {
   const classes = useStyles();
   const [extendMins, setExtendMins] =  React.useState(false);
   const [extendHour, setExtendHour] =  React.useState(false);
@@ -134,8 +138,15 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
       setEndSession(false);
       confirm({ title:'Extend Confirmation', description: 'Do you want to extend the session for an additional 1 hour?' })
       .then(() => {
-        
-        setOpenJoin(true)
+        const payload = {
+          'session_id': session_id,
+          'duration': 1,
+        }
+        console.log(payload)
+        post_api('extend-session', payload, res => {
+          console.log(res)
+          toast('Sent request to tutor! Kindly inform your tutor of the extension request.')
+        })
         setOpen(false);
       })
       .catch(() => {
@@ -194,12 +205,12 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
       fullWidth={true}
       maxWidth={'sm'}
       >
-          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Tutor Profile"}</DialogTitle>
+          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Extend Session"}</DialogTitle>
           <DialogContent className={classes.dialogStyle}>
           
             <Box align='center' mb={6} >
               <Typography variant="h4" align="center" mb={2}>
-                End Session?
+                Enjoy your session! You may extend your session by clicking the appropriate button below:
               </Typography>
             </Box>
 
@@ -209,7 +220,7 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
                 alignItems="center"
                 justify="center"
                 style={{placeItems: 'center', textAlign: 'center'}}>
-                <Grid
+                {/* <Grid
                   item
                   lg={4}
                   md={4}
@@ -223,12 +234,12 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
                   <Button className={ !extendMins? classes.choicesBtn : classes.selectedBtn} onClick={()=>buttonClick('extendMins') } variant="outlined">
                     Extend 30 Minutes
                   </Button>
-                </Grid>
+                </Grid> */}
                 <Grid
                   item
-                  lg={4}
-                  md={4}
-                  xl={4}
+                  lg={6}
+                  md={6}
+                  xl={6}
                   xs={12}
                 >
                   
@@ -238,9 +249,9 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
                 </Grid>
                 <Grid
                   item
-                  lg={4}
-                  md={4}
-                  xl={4}
+                  lg={6}
+                  md={6}
+                  xl={6}
                   xs={12}
                 >
                   {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
@@ -253,7 +264,7 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
             
             <Box my={5}>
               <Typography variant="body1" align="center" >
-              Extending the session means you agree to pay for the extension fee (550 for 1 hour and 300 for 20 minutes). You will be charged once the tutor accepts.
+              Extending the session by 1 hour means you agree on paying 1 credit to book another request at the end of this session.
               </Typography>
             </Box>
           </DialogContent>
@@ -267,6 +278,7 @@ const ModalTutorProfile = ({open, setOpen, className, ...rest }) => {
           </DialogActions>
           <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
       </Dialog>
+      <Toaster/>
       
     </React.Fragment>
   );
