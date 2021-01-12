@@ -175,7 +175,7 @@ function DashboardLayout (props){
 
   useInterval(() => {
     refresh()
-  }, 60000)
+  }, 30000)
 
   const showHelp = () => {
     setOpen(true)
@@ -199,7 +199,7 @@ function DashboardLayout (props){
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       /> */}
-      <Websocket url={'ws://api.akadsph.com/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/>
+      {/* <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/> */}
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
