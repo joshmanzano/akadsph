@@ -86,9 +86,9 @@ const Upcoming = (props) => {
         rows.push({
           'time':moment(sessionDate).format('h:mm a'),
           'subject':u.subject,
-          'tutor':u.tutor,
+          'tutee':u.tutee,
           'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.start_url)} startIcon={<CastForEducationIcon/>}>Start</Button>,
-          'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
+          'files_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
           'chat_button': <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
           'cancel_button': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
           onClick={() =>{

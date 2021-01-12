@@ -39,6 +39,7 @@ const Dashboard = (props) => {
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
       'tutee':u.child.first_name,
+      'files':u.request.extra_files,
       'start_url':u.session.start_zoom_link,
     })
   })

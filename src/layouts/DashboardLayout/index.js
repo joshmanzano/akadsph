@@ -199,7 +199,7 @@ function DashboardLayout (props){
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       /> */}
-      <Websocket url={'ws://api.akadsph.com:8000/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/>
+      <Websocket url={'ws://api.akadsph.com/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/>
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
