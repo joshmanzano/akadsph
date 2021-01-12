@@ -295,6 +295,7 @@ class App extends Component {
         const fav_requests = res['favorite_pending_requests']
         const history = res['finished_requests']
         const requests = fav_requests.concat(norm_requests)
+        const files = tutor.files
         console.log(subjects)
         this.setState({
         }, () => {
@@ -311,6 +312,7 @@ class App extends Component {
             'dashboardview': {
               'upcoming':upcoming,
               'history': history,
+              'files': files,
             },
             'requestsview': {
               'pending':requests,

@@ -121,7 +121,7 @@ const Upcoming = (props) => {
           <CardContent>
             <Table tableHeaders={headers} tableRows={rows}/>
           </CardContent>
-          <ModalJoin open={openJoin} join_url={start_url} setOpen={setOpenJoin}/>
+          <ModalJoin open={openJoin} files={props.files} join_url={start_url} setOpen={setOpenJoin}/>
           <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} details={sessionDetails}/> 
         </React.Fragment>
       :

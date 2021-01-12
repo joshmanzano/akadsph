@@ -25,6 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { withStyles } from '@material-ui/core/styles';
 
 import ModalZoomStart from 'src/components/ModalZoomStart.js';
+import RecordingPrompt from './RecordingPrompt';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,10 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
+const ModalDeclined = ({open, setOpen, join_url, files, className, ...rest }) => {
   const classes = useStyles();
   const [openZoom, setOpenZoom] = React.useState(false);
-  const [openExtension, setOpenExtension] = React.useState(false);
+  const [openPrompt, setPrompt] = React.useState(false);
 
 
   const handleClickOpen = () => {
@@ -77,7 +78,7 @@ const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
     setOpen(false);
-    setOpenExtension(true);
+    setPrompt(true);
 }
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -113,7 +114,7 @@ const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
             <img width='100' src='../static/images/oli-happy.png'></img>
             </Box>
             <DialogContentText id="alert-dialog-description" align='center'>
-              Your tutorial session is about to start!<br/>Join the call now.
+              Your tutorial session is about to start!<br/>Start the call now.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -121,11 +122,12 @@ const ModalDeclined = ({open, setOpen, join_url, className, ...rest }) => {
               Cancel
             </Button>
             <Button onClick={() =>  {openInNewTab(join_url)}} color="primary" autoFocus>
-              Join Session
+              Start Session
             </Button>
           </DialogActions>
       </Dialog>
       <ModalZoomStart open={openZoom} setOpen={setOpenZoom}/>
+      <RecordingPrompt open={openPrompt} files={files} setOpen={setPrompt}/>
     </React.Fragment>
   );
 };
