@@ -25,6 +25,7 @@ import ChatView from 'src/views/chat';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
+import StoreUnderConstruction from 'src/components/BuyHoursUnderMaintenance';
 import Loading from 'src/components/loading';
 import NoHourView from 'src/components/NoHourView';
 import PlaygroundView from 'src/views/test/PlaygroundView';
@@ -229,7 +230,8 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}store`}>
                 <Container>
                 <Fragment>
-                  <CreditStoreView refresh={refresh} addCredit={props.addCredit}/>
+                  {/* <CreditStoreView refresh={refresh} addCredit={props.addCredit}/> */}
+                  <StoreUnderConstruction/>
                 </Fragment>
                 </Container>
               </Route>
