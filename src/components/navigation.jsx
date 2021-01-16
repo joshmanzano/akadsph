@@ -54,11 +54,11 @@ export class Navigation extends Component {
                   Testimonials
                 </Link>
               </li>
-              {/* <li>
-                <a href="#/#contact" className="page-scroll">
+              <li>
+                <a  onClick={()=> {this.props.setShowPage("becomeTutor")}} /*href="#/#contact"*/ className="page-scroll">
                   Become A Tutor
                 </a>
-              </li> */}
+              </li>
               <li>
                 <Button onClick={() => window.location.replace('#/login')} variant="outlined" color="secondary" id="loginButton">
                   Login

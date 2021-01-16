@@ -113,19 +113,35 @@
         "instagram": "https://www.instagram.com/akadsph/"
     },
     "Features": [{
-            "icon": "../static/images/one-on-one.png",
+            "icon": "../static/images/laptop.png",
             "title": "Buy Hour Credits",
             "text": "Buy 1 hour, 10 hour, or 15 hour sessions easily through multiple safe and secure payment methods."
         },
         {
-            "icon": "../static/images/top-notch.png",
+            "icon": "../static/images/schedule.png",
             "title": "Book A Tutor",
             "text": "Fill up a form and match with a tutor. You can chat with your tutor and send files."
         },
         {
-            "icon": "../static/images/all-in-one.png",
+            "icon": "../static/images/creditcard.png",
             "title": "Start your online session",
             "text": "One-on-one sessions with an online whiteboard and screen share. If you liked your tutor, add them to your Favorites List and book them again in the future."
         }
-    ]
+    ],
+    "Benefits": [{
+        "icon": "../static/images/one-on-one.png",
+        "title": "No More Referrals",
+        "text": "We supply you with students who need your expertise through our data matching system."
+    },
+    {
+        "icon": "../static/images/top-notch.png",
+        "title": "Earn Easily",
+        "text": "Easily bring in income while you’re a student or fresh graduate just by tutoring"
+    },
+    {
+        "icon": "../static/images/all-in-one.png",
+        "title": "Online Tutoring",
+        "text": "Distance in no longer a problem through online tutoring."
+    }
+]
 }

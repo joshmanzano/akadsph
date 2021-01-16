@@ -16,6 +16,10 @@ import JsonData from './data/data.json';
 import HeaderAbout from './components/headerAbout';
 import Story from './components/story';
 import Team from './components/Team';
+import HeaderTutor from './components/headerTutor';
+import Benefits from './components/benefits';
+import Requirements from './components/requirements';
+import Process from './components/process';
 
 export class LandingPage extends Component {
   state = {
@@ -59,7 +63,12 @@ export class LandingPage extends Component {
           <Team data={this.state.landingPageData.Team} />
           </React.Fragment>
           :
-          <React.Fragment></React.Fragment>
+          <React.Fragment>
+            <HeaderTutor data={this.state.landingPageData.Header} />
+            <Process data={this.state.landingPageData.Process} />
+            <Benefits data={this.state.landingPageData.Benefits} />
+            <Requirements data={this.state.landingPageData.Requirements} />
+          </React.Fragment>
         }
 
         {this.state.showpage == "main" || this.state.showpage == "becomeTutor" ? 

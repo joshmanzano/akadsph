@@ -461,6 +461,75 @@ header .intro-row-about{
 	margin: 9px 20px 0 20px;
 }
 
+/* Header Become A Tutor */
+.intro-tutor {
+	display: table;
+	width: 100%;
+	padding: 0;
+	background-color: #e6cb04;
+	color: white;
+	/* -webkit-background-size: cover; */
+	/* -moz-background-size: cover; */
+	/* background-size: 100% 100%; */
+	background-size: cover;
+	background-image: url("../static/images/becomeatutor.jpg");
+	background-repeat: no-repeat;
+	position: relative;
+	background-position: center;
+}
+
+.intro-tutor h1 {
+	font-family: 'DM Sans', sans-serif;
+	color: #fff;
+	font-size: 82px;
+	font-weight: 700;
+	/* text-transform: uppercase; */
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.intro-tutor h1 span {
+	font-weight: 800;
+	color: #5ca9fb;
+}
+
+.intro-tutor h1 span {
+	font-weight: 800;
+	color: #5ca9fb;
+}
+.intro-tutor p {
+	color: #fff;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 30px;
+	margin: 0 auto;
+	margin-bottom: 60px;
+}
+
+.intro-tutor p > b {
+	color: #6cc2b6;
+}
+
+header .intro-text-tutor {
+	padding-top: 250px;
+	padding-bottom: 100px;
+	text-align: center;
+}
+header .intro-row-tutor{
+	margin-left: 150px;
+}
+
+.intro-small-tutor {
+	display: table;
+	width: 100%;
+	padding: 0;
+	background-color:#fbc81d;
+	background-image: None !important;
+	/* -webkit-background-size: cover; */
+	/* -moz-background-size: cover; */
+	/* background-size: 100% 100%; */
+}
+
+
 /* Features Section */
 #features {
 	padding-top: 150px;
@@ -469,6 +538,26 @@ header .intro-row-about{
 }
 
 #features i.fa {
+	font-size: 38px;
+	margin-bottom: 20px;
+	transition: all 0.5s;
+	color: #fff;
+	width: 100px;
+	height: 100px;
+	padding: 30px 0;
+	border-radius: 50%;
+	background: linear-gradient(to right, var(--first) 0%, var(--second) 100%);
+	box-shadow: 10px 10px 10px rgba(0,0,0,.05);
+}
+
+/* Benefits Section */
+#benefits {
+	padding-top: 50px;
+	padding-bottom: 125px;
+	background: #0B3243;
+}
+
+#benefits i.fa {
 	font-size: 38px;
 	margin-bottom: 20px;
 	transition: all 0.5s;
@@ -574,6 +663,14 @@ header .intro-row-about{
 .aboutimage {
 	background-size: cover;
 	background-image: url('../static/images/about_us_background.png');
+	background-repeat: no-repeat;
+	position: relative;
+	background-position: center;
+}
+
+.requirementsimage {
+	background-size: cover;
+	background-image: url('../static/images/requirements_background.png');
 	background-repeat: no-repeat;
 	position: relative;
 	background-position: center;
