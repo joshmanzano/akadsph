@@ -46,35 +46,82 @@ const parentActions = () => {
 
 const Dashboard = (props) => {
   const classes = useStyles();
-  const [selectedDate, changeDate] = useState(new Date())
-
   const data = props.data
   console.log(data)
+  
+  const subjects = {}
+  data.subjects.forEach(s => {
+    subjects[s.id] = s.subject_field
+  })
+
+  const availabledays = {}
+  data.requests.availabledays.forEach(a => {
+    if(!(a.request in availabledays)){
+      availabledays[a.request] = []
+    }
+    availabledays[a.request].push(a.start_date_time) 
+  })
+
+  const accepted_requests = {}
+  data.requests.accepted.forEach(r => {
+    accepted_requests[r.id] = r
+  })
+  data.requests.finished.forEach(r => {
+    accepted_requests[r.id] = r
+  })
+
+  let totalParents = 0
+  let totalTutors = 0
+  let activeParents = 0
+  let activeTutors = 0
+
+  const parents = {}
   const parentRows = []
   data.parents.forEach(p => {
+    totalParents += 1
+    if(p.picture.trim() != ''){
+      activeParents += 1
+    }
+    parents[p.id] = p
     parentRows.push([
-      p.id, _(<img width="40" src={p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
+      p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
         <Fragment>
           <ActionMenu p={p}/>
         </Fragment>
       ) 
     ])
   })
+
+  const tutors = {}
   const tutorRows = []
   data.tutors.forEach(t => {
+    totalTutors += 1
+    if(t.picture.trim() != ''){
+      activeTutors += 1
+    }
+    tutors[t.id] = t
     tutorRows.push([
-      t.id, _(<img width="40" src={t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(<a target="_blank" href={t.files}>Link</a>), _(
+      t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(<a target="_blank" href={t.files}>Link</a>), _(
         <Fragment>
           <ActionMenu t={t}/>
         </Fragment>
       )  
     ])
   })
+
   const stats = data.business_stats
 
   const metricRows = []
   metricRows.push([
     moment().format('MMMM'),stats.BOUGHT, stats.GMV, stats.NET_REVENUE, stats.NET_REVENUE_CMGR, stats.USED, stats.USER_RETENTION
+  ])
+
+  const userRows = []
+  userRows.push([
+    'Parent', totalParents, activeParents
+  ],
+  [
+    'Tutor', totalTutors, activeTutors
   ])
 
   const transactionRows = []
@@ -88,16 +135,43 @@ const Dashboard = (props) => {
     ])
   })
 
-  const requestRows = []
-  // data.payments.forEach(p => {
-  //   transactionRows.push([
-  //     moment(p.date).format('MMMM Do YYYY, h:mm:ss a'), 'Php ' + String(p.amount/100), p.credits, p.parent, _(
-  //       <Button variant="contained" color="primary">
-  //         Refund
-  //       </Button>
-  //     ) 
-  //   ])
-  // })
+  const pendingRows = []
+  data.requests.pending.forEach(r => {
+    pendingRows.push([
+      r.id, moment(r.time_created).format('MMMM Do YYYY, h:mm:ss a'), 
+      subjects[r.subject], parents[r.parent].first_name, r.fav_tutor.trim() == '' ? 'None' : tutors[r.fav_tutor].first_name
+    ])
+  })
+
+  const sessionRows = []
+  data.sessions.forEach(s => {
+    const request = accepted_requests[s.request]
+    console.log(request)
+    sessionRows.push([
+      s.id, s.active, moment(s.start_date_time).format('MMMM Do YYYY, h:mm:ss a'),
+      subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
+        <Box align="center">
+          <a href={s.join_zoom_link}>
+            Join Zoom
+          </a>
+        </Box>
+      ), _(
+        <Box align="center">
+          <a href={s.start_zoom_link}>
+            Start Zoom
+          </a>
+        </Box>
+      ) 
+    ])
+  })
+
+
+  const parentButtons = 
+      <Fragment>
+        <Button variant="contained" color="primary">
+          Add Parent
+        </Button>
+      </Fragment>
 
   return (
     <Page
@@ -152,7 +226,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Metrics'} rows={metricRows} headers={['MONTH', 'BOUGHT', 'GMV', 'NET_REVENUE', 'NET_REVENUE_CMGR', 'USED', 'USER_RETENTION']}/>
+            <InfoBox name={'Business Metrics'} rows={metricRows} headers={['MONTH', 'BOUGHT', 'GMV', 'NET_REVENUE', 'NET_REVENUE_CMGR', 'USED', 'USER_RETENTION']}/>
           </Grid>
           <Grid
             item
@@ -161,7 +235,25 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Requests'} rows={requestRows} headers={['ID','']}/>
+            <InfoBox name={'User Metrics'} rows={userRows} headers={['Type', 'Total Users', 'Active Users']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Sessions'} rows={sessionRows} headers={['ID','Active?','Time Created','Subject','Parent','Tutor','','']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Requests'} rows={pendingRows} headers={['ID','Time Created','Subject','Parent','Favorite Tutor','Timeslots']}/>
           </Grid>
           <Grid
             item
@@ -179,7 +271,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Files', 'Actions']}/>
+            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Files', 'Actions']}/>
           </Grid>
           <Grid
             item

@@ -123,7 +123,7 @@ const TopBar = ({
         <Container>
 
           <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item sm={2}>
+            {/* <Grid item sm={2}>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="#/">
@@ -136,7 +136,7 @@ const TopBar = ({
                   </Box>
                 </Hidden>
               </IconButton>
-            </Grid>
+            </Grid> */}
             {/* <Grid sm={2}>
               <IconButton color="inherit" href="#/viewrequest">
                 <InsertInvitationIcon/>
@@ -199,7 +199,7 @@ const TopBar = ({
             </h5> */}
           </Box>
         </Hidden>
-        <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
+        {/* <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
           {chatNotif ?
           <Badge
             color="secondary"
@@ -217,18 +217,8 @@ const TopBar = ({
             variant="dot"
           >
             <NotificationsIcon/>
-            {/* <Notifications
-              // data={data}
-              data={notifs}
-              header={{
-                title: 'Notifications',
-                option: { text: 'View All', onClick: () => console.log('Clicked') },
-              }}
-              markAsRead={data => console.log(data)}
-              classNamePrefix="notif"
-            /> */}
           </Badge>
-        </IconButton>
+        </IconButton> */}
         <IconButton onClick={logout} color="inherit">
             <MeetingRoomIcon/>
         </IconButton>

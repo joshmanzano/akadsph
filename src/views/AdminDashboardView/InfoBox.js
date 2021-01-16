@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Metrics = ({ className, name, rows, actions, headers, ...rest }) => {
+const Metrics = ({ className, buttons, name, rows, actions, headers, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -54,7 +54,7 @@ const Metrics = ({ className, name, rows, actions, headers, ...rest }) => {
       >
       <Box mt={2}>
         <Typography variant='h1'>
-          {name}
+          {name} {buttons}
         </Typography>
       </Box>
       </Grid>
