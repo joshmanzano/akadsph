@@ -12,35 +12,8 @@ import ReactGifted from 'src/components/ReactGiftedChat'
 
 const Chat = () => {
 
-  const akadMessages = [
-    {
-      id: 1,
-      text: 'Welcome to AKADS!\nIf you need any help, don\'t hesitate to message us!',
-      createdAt: new Date(),
-      user: {
-        id: 2,
-        name: 'AKADS Buddy',
-        avatar: '/static/images/oli-happy.png',
-      },
-    },
-  ]
-
-  const joshMessages = [
-    {
-      id: 1,
-      text: 'Good morning! May I ask what particular topics in which your child is having a hard time with?',
-      createdAt: new Date(),
-      user: {
-        id: 2,
-        name: 'Joshua Manzano',
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-      },
-    },
-  ]
-
-  const [messages, changeMessage] = useState(joshMessages)
-  const [joshUnread, changeJosh] = useState(1)
-  const [akadsUnread, changeAkads] = useState(1)
+  const [messages, changeMessage] = useState([
+  ])
 
   const styles = {
     container: {
@@ -71,142 +44,21 @@ const Chat = () => {
     },
   };
 
-  const changeChat = (id) => {
-    if(id == 0){
-      changeMessage(akadMessages)
-      changeChatlist(chatListAkads)
-      changeAkads(0)
-    }else if (id == 1){
-      changeMessage(joshMessages)
-      changeChatlist(chatListJosh)
-      changeJosh(0)
-    }else if (id == 2){
-    }
-
-  }
-
-  const chatListJosh = [
+  const [chatList , changeChatlist] = useState([
     {
-        avatar: '/static/images/oli-chat.png',
-        alt: 'Oli',
-        title: 'AKADS Buddy',
-        subtitle: 'Welcome to AKADS!',
-        date: new Date(),
-        onClick:{changeChat},
-        chatID: 0,
-        unread: akadsUnread,
-    },
-    {
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-        alt: 'Joshua',
-        title: 'Joshua Manzano',
-        subtitle: 'Hello! Can I have more details about...',
-        date: new Date(),
-        chatID: 1,
-        unread: joshUnread,
-        className: 'selectedChat',
-    },
-    {
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-        alt: 'Carl Cornejo',
-        title: 'Carl Cornejo (Inactive)',
-        subtitle: 'Thank you!',
-        date: new Date(1603958808000),
-        chatID: 2,
-        unread: 0,
-        statusColor: '#D4D4D4',
-        statusColorType: 'encircle',
-        className: 'inactiveChat',
-        // statusText: 'Done',
-    },
-  ]
-
-  const chatListAkads = [
-    {
-        avatar: '/static/images/oli-chat.png',
-        alt: 'Oli',
-        title: 'AKADS Buddy',
-        subtitle: 'Welcome to AKADS!',
-        date: new Date(),
-        onClick:{changeChat},
-        chatID: 0,
-        unread: akadsUnread,
-        className: 'selectedChat',
-    },
-    {
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-        alt: 'Joshua',
-        title: 'Joshua Manzano',
-        subtitle: 'Hello! Can I have more details about...',
-        date: new Date(),
-        chatID: 1,
-        unread: joshUnread,
-    },
-    {
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-        alt: 'Carl Cornejo',
-        title: 'Carl Cornejo (Inactive)',
-        subtitle: 'Thank you!',
-        date: new Date(1603958808000),
-        chatID: 2,
-        unread: 0,
-        statusColor: '#D4D4D4',
-        statusColorType: 'encircle',
-        className: 'inactiveChat',
-        // statusText: 'Done',
-    },
-  ]
-
-  const [chatList , changeChatlist] = useState(chatListJosh)
-
-  const chatList2 = [
-    {
-        avatar: '/static/images/oli-chat.png',
-        alt: 'Oli',
-        title: 'AKADS Buddy',
-        subtitle: 'Welcome to AKADS!',
-        date: new Date(),
-        unread: 1,
-    },
-    {
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-        alt: 'Joshua',
-        title: 'Joshua Manzano',
-        subtitle: 'Hello! Can I have more details about...',
-        date: new Date(),
-        unread: 1,
-    },
-
-  ]
-
-
-  for(var i = 0; i < 5 ; i++){
-    chatList2.push({
-      avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-      alt: 'Anon',
-      title: 'Anon',
-      subtitle: 'Lorem ipsum',
+      avatar: '/static/images/oli-chat.png',
+      alt: 'Oli',
+      title: 'AKADS Buddy',
+      subtitle: 'Welcome to AKADS!',
       date: new Date(),
-      unread: 1,
-    })
-  }
-  chatList2.push(
-    {
-        avatar: 'https://lh4.googleusercontent.com/-mxVpz__Ts-M/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckmHZi5Zpu2DZtViCFKRTK55uLgRQ/s96-c/photo.jpg',
-        alt: 'Carl Cornejo',
-        title: 'Carl Cornejo (Inactive)',
-        subtitle: 'Thank you!',
-        date: new Date(1603958808000),
-        unread: 0,
-        statusColor: '#D4D4D4',
-        statusColorType: 'encircle',
-        className: 'inactiveChat',
-        // statusText: 'Done',
+      // onClick:{changeChat},
+      chatID: 0,
+      // unread: akadsUnread,
+      className: 'selectedChat',
     }
-  )
+  ])
 
 
-  
 
   return (
     <div style={styles.container}>
@@ -220,12 +72,12 @@ const Chat = () => {
           date={chat.date}
           unread={chat.unread}
           className={chat.className}
-          onClick={() => changeChat(chat.chatID)}
+          // onClick={() => changeChat(chat.chatID)}
           />
         ))}
         </div>
       <div style={styles.chat}>
-        <ReactGifted messages={messages}/>
+        <ReactGifted changeMessage={changeMessage} messages={messages}/>
       </div>
     </div>
   );

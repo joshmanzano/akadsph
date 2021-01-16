@@ -247,13 +247,15 @@ const CustomerListView = (props) => {
               xs={12}
               align='right'
             >
-              <Button className={classes.nextButton}  
-                color="primary"
-                variant="contained"
-                onClick={handleClickOpen}
-                >
-                  Submit Request
-              </Button>
+              <Box mb={4}>
+                <Button className={classes.nextButton}  
+                  color="primary"
+                  variant="contained"
+                  onClick={handleClickOpen}
+                  >
+                    Submit Request
+                </Button>
+              </Box>
             
               <Dialog
                 open={open}

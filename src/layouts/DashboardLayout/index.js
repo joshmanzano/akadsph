@@ -120,6 +120,7 @@ function DashboardLayout (props){
   const [setTransaction, changeTransaction] = useState(false)
   const [setNotification, changeNotification] = useState('')
   const {enqueueSnackbar, closeSnackbar} = useSnackbar();
+  const [showFab, setFab] = useState(true)
 
   const [open, setOpen] = useState(false)
   
@@ -251,8 +252,8 @@ function DashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  {/* <Messenger/>  */}
-                  <ChatUnderConstruction/>
+                  <Messenger/> 
+                  {/* <ChatUnderConstruction/> */}
                 </Fragment>
               </Route>
               <Route exact path={`${match.url}playground`}>
@@ -286,9 +287,11 @@ function DashboardLayout (props){
       subtitle={'Ask me anything'}
       /> */}
       <HelperModal open={open} setOpen={setOpen} user={"parent"}/>
+      {showFab &&
       <Fab size="large" onClick={showHelp} color="primary" className={'floater'}>
         <img id="helper-oli" width='50' src='../static/images/helper-oli.png'/>
       </Fab>
+      }
     </div>
     :
     <Fade in={!loaded}>

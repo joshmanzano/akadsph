@@ -6,6 +6,8 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 
+import Websocket from 'react-websocket';
+
 class Example extends Component {
 
   constructor(props){
@@ -13,6 +15,7 @@ class Example extends Component {
     this.state = {
       messages: this.props.messages,
       loading: false,
+      chatID: 1,
     };
   }
 
@@ -40,19 +43,44 @@ class Example extends Component {
     }));
   }
 
+  handleData = (data) => {
+    const message = JSON.parse(data)
+    console.log(message)
+
+    const messages = []
+    messages.push(
+      {
+        id: this.state.chatID,
+        text: message['message'],
+        createdAt: new Date(),
+        user: {
+          id: 2,
+          name: 'AKADS Buddy',
+          avatar: '/static/images/oli-happy.png',
+        }
+      }
+    )
+    this.setState((previousState) => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }));
+  }
+
   render() {
     return (
       <Fragment>
       {this.state.loading ? 
         this.loadingCircle
       :
-      <GiftedChat
-        messages={this.state.messages}
-        onSend={(messages) => this.onSend(messages)}
-        user={{
-          id: 1,
-        }}
-      />
+      <React.Fragment>
+        <Websocket url={'wss://api.akadsph.com/ws/chat/'} onMessage={this.handleData}/>
+        <GiftedChat
+          messages={this.state.messages}
+          onSend={(messages) => this.onSend(messages)}
+          user={{
+            id: 1,
+          }}
+        />
+      </React.Fragment>
       }
       </Fragment>
     );
