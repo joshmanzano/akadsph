@@ -11,8 +11,8 @@ import {
 export class about extends Component {
   render() {
     return (
-        <div id="about" >
-        <div className="aboutCover">
+        <div /*id="about"*/ >
+        <div /*className="aboutCover"*/>
             <Grid container>
               <Hidden mdDown>
                 <Grid item xs={12} md={6} className='aboutimage'>

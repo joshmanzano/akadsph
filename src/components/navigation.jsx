@@ -27,7 +27,7 @@ export class Navigation extends Component {
               <img src='../img/logo.png'></img>
             </a>{" "} */}
 
-              <Link to="header" smooth={true}>
+              <Link to="header" smooth={true} onClick={()=> {this.props.setShowPage("main")}}>
                 <img height="50" src='../img/logo.png'></img>
               </Link>
           </div>
@@ -37,26 +37,28 @@ export class Navigation extends Component {
             id="bs-example-navbar-collapse-1"
           >
             <ul className="nav navbar-nav navbar-right">
-              {/* <li>
-                <a href="#/#about" className="page-scroll">
-                  About
-                </a>
-              </li> */}
               <li>
-                <Link to="pricing" spy={true} smooth={true}>
+                {/* <a href="#/#about" className="page-scroll"> */}
+                <Link to="header" spy={true} smooth={true} onClick={()=> {this.props.setShowPage("about")}}>
+                  About
+                {/* </a> */}
+                </Link>
+              </li>
+              <li>
+                <Link onClick={()=> {this.props.setShowPage("main")}} to="pricing" spy={true} smooth={true}>
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link to="testimonials" spy={true} smooth={true}>
+                <Link onClick={()=> {this.props.setShowPage("main")}} to="testimonials" spy={true} smooth={true}>
                   Testimonials
                 </Link>
               </li>
-              {/* <li>
-                <a href="#/#contact" className="page-scroll">
+              <li>
+                <a  onClick={()=> {this.props.setShowPage("becomeTutor")}} /*href="#/#contact"*/ className="page-scroll">
                   Become A Tutor
                 </a>
-              </li> */}
+              </li>
               <li>
                 <Button onClick={() => window.location.replace('#/login')} variant="outlined" color="secondary" id="loginButton">
                   Login
