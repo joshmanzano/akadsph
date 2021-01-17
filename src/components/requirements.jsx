@@ -8,24 +8,27 @@ import {
   Typography,
 } from '@material-ui/core';
 
-export class about extends Component {
+export class requirements extends Component {
   render() {
     return (
-        <div id="about" >
-        <div className="aboutCover">
-            <Grid container>
-              <Hidden mdDown>
-                <Grid item xs={12} md={6} className='aboutimage'>
-                </Grid>
-              </Hidden>
+        <div id="requirements">
+        <div /*className="requirementsCover"*/ className='requirementsimage'>
+            <Grid container spacing={1}>
+              {/* <Hidden mdDown> */}
+                {/* <Grid item xs={12} md={6} className='requirementsimage'>
+                </Grid> */}
+              {/* </Hidden> */}
               {/* <Hidden lgUp>
               </Hidden> */}
-              <Grid item xs={12} sm={12} md={12} lg={6}>
+              <Grid item sm={2} md={2} xs={2}></Grid>
+              <Grid item xs={12} sm={8} md={8} lg={8}>
                 <Box my={4}>
-                <div className="about-text">
+                <div className="requirements-text" >
                   
                   <Hidden mdDown>
+                    <Box align="center">
                       <h3>Requirements</h3>
+                    </Box>
                   </Hidden>
                   <Hidden lgUp>
                       <Box align="center">
@@ -33,7 +36,7 @@ export class about extends Component {
                       </Box>
                   </Hidden>
                   <Box mb={7}>
-                    <Grid container alignContent="center" my={2}>
+                    <Grid container alignContent="center" my={2} spacing={3}>
                       <Grid item md={4} sm={4} xs={12} alignItems="center">
                         <Box align="center">
                         <img id="vector-icons" src="../static/images/abc-block.png" width="80" /*className="img-responsive"*/ alt=""/> 
@@ -60,6 +63,7 @@ export class about extends Component {
                 </div>
                 </Box>
               </Grid>
+              <Grid item sm={2} md={2} xs={2}></Grid>
             </Grid>
         </div>
       </div>
@@ -67,4 +71,4 @@ export class about extends Component {
   }
 }
 
-export default about
+export default requirements
