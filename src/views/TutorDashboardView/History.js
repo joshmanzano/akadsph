@@ -17,67 +17,16 @@ import Table from 'src/components/Table.js'
 import Feedback from 'src/components/Feedback';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
-const rows = [
-  {
-    date: 'Dec 4',
-    time: '4 PM',
-    subject: 'Math',
-    student: 'Angel',
-    parent: 'Joshua Manzano'
-  },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Math',
-  //   student: 'Josh Manzano',
-  //   parent: 'Tadhg McHearty'
-    
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Science',
-  //   student: 'Josh Manzano',
-  //   parent: 'Tadhg McHearty'
-   
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'LoL',
-  //   student: 'Josh Manzano',
-  //   parent: 'Tadhg McHearty'
-    
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   student: 'Josh Manzano',
-  //   parent: 'Tadhg McHearty'
-
-  // },
-  // {
-  //   date: 'July 7',
-  //   time: '4 PM',
-  //   subject: 'Filipino',
-  //   student: 'Josh Manzano',
-  //   parent: 'Tadhg McHearty'
-    
-  // },
-]
-
-const headers = ["Date", "Time", "Subject", "Student", "Parent",""]
+const headers = ["Date", "Time", "Subject", "Student", "Parent"]
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, setHistory, ...rest }) => {
+const Sales = ({ className, rows, setHistory, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [openFeedback, setOpenFeedback] = React.useState(false);
-  const [name, setName] = React.useState(rows[0].student);
 
   const buttonList = [
   <Button variant='outlined' color='primary' onClick={() => setOpenFeedback(true)} startIcon={<FeedbackIcon/>}>Give Feedback</Button>,
@@ -163,12 +112,12 @@ const Sales = ({ className, setHistory, ...rest }) => {
         title="Session History"
       />
       <Divider />
-      {setHistory ?
+      {rows.length > 0?
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+            <Table tableHeaders={headers} tableRows={rows}/>
           </CardContent>
-          <Feedback open={openFeedback} setOpen={setOpenFeedback} name={name}/>
+          {/* <Feedback open={openFeedback} setOpen={setOpenFeedback} name={name}/> */}
         </React.Fragment>
       :
         <React.Fragment>

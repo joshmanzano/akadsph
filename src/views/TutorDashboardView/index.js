@@ -12,6 +12,7 @@ import History from './History';
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
 import TutorDashboardTutorial from 'src/components/TutorDashboardViewTutorial';
 import TermsModal from 'src/components/TermsModal';
+import moment from 'moment';
 
 import Calendar from './Calendar'
 
@@ -33,6 +34,7 @@ const Dashboard = (props) => {
   const [open, setOpen] = useState(false);
 
   const upcoming = []
+  const history = []
 
   props.upcoming.forEach(u => {
     upcoming.push({
@@ -43,6 +45,18 @@ const Dashboard = (props) => {
       'start_url':u.session.start_zoom_link,
     })
   })
+
+  props.history.forEach(u => {
+    history.push({
+      'date': moment(u.session.start_date_time).format('MMMM Do YYYY'),
+      'time': moment(u.session.start_date_time).format('h:mm:ss a'),
+      'subject': u.subject.subject_field,
+      'tutor':u.tutor.first_name,
+      'student':u.child.first_name,
+    })
+  })
+
+
 
   const openTerms = () => {
     setOpen(true)
@@ -145,7 +159,7 @@ const Dashboard = (props) => {
             xs={12}
             id="history"
           >
-            <History setHistory={props.setHistory} rows={props.history}/>
+            <History rows={history}/>
           </Grid>
           {/* <Grid
             item
