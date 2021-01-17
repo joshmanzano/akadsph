@@ -1062,6 +1062,41 @@ color: #777;
 	color: #608dfd;
 	background: #fff;
 }
+
+/*Process section*/
+#process {
+	padding-top: 50px;
+	padding-bottom: 125px;
+	background: #fff;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+    color: #eb5531 !important;
+}
+
+.MuiStepIcon-root {
+    color: #eb5531 !important;
+}
+
+.MuiStepConnector-line{
+	border-color: #4655A5 !important;
+}
+
+.MuiStepConnector-lineHorizontal {
+    border-top-style: solid;
+    border-top-width: 3px !important;
+}
+
+.MuiStepLabel-label {
+    color: #4655A5 !important;
+	font-weight: bold !important;
+}
+
+.MuiStepLabel-label.MuiStepLabel-active {
+    font-weight: bold !important;
+    color: #4655A5 !important;
+}
+
 /* Footer Section*/
 #footer {
 	background: #f6f6f6;
