@@ -22,7 +22,7 @@ import Toast from 'light-toast';
 
 
 
-const headers = ["Date", "Time", "Subject", "Tutor", "Student", ""]
+const headers = ["Date", "Time", "Subject", "Tutor", "Student"]
 
 
 
@@ -65,7 +65,7 @@ const Sales = ({ className, rows, ...rest }) => {
       {(rows).length != 0 ? 
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+            <Table tableHeaders={headers} tableRows={rows}/>
           </CardContent>
           <Feedback open={openFeedback} setOpen={setOpenFeedback} name={name}/>
         </React.Fragment>
