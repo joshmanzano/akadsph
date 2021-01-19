@@ -391,13 +391,13 @@ header .intro-row{
 	display: table;
 	width: 100%;
 	padding: 0;
-	background-color: #fbc81d;
+	background-color: #EB5531;
 	color: white;
 	/* -webkit-background-size: cover; */
 	/* -moz-background-size: cover; */
 	/* background-size: 100% 100%; */
 	background-size: cover;
-	background-image: url("../static/images/aboutus1.jpg");
+	background-image: url("../static/images/about-us.png");
 	background-repeat: no-repeat;
 	position: relative;
 	background-position: center;
@@ -466,13 +466,13 @@ header .intro-row-about{
 	display: table;
 	width: 100%;
 	padding: 0;
-	background-color: #e6cb04;
+	background-color: #69bfb3;
 	color: white;
 	/* -webkit-background-size: cover; */
 	/* -moz-background-size: cover; */
 	/* background-size: 100% 100%; */
 	background-size: cover;
-	background-image: url("../static/images/becomeatutor.jpg");
+	background-image: url("../static/images/become-a-tutor.png");
 	background-repeat: no-repeat;
 	position: relative;
 	background-position: center;
