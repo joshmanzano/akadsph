@@ -26,16 +26,16 @@ export class requirements extends Component {
                 <div className="requirements-text" >
                   
                   <Hidden mdDown>
-                    <Box align="center">
+                    <Box align="center" mb={8} mt={1}>
                       <h3>Requirements</h3>
                     </Box>
                   </Hidden>
                   <Hidden lgUp>
-                      <Box align="center">
+                      <Box align="center" mb={3}>
                         <h3>Requirements</h3>
                       </Box>
                   </Hidden>
-                  <Box mb={7}>
+                  <Box mb={12}>
                     <Grid container alignContent="center" my={2} spacing={3}>
                       <Grid item md={4} sm={4} xs={12} alignItems="center">
                         <Box align="center">

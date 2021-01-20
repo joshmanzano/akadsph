@@ -30,20 +30,20 @@ export class features extends Component {
   render() {
     const steps = ['Application Form', 'Interview & Demo', 'Onboarding', 'Welcome to Akads!'];;
     return (
-      <div id="features" className="text-center">
+      <div id="process" className="text-center">
         <Container>
-          <div className="col-md-10 col-md-offset-1">
+          <Box align="center">
             <h2>Process</h2>
-          </div>
+          </Box>
           <div className="row" style={{width: "100%"}}>
-            <Grid container spacing={2}>
+            <Grid container alignContent="center">
               <Grid item
-                lg={11}
-                md={11}
-                xl={11}
+                lg={12}
+                md={12}
+                xl={12}
                 xs={12}
                 >
-                  <Container>
+                  <Container align="center" alignContet="center">
                     <Stepper activeStep={0/*steps.length - 1*/} alternativeLabel>
                       {steps.map((label) => (
                         <Step key={label}>
@@ -51,16 +51,12 @@ export class features extends Component {
                         </Step>
                       ))}
                     </Stepper>
+                    <Box align="center">
+                      <img width='200' /*style={{float: "right"}}*/ src='../img/akads-icon.png'></img>
+                    </Box>
+                    
                   </Container>
-                </Grid>
-                <Grid item
-                lg={1}
-                md={1}
-                xl={1}
-                xs={12}
-                >
-                  <img width='100' src='../img/akads-icon.png'></img>
-
+                  
                 </Grid>
             </Grid>
           </div>

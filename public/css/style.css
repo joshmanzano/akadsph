@@ -391,13 +391,13 @@ header .intro-row{
 	display: table;
 	width: 100%;
 	padding: 0;
-	background-color: #fbc81d;
+	background-color: #EB5531;
 	color: white;
 	/* -webkit-background-size: cover; */
 	/* -moz-background-size: cover; */
 	/* background-size: 100% 100%; */
 	background-size: cover;
-	background-image: url("../static/images/aboutus1.jpg");
+	background-image: url("../static/images/about-us.png");
 	background-repeat: no-repeat;
 	position: relative;
 	background-position: center;
@@ -466,13 +466,13 @@ header .intro-row-about{
 	display: table;
 	width: 100%;
 	padding: 0;
-	background-color: #e6cb04;
+	background-color: #69bfb3;
 	color: white;
 	/* -webkit-background-size: cover; */
 	/* -moz-background-size: cover; */
 	/* background-size: 100% 100%; */
 	background-size: cover;
-	background-image: url("../static/images/becomeatutor.jpg");
+	background-image: url("../static/images/become-a-tutor.png");
 	background-repeat: no-repeat;
 	position: relative;
 	background-position: center;
@@ -1062,6 +1062,41 @@ color: #777;
 	color: #608dfd;
 	background: #fff;
 }
+
+/*Process section*/
+#process {
+	padding-top: 50px;
+	padding-bottom: 125px;
+	background: #fff;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+    color: #eb5531 !important;
+}
+
+.MuiStepIcon-root {
+    color: #eb5531 !important;
+}
+
+.MuiStepConnector-line{
+	border-color: #4655A5 !important;
+}
+
+.MuiStepConnector-lineHorizontal {
+    border-top-style: solid;
+    border-top-width: 3px !important;
+}
+
+.MuiStepLabel-label {
+    color: #4655A5 !important;
+	font-weight: bold !important;
+}
+
+.MuiStepLabel-label.MuiStepLabel-active {
+    font-weight: bold !important;
+    color: #4655A5 !important;
+}
+
 /* Footer Section*/
 #footer {
 	background: #f6f6f6;
