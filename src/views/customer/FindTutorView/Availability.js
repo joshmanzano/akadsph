@@ -37,17 +37,31 @@ const Availability = ({ className, data, setData, ...rest }) => {
   let [,setState] = React.useState();
 
   const getDays=(selectedDays)=>{
-    setTimes(times)
     console.log(times)
     data['days'] = selectedDays;
     setDays(selectedDays);
     setCount(count + 1);
+    console.log(selectedDays)
+    const selectedTimes = [] 
+    selectedDays.forEach(day => {
+      selectedTimes.push(day.getTime())
+    })
+    Object.keys(times).forEach(time => {
+      console.log(time)
+      console.log(selectedTimes)
+      if(!(time in selectedTimes)){
+        delete times[time];
+      }
+    })
+    console.log(times)
+    setTimes(times)
   }
 
   const changeFrom = (index, value) => {
     if(!(index in times)){
       times[index] = {}
     }
+    console.log(index)
     times[index]['from'] = value;
     const untilTime = new Date();
     const splitTime = value.split(':')

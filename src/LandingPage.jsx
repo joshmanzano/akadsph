@@ -24,7 +24,7 @@ import Process from './components/process';
 export class LandingPage extends Component {
   state = {
     landingPageData: {},
-    showpage: "becomeTutor",
+    showpage: "main",
   }
   getlandingPageData() {
     this.setState({landingPageData : JsonData})

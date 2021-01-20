@@ -142,7 +142,7 @@ const Dashboard = (props) => {
   data.requests.pending.forEach(r => {
     pendingRows.push([
       r.id, moment(r.time_created).format('MMMM Do YYYY, h:mm:ss a'), 
-      subjects[r.subject], parents[r.parent].first_name, r.fav_tutor ? 'None' : tutors[r.fav_tutor].first_name
+      subjects[r.subject], parents[r.parent].first_name, r.fav_tutor ? 'None' : tutors[r.fav_tutor]
     ])
   })
 
