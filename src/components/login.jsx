@@ -74,7 +74,8 @@ export class LoginView extends Component {
       try{
         const accessToken = response.tokenObj.access_token
         const idToken = response.tokenObj.id_token
-        this.props.login(accessToken, idToken)
+        console.log(accessToken)
+        // this.props.login(accessToken, idToken)
       }catch{
         this.setState({loading:false})
       }
@@ -86,7 +87,8 @@ export class LoginView extends Component {
       try{
       const accessToken = response.tokenObj.access_token
       const idToken = response.tokenObj.id_token
-      this.props.login_tutor(accessToken, idToken)
+      console.log(accessToken)
+      // this.props.login_tutor(accessToken, idToken)
       }catch{
         this.setState({loading:false})
       }

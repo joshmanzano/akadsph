@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-
     this.checkBackend((res) => {
       this.setState({offline: !res})
     })
