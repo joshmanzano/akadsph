@@ -14,12 +14,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    if(caches){
-      caches.keys().then(function(names){
-        console.log(names)
-        for (let name of names) caches.delete(name);
-      });
-    }
   }
 
   render(){
