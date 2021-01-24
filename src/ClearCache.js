@@ -55,6 +55,7 @@ function withClearCache(Component) {
         });
       }
       // delete browser cache and hard reload
+      window.location.reload()
     };
 
     return (
