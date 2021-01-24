@@ -3,7 +3,7 @@
   "name": "AkadsPH",
   "author": "Rolo Co",
   "licence": "MIT",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "scripts": {
     "predeploy": "npm run build",
