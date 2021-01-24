@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch, withRouter } from 'react-router-do
 
 import Maintenance from 'src/views/errors/Maintenance.jsx';
 import toast, {Toaster} from 'react-hot-toast';
+import withClearCache from './ClearCache';
 
 import 'src/Calendar.css'
 
@@ -13,6 +14,12 @@ class App extends Component {
   }
 
   componentDidMount(){
+    if(caches){
+      caches.keys().then(function(names){
+        console.log(names)
+        for (let name of names) caches.delete(name);
+      });
+    }
   }
 
   render(){
@@ -30,4 +37,4 @@ class App extends Component {
 
 }
 
-export default withRouter(App);
+export default withRouter(withClearCache(App));

@@ -27,6 +27,7 @@ import moment from 'moment';
 import toast, {Toaster} from 'react-hot-toast';
 import NoParentAccount from 'src/components/NoParentAccount';
 import NoTutorAccount from 'src/components/NoTutorAccount'
+import withClearCache from './ClearCache'
 
 
 import 'src/Calendar.css'
@@ -42,6 +43,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+
     this.checkBackend((res) => {
       this.setState({offline: !res})
     })
@@ -415,4 +417,4 @@ class App extends Component {
 
 }
 
-export default withRouter(App);
+export default withRouter(withClearCache(App));
