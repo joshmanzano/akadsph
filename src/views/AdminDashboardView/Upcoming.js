@@ -81,7 +81,7 @@ const Sales = ({ className, currentDate, setUpcoming, ...rest }) => {
 
   const buttonList = [ 
   <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
-  <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+  <Button variant='outlined' color='primary' href='/messages' startIcon={<ForumIcon/>}>Chat</Button>,
   <Button variant='outlined' color='primary' onClick={() =>{
     confirm({ title:'Start Session' ,description: 'Would you like to start the session?' })
       .then(() => {

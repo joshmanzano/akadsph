@@ -126,7 +126,7 @@ const TopBar = ({
             {/* <Grid item sm={2}>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/">
+              <IconButton color="inherit" href="/">
                 <DashboardIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -138,7 +138,7 @@ const TopBar = ({
               </IconButton>
             </Grid> */}
             {/* <Grid sm={2}>
-              <IconButton color="inherit" href="#/viewrequest">
+              <IconButton color="inherit" href="/viewrequest">
                 <InsertInvitationIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -150,7 +150,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/payout">
+              <IconButton color="inherit" href="/payout">
                 <AccountBalanceWalletIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -162,7 +162,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/account">
+              <IconButton color="inherit" href="/account">
                 <AccountCircleIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -174,7 +174,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/settings">
+              <IconButton color="inherit" href="/settings">
                 <SettingsIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -199,7 +199,7 @@ const TopBar = ({
             </h5> */}
           </Box>
         </Hidden>
-        {/* <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
+        {/* <IconButton onClick={() => setChatNotif(false)} color="inherit" href="/messages">
           {chatNotif ?
           <Badge
             color="secondary"

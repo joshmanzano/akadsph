@@ -87,7 +87,7 @@ const TopBar = ({
     {
       image: '../static/images/oli-happy.png',
       message: 'Charles Samoy accepted your session request on December 3, 2020 for Nate Mercado',
-      detailPage: '#/',
+      detailPage: '/',
       receivedTime:'5m ago',
       seen: false,
     }
@@ -114,7 +114,7 @@ const TopBar = ({
     right: false,
   });
 
-  const pagelinks = ["#/", "#/findtutor", "#/store", "#/account", "#/settings"]
+  const pagelinks = ["/", "/findtutor", "/store", "/account", "/settings"]
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -179,7 +179,7 @@ const TopBar = ({
             <Grid item sm={2}>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/">
+              <IconButton color="inherit" href="/">
                 <DashboardIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -191,7 +191,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid sm={2}>
-              <IconButton color="inherit" href="#/findtutor">
+              <IconButton color="inherit" href="/findtutor">
                 <InsertInvitationIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -203,7 +203,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/store">
+              <IconButton color="inherit" href="/store">
                 <ShoppingCartIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -215,7 +215,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/account">
+              <IconButton color="inherit" href="/account">
                 <AccountCircleIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -227,7 +227,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid item sm={2}>
-              <IconButton color="inherit" href="#/settings">
+              <IconButton color="inherit" href="/settings">
                 <SettingsIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>
@@ -252,7 +252,7 @@ const TopBar = ({
             </h5>
           </Box>
         </Hidden>
-        <IconButton onClick={() => setChatNotif(false)} color="inherit" href="#/messages">
+        <IconButton onClick={() => setChatNotif(false)} color="inherit" href="/messages">
           {chatNotif ?
           <Badge
             color="secondary"

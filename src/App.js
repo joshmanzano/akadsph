@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { HashRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import AdminDashboardLayout from 'src/layouts/AdminDashboardLayout';
 import TutorDashboardLayout from 'src/layouts/TutorDashboardLayout';
@@ -82,7 +82,7 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT PARENT
-        window.location.replace('#/NoParentAccount')
+        window.location.replace('/NoParentAccount')
         // const registerProps = {
         //   'familyName': res['family_name'],
         //   'givenName': res['given_name'],
@@ -110,7 +110,7 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT TUTOR
-        window.location.replace('#/NoTutorAccount/')
+        window.location.replace('/NoTutorAccount/')
       }
     })
   }
@@ -185,7 +185,7 @@ class App extends Component {
             id: notif.id,
             image:'../static/images/oli-happy.png',
             message: notif.notification, 
-            detailPage: '#/',
+            detailPage: '/',
             receivedTime: moment(notif.time).fromNow(),
             seen: notif.is_seen,
           })
@@ -280,7 +280,7 @@ class App extends Component {
             id: notif.id,
             image:'../static/images/oli-happy.png',
             message: notif.notification, 
-            detailPage: '#/',
+            detailPage: '/',
             receivedTime: moment(notif.time).fromNow(),
             seen: notif.is_seen,
           })

@@ -214,7 +214,7 @@ export default function ParentRegister(props) {
         </Paper>
         <Grid container justify="flex-end">
         <Grid item>
-            <Link href="#/login" variant="body2" className={classes.alreadyLink}>
+            <Link href="/login" variant="body2" className={classes.alreadyLink}>
             Already have an account? Sign in
             </Link>
         </Grid>

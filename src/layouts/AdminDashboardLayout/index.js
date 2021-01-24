@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState } from 'react';
 import { Container, Fade, makeStyles } from '@material-ui/core';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
@@ -54,7 +54,7 @@ function AdminDashboardLayout (props){
                 {
                   image: '../static/images/oli-happy.png',
                   message: 'New request for Math (Algebra)',
-                  detailPage: '#/viewrequest',
+                  detailPage: '/viewrequest',
                   receivedTime:'5m ago'
                 },
                 // {

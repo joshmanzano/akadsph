@@ -167,7 +167,7 @@ export default function Pricing() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary" href='#/login'>
+                  <Button fullWidth variant={tier.buttonVariant} color="primary" href='/login'>
                     {tier.buttonText}
                   </Button>
                 </CardActions>

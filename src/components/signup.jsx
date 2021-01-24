@@ -101,7 +101,7 @@ class SignUp extends Component{
   return (
     <React.Fragment>
       <Box mx={3}> 
-        <Button href="/#/login" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+        <Button href="/login" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
           Back
         </Button>
       </Box>
@@ -186,7 +186,7 @@ class SignUp extends Component{
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#/login" variant="body2">
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { HashRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 
 import Maintenance from 'src/views/errors/Maintenance.jsx';
 import toast, {Toaster} from 'react-hot-toast';

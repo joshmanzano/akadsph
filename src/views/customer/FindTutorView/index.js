@@ -130,7 +130,7 @@ const CustomerListView = (props) => {
           // Toast.success(res['return_message']);
           setSendingRequest(true)
           props.refresh()
-          window.location.replace('#/request-sent')
+          window.location.replace('/request-sent')
         }else if(res['return_status'] == 'error'){
           Toast.fail(res['return_message']);
         }else{

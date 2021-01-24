@@ -93,7 +93,7 @@ const Upcoming = (props) => {
           'join_button':<Button variant='outlined' color='primary' onClick={() => join_session(u.join_url, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
           // 'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
           'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
-          'chat_button': <Button variant='outlined' color='primary' href='/#/messages' startIcon={<ForumIcon/>}>Chat</Button>,
+          'chat_button': <Button variant='outlined' color='primary' href='/messages' startIcon={<ForumIcon/>}>Chat</Button>,
           'cancel_button': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
           onClick={() =>{
             confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })

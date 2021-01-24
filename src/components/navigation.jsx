@@ -38,7 +38,7 @@ export class Navigation extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                {/* <a href="#/#about" className="page-scroll"> */}
+                {/* <a href="/#about" className="page-scroll"> */}
                 <Link to="header" spy={true} smooth={true} onClick={()=> {this.props.setShowPage("about")}}>
                   About
                 {/* </a> */}
@@ -55,12 +55,12 @@ export class Navigation extends Component {
                 </Link>
               </li>
               <li>
-                <a  onClick={()=> {this.props.setShowPage("becomeTutor")}} /*href="#/#contact"*/ className="page-scroll">
+                <a  onClick={()=> {this.props.setShowPage("becomeTutor")}} /*href="/#contact"*/ className="page-scroll">
                   Become A Tutor
                 </a>
               </li>
               <li>
-                <Button onClick={() => window.location.replace('#/login')} variant="outlined" color="secondary" id="loginButton">
+                <Button onClick={() => window.location.replace('/login')} variant="outlined" color="secondary" id="loginButton">
                   Login
                 </Button>
               </li>

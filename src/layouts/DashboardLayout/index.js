@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect, useRef } from 'react';
 import { Container, Fab, Button, IconButton, Fade, makeStyles } from '@material-ui/core';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,

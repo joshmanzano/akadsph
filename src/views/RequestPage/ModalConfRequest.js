@@ -84,7 +84,7 @@ const ModalConfRequest = ({open, setOpen, info, removeRequest, schedule, classNa
       post_api('tutor-accept-request',data,(res) => {
         console.log(res)
         if(res){
-          window.location.replace('#/request-accepted')
+          window.location.replace('/request-accepted')
           window.location.reload()
           removeRequest(info.index)
         }else{

@@ -93,7 +93,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <Button size="large" variant="contained" color="primary" href='#/viewrequest'>
+              <Button size="large" variant="contained" color="primary" href='/viewrequest'>
                 Accept More Requests
               </Button>
             </Grid>
@@ -105,7 +105,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <Button size="large" variant="contained" color="primary" href='#/'>
+              <Button size="large" variant="contained" color="primary" href='/'>
                 Go to overview
               </Button>
             </Grid>
