@@ -104,11 +104,12 @@ const Dashboard = (props) => {
     }
     tutors[t.id] = t
     tutorRows.push([
-      t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(<a target="_blank" href={t.files}>Link</a>), _(
-        <Fragment>
-          <ActionMenu t={t}/>
-        </Fragment>
-      )  
+      t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(<a target="_blank" href={t.files}>Link</a>), _(<a target="_blank" href={"https://api.akadsph.com/tutors/"+t.id+"/"}>Edit</a>)
+      // _(
+      //   <Fragment>
+      //     <ActionMenu t={t}/>
+      //   </Fragment>
+      // )  
     ])
   })
 
