@@ -65,6 +65,7 @@ const Dashboard = (props) => {
       'time': moment(u.session.start_date_time).format('h:mm:ss a'),
       'subject': u.subject.subject_field,
       'tutor':u.tutor.first_name,
+      'tutor_id':u.tutor.id,
       'student':u.child.first_name,
     })
   })
@@ -189,7 +190,7 @@ const Dashboard = (props) => {
             xs={12}
             id="history"
           >
-            <History rows={history}/>
+            <History rows={history} favorites={props.favorites}/>
           </Grid>
           <Grid
             item

@@ -222,6 +222,7 @@ class App extends Component {
                 'history': history,
                 'transaction': transaction,
                 'tutees':children,
+                'favorites': favourite_tutors,
               },
               'findtutorview': {
                 'tutees':children,
