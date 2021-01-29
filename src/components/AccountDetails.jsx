@@ -88,7 +88,7 @@ class SignUp extends Component{
     render(){
     const props = this.props;
     const {classes} = this.props;
-    if(props.googleId == undefined){
+    if(props.googleId == undefined && props.admin == undefined){
         window.location.replace('/')
     }else{
   return (
