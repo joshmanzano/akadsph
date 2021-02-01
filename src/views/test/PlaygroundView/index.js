@@ -31,19 +31,22 @@ import Twilio from './Twilio'
 import Email from './Email'
 import RandomFact from './RandomFact'
 import Chat from './Chat'
-import ModalSessionExtension from './ModalSessionExtension';
-import ModalDeclined from './ModalDeclined'; 
-import ModalCancelled from './ModalCancelled';
-import ModalWaiting from './ModalWaiting';
-import ModalSure from './ModalSure'; //generic are you sure
-import RateTutor from './RateTutor'; //parent rating tutor
-import ModalRequest from './ModalRequest'; //Tutor viewing 
-import ModalConfRequest from './ModalConfRequest';
-import ModalTutorProfile from './ModalTutorProfile'; //profile dets of tutor
-import ExtensionPrompt from './ExtensionPrompt'; //asking parent if she wants an extension
-import TutorExtensionForm from './TutorExtensionForm'; //asking tutor if he accepts the extension
-import FaveTutorDecline from './FaveTutorDecline'; //tutor declining a session
-import ModalTutorCancelling from './ModalTutorCancelling'; //tutor giving reason for cancelling before actually cancelling
+// import ModalSessionExtension from './ModalSessionExtension';
+// import ModalDeclined from './ModalDeclined'; 
+// import ModalCancelled from './ModalCancelled';
+// import ModalWaiting from './ModalWaiting';
+// import ModalSure from './ModalSure'; //generic are you sure
+// import RateTutor from './RateTutor'; //parent rating tutor
+// import ModalRequest from './ModalRequest'; //Tutor viewing 
+// import ModalConfRequest from './ModalConfRequest';
+// import ModalTutorProfile from './ModalTutorProfile'; //profile dets of tutor
+// import ExtensionPrompt from './ExtensionPrompt'; //asking parent if she wants an extension
+// import TutorExtensionForm from './TutorExtensionForm'; //asking tutor if he accepts the extension
+// import FaveTutorDecline from './FaveTutorDecline'; //tutor declining a session
+// import ModalTutorCancelling from './ModalTutorCancelling'; //tutor giving reason for cancelling before actually cancelling
+// import ModalAddParent from './ModalAddParent';
+// import ModalAddTutor from './ModalAddTutor';
+import ModalAddRequest from './ModalAddRequest';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -155,7 +158,10 @@ const Dashboard = () => {
                 {/* <ExtensionPrompt open={open} setOpen={setOpen}/> */}
                 {/* <TutorExtensionForm open={open} setOpen={setOpen}/> */}
                 {/* <FaveTutorDecline open={open} setOpen={setOpen}/> */}
-                <ModalTutorCancelling open={open} setOpen={setOpen}/>
+                {/* <ModalTutorCancelling open={open} setOpen={setOpen}/> */}
+                {/* <ModalAddParent open={open} setOpen={setOpen}/> */}
+                {/* <ModalAddTutor open={open} setOpen={setOpen}/> */}
+                <ModalAddRequest open={open} setOpen={setOpen}/>
               </CardContent>
             </React.Fragment>
           </Grid>
