@@ -46,6 +46,7 @@ import Chat from './Chat'
 // import ModalTutorCancelling from './ModalTutorCancelling'; //tutor giving reason for cancelling before actually cancelling
 // import ModalAddParent from './ModalAddParent';
 // import ModalAddTutor from './ModalAddTutor';
+import ModalAddRequest from './ModalAddRequest';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -160,6 +161,7 @@ const Dashboard = () => {
                 {/* <ModalTutorCancelling open={open} setOpen={setOpen}/> */}
                 {/* <ModalAddParent open={open} setOpen={setOpen}/> */}
                 {/* <ModalAddTutor open={open} setOpen={setOpen}/> */}
+                <ModalAddRequest open={open} setOpen={setOpen}/>
               </CardContent>
             </React.Fragment>
           </Grid>
