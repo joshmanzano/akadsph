@@ -17,6 +17,7 @@ import Page from 'src/components/Page';
 import Metrics from './Metrics';
 import InfoTable from './InfoTable';
 import InfoBox from './InfoBox';
+import Chat from './Chat';
 import "gridjs/dist/theme/mermaid.css";
 
 import {_} from 'gridjs-react';
@@ -25,6 +26,14 @@ import Calendar from './Calendar';
 import moment from 'moment';
 
 import ActionMenu from './ActionMenu.js';
+
+import {
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+  } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,18 +90,22 @@ const Dashboard = (props) => {
   const parents = {}
   const parentRows = []
   data.parents.forEach(p => {
-    totalParents += 1
-    if(p.picture.trim() != ''){
+    if(p.fake_user == false && p.status == true){
+      totalParents += 1
+    }
+    if(p.picture.trim() != '' && p.fake_user == false){
       activeParents += 1
     }
     parents[p.id] = p
-    parentRows.push([
-      p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
-        <Fragment>
-          <ActionMenu p={p}/>
-        </Fragment>
-      ) 
-    ])
+    if(p.status == true){
+      parentRows.push([
+        p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
+          <Fragment>
+            <ActionMenu p={p}/>
+          </Fragment>
+        ) 
+      ])
+    }
   })
 
   const tutors = {}
@@ -169,6 +182,39 @@ const Dashboard = (props) => {
     ])
   })
 
+  const [chat, openChat] = useState(false)
+  const [chat_name, changeChatName] = useState('')
+  const [user_id, changeUser] = useState('')
+  const [conversation_id, changeConversation] = useState('')
+  const [picture, changePicture] = useState('')
+
+
+  const handleClose = () => {
+    openChat(false)
+  }
+
+  const handleOpen = (conversation) => {
+    changeChatName(conversation.parent.username)
+    changeConversation(conversation.conversation.id)
+    changeUser(conversation.parent.id)
+    changePicture(conversation.parent.picture)
+    openChat(true)
+  }
+
+  const parentChatRows = []
+  data.parent_conversations.forEach(pc => {
+    parentChatRows.push([
+      pc.conversation.id, pc.parent.email, pc.parent.first_name, pc.parent.last_name, _(
+      <Fragment>
+        <Button onClick={() => {handleOpen(pc)}} variant="contained" color="primary">
+          Open
+        </Button>
+      </Fragment>
+      )
+    ])
+
+  })
+
 
   const parentButtons = 
       <Fragment>
@@ -178,6 +224,11 @@ const Dashboard = (props) => {
       </Fragment>
 
   return (
+    <div>
+
+    {chat ? 
+    <Chat id={conversation_id} parent_id={user_id}/>
+    :
     <Page
       className={classes.root}
       title="Overview"
@@ -248,6 +299,15 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
+            <InfoBox name={'Parent Chats'} rows={parentChatRows} headers={['ID','Parent','First Name', 'Last Name', '']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
             <InfoBox name={'Sessions'} rows={sessionRows} headers={['ID','Active?','Time Created','Subject','Parent','Tutor','','']}/>
           </Grid>
           <Grid
@@ -298,6 +358,8 @@ const Dashboard = (props) => {
         </Grid>
       </Container>
     </Page>
+    }
+    </div>
   );
 };
 

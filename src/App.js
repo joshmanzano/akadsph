@@ -201,6 +201,7 @@ class App extends Component {
           const upcoming = res['accepted_requests']
           const history = res['finished_requests']
           const favourite_tutors = res['favourite_tutors']
+          const conversations = res['conversations']
           this.setState({
             credits: parent['credits']
           }, () => {
@@ -249,7 +250,9 @@ class App extends Component {
                 'selected':[],
               },
               'chatview': {
-                'chatlist':[],
+                'adminchat':conversations['admin'],
+                'activechat':conversations['active'],
+                'inactivechat':conversations['inactive']
               },
             }
             _callback(data)

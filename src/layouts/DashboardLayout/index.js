@@ -120,7 +120,7 @@ function DashboardLayout (props){
   const [setTransaction, changeTransaction] = useState(false)
   const [setNotification, changeNotification] = useState('')
   const {enqueueSnackbar, closeSnackbar} = useSnackbar();
-  const [showFab, setFab] = useState(true)
+  const [showFab, setFab] = useState(window.location.pathname != '/messages')
 
   const [open, setOpen] = useState(false)
   
@@ -252,7 +252,7 @@ function DashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  <Messenger/> 
+                  <Messenger {...userData['chatview']}/> 
                   {/* <ChatUnderConstruction/> */}
                 </Fragment>
               </Route>

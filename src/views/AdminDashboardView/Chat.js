@@ -7,7 +7,6 @@ import {
   Hidden,
 } from '@material-ui/core';
 import {Button,ChatItem, ChatList, Input, Popup, Sidebar, Navbar} from 'react-chat-elements';
-import './main.css';
 import ReactGifted from 'src/components/ReactGiftedChat'
 import Websocket from 'react-websocket';
 import {post_api} from 'src/Api'
@@ -15,31 +14,20 @@ import jwt from 'jwt-decode';
 
 class Chat extends React.Component {
   constructor(props){
+      console.log(props)
     super(props);
 
     this.state = {
       loaded: false,
-      conversation: this.props.adminchat.id,
+      conversation: this.props.id,
       messages: [],
-      chatList: [
-        {
-          avatar: '/static/images/oli-chat.png',
-          alt: 'Oli',
-          title: 'AKADS Buddy',
-          subtitle: 'Welcome to AKADS!',
-          date: new Date(),
-          // onClick:{changeChat},
-          chatID: 0,
-          // unread: akadsUnread,
-          className: 'selectedChat',
-        }
-      ],
+      chatList: []
     }
   }
 
   componentDidMount(){
     const payload = {
-      'conversation_id': this.props.adminchat.id 
+      'conversation_id': this.props.id 
     }
     post_api('specific-parent-admin-conversation', payload, (res) => {
       const messages = []
@@ -51,16 +39,16 @@ class Chat extends React.Component {
             text: message['text'],
             createdAt: message['time_sent'],
             user: {
-              id: message['sender'] == 'parent' ? 1 : 3,
-              name: 'AKADS Buddy',
-              avatar: '/static/images/oli-happy.png',
+              id: message['sender'] == 'admin' ? 1 : 3,
+              name: this.props.name,
+              avatar: this.props.picture,
             }
           }
         )
       })
       post_api('seen-admin-parent-conversation', {
-        'conversation_id': this.props.adminchat.id,
-        'looker': 'parent'
+        'conversation_id': this.props.id,
+        'looker': 'admin'
       } ,(res) => {})
       this.setState({messages:messages, loaded: true})
     })
@@ -70,8 +58,8 @@ class Chat extends React.Component {
     const message = JSON.parse(data)
     if(message['message'] == 'update'){
       const payload = {
-        'conversation_id': this.props.adminchat.id,
-        'receiver': 'parent' 
+        'conversation_id': this.props.id,
+        'receiver': 'admin' 
       }
       // post_api('get-unseen-specific-parent-admin-conversation', payload, (res) => {
       //   const messages = this.state.messages
@@ -106,15 +94,15 @@ class Chat extends React.Component {
             text: message['text'],
             createdAt: message['time_sent'],
             user: {
-              id: message['sender'] == 'parent' ? 1 : 3,
-              name: 'AKADS Buddy',
-              avatar: '/static/images/oli-happy.png',
+              id: message['sender'] == 'admin' ? 1 : 3,
+              name: this.props.name,
+              avatar: this.props.picture,
             }
           }
         )
       })
       post_api('seen-admin-parent-conversation', {
-        'conversation_id': this.props.adminchat.id,
+        'conversation_id': this.props.id,
         'looker': 'parent'
       } ,(res) => {})
       this.setState({messages:messages, loaded: true})
@@ -159,23 +147,11 @@ class Chat extends React.Component {
 
     return (
       <div style={styles.container}>
-        <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(user_id)+'/'} onMessage={this.handleData}/>
+        <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(this.props.parent_id)+'/'} onMessage={this.handleData}/>
         <div style={styles.channelList}>
-          {chatList.map(chat => (
-            <ChatItem
-            avatar={chat.avatar}
-            alt={chat.alt}
-            title={chat.title}
-            subtitle={chat.subtitle}
-            date={chat.date}
-            unread={chat.unread}
-            className={chat.className}
-            // onClick={() => changeChat(chat.chatID)}
-            />
-          ))}
         </div>
         <div style={styles.chat}>
-          <ReactGifted loaded={this.state.loaded} user={'parent'} conversation={this.state.conversation} messages={this.state.messages}/>
+        <ReactGifted loaded={true} user={'admin'} conversation={this.state.conversation} messages={this.state.messages}/>
         </div>
       </div>
     );
