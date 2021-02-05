@@ -22,7 +22,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
 import Toast from 'light-toast';
-import { post_api } from 'src/Api.js'
+import { get_user, post_api } from 'src/Api.js'
 
 const rows = [
   {
@@ -98,13 +98,18 @@ const Upcoming = (props) => {
           onClick={() =>{
             confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
               .then(() => {
-                const payload = {
-                  'session_id': u.id
-                }
-                post_api('cancel-session', payload, (res) => {
-                  console.log(res)
-                  window.location.reload()
-                })          
+                Toast.loading('Cancelling session...')
+                get_user(user => {
+                  const payload = {
+                    'parent_id': user.id,
+                    'session_id': u.id,
+                    'reason': 'Time conflict' 
+                  }
+                  post_api('parent-cancel-session', payload, (res) => {
+                    console.log(res)
+                    window.location.reload()
+                  })    
+                })
               })
               .catch(() => {
 

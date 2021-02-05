@@ -363,14 +363,8 @@ class App extends Component {
           <Route exact path='/login'> 
             <Login login={this.login} login_tutor={this.login_tutor} />
           </Route>
-          <Route exact path='/register'> 
-            <SignUp {...this.state.registerProps} googleId="0" register={this.register} />
-          </Route>
           <Route exact path='/tutor-form'> 
             <TutorApp/>
-          </Route>
-          <Route exact path='/admin'> 
-            <AdminDashboardLayout getUserData={this.getAdminData}/>
           </Route>
           <Route exact path='/NoParentAccount'> 
             <NoParentAccount/>
@@ -404,7 +398,7 @@ class App extends Component {
         // Admin Logged In
         <Switch>
           <Route path='/'> 
-            <AdminDashboardLayout getUserData={this.getAdminData}/>
+            <AdminDashboardLayout register={this.register} getUserData={this.getAdminData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>

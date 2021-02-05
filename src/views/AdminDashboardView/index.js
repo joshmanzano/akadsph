@@ -25,7 +25,12 @@ import {_} from 'gridjs-react';
 import Calendar from './Calendar';
 import moment from 'moment';
 
+import ModalAddParent from './ModalAddParent';
+import ModalAddTutor from './ModalAddTutor';
+
 import ActionMenu from './ActionMenu.js';
+
+import {post_api} from 'src/Api';
 
 import {
     Dialog,
@@ -103,7 +108,27 @@ const Dashboard = (props) => {
           <Fragment>
             <ActionMenu p={p}/>
           </Fragment>
-        ) 
+        ), _(
+          <Fragment>
+            <Button onClick={() => {
+              const payload = {
+                'session_token': localStorage.getItem('session_token'),
+                'user': {
+                  'type': 'parent',
+                  'email': p.email
+                }
+              }
+              post_api('login-as',payload,res => {
+                if(res['exists']){
+                  localStorage.setItem('session_token', res['session_token'])
+                  window.location.reload()
+                }else{
+
+                }
+              })
+            }} variant="contained" color="primary">Login</Button>
+          </Fragment>
+        )  
       ])
     }
   })
@@ -187,6 +212,8 @@ const Dashboard = (props) => {
   const [user_id, changeUser] = useState('')
   const [conversation_id, changeConversation] = useState('')
   const [picture, changePicture] = useState('')
+  const [addParent, setAddParent] = useState(false)
+  const [addTutor, setAddTutor] = useState(false)
 
 
   const handleClose = () => {
@@ -218,8 +245,19 @@ const Dashboard = (props) => {
 
   const parentButtons = 
       <Fragment>
-        <Button variant="contained" color="primary">
+        <Button onClick={() => {
+          setAddParent(true)
+        }} variant="contained" color="primary">
           Add Parent
+        </Button>
+      </Fragment>
+
+  const tutorButtons = 
+      <Fragment>
+        <Button onClick={() => {
+          setAddTutor(true)
+        }} variant="contained" color="primary">
+          Add Tutor 
         </Button>
       </Fragment>
 
@@ -234,6 +272,8 @@ const Dashboard = (props) => {
       title="Overview"
     >
       <Container maxWidth={false}>
+      <ModalAddParent register={props.register} open={addParent} setOpen={setAddParent}/>
+      <ModalAddTutor open={addTutor} setOpen={setAddTutor}/>
       <Box mb={2}>
 
       <Grid container spacing={3}>
@@ -335,7 +375,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Files', 'Actions']}/>
+            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Files', 'Actions','Login']}/>
           </Grid>
           <Grid
             item
@@ -344,7 +384,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Tutors'} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Files', 'Actions']}/>
+            <InfoBox name={'Tutors'} buttons={tutorButtons} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Files', 'Actions']}/>
           </Grid>
           <Grid
             item

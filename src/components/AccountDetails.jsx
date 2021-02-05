@@ -88,9 +88,7 @@ class SignUp extends Component{
     render(){
     const props = this.props;
     const {classes} = this.props;
-    if(props.googleId == undefined && props.admin == undefined){
-        window.location.replace('/')
-    }else{
+
   return (
     <React.Fragment>
           <Grid container spacing={2}>
@@ -148,7 +146,6 @@ class SignUp extends Component{
           </Grid>
       </React.Fragment>
   );
-    }
     }
 }
 

@@ -94,10 +94,7 @@ class SignUp extends Component{
     render(){
     const props = this.props;
     const {classes} = this.props;
-    if(props.googleId == undefined && false){
-        window.location.replace('/')
-    }else{
-    console.log(props.googleId)
+
   return (
     <React.Fragment>
       <Box mx={3}> 
@@ -115,91 +112,14 @@ class SignUp extends Component{
             </Container>
         </Box>
         <Container align="center">
-          <ParentRegister register={this.props.register} changeState={this.changeState} givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.googleId} picture={this.state.picture}/>
+          <ParentRegister register={this.props.register} changeState={this.changeState} givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.email} picture={this.state.picture}/>
         </Container>
-        {/* <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <h2>
-          Sign up
-        </h2>
-        <form onSubmit={this.submitHandler} className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                defaultValue={props.givenName}
-                label="First Name"
-                autoFocus
-                onChange={this.changeHandler}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                defaultValue={props.familyName}
-                autoComplete="lname"
-                onChange={this.changeHandler}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                value={props.email}
-                autoComplete="email"
-                onChange={this.changeHandler}
-              />
-            </Grid>
-            <Grid item xs={12}>
-                <MuiPhoneNumber name="phone" fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>,
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/login" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form> */}
+
       </div>
-      {/* <Box mt={5}>
-        <Copyright />
-      </Box> */}
+
     </Container>
     </React.Fragment>
   );
-    }
     }
 }
 

@@ -16,6 +16,7 @@ import jwt from 'jwt-decode';
 import AdminDashboardView from 'src/views/AdminDashboardView'
 import Loading from 'src/components/loading';
 import Messenger from 'src/views/chat';
+import SignUp from 'src/components/signup.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,15 +92,9 @@ function AdminDashboardLayout (props){
               <Route exact path={`${match.url}`}>
                 <Container>
                   <Fragment>
-                    <AdminDashboardView data={userData}></AdminDashboardView>
+                    <AdminDashboardView register={props.register} data={userData}></AdminDashboardView>
                   </Fragment>
                 </Container>
-              </Route>
-              <Route exact path={`${match.url}messages`}>
-                <Fragment>
-                  <Messenger/> 
-                  {/* <ChatUnderConstruction/> */}
-                </Fragment>
               </Route>
             </Switch>
           </div>

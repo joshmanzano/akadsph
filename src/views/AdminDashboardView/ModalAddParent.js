@@ -172,6 +172,9 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
 
   const submitHandler = (event, props) => {
     event.preventDefault();
+    console.log(props)
+    console.log(accountDetails)
+    console.log(childDetails)
     // this.props.register(this.state)
   }
 
@@ -283,7 +286,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
           <Button onClick={handleClose} color="primary">
               Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={submitHandler} color="primary" autoFocus>
               Save
           </Button>
         </DialogActions>

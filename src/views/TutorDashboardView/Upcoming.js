@@ -23,6 +23,7 @@ import ModalJoin from './ModalJoin';
 import { useConfirm } from 'material-ui-confirm';
 import moment from 'moment';
 import Toast from 'light-toast';
+import {get_user, post_api} from 'src/Api';
 
 const rows = [
   {
@@ -94,7 +95,18 @@ const Upcoming = (props) => {
           onClick={() =>{
             confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session?' })
               .then(() => {
-                Toast.success('Successfully cancelled session!')
+                Toast.loading('Cancelling session...')
+                get_user(user => {
+                  const payload = {
+                    'tutor_id': user.id,
+                    'session_id': u.id,
+                    'reason': 'Time conflict' 
+                  }
+                  post_api('tutor-cancel-session', payload, (res) => {
+                    console.log(res)
+                    window.location.reload()
+                  })    
+                })
               })
               .catch(() => {
 

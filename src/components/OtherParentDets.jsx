@@ -56,7 +56,7 @@ class OtherParentDets extends Component{
       super(props);
       this.state = {
         credits: 0,
-        status: false,
+        status: true,
         files: '',
         first_time_user: true,
       }
@@ -98,7 +98,7 @@ class OtherParentDets extends Component{
                 onChange={this.changeHandler}
               />
             </Grid>
-            <Grid item xs={12} sm={8}>
+            {/* <Grid item xs={12} sm={8}>
               <TextField
                 autoComplete="files"
                 name="files"
@@ -111,18 +111,18 @@ class OtherParentDets extends Component{
                 autoFocus
                 onChange={this.changeHandler}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={6}>
             <FormControl component="fieldset" className={classes.formControl}>
               {/* <FormLabel component="legend">Assign responsibility</FormLabel> */}
               <FormGroup>
                 
                 <FormControlLabel
-                  control={<Checkbox checked={this.first_time_user} onChange={this.handleChange} name="first_time_user" />}
+                  control={<Checkbox checked={this.state.first_time_user} onChange={this.handleChange} name="first_time_user" />}
                   label="First Time User"
                 />
                 <FormControlLabel
-                  control={<Checkbox checked={this.status} onChange={this.handleChange} name="status" />}
+                  control={<Checkbox checked={this.state.status} onChange={this.handleChange} name="status" />}
                   label="Status"
                 />
               </FormGroup>
