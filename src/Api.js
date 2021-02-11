@@ -14,7 +14,7 @@ const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_test_public = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
 const paymongo_live_public = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = paymongo_live_public
+const paymongo_key = paymongo_test_public
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
