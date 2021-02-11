@@ -139,32 +139,48 @@ function CreditStore(props){
       setProcessing(true);
       console.log(cardState)
       checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
-        if(res['state'] == 'success'){
-          // Toast.success('Transaction successful!')
-          props.refresh()
-          window.location.replace('/transaction-successful')
-          props.addCredit(hours);
-        }else if(res['state'] == 'fail'){
-          Toast.fail('Transaction failed!')
-        }else if(res['state'] == 'awaiting_next_action'){
-          console.log(res)
-          confirm({
-            title: "3DS Authentication",
-            description: '3DS authentication must be completed: '+res['url'],
-            confirmationText: 'Proceed',
-          }
-          )
-          .then(() => {
-            get_payment_intent(res['payment_intent'], res['client_key'], (res) => {
-              console.log(res)
-            })
-           })
-          .catch(() => {
+        if(!res['error']){
+
+          if(res['state'] == 'success'){
+            // Toast.success('Transaction successful!')
+            props.refresh()
+            window.location.replace('/transaction-successful')
+            props.addCredit(hours);
+          }else if(res['state'] == 'fail'){
             setProcessing(false);
-          });
-        }else if(res['state'] == 'processing'){
-          sleep(1000)
-          paynow()
+            Toast.fail('Transaction failed!')
+          }else if(res['state'] == 'awaiting_next_action'){
+            console.log(res)
+            confirm({
+              title: "3DS Authentication",
+              description: '3DS authentication must be completed: '+res['url'],
+              confirmationText: 'Proceed',
+            }
+            )
+            .then(() => {
+              get_payment_intent(res['payment_method'], res['payment_intent'], res['client_key'], (res) => {
+                console.log(res)
+                if(res['state'] == 'success'){
+                  props.refresh()
+                  window.location.replace('/transaction-successful')
+                  props.addCredit(hours)
+                }else{
+                  setProcessing(false);
+                  Toast.fail('Transaction failed!')
+                }
+              })
+            })
+            .catch(() => {
+              setProcessing(false);
+            });
+          }else if(res['state'] == 'processing'){
+            sleep(1000)
+            paynow()
+          }
+
+        }else{
+          setProcessing(false);
+          Toast.fail(res['data']['errors'][0]['detail'])
         }
       });
     }

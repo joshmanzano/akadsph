@@ -14,7 +14,7 @@ const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
 const paymongo_test_public = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
 const paymongo_live_public = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = paymongo_test_public
+const paymongo_key = paymongo_live_public
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -149,11 +149,15 @@ export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callb
     console.log(payment_intent)
     create_paymentmethod(card_number, exp_month, exp_year, cvc, (payment_method) =>  {
       console.log(payment_method)
-      if(payment_method != null){
-        const payment_method_id = payment_method['data']['id']
+      if(payment_method.status != 400){
+        const payment_method_id = payment_method['data']['data']['id']
         attach_payment(payment_intent, payment_method_id, (res) => {
+          res['error'] = false
           _callback(res)
         });
+      }else{
+        payment_method['error'] = true
+        _callback(payment_method)
       }
     });
   });
@@ -198,11 +202,11 @@ export const create_paymentmethod = (card_number, exp_month, exp_year, cvc, _cal
   axios(config)
   .then(function (response) {
     console.log(response);
-    _callback(response.data)
+    _callback(response)
   })
   .catch(function (error) {
-    console.log(error);
-    _callback(null)
+    console.log(error.response);
+    _callback(error.response)
   });
 
 }
@@ -249,6 +253,7 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
           'state':paymentIntentStatus,
           'url':url,
           'payment_intent':paymentIntentId,
+          'payment_method':payment_method,
           'client_key': clientKey
         }
         // Render your modal for 3D Secure Authentication since next_action has a value. You can access the next action via paymentIntent.attributes.next_action.
@@ -288,7 +293,8 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
         // You need to requery the PaymentIntent after a second or two. This is a transitory status and should resolve to `succeeded` or `awaiting_payment_method` quickly.
         const status = {
         'state':paymentIntentStatus,
-        'payment_intent':paymentIntent.id
+        'payment_intent':paymentIntent.id,
+        'payment_method':payment_method,
         }
         _callback(status)
       }
@@ -303,13 +309,13 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
   })
 }
 
-export const get_payment_intent = (payment_intent, client_key, _callback) => {
+export const get_payment_intent = (payment_method, payment_intent, client_key, _callback) => {
   // Get the payment intent id from the client key
   var paymentIntentId = payment_intent
   var clientKey = client_key 
   
   axios.get(
-    'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId,
+    'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId + '?client_key=' + client_key,
     {
       headers: { 
         'Authorization': paymongo_key,
