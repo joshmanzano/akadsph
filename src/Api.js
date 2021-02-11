@@ -362,9 +362,10 @@ export const get_payment_intent = (payment_method, payment_intent, client_key, _
 
         // You already received your customer's payment. You can show a success message from this condition.
       } else if(paymentIntentStatus === 'awaiting_payment_method') {
-        console.log('await')
+        console.log(paymentIntent.attributes.last_payment_error)
         const status = {
         'state':'fail',
+        'error': paymentIntent.attributes.last_payment_error
         }
         _callback(status)
         // The PaymentIntent encountered a processing error. You can refer to paymentIntent.attributes.last_payment_error to check the error and render the appropriate error message.
