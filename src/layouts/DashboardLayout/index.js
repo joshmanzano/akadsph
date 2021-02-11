@@ -231,8 +231,8 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}store`}>
                 <Container>
                 <Fragment>
-                  {/* <CreditStoreView refresh={refresh} addCredit={props.addCredit}/> */}
-                  <StoreUnderConstruction/>
+                  <CreditStoreView refresh={refresh} addCredit={props.addCredit}/>
+                  {/* <StoreUnderConstruction/> */}
                 </Fragment>
                 </Container>
               </Route>

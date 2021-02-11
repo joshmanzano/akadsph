@@ -12,10 +12,9 @@ const api_url = localStorage.getItem('api_url')
 const username = 'admin'
 const password = 'EelBoneyTwitterImperfect'
 // const api_url = 'http://127.0.0.1:8000'
-const paymongo_public = 'pk_test_LiBiYthx1D36hQYVcPSRB2MJ'
-const paymongo_public_live = 'pk_live_3Ef8VJ23gNTU6JYCGEcxZzhb'
-const paymongo_key_live = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = paymongo_key_live
+const paymongo_test_public = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
+const paymongo_live_public = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
+const paymongo_key = paymongo_live_public
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -234,7 +233,8 @@ export const attach_payment = (payment_intent, payment_method, _callback) => {
     },
     {
       headers: { 
-        'Authorization': paymongo_key
+        'Authorization': paymongo_key,
+        'Content-Type': 'application/json'
       },
     }
   ).then(function(response) {
@@ -312,7 +312,8 @@ export const get_payment_intent = (payment_intent, client_key, _callback) => {
     'https://api.paymongo.com/v1/payment_intents/' + paymentIntentId,
     {
       headers: { 
-        'Authorization': paymongo_key
+        'Authorization': paymongo_key,
+        'Content-Type': 'application/json'
       },
     }
   ).then(function(response) {
