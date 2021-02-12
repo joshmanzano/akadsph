@@ -21,23 +21,80 @@ class Chat extends React.Component {
       loaded: false,
       conversation: this.props.adminchat.id,
       messages: [],
-      chatList: [
-        {
-          avatar: '/static/images/oli-chat.png',
-          alt: 'Oli',
-          title: 'AKADS Buddy',
-          subtitle: 'Welcome to AKADS!',
-          date: new Date(),
-          // onClick:{changeChat},
-          chatID: 0,
-          // unread: akadsUnread,
-          className: 'selectedChat',
-        }
-      ],
+      chatList: [],
+      avatar: '/static/images/oli-chat.png',
     }
   }
 
+  changeChat = (id, avatar) => {
+
+    const chatList = []
+    this.state.chatList.forEach(chat => {
+      if(chat.chatID == id){
+        console.log('same')
+        chat['className'] = 'selectedChat'
+      }else{
+        chat['className'] = ''
+      }
+      chatList.push(chat)
+    })
+    console.log(chatList)
+    const payload = {
+      'conversation_id': id
+    }
+    post_api('specific-conversation', payload, (res) => {
+      const messages = []
+      res['messages'].forEach(message => {
+        console.log(message)
+        messages.push(
+          {
+            id: message['id'],
+            text: message['text'],
+            createdAt: message['time_sent'],
+            user: {
+              id: message['sender'] == 'parent' ? 1 : 3,
+              name: 'AKADS Buddy',
+              avatar: avatar,
+            }
+          }
+        )
+      })
+      const lastMessage = messages[0]
+      console.log(lastMessage)
+      post_api('seen-conversation', {
+        'conversation_id': this.props.adminchat.id,
+        'looker': 'parent'
+      } ,(res) => {})
+      this.setState({chatList: chatList, messages:messages, loaded: true})
+    })
+
+  }
+
   componentDidMount(){
+    const chatList = [
+      {
+        avatar: '/static/images/oli-chat.png',
+        alt: 'Oli',
+        title: 'AKADS Buddy',
+        subtitle: '',
+        date: new Date(),
+        // onClick:{changeChat},
+        chatID: this.props.adminchat.id,
+        // unread: akadsUnread,
+        className: 'selectedChat',
+      }
+    ]
+
+    this.props.activechat.forEach(chat => {
+      const tutor = chat.tutor
+      chatList.push({
+        avatar: tutor.picture,
+        alt: tutor.first_name,
+        title: tutor.first_name + ' ' + tutor.last_name,
+        date: new Date(),
+        chatID: chat.conversation.id
+      })
+    })
     const payload = {
       'conversation_id': this.props.adminchat.id 
     }
@@ -58,11 +115,13 @@ class Chat extends React.Component {
           }
         )
       })
+      const lastMessage = messages[0]
+      console.log(lastMessage)
       post_api('seen-admin-parent-conversation', {
         'conversation_id': this.props.adminchat.id,
         'looker': 'parent'
       } ,(res) => {})
-      this.setState({messages:messages, loaded: true})
+      this.setState({chatList: chatList, messages:messages, loaded: true})
     })
   }
 
@@ -73,52 +132,53 @@ class Chat extends React.Component {
         'conversation_id': this.props.adminchat.id,
         'receiver': 'parent' 
       }
-      // post_api('get-unseen-specific-parent-admin-conversation', payload, (res) => {
-      //   const messages = this.state.messages
-      //   res['messages'].forEach(message => {
-      //     console.log(message)
-      //     messages.push(
-      //       {
-      //         id: message['id'],
-      //         text: message['text'],
-      //         createdAt: message['time_sent'],
-      //         user: {
-      //           id: message['sender'] == 'parent' ? 1 : 3,
-      //           name: 'AKADS Buddy',
-      //           avatar: '/static/images/oli-happy.png',
-      //         }
-      //       }
-      //     )
-      //   })
-      //   post_api('seen-admin-parent-conversation', {
-      //     'conversation_id': this.props.adminchat.id,
-      //     'looker': 'parent'
-      //   } ,(res) => {})
-      //   this.setState({messages:messages})
-      // })
-    post_api('specific-parent-admin-conversation', payload, (res) => {
-      const messages = []
-      res['messages'].forEach(message => {
-        console.log(message)
-        messages.push(
-          {
-            id: message['id'],
-            text: message['text'],
-            createdAt: message['time_sent'],
-            user: {
-              id: message['sender'] == 'parent' ? 1 : 3,
-              name: 'AKADS Buddy',
-              avatar: '/static/images/oli-happy.png',
+      post_api('get-unseen-specific-parent-admin-conversation', payload, (res) => {
+        const messages = this.state.messages
+        res['messages'].forEach(message => {
+          console.log(message)
+          messages.unshift(
+            {
+              id: message['id'],
+              text: message['text'],
+              createdAt: message['time_sent'],
+              user: {
+                id: message['sender'] == 'parent' ? 1 : 3,
+                name: 'AKADS Buddy',
+                avatar: '/static/images/oli-happy.png',
+              }
             }
-          }
-        )
+          )
+        })
+        post_api('seen-admin-parent-conversation', {
+          'conversation_id': this.props.adminchat.id,
+          'looker': 'parent'
+        } ,(res) => {})
+        console.log(messages)
+        this.setState({messages:messages, loaded:true})
       })
-      post_api('seen-admin-parent-conversation', {
-        'conversation_id': this.props.adminchat.id,
-        'looker': 'parent'
-      } ,(res) => {})
-      this.setState({messages:messages, loaded: true})
-    })
+    // post_api('specific-parent-admin-conversation', payload, (res) => {
+    //   const messages = []
+    //   res['messages'].forEach(message => {
+    //     console.log(message)
+    //     messages.push(
+    //       {
+    //         id: message['id'],
+    //         text: message['text'],
+    //         createdAt: message['time_sent'],
+    //         user: {
+    //           id: message['sender'] == 'parent' ? 1 : 3,
+    //           name: 'AKADS Buddy',
+    //           avatar: '/static/images/oli-happy.png',
+    //         }
+    //       }
+    //     )
+    //   })
+    //   post_api('seen-admin-parent-conversation', {
+    //     'conversation_id': this.props.adminchat.id,
+    //     'looker': 'parent'
+    //   } ,(res) => {})
+    //   this.setState({messages:messages, loaded: true})
+    // })
     }
   }
 
@@ -170,7 +230,7 @@ class Chat extends React.Component {
             date={chat.date}
             unread={chat.unread}
             className={chat.className}
-            // onClick={() => changeChat(chat.chatID)}
+            onClick={() => this.changeChat(chat.chatID, chat.avatar)}
             />
           ))}
         </div>

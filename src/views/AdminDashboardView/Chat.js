@@ -149,6 +149,9 @@ class Chat extends React.Component {
       <div style={styles.container}>
         <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(this.props.parent_id)+'/'} onMessage={this.handleData}/>
         <div style={styles.channelList}>
+          <Button onClick={() => this.props.openChat(false)} variant="contained" color="primary">
+            Back
+          </Button>
         </div>
         <div style={styles.chat}>
         <ReactGifted loaded={true} user={'admin'} conversation={this.state.conversation} messages={this.state.messages}/>

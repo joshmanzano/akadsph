@@ -24,6 +24,7 @@ import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
 import Toast from 'light-toast';
 import RequestTutorial from 'src/components/RequestTutorial';
+import {useConfirm} from 'material-ui-confirm';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -81,10 +82,23 @@ const CustomerListView = (props) => {
   });
   const [sendingRequest, setSendingRequest] = React.useState(false);
   const [url, setURL] = React.useState(data['files']+'?path=%2F'+data['subjects']['subject_field'])
+  const confirm = useConfirm()
 
   
     const handleClickOpen = () => {
-      setOpen(true);
+      if(props.favtutors.length > 0 && data.allTutors){
+        confirm({
+          title: "Confirm All Tutors",
+          description: "Are you sure you would like to get any tutor for this request?",
+          confirmationText: 'Proceed',
+        }).then(() => {
+          setOpen(true);
+        }).catch({
+
+        })
+      }else{
+        setOpen(true);
+      }
     };
   
     const handleClose = () => {

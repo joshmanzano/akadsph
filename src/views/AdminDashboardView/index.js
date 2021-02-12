@@ -11,6 +11,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Switch,
+  FormControlLabel,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Page from 'src/components/Page';
@@ -27,10 +29,11 @@ import moment from 'moment';
 
 import ModalAddParent from './ModalAddParent';
 import ModalAddTutor from './ModalAddTutor';
+import ParentModal from './ParentModal';
+import TutorModal from './TutorModal';
 
 import ActionMenu from './ActionMenu.js';
 
-import {post_api} from 'src/Api';
 
 import {
     Dialog,
@@ -48,15 +51,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(3)
   }
 }));
-
-const parentActions = () => {
-  return (
-    <Fragment>
-      <Button variant="contained" color="primary">Edit</Button>
-      <Button variant="contained" color="primary">Disable</Button>
-    </Fragment>
-  )
-}
 
 const Dashboard = (props) => {
   const classes = useStyles();
@@ -92,6 +86,22 @@ const Dashboard = (props) => {
   let activeParents = 0
   let activeTutors = 0
 
+  const [currentParent, setParent] = useState(null)
+  const [parentModal, setParentModal] = useState(false)
+
+  const [currentTutor, setTutor] = useState(null)
+  const [tutorModal, setTutorModal] = useState(false)
+
+  const openParentModal = (p) => {
+    setParent(p)
+    setParentModal(true)
+  }
+
+  const openTutorModal = (t) => {
+    setTutor(t)
+    setTutorModal(true)
+  }
+
   const parents = {}
   const parentRows = []
   data.parents.forEach(p => {
@@ -104,31 +114,13 @@ const Dashboard = (props) => {
     parents[p.id] = p
     if(p.status == true){
       parentRows.push([
-        p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(<a target="_blank" href={p.files}>Link</a>), _(
+        p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(
           <Fragment>
-            <ActionMenu p={p}/>
+            <Button variant="contained" color="primary" onClick={() => openParentModal(p)}>
+              Open
+            </Button>
           </Fragment>
-        ), _(
-          <Fragment>
-            <Button onClick={() => {
-              const payload = {
-                'session_token': localStorage.getItem('session_token'),
-                'user': {
-                  'type': 'parent',
-                  'email': p.email
-                }
-              }
-              post_api('login-as',payload,res => {
-                if(res['exists']){
-                  localStorage.setItem('session_token', res['session_token'])
-                  window.location.reload()
-                }else{
-
-                }
-              })
-            }} variant="contained" color="primary">Login</Button>
-          </Fragment>
-        )  
+        )
       ])
     }
   })
@@ -142,12 +134,13 @@ const Dashboard = (props) => {
     }
     tutors[t.id] = t
     tutorRows.push([
-      t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(<a target="_blank" href={t.files}>Link</a>), _(<a target="_blank" href={"https://api.akadsph.com/tutors/"+t.id+"/"}>Edit</a>)
-      // _(
-      //   <Fragment>
-      //     <ActionMenu t={t}/>
-      //   </Fragment>
-      // )  
+      t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(
+        <Fragment>
+          <Button variant="contained" color="primary" onClick={() => openTutorModal(t)}>
+            Open
+          </Button>
+        </Fragment>
+      )
     ])
   })
 
@@ -185,11 +178,11 @@ const Dashboard = (props) => {
     ])
   })
 
-  const sessionRows = []
-  data.sessions.forEach(s => {
+  const activeSessionRows = []
+  data.active_sessions.forEach(s => {
     const request = accepted_requests[s.request]
     console.log(request)
-    sessionRows.push([
+    activeSessionRows.push([
       s.id, s.active, moment(s.start_date_time).format('MMMM Do YYYY, h:mm:ss a'),
       subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
         <Box align="center">
@@ -206,6 +199,31 @@ const Dashboard = (props) => {
       ) 
     ])
   })
+
+  const inactiveSessionRows = []
+  data.inactive_sessions.forEach(s => {
+    const request = accepted_requests[s.request]
+    console.log(request)
+    inactiveSessionRows.push([
+      s.id, s.active, moment(s.start_date_time).format('MMMM Do YYYY, h:mm:ss a'),
+      subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
+        <Box align="center">
+          <a href={s.join_zoom_link}>
+            Join Zoom
+          </a>
+        </Box>
+      ), _(
+        <Box align="center">
+          <a href={s.start_zoom_link}>
+            Start Zoom
+          </a>
+        </Box>
+      ) 
+    ])
+  })
+
+  const [sessionRows, updateSessionRows] = useState(activeSessionRows)
+  const [showInactive, updateShowInactive] = useState(false)
 
   const [chat, openChat] = useState(false)
   const [chat_name, changeChatName] = useState('')
@@ -242,6 +260,21 @@ const Dashboard = (props) => {
 
   })
 
+  const showInactiveSessions = () => {
+    if(showInactive){
+      updateSessionRows(activeSessionRows)
+    }else{
+      const newSessionRows = []
+      inactiveSessionRows.forEach(row => {
+        newSessionRows.push(row)
+      })
+      activeSessionRows.forEach(row => {
+        newSessionRows.unshift(row)
+      })
+      updateSessionRows(newSessionRows)
+    }
+    updateShowInactive(!showInactive)
+  }
 
   const parentButtons = 
       <Fragment>
@@ -261,11 +294,16 @@ const Dashboard = (props) => {
         </Button>
       </Fragment>
 
+  const sessionButtons = 
+      <Fragment>
+        <Switch onClick={showInactiveSessions} color="primary"/>
+      </Fragment>
+
   return (
     <div>
 
     {chat ? 
-    <Chat id={conversation_id} parent_id={user_id}/>
+    <Chat openChat={openChat} chat_name={chat_name} picture={picture} id={conversation_id} parent_id={user_id}/>
     :
     <Page
       className={classes.root}
@@ -274,6 +312,8 @@ const Dashboard = (props) => {
       <Container maxWidth={false}>
       <ModalAddParent register={props.register} open={addParent} setOpen={setAddParent}/>
       <ModalAddTutor open={addTutor} setOpen={setAddTutor}/>
+      <ParentModal open={parentModal} setOpen={setParentModal} p={currentParent}/>
+      <TutorModal open={tutorModal} setOpen={setTutorModal} t={currentTutor}/>
       <Box mb={2}>
 
       <Grid container spacing={3}>
@@ -348,7 +388,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Sessions'} rows={sessionRows} headers={['ID','Active?','Time Created','Subject','Parent','Tutor','','']}/>
+            <InfoBox name={'Sessions'} buttons={sessionButtons} rows={sessionRows} headers={['ID','Active?','Time Created','Subject','Parent','Tutor','','']}/>
           </Grid>
           <Grid
             item
@@ -375,7 +415,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Files', 'Actions','Login']}/>
+            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Actions']}/>
           </Grid>
           <Grid
             item

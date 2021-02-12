@@ -8,14 +8,21 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import Input from '@material-ui/core/Input';
+import Box from '@material-ui/core/Box';
+import { useConfirm } from 'material-ui-confirm';
 
 import {post_api} from 'src/Api';
 
 
-export default function SimpleMenu(props) {
-  const p = props.p
-  const [open, setOpen] = useState(false)
-
+export default function TutorModal(props) {
+  const t = props.t
+  const open = props.open
+  const setOpen = props.setOpen
+  const confirm = useConfirm()
   const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
@@ -33,8 +40,8 @@ export default function SimpleMenu(props) {
     const payload = {
       'session_token': localStorage.getItem('session_token'),
       'user': {
-        'type': 'parent',
-        'email': p.email
+        'type': 'tutor',
+        'email': t.email
       }
     }
     post_api('login-as',payload,res => {
@@ -47,33 +54,31 @@ export default function SimpleMenu(props) {
     })
   };
 
-  const link = () => {
-    // _(<a target="_blank" href={p.files}>Link</a>)
-  }
-
   return (
     <React.Fragment>
-      <Button variant="contained" color="primary" onClick={handleClick}>
-        Open
-      </Button>
-
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        {t != null &&
+      <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">{t.email}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
-          </DialogContentText>
+            <Grid container>
+                <Button onClick={() => openInNewTab(t.files)} color="primary" variant="contained" >
+                    File Folder
+                </Button>
+                <Button onClick={() => openInNewTab("https://api.akadsph.com/tutors/"+t.id+"/")} color="primary" variant="contained" >
+                    Edit Page
+                </Button>
+            </Grid>
+            <Box my={2}></Box>
+            <Grid container>
+            </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+              Close
           </Button>
         </DialogActions>
       </Dialog>
+        }
     </React.Fragment>
   );
 }

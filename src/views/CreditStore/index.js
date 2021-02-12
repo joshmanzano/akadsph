@@ -155,9 +155,7 @@ function CreditStore(props){
               title: "3DS Authentication",
               description: '3DS authentication must be completed: '+res['url'],
               confirmationText: 'Proceed',
-            }
-            )
-            .then(() => {
+            }).then(() => {
               get_payment_intent(res['payment_method'], res['payment_intent'], res['client_key'], (res) => {
                 console.log(res)
                 if(res['state'] == 'success'){
@@ -172,7 +170,7 @@ function CreditStore(props){
             })
             .catch(() => {
               setProcessing(false);
-            });
+            })
           }else if(res['state'] == 'processing'){
             sleep(1000)
             paynow()

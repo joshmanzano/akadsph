@@ -51,9 +51,9 @@ class Example extends Component {
         console.log(res)
       })
     })
-    this.setState((previousState) => ({
-      messages: GiftedChat.append(previousState.messages, messages),
-    }));
+    // this.setState((previousState) => ({
+    //   messages: GiftedChat.append(previousState.messages, messages),
+    // }));
   }
 
   // handleData = (data) => {
