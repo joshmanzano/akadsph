@@ -98,6 +98,9 @@ export default function ParentModal(props) {
                 <Button onClick={() => openInNewTab("https://api.akadsph.com/parents/"+p.id+"/")} color="primary" variant="contained" >
                     Edit Page
                 </Button>
+                <Button onClick={() => loginAs()} color="primary" variant="contained" >
+                    Login As
+                </Button>
             </Grid>
             <Box my={2}></Box>
             <Grid container>
