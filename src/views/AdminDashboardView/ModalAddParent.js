@@ -52,6 +52,9 @@ import AccountDetails from 'src/components/AccountDetails';
 import ChildDetails from 'src/components/ChildDetails';
 import OtherParentDets from 'src/components/OtherParentDets';
 
+import {post_api} from 'src/Api';
+
+import Toast from 'light-toast';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -135,7 +138,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
   const [childDetails, setChild] = React.useState();
   // const [promoDetails, setPromo] = React.useState();
  
-  const steps = ['Account Details', 'Child Details', 'Other Details'];
+  const steps = ['Account Details', 'Child Details'];
 
   useEffect(() => {
     if(activeStep === steps.length){
@@ -151,11 +154,19 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
         return /*<span>Potato</span>*/ <AccountDetails setAccount={setAccount} {...accountDetails} admin={true}/>;
       case 1:
          return <ChildDetails setChild={setChild} {...childDetails}/>;
-      case 2:
-        return <OtherParentDets/>;
+      // case 2:
+      //   return <OtherParentDets/>;
       default:
         throw new Error('Unknown step');
     }
+  }
+
+  const register = (data) => {
+    Toast.loading('Adding parent...')
+    post_api('register-parent', data, (res) => {
+      console.log(res)
+      window.location.replace('/')
+    })
   }
 
   const handleNext = () => {
@@ -175,7 +186,16 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
     console.log(props)
     console.log(accountDetails)
     console.log(childDetails)
-    this.props.register(this.state)
+    const data = {
+      username: accountDetails['email'],
+      first_name: accountDetails['givenName'],
+      last_name: accountDetails['familyName'],
+      email: accountDetails['email'],
+      phone: accountDetails['phone'],
+      picture: '',
+      child: childDetails,
+    }
+    register(data)
   }
 
 

@@ -14,6 +14,7 @@ import Slider from '@material-ui/core/Slider';
 import Input from '@material-ui/core/Input';
 import Box from '@material-ui/core/Box';
 import { useConfirm } from 'material-ui-confirm';
+import Toast from 'light-toast';
 
 import {post_api} from 'src/Api';
 
@@ -78,9 +79,16 @@ export default function ParentModal(props) {
         description: "Are you sure you want to gift " + String(value) + " credits to " + p.email + "?",
         confirmationText: 'Confirm',
     }).then(() => {
-
+      post_api('add-credit', {
+        "parent_id": p.id,
+        "credits": String(value) 
+      }, res => {
+        console.log(res)
+        Toast.success("Gifted " + String(value) + " credits to " + p.email + "!")
+      })
     })
     .catch(() => {
+        Toast.fail("Gifting failed.")
     })
 
   }
