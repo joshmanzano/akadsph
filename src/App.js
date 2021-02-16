@@ -366,6 +366,9 @@ class App extends Component {
           <Route exact path='/tutor-form'> 
             <TutorApp/>
           </Route>
+          <Route exact path='/register'> 
+            <SignUp/>
+          </Route>
           <Route exact path='/NoParentAccount'> 
             <NoParentAccount/>
           </Route>

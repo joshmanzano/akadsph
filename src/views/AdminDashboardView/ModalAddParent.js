@@ -175,7 +175,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
     console.log(props)
     console.log(accountDetails)
     console.log(childDetails)
-    // this.props.register(this.state)
+    this.props.register(this.state)
   }
 
 
