@@ -64,14 +64,12 @@ class ChildDetails extends Component{
     constructor(props){
       super(props);
       this.state = {
-        first_name: '',
-        last_name: '',
-        age: '',
-        year_level: 'Grade 1',
-        school: '',
-        // gradeLevels: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'],
+        first_name: this.props.first_name,
+        last_name: this.props.last_name,
+        age: this.props.age,
+        year_level: this.props.year_level,
+        school: this.props.school,
       }
-      props.setChild(this.state)
     }
 
     changeHandler = (event) => {
@@ -97,7 +95,7 @@ class ChildDetails extends Component{
                 required
                 fullWidth
                 id="firstName"
-                defaultValue={''}
+                defaultValue={this.state.first_name}
                 label="Child's First Name"
                 autoFocus
                 onChange={this.changeHandler}
@@ -111,7 +109,7 @@ class ChildDetails extends Component{
                 id="lastName"
                 label="Child's Last Name"
                 name="last_name"
-                defaultValue={''}
+                defaultValue={this.state.last_name}
                 autoComplete="lname"
                 onChange={this.changeHandler}
               />
@@ -125,7 +123,7 @@ class ChildDetails extends Component{
                 label="Age"
                 name="age"
                 type="number"
-                defaultValue={''}
+                defaultValue={this.state.age}
                 autoComplete="age"
                 onChange={this.changeHandler}
               />
@@ -141,7 +139,7 @@ class ChildDetails extends Component{
                 required 
                 id="grade-level"
                 name="year_level"
-                defaultValue={'Grade 1'}
+                defaultValue={this.state.year_level}
                 onChange={this.changeHandler}
                 inputProps={{
                   name: 'year_level',
@@ -166,7 +164,7 @@ class ChildDetails extends Component{
                   id="school"
                   label="School"
                   name="school"
-                  defaultValue={''}
+                  defaultValue={this.state.school}
                   autoComplete="school"
                   helperText="Optional"
                   onChange={this.changeHandler}

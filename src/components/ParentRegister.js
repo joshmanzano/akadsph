@@ -81,17 +81,39 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ParentRegister(props) {
   const classes = useStyles();
+  const registerPropsString = localStorage.getItem('registerProps')
+  let registerProps = {
+    givenName:'',
+    familyName:'',
+    email:'',
+    phone:'', 
+    googleId:'',
+    picture:''
+  }
+  if(registerPropsString != null){
+    registerProps = JSON.parse(registerPropsString)
+  }
   const [activeStep, setActiveStep] = React.useState(0);
   const [accountDetails, setAccount] = React.useState({
-    givenName:props.givenName,
-    familyName:props.familyName,
-    email:props.email,
-    phone: props.phone,
-    googleId:props.googleId,
-    picture:props.picture,
+    givenName:registerProps.givenName,
+    familyName:registerProps.familyName,
+    email:registerProps.email,
+    phone: registerProps.phone,
+    googleId:registerProps.email,
+    picture:registerProps.picture == undefined ? '' : registerProps.picture,
   });
-  const [childDetails, setChild] = React.useState();
-  const [promoDetails, setPromo] = React.useState();
+  const [childDetails, setChild] = React.useState({
+    first_name: '',
+    last_name: '',
+    age: '',
+    year_level: 'Grade 1',
+    school: '',
+  });
+  const [promoDetails, setPromo] = React.useState({
+    promo_code: '',
+    referral_code: '',
+    receive_marketing: true,
+  });
  
   const steps = ['Account Details', 'Child Details', 'Promo Code'];
 
@@ -99,7 +121,10 @@ export default function ParentRegister(props) {
     if(activeStep === steps.length){
       const data = accountDetails;
       data['child'] = childDetails;
-      props.register(data)
+      data['promo'] = promoDetails;
+      // props.register(data)
+      console.log(data)
+      localStorage.removeItem('registerProps')
     }
   },[activeStep])
 
