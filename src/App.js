@@ -81,18 +81,20 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT PARENT
-        window.location.replace('/NoParentAccount')
-        // const registerProps = {
-        //   'familyName': res['family_name'],
-        //   'givenName': res['given_name'],
-        //   'email': res['email'],
-        //   'googleId': res['sub'],
-        //   'picture': res['picture'],
-        // }
+        console.log('does not exist')
+        const registerProps = {
+          'username': res['email'],
+          'familyName': res['family_name'],
+          'givenName': res['given_name'],
+          'email': res['email'],
+          'googleId': res['sub'],
+          'picture': res['picture'],
+        }
+        localStorage.setItem('registerProps', JSON.stringify(registerProps))
         // this.setState({
         //   registerProps
         // }, () => {
-        //   this.props.history.replace('/register')
+        window.location.replace('/register')
         // })
       }
     })
@@ -109,7 +111,16 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT TUTOR
-        window.location.replace('/NoTutorAccount/')
+        const applicationProps = {
+          'username': res['email'],
+          'familyName': res['family_name'],
+          'givenName': res['given_name'],
+          'email': res['email'],
+          'googleId': res['sub'],
+          'picture': res['picture'],
+        }
+        localStorage.setItem('applicationProps', JSON.stringify(applicationProps))
+        window.location.replace('/tutor-form')
       }
     })
   }

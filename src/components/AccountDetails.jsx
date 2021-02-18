@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import {Paper} from '@material-ui/core';
+import {Paper, InputAdornment} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -57,8 +57,8 @@ class SignUp extends Component{
         familyName: props.familyName,
         email: props.email,
         googleId: props.googleId,
-        phone: '',
-        picture: '',
+        phone: props.phone,
+        picture: props.phone,
       }
       props.setAccount(this.state);
     }
@@ -92,11 +92,6 @@ class SignUp extends Component{
   return (
     <React.Fragment>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={12}>
-              <img
-                src={this.state.picture}
-              />
-            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
@@ -132,7 +127,7 @@ class SignUp extends Component{
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Email Address (Gmail)"
                 name="email"
                 value={props.email}
                 autoComplete="email"
@@ -140,7 +135,24 @@ class SignUp extends Component{
               />
             </Grid>
             <Grid item xs={12}>
-                <MuiPhoneNumber name="phone" value={this.state.phone} fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>,
+              <TextField name="phone" value={props.phone} id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
+                startAdornment: <InputAdornment position="start">+63</InputAdornment>,
+              }}
+              fullWidth required
+              onChange={this.changeHandler}
+              />
+              {/* <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="phone"
+                label="Phone Number"
+                name="phone"
+                value={props.phone}
+                autoComplete="phone"
+                onChange={this.changeHandler}
+              /> */}
+                {/* <MuiPhoneNumber name="phone" value={this.state.phone} fullWidth variant="outlined" defaultCountry={'ph'} onlyCountries={['ph']} onChange={this.phoneChangeHandler} autoFormat={false} countryCodeEditable={false}/>, */}
             </Grid>
             
           </Grid>

@@ -42,9 +42,9 @@ class SignUp extends Component{
     constructor(props){
       super(props);
       this.state = {
-        promo: ''
+        promo_code: this.props.promo_code,
+        referral_code: this.props.referral_code,
       }
-      props.setPromo(this.state)
     }
 
   
@@ -55,8 +55,6 @@ class SignUp extends Component{
       this.props.setPromo(this.state)
     }
 
-   
-
     render(){
     
   return (
@@ -64,23 +62,36 @@ class SignUp extends Component{
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                name="promo"
+                name="referral_code"
                 helperText="Optional"
                 variant="outlined"
                 fullWidth
                 id="promo-code"
-                defaultValue=""
-                label="Promo Code"
+                defaultValue={this.state.referral_code}
+                label="Referral Code"
                 autoFocus
                 onChange={this.changeHandler}
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+              <TextField
+                name="promo_code"
+                helperText="Optional"
+                variant="outlined"
+                fullWidth
+                id="promo-code"
+                defaultValue={this.state.promo_code}
+                label="Promo Code"
+                autoFocus
+                onChange={this.changeHandler}
               />
             </Grid>
+            {/* <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value={true} color="primary" />}
+                label="I want to receive marketing promotions via email."
+              />
+            </Grid> */}
             
           </Grid>
       </React.Fragment>

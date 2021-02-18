@@ -201,7 +201,7 @@ export class LoginView extends Component {
         </div>
         <Grid container justify="flex-end">
         <Grid item>
-            <Link /*href="/tutor-form"*/ onClick={() => window.open("http://bit.ly/AKADSTutorForm","_blank")} variant="body2" className={classes.alreadyLink}>
+            <Link /*href="/tutor-form"*/ onClick={() => window.location.replace('/tutor-form')} variant="body2" className={classes.alreadyLink}>
               No tutor account? Apply to be a tutor!
             </Link>
         </Grid>
