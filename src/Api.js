@@ -2,19 +2,14 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 
 
-if(localStorage.getItem('api_url') == null){
-  localStorage.setItem('api_url', 'https://api.akadsph.com')
-}
-
 // const api_url = 'https://akadsph-staging.herokuapp.com'
-const api_url = localStorage.getItem('api_url') 
+const api_url = process.env.REACT_APP_API_URL
 // const api_url = 'http://api.akadsph.com:8000'
-const username = 'admin'
-const password = 'EelBoneyTwitterImperfect'
+const username = process.env.REACT_APP_USERNAME
+const password = process.env.REACT_APP_KEY
 // const api_url = 'http://127.0.0.1:8000'
-const paymongo_test_public = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
-const paymongo_live_public = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = paymongo_live_public
+const paymongo_key = process.env.REACT_APP_PAYMONGO_KEY
+// REACT_APP_PAYMONGO_LIVE=Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {

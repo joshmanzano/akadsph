@@ -36,7 +36,6 @@ class App extends Component {
 
   constructor(props){
       super(props);
-      console.log(process.env.REACT_APP_API_URL)
       this.state = {
         session: localStorage.getItem('session_token'),
         offline: false,
