@@ -18,6 +18,7 @@ import ChildDetails from './ChildDetails';
 
 import LoadingBack from 'src/components/loadingBack';
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -148,6 +149,10 @@ export default function ParentRegister(props) {
     console.log(childDetails)
     console.log(promoDetails)
     setActiveStep(activeStep + 1);
+    if (activeStep === steps.length - 1){
+      // props.refresh()
+      window.location.replace('/registration-successful')
+    }
   };
 
   const handleBack = () => {
@@ -156,6 +161,7 @@ export default function ParentRegister(props) {
 
   const submitHandler = (event, props) => {
     event.preventDefault();
+
     // this.props.register(this.state)
   }
 
@@ -188,6 +194,7 @@ export default function ParentRegister(props) {
                 <Typography variant="h1" gutterBottom>
                   Successfully Registered!
                 </Typography>
+                
               </React.Fragment>
             ) : (
               <React.Fragment>

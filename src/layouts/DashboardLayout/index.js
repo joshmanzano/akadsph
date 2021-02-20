@@ -58,6 +58,8 @@ import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
 
 import Websocket from 'react-websocket';
 
+import RegistrationSuccessView from 'src/views/RegistrationSuccess';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -269,6 +271,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}transaction-successful`}>
                 <Fragment>
                   <TransactionSuccessView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}registration-successful`}>
+                <Fragment>
+                  <RegistrationSuccessView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 
