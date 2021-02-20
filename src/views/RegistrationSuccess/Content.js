@@ -22,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Availability = ({ className, data, setData, ...rest }) => {
+const Content = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
-  
 
   return (
     <React.Fragment>
+
       <Box mt={3} mb={6} mx={3}>
         <Grid container spacing={3}>
             <Grid
@@ -39,7 +39,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Typography variant="h2" align='center'>
-                Transaction Successful!
+                Registration Successful!
               </Typography>
             </Grid>
             <Grid
@@ -61,11 +61,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Typography variant="h6" align='center'>
-                You can now book tutors with your hour credits. 
+                Congratulations! You now have an Akads account. Explore the site to enjoy all the features! 
               </Typography>
-              <Typography variant="h6" align='center'>
-                Transaction history can be found in the overview. Please make sure to use your credits within its 6 months validity.
-              </Typography>
+              
             </Grid>
             <Grid
               item
@@ -93,8 +91,20 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <Button size="large" variant="contained" color="primary" href='/findtutor'>
+              {/* <Button size="large" variant="contained" color="primary" href='/findtutor'>
                 Book tutors
+              </Button> */}
+            </Grid>
+            <Grid
+              item
+              lg={4}
+              md={4}
+              xl={4}
+              xs={12}
+              align='center'
+            >
+              <Button size="large" variant="contained" color="primary" href='/login'>
+                Login
               </Button>
             </Grid>
             <Grid
@@ -105,21 +115,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <Button size="large" variant="contained" color="primary" href='/store'>
-                Buy more credits
-              </Button>
-            </Grid>
-            <Grid
-              item
-              lg={4}
-              md={4}
-              xl={4}
-              xs={12}
-              align='center'
-            >
-              <Button size="large" variant="contained" color="primary" href='/'>
+              {/* <Button size="large" variant="contained" color="primary" href='/'>
                 Go to overview
-              </Button>
+              </Button> */}
             </Grid>
             {/* <Grid
               item
@@ -136,8 +134,8 @@ const Availability = ({ className, data, setData, ...rest }) => {
   );
 };
 
-Availability.propTypes = {
+Content.propTypes = {
   className: PropTypes.string
 };
 
-export default Availability;
+export default Content;

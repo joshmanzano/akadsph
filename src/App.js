@@ -28,6 +28,7 @@ import toast, {Toaster} from 'react-hot-toast';
 import NoParentAccount from 'src/components/NoParentAccount';
 import NoTutorAccount from 'src/components/NoTutorAccount'
 import withClearCache from './ClearCache'
+import RegisterSuccess from 'src/views/RegistrationSuccess';
 
 
 import 'src/Calendar.css'
@@ -143,8 +144,8 @@ class App extends Component {
     console.log(data)
     post_api('register-parent', data, (res) => {
       console.log(res)
-      localStorage.setItem('session_token',res)
-      window.location.replace('/')
+      // localStorage.setItem('session_token',res)
+      window.location.replace('/registration-success')
     })
   }
 
@@ -383,7 +384,10 @@ class App extends Component {
             <TutorApp/>
           </Route>
           <Route exact path='/register'> 
-            <SignUp/>
+            <SignUp register={this.register}/>
+          </Route>
+          <Route exact path='/registration-success'> 
+            <RegisterSuccess/>
           </Route>
           <Route exact path='/NoParentAccount'> 
             <NoParentAccount/>
