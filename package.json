@@ -86,6 +86,7 @@
     "react-polling": "^1.0.9",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-script-tag": "^1.1.2",
     "react-scripts": "^3.4.1",
     "react-scroll": "^1.8.1",
     "react-swipeable-views": "^0.13.9",

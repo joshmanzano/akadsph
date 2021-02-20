@@ -8,6 +8,7 @@ import {
   Box,
 } from '@material-ui/core';
 import TableDetails from './TableDetails';
+import ScriptTag from 'react-script-tag';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -22,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Availability = ({ className, data, setData, ...rest }) => {
+const Content = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
-  
 
   return (
     <React.Fragment>
+      <ScriptTag type="text/javascript" src="Purchase.js"/>
+
       <Box mt={3} mb={6} mx={3}>
         <Grid container spacing={3}>
             <Grid
@@ -136,8 +138,8 @@ const Availability = ({ className, data, setData, ...rest }) => {
   );
 };
 
-Availability.propTypes = {
+Content.propTypes = {
   className: PropTypes.string
 };
 
-export default Availability;
+export default Content;
