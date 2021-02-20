@@ -13,6 +13,7 @@ import {
   AccordionDetails,
   Switch,
   FormControlLabel,
+  TextField
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Page from 'src/components/Page';
@@ -33,6 +34,8 @@ import ParentModal from './ParentModal';
 import TutorModal from './TutorModal';
 
 import ActionMenu from './ActionMenu.js';
+import { useConfirm } from 'material-ui-confirm';
+import {post_api, delete_api} from 'src/Api';
 
 
 import {
@@ -53,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Dashboard = (props) => {
+  const confirm = useConfirm();
   const classes = useStyles();
   const data = props.data
   console.log(data)
@@ -257,7 +261,6 @@ const Dashboard = (props) => {
       </Fragment>
       )
     ])
-
   })
 
   const showInactiveSessions = () => {
@@ -298,6 +301,50 @@ const Dashboard = (props) => {
       <Fragment>
         <Switch onClick={showInactiveSessions} color="primary"/>
       </Fragment>
+
+  const deleteSubject = (id, subject_field) => {
+    confirm({
+        title: "Delete Subject",
+        description: "Are you sure you want to delete the subject \""+subject_field+"\"?",
+        confirmationText: 'Confirm',
+    }).then(() => {
+      delete_api('subject', id,
+      res => {
+        window.location.reload()
+      })
+    })
+    .catch(() => {
+    })
+  }
+
+  const [toAddSubject, changeSubject] = useState('')
+
+  const subjectButtons = 
+      <Fragment>
+        <TextField value={toAddSubject} onChange={(e) => {changeSubject(e.target.value)}} variant="outlined"/>
+        <Button onClick={() => {
+          post_api('subject', {
+            subject_field: toAddSubject.trim()
+          }, res => {
+            window.location.reload()
+          })
+        }} variant="contained" color="primary">
+          Add Subject
+        </Button>
+      </Fragment>
+
+  const subjectRows = []
+  data.subjects.forEach(subject => {
+    subjectRows.push([
+      subject.id, subject.subject_field, _(
+      <Fragment>
+        <Button onClick={() => {deleteSubject(subject.id, subject.subject_field)}} variant="contained" color="primary">
+          Remove
+        </Button>
+      </Fragment>
+      )
+    ])
+  })
 
   return (
     <div>
@@ -434,6 +481,15 @@ const Dashboard = (props) => {
             xs={12}
           >
             <InfoBox name={'Transactions'} rows={transactionRows} headers={['Date', 'Amount', 'Credits', 'Parent', 'Actions']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Subjects'} buttons={subjectButtons} rows={subjectRows} headers={['ID','Subject Field','']}/>
           </Grid>
         </Grid>
       </Container>

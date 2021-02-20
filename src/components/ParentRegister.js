@@ -108,14 +108,15 @@ export default function ParentRegister(props) {
     age: '',
     year_level: 'Grade 1',
     school: '',
+    email: '',
   });
   const [promoDetails, setPromo] = React.useState({
     promo_code: '',
-    referral_code: '',
+    referral_code: localStorage.getItem('referrer'),
     receive_marketing: true,
   });
  
-  const steps = ['Account Details', 'Child Details', 'Promo Code'];
+  const steps = ['Parent Details', 'Child Details', 'Referral'];
 
   useEffect(() => {
     if(activeStep === steps.length){

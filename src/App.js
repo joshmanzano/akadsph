@@ -46,6 +46,11 @@ class App extends Component {
     this.checkBackend((res) => {
       this.setState({offline: !res})
     })
+    const queryParams = new URLSearchParams(this.props.location.search);
+    const referrer = queryParams.get('referrer');
+    if(referrer != null){
+      localStorage.setItem('referrer', referrer)
+    }
   }
 
   checkBackend = (_callback) => {

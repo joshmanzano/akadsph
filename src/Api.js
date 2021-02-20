@@ -117,7 +117,7 @@ export const post_api = (url, raw_data, _callback) => {
     headers, 
     data : data
   };
-  
+
   axios(config)
   .then(function (response) {
     _callback(response.data)
@@ -127,6 +127,22 @@ export const post_api = (url, raw_data, _callback) => {
   });
   
 }
+
+export const delete_api = (url, id, _callback) => {
+  const headers = {
+    'Authorization': 'JWT '+localStorage.getItem('token'), 
+    'Content-Type': 'application/json'
+  }
+
+  axios.delete(api_url+'/'+url+'/'+id+'/',{
+    headers
+  })
+  .then(res => {
+    _callback(res.data)
+  })
+}
+
+
 
 export const get_user = (_callback) => {
   const data = jwt(localStorage.getItem('session_token'))

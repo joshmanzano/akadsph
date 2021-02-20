@@ -102,33 +102,6 @@ class ChildDetails extends Component{
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Child's Last Name"
-                name="last_name"
-                defaultValue={this.state.last_name}
-                autoComplete="lname"
-                onChange={this.changeHandler}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="age"
-                label="Age"
-                name="age"
-                type="number"
-                defaultValue={this.state.age}
-                autoComplete="age"
-                onChange={this.changeHandler}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
             <FormControl variant="outlined" className={classes.formControl} fullWidth>
               <InputLabel>Grade Level</InputLabel>
               <Select
@@ -154,10 +127,37 @@ class ChildDetails extends Component{
                 
               </Select>
             </FormControl> 
-
-    
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Child's Last Name"
+                name="last_name"
+                defaultValue={this.state.last_name}
+                autoComplete="lname"
+                onChange={this.changeHandler}
+              />
+            </Grid> */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                fullWidth
+                id="age"
+                label="Age"
+                name="age"
+                type="number"
+                defaultValue={this.state.age}
+                helperText="Optional"
+                autoComplete="age"
+                onChange={this.changeHandler}
+              />
+            </Grid>
+
+
+            <Grid item xs={12} sm={6}>
               <TextField
                   variant="outlined"
                   fullWidth
@@ -166,6 +166,19 @@ class ChildDetails extends Component{
                   name="school"
                   defaultValue={this.state.school}
                   autoComplete="school"
+                  helperText="Optional"
+                  onChange={this.changeHandler}
+                />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                  variant="outlined"
+                  fullWidth
+                  id="email"
+                  label="Child's Email Address (Gmail)"
+                  name="email"
+                  defaultValue={this.state.email}
+                  autoComplete="email"
                   helperText="Optional"
                   onChange={this.changeHandler}
                 />
