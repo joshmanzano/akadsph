@@ -58,7 +58,7 @@ class SignUp extends Component{
         email: props.email,
         googleId: props.googleId,
         phone: props.phone,
-        picture: props.phone,
+        picture: props.picture,
       }
       props.setAccount(this.state);
     }

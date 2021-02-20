@@ -87,6 +87,7 @@ export default function ParentRegister(props) {
     givenName:'',
     familyName:'',
     email:'',
+    username:'',
     phone:'', 
     googleId:'',
     picture:''
@@ -99,9 +100,10 @@ export default function ParentRegister(props) {
     givenName:registerProps.givenName,
     familyName:registerProps.familyName,
     email:registerProps.email,
+    username:registerProps.email,
     phone: registerProps.phone,
     googleId:registerProps.email,
-    picture:registerProps.picture == undefined ? '' : registerProps.picture,
+    picture:'',
   });
   const [childDetails, setChild] = React.useState({
     first_name: '',
@@ -122,11 +124,14 @@ export default function ParentRegister(props) {
   useEffect(() => {
     if(activeStep === steps.length){
       const data = accountDetails;
+      data['username'] = accountDetails['email'];
       data['child'] = childDetails;
       data['promo'] = promoDetails;
       // props.register(data)
       console.log(data)
+      console.log(props)
       localStorage.removeItem('registerProps')
+      props.register(data)
     }
   },[activeStep])
 
@@ -151,7 +156,7 @@ export default function ParentRegister(props) {
     setActiveStep(activeStep + 1);
     if (activeStep === steps.length - 1){
       // props.refresh()
-      window.location.replace('/registration-successful')
+      // this.props.register(this.state)
     }
   };
 
@@ -162,7 +167,6 @@ export default function ParentRegister(props) {
   const submitHandler = (event, props) => {
     event.preventDefault();
 
-    // this.props.register(this.state)
   }
 
   return (

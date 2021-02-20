@@ -69,6 +69,7 @@ class ChildDetails extends Component{
         age: this.props.age,
         year_level: this.props.year_level,
         school: this.props.school,
+        email: '',
       }
     }
 
