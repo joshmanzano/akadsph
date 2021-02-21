@@ -20,6 +20,9 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
+**Cause of bug**
+Add any explanations or guesses as to what caused the bug
+
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
