@@ -29,7 +29,7 @@ export class Header extends Component {
                         achieve their academic goals
                       </p>
                       <Box mb={8} alignItems="center">
-                        <Button /*href="/login"*/ onClick={() => window.open("http://bit.ly/AKADSTutorForm","_blank")} style={{borderRadius: "25px", zIndex: "99"}} size="large" color="default" variant="outlined">
+                        <Button /*href="/login"*/ onClick={() => window.location.replace("/tutor-form")} style={{borderRadius: "25px", zIndex: "99"}} size="large" color="default" variant="outlined">
                           Apply Now
                         </Button>
                       </Box>
@@ -56,7 +56,7 @@ export class Header extends Component {
                         achieve their academic goals
                       </p>
                       <Box mb={8} alignItems="center">
-                        <Button /*href="/login"*/ onClick={() => window.open("http://bit.ly/AKADSTutorForm","_blank")} style={{borderRadius: "25px", zIndex: "99"}} size="large" color="default" variant="outlined">
+                        <Button /*href="/login"*/ onClick={() => window.location.replace("/tutor-form")} style={{borderRadius: "25px", zIndex: "99"}} size="large" color="default" variant="outlined">
                           Apply Now
                         </Button>
                       </Box>

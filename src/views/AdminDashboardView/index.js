@@ -131,12 +131,14 @@ const Dashboard = (props) => {
 
   const tutors = {}
   const tutorRows = []
+  const tutorSelection = []
   data.tutors.forEach(t => {
     totalTutors += 1
     if(t.picture.trim() != ''){
       activeTutors += 1
     }
     tutors[t.id] = t
+    tutorSelection.push({id: t.id, first_name: t.first_name, last_name: t.last_name})
     tutorRows.push([
       t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(
         <Fragment>
@@ -279,23 +281,7 @@ const Dashboard = (props) => {
     updateShowInactive(!showInactive)
   }
 
-  const parentButtons = 
-      <Fragment>
-        <Button onClick={() => {
-          setAddParent(true)
-        }} variant="contained" color="primary">
-          Add Parent
-        </Button>
-      </Fragment>
 
-  const tutorButtons = 
-      <Fragment>
-        <Button onClick={() => {
-          setAddTutor(true)
-        }} variant="contained" color="primary">
-          Add Tutor 
-        </Button>
-      </Fragment>
 
   const sessionButtons = 
       <Fragment>
@@ -334,7 +320,9 @@ const Dashboard = (props) => {
       </Fragment>
 
   const subjectRows = []
+  const subject_fields = []
   data.subjects.forEach(subject => {
+    subject_fields.push(subject.subject_field)
     subjectRows.push([
       subject.id, subject.subject_field, _(
       <Fragment>
@@ -345,6 +333,15 @@ const Dashboard = (props) => {
       )
     ])
   })
+
+  const tutorButtons = 
+      <Fragment>
+        <Button onClick={() => {
+          setAddTutor(true)
+        }} variant="contained" color="primary">
+          Add Tutor 
+        </Button>
+      </Fragment>
 
   return (
     <div>
@@ -358,8 +355,8 @@ const Dashboard = (props) => {
     >
       <Container maxWidth={false}>
       <ModalAddParent register={props.register} open={addParent} setOpen={setAddParent}/>
-      <ModalAddTutor open={addTutor} setOpen={setAddTutor}/>
-      <ParentModal open={parentModal} setOpen={setParentModal} p={currentParent}/>
+      <ModalAddTutor subjects={subject_fields} open={addTutor} setOpen={setAddTutor}/>
+      <ParentModal open={parentModal} tutorSelection={tutorSelection} setOpen={setParentModal} p={currentParent}/>
       <TutorModal open={tutorModal} setOpen={setTutorModal} t={currentTutor}/>
       <Box mb={2}>
 
@@ -462,7 +459,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Actions']}/>
+            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Actions']}/>
           </Grid>
           <Grid
             item
@@ -471,7 +468,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Tutors'} buttons={tutorButtons} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Files', 'Actions']}/>
+            <InfoBox name={'Tutors'} buttons={tutorButtons} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Actions']}/>
           </Grid>
           <Grid
             item
