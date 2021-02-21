@@ -151,9 +151,10 @@ function CreditStore(props){
             Toast.fail('Transaction failed!')
           }else if(res['state'] == 'awaiting_next_action'){
             console.log(res)
+            window.open(res['url'],'_blank')
             confirm({
               title: "3DS Authentication",
-              description: '3DS authentication must be completed: '+res['url'],
+              description: '3DS authentication must be completed.',
               confirmationText: 'Proceed',
             }).then(() => {
               get_payment_intent(res['payment_method'], res['payment_intent'], res['client_key'], (res) => {
