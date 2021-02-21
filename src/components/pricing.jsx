@@ -118,7 +118,7 @@ export default function Pricing() {
         <Container>
           <Box>
             <div className="text-center">
-              <h2>Early Access Pricing</h2>
+              <h2>Launch Pricing</h2>
             </div>
             <div className="row">
       <Box mt={4}>

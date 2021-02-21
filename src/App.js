@@ -381,7 +381,8 @@ class App extends Component {
             <Login login={this.login} login_tutor={this.login_tutor} />
           </Route>
           <Route exact path='/tutor-form'> 
-            <TutorApp/>
+            {/* <TutorApp/> */}
+            <NoTutorAccount/>
           </Route>
           <Route exact path='/register'> 
             <SignUp register={this.register}/>

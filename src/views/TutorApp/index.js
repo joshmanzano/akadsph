@@ -141,7 +141,7 @@ export default function(props){
       title="Tutor Application - AKADSPH" 
     >
       <Box mx={3}> 
-        <Button href="/#" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+        <Button href="/" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
           Home
         </Button>
       </Box>

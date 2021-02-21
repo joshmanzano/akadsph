@@ -37,6 +37,10 @@ html,body
 	background: inherit !important;
 }
 
+a {
+	cursor: pointer;
+}
+
 /* Material-UI Overrides */
 
 .MuiBadge-colorSecondary {

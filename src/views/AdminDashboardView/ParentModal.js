@@ -16,6 +16,9 @@ import Box from '@material-ui/core/Box';
 import { useConfirm } from 'material-ui-confirm';
 import Toast from 'light-toast';
 
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+
 import {post_api} from 'src/Api';
 
 
@@ -56,6 +59,7 @@ export default function ParentModal(props) {
   };
 
   const [value, setValue] = React.useState(1);
+  const [tutor, setTutor] = React.useState(null);
 
   const handleBlur = () => {
     if (value < 0) {
@@ -72,6 +76,28 @@ export default function ParentModal(props) {
   const handleInputChange = (event) => {
     setValue(event.target.value === '' ? '' : Number(event.target.value));
   };
+
+  const changeTutor = (event, value) => {
+    setTutor(value)
+    console.log(value)
+  }
+
+  const addFavourite = () => {
+    if(tutor == null){
+      Toast.fail('No tutor selected.')
+    }else{
+      post_api('add-favourite-tutor',{
+        parent_id: p.id,
+        tutor_id: tutor.id
+      }, res => {
+        if(typeof(res) == 'string'){
+          Toast.fail(res)
+        }else{
+          Toast.success('Favorite tutor added.',500)
+        }
+      })
+    }
+  }
 
   const addCredits = () => {
     confirm({
@@ -142,6 +168,25 @@ export default function ParentModal(props) {
                 <Grid item>
                     <Button onClick={addCredits} color="primary" variant="contained" >
                         Gift
+                    </Button>
+                </Grid>
+            </Grid>
+            <Typography gutterBottom>
+              Add Favorite Tutor
+            </Typography>
+            <Grid container spacing={2} alignItems="center">
+                <Grid item xs>
+                  <Autocomplete
+                    options={props.tutorSelection}
+                    getOptionLabel={(option) => option.first_name}
+                    style={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Tutor" variant="outlined" />}
+                    onChange={changeTutor}
+                  />
+                </Grid>
+                <Grid item>
+                    <Button onClick={addFavourite} color="primary" variant="contained" >
+                      Add Favorite
                     </Button>
                 </Grid>
             </Grid>

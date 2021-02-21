@@ -67,6 +67,9 @@ export default function TutorModal(props) {
                 <Button onClick={() => openInNewTab("https://api.akadsph.com/tutors/"+t.id+"/")} color="primary" variant="contained" >
                     Edit Page
                 </Button>
+                <Button onClick={() => loginAs()} color="primary" variant="contained" >
+                    Login As
+                </Button>
             </Grid>
             <Box my={2}></Box>
             <Grid container>
