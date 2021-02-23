@@ -203,7 +203,7 @@ function TutorDashboardLayout (props){
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       /> */}
-      <Websocket url={'wss://api.akadsph.com/ws/'+'tutor'+String(user_id)+'/'} onMessage={handleData}/>
+      <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'tutor'+String(user_id)+'/'} onMessage={handleData}/>
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>

@@ -165,14 +165,23 @@ const ModalAddParent = ({props, subjects, open, setOpen, className, ...rest }) =
   };
   
   const handleClose = () => {
-    Toast.loading('Adding tutor...')
-    tutorDetails['username'] = tutorDetails['email']
-    changeDetails(tutorDetails)
-    post_api('register-tutor',tutorDetails,res => {
-      Toast.success('Added tutor!',500)
-      window.location.reload()
-    })
     setOpen(false);
+  };
+
+  const addTutor = () => {
+    if(tutorDetails['email'].trim() == ''){
+      Toast.fail('Tutor has empty email.',500)
+    }else{
+      Toast.loading('Adding tutor...')
+      tutorDetails['username'] = tutorDetails['email']
+      changeDetails(tutorDetails)
+      post_api('register-tutor',tutorDetails,res => {
+        Toast.success('Added tutor!',500)
+        window.location.reload()
+      })
+      setOpen(false);
+    }
+
   };
 
   const changeHandler = (event) => {
@@ -453,7 +462,7 @@ const ModalAddParent = ({props, subjects, open, setOpen, className, ...rest }) =
           <Button onClick={handleClose} color="primary">
               Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={addTutor} color="primary" autoFocus>
               Save
           </Button>
         </DialogActions>

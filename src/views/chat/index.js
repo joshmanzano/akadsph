@@ -19,7 +19,7 @@ class Chat extends React.Component {
 
     this.state = {
       loaded: false,
-      conversation: this.props.adminchat.id,
+      conversation: this.props.adminchat.conversation.id,
       messages: [],
       chatList: [],
       avatar: '/static/images/oli-chat.png',
@@ -62,7 +62,7 @@ class Chat extends React.Component {
       const lastMessage = messages[0]
       console.log(lastMessage)
       post_api('seen-conversation', {
-        'conversation_id': this.props.adminchat.id,
+        'conversation_id': this.props.adminchat.conversation.id,
         'looker': 'parent'
       } ,(res) => {})
       this.setState({chatList: chatList, messages:messages, loaded: true})
@@ -70,21 +70,30 @@ class Chat extends React.Component {
 
   }
 
-  componentDidMount(){
+  changeSubtitles = (latest_message) => {
+    let subtitle = latest_message.text
+    let subtitleCut = subtitle.length > 55 ? 55 : subtitle.length
+    subtitle = subtitle.substring(0, subtitleCut)
+    if(subtitleCut > 55){
+      subtitle += '...'
+    }
+    if(latest_message.sender == 'parent'){
+      subtitle = 'You: ' + subtitle
+    }
     const chatList = [
       {
         avatar: '/static/images/oli-chat.png',
         alt: 'Oli',
         title: 'AKADS Buddy',
-        subtitle: '',
-        date: new Date(),
+        // subtitle:'',
+        subtitle: subtitle,
+        date: new Date(latest_message.time_sent),
         // onClick:{changeChat},
-        chatID: this.props.adminchat.id,
+        chatID: this.props.adminchat.conversation.id,
         // unread: akadsUnread,
-        className: 'selectedChat',
+        // className: 'selectedChat',
       }
     ]
-
     this.props.activechat.forEach(chat => {
       const tutor = chat.tutor
       chatList.push({
@@ -95,9 +104,16 @@ class Chat extends React.Component {
         chatID: chat.conversation.id
       })
     })
+    this.setState({chatList:chatList})
+  }
+
+  componentDidMount(){
+    console.log(this.props)
+    this.changeSubtitles(this.props.adminchat.latest_message)
     const payload = {
-      'conversation_id': this.props.adminchat.id 
+      'conversation_id': this.props.adminchat.conversation.id 
     }
+    console.log(payload)
     post_api('specific-parent-admin-conversation', payload, (res) => {
       const messages = []
       res['messages'].forEach(message => {
@@ -118,10 +134,10 @@ class Chat extends React.Component {
       const lastMessage = messages[0]
       console.log(lastMessage)
       post_api('seen-admin-parent-conversation', {
-        'conversation_id': this.props.adminchat.id,
+        'conversation_id': this.props.adminchat.conversation.id,
         'looker': 'parent'
       } ,(res) => {})
-      this.setState({chatList: chatList, messages:messages, loaded: true})
+      this.setState({messages:messages, loaded: true})
     })
   }
 
@@ -129,7 +145,7 @@ class Chat extends React.Component {
     const message = JSON.parse(data)
     if(message['message'] == 'update'){
       const payload = {
-        'conversation_id': this.props.adminchat.id,
+        'conversation_id': this.props.adminchat.conversation.id,
         'receiver': 'parent' 
       }
       post_api('get-unseen-specific-parent-admin-conversation', payload, (res) => {
@@ -149,8 +165,12 @@ class Chat extends React.Component {
             }
           )
         })
+        if(res['messages'].length > 0){
+          let latest_message = res['messages'][0]
+          this.changeSubtitles(latest_message)
+        }
         post_api('seen-admin-parent-conversation', {
-          'conversation_id': this.props.adminchat.id,
+          'conversation_id': this.props.adminchat.conversation.id,
           'looker': 'parent'
         } ,(res) => {})
         console.log(messages)
@@ -174,7 +194,7 @@ class Chat extends React.Component {
     //     )
     //   })
     //   post_api('seen-admin-parent-conversation', {
-    //     'conversation_id': this.props.adminchat.id,
+    //     'conversation_id': this.props.adminchat.conversation.id,
     //     'looker': 'parent'
     //   } ,(res) => {})
     //   this.setState({messages:messages, loaded: true})
@@ -219,7 +239,7 @@ class Chat extends React.Component {
 
     return (
       <div style={styles.container}>
-        <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(user_id)+'/'} onMessage={this.handleData}/>
+        <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'parent'+String(user_id)+'/'} onMessage={this.handleData}/>
         <div style={styles.channelList}>
           {chatList.map(chat => (
             <ChatItem

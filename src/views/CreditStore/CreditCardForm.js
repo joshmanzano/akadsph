@@ -11,13 +11,11 @@ import {
 import 'react-credit-cards/es/styles-compiled.css';
 
 export default class PaymentForm extends React.Component {
-  state = {
-    cvc: '',
-    expiry: '',
-    focus: '',
-    name: '',
-    number: '',
-  };
+  constructor(props){
+    super(props)
+    this.state = this.props.cardState
+    console.log(this.state)
+  }
 
   handleInputFocus = (e) => {
     this.setState({ focus: e.target.name });
@@ -53,6 +51,7 @@ export default class PaymentForm extends React.Component {
                 type="tel"
                 name="number"
                 placeholder="Card Number"
+                value={this.state.number}
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
               />
@@ -62,6 +61,7 @@ export default class PaymentForm extends React.Component {
                 type="tel"
                 name="name"
                 placeholder="Card Holder's Name"
+                value={this.state.name}
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
               />
@@ -71,6 +71,7 @@ export default class PaymentForm extends React.Component {
                 type="tel"
                 name="expiry"
                 placeholder="Expiry Date"
+                value={this.state.expiry}
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
               />
@@ -81,6 +82,7 @@ export default class PaymentForm extends React.Component {
                 type="tel"
                 name="cvc"
                 placeholder="CVC"
+                value={this.state.cvc}
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
               />

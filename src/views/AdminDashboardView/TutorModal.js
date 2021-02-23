@@ -64,7 +64,7 @@ export default function TutorModal(props) {
                 <Button onClick={() => openInNewTab(t.files)} color="primary" variant="contained" >
                     File Folder
                 </Button>
-                <Button onClick={() => openInNewTab("https://api.akadsph.com/tutors/"+t.id+"/")} color="primary" variant="contained" >
+                <Button onClick={() => openInNewTab(process.env.REACT_APP_API_URL+"/tutors/"+t.id+"/")} color="primary" variant="contained" >
                     Edit Page
                 </Button>
                 <Button onClick={() => loginAs()} color="primary" variant="contained" >

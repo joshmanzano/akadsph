@@ -129,7 +129,7 @@ export default function ParentModal(props) {
                 <Button onClick={() => openInNewTab(p.files)} color="primary" variant="contained" >
                     File Folder
                 </Button>
-                <Button onClick={() => openInNewTab("https://api.akadsph.com/parents/"+p.id+"/")} color="primary" variant="contained" >
+                <Button onClick={() => openInNewTab(process.env.REACT_APP_API_URL+"/parents/"+p.id+"/")} color="primary" variant="contained" >
                     Edit Page
                 </Button>
                 <Button onClick={() => loginAs()} color="primary" variant="contained" >

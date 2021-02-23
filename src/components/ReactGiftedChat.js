@@ -83,7 +83,7 @@ class Example extends Component {
       <Fragment>
       {this.props.loaded ? 
         <React.Fragment>
-          {/* <Websocket url={'wss://api.akadsph.com/ws/chat/'} onMessage={this.handleData}/> */}
+          {/* <Websocket url={process.env.REACT_APP_WS_URL+'/ws/chat/'} onMessage={this.handleData}/> */}
           <GiftedChat
             messages={this.state.messages}
             onSend={(messages) => this.onSend(messages)}

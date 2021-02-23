@@ -29,7 +29,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
 
   return (
     <React.Fragment>
-      <ScriptTag type="text/javascript" src="Purchase.js"/>
+      {process.env.REACT_APP_ENV == 'PRODUCTION' &&
+        <ScriptTag type="text/javascript" src="Purchase.js"/>
+      }
       <Box mt={3} mb={6} mx={3}>
         <Grid container spacing={3}>
             <Grid

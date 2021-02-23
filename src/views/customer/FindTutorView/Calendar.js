@@ -41,24 +41,29 @@ export default class Example extends React.Component {
     toMonth.setMonth(now.getMonth() + 1)
     const toDay = new Date() 
     toDay.setDate(now.getDate() + 1)
+    var disabledDays = 
+    [
+      {
+        before: now
+      },
+      {
+        after: toMonth
+      },
+      {
+        after: now,
+        before: toDay
+      },
+      now
+    ]
+    if(process.env.REACT_APP_ENV == 'DEVELOPMENT'){
+      disabledDays = []
+    }
     return (
       <div>
         <DayPicker
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
-          disabledDays={[
-            {
-              before: now
-            },
-            {
-              after: toMonth
-            },
-            {
-              after: now,
-              before: toDay
-            },
-            now
-          ]}
+          disabledDays={disabledDays}
           month={now}
           fromMonth={fromMonth}
           toMonth={toMonth}
