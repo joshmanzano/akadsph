@@ -30,14 +30,23 @@ const useStyles = makeStyles((theme) => ({
 
 const RequestSent = (props) => {
   const classes = useStyles();
-  console.log(window.location)
-  console.log(window.location.search)
-  console.log(props.location)
+  const queryParams = new URLSearchParams(window.location.search);
+  const method = queryParams.get('method');
+  if(method != null){
+    const src_id = localStorage.getItem('src_id')
+    post_api('source-pay', {
+      src: src_id
+    }, res => {
+      console.log(res)
+    })
+  }else{
+    window.location.replace('/')
+  }
   
   return (
     <Page
       className={classes.root}
-      title="Request Sent" 
+      title="Processing Transaction" 
     >
       <Container maxWidth={false}>
         <Box mx={1} align='center'>

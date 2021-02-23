@@ -13,6 +13,7 @@ import {
   Tab,
 } from '@material-ui/core';
 import CreditCardForm from './CreditCardForm';
+import PhonePayForm from './PhonePayForm';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
@@ -33,12 +34,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Payment = ({ className, setCardState, ...rest }) => {
+const Payment = ({ className, setMethod, cardState, setCardState, ...rest }) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
   function handleChange(event, value){
     setValue(value)
+    if(value == 0){
+      setMethod('card')
+    }
   }
 
   return (
@@ -73,69 +77,15 @@ const Payment = ({ className, setCardState, ...rest }) => {
             </Tabs>
             <Box mt={4}>
               {value == 0 &&
-                <CreditCardForm setCardState={setCardState}></CreditCardForm>
+                <CreditCardForm cardState={cardState} setCardState={setCardState}></CreditCardForm>
               }
               {value == 1 &&
-                <UnderConstruction payMethod={'GCash'}/>
+                <PhonePayForm setMethod={setMethod}/>
               }
               {value == 2 &&
-                <UnderConstruction payMethod={'Brankas'}/>
+                <UnderConstruction payMethod={'bank transfer'}/>
               }
             </Box>
-              {/* <Grid container spacing={2} style={{justifyContent: 'center', placeItems: 'center'}}>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={12}
-                >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  Credit Card
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={12}
-                >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  Bank Transfer
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={12}
-                >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  Gcash
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  xl={3}
-                  xs={12}
-                >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  GrabPay
-                  </Button>
-                </Grid>
-              </Grid> */}
             </Box>
           </CardContent>
         </Card>
