@@ -55,7 +55,7 @@ export default class Example extends React.Component {
       },
       now
     ]
-    if(process.env.REACT_APP_ENV == 'DEVELOPMENT'){
+    if(process.env.REACT_APP_ENV == 'DEVELOPMENT' || process.env.REACT_APP_ENV == 'STAGING'){
       disabledDays = []
     }
     return (

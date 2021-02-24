@@ -29,6 +29,7 @@ import NoParentAccount from 'src/components/NoParentAccount';
 import NoTutorAccount from 'src/components/NoTutorAccount'
 import withClearCache from './ClearCache'
 import RegisterSuccess from 'src/views/RegistrationSuccess';
+import ScriptTag from 'react-script-tag';
 
 
 import 'src/Calendar.css'
@@ -44,6 +45,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+
     this.checkBackend((res) => {
       this.setState({offline: !res})
     })
@@ -371,6 +373,17 @@ class App extends Component {
   render(){
     return (
       <div>
+      {process.env.REACT_APP_ENV == 'PRODUCTION' && 
+        <Fragment>
+          <ScriptTag async src="https://www.googletagmanager.com/gtag/js?id=G-VPQXR69SYS"/>
+          <noscript>
+            <img height="1" width="1" 
+            src="https://www.facebook.com/tr?id=332566451426441&ev=PageView
+            &noscript=1"/>
+          </noscript>
+          <ScriptTag src="Analytics.js"/>
+        </Fragment>
+      }
       {this.state.offline == false ?
       <Router>
         {this.state.session == null &&
