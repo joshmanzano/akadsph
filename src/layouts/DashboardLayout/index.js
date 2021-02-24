@@ -49,6 +49,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import RequestSentView from 'src/views/RequestSent';
 import TransactionSuccessView from 'src/views/TransactionSuccess';
+import TransactionProcessView from 'src/views/TransactionProcess';
 
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
@@ -57,6 +58,8 @@ import HelperModal from 'src/components/HelperModal';
 import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
 
 import Websocket from 'react-websocket';
+
+import RegistrationSuccessView from 'src/views/RegistrationSuccess';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -201,7 +204,7 @@ function DashboardLayout (props){
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       /> */}
-      <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/>
+      <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'parent'+String(user_id)+'/'} onMessage={handleData}/>
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
@@ -269,6 +272,16 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}transaction-successful`}>
                 <Fragment>
                   <TransactionSuccessView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}process-transaction`}>
+                <Fragment>
+                  <TransactionProcessView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}registration-successful`}>
+                <Fragment>
+                  <RegistrationSuccessView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -53,6 +53,10 @@ import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import ModeOfPayment from 'src/views/TutorApp/ModeOfPayment';
 import OtherTutorDets from 'src/components/OtherTutorDets';
+
+import Toast from 'light-toast';
+
+import {post_api} from 'src/Api';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -128,55 +132,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
+const ModalAddParent = ({props, subjects, open, setOpen, className, ...rest }) => {
   const classes = useStyles();
-  // const [open, setOpen] = React.useState(false);
 
-  // const [activeStep, setActiveStep] = React.useState(0);
-  // const [accountDetails, setAccount] = React.useState();
-  // const [childDetails, setChild] = React.useState();
-  const subjectselections = ['Math', 'English', 'Filipino', 'Science'];
-  // const [promoDetails, setPromo] = React.useState();
- 
-  // const steps = ['Account Details', 'Child Details', 'Other Details'];
-
-  // useEffect(() => {
-  //   if(activeStep === steps.length){
-  //     const data = accountDetails;
-  //     data['child'] = childDetails;
-  //     props.register(data)
-  //   }
-  // },[activeStep])
-
-  // function getStepContent(step, props) {
-  //   switch (step) {
-  //     case 0:
-  //       return /*<span>Potato</span>*/ <AccountDetails setAccount={setAccount} {...accountDetails} admin={true}/>;
-  //     case 1:
-  //        return <ChildDetails setChild={setChild} {...childDetails}/>;
-  //     case 2:
-  //       return <OtherParentDets/>;
-  //     default:
-  //       throw new Error('Unknown step');
-  //   }
-  // }
-
-  // const handleNext = () => {
-  //   console.log(activeStep);
-  //   console.log(accountDetails)
-  //   console.log(childDetails)
-  //   // console.log(promoDetails)
-  //   setActiveStep(activeStep + 1);
-  // };
-
-  // const handleBack = () => {
-  //   setActiveStep(activeStep - 1);
-  // };
+  const subjectselections = subjects;
 
   const submitHandler = (event, props) => {
     event.preventDefault();
     // this.props.register(this.state)
   }
+
+  const [tutorDetails, changeDetails] = useState({
+    'username':'',
+    'first_name':'',
+    'last_name':'',
+    'email':'',
+    'school':'',
+    'course':'',
+    'achievements':'',
+    'phone':'',
+    'picture':'',
+    'bank_name':'',
+    'bank_account_number':'',
+    'bank_account_name':'',
+    'bank_account_type':'',
+    'subjects':[]
+  })
 
 
   const handleClickOpen = () => {
@@ -186,6 +167,36 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const addTutor = () => {
+    if(tutorDetails['email'].trim() == ''){
+      Toast.fail('Tutor has empty email.',500)
+    }else{
+      Toast.loading('Adding tutor...')
+      tutorDetails['username'] = tutorDetails['email']
+      changeDetails(tutorDetails)
+      post_api('register-tutor',tutorDetails,res => {
+        Toast.success('Added tutor!',500)
+        window.location.reload()
+      })
+      setOpen(false);
+    }
+
+  };
+
+  const changeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    console.log(nam)
+    console.log(val)
+    tutorDetails[nam] = val
+    changeDetails(tutorDetails)
+  }
+
+  const changeSubjects = (event, value) => {
+    tutorDetails['subjects'] = value
+    changeDetails(tutorDetails)
+  }
 
   const DialogTitle = withStyles(useStyles)((props) => {
     const { children, classes, onClose, ...other } = props;
@@ -237,7 +248,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="First Name" variant="outlined" fullWidth/>
+                <TextField onChange={changeHandler} name="first_name" id="outlined-basic" label="First Name" variant="outlined" fullWidth/>
               </Grid> 
               <Grid
                 item
@@ -246,7 +257,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Last Name" variant="outlined" fullWidth/>
+                <TextField onChange={changeHandler} name="last_name" id="outlined-basic" label="Last Name" variant="outlined" fullWidth/>
               </Grid> 
               <Grid
                 item
@@ -257,7 +268,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
               >
                 <FormControl component="fieldset">
                   <FormLabel component="legend">Sex</FormLabel>
-                  <RadioGroup row name="tutor-sex">
+                  <RadioGroup disabled row name="tutor-sex">
                     <FormControlLabel value="male" control={<Radio />} label="Male" />
                     <FormControlLabel value="female" control={<Radio />} label="Female" />
                     
@@ -271,7 +282,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Birth Date" variant="outlined" type="date" InputLabelProps={{ shrink: true }}fullWidth/>
+                <TextField onChange={changeHandler} name="birth_date" id="outlined-basic" label="Birth Date" variant="outlined" type="date" InputLabelProps={{ shrink: true }}fullWidth/>
               </Grid> 
 
               <Grid
@@ -281,7 +292,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Email Address" type="email" variant="outlined" fullWidth/>
+                <TextField onChange={changeHandler} name="email" id="outlined-basic" label="Email Address" type="email" variant="outlined" fullWidth/>
               </Grid> 
               <Grid
                 item
@@ -290,7 +301,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
+                <TextField onChange={changeHandler} name="phone" id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
                   startAdornment: <InputAdornment position="start">+63</InputAdornment>,
                 }}fullWidth/>
               </Grid> 
@@ -312,7 +323,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Tertiary Education" type="college" variant="outlined" placeholder="Ex. Ateneo De Manila University" fullWidth/>
+                <TextField onChange={changeHandler} name="school" id="outlined-basic" label="Tertiary Education" type="college" variant="outlined" placeholder="Ex. Ateneo De Manila University" fullWidth/>
               </Grid> 
               {/* <Grid
                 item
@@ -330,7 +341,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={6}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Course/Major" type="course" variant="outlined" placeholder="Ex. BS Information Technology Entrepreneurship" fullWidth/>
+                <TextField onChange={changeHandler} name="course" id="outlined-basic" label="Course/Major" type="course" variant="outlined" placeholder="Ex. BS Information Technology Entrepreneurship" fullWidth/>
               </Grid> 
               <Grid
                 item
@@ -339,7 +350,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={12}
                 xs={12}
               >
-                <TextField id="outlined-basic" label="Notable Achievements" type="course" variant="outlined" placeholder="Ex. Consistent Dean's Lister" fullWidth/>
+                <TextField onChange={changeHandler} name="achievements" id="outlined-basic" label="Notable Achievements" type="course" variant="outlined" placeholder="Ex. Consistent Dean's Lister" fullWidth/>
               </Grid>
               <Grid
                 item
@@ -362,6 +373,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                   renderInput={(params) => (
                     <TextField {...params} variant="outlined" label="Subjects Teaching" />
                   )}
+                  onChange={changeSubjects}
                 />
               </Grid> 
               <Grid
@@ -371,9 +383,56 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xl={12}
                 xs={12}
               >
-                <ModeOfPayment/>
-              </Grid>
+                <Typography variant="h3">
+                  Mode of Payment
+                </Typography>
+              </Grid> 
               <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={12}
+              >
+                <TextField onChange={changeHandler} name="bank_name" id="outlined-basic" label="Bank Name" variant="outlined" fullWidth/>
+              </Grid> 
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={12}
+              >
+                <TextField onChange={changeHandler} name="bank_account_number" id="outlined-basic" label="Bank Account Number" type="number" variant="outlined" fullWidth/>
+              </Grid> 
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={12}
+              >
+                <TextField onChange={changeHandler} name="bank_account_name" id="outlined-basic" label="Bank Account Name" variant="outlined" fullWidth/>
+              </Grid> 
+              <Grid
+                item
+                lg={6}
+                md={6}
+                xl={6}
+                xs={12}
+              >
+                <TextField onChange={changeHandler} name="bank_account_type" id="outlined-basic" label="Bank Account Type" variant="outlined" fullWidth/>
+              </Grid> 
+              {/* <Grid
+                item
+                lg={12}
+                md={12}
+                xl={12}
+                xs={12}
+              >
+                <ModeOfPayment/>
+              </Grid> */}
+              {/* <Grid
                 item
                 lg={12}
                 md={12}
@@ -392,7 +451,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
                 xs={12}
               >
                 <OtherTutorDets/>
-              </Grid> 
+              </Grid>  */}
             </Grid>
 
 
@@ -403,7 +462,7 @@ const ModalAddParent = ({props, open, setOpen, className, ...rest }) => {
           <Button onClick={handleClose} color="primary">
               Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={addTutor} color="primary" autoFocus>
               Save
           </Button>
         </DialogActions>

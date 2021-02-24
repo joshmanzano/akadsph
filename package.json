@@ -58,6 +58,7 @@
     "material-auto-rotating-carousel": "^3.0.2",
     "material-ui-confirm": "^2.1.1",
     "material-ui-dropzone": "^3.5.0",
+    "material-ui-image": "^3.3.1",
     "material-ui-phone-number": "^2.2.6",
     "moment": "^2.29.1",
     "notistack": "^1.0.2",
@@ -82,10 +83,12 @@
     "react-material-ui-carousel": "^2.1.1",
     "react-native-vector-icons": "^7.1.0",
     "react-notifications-menu": "^1.0.1",
+    "react-pdf": "^5.2.0",
     "react-perfect-scrollbar": "^1.5.8",
     "react-polling": "^1.0.9",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-script-tag": "^1.1.2",
     "react-scripts": "^3.4.1",
     "react-scroll": "^1.8.1",
     "react-swipeable-views": "^0.13.9",
@@ -113,5 +116,5 @@
     "prettier": "^1.19.1",
     "react-devtools": "^4.9.0"
   },
-  "buildDate": 1613211991434
+  "buildDate": 1613983374135
 }

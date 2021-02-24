@@ -8,6 +8,7 @@ import {
   Box,
 } from '@material-ui/core';
 import TableDetails from './TableDetails';
+import ScriptTag from 'react-script-tag';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -28,6 +29,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
 
   return (
     <React.Fragment>
+      {process.env.REACT_APP_ENV == 'PRODUCTION' &&
+        <ScriptTag type="text/javascript" src="Purchase.js"/>
+      }
       <Box mt={3} mb={6} mx={3}>
         <Grid container spacing={3}>
             <Grid

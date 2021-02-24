@@ -63,14 +63,6 @@ class SignUp extends Component{
 
     constructor(props){
       super(props);
-      this.state = {
-        firstName: props.givenName,
-        lastName: props.familyName,
-        email: props.email,
-        googleId: props.googleId,
-        picture: props.picture,
-        phone: '',
-      }
     }
 
     submitHandler = (event) => {
@@ -92,34 +84,34 @@ class SignUp extends Component{
     }
 
     render(){
-    const props = this.props;
-    const {classes} = this.props;
+      const props = this.props;
+      const {classes} = this.props;
 
-  return (
-    <React.Fragment>
-      <Box mx={3}> 
-        <Button href="/login" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
-          Back
-        </Button>
-      </Box>
-    <Container component="main">
-      <CssBaseline />
-      
-      <div className={classes.paper}>
-        <Box mt={6}>
+      return (
+        <React.Fragment>
+          <Box mx={3}> 
+            <Button href="/login" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+              Back
+            </Button>
+          </Box>
+        <Container component="main">
+          <CssBaseline />
+          
+          <div className={classes.paper}>
+            <Box mt={6}>
+                <Container align="center">
+                  <img height="100" src='./img/logo.png'/>
+                </Container>
+            </Box>
             <Container align="center">
-              <img height="100" src='./img/logo.png'/>
+              <ParentRegister register={this.props.register}/>
             </Container>
-        </Box>
-        <Container align="center">
-          <ParentRegister register={this.props.register} changeState={this.changeState} givenName={this.state.firstName} familyName={this.state.lastName} email={this.state.email} googleId={this.state.email} picture={this.state.picture}/>
+
+          </div>
+
         </Container>
-
-      </div>
-
-    </Container>
-    </React.Fragment>
-  );
+        </React.Fragment>
+      );
     }
 }
 

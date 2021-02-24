@@ -28,6 +28,9 @@ import toast, {Toaster} from 'react-hot-toast';
 import NoParentAccount from 'src/components/NoParentAccount';
 import NoTutorAccount from 'src/components/NoTutorAccount'
 import withClearCache from './ClearCache'
+import RegisterSuccess from 'src/views/RegistrationSuccess';
+import ScriptTag from 'react-script-tag';
+import PDFView from 'src/components/PDF.jsx';
 
 
 import 'src/Calendar.css'
@@ -43,9 +46,15 @@ class App extends Component {
   }
 
   componentDidMount(){
+
     this.checkBackend((res) => {
       this.setState({offline: !res})
     })
+    const queryParams = new URLSearchParams(this.props.location.search);
+    const referrer = queryParams.get('referrer');
+    if(referrer != null){
+      localStorage.setItem('referrer', referrer)
+    }
   }
 
   checkBackend = (_callback) => {
@@ -81,18 +90,20 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT PARENT
-        window.location.replace('/NoParentAccount')
-        // const registerProps = {
-        //   'familyName': res['family_name'],
-        //   'givenName': res['given_name'],
-        //   'email': res['email'],
-        //   'googleId': res['sub'],
-        //   'picture': res['picture'],
-        // }
+        console.log('does not exist')
+        const registerProps = {
+          'username': res['email'],
+          'familyName': res['family_name'],
+          'givenName': res['given_name'],
+          'email': res['email'],
+          'googleId': res['sub'],
+          'picture': res['picture'],
+        }
+        localStorage.setItem('registerProps', JSON.stringify(registerProps))
         // this.setState({
         //   registerProps
         // }, () => {
-        //   this.props.history.replace('/register')
+        window.location.replace('/register')
         // })
       }
     })
@@ -109,7 +120,16 @@ class App extends Component {
         window.location.replace('/')
       }else{
         // IF NO ACCOUNT TUTOR
-        window.location.replace('/NoTutorAccount/')
+        const applicationProps = {
+          'username': res['email'],
+          'familyName': res['family_name'],
+          'givenName': res['given_name'],
+          'email': res['email'],
+          'googleId': res['sub'],
+          'picture': res['picture'],
+        }
+        localStorage.setItem('applicationProps', JSON.stringify(applicationProps))
+        window.location.replace('/tutor-form')
       }
     })
   }
@@ -127,8 +147,8 @@ class App extends Component {
     console.log(data)
     post_api('register-parent', data, (res) => {
       console.log(res)
-      localStorage.setItem('session_token',res)
-      window.location.replace('/')
+      // localStorage.setItem('session_token',res)
+      window.location.replace('/registration-success')
     })
   }
 
@@ -313,6 +333,7 @@ class App extends Component {
               'first_name': tutor['first_name'],
               'last_name': tutor['last_name'],
               'email': tutor['email'],
+              'phone': tutor['phone'],
             },
             'dashboardview': {
               'upcoming':upcoming,
@@ -354,6 +375,17 @@ class App extends Component {
   render(){
     return (
       <div>
+      {process.env.REACT_APP_ENV == 'PRODUCTION' && 
+        <Fragment>
+          <ScriptTag async src="https://www.googletagmanager.com/gtag/js?id=G-VPQXR69SYS"/>
+          <noscript>
+            <img height="1" width="1" 
+            src="https://www.facebook.com/tr?id=332566451426441&ev=PageView
+            &noscript=1"/>
+          </noscript>
+          <ScriptTag src="Analytics.js"/>
+        </Fragment>
+      }
       {this.state.offline == false ?
       <Router>
         {this.state.session == null &&
@@ -364,10 +396,14 @@ class App extends Component {
             <Login login={this.login} login_tutor={this.login_tutor} />
           </Route>
           <Route exact path='/tutor-form'> 
-            <TutorApp/>
+            {/* <TutorApp/> */}
+            <NoTutorAccount/>
           </Route>
           <Route exact path='/register'> 
-            <SignUp/>
+            <SignUp register={this.register}/>
+          </Route>
+          <Route exact path='/registration-success'> 
+            <RegisterSuccess/>
           </Route>
           <Route exact path='/NoParentAccount'> 
             <NoParentAccount/>
@@ -382,6 +418,9 @@ class App extends Component {
         {this.state.type == 'parent' &&
         // Parent Logged In
         <Switch>
+          <Route exact path='/pdf'> 
+            <PDFView/>
+          </Route>
           <Route path='/'> 
             <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
           </Route>

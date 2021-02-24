@@ -24,6 +24,9 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {FaUser, FaGraduationCap} from 'react-icons/fa';
 import Card from '@material-ui/core/Card';
 
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -65,7 +68,8 @@ export class LoginView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      loading: false 
+      loading: false, 
+      tab: 0
     }
   }
 
@@ -104,13 +108,17 @@ export class LoginView extends Component {
 
   }
 
+  tabChange = (event, value) => {
+    this.setState({tab: value})
+  }
+
   render(){
     const props = this.props;
     const {classes} = this.props;
     return (
       <React.Fragment>
       <Box mx={3}> 
-        <Button href="/#" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+        <Button href="/" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
           Home
         </Button>
       </Box>
@@ -125,12 +133,21 @@ export class LoginView extends Component {
             </Container>
           </Box>
           <Card className={classes.paperstyle} align="center">
+
+
             <Box mt={3}>
-                <Container>
-                <h2 align="center">
-                Sign in as 
-                </h2>
-                </Container>
+              <Container>
+                  <Tabs
+                  value={this.state.tab}
+                  onChange={this.tabChange}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  centered
+                  >
+                    <Tab label="Log In"/>
+                    <Tab label="Sign Up"/>
+                  </Tabs>
+              </Container>
             </Box>
             <Box>
                 <div id="login" className="text-center" style={{paddingTop: "100px", paddingBottom: "100px"}}>
@@ -201,7 +218,7 @@ export class LoginView extends Component {
         </div>
         <Grid container justify="flex-end">
         <Grid item>
-            <Link /*href="/tutor-form"*/ onClick={() => window.open("http://bit.ly/AKADSTutorForm","_blank")} variant="body2" className={classes.alreadyLink}>
+            <Link /*href="/tutor-form"*/ onClick={() => window.location.replace('/tutor-form')} variant="body2" className={classes.alreadyLink}>
               No tutor account? Apply to be a tutor!
             </Link>
         </Grid>

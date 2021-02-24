@@ -13,6 +13,7 @@ import {
   AccordionDetails,
   Switch,
   FormControlLabel,
+  TextField
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Page from 'src/components/Page';
@@ -33,6 +34,8 @@ import ParentModal from './ParentModal';
 import TutorModal from './TutorModal';
 
 import ActionMenu from './ActionMenu.js';
+import { useConfirm } from 'material-ui-confirm';
+import {post_api, delete_api} from 'src/Api';
 
 
 import {
@@ -53,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Dashboard = (props) => {
+  const confirm = useConfirm();
   const classes = useStyles();
   const data = props.data
   console.log(data)
@@ -127,12 +131,14 @@ const Dashboard = (props) => {
 
   const tutors = {}
   const tutorRows = []
+  const tutorSelection = []
   data.tutors.forEach(t => {
     totalTutors += 1
     if(t.picture.trim() != ''){
       activeTutors += 1
     }
     tutors[t.id] = t
+    tutorSelection.push({id: t.id, first_name: t.first_name, last_name: t.last_name})
     tutorRows.push([
       t.id, _(<img width="40" src={t.picture.trim() == '' ? './img/anon.jpeg' : t.picture}/>), t.first_name, t.last_name, t.email, t.phone, _(
         <Fragment>
@@ -257,7 +263,6 @@ const Dashboard = (props) => {
       </Fragment>
       )
     ])
-
   })
 
   const showInactiveSessions = () => {
@@ -276,14 +281,58 @@ const Dashboard = (props) => {
     updateShowInactive(!showInactive)
   }
 
-  const parentButtons = 
+
+
+  const sessionButtons = 
       <Fragment>
+        <Switch onClick={showInactiveSessions} color="primary"/>
+      </Fragment>
+
+  const deleteSubject = (id, subject_field) => {
+    confirm({
+        title: "Delete Subject",
+        description: "Are you sure you want to delete the subject \""+subject_field+"\"?",
+        confirmationText: 'Confirm',
+    }).then(() => {
+      delete_api('subject', id,
+      res => {
+        window.location.reload()
+      })
+    })
+    .catch(() => {
+    })
+  }
+
+  const [toAddSubject, changeSubject] = useState('')
+
+  const subjectButtons = 
+      <Fragment>
+        <TextField value={toAddSubject} onChange={(e) => {changeSubject(e.target.value)}} variant="outlined"/>
         <Button onClick={() => {
-          setAddParent(true)
+          post_api('subject', {
+            subject_field: toAddSubject.trim()
+          }, res => {
+            window.location.reload()
+          })
         }} variant="contained" color="primary">
-          Add Parent
+          Add Subject
         </Button>
       </Fragment>
+
+  const subjectRows = []
+  const subject_fields = []
+  data.subjects.forEach(subject => {
+    subject_fields.push(subject.subject_field)
+    subjectRows.push([
+      subject.id, subject.subject_field, _(
+      <Fragment>
+        <Button onClick={() => {deleteSubject(subject.id, subject.subject_field)}} variant="contained" color="primary">
+          Remove
+        </Button>
+      </Fragment>
+      )
+    ])
+  })
 
   const tutorButtons = 
       <Fragment>
@@ -292,11 +341,6 @@ const Dashboard = (props) => {
         }} variant="contained" color="primary">
           Add Tutor 
         </Button>
-      </Fragment>
-
-  const sessionButtons = 
-      <Fragment>
-        <Switch onClick={showInactiveSessions} color="primary"/>
       </Fragment>
 
   return (
@@ -311,8 +355,8 @@ const Dashboard = (props) => {
     >
       <Container maxWidth={false}>
       <ModalAddParent register={props.register} open={addParent} setOpen={setAddParent}/>
-      <ModalAddTutor open={addTutor} setOpen={setAddTutor}/>
-      <ParentModal open={parentModal} setOpen={setParentModal} p={currentParent}/>
+      <ModalAddTutor subjects={subject_fields} open={addTutor} setOpen={setAddTutor}/>
+      <ParentModal open={parentModal} tutorSelection={tutorSelection} setOpen={setParentModal} p={currentParent}/>
       <TutorModal open={tutorModal} setOpen={setTutorModal} t={currentTutor}/>
       <Box mb={2}>
 
@@ -415,7 +459,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} buttons={parentButtons} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Actions']}/>
+            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Actions']}/>
           </Grid>
           <Grid
             item
@@ -424,7 +468,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Tutors'} buttons={tutorButtons} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Files', 'Actions']}/>
+            <InfoBox name={'Tutors'} buttons={tutorButtons} rows={tutorRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Actions']}/>
           </Grid>
           <Grid
             item
@@ -434,6 +478,15 @@ const Dashboard = (props) => {
             xs={12}
           >
             <InfoBox name={'Transactions'} rows={transactionRows} headers={['Date', 'Amount', 'Credits', 'Parent', 'Actions']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Subjects'} buttons={subjectButtons} rows={subjectRows} headers={['ID','Subject Field','']}/>
           </Grid>
         </Grid>
       </Container>

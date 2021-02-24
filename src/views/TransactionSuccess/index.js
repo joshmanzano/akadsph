@@ -5,15 +5,12 @@ import {
   makeStyles,
   Card,
 } from '@material-ui/core';
+import { BrowserRouter as withRouter } from 'react-router-dom';
 import Page from 'src/components/Page';
 import {get_user, post_api} from 'src/Api'
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
 import Content from './Content';
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,8 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const RequestSent = ({ className, data, ...rest }) => {
+const RequestSent = (props) => {
   const classes = useStyles();
+  console.log(window.location)
+  console.log(window.location.search)
+  console.log(props.location)
   
   return (
     <Page

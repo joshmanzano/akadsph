@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,6 +17,8 @@ import Box from '@material-ui/core/Box';
 import ChildDetails from './ChildDetails';
 
 import LoadingBack from 'src/components/loadingBack';
+import Toast from 'light-toast';
+
 
 function Copyright() {
   return (
@@ -81,25 +83,78 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ParentRegister(props) {
   const classes = useStyles();
+  const registerPropsString = localStorage.getItem('registerProps')
+  let registerProps = {
+    givenName:'',
+    familyName:'',
+    email:'',
+    username:'',
+    phone:'', 
+    googleId:'',
+    picture:''
+  }
+  if(registerPropsString != null){
+    registerProps = JSON.parse(registerPropsString)
+  }
   const [activeStep, setActiveStep] = React.useState(0);
   const [accountDetails, setAccount] = React.useState({
-    givenName:props.givenName,
-    familyName:props.familyName,
-    email:props.email,
-    phone: props.phone,
-    googleId:props.googleId,
-    picture:props.picture,
+    givenName:registerProps.givenName,
+    familyName:registerProps.familyName,
+    email:registerProps.email,
+    username:registerProps.email,
+    phone: '',
+    googleId:registerProps.email,
+    picture:'',
   });
-  const [childDetails, setChild] = React.useState();
-  const [promoDetails, setPromo] = React.useState();
+  const [childDetails, setChild] = React.useState({
+    first_name: '',
+    last_name: '',
+    age: '',
+    year_level: 'Grade 1',
+    school: '',
+    email: '',
+  });
+  const [promoDetails, setPromo] = React.useState({
+    promo_code: '',
+    referral_code: localStorage.getItem('referrer'),
+    receive_marketing: true,
+  });
  
-  const steps = ['Account Details', 'Child Details', 'Promo Code'];
+  const steps = ['Parent Details', 'Child Details', 'Referral'];
+
+  const checkRequired = (data) => {
+    const requiredAccount = ['email', 'familyName', 'givenName', 'phone']
+    const requiredChild = ['first_name', 'year_level']
+    let complete = true
+    requiredAccount.forEach(field => {
+      if(data[field].trim() == ''){
+        complete = false
+      }
+    })
+    requiredChild.forEach(field => {
+      if(data['child'][field].trim() == ''){
+        complete = false
+      }
+    })
+    return complete
+  }
 
   useEffect(() => {
     if(activeStep === steps.length){
       const data = accountDetails;
+      data['username'] = accountDetails['email'];
       data['child'] = childDetails;
-      props.register(data)
+      data['promo'] = promoDetails;
+      console.log(data)
+      console.log(props)
+      if(checkRequired(data)){
+        setProcessing(true)
+        localStorage.removeItem('registerProps')
+        props.register(data)
+      }else{
+        Toast.fail('Missing required details.',750)
+      setActiveStep(activeStep - 1);
+      }
     }
   },[activeStep])
 
@@ -122,6 +177,10 @@ export default function ParentRegister(props) {
     console.log(childDetails)
     console.log(promoDetails)
     setActiveStep(activeStep + 1);
+    if (activeStep === steps.length - 1){
+      // props.refresh()
+      // this.props.register(this.state)
+    }
   };
 
   const handleBack = () => {
@@ -130,8 +189,10 @@ export default function ParentRegister(props) {
 
   const submitHandler = (event, props) => {
     event.preventDefault();
-    // this.props.register(this.state)
+
   }
+
+  const [processing,  setProcessing] = useState(false);
 
   return (
     <React.Fragment>
@@ -144,7 +205,7 @@ export default function ParentRegister(props) {
         </Toolbar>
       </AppBar> */}
       <main className={classes.layout}>
-        <LoadingBack processing={activeStep === steps.length}/>
+        <LoadingBack processing={processing}/>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
             Parent Account Registration
@@ -160,8 +221,9 @@ export default function ParentRegister(props) {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h1" gutterBottom>
-                  Successfully Registered!
+                  Processing...
                 </Typography>
+                
               </React.Fragment>
             ) : (
               <React.Fragment>

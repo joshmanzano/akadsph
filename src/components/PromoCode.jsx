@@ -14,6 +14,10 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 
@@ -42,9 +46,10 @@ class SignUp extends Component{
     constructor(props){
       super(props);
       this.state = {
-        promo: ''
+        promo_code: this.props.promo_code,
+        referral_code: this.props.referral_code,
+        referrer: '',
       }
-      props.setPromo(this.state)
     }
 
   
@@ -55,8 +60,6 @@ class SignUp extends Component{
       this.props.setPromo(this.state)
     }
 
-   
-
     render(){
     
   return (
@@ -64,22 +67,49 @@ class SignUp extends Component{
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                name="promo"
+                name="referral_code"
                 helperText="Optional"
                 variant="outlined"
                 fullWidth
                 id="promo-code"
-                defaultValue=""
-                label="Promo Code"
+                defaultValue={this.state.referral_code}
+                label="Referral Code"
                 autoFocus
                 onChange={this.changeHandler}
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+            {/* <Grid item xs={12}>
+              <TextField
+                name="promo_code"
+                helperText="Optional"
+                variant="outlined"
+                fullWidth
+                id="promo-code"
+                defaultValue={this.state.promo_code}
+                label="Promo Code"
+                autoFocus
+                onChange={this.changeHandler}
               />
+            </Grid> */}
+            <Grid item xs={12}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">How did you find out about us?</FormLabel>
+                <RadioGroup name="referrer" value={this.state.referrer} onChange={this.changeHandler}>
+                  <FormControlLabel value="google" control={<Radio />} label="Google" />
+                  <FormControlLabel value="facebook" control={<Radio />} label="Facebook" />
+                  <FormControlLabel value="instagram" control={<Radio />} label="Instagram" />
+                  <FormControlLabel value="linkedin" control={<Radio />} label="LinkedIn" />
+                  <FormControlLabel value="friend" control={<Radio />} label="A post from a friend on social media" />
+                  <FormControlLabel value="word" control={<Radio />} label="Word of mouth" />
+                  <FormControlLabel value="other" control={<Radio/>} label="Other" />
+                </RadioGroup>
+                {this.state.referrer == 'other' &&
+                <TextField
+                  disabled={this.state.referrer != 'other'}
+                  variant="outlined"
+                />
+                }
+              </FormControl>
             </Grid>
             
           </Grid>

@@ -147,7 +147,7 @@ class Chat extends React.Component {
 
     return (
       <div style={styles.container}>
-        <Websocket url={'wss://api.akadsph.com/ws/'+'parent'+String(this.props.parent_id)+'/'} onMessage={this.handleData}/>
+        <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'parent'+String(this.props.parent_id)+'/'} onMessage={this.handleData}/>
         <div style={styles.channelList}>
           <Button onClick={() => this.props.openChat(false)} variant="contained" color="primary">
             Back

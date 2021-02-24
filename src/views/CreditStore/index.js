@@ -25,7 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
-import {checkout, get_payment_intent} from 'src/Api';
+import {gcashcheckout, checkout, get_payment_intent} from 'src/Api';
 
 import PayPage from './PayPage';
 import LoadingBack from 'src/components/loadingBack';
@@ -95,7 +95,15 @@ function CreditStore(props){
   const themebp = useTheme();
   const fullScreen = useMediaQuery(themebp.breakpoints.down('sm'));
 
-  const [cardState, setCardState] = React.useState();
+  const [cardState, setCardState] = React.useState(
+    {
+    cvc: '',
+    expiry: '',
+    focus: '',
+    name: '',
+    number: '',
+    }
+  );
   const [amount, setAmount] = React.useState(0);
   const [item, setItem] = React.useState('');
   const [hours, setHours] = React.useState(0);
@@ -103,6 +111,7 @@ function CreditStore(props){
   const [sendingRequest, setSendingRequest] = React.useState(false);
   const [promoCode, setPromo] = React.useState('');
   const [shopItem, setShopItem] = React.useState('');
+  const [method, setMethod] = React.useState('card');
   
   useEffect(() => {
     if(processing){
@@ -133,9 +142,30 @@ function CreditStore(props){
     }
 
     const confirm = useConfirm();
-    
 
     const paynow = () => {
+      if(method == 'card'){
+        cardpay()
+      }else if(method == 'gcash'){
+        gcashpay()
+      }else if(method == 'grabpay'){
+        grabpay()
+      }
+    }
+    
+    const gcashpay = () => {
+      gcashcheckout(res => {
+        const gcash_id = res['data']['data']['id']
+        const checkout_url = res['data']['data']['attributes']['redirect']['checkout_url']
+        localStorage.setItem('src_id',gcash_id)
+        window.location.replace(checkout_url)
+      })
+    }
+
+    const grabpay = () => {
+    }
+
+    const cardpay = () => {
       setProcessing(true);
       console.log(cardState)
       checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
@@ -151,9 +181,11 @@ function CreditStore(props){
             Toast.fail('Transaction failed!')
           }else if(res['state'] == 'awaiting_next_action'){
             console.log(res)
+            console.log(res['url'])
+            window.open(res['url'],'_blank')
             confirm({
               title: "3DS Authentication",
-              description: '3DS authentication must be completed: '+res['url'],
+              description: '3DS authentication must be completed.',
               confirmationText: 'Proceed',
             }).then(() => {
               get_payment_intent(res['payment_method'], res['payment_intent'], res['client_key'], (res) => {
@@ -173,7 +205,7 @@ function CreditStore(props){
             })
           }else if(res['state'] == 'processing'){
             sleep(1000)
-            paynow()
+            cardpay()
           }
 
         }else{
@@ -311,7 +343,7 @@ function CreditStore(props){
         : 
         
         <React.Fragment>
-          <PayPage amount={amount} item={item} discount={discount} hours={hours} setCardState={setCardState}/>
+          <PayPage amount={amount} item={item} discount={discount} hours={hours} method={method} setMethod={setMethod} cardState={cardState} setCardState={setCardState}/>
           <Grid container spacing={0}>
             <Grid
               item
@@ -345,29 +377,8 @@ function CreditStore(props){
                   variant="contained"
                   onClick={paynow}
                   >
-                  Pay Now
+                  Checkout
                 </Button>
-                <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">{"Payment Confirmed & Request Sent!"}</DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                      Payment was successful. You will be notified once a tutor accepts your request.
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                      Cancel
-                    </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
-                      Done
-                    </Button>
-                  </DialogActions>
-              </Dialog>
             </Grid>
           </Grid>
         

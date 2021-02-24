@@ -2,19 +2,14 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 
 
-if(localStorage.getItem('api_url') == null){
-  localStorage.setItem('api_url', 'https://api.akadsph.com')
-}
-
 // const api_url = 'https://akadsph-staging.herokuapp.com'
-const api_url = localStorage.getItem('api_url') 
+const api_url = process.env.REACT_APP_API_URL
 // const api_url = 'http://api.akadsph.com:8000'
-const username = 'admin'
-const password = 'EelBoneyTwitterImperfect'
+const username = process.env.REACT_APP_USERNAME
+const password = process.env.REACT_APP_KEY
 // const api_url = 'http://127.0.0.1:8000'
-const paymongo_test_public = 'Basic cGtfdGVzdF9MaUJpWXRoeDFEMzZoUVlWY1BTUkIyTUo6'
-const paymongo_live_public = 'Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6'
-const paymongo_key = paymongo_live_public
+const paymongo_key = process.env.REACT_APP_PAYMONGO_KEY
+// REACT_APP_PAYMONGO_LIVE=Basic cGtfbGl2ZV8zRWY4VkoyM2dOVFU2SllDR0VjeFp6aGI6
 // axios.defaults.withCredentials = true;
 
 function sleep(milliseconds) {
@@ -122,7 +117,7 @@ export const post_api = (url, raw_data, _callback) => {
     headers, 
     data : data
   };
-  
+
   axios(config)
   .then(function (response) {
     _callback(response.data)
@@ -133,6 +128,22 @@ export const post_api = (url, raw_data, _callback) => {
   
 }
 
+export const delete_api = (url, id, _callback) => {
+  const headers = {
+    'Authorization': 'JWT '+localStorage.getItem('token'), 
+    'Content-Type': 'application/json'
+  }
+
+  axios.delete(api_url+'/'+url+'/'+id+'/',{
+    headers
+  })
+  .then(res => {
+    _callback(res.data)
+  })
+}
+
+
+
 export const get_user = (_callback) => {
   const data = jwt(localStorage.getItem('session_token'))
   _callback(data)
@@ -140,6 +151,39 @@ export const get_user = (_callback) => {
 
 export const api = (url, method, raw_data, _callback) => {
   verify_token()
+}
+
+export const gcashcheckout = (_callback) => {
+  var axios = require('axios');
+
+  const successUrl = 'http://localhost:3000/process-transaction?method=gcash'
+  const failUrl = 'http://localhost:3000/transaction-fail'
+  const amount = 10000
+  var data = JSON.stringify({"data":{"attributes":{"amount":amount,"redirect":{"success":successUrl,"failed":failUrl},"type":"gcash","currency":"PHP"}}});
+  console.log(data)
+  
+  var config = {
+    method: 'post',
+    url: 'https://api.paymongo.com/v1/sources',
+    headers: { 
+      'Authorization': paymongo_key, 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(response);
+    _callback(response)
+  })
+  .catch(function (error) {
+    console.log(error.response);
+    _callback(error.response)
+  });
+}
+
+export const grabpaycheckout = (_callback) => {
 }
 
 export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callback) => {
