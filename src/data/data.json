@@ -53,12 +53,12 @@
             {
                 "img": "img/testimonials/Trixie.png",
                 "text": "Everything that I need to get a tutor for my daughter, Martina, is in AKADS. They help support her by providing a tutor that can help with the lessons given online schooling.",
-                "name": "Trixie Reganit"
+                "name": "Mommy Trixie"
             },
             {
                 "img": "img/testimonials/Marti.png",
                 "text": "Ate Bea super helped me understand trigonometry more. She even gave me tips to help me remember the formulas.",
-                "name": "Martina Reganit"
+                "name": "Martina"
             },
             {
                 "img": "img/testimonials/Beatrice.png",
@@ -68,11 +68,6 @@
         ],
         [
             {
-                "img": "img/testimonials/Karl.png",
-                "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
-                "name": "Tutor Karl"
-            },
-            {
                 "img": "img/testimonials/Didi.png",
                 "text": "AKADS is the new normal for us. It compliments well with the online learning the school provides. Safe, easy and effective. Bonus part is when they started offering bundles! We are now sure we are booked and assured of our slot!",
                 "name": "Mommy Didi"
@@ -81,6 +76,11 @@
                 "img": "img/testimonials/Teddy.png",
                 "text": "Tutor Karl helps me solve my Math homework using an online whiteboard!",
                 "name": "Theodore"
+            },
+            {
+                "img": "img/testimonials/Karl.png",
+                "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
+                "name": "Tutor Karl"
             }
         ]
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,6 +17,7 @@ import Box from '@material-ui/core/Box';
 import ChildDetails from './ChildDetails';
 
 import LoadingBack from 'src/components/loadingBack';
+import Toast from 'light-toast';
 
 
 function Copyright() {
@@ -101,7 +102,7 @@ export default function ParentRegister(props) {
     familyName:registerProps.familyName,
     email:registerProps.email,
     username:registerProps.email,
-    phone: registerProps.phone,
+    phone: '',
     googleId:registerProps.email,
     picture:'',
   });
@@ -121,17 +122,39 @@ export default function ParentRegister(props) {
  
   const steps = ['Parent Details', 'Child Details', 'Referral'];
 
+  const checkRequired = (data) => {
+    const requiredAccount = ['email', 'familyName', 'givenName', 'phone']
+    const requiredChild = ['first_name', 'year_level']
+    let complete = true
+    requiredAccount.forEach(field => {
+      if(data[field].trim() == ''){
+        complete = false
+      }
+    })
+    requiredChild.forEach(field => {
+      if(data['child'][field].trim() == ''){
+        complete = false
+      }
+    })
+    return complete
+  }
+
   useEffect(() => {
     if(activeStep === steps.length){
       const data = accountDetails;
       data['username'] = accountDetails['email'];
       data['child'] = childDetails;
       data['promo'] = promoDetails;
-      // props.register(data)
       console.log(data)
       console.log(props)
-      localStorage.removeItem('registerProps')
-      props.register(data)
+      if(checkRequired(data)){
+        setProcessing(true)
+        localStorage.removeItem('registerProps')
+        props.register(data)
+      }else{
+        Toast.fail('Missing required details.',750)
+      setActiveStep(activeStep - 1);
+      }
     }
   },[activeStep])
 
@@ -169,6 +192,8 @@ export default function ParentRegister(props) {
 
   }
 
+  const [processing,  setProcessing] = useState(false);
+
   return (
     <React.Fragment>
       {/* <CssBaseline />
@@ -180,7 +205,7 @@ export default function ParentRegister(props) {
         </Toolbar>
       </AppBar> */}
       <main className={classes.layout}>
-        <LoadingBack processing={activeStep === steps.length}/>
+        <LoadingBack processing={processing}/>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
             Parent Account Registration
@@ -196,7 +221,7 @@ export default function ParentRegister(props) {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h1" gutterBottom>
-                  Successfully Registered!
+                  Processing...
                 </Typography>
                 
               </React.Fragment>

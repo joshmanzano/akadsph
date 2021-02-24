@@ -126,7 +126,10 @@ const Availability = ({ className, data, setData, ...rest }) => {
                 > 
               
                   <Typography variant="h6" align='center' my={2}>
-                    Write all the available times for the dates
+                    Choose date/s and time/s for your session/s
+                  </Typography>
+                  <Typography variant="h6" align='center' my={2}>
+                    Please Note: clicking on multiple dates means booking multiple sessions
                   </Typography>
                   <br/>
                   {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
