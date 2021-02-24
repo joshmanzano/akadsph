@@ -383,7 +383,7 @@ class App extends Component {
             src="https://www.facebook.com/tr?id=332566451426441&ev=PageView
             &noscript=1"/>
           </noscript>
-          <ScriptTag src="Analytics.js"/>
+          <ScriptTag src="analytics.js"/>
         </Fragment>
       }
       {this.state.offline == false ?
