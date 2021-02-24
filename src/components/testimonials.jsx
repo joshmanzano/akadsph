@@ -52,7 +52,7 @@ export class testimonials extends Component {
         <Container>
           <Box>
             <div className="text-center">
-              <h2>Don't just take our word for it. See what parents have to say...</h2>
+              <h2>Don't just take our word for it. See what our parents, tutees, and tutors have to say...</h2>
             </div>
             <Box mt={8}>
 

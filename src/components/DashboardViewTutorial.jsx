@@ -70,7 +70,7 @@ function Tutorial(props) {
       },
       {
         element: '#upcoming',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>When it\'s time for your session, I\'ll remind you to join the Zoom call with your tutor.</center>',
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>When it\'s time for your session, I\'ll remind you to join the video call with your tutor.</center>',
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',

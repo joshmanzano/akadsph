@@ -30,6 +30,7 @@ import NoTutorAccount from 'src/components/NoTutorAccount'
 import withClearCache from './ClearCache'
 import RegisterSuccess from 'src/views/RegistrationSuccess';
 import ScriptTag from 'react-script-tag';
+import PDFView from 'src/components/PDF.jsx';
 
 
 import 'src/Calendar.css'
@@ -332,6 +333,7 @@ class App extends Component {
               'first_name': tutor['first_name'],
               'last_name': tutor['last_name'],
               'email': tutor['email'],
+              'phone': tutor['phone'],
             },
             'dashboardview': {
               'upcoming':upcoming,
@@ -416,6 +418,9 @@ class App extends Component {
         {this.state.type == 'parent' &&
         // Parent Logged In
         <Switch>
+          <Route exact path='/pdf'> 
+            <PDFView/>
+          </Route>
           <Route path='/'> 
             <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
           </Route>
