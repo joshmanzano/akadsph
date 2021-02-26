@@ -174,7 +174,7 @@ function CreditStore(props){
           if(res['state'] == 'success'){
             // Toast.success('Transaction successful!')
             props.refresh()
-            window.location.replace('/transaction-successful')
+            window.location.replace('/transaction-successful?amount='+amount)
             props.addCredit(hours);
           }else if(res['state'] == 'fail'){
             setProcessing(false);

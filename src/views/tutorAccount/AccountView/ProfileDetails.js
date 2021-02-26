@@ -12,6 +12,7 @@ import {
   TextField,
   makeStyles
 } from '@material-ui/core';
+import {useConfirm} from 'material-ui-confirm'
 
 const states = [
   {
@@ -49,6 +50,8 @@ const ProfileDetails = ({ className, props, ...rest }) => {
       [event.target.name]: event.target.value
     });
   };
+
+  const confirm = useConfirm();
 
   return (
     <form
@@ -184,9 +187,18 @@ const ProfileDetails = ({ className, props, ...rest }) => {
           <Button
             color="primary"
             variant="outlined"
-            disabled
+            onClick={() => {
+              confirm({ title:'Edit Details' ,description: 'Kindly email us at support@akadsph.com if you would like to change your profile details.' })
+              .then(() => {
+              
+              })
+              .catch(() => {
+
+              });
+
+            }}
           >
-            Save details
+            Edit details
           </Button>
         </Box>
       </Card>
