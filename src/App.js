@@ -184,6 +184,19 @@ class App extends Component {
     })
   }
 
+  getUnreadStatus = (conversations) => {
+    let unreadCount = 0
+    if(!conversations.admin.latest_message.parent_seen){
+      unreadCount += 1
+    }
+    conversations.active.forEach(conv => {
+      if(!conv.latest_message.parent_seen){
+        unreadCount += 1
+      }
+    })
+    return unreadCount
+  }
+
   getParentData = (_callback) => {
 
     get_user((res) => {
@@ -222,10 +235,14 @@ class App extends Component {
           const history = res['finished_requests']
           const favourite_tutors = res['favourite_tutors']
           const conversations = res['conversations']
+          const unreadCount = this.getUnreadStatus(conversations)
           this.setState({
-            credits: parent['credits']
+            credits: parent['credits'],
+            unreadCount: unreadCount,
+            childrenCount: children.length
           }, () => {
             const data = {
+              'unreadCount': unreadCount,
               'notifications': notifications,
               'seen': seen,
               'accountview': {
@@ -425,7 +442,7 @@ class App extends Component {
             <PDFView/>
           </Route>
           <Route path='/'> 
-            <DashboardLayout credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
+            <DashboardLayout childrenCount={this.state.childrenCount} unreadCount={this.state.unreadCount} credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
           </Route>
           <Route path='*' component={NotFoundView} /> 
         </Switch>

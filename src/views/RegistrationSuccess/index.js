@@ -10,6 +10,7 @@ import {get_user, post_api} from 'src/Api'
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
 import Content from './Content';
+import ScriptTag from 'react-script-tag';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -39,6 +40,9 @@ const RequestSent = ({ className, data, ...rest }) => {
       className={classes.root}
       title="Request Sent" 
     >
+      {process.env.REACT_APP_ENV == 'PRODUCTION' && 
+        <ScriptTag src="registration.js"/>
+      }
       <Container maxWidth={false}>
         <Box mx={1} align='center'>
           <Card className={classes.cardStyle}>

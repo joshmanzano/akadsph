@@ -60,6 +60,7 @@ import ChatUnderConstruction from 'src/components/ChatUnderConstruction';
 import Websocket from 'react-websocket';
 
 import RegistrationSuccessView from 'src/views/RegistrationSuccess';
+import AddChildren from 'src/views/AddChildren';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -164,6 +165,14 @@ function DashboardLayout (props){
     props.getUserData((userData) => {
       setUserData(userData);
       setLoaded(true);
+      if(userData.unreadCount > 0 && window.location.pathname != '/messages'){
+        enqueueSnackbar('You have ' + userData.unreadCount + ' unread chats.', {
+          key: 1,
+          variant:'info',
+          persist: true,
+          action
+        })
+      }
       userData['notifications'].forEach(notif => {
         if(!notif.seen){
           const message = notif.message 
@@ -199,7 +208,7 @@ function DashboardLayout (props){
 
     {loaded ? 
     <div className={classes.root}>
-      <TopBar id='topbar' refresh={refresh} closeSnackbar={closeSnackbar} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
+      <TopBar id='topbar' refresh={refresh} unreadCount={props.unreadCount} closeSnackbar={closeSnackbar} seenParentNotif={props.seenParentNotif} seen={userData['seen']} notifications={userData['notifications']} credits={props.credits}/>
       {/* <NavBar
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
@@ -226,7 +235,13 @@ function DashboardLayout (props){
                   {props.credits == 0 ?
                     <NoHourView/>
                   :
-                    <FindTutorView refresh={refresh} credits={props.credits} {...userData['findtutorview']}/>
+                    <Fragment>
+                    {props.childrenCount > 0 ?
+                      <FindTutorView refresh={refresh} credits={props.credits} {...userData['findtutorview']}/>
+                      :
+                      <AddChildren/>
+                    }
+                    </Fragment>
                   }
                 </Fragment>
                 </Container>
