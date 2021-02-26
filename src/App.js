@@ -320,6 +320,7 @@ class App extends Component {
         const fav_requests = res['favorite_pending_requests']
         const history = res['finished_requests']
         const requests = fav_requests.concat(norm_requests)
+        const conversations = res['conversations']
         const files = tutor.files
         console.log(subjects)
         this.setState({
@@ -347,7 +348,9 @@ class App extends Component {
               'selected':[],
             },
             'chatview': {
-              'chatlist':[],
+              'adminchat':conversations['admin'],
+              'activechat':conversations['active'],
+              'inactivechat':conversations['inactive']
             },
           }
           _callback(data)

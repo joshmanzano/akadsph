@@ -47,8 +47,8 @@ class Chat extends React.Component {
       const payload = {
         'conversation_id': id
       }
-      let url = type == 'admin' ? 'specific-parent-admin-conversation' : 'specific-conversation'
-      let seenUrl = type == 'admin' ? 'seen-admin-parent-conversation' : 'seen-conversation'
+      let url = type == 'admin' ? 'specific-tutor-admin-conversation' : 'specific-conversation'
+      let seenUrl = type == 'admin' ? 'seen-admin-tutor-conversation' : 'seen-conversation'
       post_api(url, payload, (res) => {
         const messages = []
         res['messages'].forEach(message => {
@@ -59,7 +59,7 @@ class Chat extends React.Component {
               text: message['text'],
               createdAt: message['time_sent'],
               user: {
-                id: message['sender'] == 'parent' ? 1 : 3,
+                id: message['sender'] == 'tutor' ? 1 : 3,
                 name: name,
                 avatar: avatar,
               }
@@ -70,7 +70,7 @@ class Chat extends React.Component {
         console.log(lastMessage)
         post_api(seenUrl, {
           'conversation_id': id,
-          'looker': 'parent'
+          'looker': 'tutor'
         } ,(res) => {})
         this.setState({chatList: chatList, messages:messages, loaded: true})
       })
@@ -92,7 +92,7 @@ class Chat extends React.Component {
     if(subtitleCut > 55){
       subtitle += '...'
     }
-    if(latest_message.sender == 'parent'){
+    if(latest_message.sender == 'tutor'){
       subtitle = 'You: ' + subtitle
     }
     const chatList = [
@@ -110,7 +110,7 @@ class Chat extends React.Component {
       }
     ]
     this.props.activechat.forEach(chat => {
-      const tutor = chat.tutor
+      const parent = chat.parent
       let latest_message = chat.latest_message
       let subtitle = latest_message.text
       let subtitleCut = subtitle.length > 55 ? 55 : subtitle.length
@@ -119,17 +119,17 @@ class Chat extends React.Component {
       if(subtitleCut >= 55){
         subtitle += '...'
       }
-      if(latest_message.sender == 'parent'){
+      if(latest_message.sender == 'tutor'){
         subtitle = 'You: ' + subtitle
       }
       chatList.push({
-        avatar: tutor.picture,
-        alt: tutor.first_name,
-        title: tutor.first_name + ' ' + tutor.last_name,
+        avatar: parent.picture,
+        alt: parent.first_name,
+        title: parent.first_name + ' ' + parent.last_name,
         subtitle: subtitle,
         date: new Date(latest_message.time_sent),
         chatID: chat.conversation.id,
-        type: 'tutor',
+        type: 'parent',
       })
     })
     this.setState({chatList:chatList})
@@ -144,7 +144,7 @@ class Chat extends React.Component {
     if(subtitleCut > 55){
       subtitle += '...'
     }
-    if(latest_message.sender == 'parent'){
+    if(latest_message.sender == 'tutor'){
       subtitle = 'You: ' + subtitle
     }
     this.setState({conversation: 
@@ -168,7 +168,7 @@ class Chat extends React.Component {
       'conversation_id': this.props.adminchat.conversation.id 
     }
     console.log(payload)
-    post_api('specific-parent-admin-conversation', payload, (res) => {
+    post_api('specific-tutor-admin-conversation', payload, (res) => {
       const messages = []
       res['messages'].forEach(message => {
         console.log(message)
@@ -178,7 +178,7 @@ class Chat extends React.Component {
             text: message['text'],
             createdAt: message['time_sent'],
             user: {
-              id: message['sender'] == 'parent' ? 1 : 3,
+              id: message['sender'] == 'tutor' ? 1 : 3,
               name: 'AKADS Buddy',
               avatar: '/static/images/oli-happy.png',
             }
@@ -187,9 +187,9 @@ class Chat extends React.Component {
       })
       const lastMessage = messages[0]
       console.log(lastMessage)
-      post_api('seen-admin-parent-conversation', {
+      post_api('seen-admin-tutor-conversation', {
         'conversation_id': this.props.adminchat.conversation.id,
-        'looker': 'parent'
+        'looker': 'tutor'
       } ,(res) => {})
       this.setState({messages:messages, loaded: true})
     })
@@ -200,10 +200,10 @@ class Chat extends React.Component {
     if(message['message'] == 'update'){
       const payload = {
         'conversation_id': this.state.conversation.chatID,
-        'receiver': 'parent' 
+        'receiver': 'tutor' 
       }
-      let url = this.state.conversation.type == 'admin' ? 'get-unseen-specific-parent-admin-conversation' : 'get-unseen-specific-conversation'
-      let seenUrl = this.state.conversation.type == 'admin' ? 'seen-admin-parent-conversation' : 'seen-conversation'
+      let url = this.state.conversation.type == 'admin' ? 'get-unseen-specific-tutor-admin-conversation' : 'get-unseen-specific-conversation'
+      let seenUrl = this.state.conversation.type == 'admin' ? 'seen-admin-tutor-conversation' : 'seen-conversation'
       post_api(url, payload, (res) => {
         const messages = this.state.messages
         res['messages'].forEach(message => {
@@ -214,7 +214,7 @@ class Chat extends React.Component {
               text: message['text'],
               createdAt: message['time_sent'],
               user: {
-                id: message['sender'] == 'parent' ? 1 : 3,
+                id: message['sender'] == 'tutor' ? 1 : 3,
                 name: this.state.conversation.title,
                 avatar: this.state.conversation.avatar
               }
@@ -227,12 +227,12 @@ class Chat extends React.Component {
         }
         post_api(seenUrl, {
           'conversation_id': this.state.conversation.chatID,
-          'looker': 'parent'
+          'looker': 'tutor'
         } ,(res) => {})
         console.log(messages)
         this.setState({messages:messages, loaded:true})
       })
-    // post_api('specific-parent-admin-conversation', payload, (res) => {
+    // post_api('specific-tutor-admin-conversation', payload, (res) => {
     //   const messages = []
     //   res['messages'].forEach(message => {
     //     console.log(message)
@@ -242,16 +242,16 @@ class Chat extends React.Component {
     //         text: message['text'],
     //         createdAt: message['time_sent'],
     //         user: {
-    //           id: message['sender'] == 'parent' ? 1 : 3,
+    //           id: message['sender'] == 'tutor' ? 1 : 3,
     //           name: 'AKADS Buddy',
     //           avatar: '/static/images/oli-happy.png',
     //         }
     //       }
     //     )
     //   })
-    //   post_api('seen-admin-parent-conversation', {
+    //   post_api('seen-admin-tutor-conversation', {
     //     'conversation_id': this.props.adminchat.conversation.id,
-    //     'looker': 'parent'
+    //     'looker': 'tutor'
     //   } ,(res) => {})
     //   this.setState({messages:messages, loaded: true})
     // })
@@ -295,7 +295,7 @@ class Chat extends React.Component {
 
     return (
       <div style={styles.container}>
-        <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'parent'+String(user_id)+'/'} onMessage={this.handleData}/>
+        <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'tutor'+String(user_id)+'/'} onMessage={this.handleData}/>
         <div style={styles.channelList}>
           {chatList.map(chat => (
             <ChatItem
@@ -311,7 +311,7 @@ class Chat extends React.Component {
           ))}
         </div>
         <div style={styles.chat}>
-          <ReactGifted loaded={this.state.loaded} user={'parent'} conversation={this.state.conversation} messages={this.state.messages}/>
+          <ReactGifted loaded={this.state.loaded} user={'tutor'} conversation={this.state.conversation} messages={this.state.messages}/>
         </div>
       </div>
     );
