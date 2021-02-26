@@ -29,7 +29,7 @@ import Login from 'src/components/login';
 import CreditStoreView from 'src/views/CreditStore';
 import Loading from 'src/components/loading';
 import NoRequestView from 'src/components/NoRequestView';
-import Messenger from 'src/views/chat';
+import Messenger from 'src/views/tutorChat';
 import RequestAcceptedView from 'src/views/RequestAccepted';
 
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
@@ -129,6 +129,7 @@ function TutorDashboardLayout (props){
 
   const [notifications, setNotifs] = useState(notifData);
   const {enqueueSnackbar, closeSnackbar} = useSnackbar();
+  const [showFab, setFab] = useState(window.location.pathname != '/messages')
 
   if(!loaded){
     props.getUserData((userData) => {
@@ -257,8 +258,7 @@ function TutorDashboardLayout (props){
               </Route>
               <Route exact path={`${match.url}messages`}>
                 <Fragment>
-                  {/* <Messenger/>  */}
-                  <ChatUnderConstruction/>
+                  <Messenger {...userData['chatview']}/> 
                 </Fragment>
               </Route>
               <Route exact path={`${match.url}request-accepted`}>
@@ -276,9 +276,11 @@ function TutorDashboardLayout (props){
         </div>
       </div>
       <HelperModal open={open} setOpen={setOpen} user={"tutor"}/>
+      {showFab &&
       <Fab size="large" onClick={showHelp} color="primary" className={'floater'}>
         <img id="helper-oli" width='50' src='../static/images/helper-oli.png'/>
       </Fab>
+      }
     </div>
     :
     <Fade in={!loaded}>

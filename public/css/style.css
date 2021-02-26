@@ -29,6 +29,11 @@ html,body
 	opacity: 50%;
 }
 
+.unseen {
+	font-style: bold;
+	/* opacity: 50%; */
+}
+
 .selectedChat {
 	background: #EBEBEB !important;
 }
