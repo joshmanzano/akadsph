@@ -18,6 +18,7 @@ import ChildDetails from './ChildDetails';
 
 import LoadingBack from 'src/components/loadingBack';
 import Toast from 'light-toast';
+import validator from 'validator';
 
 
 function Copyright() {
@@ -120,7 +121,7 @@ export default function ParentRegister(props) {
     receive_marketing: true,
   });
  
-  const steps = ['Parent Details', 'Child Details', 'Referral'];
+  const steps = ['Parent Details', 'How Can We Help?', 'Referral'];
 
   const checkRequired = (data) => {
     const requiredAccount = ['email', 'familyName', 'givenName', 'phone']
@@ -147,13 +148,17 @@ export default function ParentRegister(props) {
       data['promo'] = promoDetails;
       console.log(data)
       console.log(props)
-      if(checkRequired(data)){
+      if(checkRequired(data) && validator.isEmail(accountDetails['email'])){
         setProcessing(true)
         localStorage.removeItem('registerProps')
         props.register(data)
+      }
+      else if (validator.isEmail(accountDetails['email']) === false){
+        Toast.fail('Invalid Email.',750)
+        setActiveStep(activeStep - 3);
       }else{
         Toast.fail('Missing required details.',750)
-      setActiveStep(activeStep - 1);
+        setActiveStep(activeStep - 1);
       }
     }
   },[activeStep])
