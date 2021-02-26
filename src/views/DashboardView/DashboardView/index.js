@@ -31,6 +31,9 @@ const Dashboard = (props) => {
   const [selectedDate, changeDate] = useState(new Date())
   const [open, setOpen] = useState(false)
   const [steps, setSteps] = useState("not done") /*localStorage.getItem('steps')*/;
+  const [options, setOptions] = React.useState(['Terms of Use', 'Privacy Policy', 'Refund and Cancellation Policy'])
+  const [links, setLinks] = React.useState(['https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/AKADS+Terms+of+Use.pdf', 'https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/AKADS+Privacy+Policy.pdf', 'https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Refund+and+Cancellation+Policy.pdf'])
+  
 
   const upcoming = []
   const pending = []
@@ -95,7 +98,7 @@ const Dashboard = (props) => {
     >
       <DashboardViewTutorial openTerms={openTerms} enabled={localStorage.getItem('steps') == "done" ? false : true}/>
       {updateSteps}
-      <TermsModal open={open} setOpen={setOpen}/>
+      <TermsModal open={open} setOpen={setOpen} optionLabels={options} linkPages={links}/>
       <Container maxWidth={false}>
       <Box mb={2}>
 
