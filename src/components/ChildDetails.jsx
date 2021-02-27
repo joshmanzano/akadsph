@@ -66,16 +66,10 @@ class ChildDetails extends Component{
     constructor(props){
       super(props);
       this.state = {
-        first_name: this.props.first_name,
-        last_name: this.props.last_name,
-        age: this.props.age,
-        year_level: this.props.year_level,
-        school: this.props.school,
-        email: '',
-        subjects_struggle: [{subject: "Filipino", checked: false}, {subject: "English", checked: false}, {subject: "Math", checked: false}, {subject: "Science", checked: false}],
-        help_type: '',
-        reason_tutoring: [{reason: "Help them with current lessons", checked: false}, {reason: "Prepare for quizzes/exams", checked: false}, {reason: "Review previous lessons", checked: false}, {reason: "Prepare for lessons in advance", checked: false}, {reason: "Help with homework", checked: false}, {reason: "Other:", checked: false}],
-        other: ''
+        subjects_struggle: this.props.subjects_struggle,
+        help_type: this.props.help_type,
+        reason_tutoring: this.props.reason_tutoring,
+        other: this.props.other,
       }
     }
 
@@ -83,7 +77,7 @@ class ChildDetails extends Component{
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val}, () => {
-        this.props.setChild(this.state)
+        this.props.setSurvey(this.state)
       });
     }
 
@@ -91,14 +85,18 @@ class ChildDetails extends Component{
       var temp = this.state.subjects_struggle
       var index = temp.findIndex(obj => obj.subject === event.target.name)
       temp[index].checked = event.target.checked
-      this.setState({subjects_struggle: temp})
+      this.setState({subjects_struggle: temp}, () => {
+        this.props.setSurvey(this.state)
+      })
     }
 
     handleReasons = (event) =>{
       var temp = this.state.reason_tutoring
       var index = temp.findIndex(obj => obj.reason === event.target.name)
       temp[index].checked = event.target.checked
-      this.setState({reason_tutoring: temp})
+      this.setState({reason_tutoring: temp}, () => {
+        this.props.setSurvey(this.state)
+      })
     }
 
     render(){

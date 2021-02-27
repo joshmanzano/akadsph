@@ -117,8 +117,10 @@ const Dashboard = (props) => {
     }
     parents[p.id] = p
     if(p.status == true){
+      const ref= p.referrer
+      const ref_method = p.referral_method
       parentRows.push([
-        p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, _(
+        p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, ref + '\n' + ref_method, _(
           <Fragment>
             <Button variant="contained" color="primary" onClick={() => openParentModal(p)}>
               Open
@@ -459,7 +461,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Actions']}/>
+            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Refferal', 'Actions']}/>
           </Grid>
           <Grid
             item

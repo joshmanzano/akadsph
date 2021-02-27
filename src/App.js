@@ -136,13 +136,16 @@ class App extends Component {
 
   register = (raw_data) => {
     const data = {
-      username: raw_data['googleId'],
+      username: raw_data['username'],
       first_name: raw_data['givenName'],
       last_name: raw_data['familyName'],
       email: raw_data['email'],
       phone: raw_data['phone'],
       picture: raw_data['picture'],
-      child: raw_data['child'],
+      survey: raw_data['survey'],
+      referral_code: raw_data['referral_code'],
+      referrer: raw_data['referrer'],
+      other: raw_data['other'],
     }
     console.log(data)
     post_api('register-parent', data, (res) => {

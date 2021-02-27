@@ -48,7 +48,8 @@ class SignUp extends Component{
       this.state = {
         promo_code: this.props.promo_code,
         referral_code: this.props.referral_code,
-        referrer: '',
+        referrer: this.props.referrer,
+        other: this.props.other
       }
     }
 
@@ -56,8 +57,10 @@ class SignUp extends Component{
     changeHandler = (event) => {
       let nam = event.target.name;
       let val = event.target.value;
-      this.setState({[nam]: val});
-      this.props.setPromo(this.state)
+      this.setState({[nam]: val}, () => {
+        console.log(this.state)
+        this.props.setReferral(this.state)
+      });
     }
 
     render(){
@@ -106,7 +109,10 @@ class SignUp extends Component{
                 {this.state.referrer == 'other' &&
                 <TextField
                   disabled={this.state.referrer != 'other'}
+                  name="other"
                   variant="outlined"
+                  value={this.state.other}
+                  onChange={this.changeHandler}
                 />
                 }
               </FormControl>
