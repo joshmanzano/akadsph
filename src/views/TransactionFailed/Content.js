@@ -40,7 +40,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Typography variant="h2" align='center'>
-                Transaction Successful!
+                Transaction Failed! 
               </Typography>
             </Grid>
             <Grid
@@ -51,7 +51,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <img width='100' src='../static/images/oli-smirk.png'/>
+              <img width='100' src='../static/images/oli-sad.png'/>
             </Grid>
             <Grid
               item
@@ -62,11 +62,10 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Typography variant="h6" align='center'>
-                You can now book tutors with your hour credits. 
+                Kindly try again.
               </Typography>
-              <Typography variant="h6" align='center'>
-                Transaction history can be found in the overview. Please make sure to use your credits within its 6 months validity.
-              </Typography>
+              {/* <Typography variant="h6" align='center'>
+              </Typography> */}
             </Grid>
             <Grid
               item
@@ -94,9 +93,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <Button size="large" variant="contained" color="primary" href='/findtutor'>
+              {/* <Button size="large" variant="contained" color="primary" href='/findtutor'>
                 Book tutors
-              </Button>
+              </Button> */}
             </Grid>
             <Grid
               item
@@ -107,7 +106,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Button size="large" variant="contained" color="primary" href='/store'>
-                Buy more credits
+                Try Again
               </Button>
             </Grid>
             <Grid
@@ -118,9 +117,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
               xs={12}
               align='center'
             >
-              <Button size="large" variant="contained" color="primary" href='/'>
+              {/* <Button size="large" variant="contained" color="primary" href='/'>
                 Go to overview
-              </Button>
+              </Button> */}
             </Grid>
             {/* <Grid
               item

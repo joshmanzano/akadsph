@@ -32,16 +32,23 @@ const RequestSent = (props) => {
   const classes = useStyles();
   const queryParams = new URLSearchParams(window.location.search);
   const method = queryParams.get('method');
-  if(method != null){
-    const src_id = localStorage.getItem('src_id')
-    post_api('source-pay', {
-      src: src_id
-    }, res => {
-      console.log(res)
-    })
-  }else{
-    window.location.replace('/')
-  }
+  get_user(user => {
+    if(method != null){
+      const src_id = localStorage.getItem('src_id')
+      post_api('verify-source-paymongo', {
+        'parent_id': user.id,
+        'src_id': src_id
+      }, res => {
+        if(res){
+          window.location.replace('/transaction-successful?amount=500')
+        }else{
+          window.location.replace('/transaction-failed')
+        }
+      })
+    }else{
+      window.location.replace('/')
+    }
+  })
   
   return (
     <Page

@@ -65,7 +65,7 @@ const checkNotifs = (notifs) => {
 }
 
 const TopBar = ({
-  className, credits,
+  className, unreadCount, credits,
   notifications,
   seen,
   seenParentNotif,
@@ -253,17 +253,13 @@ const TopBar = ({
           </Box>
         </Hidden>
         <IconButton onClick={() => setChatNotif(false)} color="inherit" href="/messages">
-          {chatNotif ?
           <Badge
             color="secondary"
             variant="dot"
-            invisible={true}
+            invisible={unreadCount == 0 || window.location.pathname != '/messages'}
           >
             <ForumIcon/>
           </Badge>
-          :
-            <ForumIcon/>
-          }
         </IconButton>
         <IconButton color="inherit"
           onClick={toggleSeen}

@@ -18,6 +18,7 @@ import ChildDetails from './ChildDetails';
 
 import LoadingBack from 'src/components/loadingBack';
 import Toast from 'light-toast';
+import validator from 'validator';
 
 
 function Copyright() {
@@ -106,36 +107,34 @@ export default function ParentRegister(props) {
     googleId:registerProps.email,
     picture:'',
   });
-  const [childDetails, setChild] = React.useState({
-    first_name: '',
-    last_name: '',
-    age: '',
-    year_level: 'Grade 1',
-    school: '',
-    email: '',
+  const [survey, setSurvey] = React.useState({
+    subjects_struggle: [{subject: "Filipino", checked: false}, {subject: "English", checked: false}, {subject: "Math", checked: false}, {subject: "Science", checked: false}],
+    help_type: '',
+    reason_tutoring: [{reason: "Help them with current lessons", checked: false}, {reason: "Prepare for quizzes/exams", checked: false}, {reason: "Review previous lessons", checked: false}, {reason: "Prepare for lessons in advance", checked: false}, {reason: "Help with homework", checked: false}, {reason: "Other:", checked: false}],
+    other: ''
   });
-  const [promoDetails, setPromo] = React.useState({
-    promo_code: '',
-    referral_code: localStorage.getItem('referrer'),
-    receive_marketing: true,
+  const [referralDetails, setReferral] = React.useState({
+    referral_code: localStorage.getItem('referrer') != undefined ? '' : localStorage.getItem('referrer'),
+    referrer: '',
+    other: ''
   });
  
-  const steps = ['Parent Details', 'Child Details', 'Referral'];
+  const steps = ['Parent Details', 'How Can We Help?', 'Referral'];
 
   const checkRequired = (data) => {
     const requiredAccount = ['email', 'familyName', 'givenName', 'phone']
-    const requiredChild = ['first_name', 'year_level']
+    // const requiredChild = ['first_name', 'year_level']
     let complete = true
     requiredAccount.forEach(field => {
       if(data[field].trim() == ''){
         complete = false
       }
     })
-    requiredChild.forEach(field => {
-      if(data['child'][field].trim() == ''){
-        complete = false
-      }
-    })
+    // requiredChild.forEach(field => {
+    //   if(data['child'][field].trim() == ''){
+    //     complete = false
+    //   }
+    // })
     return complete
   }
 
@@ -143,17 +142,22 @@ export default function ParentRegister(props) {
     if(activeStep === steps.length){
       const data = accountDetails;
       data['username'] = accountDetails['email'];
-      data['child'] = childDetails;
-      data['promo'] = promoDetails;
-      console.log(data)
-      console.log(props)
-      if(checkRequired(data)){
+      data['survey'] = survey;
+      data['referral_code'] = referralDetails['referral_code'];
+      data['referrer'] = referralDetails['referrer'];
+      data['other'] = referralDetails['other'];
+      if(checkRequired(data) && validator.isEmail(accountDetails['email'])){
         setProcessing(true)
         localStorage.removeItem('registerProps')
+        console.log(data)
         props.register(data)
+      }
+      else if (validator.isEmail(accountDetails['email']) === false){
+        Toast.fail('Invalid Email.',750)
+        setActiveStep(activeStep - 3);
       }else{
         Toast.fail('Missing required details.',750)
-      setActiveStep(activeStep - 1);
+        setActiveStep(activeStep - 1);
       }
     }
   },[activeStep])
@@ -163,9 +167,9 @@ export default function ParentRegister(props) {
       case 0:
         return <AccountDetails setAccount={setAccount} {...accountDetails}/>;
       case 1:
-        return <ChildDetails setChild={setChild} {...childDetails}/>;
+        return <ChildDetails setSurvey={setSurvey} {...survey}/>;
       case 2:
-        return <PromoCode setPromo={setPromo} {...promoDetails}/>;
+        return <PromoCode setReferral={setReferral} {...referralDetails}/>;
       default:
         throw new Error('Unknown step');
     }
@@ -174,8 +178,8 @@ export default function ParentRegister(props) {
   const handleNext = () => {
     console.log(activeStep);
     console.log(accountDetails)
-    console.log(childDetails)
-    console.log(promoDetails)
+    console.log(survey)
+    console.log(referralDetails)
     setActiveStep(activeStep + 1);
     if (activeStep === steps.length - 1){
       // props.refresh()

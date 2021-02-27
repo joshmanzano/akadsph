@@ -35,6 +35,9 @@ const Dashboard = (props) => {
 
   const upcoming = []
   const history = []
+  const [options, setOptions] = React.useState(['Tutor Terms and Conditions', 'Privacy Policy', 'Refund and Cancellation Policy'])
+  const [links, setLinks] = React.useState(['https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Website+Tutor+Terms+%26+Conditions.pdf', 'https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/AKADS+Privacy+Policy.pdf', 'https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Refund+and+Cancellation+Policy.pdf'])
+  
 
   props.upcoming.forEach(u => {
     upcoming.push({
@@ -68,7 +71,7 @@ const Dashboard = (props) => {
       title="Overview"
     >
        <TutorDashboardTutorial openTerms={openTerms} enabled={props.tutorial}/>
-       <TermsModal open={open} setOpen={setOpen}/>
+       <TermsModal open={open} setOpen={setOpen} optionLabels={options} linkPages={links}/>
       <Container maxWidth={false}>
         <TutorExtensionForm open={props.open} setOpen={props.setOpen}/>
       <Box mb={2}>

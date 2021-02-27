@@ -25,7 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
-import {gcashcheckout, checkout, get_payment_intent} from 'src/Api';
+import {gcashcheckout, grabpaycheckout, get_user, checkout, get_payment_intent} from 'src/Api';
 
 import PayPage from './PayPage';
 import LoadingBack from 'src/components/loadingBack';
@@ -154,15 +154,23 @@ function CreditStore(props){
     }
     
     const gcashpay = () => {
-      gcashcheckout(res => {
-        const gcash_id = res['data']['data']['id']
-        const checkout_url = res['data']['data']['attributes']['redirect']['checkout_url']
-        localStorage.setItem('src_id',gcash_id)
+      setProcessing(true);
+      gcashcheckout(item, promoCode, res => {
+        const src_id = res['src_id']
+        const checkout_url = res['checkout_url']
+        localStorage.setItem('src_id',src_id)
         window.location.replace(checkout_url)
       })
     }
 
     const grabpay = () => {
+      setProcessing(true);
+      grabpaycheckout(item, promoCode, res => {
+        const src_id = res['src_id']
+        const checkout_url = res['checkout_url']
+        localStorage.setItem('src_id',src_id)
+        window.location.replace(checkout_url)
+      })
     }
 
     const cardpay = () => {
@@ -174,7 +182,7 @@ function CreditStore(props){
           if(res['state'] == 'success'){
             // Toast.success('Transaction successful!')
             props.refresh()
-            window.location.replace('/transaction-successful')
+            window.location.replace('/transaction-successful?amount='+amount)
             props.addCredit(hours);
           }else if(res['state'] == 'fail'){
             setProcessing(false);

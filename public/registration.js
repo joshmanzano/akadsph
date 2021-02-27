@@ -1,0 +1,1 @@
+fbq('track', 'CompleteRegistration');

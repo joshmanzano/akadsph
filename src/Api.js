@@ -153,37 +153,44 @@ export const api = (url, method, raw_data, _callback) => {
   verify_token()
 }
 
-export const gcashcheckout = (_callback) => {
-  var axios = require('axios');
+export const gcashcheckout = (shopItem, promoCode, _callback) => {
+  get_user((res) => {
+    const id = res['id']
+    const successUrl = process.env.REACT_APP_HOME+'/process-transaction?method=gcash'
+    const failUrl = process.env.REACT_APP_HOME+'/transaction-fail'
 
-  const successUrl = 'http://localhost:3000/process-transaction?method=gcash'
-  const failUrl = 'http://localhost:3000/transaction-fail'
-  const amount = 10000
-  var data = JSON.stringify({"data":{"attributes":{"amount":amount,"redirect":{"success":successUrl,"failed":failUrl},"type":"gcash","currency":"PHP"}}});
-  console.log(data)
-  
-  var config = {
-    method: 'post',
-    url: 'https://api.paymongo.com/v1/sources',
-    headers: { 
-      'Authorization': paymongo_key, 
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
-  
-  axios(config)
-  .then(function (response) {
-    console.log(response);
-    _callback(response)
+    post_api('source-paymongo', {
+      'parent_id':id,
+      'shop_item':shopItem,
+      'promo_code':promoCode,
+      'success_url':successUrl,
+      'failed_url':failUrl,
+      'source_type':'gcash'
+    }, res => {
+      console.log(res)
+      _callback(res)
+    })
   })
-  .catch(function (error) {
-    console.log(error.response);
-    _callback(error.response)
-  });
 }
 
-export const grabpaycheckout = (_callback) => {
+export const grabpaycheckout = (shopItem, promoCode, _callback) => {
+  get_user((res) => {
+    const id = res['id']
+    const successUrl = process.env.REACT_APP_HOME+'/process-transaction?method=grabpay'
+    const failUrl = process.env.REACT_APP_HOME+'/transaction-fail'
+
+    post_api('source-paymongo', {
+      'parent_id':id,
+      'shop_item':shopItem,
+      'promo_code':promoCode,
+      'success_url':successUrl,
+      'failed_url':failUrl,
+      'source_type':'grab_pay'
+    }, res => {
+      console.log(res)
+      _callback(res)
+    })
+  })
 }
 
 export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callback) => {

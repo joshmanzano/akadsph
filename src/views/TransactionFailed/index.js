@@ -31,20 +31,12 @@ const useStyles = makeStyles((theme) => ({
 
 const RequestSent = (props) => {
   const classes = useStyles();
-  const queryParams = new URLSearchParams(window.location.search);
-  const amount = queryParams.get('amount');
-  if(amount == null){
-    window.location.replace('/')
-  }
   
   return (
     <Page
       className={classes.root}
-      title="Request Sent" 
+      title="Transaction Failed" 
     >
-      {process.env.REACT_APP_ENV == 'PRODUCTION' && 
-        <ScriptTag src="purchase.js"/>
-      }
       <Container maxWidth={false}>
         <Box mx={1} align='center'>
           <Card className={classes.cardStyle}>

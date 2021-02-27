@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MuiPhoneNumber from 'material-ui-phone-number';
+import validator from 'validator';
 
 function Copyright() {
   return (
@@ -59,6 +60,8 @@ class SignUp extends Component{
         googleId: props.googleId,
         phone: props.phone,
         picture: props.picture,
+        validEmail: true,
+        validPhone: true,
       }
       props.setAccount(this.state);
     }
@@ -74,6 +77,13 @@ class SignUp extends Component{
       this.setState({[nam]: val}, () => {
         this.props.setAccount(this.state);
       });
+
+      if(nam === "email"){
+        this.setState({validEmail: validator.isEmail(val)})
+      }else if (nam === "phone"){
+        this.setState({validPhone: validator.isMobilePhone(val)})
+      }
+
     }
 
     phoneChangeHandler = (val) => {
@@ -85,9 +95,12 @@ class SignUp extends Component{
       
     }
 
+    
+
     render(){
     const props = this.props;
     const {classes} = this.props;
+    const validEmail = true;
 
   return (
     <React.Fragment>
@@ -123,6 +136,7 @@ class SignUp extends Component{
             </Grid>
             <Grid item xs={12}>
               <TextField
+                error={!this.state.validEmail}
                 variant="outlined"
                 required
                 fullWidth
@@ -135,7 +149,7 @@ class SignUp extends Component{
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField name="phone" value={props.phone} id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
+              <TextField name="phone" error={!this.state.validPhone} value={props.phone} id="outlined-basic" label="Cellphone Number (+63)" type="phone" variant="outlined"           InputProps={{
                 startAdornment: <InputAdornment position="start">+63</InputAdornment>,
               }}
               fullWidth required
