@@ -69,13 +69,14 @@ const ModalWaiting = ({open, setOpen, className, user, ...rest }) => {
   // const [open, setOpen] = React.useState(false);
   const confirm = useConfirm();
   const support = () => {
-    confirm({ title:'Questions for AkadsPH' ,description: 'If you have any questions you can email support@akadsph.com' })
-      .then(() => {
+    window.location.replace('/messages')
+    // confirm({ title:'Questions for AkadsPH' ,description: 'If you have any questions, kindly email us at support@akadsph.com!' })
+    //   .then(() => {
   
-      })
-      .catch(() => {
+    //   })
+    //   .catch(() => {
 
-      });
+    //   });
 
   }
 

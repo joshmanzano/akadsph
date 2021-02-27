@@ -21,6 +21,8 @@ import {
   Select,
   FormControl,
   InputLabel,
+  FormGroup,
+  FormLabel,
 } from '@material-ui/core';
 
 function Copyright() {
@@ -64,12 +66,10 @@ class ChildDetails extends Component{
     constructor(props){
       super(props);
       this.state = {
-        first_name: this.props.first_name,
-        last_name: this.props.last_name,
-        age: this.props.age,
-        year_level: this.props.year_level,
-        school: this.props.school,
-        email: '',
+        subjects_struggle: this.props.subjects_struggle,
+        help_type: this.props.help_type,
+        reason_tutoring: this.props.reason_tutoring,
+        other: this.props.other,
       }
     }
 
@@ -77,114 +77,96 @@ class ChildDetails extends Component{
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val}, () => {
-        this.props.setChild(this.state)
+        this.props.setSurvey(this.state)
       });
+    }
+
+    handleSubjects = (event) =>{
+      var temp = this.state.subjects_struggle
+      var index = temp.findIndex(obj => obj.subject === event.target.name)
+      temp[index].checked = event.target.checked
+      this.setState({subjects_struggle: temp}, () => {
+        this.props.setSurvey(this.state)
+      })
+    }
+
+    handleReasons = (event) =>{
+      var temp = this.state.reason_tutoring
+      var index = temp.findIndex(obj => obj.reason === event.target.name)
+      temp[index].checked = event.target.checked
+      this.setState({reason_tutoring: temp}, () => {
+        this.props.setSurvey(this.state)
+      })
     }
 
     render(){
     const props = this.props;
     const {classes} = this.props;
     const gradeLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
+    const subjectselections = ['Math', 'English', 'Filipino', 'Science'];
+
   return (
     <React.Fragment>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="first_name"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                defaultValue={this.state.first_name}
-                label="Child's First Name"
-                autoFocus
-                onChange={this.changeHandler}
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12}>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">What subject does your child need help with? Please check all that apply.*</FormLabel>
+                <FormGroup>
+                  {this.state.subjects_struggle.map((subject) =>(
+                     <FormControlLabel
+                     control={<Checkbox checked={subject.checked} onChange={this.handleSubjects} name={subject.subject} />}
+                     label={subject.subject}
+                   />
+                  ))}
+                 
+                </FormGroup>
+              </FormControl>
+             
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <FormLabel component="legend">What kind of help does your child need?</FormLabel>
+              <TextField 
+              id="help_type" 
+              name="help_type"
+              label="Answer here" 
+              variant="outlined" fullWidth
+              multiline
+              rows={4}
+              onChange={this.changeHandler}
+              value={this.state.help_type}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-            <FormControl variant="outlined" className={classes.formControl} fullWidth>
-              <InputLabel>Grade Level</InputLabel>
-              <Select
-                native
-                variant="outlined"
-                fullWidth
-                label="Grade Level"
-                required 
-                id="grade-level"
-                name="year_level"
-                defaultValue={this.state.year_level}
-                onChange={this.changeHandler}
-                inputProps={{
-                  name: 'year_level',
-                  id: 'grade-level',
-                }}
-              >
-                {gradeLevels.map((level) => (
-                  <option key={level} value={level} >
-                    {level}
-                  </option>
-                ))}
-                
-              </Select>
-            </FormControl> 
-            </Grid>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Child's Last Name"
-                name="last_name"
-                defaultValue={this.state.last_name}
-                autoComplete="lname"
-                onChange={this.changeHandler}
-              />
-            </Grid> */}
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="age"
-                label="Age"
-                name="age"
-                type="number"
-                defaultValue={this.state.age}
-                helperText="Optional"
-                autoComplete="age"
-                onChange={this.changeHandler}
-              />
+            
+            <Grid item xs={12} sm={12}>
+              <FormControl component="fieldset" className={classes.formControl}>
+                  <FormLabel component="legend">Why do you want your child to be tutored? Please check all that apply.*</FormLabel>
+                  <FormGroup>
+                    {this.state.reason_tutoring.map((reason) =>(
+                      <FormControlLabel
+                      control={<Checkbox checked={reason.checked} onChange={this.handleReasons} name={reason.reason} />}
+                      label={reason.reason}
+                    />
+                    ))}
+                  
+                  </FormGroup>
+                </FormControl>
+                {this.state.reason_tutoring[5].checked === true ?
+                  <TextField 
+                  id="other" 
+                  name="other"
+                  variant="outlined" fullWidth
+                  onChange={this.changeHandler}
+                  value={this.state.other}
+                  label="Specify here"
+                  />
+                :
+                <React.Fragment></React.Fragment>
+              }
             </Grid>
 
 
-            <Grid item xs={12} sm={6}>
-              <TextField
-                  variant="outlined"
-                  fullWidth
-                  id="school"
-                  label="School"
-                  name="school"
-                  defaultValue={this.state.school}
-                  autoComplete="school"
-                  helperText="Optional"
-                  onChange={this.changeHandler}
-                />
-            </Grid>
             <Grid item xs={12}>
-              <TextField
-                  variant="outlined"
-                  fullWidth
-                  id="email"
-                  label="Child's Email Address (Gmail)"
-                  name="email"
-                  defaultValue={this.state.email}
-                  autoComplete="email"
-                  helperText="Optional"
-                  onChange={this.changeHandler}
-                />
-            </Grid>
-            <Grid item xs={12}>
+              
               {/* <Button
                 startIcon={<AddIcon/>}
                 variant="outlined"
