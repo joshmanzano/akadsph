@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React , {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -9,7 +9,8 @@ import {
   Container
 } from '@material-ui/core';
 import TableDetails from './TableDetails';
-import ChildDetails from 'src/components/ChildDetails';
+import AddChild from 'src/components/AddChild';
+import {post_api, get_user} from 'src/Api';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -28,8 +29,30 @@ const Content = ({ className, data, setData, ...rest }) => {
   const classes = useStyles();
 
   const submitChild = () => {
-    window.location.reload()
+    get_user(user => {
+      console.log(user)
+      post_api('add-children', {
+        children: [child],
+        parent: user.id
+      },res => {
+        console.log(res)
+        if(res['return_status'] == 'success'){
+          window.location.reload()
+        }else{
+          console.log('fail')
+        }
+      })
+    })
   }
+
+  const [child, setChild] = useState({
+    first_name: '',
+    last_name: '',
+    age: '',
+    year_level: 'Grade 1',
+    school: '',
+    email: '',
+  });
 
   return (
     <React.Fragment>
@@ -69,7 +92,7 @@ const Content = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Container maxWidth="md">
-                <ChildDetails/>
+                <AddChild setChild={setChild} {...child}/>
               </Container>
             </Grid>
             <Grid
@@ -81,7 +104,7 @@ const Content = ({ className, data, setData, ...rest }) => {
               align='center'
             >
               <Container maxWidth="md">
-                <Button onClick={submitChild} variant="contained" color="primary">Add Child Details</Button>
+                <Button onClick={submitChild} variant="contained" color="primary">Add Child</Button>
               </Container>
             </Grid>
           

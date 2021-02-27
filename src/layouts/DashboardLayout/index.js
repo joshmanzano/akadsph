@@ -49,6 +49,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import RequestSentView from 'src/views/RequestSent';
 import TransactionSuccessView from 'src/views/TransactionSuccess';
+import TransactionFailedView from 'src/views/TransactionFailed';
 import TransactionProcessView from 'src/views/TransactionProcess';
 
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
@@ -287,6 +288,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}transaction-successful`}>
                 <Fragment>
                   <TransactionSuccessView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}transaction-failed`}>
+                <Fragment>
+                  <TransactionFailedView/>
                 </Fragment>
               </Route>
               <Route exact path={`${match.url}process-transaction`}>

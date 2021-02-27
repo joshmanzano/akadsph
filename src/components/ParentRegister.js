@@ -125,18 +125,18 @@ export default function ParentRegister(props) {
 
   const checkRequired = (data) => {
     const requiredAccount = ['email', 'familyName', 'givenName', 'phone']
-    const requiredChild = ['first_name', 'year_level']
+    // const requiredChild = ['first_name', 'year_level']
     let complete = true
     requiredAccount.forEach(field => {
       if(data[field].trim() == ''){
         complete = false
       }
     })
-    requiredChild.forEach(field => {
-      if(data['child'][field].trim() == ''){
-        complete = false
-      }
-    })
+    // requiredChild.forEach(field => {
+    //   if(data['child'][field].trim() == ''){
+    //     complete = false
+    //   }
+    // })
     return complete
   }
 
