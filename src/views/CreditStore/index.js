@@ -25,7 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
-import {gcashcheckout, get_user, checkout, get_payment_intent} from 'src/Api';
+import {gcashcheckout, grabpaycheckout, get_user, checkout, get_payment_intent} from 'src/Api';
 
 import PayPage from './PayPage';
 import LoadingBack from 'src/components/loadingBack';
@@ -154,6 +154,7 @@ function CreditStore(props){
     }
     
     const gcashpay = () => {
+      setProcessing(true);
       gcashcheckout(item, promoCode, res => {
         const src_id = res['src_id']
         const checkout_url = res['checkout_url']
@@ -163,6 +164,13 @@ function CreditStore(props){
     }
 
     const grabpay = () => {
+      setProcessing(true);
+      grabpaycheckout(item, promoCode, res => {
+        const src_id = res['src_id']
+        const checkout_url = res['checkout_url']
+        localStorage.setItem('src_id',src_id)
+        window.location.replace(checkout_url)
+      })
     }
 
     const cardpay = () => {
