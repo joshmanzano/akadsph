@@ -62,6 +62,7 @@ import Websocket from 'react-websocket';
 
 import RegistrationSuccessView from 'src/views/RegistrationSuccess';
 import AddChildren from 'src/views/AddChildren';
+import MeetView from 'src/views/Meet';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -303,6 +304,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}registration-successful`}>
                 <Fragment>
                   <RegistrationSuccessView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}meet`}>
+                <Fragment>
+                  <MeetView/>
                 </Fragment>
               </Route>
               <Route path='*' component={NotFoundView} /> 
