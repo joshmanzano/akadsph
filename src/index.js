@@ -17,7 +17,11 @@ ReactDOM.render((
       <SnackbarProvider classes={{variantInfo: 'info'}} preventDuplicate={true} maxSnack={6}>
         <GlobalStyles />
         <ConfirmProvider>
+          {process.env.REACT_APP_AVAILABLE == 'TRUE' ?
           <App/>
+          :
+          <MaintenanceApp/>
+          }
         </ConfirmProvider>
       </SnackbarProvider>
     </ThemeProvider>
