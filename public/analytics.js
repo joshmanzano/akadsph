@@ -13,8 +13,8 @@ fbq('track', 'PageView');
 console.log('Running GTM code...')
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);};
-gtag('js', new Date());
-gtag('config', 'G-VPQXR69SYS');
+// gtag('js', new Date());
+// gtag('config', 'G-VPQXR69SYS');
 
 gtag('js', new Date());
 gtag('config', 'UA-190831270-1');
