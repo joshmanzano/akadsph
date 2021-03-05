@@ -398,9 +398,8 @@ class App extends Component {
   render(){
     return (
       <div>
-      {process.env.REACT_APP_ENV == 'DEVELOPMENT' && 
+      {process.env.REACT_APP_ENV == 'PRODUCTION' && 
         <Fragment>
-          <ScriptTag async src="https://www.googletagmanager.com/gtag/js?id=G-VPQXR69SYS"/>
           <ScriptTag async src="https://www.googletagmanager.com/gtag/js?id=UA-190831270-1"/>
           <noscript>
             <img height="1" width="1" 
