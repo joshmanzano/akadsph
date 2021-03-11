@@ -55,8 +55,8 @@ export class Header extends Component {
                       Akads helps you match with a tutor that is most suited for your child. <b>Create an account now</b> and have your <b>first hour for FREE.</b>
                     </p>
                     <Box mb={8} alignItems="center">
-                        <Button /*href="/login"*/ onClick={() =>  window.open("https://tiny.cc/AkadsEarlyAccess","_blank")} style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
-                          Sign Up For Early Access
+                        <Button /*href="/login"*/ onClick={() =>  window.location.replace('/login')} style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
+                          Get Started
                         </Button>
                     </Box>
                   </div>
