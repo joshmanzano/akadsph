@@ -162,7 +162,7 @@ export class LoginView extends Component {
                               clientId="591828890140-4psbm57eo09i9hguf1j9pnmsnc71dbdb.apps.googleusercontent.com"
                               render={renderProps => (
                                 <div>
-                                <a
+                                <a  id='loginparent'
                                     onClick={renderProps.onClick}
                                     href="/"
                                     className=""
@@ -188,7 +188,7 @@ export class LoginView extends Component {
                               clientId="906211324056-odf07j9kh30r75r6vfpk5qfq3i7jh6nt.apps.googleusercontent.com"
                               render={renderProps => (
                                 <div>
-                                <a
+                                <a  id='logintutor'
                                     onClick={renderProps.onClick}
                                     href="/"
                                     className=""
