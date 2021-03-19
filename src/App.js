@@ -441,9 +441,6 @@ class App extends Component {
         {this.state.type == 'parent' &&
         // Parent Logged In
         <Switch>
-          <Route exact path='/pdf'> 
-            <PDFView/>
-          </Route>
           <Route path='/'> 
             <DashboardLayout childrenCount={this.state.childrenCount} unreadCount={this.state.unreadCount} credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
           </Route>

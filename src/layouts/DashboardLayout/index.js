@@ -51,6 +51,7 @@ import RequestSentView from 'src/views/RequestSent';
 import TransactionSuccessView from 'src/views/TransactionSuccess';
 import TransactionFailedView from 'src/views/TransactionFailed';
 import TransactionProcessView from 'src/views/TransactionProcess';
+import BankTransactionProcessView from 'src/views/BankTransactionProcess';
 
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
@@ -299,6 +300,11 @@ function DashboardLayout (props){
               <Route exact path={`${match.url}process-transaction`}>
                 <Fragment>
                   <TransactionProcessView/>
+                </Fragment>
+              </Route>
+              <Route exact path={`${match.url}process-bank-transaction`}>
+                <Fragment>
+                  <BankTransactionProcessView/>
                 </Fragment>
               </Route>
               <Route exact path={`${match.url}registration-successful`}>

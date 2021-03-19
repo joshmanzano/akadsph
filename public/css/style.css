@@ -9,6 +9,8 @@ html,body
 	overflow-x: hidden; 
 } */
 
+#jaas-container { height: 100%; }
+
 :root {
 	--first: #EB5531;
 	/* --first: #f9b16e; */

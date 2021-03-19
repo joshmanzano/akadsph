@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import CreditCardForm from './CreditCardForm';
 import PhonePayForm from './PhonePayForm';
+import BankPayForm from './BankPayForm';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
@@ -42,6 +43,8 @@ const Payment = ({ className, setMethod, cardState, setCardState, ...rest }) => 
     setValue(value)
     if(value == 0){
       setMethod('card')
+    }else if(value == 2){
+      setMethod('bank')
     }
   }
 
@@ -83,7 +86,7 @@ const Payment = ({ className, setMethod, cardState, setCardState, ...rest }) => 
                 <PhonePayForm setMethod={setMethod}/>
               }
               {value == 2 &&
-                <UnderConstruction payMethod={'bank transfer'}/>
+                <BankPayForm setMethod={setMethod}/>
               }
             </Box>
             </Box>

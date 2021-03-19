@@ -193,6 +193,25 @@ export const grabpaycheckout = (shopItem, promoCode, _callback) => {
   })
 }
 
+export const bankcheckout = (shopItem, promoCode, _callback) => {
+  get_user((res) => {
+    const id = res['id']
+    const successUrl = process.env.REACT_APP_HOME+'/process-bank-transaction'
+    const failUrl = process.env.REACT_APP_HOME+'/transaction-fail'
+
+    post_api('brankas', {
+      'parent_id':id,
+      'shop_item':shopItem,
+      'promo_code':promoCode,
+      'success_url':successUrl,
+      'failed_url':failUrl,
+    }, res => {
+      console.log(res)
+      _callback(res)
+    })
+  })
+}
+
 export const checkout = (shopItem, promoCode, card_number, exp_date, cvc, _callback) => {
   create_paymentintent(shopItem, promoCode, (payment_intent) => {
     const exp_month = exp_date.split('/')[0] 
