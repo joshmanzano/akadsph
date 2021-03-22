@@ -30,26 +30,28 @@ const useStyles = makeStyles((theme) => ({
 
 const RequestSent = (props) => {
   const classes = useStyles();
-  const queryParams = new URLSearchParams(window.location.search);
-  const transfer_id = queryParams.get('transaction_id')
-  console.log(transfer_id)
-  get_user(user => {
-    if(transfer_id != null){
-      post_api('verify-brankas', {
-        'parent_id': user.id,
-        'transfer_id': transfer_id 
-      }, res => {
-        console.log(res)
-        if(res){
-          window.location.replace('/transaction-successful?amount=500')
-        }else{
-          window.location.replace('/transaction-failed')
-        }
-      })
-    }else{
-      window.location.replace('/')
-    }
-  })
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const transfer_id = queryParams.get('transaction_id')
+    console.log(transfer_id)
+    get_user(user => {
+      if(transfer_id != null){
+        post_api('verify-brankas', {
+          'parent_id': user.id,
+          'transfer_id': transfer_id 
+        }, res => {
+          console.log(res)
+          if(res){
+            window.location.replace('/transaction-successful?amount=500')
+          }else{
+            window.location.replace('/transaction-failed')
+          }
+        })
+      }else{
+        window.location.replace('/')
+      }
+    })
+  }, [])
   
   return (
     <Page
