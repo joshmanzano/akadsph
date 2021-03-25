@@ -25,7 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
-import {gcashcheckout, grabpaycheckout, get_user, checkout, get_payment_intent} from 'src/Api';
+import {bankcheckout, gcashcheckout, grabpaycheckout, get_user, checkout, get_payment_intent} from 'src/Api';
 
 import PayPage from './PayPage';
 import LoadingBack from 'src/components/loadingBack';
@@ -144,12 +144,15 @@ function CreditStore(props){
     const confirm = useConfirm();
 
     const paynow = () => {
+      console.log(method)
       if(method == 'card'){
         cardpay()
       }else if(method == 'gcash'){
         gcashpay()
       }else if(method == 'grabpay'){
         grabpay()
+      }else if(method == 'bank'){
+        bankpay()
       }
     }
     
@@ -173,10 +176,21 @@ function CreditStore(props){
       })
     }
 
+    const bankpay = () => {
+      setProcessing(true);
+      bankcheckout(item, promoCode, res => {
+        const transfer_id = res['transfer_id']
+        const checkout_url = res['checkout_url']
+        localStorage.setItem('transfer_id',transfer_id)
+        window.location.replace(checkout_url)
+      })
+    }
+
     const cardpay = () => {
       setProcessing(true);
       console.log(cardState)
       checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
+        console.log(res)
         if(!res['error']){
 
           if(res['state'] == 'success'){

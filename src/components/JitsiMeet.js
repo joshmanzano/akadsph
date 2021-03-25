@@ -1,14 +1,4 @@
 import React , {useEffect} from 'react';
-import PropTypes from 'prop-types';
-import {
-  Button,
-  makeStyles,
-  Typography,
-  Grid,
-  Box,
-} from '@material-ui/core';
-import TableDetails from './TableDetails';
-import ScriptTag from 'react-script-tag';
 import Jitsi from 'react-jitsi';
 
 const roomName = 'ethucohasuchecco735373'

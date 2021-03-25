@@ -32,13 +32,13 @@ const RequestSent = (props) => {
   const classes = useStyles();
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-    const method = queryParams.get('method');
+    const transfer_id = queryParams.get('transaction_id')
+    console.log(transfer_id)
     get_user(user => {
-      if(method != null){
-        const src_id = localStorage.getItem('src_id')
-        post_api('verify-source-paymongo', {
+      if(transfer_id != null){
+        post_api('verify-brankas', {
           'parent_id': user.id,
-          'src_id': src_id
+          'transfer_id': transfer_id 
         }, res => {
           console.log(res)
           if(res){
@@ -52,7 +52,6 @@ const RequestSent = (props) => {
       }
     })
   }, [])
-
   
   return (
     <Page

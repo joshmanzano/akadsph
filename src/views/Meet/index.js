@@ -10,7 +10,7 @@ import Page from 'src/components/Page';
 import {get_user, post_api} from 'src/Api'
 import LoadingBack from 'src/components/loadingBack';
 import MuiAlert from '@material-ui/lab/Alert';
-import Content from './Content';
+import App from './Content';
 import ScriptTag from 'react-script-tag';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,19 +34,19 @@ const RequestSent = (props) => {
 
   
   return (
-    <Page
-      className={classes.root}
-      title="Meeting" 
-    >
-      <Container maxWidth={false}>
-        <Box mx={1} align='center'>
-          <Card className={classes.cardStyle}>
-            <Content /*data={data}*//>
-          </Card>
-        </Box>
-      </Container>
+    // <Page
+    //   className={classes.root}
+    //   title="Meeting" 
+    // >
+    //   <Container maxWidth={false}>
+    //     <Box mx={1} align='center'>
+    //       <Card className={classes.cardStyle}>
+            <App />
+    //       </Card>
+    //     </Box>
+    //   </Container>
       
-    </Page>
+    // </Page>
   );
 };
 

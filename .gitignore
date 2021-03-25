@@ -1,6 +1,15 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,yarn
-# Edit at https://www.toptal.com/developers/gitignore?templates=react,node,visualstudiocode,yarn
+# Created by https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,yarn,cypressio
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,node,visualstudiocode,yarn,cypressio
+
+### CypressIO ###
+# gitignore template for the CypressIO, browser test framework
+# website: https://www.cypress.io/
+
+cypress/results/*
+cypress/reports/*
+cypress/screenshots/*
+cypress/videos/*
 
 ### Node ###
 # Logs
@@ -57,6 +66,9 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+
+# Optional stylelint cache
+.stylelintcache
 
 # Microbundle cache
 .rpt2_cache/
@@ -128,10 +140,8 @@ sketch
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
-!.vscode/extensions.json
 *.code-workspace
 
 ### VisualStudioCode Patch ###
@@ -155,15 +165,4 @@ sketch
 # and uncomment the following lines
 # .pnp.*
 
-### CypressIO ###
-# gitignore template for the CypressIO, browser test framework
-# website: https://www.cypress.io/
-
-cypress/results/*
-cypress/reports/*
-cypress/screenshots/*
-cypress/videos/*
-
-# End of https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,yarn
-
-branch.sh
+# End of https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,yarn,cypressio
