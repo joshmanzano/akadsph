@@ -190,6 +190,7 @@ function CreditStore(props){
       setProcessing(true);
       console.log(cardState)
       checkout(item, promoCode, cardState['number'], cardState['expiry'], cardState['cvc'], (res) => {
+        console.log(res)
         if(!res['error']){
 
           if(res['state'] == 'success'){
