@@ -254,12 +254,37 @@ const Dashboard = (props) => {
     openChat(true)
   }
 
+  const handleParentTutorClose = () => {
+    openChat(false)
+  }
+
+  const handleParentTutorOpen = (conversation) => {
+    changeChatName(conversation.parent.username)
+    changeConversation(conversation.conversation.id)
+    changeUser(conversation.parent.id)
+    changePicture(conversation.parent.picture)
+    openChat(true)
+  }
+
   const parentChatRows = []
   data.parent_conversations.forEach(pc => {
     parentChatRows.push([
       pc.conversation.id, pc.parent.email, pc.parent.first_name, pc.parent.last_name, _(
       <Fragment>
         <Button onClick={() => {handleOpen(pc)}} variant="contained" color="primary">
+          Open
+        </Button>
+      </Fragment>
+      )
+    ])
+  })
+
+  const tutorParentChatRows = []
+  data.conversations.forEach(c => {
+    tutorParentChatRows.push([
+      c.id, parents[c.parent].first_name, tutors[c.tutor].first_name, c.session, c.active ? 'True' : 'False',  _(
+      <Fragment>
+        <Button onClick={() => {}} variant="contained" color="primary">
           Open
         </Button>
       </Fragment>
@@ -333,6 +358,14 @@ const Dashboard = (props) => {
         </Button>
       </Fragment>
       )
+    ])
+  })
+
+  const logRows = []
+  data.logs.forEach(log => {
+    console.log(log)
+    logRows.push([
+      log.google_data.email, log.type, moment(log.time).fromNow(), moment(log.time).format('MMM do YY h:mm a') 
     ])
   })
 
@@ -425,7 +458,25 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parent Chats'} rows={parentChatRows} headers={['ID','Parent','First Name', 'Last Name', '']}/>
+            <InfoBox name={'Logs'} rows={logRows} headers={['Email', 'User Type', 'Time', 'Date']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Tutor-Parent Chats'} rows={tutorParentChatRows} headers={['ID','Parent','Tutor', 'Session ID', 'Active', '']}/>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <InfoBox name={'Admin-Parent Chats'} rows={parentChatRows} headers={['ID','Parent','First Name', 'Last Name', '']}/>
           </Grid>
           <Grid
             item
