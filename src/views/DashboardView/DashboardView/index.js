@@ -44,10 +44,12 @@ const Dashboard = (props) => {
     upcoming.push({
       'id': u.session.id,
       'files': u.request.extra_files,
+      'duration': u.request.time,
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
       'tutor':u.tutor.first_name,
       'join_url':u.session.join_zoom_link,
+      'meet_link':u.session.meet_link,
     })
   })
 

@@ -78,7 +78,7 @@ const ModalDeclined = ({open, setOpen, join_url, session_id, duration, className
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
     setOpen(false);
-    setOpenExtension(true);
+    // setOpenExtension(true);
 }
 
   const DialogTitle = withStyles(useStyles)((props) => {
