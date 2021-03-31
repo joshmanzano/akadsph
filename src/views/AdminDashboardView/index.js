@@ -204,8 +204,15 @@ const Dashboard = (props) => {
             Start Zoom
           </a>
         </Box>
+      ), _(
+        <Box align="center">
+          <a href={s.meet_link}>
+            Join Jitsi
+          </a>
+        </Box>
       ) 
     ])
+
   })
 
   const inactiveSessionRows = []
@@ -485,7 +492,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Sessions'} buttons={sessionButtons} rows={sessionRows} headers={['ID','Active?','Time Created','Subject','Parent','Tutor','','']}/>
+            <InfoBox name={'Sessions'} buttons={sessionButtons} rows={sessionRows} headers={['ID','Active?','Time Created','Subject','Parent','Tutor','','','']}/>
           </Grid>
           <Grid
             item
