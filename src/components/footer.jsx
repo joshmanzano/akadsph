@@ -28,17 +28,17 @@ export default function Footer() {
       </Grid>
       <Grid item xs={3}>
         <Typography variant="p">
-          <a href="https://drive.akadsph.com/index.php/s/j8A8LoxipsSYsRN">Terms of Use</a>
+          <a href="https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Website+Tutor+Terms+%26+Conditions.pdf">Terms of Use</a>
         </Typography>
       </Grid>
       <Grid item xs={3}>
         <Typography variant="p">
-          <a href="https://drive.akadsph.com/index.php/s/j8A8LoxipsSYsRN">Privacy Policy</a>
+          <a href="https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/AKADS+Privacy+Policy.pdf">Privacy Policy</a>
         </Typography>
       </Grid>
       <Grid item xs={3}>
         <Typography variant="p">
-          <a href="https://drive.akadsph.com/index.php/s/j8A8LoxipsSYsRN">Refunds and Cancellations</a>
+          <a href="https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Refund+and+Cancellation+Policy.pdf">Refunds and Cancellations</a>
         </Typography>
       </Grid>
 

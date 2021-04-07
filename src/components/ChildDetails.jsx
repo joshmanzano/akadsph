@@ -123,7 +123,7 @@ class ChildDetails extends Component{
               </FormControl>
              
             </Grid>
-            <Grid item xs={12} sm={12}>
+            {/* <Grid item xs={12} sm={12}>
               <FormLabel component="legend">What kind of help does your child need?</FormLabel>
               <TextField 
               id="help_type" 
@@ -135,7 +135,7 @@ class ChildDetails extends Component{
               onChange={this.changeHandler}
               value={this.state.help_type}
               />
-            </Grid>
+            </Grid> */}
             
             <Grid item xs={12} sm={12}>
               <FormControl component="fieldset" className={classes.formControl}>

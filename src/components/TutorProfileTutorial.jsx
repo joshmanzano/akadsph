@@ -48,7 +48,7 @@ function Tutorial(props) {
       },
       {
         element: '#monthlyMetrics',
-        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Monthly metrics refelct your standing for the whole month. It will refresh every first day of the month.</center>' ,
+        intro: '<br/><center><img width="70" src="../static/images/oli-smirk.png"/></center><br/> <center>Monthly metrics reflect your standing for the whole month. It will refresh every first day of the month.</center>' ,
         position: 'right',
         // tooltipClass: 'myTooltipClass',
         // highlightClass: 'myHighlightClass',

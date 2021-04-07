@@ -40,7 +40,11 @@ export default class Example extends React.Component {
     const toMonth = new Date()
     toMonth.setMonth(now.getMonth() + 1)
     const toDay = new Date() 
-    toDay.setDate(now.getDate() + 1)
+    if(this.props.allTutors){
+      toDay.setDate(now.getDate() + 3)
+    }else{
+      toDay.setDate(now.getDate() + 1)
+    }
     var disabledDays = 
     [
       {

@@ -71,11 +71,13 @@ const Upcoming = (props) => {
   const rows = [];
   const [openJoin, setOpenJoin] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
+  const [session_id, setSession] = React.useState(null);
   const [start_url, setStartURL] = React.useState('https://google.com');
   const confirm = useConfirm();
 
-  const start_session = (url) => {
+  const start_session = (url, session_id) => {
     setStartURL(url)
+    setSession(session_id)
     setOpenJoin(true)
   }
 
@@ -88,7 +90,8 @@ const Upcoming = (props) => {
           'time':moment(sessionDate).format('h:mm a'),
           'subject':u.subject,
           'tutee':u.tutee,
-          'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.start_url)} startIcon={<CastForEducationIcon/>}>Start</Button>,
+          // 'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.start_url)} startIcon={<CastForEducationIcon/>}>Start</Button>,
+          'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.meet_link, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
           'files_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
           'chat_button': <Button variant='outlined' color='primary' href='/messages' startIcon={<ForumIcon/>}>Chat</Button>,
           'cancel_button': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}

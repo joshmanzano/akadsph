@@ -112,7 +112,7 @@ const Availability = ({ className, data, setData, ...rest }) => {
                   justify="center"
 
                 >
-                  <Calendar getDays={getDays}/>
+                  <Calendar data={data} getDays={getDays}/>
                 </Grid>
                 
                 <Grid
