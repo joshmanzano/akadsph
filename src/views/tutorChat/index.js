@@ -125,7 +125,7 @@ class Chat extends React.Component {
       chatList.push({
         avatar: parent.picture,
         alt: parent.first_name,
-        title: parent.first_name + ' ' + parent.last_name,
+        title: parent.first_name,
         subtitle: subtitle,
         date: new Date(latest_message.time_sent),
         chatID: chat.conversation.id,

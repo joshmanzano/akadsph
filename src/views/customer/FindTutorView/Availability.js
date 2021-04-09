@@ -36,6 +36,17 @@ const Availability = ({ className, data, setData, ...rest }) => {
   const [count, setCount] = React.useState(0);
   let [,setState] = React.useState();
 
+  const checkDays = (evalTime, selectedTimes) => {
+    selectedTimes.forEach(time => {
+      if(evalTime == time){
+        return true
+        console.log(true)
+      }
+    })
+    return false
+    console.log(false)
+  }
+
   const getDays=(selectedDays)=>{
     console.log(times)
     data['days'] = selectedDays;
@@ -47,10 +58,9 @@ const Availability = ({ className, data, setData, ...rest }) => {
       selectedTimes.push(day.getTime())
     })
     Object.keys(times).forEach(time => {
-      console.log(time)
-      console.log(selectedTimes)
-      if(!(time in selectedTimes)){
-        delete times[time];
+      let evalTime = Number(time)
+      if(!checkDays(evalTime, selectedTimes)){
+        delete times[evalTime];
       }
     })
     console.log(times)

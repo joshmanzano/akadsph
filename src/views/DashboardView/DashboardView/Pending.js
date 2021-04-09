@@ -22,7 +22,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { useConfirm } from 'material-ui-confirm';
 import { post_api } from 'src/Api.js';
 
-const headers = ["Date Requested", "Subject", "Student", "Topic",""]
+const headers = ["Booked Date", "Subject", "Student", "Topic",""]
 
 
 

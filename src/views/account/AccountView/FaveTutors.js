@@ -41,7 +41,7 @@ const FaveTutors = ({ className, favtutors, ...rest }) => {
   tutors.map((t) => {
     // tutor.map((t)=>{
       rows.push({
-        'name':t.first_name + ' ' + t.last_name,
+        'name':t.first_name,
         'school':t.school,
         'course': t.course,
       })

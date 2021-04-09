@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Summary = ({ className, data, ...rest }) => {
   const classes = useStyles();
+  console.log(data)
 
   return (
     <div
@@ -149,7 +150,7 @@ const Summary = ({ className, data, ...rest }) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['favtutors'].tutor.first_name} {data['favtutors'].tutor.last_name}
+                        {data['favtutors'].tutor.first_name}
                       </Typography>
                     </Grid>
                     </React.Fragment>
@@ -202,7 +203,7 @@ const Summary = ({ className, data, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          -{data['lengths'].value}
+                          -{Object.keys(data['times']).length * data['lengths'].value}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -219,7 +220,7 @@ const Summary = ({ className, data, ...rest }) => {
                       </Grid>
                       <Grid item xs={6}>
                         <Typography variant="h5" align="right">
-                          {data['credits'] - data['lengths'].value}
+                          {data['credits'] - Object.keys(data['times']).length * data['lengths'].value}
                         </Typography>
                       </Grid>
                     </Grid>

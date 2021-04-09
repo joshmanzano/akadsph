@@ -199,7 +199,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
                           }}
                         >
                           {props.favtutors.map((t, index) => 
-                            <option value={index}>{t.tutor.first_name} {t.tutor.last_name}</option>
+                            <option value={index}>{t.tutor.first_name}</option>
                           )}
                          
                         </Select>

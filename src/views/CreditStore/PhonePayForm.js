@@ -34,7 +34,6 @@ export default function PaymentForm(props){
         <FormControl component="fieldset">
           <RadioGroup name="method" value={value} onChange={handleChange}>
             <FormControlLabel value="gcash" control={<Radio />} label={<img src={'img/gcash.png'}/>} />
-            <FormControlLabel value="grabpay" control={<Radio />} label={<img src={'img/grabpay.png'}/>} />
           </RadioGroup>
         </FormControl>
 
