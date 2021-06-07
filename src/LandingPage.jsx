@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Navigation from './components/navigation';
 import Header from './components/header';
+import Summer from './components/summer';
 import Features from './components/features';
 import About from './components/about';
 // import Services from './components/services';
@@ -48,6 +49,7 @@ export class LandingPage extends Component {
         {this.state.showpage == "main" ? 
           <React.Fragment>
           <Header data={this.state.landingPageData.Header} />
+          <Summer data={this.state.landingPageData.Features} />
           <Features data={this.state.landingPageData.Features} />
           <About data={this.state.landingPageData.About} />
           {/* <Services data={this.state.landingPageData.Services} /> */}

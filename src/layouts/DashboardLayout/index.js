@@ -24,6 +24,7 @@ import TutorDashboardView from 'src/views/TutorDashboardView';
 import ChatView from 'src/views/chat';
 import LandingPage from 'src/LandingPage';
 import Login from 'src/components/login';
+import FormSelect from 'src/views/FormSelection';
 import CreditStoreView from 'src/views/CreditStore';
 import StoreUnderConstruction from 'src/components/BuyHoursUnderMaintenance';
 import Loading from 'src/components/loading';
@@ -44,6 +45,7 @@ import toast from 'react-hot-toast';
 import {useSnackbar} from 'notistack';
 import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'react-chat-widget';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import SummerHeader from 'src/components/summerheader';
 
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -230,6 +232,13 @@ function DashboardLayout (props){
                   <Fragment>
                     <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
                   </Fragment>
+                </Container>
+              </Route>
+              <Route exact path={`${match.url}selectform`}>
+                <Container>
+                <Fragment>
+                  <FormSelect/>
+                </Fragment>
                 </Container>
               </Route>
               <Route exact path={`${match.url}findtutor`}>

@@ -374,6 +374,16 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	color: #6cc2b6;
 }
 
+#summer {
+	padding-top: 100px;
+	padding-bottom: 125px;
+	background-size: cover;
+	background-image: url("../static/images/test_background.png");
+	background-repeat: no-repeat;
+	position: relative;
+	background-position: center;
+}
+
 header .intro-text {
 	padding-top: 250px;
 	padding-bottom: 100px;
@@ -540,11 +550,21 @@ header .intro-row-tutor{
 	/* background-size: 100% 100%; */
 }
 
+#summerheader {
+	padding-top: 50px;
+	padding-bottom: 25px;
+	background-size: cover;
+	background-image: url("../static/images/test2_background.png");
+	background-repeat: no-repeat;
+	position: relative;
+	background-position: center;
+}
+
 
 /* Features Section */
 #features {
-	padding-top: 150px;
-	padding-bottom: 125px;
+	padding-top: 25px;
+	padding-bottom: 150px;
 	background: #fff;
 }
 
@@ -882,6 +902,19 @@ header .intro-row-tutor{
 .priceHeader {
 	padding-top:10px;
 	color: #EB5531 !important;
+}
+
+.orangeText {
+	color: #EB5531 !important;
+}
+
+.blueText {
+	color: #4655A5 !important;
+}
+
+.leftJustify{
+	text-align: justify;
+	text-align-last: left
 }
 
 .oldPrice {

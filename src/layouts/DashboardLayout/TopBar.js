@@ -191,7 +191,7 @@ const TopBar = ({
               </IconButton>
             </Grid>
             <Grid sm={2}>
-              <IconButton color="inherit" href="/findtutor">
+              <IconButton color="inherit" href="/selectform">
                 <InsertInvitationIcon/>
                 <Hidden mdDown>
                   <Box mx={1}>

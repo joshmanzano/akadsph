@@ -6,6 +6,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
+import SummerHeader from 'src/components/summerheader';
 import Page from 'src/components/Page';
 import Upcoming from './Upcoming';
 import Pending from './Pending';
@@ -94,122 +95,136 @@ const Dashboard = (props) => {
   }
 
   return (
-    <Page
-      className={classes.root}
-      title="Overview"
-    >
-      <DashboardViewTutorial openTerms={openTerms} enabled={localStorage.getItem('steps') == "done" ? false : true}/>
-      {updateSteps}
-      <TermsModal open={open} setOpen={setOpen} optionLabels={options} linkPages={links}/>
-      <Container maxWidth={false}>
-      <Box mb={2}>
+    
+    <Fragment>
+      <Page
+        className={classes.root}
+        title="Overview"
+      >
+        <DashboardViewTutorial openTerms={openTerms} enabled={localStorage.getItem('steps') == "done" ? false : true}/>
+        {updateSteps}
+        <TermsModal open={open} setOpen={setOpen} optionLabels={options} linkPages={links}/>
+        <Container maxWidth={false}>
+        <Box mb={2}>
 
-      <Grid container spacing={3}>
-        <Grid
-          item
-          lg={1}
-          md={1}
-          xl={1}
-          xs={12}
-        >
-        <img width='100' src='../static/images/oli-happy.png'>
-        </img>
-        </Grid>
-        <Grid
-          item
-          lg={11}
-          md={11}
-          xl={11}
-          xs={12}
-        >
-        <Box ml={2} mt={2}>
-          <Grid container spacing={0}
-          direction="column"
+        <Grid container spacing={3}>
+          <Grid
+            item
+            lg={1}
+            md={1}
+            xl={1}
+            xs={12}
           >
-            <Grid item>
-            <Box flexGrow={1}/>
-            </Grid>
-            <Grid item>
-              <Typography variant="h1">
-                Welcome {props.first_name}! 
-              </Typography>
-            </Grid>
-            <Grid item>
-              {props.credits > 0 ?
-              <Typography variant="h2">
-                You have {props.credits} credit {props.credits > 1 ? 'hours' : 'hour'} left.
-              </Typography>
-              :
-              <Typography variant="h2">
-                You have no credit hours.
-              </Typography>
-              }
-            </Grid>
+          <img width='100' src='../static/images/oli-happy.png'>
+          </img>
           </Grid>
+          <Grid
+            item
+            lg={11}
+            md={11}
+            xl={11}
+            xs={12}
+          >
+          <Box ml={2} mt={2}>
+            <Grid container spacing={0}
+            direction="column"
+            >
+              <Grid item>
+              <Box flexGrow={1}/>
+              </Grid>
+              <Grid item>
+                <Typography variant="h1">
+                  Welcome {props.first_name}! 
+                </Typography>
+              </Grid>
+              <Grid item>
+                {props.credits > 0 ?
+                <Typography variant="h2">
+                  You have {props.credits} credit {props.credits > 1 ? 'hours' : 'hour'} left.
+                </Typography>
+                :
+                <Typography variant="h2">
+                  You have no credit hours.
+                </Typography>
+                }
+              </Grid>
+            </Grid>
+          </Box>
+          </Grid>
+        </Grid>
+
+
         </Box>
-        </Grid>
-      </Grid>
+          <Grid
+            container
+            alignItems="stretch"
+            spacing={2}
+          >
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+              <SummerHeader/>
+            </Grid>
+            <Grid
+              item
+              lg={4}
+              md={4}
+              xl={4}
+              xs={12}
+              id="calendar"
+            >
+              <Calendar changeDate={changeDate} upcoming={upcoming} selectedDate={selectedDate} id='selector2' />
+            </Grid>
+            <Grid
+              item
+              lg={8}
+              md={8}
+              xl={8}
+              xs={12}
+              id="upcoming"
+            >
+              <Box flexGrow={1}>
+                <Upcoming currentDate={selectedDate} upcoming={upcoming} />
+              </Box>
+            </Grid>
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+              <Pending rows={pending} />
+            </Grid>
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+              id="history"
+            >
+              <History rows={history} favorites={props.favorites}/>
+            </Grid>
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+              <Transaction rows={transaction}/>
+            </Grid>
+          
+          </Grid>
+        </Container>
+      </Page>
 
-      </Box>
-        <Grid
-          container
-          alignItems="stretch"
-          spacing={2}
-        >
-          <Grid
-            item
-            lg={4}
-            md={4}
-            xl={4}
-            xs={12}
-            id="calendar"
-          >
-            <Calendar changeDate={changeDate} upcoming={upcoming} selectedDate={selectedDate} id='selector2' />
-          </Grid>
-          <Grid
-            item
-            lg={8}
-            md={8}
-            xl={8}
-            xs={12}
-            id="upcoming"
-          >
-            <Box flexGrow={1}>
-              <Upcoming currentDate={selectedDate} upcoming={upcoming} />
-            </Box>
-          </Grid>
-          <Grid
-            item
-            lg={12}
-            md={12}
-            xl={12}
-            xs={12}
-          >
-            <Pending rows={pending} />
-          </Grid>
-          <Grid
-            item
-            lg={12}
-            md={12}
-            xl={12}
-            xs={12}
-            id="history"
-          >
-            <History rows={history} favorites={props.favorites}/>
-          </Grid>
-          <Grid
-            item
-            lg={12}
-            md={12}
-            xl={12}
-            xs={12}
-          >
-            <Transaction rows={transaction}/>
-          </Grid>
-        
-        </Grid>
-      </Container>
-    </Page>
+    </Fragment>
   );
 };
 
