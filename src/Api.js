@@ -34,6 +34,7 @@ const get_token = (_callback) => {
   }).catch(err => {
     _callback(false)
   })
+  console.log(paymongo_key)
 }
 
 export const check_admin_token = (_callback) => {
