@@ -57,7 +57,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
         <Grid container direction="row" alignItems="stretch" spacing={4}>
           <Grid item xs={6}>
             <Card>
-              <a href="https://extra.akadsph.com">
+              <a href="https://airtable.com/shrk0RjAkh4mhc7y1">
               <CardContent>
                   <Container>
                     <Typography align="center">

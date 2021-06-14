@@ -33,9 +33,11 @@ export class features extends Component {
               </Typography>
             </Container>
             <Box align="center" mt={4}>
-              <Button variant="contained" color="primary">
-                Learn More
-              </Button>
+              <a target="_blank" href="https://extra.akadsph.com/">
+                <Button variant="contained" color="primary">
+                  Learn More
+                </Button>
+              </a>
             </Box>
           </Grid>
         </Grid>

@@ -44,9 +44,11 @@ export class features extends Component {
                   </Container>
                 </Box>
                 <Box mt={8}/>
-                <Button variant="contained" color="primary">
-                  Learn More
-                </Button>
+                <a target="_blank" href="https://extra.akadsph.com/">
+                  <Button variant="contained" color="primary">
+                    Learn More
+                  </Button>
+                </a>
               </Grid>
               <Grid item md={6} xs={12}>
                 <Box mt={4}>
@@ -72,9 +74,11 @@ export class features extends Component {
                   </Grid>
                 </Grid>
                 <Box mt={8}/>
-                <Button variant="contained" color="primary">
-                  Learn More
-                </Button>
+                <a target="_blank" href="https://extra.akadsph.com/">
+                  <Button variant="contained" color="primary">
+                    Learn More
+                  </Button>
+                </a>
                 </Box>
               </Grid>
             </Grid>
