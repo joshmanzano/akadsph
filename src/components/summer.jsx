@@ -44,7 +44,7 @@ export class features extends Component {
                   </Container>
                 </Box>
                 <Box mt={8}/>
-                <a target="_blank" href="https://extra.akadsph.com/">
+                <a target="_blank" href="https://akadssummer.carrd.co/">
                   <Button variant="contained" color="primary">
                     Learn More
                   </Button>
@@ -55,22 +55,32 @@ export class features extends Component {
                 {" "}
                 <h3 className="orangeText">EXTRACURRICULAR</h3>
                 <Box mt={4}/>
-                <Grid container spacing={2}>
+                <Grid alignItems="flex-start" container spacing={2}>
                   <Grid item xs={6}>
                     <h3 className="orangeText">Digital Art</h3>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid className="leftJustify" item xs={6}>
                     <h4>Grades 4-10</h4>
                     <p className="blueText">Learn design principles while practicing the basics of Adobe Photoshop and Adobe Illustrator!</p>
                   </Grid>
                 </Grid>
-                <Grid container spacing={2}>
+                <Grid alignItems="flex-start" container spacing={2}>
                   <Grid item xs={6}>
                     <h3 className="orangeText">Basic Excel</h3>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid className="leftJustify" item xs={6}>
                     <h4>Any Grade Level</h4>
                     <p className="blueText">Learn all the basic fundamentals of Microsoft Excel and more!</p>
+                  </Grid>
+                </Grid>
+                <Box mt={1}/>
+                <Grid alignItems="flex-start" container spacing={2}>
+                  <Grid item xs={6}>
+                    <h3 className="orangeText">Others</h3>
+                  </Grid>
+                  <Grid className="leftJustify" item xs={6}>
+                    <h4></h4>
+                    <p className="blueText">Click below to learn about our other classes!</p>
                   </Grid>
                 </Grid>
                 <Box mt={8}/>

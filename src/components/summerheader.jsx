@@ -33,7 +33,7 @@ export class features extends Component {
               </Typography>
             </Container>
             <Box align="center" mt={4}>
-              <a target="_blank" href="https://extra.akadsph.com/">
+              <a target="_blank" href="https://akadssummer.carrd.co/">
                 <Button variant="contained" color="primary">
                   Learn More
                 </Button>
