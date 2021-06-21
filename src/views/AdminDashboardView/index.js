@@ -385,6 +385,15 @@ const Dashboard = (props) => {
         </Button>
       </Fragment>
 
+  const parentFilters = 
+      <Fragment>
+        <Button onClick={() => {
+          setAddTutor(true)
+        }} variant="contained" color="primary">
+          Add Tutor 
+        </Button>
+      </Fragment>
+
   return (
     <div>
 
@@ -519,7 +528,7 @@ const Dashboard = (props) => {
             xl={12}
             xs={12}
           >
-            <InfoBox name={'Parents'} rows={parentRows} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Ref. Code', 'Ref. Method', 'Actions']}/>
+            <InfoBox name={'Parents'} rows={parentRows} buttons={parentFilters} headers={['ID','Picture', 'First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Ref. Code', 'Ref. Method', 'Actions']}/>
           </Grid>
           <Grid
             item

@@ -45,7 +45,14 @@ class App extends Component {
       };
   }
 
+
   componentDidMount(){
+    const environment = process.env.REACT_APP_ENV
+    const paymongo_key = process.env.REACT_APP_PAYMONGO_KEY
+    if(environment == 'DEVELOPMENT' || environment == 'STAGING'){
+      console.log(environment)
+      console.log(paymongo_key)
+    }
 
     this.checkBackend((res) => {
       this.setState({offline: !res})
