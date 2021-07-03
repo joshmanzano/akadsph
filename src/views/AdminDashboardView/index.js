@@ -13,6 +13,7 @@ import {
   AccordionDetails,
   Switch,
   FormControlLabel,
+  FormGroup,
   TextField
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -59,7 +60,6 @@ const Dashboard = (props) => {
   const confirm = useConfirm();
   const classes = useStyles();
   const data = props.data
-  console.log(data)
   
   const subjects = {}
   data.subjects.forEach(s => {
@@ -107,7 +107,8 @@ const Dashboard = (props) => {
   }
 
   const parents = {}
-  const parentRows = []
+  const allParentRows = []
+  const refCodeRows = []
   data.parents.forEach(p => {
     if(p.fake_user == false && p.status == true){
       totalParents += 1
@@ -119,7 +120,7 @@ const Dashboard = (props) => {
     if(p.status == true){
       const ref= p.referrer_code
       const ref_method = p.referrer_method
-      parentRows.push([
+      allParentRows.push([
         p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, ref, ref_method, _(
           <Fragment>
             <Button variant="contained" color="primary" onClick={() => openParentModal(p)}>
@@ -130,6 +131,34 @@ const Dashboard = (props) => {
       ])
     }
   })
+
+  data.parents.forEach(p => {
+    if(p.fake_user == false && p.status == true){
+      totalParents += 1
+    }
+    if(p.picture.trim() != '' && p.fake_user == false){
+      activeParents += 1
+    }
+    parents[p.id] = p
+    if(p.status == true){
+      const ref = p.referrer_code
+      console.log(ref)
+      const ref_method = p.referrer_method
+      if(ref != null && ref.trim() != ''){
+        refCodeRows.push([
+          p.id, _(<img width="40" src={p.picture.trim() == '' ? './img/anon.jpeg' : p.picture}/>), p.first_name, p.last_name, p.email, p.phone, p.credits, ref, ref_method, _(
+            <Fragment>
+              <Button variant="contained" color="primary" onClick={() => openParentModal(p)}>
+                Open
+              </Button>
+            </Fragment>
+          )
+        ])
+      }
+    }
+  })
+
+  const [parentRows, updateParentRows] = useState(allParentRows)
 
   const tutors = {}
   const tutorRows = []
@@ -189,7 +218,6 @@ const Dashboard = (props) => {
   const activeSessionRows = []
   data.active_sessions.forEach(s => {
     const request = accepted_requests[s.request]
-    console.log(request)
     activeSessionRows.push([
       s.id, s.active, moment(s.start_date_time).calendar(),
       subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
@@ -218,7 +246,6 @@ const Dashboard = (props) => {
   const inactiveSessionRows = []
   data.inactive_sessions.forEach(s => {
     const request = accepted_requests[s.request]
-    console.log(request)
     inactiveSessionRows.push([
       s.id, s.active, moment(s.start_date_time).calendar(),
       subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
@@ -239,6 +266,7 @@ const Dashboard = (props) => {
 
   const [sessionRows, updateSessionRows] = useState(activeSessionRows)
   const [showInactive, updateShowInactive] = useState(false)
+  const [showOnlyRef, updateShowRef] = useState(false)
 
   const [chat, openChat] = useState(false)
   const [chat_name, changeChatName] = useState('')
@@ -315,6 +343,16 @@ const Dashboard = (props) => {
     updateShowInactive(!showInactive)
   }
 
+  const showOnlyRefCode = () => {
+    if(showOnlyRef){
+      updateParentRows(allParentRows)
+    }else{
+      updateParentRows(refCodeRows)
+    }
+    updateShowRef(!showOnlyRef)
+  }
+
+
 
 
   const sessionButtons = 
@@ -370,7 +408,6 @@ const Dashboard = (props) => {
 
   const logRows = []
   data.logs.forEach(log => {
-    console.log(log)
     logRows.push([
       log.google_data.email, log.type, moment(log.time).fromNow(), moment(log.time).format('MMM do YY h:mm a') 
     ])
@@ -387,11 +424,12 @@ const Dashboard = (props) => {
 
   const parentFilters = 
       <Fragment>
-        <Button onClick={() => {
-          setAddTutor(true)
-        }} variant="contained" color="primary">
-          Add Tutor 
-        </Button>
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch onClick={showOnlyRefCode} color="primary" />}
+            label="Show Only Parents with Ref Code"
+          />
+        </FormGroup>
       </Fragment>
 
   return (
