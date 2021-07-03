@@ -46,6 +46,9 @@ import {
     DialogContentText,
     DialogTitle,
   } from '@material-ui/core';
+import { ConsoleSqlOutlined } from '@ant-design/icons';
+
+import { CSVLink, CSVDownload } from 'react-csv';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -109,6 +112,8 @@ const Dashboard = (props) => {
   const parents = {}
   const allParentRows = []
   const refCodeRows = []
+  const parentCSVdata = [['ID','Picture','First Name', 'Last Name', 'Email', 'Phone', 'Credits', 'Ref. Code', 'Ref. Method']]
+  console.log(data.parents)
   data.parents.forEach(p => {
     if(p.fake_user == false && p.status == true){
       totalParents += 1
@@ -129,6 +134,9 @@ const Dashboard = (props) => {
           </Fragment>
         )
       ])
+      parentCSVdata.push([
+        p.id, p.picture.trim(), p.first_name, p.last_name, p.email, p.phone, p.credits, ref, ref_method,
+      ])
     }
   })
 
@@ -142,7 +150,6 @@ const Dashboard = (props) => {
     parents[p.id] = p
     if(p.status == true){
       const ref = p.referrer_code
-      console.log(ref)
       const ref_method = p.referrer_method
       if(ref != null && ref.trim() != ''){
         refCodeRows.push([
@@ -425,6 +432,7 @@ const Dashboard = (props) => {
   const parentFilters = 
       <Fragment>
         <FormGroup>
+          <CSVLink data={parentCSVdata} filename={'akads_parents.csv'}>Dowload CSV data</CSVLink>
           <FormControlLabel
             control={<Switch onClick={showOnlyRefCode} color="primary" />}
             label="Show Only Parents with Ref Code"

@@ -73,6 +73,7 @@
     "react-chat-ui": "^0.4.0",
     "react-chat-widget": "^3.0.5",
     "react-credit-cards": "^0.8.3",
+    "react-csv": "^2.0.3",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
     "react-facebook-login": "^4.1.1",
