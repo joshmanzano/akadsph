@@ -451,6 +451,7 @@ class App extends Component {
           <Route path='/'> 
             <DashboardLayout childrenCount={this.state.childrenCount} unreadCount={this.state.unreadCount} credits={this.state.credits} addCredit={this.addCredit} seenParentNotif={this.seenParentNotif} getUserData={this.getParentData}/>
           </Route>
+          <Route path='/transaction-fail'/> 
           <Route path='*' component={NotFoundView} /> 
         </Switch>
         }

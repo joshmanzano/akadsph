@@ -191,7 +191,7 @@ const Dashboard = (props) => {
     const request = accepted_requests[s.request]
     console.log(request)
     activeSessionRows.push([
-      s.id, s.active, moment(s.start_date_time).format('MMMM Do YYYY, h:mm:ss a'),
+      s.id, s.active, moment(s.start_date_time).calendar(),
       subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
         <Box align="center">
           <a href={s.join_zoom_link}>
@@ -220,7 +220,7 @@ const Dashboard = (props) => {
     const request = accepted_requests[s.request]
     console.log(request)
     inactiveSessionRows.push([
-      s.id, s.active, moment(s.start_date_time).format('MMMM Do YYYY, h:mm:ss a'),
+      s.id, s.active, moment(s.start_date_time).calendar(),
       subjects[request.subject], parents[request.parent].first_name, tutors[s.tutor].first_name, _(
         <Box align="center">
           <a href={s.join_zoom_link}>
