@@ -141,12 +141,6 @@ const Dashboard = (props) => {
   })
 
   data.parents.forEach(p => {
-    if(p.fake_user == false && p.status == true){
-      totalParents += 1
-    }
-    if(p.picture.trim() != '' && p.fake_user == false){
-      activeParents += 1
-    }
     parents[p.id] = p
     if(p.status == true){
       const ref = p.referrer_code
