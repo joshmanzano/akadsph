@@ -206,7 +206,7 @@ const Dashboard = (props) => {
   const transactionRows = []
   data.payments.forEach(p => {
     transactionRows.push([
-      moment(p.date).format('MMMM Do YYYY, h:mm:ss a'), 'Php ' + String(p.amount/100), p.credits, p.parent, _(
+      moment(p.date).calendar(), 'Php ' + String(p.amount/100), p.credits, p.parent, _(
         <Button variant="contained" color="primary">
           Refund
         </Button>
