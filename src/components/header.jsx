@@ -6,39 +6,46 @@ import {
   Button,
   Hidden,
 } from '@material-ui/core';
-import QueueAnim from 'rc-queue-anim';
+import {Animated} from 'react-animated-css';
 
 export class Header extends Component {
   render() {
     return (
-      <QueueAnim>
 
       <header id="header">
               <Hidden mdDown>
+
         <div className="intro">
           <div className="overlay">
                 <div className="row intro-row">
                   <div className="col-xs-5 intro-text">
+                      <Animated animationIn="fadeInLeft" animationOut="fadeOut" isVisible={true}>
                     <h1>
                       {this.props.data ? this.props.data.title : "Loading"}
                       <span></span>
                     </h1>
+                      </Animated>
                       <div key="1">
-                      <p>
-                        Akads helps you match with a tutor that is most suited for your child. <b>Create an account now</b> and have your <b>first hour for FREE.</b>
-                      </p>
+                      <Animated animationIn="fadeInLeft" animationOut="fadeOut" isVisible={true}>
+                        <p>
+                          Akads helps you match with a tutor that is most suited for your child. <b>Create an account now</b> and have your <b>first hour for FREE.</b>
+                        </p>
+                      </Animated>
                       </div>
                     <div key="2">
-                    <Box mb={8} alignItems="center">
-                        <Button /*href="/login"*/ onClick={() =>  window.location.replace('/login')} style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
-                          Get Started
-                        </Button>
-                    </Box>
+                      <Animated animationIn="fadeInLeft" animationOut="fadeOut" isVisible={true}>
+                        <Box mb={8} alignItems="center">
+                            <Button /*href="/login"*/ onClick={() =>  window.location.replace('/login')} style={{borderRadius: "25px"}} size="large" color="default" variant="outlined">
+                              Get Started
+                            </Button>
+                        </Box>
+                      </Animated>
                     </div>
                   </div>
                 </div>
             </div>
           </div>
+
               </Hidden>
               <Hidden lgUp>
         <div className="intro intro-small">
@@ -68,7 +75,6 @@ export class Header extends Component {
               </Hidden>
       </header>
 
-      </QueueAnim>
     );
   }
 }

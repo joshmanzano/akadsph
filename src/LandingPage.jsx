@@ -21,6 +21,7 @@ import HeaderTutor from './components/headerTutor';
 import Benefits from './components/benefits';
 import Requirements from './components/requirements';
 import Process from './components/process';
+import Anime from 'react-anime';
 
 export class LandingPage extends Component {
   state = {
@@ -49,7 +50,7 @@ export class LandingPage extends Component {
         {this.state.showpage == "main" ? 
           <React.Fragment>
           <Header data={this.state.landingPageData.Header} />
-          <Summer data={this.state.landingPageData.Features} />
+          {/* <Summer data={this.state.landingPageData.Features} /> */}
           <Features data={this.state.landingPageData.Features} />
           <About data={this.state.landingPageData.About} />
           {/* <Services data={this.state.landingPageData.Services} /> */}
