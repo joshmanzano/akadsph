@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-const PromoCode = ({ className, ...rest }) => {
+const PromoCode = ({ className, setPromo, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -40,6 +40,7 @@ const PromoCode = ({ className, ...rest }) => {
                 label="Promo Code" 
                 variant="outlined" fullWidth
                 defaultValue=""
+                onChange={event => setPromo(event.target.value)}
                 />
             </Grid>
             

@@ -153,7 +153,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                 style={{placeItems: 'center', textAlign: 'center'}}
                 id="bundles"
                 >
-                <Grid
+                {/* <Grid
                   item
                   lg={4}
                   md={4}
@@ -185,7 +185,7 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                     </Grid>
             
                   </Button>
-                </Grid>
+                </Grid> */}
                 <Grid
                   item
                   lg={4}
@@ -200,12 +200,12 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                     <Grid container>
                       <Grid item xs={12} align='left' className={classes.buttonContainer}>
                         <Typography variant="caption" display="inline" className={ !bundleB ? classes.textHours : classes.textHoursRev} align='left'>
-                          10 Hours
+                          8 Hours
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='center'>
                         <Typography variant="h4" display="block" className={ !bundleB ? classes.textPrice : classes.textPriceRev}>
-                          ₱4,750
+                          ₱4,000
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='right'>
@@ -230,12 +230,12 @@ const Bundle = ({ className, setAmount, setItem, setHours, ...rest }) => {
                     <Grid container>
                       <Grid item xs={12} align='left'>
                         <Typography variant="caption" display="inline" className={ !bundleC ? classes.textHours : classes.textHoursRev} align='left'>
-                          15 Hours
+                          12 Hours
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='center'>
                         <Typography variant="h4" display="block" className={ !bundleC ? classes.textPrice : classes.textPriceRev}>
-                          ₱6,750
+                          ₱5,200
                         </Typography>
                       </Grid>
                       <Grid item xs={12} align='right'>

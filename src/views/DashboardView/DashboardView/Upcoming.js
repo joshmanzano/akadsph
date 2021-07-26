@@ -91,7 +91,7 @@ const Upcoming = (props) => {
           'time':moment(sessionDate).format('h:mm a'),
           'subject':u.subject,
           'tutor':u.tutor,
-          'join_button':<Button variant='outlined' color='primary' onClick={() => join_session(u.meet_link, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
+          // 'join_button':<Button variant='outlined' color='primary' onClick={() => join_session(u.meet_link, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
           // 'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)} >View</Button>,
           'view_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
           'chat_button': <Button variant='outlined' color='primary' href='/messages' startIcon={<ForumIcon/>}>Chat</Button>,
