@@ -4,7 +4,11 @@ import {
   Container,
   Box,
   CircularProgress,
+  Button,
+  Fab,
+  Hidden
 } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import Websocket from 'react-websocket';
 import {post_api} from 'src/Api';
@@ -85,6 +89,11 @@ class Example extends Component {
       {this.props.loaded ? 
         <React.Fragment>
           {/* <Websocket url={process.env.REACT_APP_WS_URL+'/ws/chat/'} onMessage={this.handleData}/> */}
+          <Hidden mdUp>
+            <Fab onClick={this.props.toggleActive} color="primary" aria-label="back" className={'messageFloater'}>
+              <ArrowBackIcon/>
+            </Fab>
+          </Hidden>
           <GiftedChat
             messages={this.state.messages}
             onSend={(messages) => this.onSend(messages)}

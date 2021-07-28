@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
+import AgoraFrame from 'src/components/agoraframe';
 import Upcoming from './Upcoming';
 import History from './History';
 import TutorExtensionForm from 'src/components/TutorExtensionForm'; //asking tutor if he accepts the extension
@@ -38,17 +39,22 @@ const Dashboard = (props) => {
   const [options, setOptions] = React.useState(['Tutor Terms and Conditions', 'Privacy Policy', 'Refund and Cancellation Policy'])
   const [links, setLinks] = React.useState(['https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Website+Tutor+Terms+%26+Conditions.pdf', 'https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/AKADS+Privacy+Policy.pdf', 'https://akads-public-bucket.s3-ap-southeast-1.amazonaws.com/Akads+Refund+and+Cancellation+Policy.pdf'])
   
+  var currentSession = null
 
   props.upcoming.forEach(u => {
+    console.log('##### u')
+    if(new Date() >= new Date(u.session.start_date_time) && new Date() <= new Date(u.session.end_date_time)){
+      currentSession = u
+    }
     upcoming.push({
+      'tutee':u.child.first_name,
       'id': u.session.id,
-      'files':u.request.extra_files,
+      'files': u.request.extra_files,
       'duration': u.request.time,
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
-      'tutee':u.child.first_name,
-      'start_url':u.session.start_zoom_link,
-      'meet_link':u.request.meet_link,
+      // 'tutor_join_link':u.session.tutor_join_link,
+      // 'tutee_join_link':u.session.tutee_join_link,
     })
   })
 
@@ -137,6 +143,17 @@ const Dashboard = (props) => {
           alignItems="center"
           spacing={2}
         >
+          {currentSession &&
+          <Grid
+            item
+            lg={12}
+            md={12}
+            xl={12}
+            xs={12}
+          >
+            <AgoraFrame join_url={currentSession.session.tutor_join_link}/>
+          </Grid>
+          }
           <Grid
             item
             lg={4}

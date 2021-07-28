@@ -1171,6 +1171,10 @@ div .info{
 	bottom: 25 !important;
 }
 
+.messageFloater {
+	padding: 15px !important;
+}
+
 #highlighted{
 	color: #EB5531;
 }
