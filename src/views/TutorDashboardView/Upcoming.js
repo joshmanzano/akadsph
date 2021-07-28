@@ -91,7 +91,7 @@ const Upcoming = (props) => {
           'subject':u.subject,
           'tutee':u.tutee,
           // 'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.start_url)} startIcon={<CastForEducationIcon/>}>Start</Button>,
-          'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.meet_link, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
+          // 'join_button':<Button variant='outlined' color='primary' onClick={() => start_session(u.meet_link, u.id)} startIcon={<CastForEducationIcon/>}>Join</Button>,
           'files_button': <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={u.files} target="_blank">Files</Button>,
           'chat_button': <Button variant='outlined' color='primary' href='/messages' startIcon={<ForumIcon/>}>Chat</Button>,
           'cancel_button': <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}

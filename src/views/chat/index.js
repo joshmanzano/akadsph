@@ -20,6 +20,8 @@ class Chat extends React.Component {
     this.state = {
       loaded: false,
       conversation: this.props.adminchat.conversation,
+      conversation: null,
+      active: false,
       messages: [],
       chatList: [],
       avatar: '/static/images/oli-chat.png',
@@ -33,7 +35,7 @@ class Chat extends React.Component {
     const name = chat.title
     const type = chat.type
 
-    this.setState({loaded: false, conversation: chat},() => {
+    this.setState({active:true, loaded: false, conversation: chat},() => {
       const chatList = []
       this.state.chatList.forEach(chat => {
         if(chat.chatID == id){
@@ -87,9 +89,10 @@ class Chat extends React.Component {
   changeSubtitles = () => {
     let latest_message = this.props.adminchat.latest_message
     let subtitle = latest_message.text
-    let subtitleCut = subtitle.length > 55 ? 55 : subtitle.length
+    let charLimit = 30 
+    let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length
     subtitle = subtitle.substring(0, subtitleCut)
-    if(subtitleCut > 55){
+    if(subtitleCut >= charLimit){
       subtitle += '...'
     }
     if(latest_message.sender == 'parent'){
@@ -113,10 +116,10 @@ class Chat extends React.Component {
       const tutor = chat.tutor
       let latest_message = chat.latest_message
       let subtitle = latest_message.text
-      let subtitleCut = subtitle.length > 55 ? 55 : subtitle.length
+      let charLimit = 30 
+      let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length
       subtitle = subtitle.substring(0, subtitleCut)
-      console.log(subtitleCut)
-      if(subtitleCut >= 55){
+      if(subtitleCut >= charLimit){
         subtitle += '...'
       }
       if(latest_message.sender == 'parent'){
@@ -135,13 +138,20 @@ class Chat extends React.Component {
     this.setState({chatList:chatList})
   }
 
+  toggleActive = (e) => {
+    console.log('triggered')
+    console.log(this)
+    this.setState({active: false})
+  }
+
   componentDidMount(){
     console.log(this.props)
     let latest_message = this.props.adminchat.latest_message
     let subtitle = latest_message.text
-    let subtitleCut = subtitle.length > 55 ? 55 : subtitle.length
+    let charLimit = 55 
+    let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length
     subtitle = subtitle.substring(0, subtitleCut)
-    if(subtitleCut > 55){
+    if(subtitleCut > charLimit){
       subtitle += '...'
     }
     if(latest_message.sender == 'parent'){
@@ -296,23 +306,51 @@ class Chat extends React.Component {
     return (
       <div style={styles.container}>
         <Websocket url={process.env.REACT_APP_WS_URL+'/ws/'+'parent'+String(user_id)+'/'} onMessage={this.handleData}/>
-        <div style={styles.channelList}>
-          {chatList.map(chat => (
-            <ChatItem
-            avatar={chat.avatar}
-            alt={chat.alt}
-            title={chat.title}
-            subtitle={chat.subtitle}
-            date={chat.date}
-            unread={chat.unread}
-            className={chat.className}
-            onClick={() => this.changeChat(chat)}
-            />
-          ))}
-        </div>
-        <div style={styles.chat}>
-          <ReactGifted loaded={this.state.loaded} user={'parent'} conversation={this.state.conversation} messages={this.state.messages}/>
-        </div>
+        <Hidden smDown>
+          <div style={styles.channelList}>
+            {chatList.map(chat => (
+              <ChatItem
+              avatar={chat.avatar}
+              alt={chat.alt}
+              title={chat.title}
+              subtitle={chat.subtitle}
+              date={chat.date}
+              unread={chat.unread}
+              className={chat.className}
+              onClick={() => this.changeChat(chat)}
+              />
+            ))}
+          </div>
+          <div style={styles.chat}>
+            {this.state.active &&
+            <ReactGifted loaded={this.state.loaded} user={'parent'} conversation={this.state.conversation} messages={this.state.messages}/>
+            }
+          </div>
+        </Hidden>
+        <Hidden mdUp>
+          {this.state.active ?
+          <div style={styles.chat}>
+            {this.state.active &&
+            <ReactGifted toggleActive={this.toggleActive} loaded={this.state.loaded} user={'parent'} conversation={this.state.conversation} messages={this.state.messages}/>
+            }
+          </div>
+          :
+          <div style={styles.channelList}>
+            {chatList.map(chat => (
+              <ChatItem
+              avatar={chat.avatar}
+              alt={chat.alt}
+              title={chat.title}
+              subtitle={chat.subtitle}
+              date={chat.date}
+              unread={chat.unread}
+              // className={chat.className}
+              onClick={() => this.changeChat(chat)}
+              />
+            ))}
+          </div>
+          }
+        </Hidden>
       </div>
     );
   }
