@@ -10,7 +10,7 @@ export class features extends Component {
   render() {
     return (
       <div id="features" className="text-center">
-        <Animated animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>
+        <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
         <Container>
           <div className="col-md-10 col-md-offset-1">
             <h2>How it works</h2>

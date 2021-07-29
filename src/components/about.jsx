@@ -7,12 +7,14 @@ import {
   Hidden,
   Typography,
 } from '@material-ui/core';
+import {Animated} from 'react-animated-css';
 
 export class about extends Component {
   render() {
     return (
         <div id="about" >
         <div className="aboutCover">
+          <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
             <Grid container>
               <Hidden mdDown>
                 <Grid item xs={12} md={6} className='aboutimage'>
@@ -121,6 +123,7 @@ export class about extends Component {
                 </Box>
               </Grid>
             </Grid>
+          </Animated>
         </div>
       </div>
     )
