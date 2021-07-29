@@ -89,7 +89,7 @@ const tiers = [
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
-      'Zoom Video Chat',
+      'Video Chat',
       '8 Hours Worth Of Credit',
     ],
     buttonText: 'Book 8 Sessions',
@@ -102,7 +102,7 @@ const tiers = [
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
-      'Zoom Video Chat',
+      'Video Chat',
       '12 Hours Worth Of Credit',
     ],
     buttonText: 'Book 12 Sessions',
