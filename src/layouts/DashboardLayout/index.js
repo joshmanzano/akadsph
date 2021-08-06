@@ -67,6 +67,10 @@ import RegistrationSuccessView from 'src/views/RegistrationSuccess';
 import AddChildren from 'src/views/AddChildren';
 import MeetView from 'src/views/Meet';
 
+// temporary
+
+import AgoraFrame from 'src/components/agoraframe';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -231,6 +235,7 @@ function DashboardLayout (props){
                 <Container id="overview">
                   <Fragment>
                     <DashboardView first_name={userData['accountview']['first_name']} credits={props.credits} {...userData['dashboardview']}></DashboardView>
+                    {/* <AgoraFrame/> */}
                   </Fragment>
                 </Container>
               </Route>

@@ -162,6 +162,8 @@ function CreditStore(props){
         const src_id = res['src_id']
         const checkout_url = res['checkout_url']
         localStorage.setItem('src_id',src_id)
+        // console.log(src_id)
+        // console.log(checkout_url)
         window.location.replace(checkout_url)
       })
     }
@@ -333,7 +335,7 @@ function CreditStore(props){
             >
               <Validity/>
               <br/>
-              <PromoCode/>
+              <PromoCode setPromo={setPromo}/>
             </Grid>
             <Grid
               item

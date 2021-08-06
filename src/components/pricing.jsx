@@ -69,43 +69,43 @@ const tiers = [
     buttonText: 'Sign Up for Free',
     buttonVariant: 'outlined',
   },
+  // {
+  //   title: '1 HOUR',
+  //   price: '500',
+  //   oldPrice: '549',
+  //   description: [
+  //     'Akads Verified Tutor',
+  //     'Any Mode Of Payment',
+  //     'Zoom Video Chat',
+  //     '1 Hour Worth Of Credit',
+  //   ],
+  //   buttonText: 'Book A Session',
+  //   buttonVariant: 'outlined',
+  // },
   {
-    title: '1 HOUR',
-    price: '500',
-    oldPrice: '549',
-    description: [
-      'Akads Verified Tutor',
-      'Any Mode Of Payment',
-      'Zoom Video Chat',
-      '1 Hour Worth Of Credit',
-    ],
-    buttonText: 'Book A Session',
-    buttonVariant: 'outlined',
-  },
-  {
-    title: '10 HOURS',
-    price: '4750',
+    title: '8 HOURS',
+    price: '4000',
     oldPrice: '4990',
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
-      'Zoom Video Chat',
-      '10 Hours Worth Of Credit',
+      'Video Chat',
+      '8 Hours Worth Of Credit',
     ],
-    buttonText: 'Book 10 Sessions',
+    buttonText: 'Book 8 Sessions',
     buttonVariant: 'outlined',
   },
   {
-    title: '15 HOURS',
-    price: '6750',
+    title: '12 HOURS',
+    price: '5200',
     oldPrice: '7185',
     description: [
       'Akads Verified Tutor',
       'Any Mode Of Payment',
-      'Zoom Video Chat',
-      '15 Hours Worth Of Credit',
+      'Video Chat',
+      '12 Hours Worth Of Credit',
     ],
-    buttonText: 'Book 15 Sessions',
+    buttonText: 'Book 12 Sessions',
     buttonVariant: 'outlined',
   },
 ];
@@ -118,7 +118,7 @@ export default function Pricing() {
         <Container>
           <Box>
             <div className="text-center">
-              <h2>Launch Pricing</h2>
+              <h2>Pricing</h2>
             </div>
             <div className="row">
       <Box mt={4}>
@@ -127,7 +127,7 @@ export default function Pricing() {
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={3}>
+            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
               <Card>
                 <CardHeader
                   title={tier.title}

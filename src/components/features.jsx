@@ -4,11 +4,13 @@ import {
   Grid,
   Box,
 } from '@material-ui/core';
+import {Animated} from 'react-animated-css';
 
 export class features extends Component {
   render() {
     return (
       <div id="features" className="text-center">
+        <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
         <Container>
           <div className="col-md-10 col-md-offset-1">
             <h2>How it works</h2>
@@ -30,6 +32,7 @@ export class features extends Component {
             </Grid>
           </div>
         </Container>
+        </Animated>
       </div>
     );
   }

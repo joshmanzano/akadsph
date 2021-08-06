@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import SummerHeader from 'src/components/summerheader';
+import AgoraFrame from 'src/components/agoraframe';
 import Page from 'src/components/Page';
 import Upcoming from './Upcoming';
 import Pending from './Pending';
@@ -41,7 +42,13 @@ const Dashboard = (props) => {
   const history = []
   const transaction = []
 
+  var currentSession = null
+
   props.upcoming.forEach(u => {
+    console.log('##### u')
+    if(new Date() >= new Date(u.session.start_date_time) && new Date() <= new Date(u.session.end_date_time)){
+      currentSession = u
+    }
     upcoming.push({
       'id': u.session.id,
       'files': u.request.extra_files,
@@ -49,8 +56,8 @@ const Dashboard = (props) => {
       'start_time': u.session.start_date_time,
       'subject': u.subject.subject_field,
       'tutor':u.tutor.first_name,
-      'join_url':u.session.join_zoom_link,
-      'meet_link':u.session.meet_link,
+      // 'tutor_join_link':u.session.tutor_join_link,
+      // 'tutee_join_link':u.session.tutee_join_link,
     })
   })
 
@@ -106,7 +113,7 @@ const Dashboard = (props) => {
         <TermsModal open={open} setOpen={setOpen} optionLabels={options} linkPages={links}/>
         <Container maxWidth={false}>
         <Box mb={2}>
-
+        
         <Grid container spacing={3}>
           <Grid
             item
@@ -160,6 +167,7 @@ const Dashboard = (props) => {
             alignItems="stretch"
             spacing={2}
           >
+            {currentSession &&
             <Grid
               item
               lg={12}
@@ -167,8 +175,18 @@ const Dashboard = (props) => {
               xl={12}
               xs={12}
             >
-              <SummerHeader/>
+              <AgoraFrame join_url={currentSession.session.tutee_join_link}/>
             </Grid>
+            }
+            {/* <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+              <SummerHeader/>
+            </Grid> */}
             <Grid
               item
               lg={4}

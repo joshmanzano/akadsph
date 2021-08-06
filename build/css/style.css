@@ -314,10 +314,13 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	/* -moz-background-size: cover; */
 	/* background-size: 100% 100%; */
 	background-size: cover;
-	background-image: url("../static/images/header_background.png");
 	background-repeat: no-repeat;
 	position: relative;
 	background-position: center;
+}
+
+.intro-image{
+	background-image: url("../static/images/header_background.png");
 }
 
 
@@ -1169,6 +1172,10 @@ div .info{
 	position: fixed !important;
 	right: 25 !important;
 	bottom: 25 !important;
+}
+
+.messageFloater {
+	padding: 15px !important;
 }
 
 #highlighted{
