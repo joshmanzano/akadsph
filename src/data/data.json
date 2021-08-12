@@ -105,6 +105,42 @@
             "job": "Co-founder, CSO"
         }
     ],
+    "Pricing": [
+        {
+            "title": "FREE TRIAL",
+            "price": "0",
+            "oldPrice": "FREE",
+            "description": ["*First-time Users Only", "Akads Verified Tutor", "Zoom Video Chat", "1 Hour Session"],
+            "buttonText": "Sign Up for Free",
+            "buttonVariant": "outlined"
+        },
+        {
+            "title": "8 HOURS",
+            "price": "4000",
+            "oldPrice": "4990",
+            "description": [
+            "Akads Verified Tutor",
+            "Any Mode Of Payment",
+            "Video Chat",
+            "8 Hours Worth Of Credit"
+            ],
+            "buttonText": "Book 8 Sessions",
+            "buttonVariant": "outlined"
+        },
+        {
+            "title": "12 HOURS",
+            "price": "5200",
+            "oldPrice": "7185",
+            "description": [
+            "Akads Verified Tutor",
+            "Any Mode Of Payment",
+            "Video Chat",
+            "12 Hours Worth Of Credit"
+            ],
+            "buttonText": "Book 12 Sessions",
+            "buttonVariant": "outlined"
+        }
+    ],
     "Contact": {
         "phone": "0917 899 9369",
         "email": "hello@akadsph.com",

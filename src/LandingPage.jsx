@@ -42,6 +42,7 @@ export class LandingPage extends Component {
 
 
   render() {
+    console.log(JsonData)
     // const [showpage, setshowpage] = React.useState('main');
 
     return (
@@ -49,28 +50,28 @@ export class LandingPage extends Component {
         <Navigation setShowPage={this.setShowPage}/>
         {this.state.showpage == "main" ? 
           <React.Fragment>
-          <Header data={this.state.landingPageData.Header} />
-          {/* <Summer data={this.state.landingPageData.Features} /> */}
-          <Features data={this.state.landingPageData.Features} />
-          <About data={this.state.landingPageData.About} />
-          {/* <Services data={this.state.landingPageData.Services} /> */}
+          <Header data={JsonData.Header} />
+          {/* <Summer data={JsonData.Features} /> */}
+          <Features data={JsonData.Features} />
+          <About data={JsonData.About} />
+          {/* <Services data={JsonData.Services} /> */}
           {/* <Gallery /> */}
-          <Pricing/>
-          <Testimonials data={this.state.landingPageData.Testimonials} />
+          <Pricing data={JsonData.Pricing} />
+          <Testimonials data={JsonData.Testimonials} />
           </React.Fragment>
         :
           this.state.showpage == "about" ? 
           <React.Fragment>
-          <HeaderAbout data={this.state.landingPageData.Header} />
-          <Story data={this.state.landingPageData.Features} />
-          <Team data={this.state.landingPageData.Team} />
+          <HeaderAbout data={JsonData.Header} />
+          <Story data={JsonData.Features} />
+          <Team data={JsonData.Team} />
           </React.Fragment>
           :
           <React.Fragment>
-            <HeaderTutor data={this.state.landingPageData.Header} />
-            <Process data={this.state.landingPageData.Process} />
-            <Benefits data={this.state.landingPageData.Benefits} />
-            <Requirements data={this.state.landingPageData.Requirements} />
+            <HeaderTutor data={JsonData.Header} />
+            <Process data={JsonData.Process} />
+            <Benefits data={JsonData.Benefits} />
+            <Requirements data={JsonData.Requirements} />
           </React.Fragment>
         }
 
@@ -80,7 +81,7 @@ export class LandingPage extends Component {
           <React.Fragment></React.Fragment>
         }
 
-        <Contact data={this.state.landingPageData.Contact} />
+        <Contact data={JsonData.Contact} />
         <Footer/>
       </div>
     )

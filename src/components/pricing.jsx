@@ -60,57 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const tiers = [
-  {
-    title: 'FREE TRIAL',
-    price: '0',
-    oldPrice: 'FREE',
-    description: ['*First-time Users Only', 'Akads Verified Tutor', 'Zoom Video Chat', '1 Hour Session'],
-    buttonText: 'Sign Up for Free',
-    buttonVariant: 'outlined',
-  },
-  // {
-  //   title: '1 HOUR',
-  //   price: '500',
-  //   oldPrice: '549',
-  //   description: [
-  //     'Akads Verified Tutor',
-  //     'Any Mode Of Payment',
-  //     'Zoom Video Chat',
-  //     '1 Hour Worth Of Credit',
-  //   ],
-  //   buttonText: 'Book A Session',
-  //   buttonVariant: 'outlined',
-  // },
-  {
-    title: '8 HOURS',
-    price: '4000',
-    oldPrice: '4990',
-    description: [
-      'Akads Verified Tutor',
-      'Any Mode Of Payment',
-      'Video Chat',
-      '8 Hours Worth Of Credit',
-    ],
-    buttonText: 'Book 8 Sessions',
-    buttonVariant: 'outlined',
-  },
-  {
-    title: '12 HOURS',
-    price: '5200',
-    oldPrice: '7185',
-    description: [
-      'Akads Verified Tutor',
-      'Any Mode Of Payment',
-      'Video Chat',
-      '12 Hours Worth Of Credit',
-    ],
-    buttonText: 'Book 12 Sessions',
-    buttonVariant: 'outlined',
-  },
-];
-
-export default function Pricing() {
+function Pricing(props) {
   const classes = useStyles();
 
   return (
@@ -125,7 +75,7 @@ export default function Pricing() {
 
       <Container maxWidth="lg" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
+          {props.data.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
               <Card>
@@ -184,3 +134,5 @@ export default function Pricing() {
       </div>
   );
 }
+
+export default Pricing;

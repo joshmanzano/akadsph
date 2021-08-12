@@ -218,7 +218,7 @@ const Dashboard = (props) => {
             >
               <Pending rows={pending} />
             </Grid>
-            <Grid
+            {/* <Grid
               item
               lg={12}
               md={12}
@@ -227,7 +227,7 @@ const Dashboard = (props) => {
               id="history"
             >
               <History rows={history} favorites={props.favorites}/>
-            </Grid>
+            </Grid> */}
             <Grid
               item
               lg={12}

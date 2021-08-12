@@ -421,7 +421,9 @@ class App extends Component {
         {this.state.session == null &&
         // Not Logged In
         <Switch> 
-          <Route exact path='/' component={LandingView} /> 
+          <Route exact path='/'> 
+            <LandingView />
+          </Route>
           <Route exact path='/login'> 
             <Login login={this.login} login_tutor={this.login_tutor} />
           </Route>
