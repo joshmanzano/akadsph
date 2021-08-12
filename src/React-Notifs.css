@@ -1,15 +1,15 @@
-.notifications .container{
+.notifications .container {
   right: 10;
   top: 30;
   padding: 0;
   border-radius: 5px;
 }
 
-.notifications .icon .count{
+.notifications .icon .count {
   background-color: #a94442;
 }
 
-.notifications .icon img{
+.notifications .icon img {
   filter: brightness(0) invert(1);
 }
 

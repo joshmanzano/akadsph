@@ -6,12 +6,17 @@
   "version": "1.1.2",
   "private": false,
   "scripts": {
+    "format": "prettier --write .",
+    "prepare": "husky install",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "node ./update-build.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -109,19 +114,22 @@
     "uuid": "^8.3.0",
     "validator": "^13.5.2",
     "windups": "^1.1.2",
+    "yarn-check": "^0.0.3",
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "gh-pages": "^3.1.0",
-    "prettier": "^1.19.1",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
     "react-devtools": "^4.9.0"
   },
   "buildDate": 1613983374135

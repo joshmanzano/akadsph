@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Card,
@@ -8,47 +8,33 @@ import {
   Grid,
   Typography,
   makeStyles,
-  colors
-} from '@material-ui/core';
-import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+  colors,
+} from "@material-ui/core";
+import PeopleIcon from "@material-ui/icons/PeopleOutlined";
 
 const useStyles = makeStyles(() => ({
   root: {
-    height: '100%'
+    height: "100%",
   },
   avatar: {
     backgroundColor: colors.green[600],
     height: 56,
-    width: 56
-  }
+    width: 56,
+  },
 }));
 
 const TotalStudents = ({ className, noStudents, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-          spacing={3}
-        >
+        <Grid container justify="space-between" spacing={3}>
           <Grid item>
-            <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="h6"
-            >
+            <Typography color="textSecondary" gutterBottom variant="h6">
               # of Students
             </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h3"
-            >
+            <Typography color="textPrimary" variant="h3">
               {noStudents}
             </Typography>
           </Grid>
@@ -64,7 +50,7 @@ const TotalStudents = ({ className, noStudents, ...rest }) => {
 };
 
 TotalStudents.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default TotalStudents;

@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -22,38 +22,47 @@ import {
   TextField,
   InputAdornment,
   Snackbar,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const sendEmail = () => {
-  var axios = require('axios');
-  var data = JSON.stringify({"data":{"attributes":{"amount":10000,"payment_method_allowed":["card"],"payment_method_options":{"card":{"request_three_d_secure":"any"}},"currency":"PHP"}}});
-  
-  var config = {
-    method: 'post',
-    url: 'https://api.paymongo.com/v1/payment_intents',
-    headers: { 
-      'Content-Type': 'application/json', 
-      'Authorization': 'Basic c2tfdGVzdF9WRVFQbzVTeXVvWEFNaks2QTM2Skg2QUU6'
+  var axios = require("axios");
+  var data = JSON.stringify({
+    data: {
+      attributes: {
+        amount: 10000,
+        payment_method_allowed: ["card"],
+        payment_method_options: { card: { request_three_d_secure: "any" } },
+        currency: "PHP",
+      },
     },
-    data : data
-  };
-  
-  axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
   });
-}
 
-function send(recipient){
-    console.log(recipient)
-    return true
+  var config = {
+    method: "post",
+    url: "https://api.paymongo.com/v1/payment_intents",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Basic c2tfdGVzdF9WRVFQbzVTeXVvWEFNaks2QTM2Skg2QUU6",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+function send(recipient) {
+  console.log(recipient);
+  return true;
 }
 
 const Sales = ({ className, ...rest }) => {
@@ -61,60 +70,59 @@ const Sales = ({ className, ...rest }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
-  const [recipient, setRecipient] = React.useState('');
+  const [recipient, setRecipient] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const changeRecipient = (e) => {
-      setRecipient(e.target.value)
+    setRecipient(e.target.value);
   };
 
   const handleClose = () => {
     setOpen(false);
-    if(send(recipient)){
-        console.log("Success!")
+    if (send(recipient)) {
+      console.log("Success!");
     }
     setSuccess(true);
   };
 
   const closeSuccess = () => {
-      setSuccess(false);
-  }
+    setSuccess(false);
+  };
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <CardHeader
-        title="Twilio"
-      />
+    <Card className={clsx(classes.root, className)} {...rest}>
+      <CardHeader title="Twilio" />
       <Divider />
       <CardContent>
-        <Button onClick={handleClickOpen} variant='contained' color='primary'>
-          Send SMS Message 
+        <Button onClick={handleClickOpen} variant="contained" color="primary">
+          Send SMS Message
         </Button>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Send SMS</DialogTitle>
-            <DialogContent>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Send SMS</DialogTitle>
+          <DialogContent>
             <TextField
-                onChange={changeRecipient}
-                margin="dense"
-                id="recipient"
-                label="Phone Number"
-                defaultValue='+63'
+              onChange={changeRecipient}
+              margin="dense"
+              id="recipient"
+              label="Phone Number"
+              defaultValue="+63"
             />
-            </DialogContent>
-            <DialogActions>
+          </DialogContent>
+          <DialogActions>
             <Button onClick={handleClose} color="primary">
-                Cancel
+              Cancel
             </Button>
             <Button onClick={handleClose} color="primary">
-                Send
+              Send
             </Button>
-            </DialogActions>
+          </DialogActions>
         </Dialog>
       </CardContent>
     </Card>
@@ -122,7 +130,7 @@ const Sales = ({ className, ...rest }) => {
 };
 
 Sales.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Sales;

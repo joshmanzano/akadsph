@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useEffect } from "react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -9,8 +9,8 @@ import {
   Hidden,
   List,
   Typography,
-  makeStyles
-} from '@material-ui/core';
+  makeStyles,
+} from "@material-ui/core";
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -19,27 +19,27 @@ import {
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   UserPlus as UserPlusIcon,
-  Users as UsersIcon
-} from 'react-feather';
-import NavItem from './NavItem';
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+  Users as UsersIcon,
+} from "react-feather";
+import NavItem from "./NavItem";
+import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 
 const user = {
-  avatar: '/static/images/avatars/rolo.png',
-  jobTitle: 'Professional Breather',
-  name: 'Rolo Pena'
+  avatar: "/static/images/avatars/rolo.png",
+  jobTitle: "Professional Breather",
+  name: "Rolo Pena",
 };
 
 const items = [
   {
-    href: '/parent/dashboard',
+    href: "/parent/dashboard",
     icon: BarChartIcon,
-    title: 'Overview'
+    title: "Overview",
   },
   {
-    href: '/parent/customers',
+    href: "/parent/customers",
     icon: UsersIcon,
-    title: 'Book A Tutor'
+    title: "Book A Tutor",
   },
   // {
   //   href: '/parent/products',
@@ -47,24 +47,24 @@ const items = [
   //   title: 'Products'
   // },
   {
-    href: '/parent/account',
+    href: "/parent/account",
     icon: UserIcon,
-    title: 'Profile'
+    title: "Profile",
   },
   {
-    href: '/parent/settings',
+    href: "/parent/settings",
     icon: SettingsIcon,
-    title: 'Settings'
+    title: "Settings",
   },
   {
-    href: '/parent/playground',
+    href: "/parent/playground",
     icon: SportsEsportsIcon,
-    title: 'Testing Grounds'
+    title: "Testing Grounds",
   },
   {
-    href: '/parent/tutor-dashboard',
+    href: "/parent/tutor-dashboard",
     icon: BarChartIcon,
-    title: 'Tutor Dashboard'
+    title: "Tutor Dashboard",
   },
   // {
   //   href: '/parent/authorization/login',
@@ -85,18 +85,18 @@ const items = [
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
-    width: 256
+    width: 256,
   },
   desktopDrawer: {
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)'
+    height: "calc(100% - 64px)",
   },
   avatar: {
-    cursor: 'pointer',
+    cursor: "pointer",
     width: 64,
-    height: 64
-  }
+    height: 64,
+  },
 }));
 
 const NavBar = ({ onMobileClose, openMobile }) => {
@@ -111,34 +111,18 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   }, [location.pathname]);
 
   const content = (
-    <Box
-      height="100%"
-      display="flex"
-      flexDirection="column"
-    >
-      <Box
-        alignItems="center"
-        display="flex"
-        flexDirection="column"
-        p={2}
-      >
+    <Box height="100%" display="flex" flexDirection="column">
+      <Box alignItems="center" display="flex" flexDirection="column" p={2}>
         <Avatar
           className={classes.avatar}
           component={RouterLink}
           src={user.avatar}
           to="/account"
         />
-        <Typography
-          className={classes.name}
-          color="textPrimary"
-          variant="h5"
-        >
+        <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
+        <Typography color="textSecondary" variant="body2">
           {user.jobTitle}
         </Typography>
       </Box>
@@ -187,12 +171,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
 };
 
 NavBar.defaultProps = {
   onMobileClose: () => {},
-  openMobile: false
+  openMobile: false,
 };
 
 export default NavBar;

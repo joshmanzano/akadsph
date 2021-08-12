@@ -1,17 +1,17 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
   useTheme,
   makeStyles,
   Grid,
-} from '@material-ui/core';
-import Calendar from 'react-calendar'
+} from "@material-ui/core";
+import Calendar from "react-calendar";
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const Sales = ({ className, selectedDate, changeDate, ...rest }) => {
@@ -19,17 +19,11 @@ const Sales = ({ className, selectedDate, changeDate, ...rest }) => {
   // const theme = useTheme();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
         <Grid alignItems="center" direction="column" container>
           <Grid item xs={12}>
-            <Calendar
-            onChange={changeDate}
-            value={selectedDate}
-            />
+            <Calendar onChange={changeDate} value={selectedDate} />
           </Grid>
         </Grid>
       </CardContent>
@@ -38,7 +32,7 @@ const Sales = ({ className, selectedDate, changeDate, ...rest }) => {
 };
 
 Sales.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Sales;

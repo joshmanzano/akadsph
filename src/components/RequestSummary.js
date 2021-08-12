@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -14,25 +14,23 @@ import {
   Button,
   Box,
   Container,
-} from '@material-ui/core';
-import Calendar from 'react-calendar'
-import Table from 'src/components/Table.js';  
+} from "@material-ui/core";
+import Calendar from "react-calendar";
+import Table from "src/components/Table.js";
 
 const rows = [
   {
     subject: "Math",
     topic: "Algebra",
     duration: "1 hour",
-    student: "Rolo Pena"
+    student: "Rolo Pena",
   },
- 
-]
+];
 
-const headers = ["Subject", "Topic", "Duration", "Student", "Files"]
-
+const headers = ["Subject", "Topic", "Duration", "Student", "Files"];
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const Sales = ({ className, ...rest }) => {
@@ -49,14 +47,14 @@ const Sales = ({ className, ...rest }) => {
     //   />
     //   <Divider />
     //   <CardContent>
-        <Table tableHeaders={headers} tableRows={rows}/>
+    <Table tableHeaders={headers} tableRows={rows} />
     //   </CardContent>
     // </Card>
   );
 };
 
 Sales.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Sales;

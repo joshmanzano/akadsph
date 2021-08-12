@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import {
   Divider,
   makeStyles,
@@ -7,60 +7,55 @@ import {
   Grid,
   Button,
   Box,
-  Typography, 
+  Typography,
   IconButton,
-} from '@material-ui/core';
-import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-  } from '@material-ui/core';
-  
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import CloseIcon from '@material-ui/icons/Close';
-import { withStyles } from '@material-ui/core/styles';
-import { useConfirm } from 'material-ui-confirm';
-import ModalJoin from './ModalJoin';
+} from "@material-ui/core";
+import { Dialog, DialogActions, DialogContent } from "@material-ui/core";
 
-import toast, {Toaster} from 'react-hot-toast';
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import CloseIcon from "@material-ui/icons/Close";
+import { withStyles } from "@material-ui/core/styles";
+import { useConfirm } from "material-ui-confirm";
+import ModalJoin from "./ModalJoin";
 
-import { post_api } from 'src/Api'
+import toast, { Toaster } from "react-hot-toast";
 
+import { post_api } from "src/Api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%'
+    height: "100%",
   },
   avatar: {
     backgroundColor: colors.red[600],
     height: 56,
-    width: 56
+    width: 56,
   },
   differenceIcon: {
-    color: colors.red[900]
+    color: colors.red[900],
   },
   differenceValue: {
     color: colors.red[900],
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   closeButton: {
-    float:'right', marginTop: '5px'
-
+    float: "right",
+    marginTop: "5px",
   },
-  dialogTitle:{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '4px 2px 5px 20px',
+  dialogTitle: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4px 2px 5px 20px",
   },
-  dialogStyle:{
+  dialogStyle: {
     minWidth: "60vh",
   },
   iconFilled: {
-    color: '#ff6d75',
+    color: "#ff6d75",
   },
   iconHover: {
-    color: '#ff3d47',
+    color: "#ff3d47",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -71,107 +66,121 @@ const useStyles = makeStyles((theme) => ({
     height: "17vh",
     borderRadius: 15,
     // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    border: '2px solid #75c2b7',
+    border: "2px solid #75c2b7",
     "&:hover": {
-      backgroundColor: '#75c2b7',
-      color: 'white !important',
-    }
+      backgroundColor: "#75c2b7",
+      color: "white !important",
+    },
   },
   selectedBtn: {
     width: "17vh",
     height: "17vh",
     borderRadius: 15,
     // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    border: '2px solid #75c2b7',
-    backgroundColor: '#75c2b7',
-    color: 'white',
+    border: "2px solid #75c2b7",
+    backgroundColor: "#75c2b7",
+    color: "white",
   },
   exitBtn: {
     width: "17vh",
     height: "17vh",
     borderRadius: 15,
     // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    border: '2px solid #EB5531',
-    color: '#EB5531',
+    border: "2px solid #EB5531",
+    color: "#EB5531",
     "&:hover": {
-      backgroundColor: '#EB5531',
-      color: 'white !important',
-    }
+      backgroundColor: "#EB5531",
+      color: "white !important",
+    },
   },
   selectExitBtn: {
     width: "17vh",
     height: "17vh",
     borderRadius: 15,
     // boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    border: '2px solid #EB5531',
-    backgroundColor: '#EB5531',
-    color: 'white',
+    border: "2px solid #EB5531",
+    backgroundColor: "#EB5531",
+    color: "white",
   },
 }));
 
-const ModalTutorProfile = ({open, setOpen, session_id, duration, className, ...rest }) => {
+const ModalTutorProfile = ({
+  open,
+  setOpen,
+  session_id,
+  duration,
+  className,
+  ...rest
+}) => {
   const classes = useStyles();
-  const [extendMins, setExtendMins] =  React.useState(false);
-  const [extendHour, setExtendHour] =  React.useState(false);
-  const [endSession, setEndSession] =  React.useState(false);
+  const [extendMins, setExtendMins] = React.useState(false);
+  const [extendHour, setExtendHour] = React.useState(false);
+  const [endSession, setEndSession] = React.useState(false);
   const confirm = useConfirm();
   const [openJoin, setOpenJoin] = React.useState(false);
 
-  function buttonClick(type){
- 
-    if(type == 'extendMins'){
+  function buttonClick(type) {
+    if (type == "extendMins") {
       setExtendMins(true);
       setExtendHour(false);
       setEndSession(false);
-      confirm({ title:'Extend Confirmation', description: 'Do you want to extend the session for an additional 30 minutes?' })
-      .then(() => {
-        setOpen(false);
-        setOpenJoin(true);
-        
+      confirm({
+        title: "Extend Confirmation",
+        description:
+          "Do you want to extend the session for an additional 30 minutes?",
       })
-      .catch(() => {
-        setOpen(true);
-      });
-    }else if(type == 'extendHour'){
+        .then(() => {
+          setOpen(false);
+          setOpenJoin(true);
+        })
+        .catch(() => {
+          setOpen(true);
+        });
+    } else if (type == "extendHour") {
       setExtendMins(false);
       setExtendHour(true);
       setEndSession(false);
-      confirm({ title:'Extend Confirmation', description: 'Do you want to extend the session for an additional 1 hour?' })
-      .then(() => {
-        const payload = {
-          'session_id': session_id,
-          'duration': 1,
-        }
-        console.log(payload)
-        post_api('extend-session', payload, res => {
-          console.log(res)
-          toast('Sent request to tutor! Kindly inform your tutor of the extension request.')
-        })
-        setOpen(false);
+      confirm({
+        title: "Extend Confirmation",
+        description:
+          "Do you want to extend the session for an additional 1 hour?",
       })
-      .catch(() => {
-        setOpen(true);
-      });
-    }else if(type == 'endSession'){
+        .then(() => {
+          const payload = {
+            session_id: session_id,
+            duration: 1,
+          };
+          console.log(payload);
+          post_api("extend-session", payload, (res) => {
+            console.log(res);
+            toast(
+              "Sent request to tutor! Kindly inform your tutor of the extension request."
+            );
+          });
+          setOpen(false);
+        })
+        .catch(() => {
+          setOpen(true);
+        });
+    } else if (type == "endSession") {
       setExtendMins(false);
       setExtendHour(false);
       setEndSession(true);
-      confirm({ title:'Extend Confirmation', description: 'Are you sure you do not want to extend the session?' })
-      .then(() => {
-        setOpen(false);
+      confirm({
+        title: "Extend Confirmation",
+        description: "Are you sure you do not want to extend the session?",
       })
-      .catch(() => {
-
-      });
-      
+        .then(() => {
+          setOpen(false);
+        })
+        .catch(() => {});
     }
-
   }
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -183,14 +192,18 @@ const ModalTutorProfile = ({open, setOpen, session_id, duration, className, ...r
         <MuiDialogTitle disableTypography className={classes.root} {...other}>
           <Typography variant="h4">{children}</Typography>
           {onClose ? (
-            <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <IconButton
+              aria-label="close"
+              className={classes.closeButton}
+              onClick={onClose}
+            >
               <CloseIcon />
             </IconButton>
           ) : null}
         </MuiDialogTitle>
-        <Divider/>
-        <br/>
-        <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
+        <Divider />
+        <br />
+        <ModalJoin open={openJoin} setOpen={setOpenJoin} />
       </React.Fragment>
     );
   });
@@ -198,29 +211,37 @@ const ModalTutorProfile = ({open, setOpen, session_id, duration, className, ...r
   return (
     <React.Fragment>
       <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      fullWidth={true}
-      maxWidth={'sm'}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        fullWidth={true}
+        maxWidth={"sm"}
       >
-          <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Extend Session"}</DialogTitle>
-          <DialogContent className={classes.dialogStyle}>
-          
-            <Box align='center' mb={6} >
-              <Typography variant="h4" align="center" mb={2}>
-                Enjoy your session! You may extend your session by clicking the appropriate button below:
-              </Typography>
-            </Box>
+        <DialogTitle
+          onClose={handleClose}
+          id="alert-dialog-title"
+          className={classes.dialogTitle}
+        >
+          {"Extend Session"}
+        </DialogTitle>
+        <DialogContent className={classes.dialogStyle}>
+          <Box align="center" mb={6}>
+            <Typography variant="h4" align="center" mb={2}>
+              Enjoy your session! You may extend your session by clicking the
+              appropriate button below:
+            </Typography>
+          </Box>
 
-            <Box py={6}>
-              
-              <Grid container spacing={2} 
-                alignItems="center"
-                justify="center"
-                style={{placeItems: 'center', textAlign: 'center'}}>
-                {/* <Grid
+          <Box py={6}>
+            <Grid
+              container
+              spacing={2}
+              alignItems="center"
+              justify="center"
+              style={{ placeItems: "center", textAlign: "center" }}
+            >
+              {/* <Grid
                   item
                   lg={4}
                   md={4}
@@ -235,57 +256,56 @@ const ModalTutorProfile = ({open, setOpen, session_id, duration, className, ...r
                     Extend 30 Minutes
                   </Button>
                 </Grid> */}
-                <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={12}
+              <Grid item lg={6} md={6} xl={6} xs={12}>
+                <Button
+                  className={
+                    !extendHour ? classes.choicesBtn : classes.selectedBtn
+                  }
+                  onClick={() => buttonClick("extendHour")}
+                  variant="outlined"
                 >
-                  
-                  <Button className={ !extendHour? classes.choicesBtn : classes.selectedBtn} onClick={()=>buttonClick('extendHour') } variant="outlined">
-                    Extend 1 Hour
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={12}
-                >
-                  {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
-                  <Button className={ !endSession? classes.exitBtn : classes.selectExitBtn} onClick={()=>buttonClick('endSession') } variant="outlined">
-                    End
-                  </Button>
-                </Grid>
+                  Extend 1 Hour
+                </Button>
               </Grid>
-            </Box>
-            
-            <Box my={5}>
-              <Typography variant="body1" align="center" >
-              Extending the session by 1 hour means you agree on paying 1 credit to book another request at the end of this session.
-              </Typography>
-            </Box>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-                Cancel
-            </Button>
-            <Button onClick={handleClose} color="primary">
-                Done
-            </Button>
-          </DialogActions>
-          <ModalJoin open={openJoin} setOpen={setOpenJoin}/>
+              <Grid item lg={6} md={6} xl={6} xs={12}>
+                {/* <FormControlLabel value="20 hours P9,000" control={<Radio color="primary" />} label="20 hours P9,000" /> */}
+                <Button
+                  className={
+                    !endSession ? classes.exitBtn : classes.selectExitBtn
+                  }
+                  onClick={() => buttonClick("endSession")}
+                  variant="outlined"
+                >
+                  End
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+
+          <Box my={5}>
+            <Typography variant="body1" align="center">
+              Extending the session by 1 hour means you agree on paying 1 credit
+              to book another request at the end of this session.
+            </Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Done
+          </Button>
+        </DialogActions>
+        <ModalJoin open={openJoin} setOpen={setOpenJoin} />
       </Dialog>
-      <Toaster/>
-      
+      <Toaster />
     </React.Fragment>
   );
 };
 
 ModalTutorProfile.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ModalTutorProfile;

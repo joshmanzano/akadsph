@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -13,30 +13,28 @@ import {
   Typography,
   Box,
   Button,
-} from '@material-ui/core';
-import Table from 'src/components/Table.js' 
-import ForumIcon from '@material-ui/icons/Forum';
-import PageviewIcon from '@material-ui/icons/Pageview';
-import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { useConfirm } from 'material-ui-confirm';
-import { post_api } from 'src/Api.js';
+} from "@material-ui/core";
+import Table from "src/components/Table.js";
+import ForumIcon from "@material-ui/icons/Forum";
+import PageviewIcon from "@material-ui/icons/Pageview";
+import ModalSessionDetails from "src/components/ModalSessionDetails.js";
+import CancelIcon from "@material-ui/icons/Cancel";
+import { useConfirm } from "material-ui-confirm";
+import { post_api } from "src/Api.js";
 
-const headers = ["Booked Date", "Subject", "Student", "Topic",""]
-
-
+const headers = ["Booked Date", "Subject", "Student", "Topic", ""];
 
 const rows = [
   {
-    date: 'July 7',
-    time: '4 PM',
-    subject: 'Science',
-    tutor:  'Adrienne Soliven'
-  }
-]
+    date: "July 7",
+    time: "4 PM",
+    subject: "Science",
+    tutor: "Adrienne Soliven",
+  },
+];
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const Pending = ({ className, rows, ...rest }) => {
@@ -44,64 +42,93 @@ const Pending = ({ className, rows, ...rest }) => {
   const theme = useTheme();
   const [openDetails, setOpenDetails] = React.useState(false);
   const confirm = useConfirm();
-  const tableRows = [] 
-  rows.forEach(row => {
+  const tableRows = [];
+  rows.forEach((row) => {
     tableRows.push({
-      'date':row.date,
-      'subject':row.subject,
-      'student':row.student,
-      'topics':row.topics,
-      'files':
-      <Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} href={row.files} target="_blank">Files</Button>,
-      'cancel':
-      <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
-        onClick={() =>{
-          confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
-            .then(() => {
-              const payload = {
-                'request': row.id
-              }
-              post_api('parent-cancel-request', payload, (res) => {
-                window.location.reload()
-              })             
+      date: row.date,
+      subject: row.subject,
+      student: row.student,
+      topics: row.topics,
+      files: (
+        <Button
+          variant="outlined"
+          color="primary"
+          startIcon={<PageviewIcon />}
+          href={row.files}
+          target="_blank"
+        >
+          Files
+        </Button>
+      ),
+      cancel: (
+        <Button
+          variant="outlined"
+          color="secondary"
+          startIcon={<CancelIcon />}
+          onClick={() => {
+            confirm({
+              title: "Cancel Session",
+              description:
+                "Are you sure you want to cancel this session request?",
             })
-            .catch(() => {
-            });
-        }} 
-      >Cancel</Button>,
-    })
-    console.log(row)
-  })
+              .then(() => {
+                const payload = {
+                  request: row.id,
+                };
+                post_api("parent-cancel-request", payload, (res) => {
+                  window.location.reload();
+                });
+              })
+              .catch(() => {});
+          }}
+        >
+          Cancel
+        </Button>
+      ),
+    });
+    console.log(row);
+  });
 
-  const buttonList = [<Button variant='outlined' color='primary' startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>,
-  <Button variant='outlined' color='secondary' startIcon={<CancelIcon/>}
-  onClick={() =>{
-    confirm({ title:'Cancel Session' ,description: 'Are you sure you want to cancel this session request?' })
-      .then(() => {
-
-        
-      })
-      .catch(() => {
-
-      });
-  }} 
-  >Cancel</Button>,
-  ]
+  const buttonList = [
+    <Button
+      variant="outlined"
+      color="primary"
+      startIcon={<PageviewIcon />}
+      onClick={() => setOpenDetails(true)}
+    >
+      View
+    </Button>,
+    <Button
+      variant="outlined"
+      color="secondary"
+      startIcon={<CancelIcon />}
+      onClick={() => {
+        confirm({
+          title: "Cancel Session",
+          description: "Are you sure you want to cancel this session request?",
+        })
+          .then(() => {})
+          .catch(() => {});
+      }}
+    >
+      Cancel
+    </Button>,
+  ];
 
   const data = {
     datasets: [
       {
         backgroundColor: colors.indigo[500],
         data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year'
+        label: "This year",
       },
       {
         backgroundColor: colors.grey[200],
         data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year'
-      }
+        label: "Last year",
+      },
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
+    labels: ["1 Aug", "2 Aug", "3 Aug", "4 Aug", "5 Aug", "6 Aug"],
   };
 
   const options = {
@@ -119,20 +146,20 @@ const Pending = ({ className, rows, ...rest }) => {
           barPercentage: 0.5,
           categoryPercentage: 0.5,
           ticks: {
-            fontColor: theme.palette.text.secondary
+            fontColor: theme.palette.text.secondary,
           },
           gridLines: {
             display: false,
-            drawBorder: false
-          }
-        }
+            drawBorder: false,
+          },
+        },
       ],
       yAxes: [
         {
           ticks: {
             fontColor: theme.palette.text.secondary,
             beginAtZero: true,
-            min: 0
+            min: 0,
           },
           gridLines: {
             borderDash: [2],
@@ -141,10 +168,10 @@ const Pending = ({ className, rows, ...rest }) => {
             drawBorder: false,
             zeroLineBorderDash: [2],
             zeroLineBorderDashOffset: [2],
-            zeroLineColor: theme.palette.divider
-          }
-        }
-      ]
+            zeroLineColor: theme.palette.divider,
+          },
+        },
+      ],
     },
     tooltips: {
       backgroundColor: theme.palette.background.default,
@@ -154,44 +181,41 @@ const Pending = ({ className, rows, ...rest }) => {
       enabled: true,
       footerFontColor: theme.palette.text.secondary,
       intersect: false,
-      mode: 'index',
-      titleFontColor: theme.palette.text.primary
-    }
+      mode: "index",
+      titleFontColor: theme.palette.text.primary,
+    },
   };
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <CardHeader
-        title="Pending Requests"
-      />
+    <Card className={clsx(classes.root, className)} {...rest}>
+      <CardHeader title="Pending Requests" />
       <Divider />
-      {(rows).length != 0 ? 
+      {rows.length != 0 ? (
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={tableRows}/>
+            <Table tableHeaders={headers} tableRows={tableRows} />
           </CardContent>
-          <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
+          <ModalSessionDetails
+            open={openDetails}
+            setOpen={setOpenDetails} /*details={sessionDetails}*/
+          />
         </React.Fragment>
-      :
+      ) : (
         <React.Fragment>
           <Box m={6}>
-            <Typography variant='h3' align='center'>
+            <Typography variant="h3" align="center">
               No pending requests
             </Typography>
           </Box>
         </React.Fragment>
-      }
-  
+      )}
     </Card>
   );
 };
 
 Pending.propTypes = {
   className: PropTypes.string,
-  rows: PropTypes.array
+  rows: PropTypes.array,
 };
 
 export default Pending;

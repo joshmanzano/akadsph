@@ -1,1 +1,1 @@
-fbq('track', 'CompleteRegistration');
+fbq("track", "CompleteRegistration");

@@ -2,7 +2,5 @@
   "compilerOptions": {
     "baseUrl": "."
   },
-  "include": [
-    "src"
-, "update-build.js", "public/Analytics.js"  ]
+  "include": ["src", "update-build.js", "public/Analytics.js"]
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -8,41 +8,41 @@ import {
   useTheme,
   makeStyles,
   Button,
-} from '@material-ui/core';
-import Table from 'src/components/Table.js' 
-import ModalSessionDetails from 'src/components/ModalSessionDetails.js';
-import PageviewIcon from '@material-ui/icons/Pageview';
+} from "@material-ui/core";
+import Table from "src/components/Table.js";
+import ModalSessionDetails from "src/components/ModalSessionDetails.js";
+import PageviewIcon from "@material-ui/icons/Pageview";
 
 const rows = [
   {
-    date: 'September 29',
-    time: '4 PM',
-    subject: 'Filipino',
-    duration: '1 hr',
-    student: 'Rolo Pena',
-    grade: 'Grade 10',
-    status: 'Completed',
-    payout: 'P300'
+    date: "September 29",
+    time: "4 PM",
+    subject: "Filipino",
+    duration: "1 hr",
+    student: "Rolo Pena",
+    grade: "Grade 10",
+    status: "Completed",
+    payout: "P300",
   },
   {
-    date: 'September 30',
-    time: '4 PM',
-    subject: 'Math',
-    duration: '1 hr',
-    student: 'Rolo Pena',
-    grade: 'Grade 10',
-    status: 'Completed',
-    payout: 'P300'
+    date: "September 30",
+    time: "4 PM",
+    subject: "Math",
+    duration: "1 hr",
+    student: "Rolo Pena",
+    grade: "Grade 10",
+    status: "Completed",
+    payout: "P300",
   },
   {
-    date: 'October 1',
-    time: '4 PM',
-    subject: 'Science',
-    duration: '1 hr',
-    student: 'Rolo Pena',
-    grade: 'Grade 10',
-    status: 'Completed',
-    payout: 'P300'
+    date: "October 1",
+    time: "4 PM",
+    subject: "Science",
+    duration: "1 hr",
+    student: "Rolo Pena",
+    grade: "Grade 10",
+    status: "Completed",
+    payout: "P300",
   },
   // {
   //   date: 'July 7',
@@ -68,12 +68,22 @@ const rows = [
   //     name: 'Adrienne Soliven'
   //   },
   // },
-]
+];
 
-const headers = ["Date", "Time", "Subject", "Duration", "Student", "Grade", "Status", "Payout", ""]
+const headers = [
+  "Date",
+  "Time",
+  "Subject",
+  "Duration",
+  "Student",
+  "Grade",
+  "Status",
+  "Payout",
+  "",
+];
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const WeeklySessions = ({ className, ...rest }) => {
@@ -81,24 +91,38 @@ const WeeklySessions = ({ className, ...rest }) => {
   const theme = useTheme();
   const [openDetails, setOpenDetails] = React.useState(false);
 
-  const buttonList = [<Button variant='outlined' color='primary' id="view" startIcon={<PageviewIcon/>} onClick={() => setOpenDetails(true)}>View</Button>]
+  const buttonList = [
+    <Button
+      variant="outlined"
+      color="primary"
+      id="view"
+      startIcon={<PageviewIcon />}
+      onClick={() => setOpenDetails(true)}
+    >
+      View
+    </Button>,
+  ];
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <Divider />
       <CardContent id="table">
-        <Table tableHeaders={headers} tableRows={rows} tableButtons={buttonList}/>
+        <Table
+          tableHeaders={headers}
+          tableRows={rows}
+          tableButtons={buttonList}
+        />
       </CardContent>
-      <ModalSessionDetails open={openDetails} setOpen={setOpenDetails} /*details={sessionDetails}*//> 
+      <ModalSessionDetails
+        open={openDetails}
+        setOpen={setOpenDetails} /*details={sessionDetails}*/
+      />
     </Card>
   );
 };
 
 WeeklySessions.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default WeeklySessions;

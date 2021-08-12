@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
 import {
   Avatar,
   Box,
@@ -10,42 +10,28 @@ import {
   CardContent,
   Divider,
   Typography,
-  makeStyles
-} from '@material-ui/core';
+  makeStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
     height: 100,
-    width: 100
-  }
+    width: 100,
+  },
 }));
 
 const Profile = ({ className, props, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Box 
-          alignItems="center"
-          display="flex"
-          flexDirection="column"
-        >
+        <Box alignItems="center" display="flex" flexDirection="column">
           <Box my={2}>
-            <Avatar
-              className={classes.avatar}
-              src={props.picture}
-            />
+            <Avatar className={classes.avatar} src={props.picture} />
           </Box>
-          <Typography
-            color="textPrimary"
-            gutterBottom
-            variant="h3"
-          >
+          <Typography color="textPrimary" gutterBottom variant="h3">
             {props.first_name} {props.last_name}
           </Typography>
           {/* <Typography
@@ -71,7 +57,7 @@ const Profile = ({ className, props, ...rest }) => {
 };
 
 Profile.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Profile;

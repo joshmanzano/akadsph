@@ -1,9 +1,7 @@
-import React from 'react';
-import './ToolbarButton.css';
+import React from "react";
+import "./ToolbarButton.css";
 
 export default function ToolbarButton(props) {
-    const { icon } = props;
-    return (
-      <i className={`toolbar-button ${icon}`} />
-    );
+  const { icon } = props;
+  return <i className={`toolbar-button ${icon}`} />;
 }

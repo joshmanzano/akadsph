@@ -1,10 +1,9 @@
 ---
 name: Question or Clarification
 about: For unclear functionality or features
-title: ''
+title: ""
 labels: question
-assignees: ''
-
+assignees: ""
 ---
 
 **State question or inquiry**

@@ -1,6 +1,5 @@
-
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const Card = ({
   imagePosition,
@@ -8,14 +7,12 @@ const Card = ({
   cardOption,
   renderImage,
   markAsRead,
-  data
+  data,
 }) => {
-  const {
-    image, message, receivedTime, detailPage, seen
-  } = data;
+  const { image, message, receivedTime, detailPage, seen } = data;
 
   const classNameGenerator = () => {
-    const prefix = classNamePrefix ? `${classNamePrefix}-` : '';
+    const prefix = classNamePrefix ? `${classNamePrefix}-` : "";
     const classes = {
       card: `${prefix}card`,
       content: `${prefix}content`,
@@ -24,7 +21,7 @@ const Card = ({
       option: `${prefix}option`,
       message: `${prefix}message`,
       text: `${prefix}text`,
-      time: `${prefix}time`
+      time: `${prefix}time`,
     };
     return classes;
   };
@@ -32,12 +29,15 @@ const Card = ({
   const classes = classNameGenerator();
 
   return (
-    <div className={classes.card} style={seen ? {backgroundColor: '#FFF'} : null}>
+    <div
+      className={classes.card}
+      style={seen ? { backgroundColor: "#FFF" } : null}
+    >
       <a href={detailPage} className="card-link">
         <div
           className={classes.content}
           style={
-            imagePosition === 'right' ? { flexDirection: 'row-reverse' } : {}
+            imagePosition === "right" ? { flexDirection: "row-reverse" } : {}
           }
         >
           {renderImage && (
@@ -73,11 +73,11 @@ const Card = ({
 
 Card.defaultProps = {
   renderImage: true,
-  imagePosition: 'left',
+  imagePosition: "left",
   markAsRead: null,
   data: null,
   classNamePrefix: null,
-  cardOption: null
+  cardOption: null,
 };
 
 Card.propTypes = {
@@ -85,12 +85,12 @@ Card.propTypes = {
     image: PropTypes.string,
     message: PropTypes.any,
     receivedTime: PropTypes.string,
-    detailPage: PropTypes.string
+    detailPage: PropTypes.string,
   }),
   renderImage: PropTypes.bool,
   markAsRead: PropTypes.func,
   cardOption: PropTypes.func,
-  imagePosition: PropTypes.oneOf(['left', 'right']),
-  classNamePrefix: PropTypes.string
+  imagePosition: PropTypes.oneOf(["left", "right"]),
+  classNamePrefix: PropTypes.string,
 };
 export default Card;

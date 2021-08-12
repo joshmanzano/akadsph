@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Box,
   Button,
@@ -10,27 +10,27 @@ import {
   Divider,
   Grid,
   TextField,
-  makeStyles
-} from '@material-ui/core';
-import {useConfirm} from 'material-ui-confirm';
+  makeStyles,
+} from "@material-ui/core";
+import { useConfirm } from "material-ui-confirm";
 
 const states = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    value: "alabama",
+    label: "Alabama",
   },
   {
-    value: 'new-york',
-    label: 'New York'
+    value: "new-york",
+    label: "New York",
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
+    value: "san-francisco",
+    label: "San Francisco",
+  },
 ];
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const ProfileDetails = ({ className, props, ...rest }) => {
@@ -40,15 +40,15 @@ const ProfileDetails = ({ className, props, ...rest }) => {
     lastName: props.last_name,
     email: props.email,
     phone: props.phone,
-    state: 'NCR',
-    country: 'Philippines'
+    state: "NCR",
+    country: "Philippines",
   });
-  const confirm = useConfirm()
+  const confirm = useConfirm();
 
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -66,15 +66,8 @@ const ProfileDetails = ({ className, props, ...rest }) => {
         />
         <Divider />
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid container spacing={3}>
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 helperText="Please specify the first name"
@@ -87,11 +80,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 disabled
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Last name"
@@ -103,11 +92,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 disabled
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Email Address"
@@ -119,11 +104,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
                 disabled
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Phone Number"
@@ -179,23 +160,18 @@ const ProfileDetails = ({ className, props, ...rest }) => {
           </Grid>
         </CardContent>
         <Divider />
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          p={2}
-        >
+        <Box display="flex" justifyContent="flex-end" p={2}>
           <Button
             color="primary"
             variant="outlined"
             onClick={() => {
-              confirm({ title:'Edit Details' ,description: 'Kindly email us at support@akadsph.com if you would like to change your profile details.' })
-              .then(() => {
-              
+              confirm({
+                title: "Edit Details",
+                description:
+                  "Kindly email us at support@akadsph.com if you would like to change your profile details.",
               })
-              .catch(() => {
-
-              });
-
+                .then(() => {})
+                .catch(() => {});
             }}
           >
             Edit details
@@ -208,7 +184,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
 
 ProfileDetails.propTypes = {
   className: PropTypes.string,
-  props: PropTypes.array
+  props: PropTypes.array,
 };
 
 export default ProfileDetails;

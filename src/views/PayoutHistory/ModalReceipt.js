@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -17,70 +17,67 @@ import {
   TextField,
   InputAdornment,
   Snackbar,
-  Typography, 
+  Typography,
   IconButton,
   Backdrop,
-} from '@material-ui/core';
+} from "@material-ui/core";
 import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    Modal
-    // DialogTitle,
-  } from '@material-ui/core';
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Modal,
+  // DialogTitle,
+} from "@material-ui/core";
 
-  
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-  
-import CloseIcon from '@material-ui/icons/Close';
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
 
-import { withStyles } from '@material-ui/core/styles';
+import CloseIcon from "@material-ui/icons/Close";
 
+import { withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%'
+    height: "100%",
   },
   avatar: {
     backgroundColor: colors.red[600],
     height: 56,
-    width: 56
+    width: 56,
   },
   differenceIcon: {
-    color: colors.red[900]
+    color: colors.red[900],
   },
   differenceValue: {
     color: colors.red[900],
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   closeButton: {
-    float:'right', marginTop: '5px'
-
+    float: "right",
+    marginTop: "5px",
   },
-  dialogTitle:{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '4px 2px 5px 20px',
-  }, 
-  dialogStyle:{
+  dialogTitle: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4px 2px 5px 20px",
+  },
+  dialogStyle: {
     minWidth: "60vh",
   },
 }));
 
-const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
+const ModalConfRequest = ({ open, setOpen, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
-
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  
+
   const handleClose = (event) => {
     setOpen(false);
-    event.stopPropagation()
+    event.stopPropagation();
   };
 
   const DialogTitle = withStyles(useStyles)((props) => {
@@ -90,53 +87,57 @@ const ModalConfRequest = ({open, setOpen, className, ...rest }) => {
         <MuiDialogTitle disableTypography className={classes.root} {...other}>
           <Typography variant="h4">{children}</Typography>
           {onClose ? (
-            <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <IconButton
+              aria-label="close"
+              className={classes.closeButton}
+              onClick={onClose}
+            >
               <CloseIcon />
             </IconButton>
           ) : null}
         </MuiDialogTitle>
-        <Divider/>
-        <br/>
+        <Divider />
+        <br />
       </React.Fragment>
     );
   });
 
   return (
-    <Modal
-    open={open}
-    onClose={handleClose}
-    >
-
-    <Dialog
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="alert-dialog-title"
-    aria-describedby="alert-dialog-description"
-    className={classes.dialogStyle}
-    // fullWidth={true}
-    // maxWidth={'md'}
-    >
-        <DialogTitle onClose={(event)=>handleClose(event)} id="alert-dialog-title" className={classes.dialogTitle}>{"Receipt"}</DialogTitle>
-        <DialogContent >
-          <Box align='center' mb={2}>
-            <img width='300' src='../static/images/temp_receipt.png'></img>
+    <Modal open={open} onClose={handleClose}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        className={classes.dialogStyle}
+        // fullWidth={true}
+        // maxWidth={'md'}
+      >
+        <DialogTitle
+          onClose={(event) => handleClose(event)}
+          id="alert-dialog-title"
+          className={classes.dialogTitle}
+        >
+          {"Receipt"}
+        </DialogTitle>
+        <DialogContent>
+          <Box align="center" mb={2}>
+            <img width="300" src="../static/images/temp_receipt.png"></img>
           </Box>
         </DialogContent>
-        
+
         <DialogActions>
           <Button onClick={handleClose} color="primary" autoFocus>
-              Done
+            Done
           </Button>
         </DialogActions>
-    </Dialog>
-
+      </Dialog>
     </Modal>
-
   );
 };
 
 ModalConfRequest.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ModalConfRequest;

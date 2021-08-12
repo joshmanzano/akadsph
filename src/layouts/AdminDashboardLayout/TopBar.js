@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   AppBar,
   Badge,
@@ -17,62 +17,63 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import InputIcon from '@material-ui/icons/Input';
-import Logo from 'src/components/Logo';
-import SettingsIcon from '@material-ui/icons/Settings';
-import BookIcon from '@material-ui/icons/Book';
-import StoreIcon from '@material-ui/icons/Store';
-import ForumIcon from '@material-ui/icons/Forum';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import FaceIcon from '@material-ui/icons/Face';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import InputIcon from "@material-ui/icons/Input";
+import Logo from "src/components/Logo";
+import SettingsIcon from "@material-ui/icons/Settings";
+import BookIcon from "@material-ui/icons/Book";
+import StoreIcon from "@material-ui/icons/Store";
+import ForumIcon from "@material-ui/icons/Forum";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import FaceIcon from "@material-ui/icons/Face";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
+import Divider from "@material-ui/core/Divider";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import InsertInvitationIcon from "@material-ui/icons/InsertInvitation";
+import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import Notifications from "react-notifications-menu";
-import { useConfirm } from 'material-ui-confirm';
-import 'src/React-Notifs.css'
+import { useConfirm } from "material-ui-confirm";
+import "src/React-Notifs.css";
 
-import 'intro.js/introjs.css';
-import { Steps } from 'intro.js-react';
+import "intro.js/introjs.css";
+import { Steps } from "intro.js-react";
 
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
     width: 60,
-    height: 60
-  }
+    height: 60,
+  },
 }));
 
 const TopBar = ({
-  className, credits, notifications,
+  className,
+  credits,
+  notifications,
   onMobileNavOpen,
   ...rest
 }) => {
   const classes = useStyles();
-  const anchor = 'left';
-  const [notifs, setNotif] = useState(notifications)
-  const [chatNotif, setChatNotif] = useState(true)
+  const anchor = "left";
+  const [notifs, setNotif] = useState(notifications);
+  const [chatNotif, setChatNotif] = useState(true);
   const confirm = useConfirm();
   const logout = () => {
-    confirm({ title:'Logout' , description: 'Would you like to logout?' })
+    confirm({ title: "Logout", description: "Would you like to logout?" })
       .then(() => {
-                localStorage.removeItem('token')
-        localStorage.removeItem('session_token')
-        window.location.replace('/')
+        localStorage.removeItem("token");
+        localStorage.removeItem("session_token");
+        window.location.replace("/");
       })
-      .catch(() => {
-      });
-  }
+      .catch(() => {});
+  };
 
   const [state, setState] = React.useState({
     top: false,
@@ -82,7 +83,11 @@ const TopBar = ({
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
@@ -92,38 +97,40 @@ const TopBar = ({
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Overview', 'Book A Tutor', 'Buy Credits', 'Profile', 'Settings'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        {["Overview", "Book A Tutor", "Buy Credits", "Profile", "Settings"].map(
+          (text, index) => (
+            <ListItem button key={text}>
+              <ListItemText primary={text} />
+            </ListItem>
+          )
+        )}
       </List>
     </div>
   );
 
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
-      elevation={0}
-      {...rest}
-    >
+    <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
         <RouterLink to="/">
           <Logo />
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden xsDown>
-        <Container>
-
-          <Grid container direction="row" justify="center" alignItems="center">
-            {/* <Grid item sm={2}>
+          <Container>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              {/* <Grid item sm={2}>
             </Grid>
             <Grid item sm={2}>
               <IconButton color="inherit" href="/">
@@ -137,7 +144,7 @@ const TopBar = ({
                 </Hidden>
               </IconButton>
             </Grid> */}
-            {/* <Grid sm={2}>
+              {/* <Grid sm={2}>
               <IconButton color="inherit" href="/viewrequest">
                 <InsertInvitationIcon/>
                 <Hidden mdDown>
@@ -185,10 +192,8 @@ const TopBar = ({
                 </Hidden>
               </IconButton>
             </Grid> */}
-          </Grid>
-
-        </Container>
-
+            </Grid>
+          </Container>
         </Hidden>
         <Box flexGrow={1} />
 
@@ -220,25 +225,22 @@ const TopBar = ({
           </Badge>
         </IconButton> */}
         <IconButton onClick={logout} color="inherit">
-            <MeetingRoomIcon/>
+          <MeetingRoomIcon />
         </IconButton>
         <Hidden smUp>
-          <IconButton
-            color="inherit"
-            onClick={toggleDrawer(anchor, true)}
-          >
+          <IconButton color="inherit" onClick={toggleDrawer(anchor, true)}>
             <MenuIcon />
           </IconButton>
         </Hidden>
         <Hidden smUp>
-        <SwipeableDrawer
-      anchor={anchor}
-      open={state[anchor]}
-      onClose={toggleDrawer(anchor, false)}
-      onOpen={toggleDrawer(anchor, true)}
-    >
-      {list(anchor)}
-    </SwipeableDrawer>
+          <SwipeableDrawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+          >
+            {list(anchor)}
+          </SwipeableDrawer>
         </Hidden>
       </Toolbar>
     </AppBar>
@@ -247,7 +249,7 @@ const TopBar = ({
 
 TopBar.propTypes = {
   className: PropTypes.string,
-  onMobileNavOpen: PropTypes.func
+  onMobileNavOpen: PropTypes.func,
 };
 
 export default TopBar;

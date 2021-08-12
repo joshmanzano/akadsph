@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Card,
@@ -8,47 +8,33 @@ import {
   Grid,
   Typography,
   makeStyles,
-  colors
-} from '@material-ui/core';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+  colors,
+} from "@material-ui/core";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 const useStyles = makeStyles(() => ({
   root: {
-    height: '100%'
+    height: "100%",
   },
   avatar: {
     backgroundColor: colors.orange[600],
     height: 56,
-    width: 56
-  }
+    width: 56,
+  },
 }));
 
 const AveRating = ({ className, aveRating, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-          spacing={3}
-        >
+        <Grid container justify="space-between" spacing={3}>
           <Grid item>
-            <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="h6"
-            >
+            <Typography color="textSecondary" gutterBottom variant="h6">
               Average Rating
             </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h3"
-            >
+            <Typography color="textPrimary" variant="h3">
               {aveRating}
             </Typography>
           </Grid>
@@ -64,7 +50,7 @@ const AveRating = ({ className, aveRating, ...rest }) => {
 };
 
 AveRating.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default AveRating;

@@ -1,7 +1,7 @@
-import React from 'react';
-import DayPicker, { DateUtils } from 'react-day-picker';
-import Moment from 'moment';
-import 'src/CalendarPicker.css'
+import React from "react";
+import DayPicker, { DateUtils } from "react-day-picker";
+import Moment from "moment";
+import "src/CalendarPicker.css";
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -12,43 +12,44 @@ export default class Example extends React.Component {
     };
   }
 
-  handleDayClick(day, modifiers={}) {
-    if(modifiers.disabled){
-      return
+  handleDayClick(day, modifiers = {}) {
+    if (modifiers.disabled) {
+      return;
     }
     this.setState({
-      selectedDays: [day]
-    })
-    this.props.setDay(day)
-    
+      selectedDays: [day],
+    });
+    this.props.setDay(day);
 
-    console.log(day.toLocaleDateString('en-GB'));
-    console.log(Moment(day).format('YYYY-DD-MM'));
+    console.log(day.toLocaleDateString("en-GB"));
+    console.log(Moment(day).format("YYYY-DD-MM"));
   }
 
   render() {
-    const now = new Date()
-    const fromMonth = new Date() 
-    const toMonth = new Date()
-    toMonth.setMonth(now.getMonth() + 1)
-    const toDay = new Date() 
-    toDay.setDate(now.getDate() + 1)
-    var disabledDays = 
-    [
+    const now = new Date();
+    const fromMonth = new Date();
+    const toMonth = new Date();
+    toMonth.setMonth(now.getMonth() + 1);
+    const toDay = new Date();
+    toDay.setDate(now.getDate() + 1);
+    var disabledDays = [
       {
-        before: now
+        before: now,
       },
       {
-        after: toMonth
+        after: toMonth,
       },
       {
         after: now,
-        before: toDay
+        before: toDay,
       },
-      now
-    ]
-    if(process.env.REACT_APP_ENV == 'DEVELOPMENT' || process.env.REACT_APP_ENV == 'STAGING'){
-      disabledDays = []
+      now,
+    ];
+    if (
+      process.env.REACT_APP_ENV == "DEVELOPMENT" ||
+      process.env.REACT_APP_ENV == "STAGING"
+    ) {
+      disabledDays = [];
     }
     return (
       <div>

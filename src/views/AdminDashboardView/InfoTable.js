@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { Grid, _ } from 'gridjs-react';
+import React, { useEffect } from "react";
+import { Grid, _ } from "gridjs-react";
 
 function InfoTable(props) {
-
   // const grid = new Grid({
   //   columns: [
   //     'Name',
-  //     { 
+  //     {
   //       name: 'Email',
   //       formatter: (cell) => _(<i>{cell}</i>)
   //     },
@@ -19,9 +18,9 @@ function InfoTable(props) {
   //   ])
   // });
 
-    return (
+  return (
     <Grid
-      data = {props.rows}
+      data={props.rows}
       columns={props.headers}
       search={true}
       sort={true}
@@ -29,8 +28,8 @@ function InfoTable(props) {
         enabled: true,
         limit: 5,
       }}
-      />
-    );
+    />
+  );
 }
 
 export default InfoTable;

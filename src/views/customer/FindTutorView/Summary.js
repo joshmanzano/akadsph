@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
 import {
   Box,
   Card,
@@ -11,9 +11,8 @@ import {
   CardHeader,
   Divider,
   Chip,
-} from '@material-ui/core';
-import moment from 'moment';
-
+} from "@material-ui/core";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -36,73 +35,63 @@ const useStyles = makeStyles((theme) => ({
 
 const Summary = ({ className, data, ...rest }) => {
   const classes = useStyles();
-  console.log(data)
+  console.log(data);
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <div className={clsx(classes.root, className)} {...rest}>
       {/* <Typography variant="h4" align='center'>
             Choose a Bundle
       </Typography> */}
       <Grid container spacing={2}>
-          <Grid
-          item
-          lg={12}
-          md={12}
-          xl={12}
-          xs={12}
-          >
-            <Box mx="auto" /*mt={3}*/>
-              <Card style={{justifyContent: 'center', placeItems: 'center'}}>
-                <CardHeader
-                  // subheader="Bundles that are for more than 1 hour are consummable for anytime"
-                  title="Summary"
-                />
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
+        <Grid item lg={12} md={12} xl={12} xs={12}>
+          <Box mx="auto" /*mt={3}*/>
+            <Card style={{ justifyContent: "center", placeItems: "center" }}>
+              <CardHeader
+                // subheader="Bundles that are for more than 1 hour are consummable for anytime"
+                title="Summary"
+              />
+              <Divider />
+              <CardContent
+                style={{ justifyContent: "center", placeItems: "center" }}
+              >
+                <Box
+                  style={{
+                    justifyContent: "center",
+                    placeItems: "center",
+                  }} /*maxWidth={1000}*/
+                >
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Tutee
-                      </Typography>
+                      <Typography variant="h6">Tutee</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['tutees'].first_name}
+                        {data["tutees"].first_name}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Grade Level
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography variant="h5" align="right">
-                        {data['tutees'].year_level}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Subject
-                      </Typography>
+                      <Typography variant="h6">Grade Level</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['subjects'].subject_field}
+                        {data["tutees"].year_level}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Topic
+                      <Typography variant="h6">Subject</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h5" align="right">
+                        {data["subjects"].subject_field}
                       </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h6">Topic</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
                         {/* {data['topics'].map(topic => <Chip size="small" color="primary" label={topic} />)} */}
-                        {data['topics']}
+                        {data["topics"]}
                       </Typography>
                     </Grid>
                     {/* <Grid item xs={6}>
@@ -116,55 +105,53 @@ const Summary = ({ className, data, ...rest }) => {
                       </Typography>
                     </Grid> */}
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Length of Session
-                      </Typography>
+                      <Typography variant="h6">Length of Session</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {data['lengths'].name}
+                        {data["lengths"].name}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Tutor Options
-                      </Typography>
+                      <Typography variant="h6">Tutor Options</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      {data['allTutors'] ? 
-                      <Typography variant="h5" align="right">
-                        All Tutors
-                      </Typography>
-                      :
-                      <Typography variant="h5" align="right">
-                        Favorite Tutors Only
-                      </Typography>
-                      }
+                      {data["allTutors"] ? (
+                        <Typography variant="h5" align="right">
+                          All Tutors
+                        </Typography>
+                      ) : (
+                        <Typography variant="h5" align="right">
+                          Favorite Tutors Only
+                        </Typography>
+                      )}
                     </Grid>
-                    {data['allTutors'] ? null : 
-                    <React.Fragment>
+                    {data["allTutors"] ? null : (
+                      <React.Fragment>
+                        <Grid item xs={6}>
+                          <Typography variant="h6">Favorite Tutor</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Typography variant="h5" align="right">
+                            {data["favtutors"].tutor.first_name}
+                          </Typography>
+                        </Grid>
+                      </React.Fragment>
+                    )}
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Favorite Tutor
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography variant="h5" align="right">
-                        {data['favtutors'].tutor.first_name}
-                      </Typography>
-                    </Grid>
-                    </React.Fragment>
-                    }
-                    <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Available Dates
-                      </Typography>
+                      <Typography variant="h6">Available Dates</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
-                        {Object.keys(data['times']).map(time => (
+                        {Object.keys(data["times"]).map((time) => (
                           // <Chip label={(day.getMonth()+1)+'/'+(day.getDay())+'/'+day.getFullYear()}/>
-                          <Chip color="primary" size="small" label={moment((new Date(Number(time)))).format('MMM Do')}/>
+                          <Chip
+                            color="primary"
+                            size="small"
+                            label={moment(new Date(Number(time))).format(
+                              "MMM Do"
+                            )}
+                          />
                         ))}
                         {/* <Chip label="27/11/20 2:00pm-4:00pm" /> */}
                       </Typography>
@@ -180,63 +167,76 @@ const Summary = ({ className, data, ...rest }) => {
                       </Typography>
                     </Grid> */}
                   </Grid>
-                  </Box>
-                </CardContent>
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Current Hours Credits
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          {data['credits']}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Hours Deducted
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          -{Object.keys(data['times']).length * data['lengths'].value}
-                        </Typography>
-                      </Grid>
+                </Box>
+              </CardContent>
+              <Divider />
+              <CardContent
+                style={{ justifyContent: "center", placeItems: "center" }}
+              >
+                <Box
+                  style={{
+                    justifyContent: "center",
+                    placeItems: "center",
+                  }} /*maxWidth={1000}*/
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography variant="h5">
+                        Current Hours Credits
+                      </Typography>
                     </Grid>
-                  </Box>
-                </CardContent>
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Hours Left
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          {data['credits'] - Object.keys(data['times']).length * data['lengths'].value}
-                        </Typography>
-                      </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h5" align="right">
+                        {data["credits"]}
+                      </Typography>
                     </Grid>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Box>
-          </Grid> 
-
+                    <Grid item xs={6}>
+                      <Typography variant="h5">Hours Deducted</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h5" align="right">
+                        -
+                        {Object.keys(data["times"]).length *
+                          data["lengths"].value}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </CardContent>
+              <Divider />
+              <CardContent
+                style={{ justifyContent: "center", placeItems: "center" }}
+              >
+                <Box
+                  style={{
+                    justifyContent: "center",
+                    placeItems: "center",
+                  }} /*maxWidth={1000}*/
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography variant="h5">Hours Left</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h5" align="right">
+                        {data["credits"] -
+                          Object.keys(data["times"]).length *
+                            data["lengths"].value}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </CardContent>
+            </Card>
+          </Box>
+        </Grid>
       </Grid>
     </div>
   );
 };
 
 Summary.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Summary;

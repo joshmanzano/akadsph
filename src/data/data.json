@@ -1,183 +1,183 @@
 {
-    "Header": {
-
-        "title": "Match with the best tutors",
-        "paragraph": "Akads helps you match with a tutor that is most suited for your child. Create an account now and have your first hour for FREE."
-
-    },
-    "About": {
-        "paragraph": "We want to make it easy for parents to find tutors for their kids by combining the booking process, video chat, and online payments, all-in-one platform. Online tutorial sessions are conducted through ZOOM. We accept any mode of payment such as credit cards, payment apps, and bank transfers.",
-        "Why": [
-            "Math",
-            "Science",
-            "English",
-            "Science"
-        ],
-        "Why2": []
-    },
-    "Services": [{
-            "icon": "fa fa-wordpress",
-            "name": "Lorem ipsum dolor",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-        },
-        {
-            "icon": "fa fa-cart-arrow-down",
-            "name": "Consectetur adipiscing",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-        },
-        {
-            "icon": "fa fa-cloud-download",
-            "name": "Lorem ipsum dolor",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-        },
-        {
-            "icon": "fa fa-language",
-            "name": "Consectetur adipiscing",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-        },
-        {
-            "icon": "fa fa-plane",
-            "name": "Lorem ipsum dolor",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-        },
-        {
-            "icon": "fa fa-pie-chart",
-            "name": "Consectetur adipiscing",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-        }
-
-
-    ],
-    "Testimonials": [
-        [
-            {
-                "img": "img/testimonials/Trixie.png",
-                "text": "Everything that I need to get a tutor for my daughter, Martina, is in AKADS. They help support her by providing a tutor that can help with the lessons given online schooling.",
-                "name": "Mommy Trixie"
-            },
-            {
-                "img": "img/testimonials/Marti.png",
-                "text": "Ate Bea super helped me understand trigonometry more. She even gave me tips to help me remember the formulas.",
-                "name": "Martina"
-            },
-            {
-                "img": "img/testimonials/Beatrice.png",
-                "text": "...It was really fulfilling to be able to teach Martina as she was able to understand our lesson on trigonometry. I do hope to continue teaching younger students in the future!",
-                "name": "Tutor Bea"
-            }
-        ],
-        [
-            {
-                "img": "img/testimonials/Didi.png",
-                "text": "AKADS is the new normal for us. It compliments well with the online learning the school provides. Safe, easy and effective. Bonus part is when they started offering bundles! We are now sure we are booked and assured of our slot!",
-                "name": "Mommy Didi"
-            },
-            {
-                "img": "img/testimonials/Teddy.png",
-                "text": "Tutor Karl helps me solve my Math homework using an online whiteboard!",
-                "name": "Theodore"
-            },
-            {
-                "img": "img/testimonials/Karl.png",
-                "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
-                "name": "Tutor Karl"
-            }
-        ]
-
-    ],
-    "Team": [{
-            "img": "img/team/angela.png",
-            "name": "Angela Mercado",
-            "job": "Co-founder, CEO"
-        },
-        {
-            "img": "img/team/apa.png",
-            "name": "Apa Aquino",
-            "job": "Co-founder, COO"
-        }, {
-            "img": "img/team/charles.png",
-            "name": "Charles Samoy",
-            "job": "Co-founder, CFO"
-        },
-        {
-            "img": "img/team/pao.png",
-            "name": "Pao Reganit",
-            "job": "Co-founder, CSO"
-        }
-    ],
-    "Pricing": [
-        {
-            "title": "FREE TRIAL",
-            "price": "0",
-            "oldPrice": "FREE",
-            "description": ["*First-time Users Only", "Akads Verified Tutor", "Zoom Video Chat", "1 Hour Session"],
-            "buttonText": "Sign Up for Free",
-            "buttonVariant": "outlined"
-        },
-        {
-            "title": "8 HOURS",
-            "price": "4000",
-            "oldPrice": "4990",
-            "description": [
-            "Akads Verified Tutor",
-            "Any Mode Of Payment",
-            "Video Chat",
-            "8 Hours Worth Of Credit"
-            ],
-            "buttonText": "Book 8 Sessions",
-            "buttonVariant": "outlined"
-        },
-        {
-            "title": "12 HOURS",
-            "price": "5200",
-            "oldPrice": "7185",
-            "description": [
-            "Akads Verified Tutor",
-            "Any Mode Of Payment",
-            "Video Chat",
-            "12 Hours Worth Of Credit"
-            ],
-            "buttonText": "Book 12 Sessions",
-            "buttonVariant": "outlined"
-        }
-    ],
-    "Contact": {
-        "phone": "0917 899 9369",
-        "email": "hello@akadsph.com",
-        "facebook": "https://www.facebook.com/LearnWithAkads",
-        "linkedin": "https://www.linkedin.com/company/akads-ph/",
-        "instagram": "https://www.instagram.com/akadsph/"
-    },
-    "Features": [{
-            "icon": "../static/images/creditcard.png",
-            "title": "Buy Hour Credits",
-            "text": "Buy 1 hour, 10 hour, or 15 hour sessions easily through multiple safe and secure payment methods."
-        },
-        {
-            "icon": "../static/images/schedule.png",
-            "title": "Book A Tutor",
-            "text": "Fill up a form and match with a tutor. You can chat with your tutor and send files."
-        },
-        {
-            "icon": "../static/images/laptop.png",
-            "title": "Start Your Online Session",
-            "text": "One-on-one sessions with an online whiteboard and screen share. If you liked your tutor, add them to your Favorites List and book them again in the future."
-        }
-    ],
-    "Benefits": [{
-        "icon": "../static/images/one-on-one.png",
-        "title": "No More Referrals",
-        "text": "We supply you with students who need your expertise through our data matching system."
+  "Header": {
+    "title": "Match with the best tutors",
+    "paragraph": "Akads helps you match with a tutor that is most suited for your child. Create an account now and have your first hour for FREE."
+  },
+  "About": {
+    "paragraph": "We want to make it easy for parents to find tutors for their kids by combining the booking process, video chat, and online payments, all-in-one platform. Online tutorial sessions are conducted through ZOOM. We accept any mode of payment such as credit cards, payment apps, and bank transfers.",
+    "Why": ["Math", "Science", "English", "Science"],
+    "Why2": []
+  },
+  "Services": [
+    {
+      "icon": "fa fa-wordpress",
+      "name": "Lorem ipsum dolor",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
     },
     {
-        "icon": "../static/images/top-notch.png",
-        "title": "Earn Easily",
-        "text": "Easily bring in income while you’re a student or fresh graduate just by tutoring"
+      "icon": "fa fa-cart-arrow-down",
+      "name": "Consectetur adipiscing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
     },
     {
-        "icon": "../static/images/all-in-one.png",
-        "title": "Online Tutoring",
-        "text": "Distance in no longer a problem through online tutoring."
+      "icon": "fa fa-cloud-download",
+      "name": "Lorem ipsum dolor",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-language",
+      "name": "Consectetur adipiscing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-plane",
+      "name": "Lorem ipsum dolor",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-pie-chart",
+      "name": "Consectetur adipiscing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
     }
-]
+  ],
+  "Testimonials": [
+    [
+      {
+        "img": "img/testimonials/Trixie.png",
+        "text": "Everything that I need to get a tutor for my daughter, Martina, is in AKADS. They help support her by providing a tutor that can help with the lessons given online schooling.",
+        "name": "Mommy Trixie"
+      },
+      {
+        "img": "img/testimonials/Marti.png",
+        "text": "Ate Bea super helped me understand trigonometry more. She even gave me tips to help me remember the formulas.",
+        "name": "Martina"
+      },
+      {
+        "img": "img/testimonials/Beatrice.png",
+        "text": "...It was really fulfilling to be able to teach Martina as she was able to understand our lesson on trigonometry. I do hope to continue teaching younger students in the future!",
+        "name": "Tutor Bea"
+      }
+    ],
+    [
+      {
+        "img": "img/testimonials/Didi.png",
+        "text": "AKADS is the new normal for us. It compliments well with the online learning the school provides. Safe, easy and effective. Bonus part is when they started offering bundles! We are now sure we are booked and assured of our slot!",
+        "name": "Mommy Didi"
+      },
+      {
+        "img": "img/testimonials/Teddy.png",
+        "text": "Tutor Karl helps me solve my Math homework using an online whiteboard!",
+        "name": "Theodore"
+      },
+      {
+        "img": "img/testimonials/Karl.png",
+        "text": "...Having Akads as an opportunity to continue tutoring has been a big blessing! So far, me and my tutee have really progressed a lot. The growth is the same as it would have been if it were in person!",
+        "name": "Tutor Karl"
+      }
+    ]
+  ],
+  "Team": [
+    {
+      "img": "img/team/angela.png",
+      "name": "Angela Mercado",
+      "job": "Co-founder, CEO"
+    },
+    {
+      "img": "img/team/apa.png",
+      "name": "Apa Aquino",
+      "job": "Co-founder, COO"
+    },
+    {
+      "img": "img/team/charles.png",
+      "name": "Charles Samoy",
+      "job": "Co-founder, CFO"
+    },
+    {
+      "img": "img/team/pao.png",
+      "name": "Pao Reganit",
+      "job": "Co-founder, CSO"
+    }
+  ],
+  "Pricing": [
+    {
+      "title": "FREE TRIAL",
+      "price": "0",
+      "oldPrice": "FREE",
+      "description": [
+        "*First-time Users Only",
+        "Akads Verified Tutor",
+        "Zoom Video Chat",
+        "1 Hour Session"
+      ],
+      "buttonText": "Sign Up for Free",
+      "buttonVariant": "outlined"
+    },
+    {
+      "title": "8 HOURS",
+      "price": "4000",
+      "oldPrice": "4990",
+      "description": [
+        "Akads Verified Tutor",
+        "Any Mode Of Payment",
+        "Video Chat",
+        "8 Hours Worth Of Credit"
+      ],
+      "buttonText": "Book 8 Sessions",
+      "buttonVariant": "outlined"
+    },
+    {
+      "title": "12 HOURS",
+      "price": "5200",
+      "oldPrice": "7185",
+      "description": [
+        "Akads Verified Tutor",
+        "Any Mode Of Payment",
+        "Video Chat",
+        "12 Hours Worth Of Credit"
+      ],
+      "buttonText": "Book 12 Sessions",
+      "buttonVariant": "outlined"
+    }
+  ],
+  "Contact": {
+    "phone": "0917 899 9369",
+    "email": "hello@akadsph.com",
+    "facebook": "https://www.facebook.com/LearnWithAkads",
+    "linkedin": "https://www.linkedin.com/company/akads-ph/",
+    "instagram": "https://www.instagram.com/akadsph/"
+  },
+  "Features": [
+    {
+      "icon": "../static/images/creditcard.png",
+      "title": "Buy Hour Credits",
+      "text": "Buy 1 hour, 10 hour, or 15 hour sessions easily through multiple safe and secure payment methods."
+    },
+    {
+      "icon": "../static/images/schedule.png",
+      "title": "Book A Tutor",
+      "text": "Fill up a form and match with a tutor. You can chat with your tutor and send files."
+    },
+    {
+      "icon": "../static/images/laptop.png",
+      "title": "Start Your Online Session",
+      "text": "One-on-one sessions with an online whiteboard and screen share. If you liked your tutor, add them to your Favorites List and book them again in the future."
+    }
+  ],
+  "Benefits": [
+    {
+      "icon": "../static/images/one-on-one.png",
+      "title": "No More Referrals",
+      "text": "We supply you with students who need your expertise through our data matching system."
+    },
+    {
+      "icon": "../static/images/top-notch.png",
+      "title": "Earn Easily",
+      "text": "Easily bring in income while you’re a student or fresh graduate just by tutoring"
+    },
+    {
+      "icon": "../static/images/all-in-one.png",
+      "title": "Online Tutoring",
+      "text": "Distance in no longer a problem through online tutoring."
+    }
+  ]
 }

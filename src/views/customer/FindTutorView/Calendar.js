@@ -1,7 +1,7 @@
-import React from 'react';
-import DayPicker, { DateUtils } from 'react-day-picker';
-import Moment from 'moment';
-import 'src/CalendarPicker.css'
+import React from "react";
+import DayPicker, { DateUtils } from "react-day-picker";
+import Moment from "moment";
+import "src/CalendarPicker.css";
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -12,14 +12,14 @@ export default class Example extends React.Component {
     };
   }
 
-  handleDayClick(day, modifiers={}) {
-    if(modifiers.disabled){
-      return
+  handleDayClick(day, modifiers = {}) {
+    if (modifiers.disabled) {
+      return;
     }
-    const selected = modifiers.selected
+    const selected = modifiers.selected;
     const { selectedDays } = this.state;
     if (selected) {
-      const selectedIndex = selectedDays.findIndex(selectedDay =>
+      const selectedIndex = selectedDays.findIndex((selectedDay) =>
         DateUtils.isSameDay(selectedDay, day)
       );
       selectedDays.splice(selectedIndex, 1);
@@ -30,37 +30,39 @@ export default class Example extends React.Component {
       this.props.getDays(selectedDays);
     });
 
-    console.log(day.toLocaleDateString('en-GB'));
-    console.log(Moment(day).format('YYYY-DD-MM'));
+    console.log(day.toLocaleDateString("en-GB"));
+    console.log(Moment(day).format("YYYY-DD-MM"));
   }
 
   render() {
-    const now = new Date()
-    const fromMonth = new Date() 
-    const toMonth = new Date()
-    toMonth.setMonth(now.getMonth() + 1)
-    const toDay = new Date() 
-    if(this.props.allTutors){
-      toDay.setDate(now.getDate() + 3)
-    }else{
-      toDay.setDate(now.getDate() + 1)
+    const now = new Date();
+    const fromMonth = new Date();
+    const toMonth = new Date();
+    toMonth.setMonth(now.getMonth() + 1);
+    const toDay = new Date();
+    if (this.props.allTutors) {
+      toDay.setDate(now.getDate() + 3);
+    } else {
+      toDay.setDate(now.getDate() + 1);
     }
-    var disabledDays = 
-    [
+    var disabledDays = [
       {
-        before: now
+        before: now,
       },
       {
-        after: toMonth
+        after: toMonth,
       },
       {
         after: now,
-        before: toDay
+        before: toDay,
       },
-      now
-    ]
-    if(process.env.REACT_APP_ENV == 'DEVELOPMENT' || process.env.REACT_APP_ENV == 'STAGING'){
-      disabledDays = []
+      now,
+    ];
+    if (
+      process.env.REACT_APP_ENV == "DEVELOPMENT" ||
+      process.env.REACT_APP_ENV == "STAGING"
+    ) {
+      disabledDays = [];
     }
     return (
       <div>

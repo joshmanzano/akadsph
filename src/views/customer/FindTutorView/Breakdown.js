@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
 import {
   Box,
   Button,
@@ -11,8 +11,7 @@ import {
   Grid,
   CardHeader,
   Divider,
-} from '@material-ui/core';
-
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -37,10 +36,7 @@ const Breakdown = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <div className={clsx(classes.root, className)} {...rest}>
       {/* <Typography variant="h4" align='center'>
             Choose a Bundle
       </Typography> */}
@@ -52,27 +48,26 @@ const Breakdown = ({ className, ...rest }) => {
           xl={3}
           xs={0}
           ></Grid> */}
-          <Grid
-          item
-          lg={12}
-          md={12}
-          xl={12}
-          xs={12}
-          >
-            <Box mx="auto" /*mt={3}*/>
-              <Card style={{justifyContent: 'center', placeItems: 'center'}}>
-                <CardHeader
-                  // subheader="Bundles that are for more than 1 hour are consummable for anytime"
-                  title="Breakdown"
-                />
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
+        <Grid item lg={12} md={12} xl={12} xs={12}>
+          <Box mx="auto" /*mt={3}*/>
+            <Card style={{ justifyContent: "center", placeItems: "center" }}>
+              <CardHeader
+                // subheader="Bundles that are for more than 1 hour are consummable for anytime"
+                title="Breakdown"
+              />
+              <Divider />
+              <CardContent
+                style={{ justifyContent: "center", placeItems: "center" }}
+              >
+                <Box
+                  style={{
+                    justifyContent: "center",
+                    placeItems: "center",
+                  }} /*maxWidth={1000}*/
+                >
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Session/s
-                      </Typography>
+                      <Typography variant="h6">Session/s</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
@@ -80,9 +75,7 @@ const Breakdown = ({ className, ...rest }) => {
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Duration
-                      </Typography>
+                      <Typography variant="h6">Duration</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
@@ -90,9 +83,7 @@ const Breakdown = ({ className, ...rest }) => {
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="h6">
-                        Session No.
-                      </Typography>
+                      <Typography variant="h6">Session No.</Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography variant="h5" align="right">
@@ -100,31 +91,35 @@ const Breakdown = ({ className, ...rest }) => {
                       </Typography>
                     </Grid>
                   </Grid>
-                  </Box>
-                </CardContent>
-                <Divider />
-                <CardContent style={{justifyContent: 'center', placeItems: 'center'}}>
-                  <Box style={{justifyContent: 'center', placeItems: 'center'}} /*maxWidth={1000}*/>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <Typography variant="h5">
-                          Total
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="h5" align="right">
-                          P500.00
-                        </Typography>
-                      </Grid>
+                </Box>
+              </CardContent>
+              <Divider />
+              <CardContent
+                style={{ justifyContent: "center", placeItems: "center" }}
+              >
+                <Box
+                  style={{
+                    justifyContent: "center",
+                    placeItems: "center",
+                  }} /*maxWidth={1000}*/
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography variant="h5">Total</Typography>
                     </Grid>
-                  </Box>
-                </CardContent>
-                
-              </Card>
-            </Box>
-          </Grid> 
+                    <Grid item xs={6}>
+                      <Typography variant="h5" align="right">
+                        P500.00
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </CardContent>
+            </Card>
+          </Box>
+        </Grid>
 
-          {/* <Grid
+        {/* <Grid
           item
           lg={3}
           md={3}
@@ -137,7 +132,7 @@ const Breakdown = ({ className, ...rest }) => {
 };
 
 Breakdown.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Breakdown;

@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
 import {
   Box,
   Button,
@@ -10,7 +10,7 @@ import {
   Grid,
   CardHeader,
   Divider,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "white",
     // color: theme.color,
     // borderRadius: "10px",
-    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    boxShadow:
+      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
   },
 }));
 
@@ -36,15 +37,12 @@ const Bundle = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <div className={clsx(classes.root, className)} {...rest}>
       {/* <Typography variant="h4" align='center'>
             Choose a Bundle
       </Typography> */}
       <Box /*mt={3}*/>
-        <Card style={{justifyContent: 'center', placeItems: 'center'}}>
+        <Card style={{ justifyContent: "center", placeItems: "center" }}>
           <CardHeader
             subheader="Bundles that are for more than 1 hour are consummable for anytime"
             title="Choose a Bundle"
@@ -52,10 +50,13 @@ const Bundle = ({ className, ...rest }) => {
           <Divider />
           <CardContent>
             <Box>
-              <Grid container spacing={2} 
+              <Grid
+                container
+                spacing={2}
                 alignItems="center"
                 justify="center"
-                style={{placeItems: 'center'}}>
+                style={{ placeItems: "center" }}
+              >
                 <Grid
                   item
                   lg={4}
@@ -64,38 +65,32 @@ const Bundle = ({ className, ...rest }) => {
                   xs={12}
                   alignItems="center"
                   justify="center"
-                  style={{placeItems: 'center'}}
+                  style={{ placeItems: "center" }}
                 >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  P550/hour
+                  <Button
+                    className={classes.bundleButton}
+                    color="primary"
+                    variant="contained"
+                  >
+                    P550/hour
                   </Button>
                 </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  P500/hour for 10 hours
+                <Grid item lg={4} md={4} xl={4} xs={12}>
+                  <Button
+                    className={classes.bundleButton}
+                    color="primary"
+                    variant="contained"
+                  >
+                    P500/hour for 10 hours
                   </Button>
                 </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={4}
-                  xl={4}
-                  xs={12}
-                >
-                  <Button className={classes.bundleButton}  
-                  color="primary"
-                  variant="contained">
-                  P450/hour for 20 hours
+                <Grid item lg={4} md={4} xl={4} xs={12}>
+                  <Button
+                    className={classes.bundleButton}
+                    color="primary"
+                    variant="contained"
+                  >
+                    P450/hour for 20 hours
                   </Button>
                 </Grid>
               </Grid>
@@ -108,7 +103,7 @@ const Bundle = ({ className, ...rest }) => {
 };
 
 Bundle.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Bundle;

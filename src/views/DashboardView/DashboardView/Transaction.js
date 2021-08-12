@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -12,13 +12,13 @@ import {
   Grid,
   Box,
   Typography,
-} from '@material-ui/core';
-import Table from 'src/components/Table.js';
+} from "@material-ui/core";
+import Table from "src/components/Table.js";
 
-const headers = ["Date", "Time", "Credits", "Amount", "Ref. Num"]
+const headers = ["Date", "Time", "Credits", "Amount", "Ref. Num"];
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const Sales = ({ className, rows, ...rest }) => {
@@ -26,37 +26,31 @@ const Sales = ({ className, rows, ...rest }) => {
   const theme = useTheme();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <CardHeader
-        title="Transactions"
-      />
+    <Card className={clsx(classes.root, className)} {...rest}>
+      <CardHeader title="Transactions" />
       <Divider />
-      {(rows).length != 0 ? 
+      {rows.length != 0 ? (
         <React.Fragment>
           <CardContent>
-            <Table tableHeaders={headers} tableRows={rows}/>
+            <Table tableHeaders={headers} tableRows={rows} />
           </CardContent>
         </React.Fragment>
-      :
+      ) : (
         <React.Fragment>
           <Box m={6}>
-            <Typography variant='h3' align='center'>
+            <Typography variant="h3" align="center">
               No previous transactions
             </Typography>
           </Box>
         </React.Fragment>
-      }
-
+      )}
     </Card>
   );
 };
 
 Sales.propTypes = {
   className: PropTypes.string,
-  rows: PropTypes.array
+  rows: PropTypes.array,
 };
 
 export default Sales;

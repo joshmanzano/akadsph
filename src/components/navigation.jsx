@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import {
-  Button,
-} from '@material-ui/core';
-import {Link} from 'react-scroll';
+import { Button } from "@material-ui/core";
+import { Link } from "react-scroll";
 
 export class Navigation extends Component {
-
   render() {
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -27,9 +24,15 @@ export class Navigation extends Component {
               <img src='../img/logo.png'></img>
             </a>{" "} */}
 
-              <Link to="header" smooth={true} onClick={()=> {this.props.setShowPage("main")}}>
-                <img height="50" src='../img/logo.png'></img>
-              </Link>
+            <Link
+              to="header"
+              smooth={true}
+              onClick={() => {
+                this.props.setShowPage("main");
+              }}
+            >
+              <img height="50" src="../img/logo.png"></img>
+            </Link>
           </div>
 
           <div
@@ -39,28 +42,59 @@ export class Navigation extends Component {
             <ul className="nav navbar-nav navbar-right">
               <li>
                 {/* <a href="/#about" className="page-scroll"> */}
-                <Link to="header" spy={true} smooth={true} onClick={()=> {this.props.setShowPage("about")}}>
+                <Link
+                  to="header"
+                  spy={true}
+                  smooth={true}
+                  onClick={() => {
+                    this.props.setShowPage("about");
+                  }}
+                >
                   About
-                {/* </a> */}
+                  {/* </a> */}
                 </Link>
               </li>
               <li>
-                <Link onClick={()=> {this.props.setShowPage("main")}} to="pricing" spy={true} smooth={true}>
+                <Link
+                  onClick={() => {
+                    this.props.setShowPage("main");
+                  }}
+                  to="pricing"
+                  spy={true}
+                  smooth={true}
+                >
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link onClick={()=> {this.props.setShowPage("main")}} to="testimonials" spy={true} smooth={true}>
+                <Link
+                  onClick={() => {
+                    this.props.setShowPage("main");
+                  }}
+                  to="testimonials"
+                  spy={true}
+                  smooth={true}
+                >
                   Testimonials
                 </Link>
               </li>
               <li>
-                <a  onClick={()=> {this.props.setShowPage("becomeTutor")}} /*href="/#contact"*/ className="page-scroll">
+                <a
+                  onClick={() => {
+                    this.props.setShowPage("becomeTutor");
+                  }}
+                  /*href="/#contact"*/ className="page-scroll"
+                >
                   Become A Tutor
                 </a>
               </li>
               <li>
-                <Button onClick={() => window.location.replace('/login')} variant="outlined" color="secondary" id="loginButton">
+                <Button
+                  onClick={() => window.location.replace("/login")}
+                  variant="outlined"
+                  color="secondary"
+                  id="loginButton"
+                >
                   Login
                 </Button>
               </li>

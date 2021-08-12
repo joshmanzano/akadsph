@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -17,74 +17,72 @@ import {
   TextField,
   InputAdornment,
   Snackbar,
-  Typography, 
+  Typography,
   IconButton,
-} from '@material-ui/core';
+} from "@material-ui/core";
 import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    // DialogTitle,
-  } from '@material-ui/core';
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  // DialogTitle,
+} from "@material-ui/core";
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-  
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-  
-import CloseIcon from '@material-ui/icons/Close';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
 
-import { withStyles } from '@material-ui/core/styles';
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
 
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
+import CloseIcon from "@material-ui/icons/Close";
 
+import { withStyles } from "@material-ui/core/styles";
+
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%'
+    height: "100%",
   },
   avatar: {
     backgroundColor: colors.red[600],
     height: 56,
-    width: 56
+    width: 56,
   },
   differenceIcon: {
-    color: colors.red[900]
+    color: colors.red[900],
   },
   differenceValue: {
     color: colors.red[900],
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   closeButton: {
-    float:'right', marginTop: '5px'
-
+    float: "right",
+    marginTop: "5px",
   },
-  dialogTitle:{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '4px 2px 5px 20px',
-  }, 
-  dialogStyle:{
+  dialogTitle: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4px 2px 5px 20px",
+  },
+  dialogStyle: {
     minWidth: "60vh",
   },
 }));
 
-const ModalConfRequest = ({open, setOpen, details, className, ...rest }) => {
+const ModalConfRequest = ({ open, setOpen, details, className, ...rest }) => {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
-
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -96,90 +94,90 @@ const ModalConfRequest = ({open, setOpen, details, className, ...rest }) => {
         <MuiDialogTitle disableTypography className={classes.root} {...other}>
           <Typography variant="h4">{children}</Typography>
           {onClose ? (
-            <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <IconButton
+              aria-label="close"
+              className={classes.closeButton}
+              onClick={onClose}
+            >
               <CloseIcon />
             </IconButton>
           ) : null}
         </MuiDialogTitle>
-        <Divider/>
-        <br/>
+        <Divider />
+        <br />
       </React.Fragment>
     );
   });
 
   return (
     <Dialog
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="alert-dialog-title"
-    aria-describedby="alert-dialog-description"
-    className={classes.dialogStyle}
-    // fullWidth={true}
-    // maxWidth={'md'}
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      className={classes.dialogStyle}
+      // fullWidth={true}
+      // maxWidth={'md'}
     >
-        <DialogTitle onClose={handleClose} id="alert-dialog-title" className={classes.dialogTitle}>{"Session Details"}</DialogTitle>
-        <DialogContent >
-          <Box mx={8}>
-            <Grid container spacing={2}>
-              { Object.entries(details).map(([key, value]) => {
-                  
-                return(
-                  <React.Fragment>
-                  <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={6}
-                  >
-                    <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+      <DialogTitle
+        onClose={handleClose}
+        id="alert-dialog-title"
+        className={classes.dialogTitle}
+      >
+        {"Session Details"}
+      </DialogTitle>
+      <DialogContent>
+        <Box mx={8}>
+          <Grid container spacing={2}>
+            {Object.entries(details).map(([key, value]) => {
+              return (
+                <React.Fragment>
+                  <Grid item lg={6} md={6} xl={6} xs={6}>
+                    <Typography
+                      variant="h6"
+                      align="left"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {key}
                     </Typography>
                   </Grid>
-                  <Grid
-                  item
-                  lg={6}
-                  md={6}
-                  xl={6}
-                  xs={6}
-                >
-                  <Typography variant='h6' align='right'>
-                    {value}
-                  </Typography>
-                </Grid>
+                  <Grid item lg={6} md={6} xl={6} xs={6}>
+                    <Typography variant="h6" align="right">
+                      {value}
+                    </Typography>
+                  </Grid>
                 </React.Fragment>
-                );
-                // :
-                //   <React.Fragment>
-                //     <Box mt={8} mb={2}>
-                //     <Grid
-                //       item
-                //       lg={6}
-                //       md={6}
-                //       xl={6}
-                //       xs={6}
-                //       >
-                //         <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
-                //           {key}
-                //         </Typography>
-                //       </Grid>
-                //       <Grid
-                //       item
-                //       lg={6}
-                //       md={6}
-                //       xl={6}
-                //       xs={6}
-                //     >
-                //       <Typography variant='h6' align='right'>
-                //         {value}
-                //       </Typography>
-                //     </Grid>
-                //     </Box>
-                //   </React.Fragment>
-                //   }
-
-              })}
-              {/* <Grid
+              );
+              // :
+              //   <React.Fragment>
+              //     <Box mt={8} mb={2}>
+              //     <Grid
+              //       item
+              //       lg={6}
+              //       md={6}
+              //       xl={6}
+              //       xs={6}
+              //       >
+              //         <Typography variant='h6' align='left' style={{fontWeight: 'bold'}}>
+              //           {key}
+              //         </Typography>
+              //       </Grid>
+              //       <Grid
+              //       item
+              //       lg={6}
+              //       md={6}
+              //       xl={6}
+              //       xs={6}
+              //     >
+              //       <Typography variant='h6' align='right'>
+              //         {value}
+              //       </Typography>
+              //     </Grid>
+              //     </Box>
+              //   </React.Fragment>
+              //   }
+            })}
+            {/* <Grid
                 item
                 lg={6}
                 md={6}
@@ -289,8 +287,8 @@ const ModalConfRequest = ({open, setOpen, details, className, ...rest }) => {
                   None
                 </Typography>
               </Grid> */}
-            </Grid>
-            {/* <Box mt={8} mb={2}>
+          </Grid>
+          {/* <Box mt={8} mb={2}>
               <Grid container spacing={2}>
                 <Grid
                     item
@@ -338,9 +336,9 @@ const ModalConfRequest = ({open, setOpen, details, className, ...rest }) => {
                 </Grid>
               </Grid>
             </Box> */}
-          </Box>
-        </DialogContent>
-{/*         
+        </Box>
+      </DialogContent>
+      {/*         
         <DialogActions>
           <Button onClick={handleClose} color="primary">
               Cancel
@@ -354,7 +352,7 @@ const ModalConfRequest = ({open, setOpen, details, className, ...rest }) => {
 };
 
 ModalConfRequest.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ModalConfRequest;

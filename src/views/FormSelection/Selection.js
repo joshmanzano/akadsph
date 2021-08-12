@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
 import {
   Box,
   Button,
@@ -16,16 +16,16 @@ import {
   CardHeader,
   Divider,
   Container,
-} from '@material-ui/core';
-import { useHistory } from 'react-router-dom'
-import PublishIcon from '@material-ui/icons/Publish';
-import Chip from '@material-ui/core/Chip';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import { DropzoneDialog } from 'material-ui-dropzone';
+} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import PublishIcon from "@material-ui/icons/Publish";
+import Chip from "@material-ui/core/Chip";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
+import { DropzoneDialog } from "material-ui-dropzone";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -42,14 +42,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest }) => {
+const ChildDetails = ({
+  className,
+  data,
+  url,
+  setURL,
+  setData,
+  props,
+  ...rest
+}) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <div className={clsx(classes.root, className)} {...rest}>
       {/* <Typography variant="h4" align='center'>
             Tutoring Details
       </Typography> */}
@@ -58,36 +63,39 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
           <Grid item xs={6}>
             <Card>
               <a href="https://airtable.com/shrk0RjAkh4mhc7y1">
-              <CardContent>
+                <CardContent>
                   <Container>
                     <Typography align="center">
-                      <h3 className="orangeText">
-                        SUMMER WITH AKADS
-                      </h3>
+                      <h3 className="orangeText">SUMMER WITH AKADS</h3>
                       <p className="blueText">
-                      The Summer with Akads Program is our latest campaign built to help your child learn a new skill, improve on previous learnings, or be prepared for next school year's classes. Note: current credit hours can be used for this program. Sessions for this program will be good for one month.
+                        The Summer with Akads Program is our latest campaign
+                        built to help your child learn a new skill, improve on
+                        previous learnings, or be prepared for next school
+                        year's classes. Note: current credit hours can be used
+                        for this program. Sessions for this program will be good
+                        for one month.
                       </p>
                     </Typography>
                   </Container>
-              </CardContent>
+                </CardContent>
               </a>
             </Card>
           </Grid>
           <Grid item xs={6}>
             <Card>
               <a href="findtutor">
-              <CardContent>
-                <Container>
-                  <Typography align="center">
-                    <h3 className="orangeText">
-                      NORMAL BOOKING FORM
-                    </h3>
-                    <p className="blueText">
-                    Book a tutor for your child’s current lessons and classes. You may book individual sessions through this booking form.
-                    </p>
-                  </Typography>
-                </Container>
-              </CardContent>
+                <CardContent>
+                  <Container>
+                    <Typography align="center">
+                      <h3 className="orangeText">NORMAL BOOKING FORM</h3>
+                      <p className="blueText">
+                        Book a tutor for your child’s current lessons and
+                        classes. You may book individual sessions through this
+                        booking form.
+                      </p>
+                    </Typography>
+                  </Container>
+                </CardContent>
               </a>
             </Card>
           </Grid>
@@ -98,7 +106,7 @@ const ChildDetails = ({ className, data, url, setURL, setData, props, ...rest })
 };
 
 ChildDetails.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ChildDetails;

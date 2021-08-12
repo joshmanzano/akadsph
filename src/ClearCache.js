@@ -19,18 +19,18 @@ function withClearCache(Component) {
 
     useEffect(() => {
       fetch("/meta.json", {
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': 0
-          }
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: 0,
+        },
       })
         .then((response) => response.json())
         .then((meta) => {
           const latestVersionDate = meta.buildDate;
           const currentVersionDate = packageJson.buildDate;
-          console.log(meta.buildDate)
-          console.log(packageJson.buildDate)
+          console.log(meta.buildDate);
+          console.log(packageJson.buildDate);
 
           const shouldForceRefresh = buildDateGreaterThan(
             latestVersionDate,
@@ -55,7 +55,7 @@ function withClearCache(Component) {
         });
       }
       // delete browser cache and hard reload
-      window.location.reload()
+      window.location.reload();
     };
 
     return (

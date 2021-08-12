@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {useEffect} from 'react';
+import React, { useState } from "react";
+import { useEffect } from "react";
 import {
   Box,
   makeStyles,
@@ -8,49 +8,49 @@ import {
   Button,
   Card,
   Divider,
-} from '@material-ui/core';
-import Page from 'src/components/Page';
-import Biodata from './Biodata';
-import TutorExp from './TutorExp';
-import ModeOfPayment from './ModeOfPayment';
+} from "@material-ui/core";
+import Page from "src/components/Page";
+import Biodata from "./Biodata";
+import TutorExp from "./TutorExp";
+import ModeOfPayment from "./ModeOfPayment";
 
-import AppSent from './AppSent'
+import AppSent from "./AppSent";
 
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
 
-import LoadingBack from 'src/components/loadingBack';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import LoadingBack from "src/components/loadingBack";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
+    minHeight: "100%",
     paddingBottom: theme.spacing(3),
     // paddingTop: theme.spacing(3)
   },
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
   layout: {
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 1000,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
   paper: {
     marginTop: theme.spacing(1),
     // marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
-    
+
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
-    //   marginBottom: theme.spacing(6),
+      //   marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
     },
   },
@@ -58,9 +58,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 0, 5),
   },
   buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    textAlign: 'right',
+    display: "flex",
+    justifyContent: "flex-end",
+    textAlign: "right",
   },
   button: {
     marginTop: theme.spacing(3),
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     "&:hover": {
       color: theme.palette.text.primary,
-    }
+    },
   },
   alreadyLink: {
     marginBottom: theme.spacing(3),
@@ -82,34 +82,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-
-export default function(props){
+export default function (props) {
   const classes = useStyles();
   const [detailsDone, setDetailsDone] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const steps = ['About You', 'Tutoring Related Details', 'Mode of Payment'];
+  const steps = ["About You", "Tutoring Related Details", "Mode of Payment"];
   const [activeStep, setActiveStep] = React.useState(0);
 
   useEffect(() => {
-    if(activeStep === steps.length){
+    if (activeStep === steps.length) {
       // const data = accountDetails;
       // data['child'] = childDetails;
       // props.register(data)
     }
-  },[activeStep])
+  }, [activeStep]);
 
   function getStepContent(step, props) {
     switch (step) {
       case 0:
-        return <Biodata/>;
+        return <Biodata />;
       case 1:
-        return  <TutorExp/>;
+        return <TutorExp />;
       case 2:
-        return  <ModeOfPayment/>;
+        return <ModeOfPayment />;
       default:
-        throw new Error('Unknown step');
+        throw new Error("Unknown step");
     }
   }
 
@@ -117,106 +114,91 @@ export default function(props){
     setDetailsDone(!detailsDone);
   };
 
-  
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    const handleNext = () => {
-      console.log(activeStep);
-      setActiveStep(activeStep + 1);
-    };
-  
-    const handleBack = () => {
-      setActiveStep(activeStep - 1);
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleNext = () => {
+    console.log(activeStep);
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
 
   return (
-    <Page
-      className={classes.root}
-      title="Tutor Application - AKADSPH" 
-    >
-      <Box mx={3}> 
-        <Button href="/" className={classes.homebutton}  startIcon={<ArrowBackIosIcon/>}>
+    <Page className={classes.root} title="Tutor Application - AKADSPH">
+      <Box mx={3}>
+        <Button
+          href="/"
+          className={classes.homebutton}
+          startIcon={<ArrowBackIosIcon />}
+        >
           Home
         </Button>
       </Box>
       {activeStep === steps.length ? (
         <React.Fragment>
-          <AppSent/>
+          <AppSent />
         </React.Fragment>
       ) : (
-      <React.Fragment>
-        <main className={classes.layout}>
-          <LoadingBack processing={activeStep === steps.length}/>
-          <Box my={3}>
-            <Typography variant="h1" align='center'>
-              Tutor Application
-            </Typography>
-          </Box>
-          <Card className={classes.paper}>
-            <Stepper activeStep={activeStep} className={classes.stepper}>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-            <Divider mb={2}/>
-            <React.Fragment>
-              
+        <React.Fragment>
+          <main className={classes.layout}>
+            <LoadingBack processing={activeStep === steps.length} />
+            <Box my={3}>
+              <Typography variant="h1" align="center">
+                Tutor Application
+              </Typography>
+            </Box>
+            <Card className={classes.paper}>
+              <Stepper activeStep={activeStep} className={classes.stepper}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+              <Divider mb={2} />
+              <React.Fragment>
                 <React.Fragment>
-                  <Box my={3}>
-                    {getStepContent(activeStep, props)}
-                  </Box>
+                  <Box my={3}>{getStepContent(activeStep, props)}</Box>
                   <Box>
+                    <Grid container spacing={0} className={classes.buttons}>
+                      <Grid item lg={1} md={1} xl={0} xs={0}></Grid>
+                      <Grid item lg={5} md={5} xl={5} xs={6} align="right">
+                        {activeStep !== 0 && (
+                          <Button
+                            onClick={handleBack}
+                            className={classes.button}
+                          >
+                            Back
+                          </Button>
+                        )}
 
-                  <Grid container spacing={0} className={classes.buttons}>
-                    <Grid item
-                    lg={1}
-                    md={1}
-                    xl={0}
-                    xs={0}
-                    ></Grid>
-                    <Grid item
-                    lg={5}
-                    md={5}
-                    xl={5}
-                    xs={6}
-                    align='right'
-                    >
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack} className={classes.button}>
-                        Back
-                      </Button>
-                    )}
-                
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={handleNext}
-                      className={classes.button}
-                      align='right'
-                      style={{textAlign: 'right'}}
-                    >
-                      {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
-                    </Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={handleNext}
+                          className={classes.button}
+                          align="right"
+                          style={{ textAlign: "right" }}
+                        >
+                          {activeStep === steps.length - 1 ? "Submit" : "Next"}
+                        </Button>
+                      </Grid>
                     </Grid>
-                  </Grid>
-
                   </Box>
                 </React.Fragment>
-              
-            </React.Fragment>
-          </Card>
-        </main>
-      </React.Fragment>
+              </React.Fragment>
+            </Card>
+          </main>
+        </React.Fragment>
       )}
     </Page>
   );
-};
-
+}

@@ -1,10 +1,7 @@
 ---
 name: Visual change
 about: Describe desired visual change
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
-
-

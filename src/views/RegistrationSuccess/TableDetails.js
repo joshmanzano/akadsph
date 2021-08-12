@@ -1,5 +1,5 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from "react";
+import clsx from "clsx";
 // import PropTypes from 'prop-types';
 import {
   Card,
@@ -8,16 +8,20 @@ import {
   Divider,
   useTheme,
   makeStyles,
-} from '@material-ui/core';
-import Table from 'src/components/Table.js'; 
-import moment from 'moment';
+} from "@material-ui/core";
+import Table from "src/components/Table.js";
+import moment from "moment";
 
-const headers = ["Type", "Quantity", "Discount", "Cost", "Total Credits Bought"]
-
-
+const headers = [
+  "Type",
+  "Quantity",
+  "Discount",
+  "Cost",
+  "Total Credits Bought",
+];
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 const Upcoming = (props) => {
@@ -25,14 +29,15 @@ const Upcoming = (props) => {
   const theme = useTheme();
   const className = props.className;
   const rest = props.rest;
-  const rows = [{
-    Type: "15 hours",
-    Quantity: "1",
-    Discount: "None",
-    Cost: "PHP 7199",
-    Total: "15 hours"
-
-  }];
+  const rows = [
+    {
+      Type: "15 hours",
+      Quantity: "1",
+      Discount: "None",
+      Cost: "PHP 7199",
+      Total: "15 hours",
+    },
+  ];
 
   // props.upcoming.forEach(u => {
   //   const sessionDate = new Date(u.start_time)
@@ -48,24 +53,19 @@ const Upcoming = (props) => {
   //   }
   // })
 
-  
-
   return (
     <Card
       className={clsx(classes.root, className)}
       {...rest}
-      style={{height: "100%"}}
+      style={{ height: "100%" }}
     >
-      <CardHeader
-        title="Summary of Request Details"
-      />
+      <CardHeader title="Summary of Request Details" />
       <Divider />
-        <React.Fragment>
-          <CardContent>
-            <Table tableHeaders={headers} tableRows={rows}/>
-          </CardContent>
-        </React.Fragment>
-  
+      <React.Fragment>
+        <CardContent>
+          <Table tableHeaders={headers} tableRows={rows} />
+        </CardContent>
+      </React.Fragment>
     </Card>
   );
 };
