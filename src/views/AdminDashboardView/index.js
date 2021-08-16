@@ -297,7 +297,7 @@ const Dashboard = (props) => {
       moment(r.time_created).format("MMMM Do YYYY, h:mm:ss a"),
       subjects[r.subject],
       parents[r.parent].first_name,
-      r.fav_tutor ? "None" : tutors[r.fav_tutor],
+      r.fav_tutor ? tutors[r.fav_tutor] : 'None',
     ]);
   });
 
