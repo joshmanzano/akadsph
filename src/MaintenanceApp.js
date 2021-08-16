@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -7,15 +7,12 @@ import {
 } from "react-router-dom";
 
 import Maintenance from "src/views/errors/Maintenance.jsx";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import withClearCache from "./ClearCache";
 
 import "src/Calendar.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {}
 

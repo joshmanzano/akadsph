@@ -2,10 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  withRouter,
 } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
@@ -27,7 +23,7 @@ ReactDOM.render(
       >
         <GlobalStyles />
         <ConfirmProvider>
-          {process.env.REACT_APP_AVAILABLE == "TRUE" ? (
+          {process.env.REACT_APP_AVAILABLE === "TRUE" ? (
             <App />
           ) : (
             <MaintenanceApp />
