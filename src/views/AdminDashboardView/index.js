@@ -124,7 +124,6 @@ const Dashboard = (props) => {
       "Ref. Method",
     ],
   ];
-  console.log(data.parents);
   data.parents.forEach((p) => {
     if (p.fake_user == false && p.status == true) {
       totalParents += 1;
@@ -292,12 +291,13 @@ const Dashboard = (props) => {
 
   const pendingRows = [];
   data.requests.pending.forEach((r) => {
+    // console.log(r.id)
     pendingRows.push([
       r.id,
       moment(r.time_created).format("MMMM Do YYYY, h:mm:ss a"),
       subjects[r.subject],
       parents[r.parent].first_name,
-      r.fav_tutor ? tutors[r.fav_tutor] : 'None',
+      r.fav_tutor ? tutors[r.fav_tutor].first_name : 'None',
     ]);
   });
 
@@ -649,7 +649,7 @@ const Dashboard = (props) => {
                   headers={["Email", "User Type", "Time", "Date"]}
                 />
               </Grid>
-              <Grid item lg={12} md={12} xl={12} xs={12}>
+              {/* <Grid item lg={12} md={12} xl={12} xs={12}>
                 <InfoBox
                   name={"Tutor-Parent Chats"}
                   rows={tutorParentChatRows}
@@ -662,14 +662,14 @@ const Dashboard = (props) => {
                     "",
                   ]}
                 />
-              </Grid>
-              <Grid item lg={12} md={12} xl={12} xs={12}>
+              </Grid> */}
+              {/* <Grid item lg={12} md={12} xl={12} xs={12}>
                 <InfoBox
                   name={"Admin-Parent Chats"}
                   rows={parentChatRows}
                   headers={["ID", "Parent", "First Name", "Last Name", ""]}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item lg={12} md={12} xl={12} xs={12}>
                 <InfoBox
                   name={"Sessions"}
@@ -702,9 +702,9 @@ const Dashboard = (props) => {
                   ]}
                 />
               </Grid>
-              <Grid item lg={12} md={12} xl={12} xs={12}>
-                {/* <InfoBox name={'Sessions'} rows={sessionRows} headers={['ID','Start Date','End Date','Join Link','Start Link']}/> */}
-              </Grid>
+              {/* <Grid item lg={12} md={12} xl={12} xs={12}>
+                <InfoBox name={'Sessions'} rows={sessionRows} headers={['ID','Start Date','End Date','Join Link','Start Link']}/>
+              </Grid> */}
               <Grid item lg={12} md={12} xl={12} xs={12}>
                 <InfoBox
                   name={"Parents"}
