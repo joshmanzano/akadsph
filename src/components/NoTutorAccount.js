@@ -11,6 +11,7 @@ import Page from "src/components/Page";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Toast from "light-toast";
 import { post_api } from "src/Api";
+import Iframe from 'react-iframe';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,52 +71,13 @@ const CustomerListView = (props) => {
             </h2>
             <h2 align="center">
               If you are interested in becoming an Akads tutor and would like to
-              be updated once applications open, kindly put your email in the
+              be updated once applications open, kindly put your email and relevant details in the
               form below!
             </h2>
             <Box mt={4} align="center">
-              <TextField
-                value={tutorEmail}
-                onChange={(e) => setEmail(e.target.value)}
-                variant="outlined"
-              />
-              {/* <Button size="large" color="primary" variant="contained" onClick={() => {}}>
-                    Submit
-                  </Button>
-              <Grid container spacing={1} alignItems="center">
-                <Grid item>
-                  <Box flexGrow={1}/>
-                </Grid>
-                <Grid item>
-                </Grid>
-                <Grid item>
-                </Grid>
-                <Grid item>
-                  <Box flexGrow={1}/>
-                </Grid>
-              </Grid> */}
+            <Iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeYm4FjjQkeMGD3oDY6LIJv_hqf9kkJAr4yTSJmKqgm1Er7ow/viewform?embedded=true" width="640" height="673" frameborder="0" marginheight="0" marginwidth="0">Loading…</Iframe>
             </Box>
-            <Box mt={4} align="center">
-              <Button
-                size="large"
-                color="primary"
-                variant="contained"
-                onClick={() => {
-                  Toast.loading("Submitting email...");
-                  post_api(
-                    "receive-tutor-email",
-                    {
-                      email: tutorEmail,
-                    },
-                    (res) => {
-                      Toast.success("Email submitted!", 500);
-                    }
-                  );
-                }}
-              >
-                Submit
-              </Button>
-            </Box>
+
           </Container>
         </Box>
       </Container>
