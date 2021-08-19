@@ -248,7 +248,7 @@ class App extends Component {
           const transaction = res["transactions"];
           const upcoming = res["accepted_requests"];
           const history = res["finished_requests"];
-          const favourite_tutors = res["favourite_tutors"];
+          const favourite_tutors = res["FavouriteTutor"];
           const conversations = res["conversations"];
           const unreadCount = this.getUnreadStatus(conversations);
           this.setState(
