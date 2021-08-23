@@ -106,7 +106,7 @@ class Chat extends React.Component {
     // if (latest_message.sender === "parent") {
     //   subtitle = "You: " + subtitle;
     // }
-    const chatList = []
+    const chatList = [];
     // const chatList = [
     //   {
     //     avatar: "/static/images/oli-chat.png",
