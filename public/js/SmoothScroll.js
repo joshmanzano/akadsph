@@ -105,12 +105,11 @@
     if (top != self) {
       isFrame = true;
     } else if (
-
-    /**
-     * This fixes a bug where the areas left and right to
-     * the content does not trigger the onmousewheel event
-     * on some pages. e.g.: html, body { height: 100% }
-     */
+      /**
+       * This fixes a bug where the areas left and right to
+       * the content does not trigger the onmousewheel event
+       * on some pages. e.g.: html, body { height: 100% }
+       */
       scrollHeight > windowHeight &&
       (body.offsetHeight <= windowHeight || html.offsetHeight <= windowHeight)
     ) {

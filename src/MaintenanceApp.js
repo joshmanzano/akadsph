@@ -13,7 +13,6 @@ import withClearCache from "./ClearCache";
 import "src/Calendar.css";
 
 class App extends Component {
-
   componentDidMount() {}
 
   render() {

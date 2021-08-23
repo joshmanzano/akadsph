@@ -11,7 +11,7 @@ import Page from "src/components/Page";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Toast from "light-toast";
 import { post_api } from "src/Api";
-import Iframe from 'react-iframe';
+import Iframe from "react-iframe";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,13 +71,21 @@ const CustomerListView = (props) => {
             </h2>
             <h2 align="center">
               If you are interested in becoming an Akads tutor and would like to
-              be updated once applications open, kindly put your email and relevant details in the
-              form below!
+              be updated once applications open, kindly put your email and
+              relevant details in the form below!
             </h2>
             <Box mt={4} align="center">
-            <Iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeYm4FjjQkeMGD3oDY6LIJv_hqf9kkJAr4yTSJmKqgm1Er7ow/viewform?embedded=true" width="640" height="673" frameborder="0" marginheight="0" marginwidth="0">Loading…</Iframe>
+              <Iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeYm4FjjQkeMGD3oDY6LIJv_hqf9kkJAr4yTSJmKqgm1Er7ow/viewform?embedded=true"
+                width="640"
+                height="673"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+              >
+                Loading…
+              </Iframe>
             </Box>
-
           </Container>
         </Box>
       </Container>
