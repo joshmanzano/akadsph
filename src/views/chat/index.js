@@ -21,7 +21,7 @@ class Chat extends React.Component {
 
     this.state = {
       loaded: false,
-      conversation: this.props.adminchat.conversation,
+      // conversation: this.props.adminchat.conversation,
       conversation: null,
       active: false,
       messages: [],
@@ -51,11 +51,11 @@ class Chat extends React.Component {
         conversation_id: id,
       };
       let url =
-        type == "admin"
+        type === "admin"
           ? "specific-parent-admin-conversation"
           : "specific-conversation";
       let seenUrl =
-        type == "admin"
+        type === "admin"
           ? "seen-admin-parent-conversation"
           : "seen-conversation";
       post_api(url, payload, (res) => {
@@ -67,7 +67,7 @@ class Chat extends React.Component {
             text: message["text"],
             createdAt: message["time_sent"],
             user: {
-              id: message["sender"] == "parent" ? 1 : 3,
+              id: message["sender"] === "parent" ? 1 : 3,
               name: name,
               avatar: avatar,
             },
@@ -89,37 +89,38 @@ class Chat extends React.Component {
   };
 
   componentDidUpdate(props) {
-    if (this.props != props) {
+    if (this.props !== props) {
       this.changeSubtitles();
     }
   }
 
   changeSubtitles = () => {
-    let latest_message = this.props.adminchat.latest_message;
-    let subtitle = latest_message.text;
-    let charLimit = 30;
-    let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length;
-    subtitle = subtitle.substring(0, subtitleCut);
-    if (subtitleCut >= charLimit) {
-      subtitle += "...";
-    }
-    if (latest_message.sender == "parent") {
-      subtitle = "You: " + subtitle;
-    }
-    const chatList = [
-      {
-        avatar: "/static/images/oli-chat.png",
-        alt: "Oli",
-        title: "AKADS Buddy",
-        // subtitle:'',
-        subtitle: subtitle,
-        date: new Date(latest_message.time_sent),
-        // onClick:{changeChat},
-        chatID: this.props.adminchat.conversation.id,
-        type: "admin",
-        // unread: akadsUnread,
-      },
-    ];
+    // let latest_message = this.props.adminchat.latest_message;
+    // let subtitle = latest_message.text;
+    // let charLimit = 30;
+    // let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length;
+    // subtitle = subtitle.substring(0, subtitleCut);
+    // if (subtitleCut >= charLimit) {
+    //   subtitle += "...";
+    // }
+    // if (latest_message.sender === "parent") {
+    //   subtitle = "You: " + subtitle;
+    // }
+    const chatList = []
+    // const chatList = [
+    //   {
+    //     avatar: "/static/images/oli-chat.png",
+    //     alt: "Oli",
+    //     title: "AKADS Buddy",
+    //     // subtitle:'',
+    //     subtitle: subtitle,
+    //     date: new Date(latest_message.time_sent),
+    //     // onClick:{changeChat},
+    //     chatID: this.props.adminchat.conversation.id,
+    //     type: "admin",
+    //     // unread: akadsUnread,
+    //   },
+    // ];
     this.props.activechat.forEach((chat) => {
       const tutor = chat.tutor;
       let latest_message = chat.latest_message;
@@ -131,7 +132,7 @@ class Chat extends React.Component {
       if (subtitleCut >= charLimit) {
         subtitle += "...";
       }
-      if (latest_message.sender == "parent") {
+      if (latest_message.sender === "parent") {
         subtitle = "You: " + subtitle;
       }
       chatList.push({
@@ -154,69 +155,69 @@ class Chat extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
-    let latest_message = this.props.adminchat.latest_message;
-    let subtitle = latest_message.text;
-    let charLimit = 55;
-    let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length;
-    subtitle = subtitle.substring(0, subtitleCut);
-    if (subtitleCut > charLimit) {
-      subtitle += "...";
-    }
-    if (latest_message.sender == "parent") {
-      subtitle = "You: " + subtitle;
-    }
-    this.setState(
-      {
-        conversation: {
-          avatar: "/static/images/oli-chat.png",
-          alt: "Oli",
-          title: "AKADS Buddy",
-          // subtitle:'',
-          subtitle: subtitle,
-          date: new Date(latest_message.time_sent),
-          // onClick:{changeChat},
-          chatID: this.props.adminchat.conversation.id,
-          type: "admin",
-          // unread: akadsUnread,
-          // className: 'selectedChat',
-        },
-      },
-      () => {
-        this.changeSubtitles();
-      }
-    );
-    const payload = {
-      conversation_id: this.props.adminchat.conversation.id,
-    };
-    console.log(payload);
-    post_api("specific-parent-admin-conversation", payload, (res) => {
-      const messages = [];
-      res["messages"].forEach((message) => {
-        console.log(message);
-        messages.push({
-          id: message["id"],
-          text: message["text"],
-          createdAt: message["time_sent"],
-          user: {
-            id: message["sender"] == "parent" ? 1 : 3,
-            name: "AKADS Buddy",
-            avatar: "/static/images/oli-happy.png",
-          },
-        });
-      });
-      const lastMessage = messages[0];
-      console.log(lastMessage);
-      post_api(
-        "seen-admin-parent-conversation",
-        {
-          conversation_id: this.props.adminchat.conversation.id,
-          looker: "parent",
-        },
-        (res) => {}
-      );
-      this.setState({ messages: messages, loaded: true });
-    });
+    // console.log(this.props);
+    // let latest_message = this.props.adminchat.latest_message;
+    // let subtitle = latest_message.text;
+    // let charLimit = 55;
+    // let subtitleCut = subtitle.length > charLimit ? charLimit : subtitle.length;
+    // subtitle = subtitle.substring(0, subtitleCut);
+    // if (subtitleCut > charLimit) {
+    //   subtitle += "...";
+    // }
+    // if (latest_message.sender === "parent") {
+    //   subtitle = "You: " + subtitle;
+    // }
+    // this.setState(
+    //   {
+    //     conversation: {
+    //       avatar: "/static/images/oli-chat.png",
+    //       alt: "Oli",
+    //       title: "AKADS Buddy",
+    //       // subtitle:'',
+    //       subtitle: subtitle,
+    //       date: new Date(latest_message.time_sent),
+    //       // onClick:{changeChat},
+    //       chatID: this.props.adminchat.conversation.id,
+    //       type: "admin",
+    //       // unread: akadsUnread,
+    //       // className: 'selectedChat',
+    //     },
+    //   },
+    //   () => {
+    //     this.changeSubtitles();
+    //   }
+    // );
+    // const payload = {
+    //   conversation_id: this.props.adminchat.conversation.id,
+    // };
+    // console.log(payload);
+    // post_api("specific-parent-admin-conversation", payload, (res) => {
+    //   const messages = [];
+    //   res["messages"].forEach((message) => {
+    //     console.log(message);
+    //     messages.push({
+    //       id: message["id"],
+    //       text: message["text"],
+    //       createdAt: message["time_sent"],
+    //       user: {
+    //         id: message["sender"] === "parent" ? 1 : 3,
+    //         name: "AKADS Buddy",
+    //         avatar: "/static/images/oli-happy.png",
+    //       },
+    //     });
+    //   });
+    //   const lastMessage = messages[0];
+    //   console.log(lastMessage);
+    //   post_api(
+    //     "seen-admin-parent-conversation",
+    //     {
+    //       conversation_id: this.props.adminchat.conversation.id,
+    //       looker: "parent",
+    //     },
+    //     (res) => {}
+    //   );
+    //   this.setState({ messages: messages, loaded: true });
+    // });
   }
 
   handleData = (data) => {

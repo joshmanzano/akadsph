@@ -202,9 +202,9 @@ class App extends Component {
 
   getUnreadStatus = (conversations) => {
     let unreadCount = 0;
-    if (!conversations.admin.latest_message.parent_seen) {
-      unreadCount += 1;
-    }
+    // if (!conversations.admin.latest_message.parent_seen) {
+    //   unreadCount += 1;
+    // }
     conversations.active.forEach((conv) => {
       if (!conv.latest_message.parent_seen) {
         unreadCount += 1;
