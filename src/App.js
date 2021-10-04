@@ -64,6 +64,15 @@ class App extends Component {
     const referrer = queryParams.get("referrer");
     if (referrer != null) {
       localStorage.setItem("referrer", referrer);
+      let parameters = {}
+      queryParams.forEach(function(value, key) {
+        parameters[key] = value
+      })
+      post_api('add-link-tracker', {
+        'parameters': parameters
+      }, () => {
+
+      })
     }
   }
 
