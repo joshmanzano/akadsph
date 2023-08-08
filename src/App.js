@@ -25,6 +25,7 @@ import Login from "src/components/login";
 import SignUp from "src/components/signup.jsx";
 import axios from "axios";
 import TutorApp from "src/views/TutorApp";
+import MaintenanceApp from "./MaintenanceApp";
 import {
   api,
   get_user,
@@ -60,20 +61,21 @@ class App extends Component {
     this.checkBackend((res) => {
       this.setState({ offline: !res });
     });
-    const queryParams = new URLSearchParams(this.props.location.search);
-    const referrer = queryParams.get("referrer");
-    if (referrer != null) {
-      localStorage.setItem("referrer", referrer);
-      let parameters = {}
-      queryParams.forEach(function(value, key) {
-        parameters[key] = value
-      })
-      post_api('add-link-tracker', {
-        'parameters': parameters
-      }, () => {
+    // temporarily remove
+    // const queryParams = new URLSearchParams(this.props.location.search);
+    // const referrer = queryParams.get("referrer");
+    // if (referrer != null) {
+    //   localStorage.setItem("referrer", referrer);
+    //   let parameters = {}
+    //   queryParams.forEach(function(value, key) {
+    //     parameters[key] = value
+    //   })
+    //   post_api('add-link-tracker', {
+    //     'parameters': parameters
+    //   }, () => {
 
-      })
-    }
+    //   })
+    // }
   }
 
   checkBackend = (_callback) => {
@@ -413,7 +415,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {process.env.REACT_APP_ENV == "PRODUCTION" && (
+        {/* {process.env.REACT_APP_ENV == "PRODUCTION" && (
           <Fragment>
             <ScriptTag
               async
@@ -429,8 +431,8 @@ class App extends Component {
             </noscript>
             <ScriptTag src="analytics.js" />
           </Fragment>
-        )}
-        {this.state.offline == false ? (
+        )} */}
+        {/* {this.state.offline == false ? ( */}
           <Router>
             {this.state.session == null && (
               // Not Logged In
@@ -438,11 +440,10 @@ class App extends Component {
                 <Route exact path="/">
                   <LandingView />
                 </Route>
-                <Route exact path="/login">
+                {/* <Route exact path="/login">
                   <Login login={this.login} login_tutor={this.login_tutor} />
                 </Route>
                 <Route exact path="/tutor-form">
-                  {/* <TutorApp/> */}
                   <NoTutorAccount />
                 </Route>
                 <Route exact path="/register">
@@ -456,11 +457,11 @@ class App extends Component {
                 </Route>
                 <Route exact path="/NoTutorAccount">
                   <NoTutorAccount />
-                </Route>
+                </Route> */}
                 <Route path="*" component={NotFoundView} />
               </Switch>
             )}
-            {this.state.type == "parent" && (
+            {/* {this.state.type == "parent" && (
               // Parent Logged In
               <Switch>
                 <Route path="/">
@@ -500,11 +501,11 @@ class App extends Component {
                 </Route>
                 <Route path="*" component={NotFoundView} />
               </Switch>
-            )}
+            )} */}
           </Router>
-        ) : (
+        {/* ) : (
           <NotOnline />
-        )}
+        )} */}
         <Toaster />
       </div>
     );
