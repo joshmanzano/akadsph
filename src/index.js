@@ -21,11 +21,7 @@ ReactDOM.render(
       >
         <GlobalStyles />
         <ConfirmProvider>
-          {process.env.REACT_APP_AVAILABLE === "TRUE" ? (
-            <App />
-          ) : (
-            <MaintenanceApp />
-          )}
+          <App />
         </ConfirmProvider>
       </SnackbarProvider>
     </ThemeProvider>
