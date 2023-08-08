@@ -15,7 +15,7 @@ import FindTutorView from "src/views/customer/FindTutorView";
 import DashboardView from "src/views/DashboardView/DashboardView";
 import PlaygroundView from "src/views/test/PlaygroundView";
 import AuthView from "src/views/test/AuthView";
-import NotFoundView from "src/views/errors/NotFoundView.jsx";
+import NotFoundView from "src/views/errors/Maintenance.jsx";
 import NotOnline from "src/views/errors/NotOnline.jsx";
 import ProductListView from "src/views/product/ProductListView";
 import SettingsView from "src/views/settings/SettingsView";
@@ -440,24 +440,30 @@ class App extends Component {
                 <Route exact path="/">
                   <LandingView />
                 </Route>
-                {/* <Route exact path="/login">
-                  <Login login={this.login} login_tutor={this.login_tutor} />
+                <Route exact path="/login">
+                  {/* <Login login={this.login} login_tutor={this.login_tutor} /> */}
+                  <NotFoundView/>
                 </Route>
                 <Route exact path="/tutor-form">
-                  <NoTutorAccount />
+                  {/* <NoTutorAccount /> */}
+                  <NotFoundView/>
                 </Route>
                 <Route exact path="/register">
-                  <SignUp register={this.register} />
+                  {/* <SignUp register={this.register} /> */}
+                  <NotFoundView/>
                 </Route>
                 <Route exact path="/registration-success">
-                  <RegisterSuccess />
+                  {/* <RegisterSuccess /> */}
+                  <NotFoundView/>
                 </Route>
                 <Route exact path="/NoParentAccount">
-                  <NoParentAccount />
+                  {/* <NoParentAccount /> */}
+                  <NotFoundView/>
                 </Route>
                 <Route exact path="/NoTutorAccount">
-                  <NoTutorAccount />
-                </Route> */}
+                  {/* <NoTutorAccount /> */}
+                  <NotFoundView/>
+                </Route>
                 <Route path="*" component={NotFoundView} />
               </Switch>
             )}
