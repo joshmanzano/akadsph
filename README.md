@@ -1,6 +1,6 @@
 # Akads PH
 
-[![akads-logo](https://raw.githubusercontent.com/joshmanzano/akadsph/refs/heads/main/public/static/largewhitelogo.png)](https://akadsph.org)
+[![akads-logo](https://raw.githubusercontent.com/joshmanzano/akadsph/refs/heads/main/public/static/akads-standard-colored-with-background.jpg)](https://akadsph.org)
 
 Akads PH is an **open-source** project (formerly a **startup**) that aims to build an all-in-one tutoring platform, providing both tutors and students with a seamless and worry-free space for **tutoring** sessions.
 
