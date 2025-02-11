@@ -27,3 +27,6 @@ For more details about the **backend**, see the corresponding backend repository
 - **Facebook**: [LearnWithAkads](https://www.facebook.com/LearnWithAkads/)
 - **Instagram**: [akadsph](http://instagram.com/akadsph)
 - **LinkedIn**: [akads-ph](https://www.linkedin.com/company/akads-ph/)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N7JMYB8)
+
