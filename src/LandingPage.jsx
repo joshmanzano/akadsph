@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Navigation from "./components/navigation";
 import Header from "./components/header";
-import Summer from "./components/summer";
+// import Summer from "./components/summer";
 import Features from "./components/features";
 import About from "./components/about";
 // import Services from './components/services';
@@ -21,7 +21,6 @@ import HeaderTutor from "./components/headerTutor";
 import Benefits from "./components/benefits";
 import Requirements from "./components/requirements";
 import Process from "./components/process";
-import Anime from "react-anime";
 
 export class LandingPage extends Component {
   state = {

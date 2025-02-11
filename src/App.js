@@ -19,7 +19,7 @@ import NotFoundView from "src/views/errors/Maintenance.jsx";
 import NotOnline from "src/views/errors/NotOnline.jsx";
 import ProductListView from "src/views/product/ProductListView";
 import SettingsView from "src/views/settings/SettingsView";
-import TutorDashboardView from "src/views/TutorDashboardView";
+// import TutorDashboardView from "src/views/TutorDashboardView";
 import LandingView from "src/LandingPage";
 import Login from "src/components/login";
 import SignUp from "src/components/signup.jsx";

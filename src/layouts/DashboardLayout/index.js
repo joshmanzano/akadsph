@@ -27,7 +27,7 @@ import AuthView from "src/views/test/AuthView";
 import NotFoundView from "src/views/errors/NotFoundView.jsx";
 import ProductListView from "src/views/product/ProductListView";
 import SettingsView from "src/views/settings/SettingsView";
-import TutorDashboardView from "src/views/TutorDashboardView";
+// import TutorDashboardView from "src/views/TutorDashboardView";
 import ChatView from "src/views/chat";
 import LandingPage from "src/LandingPage";
 import Login from "src/components/login";
@@ -44,18 +44,15 @@ import jwt from "jwt-decode";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import "intro.js/introjs.css";
-import { Steps } from "intro.js-react";
-
 import "src/ChatWidget.css";
 import toast from "react-hot-toast";
 import { useSnackbar } from "notistack";
-import {
-  Widget,
-  addResponseMessage,
-  addLinkSnippet,
-  addUserMessage,
-} from "react-chat-widget";
+// import {
+//   Widget,
+//   addResponseMessage,
+//   addLinkSnippet,
+//   addUserMessage,
+// } from "react-chat-widget";
 import PageviewIcon from "@material-ui/icons/Pageview";
 import SummerHeader from "src/components/summerheader";
 

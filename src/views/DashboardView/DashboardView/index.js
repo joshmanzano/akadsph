@@ -14,7 +14,7 @@ import Pending from "./Pending";
 import History from "./History";
 import Transaction from "./Transaction";
 import moment from "moment";
-import DashboardViewTutorial from "src/components/DashboardViewTutorial";
+// import DashboardViewTutorial from "src/components/DashboardViewTutorial";
 import TermsModal from "src/components/TermsModal";
 
 import Calendar from "./Calendar";
@@ -115,10 +115,10 @@ const Dashboard = (props) => {
   return (
     <Fragment>
       <Page className={classes.root} title="Overview">
-        <DashboardViewTutorial
+        {/* <DashboardViewTutorial
           openTerms={openTerms}
           enabled={localStorage.getItem("steps") == "done" ? false : true}
-        />
+        /> */}
         {updateSteps}
         <TermsModal
           open={open}

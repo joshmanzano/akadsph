@@ -26,7 +26,7 @@ import AuthView from "src/views/test/AuthView";
 import NotFoundView from "src/views/errors/NotFoundView.jsx";
 import ProductListView from "src/views/product/ProductListView";
 import SettingsView from "src/views/settings/SettingsView";
-import TutorDashboardView from "src/views/TutorDashboardView";
+// import TutorDashboardView from "src/views/TutorDashboardView";
 import PayoutHistory from "src/views/PayoutHistory";
 import RequestPage from "src/views/RequestPage";
 import ChatView from "src/views/chat";
@@ -41,8 +41,6 @@ import RequestAcceptedView from "src/views/RequestAccepted";
 import TutorExtensionForm from "src/components/TutorExtensionForm"; //asking tutor if he accepts the extension
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import "intro.js/introjs.css";
-import { Steps } from "intro.js-react";
 import NoPayoutView from "src/components/NoPayoutView";
 
 import ReactPolling from "react-polling";
@@ -53,12 +51,12 @@ import jwt from "jwt-decode";
 
 import toast from "react-hot-toast";
 import { useSnackbar } from "notistack";
-import {
-  Widget,
-  addResponseMessage,
-  addLinkSnippet,
-  addUserMessage,
-} from "react-chat-widget";
+// import {
+//   Widget,
+//   addResponseMessage,
+//   addLinkSnippet,
+//   addUserMessage,
+// } from "react-chat-widget";
 import PageviewIcon from "@material-ui/icons/Pageview";
 import ChatUnderConstruction from "src/components/ChatUnderConstruction";
 
@@ -257,7 +255,7 @@ function TutorDashboardLayout(props) {
                     classNames={"fade"}
                   >
                     <Switch location={location}>
-                      <Route exact path={`${match.url}`}>
+                      {/* <Route exact path={`${match.url}`}>
                         <Container id="overview">
                           <Fragment>
                             <TutorDashboardView
@@ -268,7 +266,7 @@ function TutorDashboardLayout(props) {
                             ></TutorDashboardView>
                           </Fragment>
                         </Container>
-                      </Route>
+                      </Route> */}
                       <Route exact path={`${match.url}viewrequest`}>
                         <Container>
                           <Fragment>

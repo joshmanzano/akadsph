@@ -42,9 +42,6 @@ import Notifications from "react-notifications-menu";
 import { useConfirm } from "material-ui-confirm";
 import "src/React-Notifs.css";
 
-import "intro.js/introjs.css";
-import { Steps } from "intro.js-react";
-
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {

@@ -41,8 +41,6 @@ import Notifications from "react-notifications-menu";
 import { useConfirm } from "material-ui-confirm";
 import "src/React-Notifs.css";
 
-import "intro.js/introjs.css";
-import { Steps } from "intro.js-react";
 import NotifCard from "./NotifCard";
 import toast from "react-hot-toast";
 import { useSnackbar } from "notistack";

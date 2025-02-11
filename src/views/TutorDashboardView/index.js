@@ -11,7 +11,7 @@ import AgoraFrame from "src/components/agoraframe";
 import Upcoming from "./Upcoming";
 import History from "./History";
 import TutorExtensionForm from "src/components/TutorExtensionForm"; //asking tutor if he accepts the extension
-import TutorDashboardTutorial from "src/components/TutorDashboardViewTutorial";
+// import TutorDashboardTutorial from "src/components/TutorDashboardViewTutorial";
 import TermsModal from "src/components/TermsModal";
 import moment from "moment";
 
