@@ -1,6 +1,8 @@
 # Akads PH
 Akads PH is an **open-source** project (formerly a **startup**) that aims to build an all-in-one tutoring platform, providing both tutors and students with a seamless and worry-free space for **tutoring** sessions.
 
+**License:** This project is licensed under the **GPL-3.0**; you can use, modify, and distribute it, but modifications must also be open-source, and credit must be given to the original authors.
+
 This repository serves as the **frontend** repository and the main hub for showcasing work on Akads PH and relevant awards.
 
 For more details about the **backend**, see the corresponding backend repository: [akadsph-backend](https://github.com/joshmanzano/akadsph-backend)
