@@ -166,3 +166,5 @@ sketch
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,yarn,cypressio
+
+package-lock.json

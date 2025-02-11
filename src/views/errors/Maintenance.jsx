@@ -14,14 +14,14 @@ export class NotFoundView extends Component {
         >
           <Container maxWidth="md">
             <h2 align="center">
-              Hello! We are currently implementing new features for you, so our
-              website will be under maintenance for the meanwhile.
+              Hello! We are currently rebuilding Akads PH as of the moment, so the website
+              will be under maintenance for a while. 
             </h2>
             <Box mb={4}>
               <h3 align="center">
-                Kindly check again tomorrow! If you have any urgent concerns,
-                kindly contact{" "}
-                <a href={"mailto:support@akadsph.com"}>support@akadsph.com</a>
+                Kindly check again in the future! If you have any urgent concerns,
+                kindly email{" "}
+                <a href={"mailto:josh@akadsph.org"}>josh@akadsph.org</a>
               </h3>
             </Box>
             <Box textAlign="center">
