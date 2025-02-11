@@ -16,8 +16,8 @@ For more details about the **backend**, see the corresponding backend repository
 
 **Managers**
 
-* Angela Mercado 
-* Charles Samoy
+* [Angela Mercado](https://www.linkedin.com/in/mercadoangela/) (CEO and Founder)
+* [Charles Samoy](https://www.linkedin.com/in/charlessamoy/) (CFO and Founder)
 * **Former Managers:** Apa Aquino, Pao Reganit (contributed before the project became open-source)
 
 ## Connect With Us
