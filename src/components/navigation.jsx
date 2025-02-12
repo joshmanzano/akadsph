@@ -90,7 +90,7 @@ export class Navigation extends Component {
               </li>
               <li>
                 <Button
-                  onClick={() => window.location.replace("/login")}
+                  onClick={() => window.location.replace("https://www.facebook.com/LearnWithAkads/posts/pfbid02VFYyj7DaHH8qXxaSXVP1LD19ySSpJqsNZgiEeVEbyn8SiQ6JQJDXJwbhxEjfFmEPl")}
                   variant="outlined"
                   color="secondary"
                   id="loginButton"

@@ -168,7 +168,7 @@ const ProfileDetails = ({ className, props, ...rest }) => {
               confirm({
                 title: "Edit Details",
                 description:
-                  "Kindly email us at support@akadsph.com if you would like to change your profile details.",
+                  "Kindly email us at support@akadsph.org if you would like to change your profile details.",
               })
                 .then(() => {})
                 .catch(() => {});

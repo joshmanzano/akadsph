@@ -92,7 +92,7 @@ export class features extends Component {
                     </Grid>
                   </Grid>
                   <Box mt={8} />
-                  <a target="_blank" href="https://extra.akadsph.com/">
+                  <a target="_blank" href="https://extra.akadsph.org/">
                     <Button variant="contained" color="primary">
                       Learn More
                     </Button>

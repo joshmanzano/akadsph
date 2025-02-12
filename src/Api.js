@@ -3,7 +3,7 @@ import jwt from "jwt-decode";
 
 // const api_url = 'https://akadsph-staging.herokuapp.com'
 const api_url = process.env.REACT_APP_API_URL;
-// const api_url = 'http://api.akadsph.com:8000'
+// const api_url = 'http://api.akadsph.org:8000'
 const username = process.env.REACT_APP_USERNAME;
 const password = process.env.REACT_APP_KEY;
 // const api_url = 'http://127.0.0.1:8000'

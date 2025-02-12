@@ -70,7 +70,7 @@ const ModalWaiting = ({ open, setOpen, className, user, ...rest }) => {
   const confirm = useConfirm();
   const support = () => {
     window.location.replace("/messages");
-    // confirm({ title:'Questions for AkadsPH' ,description: 'If you have any questions, kindly email us at support@akadsph.com!' })
+    // confirm({ title:'Questions for AkadsPH' ,description: 'If you have any questions, kindly email us at support@akadsph.org!' })
     //   .then(() => {
 
     //   })

@@ -42,8 +42,8 @@ const CustomerListView = (props) => {
               </a>
             </h2>
             <h2 align="center">
-              <a target="_blank" href="mailto:support@akadsph.com">
-                support@akadsph.com
+              <a target="_blank" href="mailto:support@akadsph.org">
+                support@akadsph.org
               </a>
             </h2>
           </Container>
